@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { UserInterfaceLibraryComponent } from './user-interface-library.component';
+import { TestComponent } from './test/test.component';
 
 
 
 @NgModule({
   declarations: [
-    UserInterfaceLibraryComponent
+    UserInterfaceLibraryComponent,
+    TestComponent
   ],
   imports: [
   ],
   exports: [
-    UserInterfaceLibraryComponent
+    UserInterfaceLibraryComponent,
+    TestComponent
   ]
 })
 export class UserInterfaceLibraryModule { }

@@ -3,5 +3,6 @@
   "dest": "../../dist/user-interface-library",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": ["./styles/images/*.*","./assets/**/*.*"]
 }
