@@ -146,6 +146,8 @@ uilibrary-textarea {
   margin-left: 10px;
 }
 
+
+
 .error {
   button {
     border-color: var(--danger) !important;
@@ -182,6 +184,12 @@ uilibrary-textarea {
 
 .input-field {
   position: relative;
+}
+
+.input-field > .error,
+.input-field > .error + .input-label .label-name label {
+  border-color: var(--danger)  !important;
+  color: var(--danger)  !important;
 }
 
 .input-field>input[type=text] {
@@ -283,6 +291,7 @@ uilibrary-textarea {
   display: flex;
   flex-direction: column;
   position: relative;
+  flex-grow: 1;
 }
 
 .input-label {
@@ -324,10 +333,17 @@ uilibrary-textarea {
   display: flex;
   flex-direction: column;
   position: relative;
+  flex-grow: 1;
 }
 
 .textarea-field {
   position: relative;
+}
+
+.textarea-field > .error,
+.textarea-field > .error + .textarea-label .textarea-label-name label {
+  border-color: var(--danger)  !important;
+  color: var(--danger)  !important;
 }
 
 .textarea-field>textarea {
@@ -911,6 +927,7 @@ input:hover+.slider:before {
 //DROPDOWN 
 .dropdown-parent-custom {
   position: relative;
+  flex-grow: 1;
 
   &:has(.dropdown-menu.show) {
     .dropdown-menu.show {
@@ -965,6 +982,7 @@ input:hover+.slider:before {
 
 .dropdown-input-custom {
   appearance: none;
+  
   
   input {
     text-align: left;

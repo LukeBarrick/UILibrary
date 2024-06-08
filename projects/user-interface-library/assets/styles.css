@@ -14000,15 +14000,15 @@ a.large {
 
 /*TEXT INPUT FIELD*/
 /* Flex grows for input fields */
-conferma-dropdown {
+uilibrary-dropdown {
   flex-grow: 1;
 }
 
-conferma-textinput {
+uilibrary-textinput {
   flex-grow: 1;
 }
 
-conferma-textarea {
+uilibrary-textarea {
   flex-grow: 1;
 }
 
@@ -14047,6 +14047,12 @@ conferma-textarea {
 
 .input-field {
   position: relative;
+}
+
+.input-field > .error,
+.input-field > .error + .input-label .label-name label {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
 }
 
 .input-field > input[type=text] {
@@ -14138,6 +14144,7 @@ conferma-textarea {
   display: flex;
   flex-direction: column;
   position: relative;
+  flex-grow: 1;
 }
 
 .input-label {
@@ -14179,10 +14186,17 @@ conferma-textarea {
   display: flex;
   flex-direction: column;
   position: relative;
+  flex-grow: 1;
 }
 
 .textarea-field {
   position: relative;
+}
+
+.textarea-field > .error,
+.textarea-field > .error + .textarea-label .textarea-label-name label {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
 }
 
 .textarea-field > textarea {
@@ -14190,8 +14204,6 @@ conferma-textarea {
   font-family: inherit;
   letter-spacing: 0px;
   background-color: white;
-  height: 30px;
-  width: 100%;
   height: 100%;
   width: 100%;
   font-size: 1rem;
@@ -14282,7 +14294,6 @@ conferma-textarea {
   cursor: pointer;
   position: relative;
   font-size: 11px;
-  position: relative;
   left: -35px;
 }
 .checkbox label:before {
@@ -14347,7 +14358,6 @@ conferma-textarea {
   cursor: pointer;
   position: relative;
   font-size: 11px;
-  position: relative;
   left: -31.5px;
 }
 .checkbox-small label:before {
@@ -14541,7 +14551,7 @@ conferma-textarea {
   display: flex;
   padding-left: 0;
 }
-.input-radio .conferma-check-input {
+.input-radio .check-input {
   order: 1;
 }
 .input-radio .left {
@@ -14555,16 +14565,13 @@ conferma-textarea {
 .input-radio .invert-row {
   flex-direction: row;
 }
-.input-radio .conferma-check-input > input[type=radio]:checked,
-.input-radio .conferma-check-input > input[type=radio]:checked {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23408467'/%3e%3c/svg%3e");
-}
-.input-radio .conferma-check-input > input[type=radio]:checked {
+.input-radio .check-input > input[type=radio]:checked {
   background-color: white;
   border-color: var(--secondary);
   border-width: 2px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23408467'/%3e%3c/svg%3e");
 }
-.input-radio .conferma-check-input > input[type=radio] {
+.input-radio .check-input > input[type=radio] {
   width: 1em;
   height: 1em;
   margin-top: 0.25em;
@@ -14578,36 +14585,36 @@ conferma-textarea {
   print-color-adjust: exact;
   border-radius: 50% !important;
 }
-.input-radio .conferma-check-input[type=radio] > input[type=radio] {
+.input-radio .check-input[type=radio] > input[type=radio] {
   border-radius: 50%;
 }
-.input-radio .conferma-check-input > input[type=radio]:active {
+.input-radio .check-input > input[type=radio]:active {
   filter: brightness(90%);
 }
-.input-radio .conferma-check-input > input[type=radio]:hover {
+.input-radio .check-input > input[type=radio]:hover {
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(64, 132, 103, 0.2);
   background-color: rgba(64, 132, 103, 0.2);
 }
-.input-radio .conferma-check-input > input[type=checkbox]:indeterminate {
+.input-radio .check-input > input[type=checkbox]:indeterminate {
   background-color: #000000;
   border-color: #000000;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
-.input-radio .conferma-check-input > input[type=radio]:disabled {
+.input-radio .check-input > input[type=radio]:disabled {
   pointer-events: none;
   filter: none;
   opacity: 0.5;
 }
-.input-radio .conferma-check-input > input[type=radio][disabled] ~ .form-check-label > label,
-.input-radio .conferma-check-input > input[type=radio]:disabled ~ .form-check-label > label {
+.input-radio .check-input > input[type=radio][disabled] ~ .form-check-label > label,
+.input-radio .check-input > input[type=radio]:disabled ~ .form-check-label > label {
   cursor: default;
   opacity: 0.5;
 }
 .input-radio .form-switch {
   padding-left: 2.5em;
 }
-.input-radio .form-switch .conferma-check-input > input[type=radio] {
+.input-radio .form-switch .check-input > input[type=radio] {
   width: 2em;
   margin-left: -2.5em;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
@@ -14678,6 +14685,7 @@ input:hover + .slider:before {
 
 .dropdown-parent-custom {
   position: relative;
+  flex-grow: 1;
 }
 .dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show {
   transform: translate(1px, 50px) !important;
@@ -14746,7 +14754,6 @@ input:hover + .slider:before {
   outline: none;
   padding-left: 15px;
   padding-right: 20px;
-  background-color: transparent;
 }
 .dropdown-input-custom input::placeholder,
 .dropdown-input-custom input[type=text]::placeholder {
@@ -14783,8 +14790,6 @@ input:hover + .slider:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 30px;
   border: none;
   font-size: 14px;
   height: 30px;

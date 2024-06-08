@@ -1,0 +1,19 @@
+<div>
+  <div class="formfield d-flex flex-row">
+    <div class="textarea-form">
+      <div class="textarea-field">
+        <ng-content select="[input]"></ng-content>
+        <div class="textarea-label">
+          <span class="textarea-label-name">
+            <ng-content select="[label]"></ng-content>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-row align-items-center">
+      <ng-content select="[tooltip]"></ng-content>
+      <ng-content select="[required]"></ng-content>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

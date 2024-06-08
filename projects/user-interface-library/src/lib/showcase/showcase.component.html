@@ -1,0 +1,167 @@
+<section class="small">
+  <uilibrary-textinput>
+    <input input type="text" placeholder="" />
+    <label label for="#input">Text Input</label>
+  </uilibrary-textinput>
+
+  <uilibrary-textinput>
+    <input input type="text" placeholder="" />
+    <label label for="#input">Text Input w/ Hint</label>
+    <uilibrary-hint variant="normal">Please provider a value.</uilibrary-hint>
+  </uilibrary-textinput>
+
+  <uilibrary-textinput>
+    <input input type="text" placeholder="" [class.error]="true" />
+    <label label for="#input">Text Input w/ Error</label>
+  </uilibrary-textinput>
+
+  <uilibrary-textinput>
+    <input input type="text" placeholder="" [class.error]="true" />
+    <label label for="#input">Text Input w/ Error, Hint</label>
+    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+  </uilibrary-textinput>
+
+  <uilibrary-textinput>
+    <input input type="text" placeholder="" [class.error]="true" />
+    <label label for="#input">Text Input w/ Error, Hint, Tooltip</label>
+    <uilibrary-hint>Please provider a value</uilibrary-hint>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+  </uilibrary-textinput>
+
+  <uilibrary-textinput>
+    <input input required type="text" placeholder="" [class.error]="true" />
+    <label label for="#input">Text Input w/ Error, Hint, Required</label>
+    <uilibrary-required required></uilibrary-required>
+    <uilibrary-hint>Please enter your full name.</uilibrary-hint>
+  </uilibrary-textinput>
+</section>
+<section class="medium">
+  <uilibrary-textarea>
+    <textarea input type="text" placeholder=""></textarea>
+    <label label for="#input">Text Area</label>
+  </uilibrary-textarea>
+
+  <uilibrary-textarea>
+    <textarea input type="text" placeholder=""></textarea>
+    <label label for="#input">Text Area w/ Hint</label>
+    <uilibrary-hint variant="normal">Please rate your recent visit and give us some feedback</uilibrary-hint>
+  </uilibrary-textarea>
+
+  <uilibrary-textarea>
+    <textarea input type="text" placeholder="" [class.error]="true"></textarea>
+    <label label for="#input">Text Area w/ Error</label>
+  </uilibrary-textarea>
+
+  <uilibrary-textarea>
+    <textarea input type="text" placeholder="" [class.error]="true"></textarea>
+    <label label for="#input">Text Area w/ Error, Hint</label>
+    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+  </uilibrary-textarea>
+
+  <uilibrary-textarea>
+    <textarea input required type="text" placeholder="" [class.error]="true"></textarea>
+    <label label for="#input">Text Area w/ Error, Hint, Required</label>
+    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+    <uilibrary-required required></uilibrary-required>
+  </uilibrary-textarea>
+
+  <uilibrary-textarea>
+    <textarea input required type="text" placeholder="" [class.error]="true"></textarea>
+    <label label for="#input">Text Area w/ Error, Hint, Tooltip</label>
+    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+  </uilibrary-textarea>
+
+</section>
+
+<section class="small" [formGroup]="form">
+  <uilibrary-dropdown>
+    <input type="text" input formControlName="button" placeholder="Dropdown" readonly />
+    <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
+      <span>Option 1</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 2')">
+      <span>Option 2</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
+      <span>Option 3</span>
+    </button>
+  </uilibrary-dropdown>
+</section>
+
+<section class="small" [formGroup]="form">
+  <uilibrary-dropdown>
+    <input type="text" input formControlName="button" placeholder="Dropdown w/ Default" readonly />
+    <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
+      <span>Option 1</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 2')">
+      <span>Option 2</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
+      <span>Option 3</span>
+    </button>
+    <button default ngbDropdownItem (click)="patchFormValue('Option 3')">
+      <span>Select an option</span>
+    </button>
+  </uilibrary-dropdown>
+</section>
+
+<section class="small" [formGroup]="form">
+  <uilibrary-dropdown>
+    <input type="text" input formControlName="button" placeholder="Dropdown w/ Required" readonly />
+    <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
+      <span>Option 1</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 2')">
+      <span>Option 2</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
+      <span>Option 3</span>
+    </button>
+    <uilibrary-hint variant="normal">This is a required field.</uilibrary-hint>
+    <uilibrary-required required></uilibrary-required>
+  </uilibrary-dropdown>
+</section>
+
+<section class="small" [formGroup]="form">
+  <uilibrary-dropdown>
+    <input type="text" input formControlName="button" placeholder="Dropdown w/ Hint, Tooltip" readonly />
+    <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
+      <span>Option 1</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 2')">
+      <span>Option 2</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
+      <span>Option 3</span>
+    </button>
+    <uilibrary-hint variant="normal">Please select an option.</uilibrary-hint>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+  </uilibrary-dropdown>
+</section>
+
+<section class="small" [formGroup]="form">
+  <uilibrary-dropdown [class.error]="true">
+    <input type="text" input formControlName="button" placeholder="Dropdown w/ Error, Hint, Tooltip" readonly />
+    <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
+      <span>Option 1</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 2')">
+      <span>Option 2</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
+      <span>Option 3</span>
+    </button>
+    <uilibrary-hint>A valid selection has not been made.</uilibrary-hint>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+  </uilibrary-dropdown>
+</section>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-user-interface-library',
+  selector: 'uilibrary-user-interface-library',
   template: `
-    <lib-test></lib-test>
+    <uilibrary-showcase>
   `,
   styles: ``
 })
