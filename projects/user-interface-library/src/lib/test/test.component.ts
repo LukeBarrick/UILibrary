@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-test',
+  selector: 'uilibrary-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css']
 })
