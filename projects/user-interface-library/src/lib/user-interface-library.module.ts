@@ -11,7 +11,6 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TooltipComponent } from './tooltip/tooltip.component';
 
-
 @NgModule({
   declarations: [
     UserInterfaceLibraryComponent,

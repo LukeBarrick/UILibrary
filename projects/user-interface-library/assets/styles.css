@@ -13744,6 +13744,12 @@ body {
   --bs-btn-active-bg: var(--success);
   --bs-btn-active-border-color: var(--success);
 }
+.btn-primary.success:disabled {
+  background-color: var(--success) !important;
+  border-color: var(--success) !important;
+  color: var(--tertiaryFont) !important;
+  opacity: 0.65 !important;
+}
 .btn-primary.delete {
   --bs-btn-color: var(--tertiaryFont);
   --bs-btn-bg: var(--danger);

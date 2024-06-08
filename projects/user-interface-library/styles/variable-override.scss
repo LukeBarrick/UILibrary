@@ -115,6 +115,13 @@ body {
       --bs-btn-hover-border-color: var(--success);
       --bs-btn-active-bg: var(--success);
       --bs-btn-active-border-color: var(--success);
+
+      &:disabled {
+        background-color: var(--success) !important;
+        border-color: var(--success) !important;
+        color: var(--tertiaryFont) !important;
+        opacity: 0.65 !important;
+      }
     }
 
     &.delete {
