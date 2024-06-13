@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { NavigationLink } from '../../core/models/navigation-link';
 
 @Component({
@@ -14,8 +14,8 @@ export class NavigationComponent implements AfterViewInit {
     { label:'Home', route:'/home' },
     { label:'Tools', route:'/home' },
     { label:'Contact Us', route:'/contact' },
-  ]
-  //TO DO Strongly type this
+  ];
+
   overflowLinks: NavigationLink[] = [];
 
   dropdownVisible = false;
@@ -59,7 +59,7 @@ export class NavigationComponent implements AfterViewInit {
     });
   }
 
-  trackByFn(index: number, item: any) {
+  public trackByFn(index: number, item: any) {
     return index;
   }
 }

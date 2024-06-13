@@ -1,7 +1,6 @@
 // ======================================================
 // Colour Configuration
 // ======================================================
-
 $primary: #2A4051 !default;
 $secondary: #577399 !default;
 $tertiary: #202026 !default;
@@ -9,23 +8,39 @@ $primaryFont: #577399 !default;
 $secondaryFont: #FFFFFF !default;
 $tertiaryFont: #FFFFFF !default;
 
+$primary-light: rgba($primary, 0.25);
+$secondary-light:  rgba($secondary, 0.25);
+$tertiary-light: rgba($tertiary, 0.25);
+
+$primary-dark: darken($primary, 20%);
+$secondary-dark: darken($secondary, 20%);
+$tertiary-dark: darken($tertiary, 20%);
+
 $success: #028A4D !default;
 $info: #007EAB !default;
 $warning: #E8C557 !default;
 $danger: #D63D52 !default;
 
 :root {
-  --primary: #000000;
-  --secondary: #577399;
-  --tertiary: #202121;
-  --primaryFont: #577399;
-  --secondaryFont: #FFFFFF;
-  --tertiaryFont: #FFFFFF;
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --tertiary: #{$tertiary};
+  --primaryFont: #{$primaryFont};
+  --secondaryFont: #{$secondaryFont};
+  --tertiaryFont: #{$tertiaryFont};
 
-  --success: #028A4D;
-  --info: #007EAB;
-  --warning: #E8C557;
-  --danger: #D63D52;
+  --primary-light: #{$primary-light};
+  --secondary-light: #{$secondary-light};
+  --tertiary-light: #{$tertiary-light};
+  
+  --primary-dark: #{$primary-dark};
+  --secondary-dark: #{$secondary-dark};
+  --tertiary-dark: #{$tertiary-dark};
+  
+  --success: #{$success};
+  --info: #{$info};
+  --warning: #{$warning};
+  --danger: #{$danger};
 
   --light-danger: #F7BDC9;
   --light-success: #D6E7C3;
@@ -36,10 +51,6 @@ $danger: #D63D52 !default;
   --dark-success: #405C25;
   --dark-warning: #422C13;
   --dark-info: #172C4A;
-
-  --primary-light: rgba(var(--primary), 0.25);
-  --secondary-light: rgba(var(--secondary), 0.25);
-  --tertiary-light: rgba(var(--tertiary), 0.25);
 
   --page-wrapper-max-width: 100%;
 }

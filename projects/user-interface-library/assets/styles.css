@@ -1,11 +1,17 @@
 @charset "UTF-8";
 :root {
-  --primary: #000000;
+  --primary: #2A4051;
   --secondary: #577399;
-  --tertiary: #202121;
+  --tertiary: #202026;
   --primaryFont: #577399;
   --secondaryFont: #FFFFFF;
   --tertiaryFont: #FFFFFF;
+  --primary-light: rgba(42, 64, 81, 0.25);
+  --secondary-light: rgba(87, 115, 153, 0.25);
+  --tertiary-light: rgba(32, 32, 38, 0.25);
+  --primary-dark: #070b0e;
+  --secondary-dark: #324258;
+  --tertiary-dark: black;
   --success: #028A4D;
   --info: #007EAB;
   --warning: #E8C557;
@@ -18,9 +24,6 @@
   --dark-success: #405C25;
   --dark-warning: #422C13;
   --dark-info: #172C4A;
-  --primary-light: rgba(var(--primary), 0.25);
-  --secondary-light: rgba(var(--secondary), 0.25);
-  --tertiary-light: rgba(var(--tertiary), 0.25);
   --page-wrapper-max-width: 100%;
 }
 
@@ -13640,12 +13643,18 @@ textarea.form-control-lg {
   }
 }
 :root {
-  --primary: #000000;
+  --primary: #2A4051;
   --secondary: #577399;
-  --tertiary: #202121;
+  --tertiary: #202026;
   --primaryFont: #577399;
   --secondaryFont: #FFFFFF;
   --tertiaryFont: #FFFFFF;
+  --primary-light: rgba(42, 64, 81, 0.25);
+  --secondary-light: rgba(87, 115, 153, 0.25);
+  --tertiary-light: rgba(32, 32, 38, 0.25);
+  --primary-dark: #070b0e;
+  --secondary-dark: #324258;
+  --tertiary-dark: black;
   --success: #028A4D;
   --info: #007EAB;
   --warning: #E8C557;
@@ -13658,9 +13667,6 @@ textarea.form-control-lg {
   --dark-success: #405C25;
   --dark-warning: #422C13;
   --dark-info: #172C4A;
-  --primary-light: rgba(var(--primary), 0.25);
-  --secondary-light: rgba(var(--secondary), 0.25);
-  --tertiary-light: rgba(var(--tertiary), 0.25);
   --page-wrapper-max-width: 100%;
 }
 
