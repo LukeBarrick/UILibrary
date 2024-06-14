@@ -960,6 +960,13 @@ input:hover+.slider:before {
       border-bottom-width: 0 !important;
     }
 
+    label {
+      border-color: var(--secondary) !important;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-width: 0 !important;
+    }
+
     span {
       &:after {
         transform: rotateX(180deg);
@@ -982,8 +989,7 @@ input:hover+.slider:before {
 
 .dropdown-input-custom {
   appearance: none;
-  
-  
+    
   input {
     text-align: left;
   }
@@ -1163,4 +1169,215 @@ input:hover+.slider:before {
 .tooltip-margin-both {
   margin-left: 15px;
   margin-right: 15px;
+}
+
+//NAVIGATION
+.navbar {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: var(--primary);
+  color: var(--secondaryFont);
+  padding: 0 !important;
+}
+
+.logo {
+  background-color: blue;
+  min-width: 220px;
+  margin-left: 10px;
+}
+
+.logo img {
+  height: 35px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-start;
+  padding-left: 40px;
+}
+
+.nav-item {
+  border-bottom: 3px solid black; 
+  cursor: pointer;
+  color: white !important;
+  text-decoration: none;
+  min-width: 160px;
+}
+
+
+.more-link {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation-right-aligned-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 300px;
+  height: 100%;
+  background-color: red;
+}
+
+.navigation-link-container {
+  max-width: 80%;
+}
+
+.navigation-dropdown-option-custom {
+}
+
+//NAVIGATION DROPDOWN
+.navigation-dropdown-parent-custom {
+  height: -webkit-fill-available;
+  position: relative;
+  flex-grow: 1;
+
+  &:has(.dropdown-menu.show) {
+    .dropdown-menu.show {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      border-top-width: 0;
+      border-color: var(--secondary);
+      animation-name: scroll;
+      animation-duration: 0.5s;
+      min-width: 100%;
+
+      button {
+        color: black !important;
+
+        &::placeholder {
+          color: black !important;
+        }
+      }
+
+      button {
+        color: black !important;
+      }
+    }
+
+    button {
+      border-color: var(--secondary) !important;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-width: 0 !important;
+    }
+
+    span {
+      &:after {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  &:not(:focus-within) {
+    .dropdown-menu.show {
+      display: none;
+    }
+  }
+}
+
+/* Scroll animation for Dropdown */
+@keyframes scroll {
+  from {max-height: 30px; overflow-y: hidden;}
+  to {max-height: 250px; overflow-y: auto;}
+}
+
+.navigation-dropdown-input-custom {
+  appearance: none;
+  height:100%;
+    
+  button {
+    text-align: center;
+  }
+
+  button {
+    user-select: none;
+    cursor: pointer;
+    color: var(--tertiary);
+    font-family: $font;
+    background-color: white !important;
+    border: 1px solid $borderColour;
+    width: 100%;
+    vertical-align: top;
+    outline: none;
+    height: 100%;
+
+    &::placeholder {
+      color: var(--tertiary);
+    }
+
+    &:disabled {
+      background-color: #eeeeee;
+    }   
+  }
+
+  span {
+    &:after {
+      content: " ";
+      background-size: contain;
+     // background-image: url('../assets/images/caret.svg');
+      background-repeat: no-repeat;
+      width: 10px;
+      height: 5px;
+      position: absolute;
+      display: inline;
+      right: 30px;
+      top: 22.5px;
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+}
+
+.navigation-dropdown-toggle::after {
+  display: none;
+}
+
+.navigation-drop-option-custom {
+  max-height: 225px;
+  overflow-y: auto;
+  transform: translate(0px, 30px) !important;
+  min-width: 100%;
+
+  button {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    text-align: left;
+    appearance: none;
+    background-color: white;
+
+    span {
+      width: 100%;
+    }
+  }
+
+  button:hover {
+    background-color: #eeeeee;
+  }
+}
+
+.navigation-dropdown-item-custom {
+  border-radius: 5px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  margin-bottom: 2px;
+  margin-top: 2px;
+
+  &:focus {
+    outline: 0;
+  }
 }

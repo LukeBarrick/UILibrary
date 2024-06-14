@@ -3,18 +3,41 @@
     <img src="assets/logo.png" height="35" width="100" alt="Logo">
   </div>
 
-    <section class="d-flex flex-row flex-nowrap justify-content-start w-100" #navLinks>
+    <section class="d-flex flex-row flex-nowrap justify-content-start w-100 h-100" #navLinks>
       <ul class="nav-links">
-        <li class="nav-item" *ngFor="let link of visibleLinks; index as i; trackBy: trackByFn"><a [href]="link.route">{{ link.label }}</a></li>
+        <li class="nav-item d-flex align-items-center justify-content-center" *ngFor="let link of visibleLinks; index as i; trackBy: trackByFn">
+          <section class="h-100 w-100" *ngIf="link.children">
+            <uilibrary-navigation-dropdown>
+              <button button>{{link.label}}</button>
+              <button *ngFor="let link of link.children" option ngbDropdownItem>
+                <span>{{link.label}}</span>
+              </button>
+            </uilibrary-navigation-dropdown>
+          </section>
+          <section class="" *ngIf="!link.children">
+            {{link.label}}
+          </section>
+        </li>
       </ul>
       <div class="more" *ngIf="overflowLinks.length > 0">
-        <a href="#" class="more-link" (click)="toggleDropdown($event)">More</a>
-        <ul class="more-dropdown" [class.show]="dropdownVisible">
-          <li *ngFor="let link of overflowLinks;  index as i; trackBy: trackByFn"><a [href]="link.route">{{ link.label }}</a></li>
-        </ul>
+        
+        
+       
+          
+          <uilibrary-navigation-dropdown>
+            <button button>More</button>
+            <button *ngFor="let link of overflowLinks;  index as i; trackBy: trackByFn" option ngbDropdownItem>
+             {{link.label}}
+            </button>
+          </uilibrary-navigation-dropdown>
+        
+       
+        
+   
+       
       </div>
     </section>
-    <div *ngIf="showUserDetails" class="user-details">
+    <div *ngIf="showUserDetails" class="navigation-right-aligned-content">
       <ng-content select="[userdetails]"></ng-content>
     </div>
 </nav>

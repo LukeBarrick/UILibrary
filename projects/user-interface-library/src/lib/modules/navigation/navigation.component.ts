@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { NavigationLink } from '../../core/models/navigation-link';
+import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 
 @Component({
   selector: 'uilibrary-navigation',
@@ -11,9 +12,25 @@ export class NavigationComponent implements AfterViewInit {
   @ViewChild('navLinks') navLinks!: ElementRef;
 
   visibleLinks: NavigationLink[] = [
-    { label:'Home', route:'/home' },
-    { label:'Tools', route:'/home' },
-    { label:'Contact Us', route:'/contact' },
+    { label:'Home', path:'/home', type: NavigationLinkType.Route },
+    { label:'Tools', path:'/tools', type: NavigationLinkType.Route, children: [
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+    ]},
+    { label:'Contact Us', path:'/contact', type: NavigationLinkType.Route },
+    { label:'Home', path:'/home', type: NavigationLinkType.Route },
+    { label:'Tools', path:'/tools', type: NavigationLinkType.Route, children: [
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route }
+    ]},
+    { label:'Contact Us', path:'/contact', type: NavigationLinkType.Route },
+    { label:'Home', path:'/home', type: NavigationLinkType.Route },
+    { label:'Tools', path:'/tools', type: NavigationLinkType.Route, children: [
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route }
+    ]},
+    { label:'Contact Us', path:'/contact', type: NavigationLinkType.Route },
   ];
 
   overflowLinks: NavigationLink[] = [];
