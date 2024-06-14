@@ -930,6 +930,11 @@ input:hover+.slider:before {
   flex-grow: 1;
 
   &:has(.dropdown-menu.show) {
+    .dropdown-menu {
+      margin-top: 0px;
+      padding: 0px;
+    }
+
     .dropdown-menu.show {
       transform: translate(1px, 50px) !important;
       border-top-right-radius: 0;
@@ -1205,11 +1210,12 @@ input:hover+.slider:before {
 }
 
 .nav-item {
-  border-bottom: 3px solid black; 
+  border: 0;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
   min-width: 160px;
+  transition: border 0.1s ease-in-out;
 }
 
 
@@ -1234,6 +1240,37 @@ input:hover+.slider:before {
 .navigation-dropdown-option-custom {
 }
 
+//NAVIGATION OPTION 
+.navigation-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+
+  .navigation-option-button {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    transition: border 0.1s ease-in-out;
+
+    button {
+      outline: none;
+      appearance: none;
+      border: none;
+      background-color: transparent;
+      color: var(--secondaryFont);
+      height: auto;
+    }
+  
+    &:hover {
+      border-bottom: 4px solid $secondary;
+    }
+  }
+}
+
 //NAVIGATION DROPDOWN
 .navigation-dropdown-parent-custom {
   height: -webkit-fill-available;
@@ -1242,21 +1279,11 @@ input:hover+.slider:before {
 
   &:has(.dropdown-menu.show) {
     .dropdown-menu.show {
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-      border-top-width: 0;
+      transform: translate(0px, 5px);
       border-color: var(--secondary);
       animation-name: scroll;
       animation-duration: 0.5s;
       min-width: 100%;
-
-      button {
-        color: black !important;
-
-        &::placeholder {
-          color: black !important;
-        }
-      }
 
       button {
         color: black !important;
@@ -1292,7 +1319,7 @@ input:hover+.slider:before {
 
 .navigation-dropdown-input-custom {
   appearance: none;
-  height:100%;
+  height: 100%;
     
   button {
     text-align: center;
@@ -1301,14 +1328,15 @@ input:hover+.slider:before {
   button {
     user-select: none;
     cursor: pointer;
-    color: var(--tertiary);
+    color: var(--secondaryFont);
     font-family: $font;
-    background-color: white !important;
-    border: 1px solid $borderColour;
+    background-color: transparent !important;
+    border: none;
     width: 100%;
-    vertical-align: top;
     outline: none;
-    height: 100%;
+    height: -webkit-fill-available;
+    border: 0;
+    transition: border 0.1s ease-in-out;
 
     &::placeholder {
       color: var(--tertiary);
@@ -1317,6 +1345,10 @@ input:hover+.slider:before {
     &:disabled {
       background-color: #eeeeee;
     }   
+
+    &:hover {
+      border-bottom: 4px solid $secondary;
+    }
   }
 
   span {

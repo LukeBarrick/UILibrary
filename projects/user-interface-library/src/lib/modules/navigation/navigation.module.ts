@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation.component';
 import { NavigationDropdownComponent } from './navigation-dropdown/navigation-dropdown.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavigationOptionComponent } from './navigation-option/navigation-option.component';
 
 @NgModule({
   imports: [
@@ -11,11 +12,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [
     NavigationComponent,
-    NavigationDropdownComponent
+    NavigationDropdownComponent,
+    NavigationOptionComponent
   ],
   exports: [
     NavigationComponent,
-    NavigationDropdownComponent
+    NavigationDropdownComponent,
+    NavigationOptionComponent
   ]
 })
 export class NavigationModule { }

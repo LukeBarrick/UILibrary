@@ -22,5 +22,5 @@ export * from './lib/modules/checkboxes/checkboxes.module';
 export * from './lib/modules/navigation/navigation.module';
 export * from './lib/modules/navigation/navigation.component';
 export * from './lib/modules/navigation/navigation-dropdown/navigation-dropdown.component';
-
+export * from './lib/modules/navigation/navigation-option/navigation-option.component';
 

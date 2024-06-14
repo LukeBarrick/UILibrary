@@ -8,7 +8,7 @@ import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements AfterViewInit {
-  @Input() showUserDetails: boolean = true;
+  @Input() showRightAlignedContent: boolean = true;
   @ViewChild('navLinks') navLinks!: ElementRef;
 
   visibleLinks: NavigationLink[] = [
@@ -56,13 +56,13 @@ export class NavigationComponent implements AfterViewInit {
   private adjustNav() {
     const navLinks = this.navLinks.nativeElement;
     const navLinkWidth: number = 160; 
-    const userDetailsWidth: number =  this.showUserDetails ? 300 : 0
+    const rightAlignedContentWidth: number =  this.showRightAlignedContent ? 300 : 0
     const navbarWidth: number = navLinks.parentElement.offsetWidth;
     const logoWidth: number = navLinks.previousElementSibling.offsetWidth;
 
     const allLinks = [...this.visibleLinks, ...this.overflowLinks]
 
-    let totalSpaceRemaining: number = navbarWidth - (logoWidth + navLinkWidth * 2 + userDetailsWidth); //Add 1 navlink for overflow dropdown
+    let totalSpaceRemaining: number = navbarWidth - (logoWidth + navLinkWidth * 2 + rightAlignedContentWidth); //Add 1 navlink for overflow dropdown
 
     this.visibleLinks = [];
     this.overflowLinks = [];

@@ -1,9 +1,8 @@
-
-  <div ngbDropdown class="navigation-dropdown-parent-custom">
-    <div class="navigation-dropdown-input-custom" ngbDropdownToggle>
-      <span><ng-content select="[button]"></ng-content></span>
-    </div>
-    <div id="transaction" class="navigation-dropdown-option-custom transaction-text-alignment" ngbDropdownMenu>
-      <ng-content select="[option]"></ng-content>
-    </div>
+<div ngbDropdown class="navigation-dropdown-parent-custom">
+  <div class="navigation-dropdown-input-custom" ngbDropdownToggle>
+    <ng-content select="[button]"></ng-content>
   </div>
+  <div id="transaction" class="navigation-dropdown-option-custom transaction-text-alignment" ngbDropdownMenu>
+    <ng-content select="[option]"></ng-content>
+  </div>
+</div>

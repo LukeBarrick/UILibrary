@@ -14699,6 +14699,10 @@ input:hover + .slider:before {
   position: relative;
   flex-grow: 1;
 }
+.dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu {
+  margin-top: 0px;
+  padding: 0px;
+}
 .dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show {
   transform: translate(1px, 50px) !important;
   border-top-right-radius: 0;
@@ -14943,11 +14947,12 @@ input:hover + .slider:before {
 }
 
 .nav-item {
-  border-bottom: 3px solid black;
+  border: 0;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
   min-width: 160px;
+  transition: border 0.1s ease-in-out;
 }
 
 .more-link {
@@ -14968,25 +14973,44 @@ input:hover + .slider:before {
   max-width: 80%;
 }
 
+.navigation-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+}
+.navigation-option .navigation-option-button {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  transition: border 0.1s ease-in-out;
+}
+.navigation-option .navigation-option-button button {
+  outline: none;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: var(--secondaryFont);
+  height: auto;
+}
+.navigation-option .navigation-option-button:hover {
+  border-bottom: 4px solid #577399;
+}
+
 .navigation-dropdown-parent-custom {
   height: -webkit-fill-available;
   position: relative;
   flex-grow: 1;
 }
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  border-top-width: 0;
+  transform: translate(0px, 5px);
   border-color: var(--secondary);
   animation-name: scroll;
   animation-duration: 0.5s;
   min-width: 100%;
-}
-.navigation-dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show button {
-  color: black !important;
-}
-.navigation-dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show button::placeholder {
-  color: black !important;
 }
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show button {
   color: black !important;
@@ -15025,20 +15049,24 @@ input:hover + .slider:before {
 .navigation-dropdown-input-custom button {
   user-select: none;
   cursor: pointer;
-  color: var(--tertiary);
+  color: var(--secondaryFont);
   font-family: inherit;
-  background-color: white !important;
-  border: 1px solid #CBCBCB;
+  background-color: transparent !important;
+  border: none;
   width: 100%;
-  vertical-align: top;
   outline: none;
-  height: 100%;
+  height: -webkit-fill-available;
+  border: 0;
+  transition: border 0.1s ease-in-out;
 }
 .navigation-dropdown-input-custom button::placeholder {
   color: var(--tertiary);
 }
 .navigation-dropdown-input-custom button:disabled {
   background-color: #eeeeee;
+}
+.navigation-dropdown-input-custom button:hover {
+  border-bottom: 4px solid #577399;
 }
 .navigation-dropdown-input-custom span:after {
   content: " ";
