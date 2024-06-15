@@ -8,8 +8,8 @@
       <li class="nav-item d-flex" *ngFor="let link of visibleLinks; index as i; trackBy: trackByFn">
 
         <section class="w-100" *ngIf="link.children">
-          <uilibrary-navigation-dropdown style="height: -webkit-fill-available">
-            <button button>{{link.label}}</button>
+          <uilibrary-navigation-dropdown>
+            <button button [routerLink]="link.path">{{link.label}}</button>
             <button *ngFor="let link of link.children" option ngbDropdownItem>
               <span>{{link.label}}</span>
             </button>
@@ -17,7 +17,7 @@
         </section>
         <section class="w-100" *ngIf="!link.children">
           <uilibrary-navigation-option>
-            <button button>{{link.label}}</button>
+            <button [routerLink]="link.path" button>{{link.label}}</button>
           </uilibrary-navigation-option>
         </section>
       </li>

@@ -4,11 +4,13 @@ import { NavigationComponent } from './navigation.component';
 import { NavigationDropdownComponent } from './navigation-dropdown/navigation-dropdown.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationOptionComponent } from './navigation-option/navigation-option.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgbModule
+    NgbModule,
+    RouterModule
   ],
   declarations: [
     NavigationComponent,

@@ -14788,13 +14788,14 @@ input:hover + .slider:before {
 .dropdown-input-custom span:after {
   content: " ";
   background-size: contain;
+  background-image: url("../assets/images/caret_black.svg");
   background-repeat: no-repeat;
-  width: 10px;
-  height: 5px;
+  width: 20px;
+  height: 20px;
   position: absolute;
   display: inline;
   right: 30px;
-  top: 22.5px;
+  top: 16.5px;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -15023,21 +15024,29 @@ input:hover + .slider:before {
   position: relative;
   flex-grow: 1;
 }
+.navigation-dropdown-parent-custom .dropdown-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 7px;
+  height: 40px;
+}
+.navigation-dropdown-parent-custom .dropdown-item:hover {
+  background-color: #ebebeb;
+}
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show {
+  padding: 5px;
   transform: translate(0px, 5px);
-  border-color: var(--secondary);
-  animation-name: scroll;
+  border-color: rgba(99, 99, 99, 0.3882352941);
+  animation-name: navscroll;
   animation-duration: 0.5s;
   min-width: 100%;
 }
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show button {
   color: black !important;
+  font-weight: 600;
 }
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) button {
   border-color: var(--secondary) !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-width: 0 !important;
 }
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) span:after {
   transform: rotateX(180deg);
@@ -15047,14 +15056,14 @@ input:hover + .slider:before {
 }
 
 /* Scroll animation for Dropdown */
-@keyframes scroll {
+@keyframes navscroll {
   from {
     max-height: 30px;
     overflow-y: hidden;
   }
   to {
-    max-height: 250px;
-    overflow-y: auto;
+    max-height: 1000px;
+    overflow-y: hidden;
   }
 }
 .navigation-dropdown-input-custom {
@@ -15104,15 +15113,17 @@ input:hover + .slider:before {
   z-index: 0;
 }
 .navigation-dropdown-input-custom span:after {
+  pointer-events: none;
   content: " ";
   background-size: contain;
+  background-image: url("../assets/images/caret_white.svg");
   background-repeat: no-repeat;
-  width: 10px;
-  height: 5px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   display: inline;
   right: 30px;
-  top: 22.5px;
+  top: 16.5px;
   transition: transform 0.2s ease-in-out;
 }
 

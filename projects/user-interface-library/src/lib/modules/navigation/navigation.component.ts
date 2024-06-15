@@ -12,8 +12,18 @@ export class NavigationComponent implements AfterViewInit {
   @ViewChild('navLinks') navLinks!: ElementRef;
 
   visibleLinks: NavigationLink[] = [
-    { label:'Home', path:'/home', type: NavigationLinkType.Route },
+    { label:'Home', path:'home', type: NavigationLinkType.Route },
     { label:'Tools', path:'/tools', type: NavigationLinkType.Route, children: [
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
+      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
       { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
       { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
       { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },

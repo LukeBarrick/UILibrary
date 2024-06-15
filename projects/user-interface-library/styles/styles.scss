@@ -1031,14 +1031,14 @@ input:hover+.slider:before {
     &:after {
       content: " ";
       background-size: contain;
-     // background-image: url('../assets/images/caret.svg');
+      background-image: url('../assets/images/caret_black.svg');
       background-repeat: no-repeat;
-      width: 10px;
-      height: 5px;
+      width: 20px;
+      height: 20px;
       position: absolute;
       display: inline;
       right: 30px;
-      top: 22.5px;
+      top: 16.5px;
       transition: transform 0.2s ease-in-out;
     }
   }
@@ -1299,24 +1299,35 @@ input:hover+.slider:before {
   position: relative;
   flex-grow: 1;
 
+  .dropdown-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 7px;
+    height: 40px;
+
+    &:hover {
+      background-color: #ebebeb;
+    }
+  }
+
   &:has(.dropdown-menu.show) {
     .dropdown-menu.show {
+      padding: 5px;
       transform: translate(0px, 5px);
-      border-color: var(--secondary);
-      animation-name: scroll;
+      border-color: #63636363;
+      animation-name: navscroll;
       animation-duration: 0.5s;
       min-width: 100%;
 
       button {
         color: black !important;
+        font-weight: 600;
       }
     }
 
     button {
       border-color: var(--secondary) !important;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-width: 0 !important;
+     
     }
     
 
@@ -1335,9 +1346,9 @@ input:hover+.slider:before {
 }
 
 /* Scroll animation for Dropdown */
-@keyframes scroll {
+@keyframes navscroll {
   from {max-height: 30px; overflow-y: hidden;}
-  to {max-height: 250px; overflow-y: auto;}
+  to {max-height: 1000px; overflow-y: hidden;}
 }
 
 .navigation-dropdown-input-custom {
@@ -1397,16 +1408,17 @@ input:hover+.slider:before {
 
   span {
     &:after {
+      pointer-events: none;
       content: " ";
       background-size: contain;
-     // background-image: url('../assets/images/caret.svg');
+      background-image: url('../assets/images/caret_white.svg');
       background-repeat: no-repeat;
-      width: 10px;
-      height: 5px;
+      width: 25px;
+      height: 25px;
       position: absolute;
       display: inline;
       right: 30px;
-      top: 22.5px;
+      top: 16.5px;
       transition: transform 0.2s ease-in-out;
     }
   }
