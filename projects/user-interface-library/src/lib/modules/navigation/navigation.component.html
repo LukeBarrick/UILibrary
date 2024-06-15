@@ -2,11 +2,9 @@
   <div class="logo">
     <img src="assets/logo.png" height="35" width="100" alt="Logo">
   </div>
-
-  <section class="d-flex flex-row flex-nowrap justify-content-start w-100 h-100" #navLinks>
+  <section class="normal-nav-links d-flex flex-row flex-nowrap justify-content-flex-start w-100 h-100" #navLinks>
     <ul class="nav-links">
       <li class="nav-item d-flex" *ngFor="let link of visibleLinks; index as i; trackBy: trackByFn">
-
         <section class="w-100" *ngIf="link.children">
           <uilibrary-navigation-dropdown>
             <button button [routerLink]="link.path">{{link.label}}</button>
@@ -23,22 +21,25 @@
       </li>
     </ul>
     <div class="more" *ngIf="overflowLinks.length > 0">
-
-
-
-
       <uilibrary-navigation-dropdown>
         <button button>More</button>
         <button *ngFor="let link of overflowLinks;  index as i; trackBy: trackByFn" option ngbDropdownItem>
           {{link.label}}
         </button>
       </uilibrary-navigation-dropdown>
-
-
-
-
-
     </div>
+  </section>
+  <section class="small-nav-links d-flex flex-row flex-nowrap justify-content-space-between w-100 h-100" #navLinks>
+    <ul class="nav-links">
+      <div class="menu">
+        <uilibrary-navigation-dropdown>
+          <button button>Menu</button>
+          <button *ngFor="let link of allNavigationLinks;  index as i; trackBy: trackByFn" option ngbDropdownItem>
+            {{link.label}}
+          </button>
+        </uilibrary-navigation-dropdown>
+      </div>
+    </ul>
   </section>
   <div *ngIf="showRightAlignedContent" class="navigation-right-aligned-content">
     <ng-content select="[userdetails]"></ng-content>

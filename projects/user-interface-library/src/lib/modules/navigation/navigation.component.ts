@@ -58,6 +58,10 @@ export class NavigationComponent implements AfterViewInit {
       this.adjustNav();
   }
 
+  get allNavigationLinks() {
+    return [...this.visibleLinks, ...this.overflowLinks];
+  }
+
   public toggleDropdown($event: MouseEvent) {
     $event.preventDefault();
     this.dropdownVisible = !this.dropdownVisible;

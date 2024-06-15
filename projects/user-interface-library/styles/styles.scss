@@ -1218,6 +1218,9 @@ input:hover+.slider:before {
   transition: border 0.1s ease-in-out;
 }
 
+.more {
+  min-width: 160px;
+}
 
 .more-link {
   color: white;
@@ -1237,7 +1240,38 @@ input:hover+.slider:before {
   max-width: 80%;
 }
 
+.menu {
+  min-width: 160px;
+}
+
 .navigation-dropdown-option-custom {
+}
+
+.normal-nav-links {
+  display: contents;
+}
+
+.small-nav-links {
+  display: none !important;
+}
+
+@media only screen and (max-width: 980px) {
+  body {
+    background-color: lightblue;
+  }
+
+  .small-nav-links {
+    display: flex !important;
+    justify-content: space-between;
+  }
+
+  .normal-nav-links {
+    display: none !important;
+  }
+
+  .navigation-right-aligned-content {
+    min-width: 75px;
+  }
 }
 
 //NAVIGATION OPTION 
