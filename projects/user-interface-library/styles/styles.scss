@@ -1255,6 +1255,7 @@ input:hover+.slider:before {
     justify-content: center;
     border: 0;
     transition: border 0.1s ease-in-out;
+    position: relative;
 
     button {
       outline: none;
@@ -1264,9 +1265,30 @@ input:hover+.slider:before {
       color: var(--secondaryFont);
       height: auto;
     }
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      background: var(--secondary);
+      height: 0px;
+      top: 60px;
+      transition: all 0.1s ease-in-out;
+    }
+   
   
     &:hover {
-      border-bottom: 4px solid $secondary;
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: var(--secondary);
+        height: 6px;
+        top: 54px;
+        left: 0;
+        right: 0;
+        z-index: 0;
+      }
     }
   }
 }
@@ -1296,6 +1318,7 @@ input:hover+.slider:before {
       border-bottom-right-radius: 0;
       border-bottom-width: 0 !important;
     }
+    
 
     span {
       &:after {
@@ -1346,8 +1369,29 @@ input:hover+.slider:before {
       background-color: #eeeeee;
     }   
 
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      background: var(--secondary);
+      height: 0px;
+      top: 60px;
+      transition: all 0.1s ease-in-out;
+    }
+   
+  
     &:hover {
-      border-bottom: 4px solid $secondary;
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: var(--secondary);
+        height: 6px;
+        top: 54px;
+        left: 0;
+        right: 0;
+        z-index: 0;
+      }
     }
   }
 
@@ -1390,6 +1434,7 @@ input:hover+.slider:before {
     text-align: left;
     appearance: none;
     background-color: white;
+    position: relative;
 
     span {
       width: 100%;

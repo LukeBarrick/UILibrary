@@ -14987,6 +14987,7 @@ input:hover + .slider:before {
   justify-content: center;
   border: 0;
   transition: border 0.1s ease-in-out;
+  position: relative;
 }
 .navigation-option .navigation-option-button button {
   outline: none;
@@ -14996,8 +14997,25 @@ input:hover + .slider:before {
   color: var(--secondaryFont);
   height: auto;
 }
-.navigation-option .navigation-option-button:hover {
-  border-bottom: 4px solid #577399;
+.navigation-option .navigation-option-button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: var(--secondary);
+  height: 0px;
+  top: 60px;
+  transition: all 0.1s ease-in-out;
+}
+.navigation-option .navigation-option-button:hover:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: var(--secondary);
+  height: 6px;
+  top: 54px;
+  left: 0;
+  right: 0;
+  z-index: 0;
 }
 
 .navigation-dropdown-parent-custom {
@@ -15065,8 +15083,25 @@ input:hover + .slider:before {
 .navigation-dropdown-input-custom button:disabled {
   background-color: #eeeeee;
 }
-.navigation-dropdown-input-custom button:hover {
-  border-bottom: 4px solid #577399;
+.navigation-dropdown-input-custom button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: var(--secondary);
+  height: 0px;
+  top: 60px;
+  transition: all 0.1s ease-in-out;
+}
+.navigation-dropdown-input-custom button:hover:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: var(--secondary);
+  height: 6px;
+  top: 54px;
+  left: 0;
+  right: 0;
+  z-index: 0;
 }
 .navigation-dropdown-input-custom span:after {
   content: " ";
@@ -15103,6 +15138,7 @@ input:hover + .slider:before {
   text-align: left;
   appearance: none;
   background-color: white;
+  position: relative;
 }
 .navigation-drop-option-custom button span {
   width: 100%;
