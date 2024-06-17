@@ -7,15 +7,21 @@
       <li class="nav-item d-flex" *ngFor="let link of visibleLinks; index as i; trackBy: trackByFn">
         <section class="w-100" *ngIf="link.children">
           <uilibrary-navigation-dropdown>
-            <button button [routerLink]="link.path">{{link.label}}</button>
-            <button *ngFor="let link of link.children" option ngbDropdownItem>
-              <span>{{link.label}}</span>
-            </button>
+              <button button [routerLink]="link.path" routerLinkActive="active">{{link.label}}</button>
+              <button *ngFor="let childLink of link.children" option ngbDropdownItem>
+                <a *ngIf="childLink.type === navigationLinkType.Route" [routerLink]="childLink.path" class="d-flex justify-content-start align-items-center">{{childLink.label}}</a>
+                <a *ngIf="childLink.type === navigationLinkType.URL" (click)="goToUrl(childLink.path, '')" class="d-flex justify-content-start align-items-center">{{childLink.label}}</a>
+                <a *ngIf="childLink.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(childLink.path, '_blank')" class="d-flex justify-content-start align-items-center">{{childLink.label}}</a>
+              </button>
           </uilibrary-navigation-dropdown>
         </section>
         <section class="w-100" *ngIf="!link.children">
           <uilibrary-navigation-option>
-            <button [routerLink]="link.path" button>{{link.label}}</button>
+            <button button [routerLink]="link.path" routerLinkActive="active">
+              <a *ngIf="link.type === navigationLinkType.Route" class="d-flex justify-content-center align-items-center">{{link.label}}</a>
+              <a *ngIf="link.type === navigationLinkType.URL" (click)="goToUrl(link.path, '')" href="{{link.path}}" class="d-flex justify-content-center align-items-center">{{link.label}}</a>
+              <a *ngIf="link.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(link.path, '_blank')" class="d-flex justify-content-center align-items-center">{{link.label}}</a>
+            </button>
           </uilibrary-navigation-option>
         </section>
       </li>
