@@ -90,6 +90,10 @@ export class NavigationComponent implements AfterViewInit {
     });
   }
 
+  public goToUrl(url: string, target: string){
+    window.open(url, target);
+  }
+
   public trackByFn(index: number, item: any) {
     return index;
   }
