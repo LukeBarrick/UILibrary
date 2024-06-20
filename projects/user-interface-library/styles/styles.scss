@@ -1272,6 +1272,14 @@ input:hover+.slider:before {
   .navigation-right-aligned-content {
     min-width: 75px;
   }
+
+  .navigation-dropdown-parent-custom {
+    position: inherit !important;
+  }
+
+  .navigation-dropdown-input-custom {
+    position: relative;
+  } 
 }
 
 //NAVIGATION OPTION 
