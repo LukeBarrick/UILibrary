@@ -1,112 +1,145 @@
-<uilibrary-navigation></uilibrary-navigation>
-<section class="large">
-  <h1 class="large">Header 1</h1>
-  <h2 class="large">Header 2</h2>
-  <h3 class="large">Header 3</h3>
+<conferma-navigation>
+  <img logo src="https://ssl.conferma.com/Logos/Conferma_Logo-04.svg" alt="Logo">
+  <div rightAlignedContent></div>
+</conferma-navigation>
+<section class="medium">
+  <h1 class="large">Headline 1</h1>
+  <h2 class="large">Headline 2</h2>
+  <h3 class="large">Headline 3</h3>
   <label class="large">Labels</label>
   <p class="large">Paragraph</p>
-  <a class="large" href="https://www.google.com">Links</a>
-  <h1>Header 1</h1>
-  <h2>Header 2</h2>
-  <h3>Header 3</h3>
-  <label>Labels</label>
-  <p>Paragraph</p>
-  <a href="https://www.google.com">Links</a>
-  <button class="btn btn-primary">Primary Button</button>
-  <button class="btn btn-primary" [disabled]="true">Disabled Primary Button</button>
-  <button class="btn btn-secondary">Secondary Button</button>
-  <button class="btn btn-secondary" [disabled]="true">Secondary Button</button>
-  <button class="btn btn-primary success">Primary Success Button</button>
-  <button class="btn btn-primary success" [disabled]="true">Disabled Primary Success Button</button>
-  <button class="btn btn-primary delete">Primary Success Button</button>
-  <button class="btn btn-primary delete" [disabled]="true">Disabled Primary Success Button</button>
-  <button class="btn btn-secondary success">Secondary Success Button</button>
-  <button class="btn btn-secondary success" [disabled]="true">Disabled Secondary Success Button</button>
-  <button class="btn btn-secondary delete">Secondary Danger Button</button>
-  <button class="btn btn-secondary delete" [disabled]="true">Disabled Danger Success Button</button>
+  <a class="large" href="https://www.google.co.uk">Links</a>
 </section>
 <section class="small">
-  <uilibrary-textinput>
+  <h1>Headline 1</h1>
+  <h2>Headline 2</h2>
+  <h3>Headline 3</h3>
+  <label>Labels</label>
+  <p>Paragraph</p>
+  <a href="https://www.google.co.uk">Links</a>
+</section>
+<section class="small">
+  <button class="btn btn-primary">Primary Button</button>
+  <button class="btn btn-primary" disabled>Disabled Primary Button</button>
+  <button class="btn-small btn-primary">Small Primary Button</button>
+  <button class="btn-small btn-primary" disabled>Small Disabled Primary Button</button>
+  <button class="btn btn-secondary">Secondary Button</button>
+  <button class="btn btn-secondary" disabled>Disabled Secondary Button</button>
+  <button class="btn-small btn-secondary">Small Secondary Button</button>
+  <button class="btn-small btn-secondary" disabled>Small Disabled Secondary Button</button>
+  <button class="btn btn-primary success">Primary Success Button</button>
+  <button class="btn btn-primary success" disabled>Disabled Primary Success Button</button>
+  <button class="btn-small btn-primary success">Small Primary Success Button</button>
+  <button class="btn-small btn-primary success" disabled>Small Disabled Primary Success Button</button>
+  <button class="btn btn-primary delete">Primary Danger Button</button>
+  <button class="btn btn-primary delete" disabled>Disabled Primary Danger Button</button>
+  <button class="btn-small btn-primary delete">Small Primary Danger Button</button>
+  <button class="btn-small btn-primary delete" disabled>Small Disabled Primary Danger Button</button>
+  <button class="btn btn-secondary delete">Secondary Danger Button</button>
+  <button class="btn btn-secondary delete" disabled>Disabled Secondary Danger Button</button>
+  <button class="btn-small btn-secondary delete">Small Secondary Danger Button</button>
+  <button class="btn-small btn-secondary delete" disabled>Small Disabled Secondary Danger Button</button>
+  <button class="btn btn-secondary success">Secondary Success Button</button>
+  <button class="btn btn-secondary success" disabled>Disabled Secondary Success Button</button>
+  <button class="btn-small btn-secondary success">Small Secondary Success Button</button>
+  <button class="btn-small btn-secondary success" disabled>Small Disabled Secondary Success Button</button>
+</section>
+<section class="medium d-flex flex-row">
+<conferma-tooltip [placement]="'top'">
+  <span content><strong>Hello</strong> <br/> this is a name </span>
+</conferma-tooltip>
+<conferma-tooltip [placement]="'bottom'">
+  <span content><strong>Hello</strong> <br/> this is a name </span>
+</conferma-tooltip>
+<conferma-tooltip [placement]="'left'">
+  <span content><strong>Hello</strong> <br/> this is a name </span>
+</conferma-tooltip>
+<conferma-tooltip [placement]="'right'">
+  <span content><strong>Hello</strong> <br/> this is a name </span>
+</conferma-tooltip>
+</section>
+<section class="small d-flex flex-column">
+  <conferma-textinput>
     <input input type="text" placeholder="" />
     <label label for="#input">Text Input</label>
-  </uilibrary-textinput>
+  </conferma-textinput>
 
-  <uilibrary-textinput>
+  <conferma-textinput>
     <input input type="text" placeholder="" />
     <label label for="#input">Text Input w/ Hint</label>
-    <uilibrary-hint variant="normal">Please provider a value.</uilibrary-hint>
-  </uilibrary-textinput>
+    <conferma-hint variant="normal">Please provider a value.</conferma-hint>
+  </conferma-textinput>
 
-  <uilibrary-textinput>
+  <conferma-textinput>
     <input input type="text" placeholder="" [class.error]="true" />
     <label label for="#input">Text Input w/ Error</label>
-  </uilibrary-textinput>
+  </conferma-textinput>
 
-  <uilibrary-textinput>
+  <conferma-textinput>
     <input input type="text" placeholder="" [class.error]="true" />
     <label label for="#input">Text Input w/ Error, Hint</label>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
-  </uilibrary-textinput>
+    <conferma-hint>Please provider a value.</conferma-hint>
+  </conferma-textinput>
 
-  <uilibrary-textinput>
+  <conferma-textinput>
     <input input type="text" placeholder="" [class.error]="true" />
     <label label for="#input">Text Input w/ Error, Hint, Tooltip</label>
-    <uilibrary-hint>Please provider a value</uilibrary-hint>
-    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+    <conferma-hint>Please provider a value</conferma-hint>
+    <conferma-tooltip tooltip [placement]="'right'" [margin]="'left'">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
-    </uilibrary-tooltip>
-  </uilibrary-textinput>
+    </conferma-tooltip>
+  </conferma-textinput>
 
-  <uilibrary-textinput>
+  <conferma-textinput>
     <input input required type="text" placeholder="" [class.error]="true" />
     <label label for="#input">Text Input w/ Error, Hint, Required</label>
-    <uilibrary-required required></uilibrary-required>
-    <uilibrary-hint>Please enter your full name.</uilibrary-hint>
-  </uilibrary-textinput>
+    <conferma-required required></conferma-required>
+    <conferma-hint>Please enter your full name.</conferma-hint>
+  </conferma-textinput>
 </section>
 <section class="medium">
-  <uilibrary-textarea>
+  <conferma-textarea>
     <textarea input type="text" placeholder=""></textarea>
     <label label for="#input">Text Area</label>
-  </uilibrary-textarea>
+  </conferma-textarea>
 
-  <uilibrary-textarea>
+  <conferma-textarea>
     <textarea input type="text" placeholder=""></textarea>
     <label label for="#input">Text Area w/ Hint</label>
-    <uilibrary-hint variant="normal">Please rate your recent visit and give us some feedback</uilibrary-hint>
-  </uilibrary-textarea>
+    <conferma-hint variant="normal">Please rate your recent visit and give us some feedback</conferma-hint>
+  </conferma-textarea>
 
-  <uilibrary-textarea>
+  <conferma-textarea>
     <textarea input type="text" placeholder="" [class.error]="true"></textarea>
     <label label for="#input">Text Area w/ Error</label>
-  </uilibrary-textarea>
+  </conferma-textarea>
 
-  <uilibrary-textarea>
+  <conferma-textarea>
     <textarea input type="text" placeholder="" [class.error]="true"></textarea>
     <label label for="#input">Text Area w/ Error, Hint</label>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
-  </uilibrary-textarea>
+    <conferma-hint>Please provider a value.</conferma-hint>
+  </conferma-textarea>
 
-  <uilibrary-textarea>
+  <conferma-textarea>
     <textarea input required type="text" placeholder="" [class.error]="true"></textarea>
     <label label for="#input">Text Area w/ Error, Hint, Required</label>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
-    <uilibrary-required required></uilibrary-required>
-  </uilibrary-textarea>
+    <conferma-hint>Please provider a value.</conferma-hint>
+    <conferma-required required></conferma-required>
+  </conferma-textarea>
 
-  <uilibrary-textarea>
+  <conferma-textarea>
     <textarea input required type="text" placeholder="" [class.error]="true"></textarea>
     <label label for="#input">Text Area w/ Error, Hint, Tooltip</label>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
-    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+    <conferma-hint>Please provider a value.</conferma-hint>
+    <conferma-tooltip tooltip [placement]="'right'" [margin]="'left'">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
-    </uilibrary-tooltip>
-  </uilibrary-textarea>
+    </conferma-tooltip>
+  </conferma-textarea>
 
 </section>
 
 <section class="small" [formGroup]="form">
-  <uilibrary-dropdown>
+  <conferma-dropdown>
     <input type="text" input formControlName="button" placeholder="Dropdown" readonly />
     <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
       <span>Option 1</span>
@@ -117,11 +150,11 @@
     <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
       <span>Option 3</span>
     </button>
-  </uilibrary-dropdown>
+  </conferma-dropdown>
 </section>
 
 <section class="small" [formGroup]="form">
-  <uilibrary-dropdown>
+  <conferma-dropdown>
     <input type="text" input formControlName="button" placeholder="Dropdown w/ Default" readonly />
     <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
       <span>Option 1</span>
@@ -135,11 +168,11 @@
     <button default ngbDropdownItem (click)="patchFormValue('Select an option')">
       <span>Select an option</span>
     </button>
-  </uilibrary-dropdown>
+  </conferma-dropdown>
 </section>
 
 <section class="small" [formGroup]="form">
-  <uilibrary-dropdown>
+  <conferma-dropdown>
     <input type="text" input formControlName="button" placeholder="Dropdown w/ Required" readonly />
     <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
       <span>Option 1</span>
@@ -150,13 +183,13 @@
     <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
       <span>Option 3</span>
     </button>
-    <uilibrary-hint variant="normal">This is a required field.</uilibrary-hint>
-    <uilibrary-required required></uilibrary-required>
-  </uilibrary-dropdown>
+    <conferma-hint variant="normal">This is a required field.</conferma-hint>
+    <conferma-required required></conferma-required>
+  </conferma-dropdown>
 </section>
 
 <section class="small" [formGroup]="form">
-  <uilibrary-dropdown>
+  <conferma-dropdown>
     <input type="text" input formControlName="button" placeholder="Dropdown w/ Hint, Tooltip" readonly />
     <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
       <span>Option 1</span>
@@ -167,15 +200,15 @@
     <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
       <span>Option 3</span>
     </button>
-    <uilibrary-hint variant="normal">Please select an option.</uilibrary-hint>
-    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+    <conferma-hint variant="normal">Please select an option.</conferma-hint>
+    <conferma-tooltip tooltip [placement]="'right'" [margin]="'left'">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
-    </uilibrary-tooltip>
-  </uilibrary-dropdown>
+    </conferma-tooltip>
+  </conferma-dropdown>
 </section>
 
 <section class="small" [formGroup]="form">
-  <uilibrary-dropdown [class.error]="true">
+  <conferma-dropdown [class.error]="true">
     <input type="text" input formControlName="button" placeholder="Dropdown w/ Error, Hint, Tooltip" readonly />
     <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
       <span>Option 1</span>
@@ -186,9 +219,108 @@
     <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
       <span>Option 3</span>
     </button>
-    <uilibrary-hint>A valid selection has not been made.</uilibrary-hint>
-    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+    <conferma-hint>A valid selection has not been made.</conferma-hint>
+    <conferma-tooltip tooltip [placement]="'right'" [margin]="'left'">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
-    </uilibrary-tooltip>
-  </uilibrary-dropdown>
+    </conferma-tooltip>
+  </conferma-dropdown>
+</section>
+
+
+
+<section class="small" [formGroup]="form">
+  <conferma-inline-dropdown>
+    <input type="text" input formControlName="button" placeholder="Option 1" readonly />
+    <button option ngbDropdownItem (click)="patchFormValue('Option 1')">
+      <span>Option 1</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 2')">
+      <span>Option 2</span>
+    </button>
+    <button option ngbDropdownItem (click)="patchFormValue('Option 3')">
+      <span>Option 3</span>
+    </button>
+  </conferma-inline-dropdown>
+</section>
+
+<section class="small d-flex flex-row">
+  <conferma-checkbox [variant]="'branded'" [size]="'large'">
+    <input input type="checkbox">
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'pass'" [size]="'large'">
+    <input input type="checkbox">
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'fail'" [size]="'large'">
+    <input input type="checkbox">
+  </conferma-checkbox>
+</section>
+<section class="medium d-flex flex-row">
+  <conferma-checkbox [variant]="'branded'" [size]="'large'">
+    <input input type="checkbox">
+    <label label>This is a label</label>
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'pass'" [size]="'large'">
+    <input input type="checkbox">
+    <label label>This is a label</label>
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'fail'" [size]="'large'">
+    <input input type="checkbox">
+    <label label>This is a label</label>
+  </conferma-checkbox>
+</section>
+<section class="small d-flex flex-row">
+  <conferma-checkbox [variant]="'branded'">
+    <input input type="checkbox">
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'pass'">
+    <input input type="checkbox">
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'fail'">
+    <input input type="checkbox">
+  </conferma-checkbox>
+</section>
+<section class="medium d-flex flex-row">
+  <conferma-checkbox [variant]="'branded'">
+    <input input type="checkbox">
+    <label label>This is a label</label>
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'pass'">
+    <input input type="checkbox">
+    <label label>This is a label</label>
+  </conferma-checkbox>
+  <conferma-checkbox [variant]="'fail'">
+    <input input type="checkbox">
+    <label label>This is a label</label>
+  </conferma-checkbox>
+</section>
+<section class="medium">
+  <conferma-radiogroup>
+    <conferma-radiobutton>
+      <input input type="radio">
+      <label label>
+        Default radio
+      </label>
+    </conferma-radiobutton>
+    <conferma-radiobutton [labelPosition]="'left'">
+      <input input type="radio">
+      <label label>
+        Default radio
+      </label>
+    </conferma-radiobutton>
+    <conferma-radiobutton> 
+      <input input type="radio">
+      <label label>
+        Default radio
+      </label>
+    </conferma-radiobutton>
+  </conferma-radiogroup>
+</section>
+<section class="medium">
+  <conferma-toggle>
+    <input input type="checkbox">
+  </conferma-toggle>
+  <conferma-toggle>
+    <input input type="checkbox">
+    <label label>This is a label</label>
+  </conferma-toggle>
 </section>
