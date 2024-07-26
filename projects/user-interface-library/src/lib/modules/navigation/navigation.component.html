@@ -1,26 +1,26 @@
 <nav class="navbar">
   <div class="logo">
-    <img src="assets/logo.png" height="35" width="100" alt="Logo">
+    <ng-content select="[logo]"></ng-content>
   </div>
   <section class="normal-nav-links d-flex flex-row flex-nowrap justify-content-flex-start w-100 h-100" #navLinks>
     <ul class="nav-links">
-      <li class="nav-item d-flex" *ngFor="let link of visibleLinks; index as i; trackBy: trackByFn">
+      <li class="nav-item d-flex" *ngFor="let link of links; index as i; trackBy: trackByFn">
         <section class="w-100" *ngIf="link.children">
           <uilibrary-navigation-dropdown>
-              <button button [routerLink]="link.path" routerLinkActive="active">{{link.label}}</button>
+              <button button >{{link.label}}</button>
               <button *ngFor="let childLink of link.children" option ngbDropdownItem>
-                <a *ngIf="childLink.type === navigationLinkType.Route" [routerLink]="childLink.path" class="d-flex justify-content-start align-items-center">{{childLink.label}}</a>
-                <a *ngIf="childLink.type === navigationLinkType.URL" (click)="goToUrl(childLink.path, '')" class="d-flex justify-content-start align-items-center">{{childLink.label}}</a>
-                <a *ngIf="childLink.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(childLink.path, '_blank')" class="d-flex justify-content-start align-items-center">{{childLink.label}}</a>
+                <a *ngIf="childLink.type === navigationLinkType.Route" [routerLink]="link.path + '/' + childLink.path" routerLinkActive="active" class="d-flex justify-content-start align-items-center h-100 w-100">{{childLink.label}}</a>
+                <a *ngIf="childLink.type === navigationLinkType.URL" (click)="goToUrl(childLink.path, '')" class="d-flex justify-content-start align-items-center h-100 w-100">{{childLink.label}}</a>
+                <a *ngIf="childLink.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(childLink.path, '_blank')" class="d-flex justify-content-start align-items-center h-100 w-100">{{childLink.label}}</a>
               </button>
           </uilibrary-navigation-dropdown>
         </section>
         <section class="w-100" *ngIf="!link.children">
           <uilibrary-navigation-option>
-            <button button [routerLink]="link.path" routerLinkActive="active">
-              <a *ngIf="link.type === navigationLinkType.Route" class="d-flex justify-content-center align-items-center">{{link.label}}</a>
-              <a *ngIf="link.type === navigationLinkType.URL" (click)="goToUrl(link.path, '')" href="{{link.path}}" class="d-flex justify-content-center align-items-center">{{link.label}}</a>
-              <a *ngIf="link.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(link.path, '_blank')" class="d-flex justify-content-center align-items-center">{{link.label}}</a>
+            <button button routerLinkActive="active">
+              <a *ngIf="link.type === navigationLinkType.Route" [routerLink]="link.path" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
+              <a *ngIf="link.type === navigationLinkType.URL" (click)="goToUrl(link.path, '')" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
+              <a *ngIf="link.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(link.path, '_blank')" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
             </button>
           </uilibrary-navigation-option>
         </section>
@@ -30,7 +30,9 @@
       <uilibrary-navigation-dropdown>
         <button button>More</button>
         <button *ngFor="let link of overflowLinks;  index as i; trackBy: trackByFn" option ngbDropdownItem>
-          {{link.label}}
+          <a *ngIf="link.type === navigationLinkType.Route" [routerLink]="link.path" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
+          <a *ngIf="link.type === navigationLinkType.URL" (click)="goToUrl(link.path, '')" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
+          <a *ngIf="link.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(link.path, '_blank')" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
         </button>
       </uilibrary-navigation-dropdown>
     </div>
@@ -41,13 +43,15 @@
         <uilibrary-navigation-dropdown>
           <button button>Menu</button>
           <button *ngFor="let link of allNavigationLinks;  index as i; trackBy: trackByFn" option ngbDropdownItem>
-            {{link.label}}
+            <a *ngIf="link.type === navigationLinkType.Route" [routerLink]="link.path" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
+            <a *ngIf="link.type === navigationLinkType.URL" (click)="goToUrl(link.path, '')" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
+            <a *ngIf="link.type === navigationLinkType.TargetBlankURL" (click)="goToUrl(link.path, '_blank')" class="d-flex justify-content-center align-items-center h-100 w-100">{{link.label}}</a>
           </button>
         </uilibrary-navigation-dropdown>
       </div>
     </ul>
   </section>
   <div *ngIf="showRightAlignedContent" class="navigation-right-aligned-content">
-    <ng-content select="[userdetails]"></ng-content>
+    <ng-content select="[rightAlignedContent]"></ng-content>
   </div>
 </nav>
