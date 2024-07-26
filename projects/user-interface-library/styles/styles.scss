@@ -550,7 +550,7 @@ uilibrary-textarea {
 .fail {
   &:has(input[type=checkbox]:checked) label:before {
     content: "";
-    background-image: url('../assets/images/Cross.png');
+   // background-image: url('../assets/images/Cross.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -624,7 +624,7 @@ uilibrary-textarea {
 .pass {
   &:has(input[type=checkbox]:checked) label:before {
     content: "";
-    background-image: url('../assets/images/Tick.png');
+   // background-image: url('../assets/images/Tick.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -699,7 +699,7 @@ uilibrary-textarea {
 .branded {
   &:has(input[type=checkbox]:checked) label:before {
     content: "";
-    background-image: url('../assets/images/Tick.png');
+   // background-image: url('../assets/images/Tick.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

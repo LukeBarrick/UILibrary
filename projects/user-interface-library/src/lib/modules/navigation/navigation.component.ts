@@ -3,7 +3,7 @@ import { NavigationLink } from '../../core/models/navigation-link';
 import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 
 @Component({
-  selector: 'conferma-navigation',
+  selector: 'uilibrary-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
