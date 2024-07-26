@@ -494,7 +494,7 @@ uilibrary-textarea {
 
 .checkbox-small {
   display: flex;
-  width: 20px;
+  width: 40px;
   align-items: center;
 
   .circle {
@@ -1090,53 +1090,6 @@ input:hover+.slider:before {
   }
 }
 
-//SELECT BOX 
-.select-box {
-  color: #636363;
-  font-size: 14px;
-  font-family: $font;
-  letter-spacing: $letterSpacing;
-
-  &::before {
-    content: '>';
-    display: inline-block;
-    position: relative;
-    top: 35px;
-    left: 90%;
-    z-index: 1;
-  }
-
-  &:has(select:focus)::before {
-    content: 'a';
-  }
-
-  select {
-    color: #636363;
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    border: 1px solid $borderColour;
-    border-radius: 7px;
-    outline: none;
-    padding-left: 15px;
-    padding-right: 20px;
-    appearance: none !important;
-
-
-    &:focus {
-      border-color: var(--secondary);
-    }
-
-    &::-ms-expand {
-      display: none;
-    }
-
-    option {
-      color: #636363;
-    }
-  }
-}
-
 /* ToolTip */
 .tooltip-custom {
   button {
@@ -1193,7 +1146,6 @@ input:hover+.slider:before {
 .logo {
   display: flex;
   justify-content: center;
-  
   min-width: 220px;
   margin-left: 10px;
   margin-right: 10px;
@@ -1256,10 +1208,6 @@ input:hover+.slider:before {
 }
 
 @media only screen and (max-width: 980px) {
-  body {
-    background-color: lightblue;
-  }
-
   .small-nav-links {
     display: flex !important;
     justify-content: flex-end;
@@ -1546,7 +1494,6 @@ input:hover+.slider:before {
     background-color: white;
     position: relative;
 
-
     span {
       width: 100%;
     }
@@ -1567,5 +1514,89 @@ input:hover+.slider:before {
 
   &:focus {
     outline: 0;
+  }
+}
+
+/* Inline dropdown */ 
+.inline-dropdown-parent {
+  .inline-dropdown-content{
+    position: relative;
+  }
+
+  label {
+      padding: 0.35em 0.5em 0.35em 0.35em;
+  }
+
+  label:after {
+      display: inline-block;
+      margin-left: 0.255em;
+      vertical-align: 0.255em;
+      content: "";
+      border-top: 0;
+      border-right: 0.3em solid transparent;
+      border-bottom: 0.3em solid;
+      border-left: 0.3em solid transparent;
+      transition: transform 0.2s ease;
+      transform: rotate(180deg);
+  }
+
+  .inline-dropdown-child {
+    position:absolute;
+    top: -35px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 0px;
+    transition: max-height 0.2s ease-in-out;
+    width: 100%;
+    visibility: hidden;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    span {
+      width: 100%;
+      padding: 0.35em 0 0.35em 0.35em;
+      transition: border-width 0.1s ease-in-out;
+      cursor: pointer;
+    }
+
+    span:first-child:after {
+      display: inline-block;
+      margin-left: 0.255em;
+      vertical-align: 0.255em;
+      content: "";
+      border-top: 0;
+      border-right: 0.3em solid transparent;
+      border-bottom: 0.3em solid;
+      border-left: 0.3em solid transparent;
+      transition: transform 0.2s ease;
+      transform: rotate(180deg);
+    }
+
+    span:hover {
+      border-left: 0.25em solid $primary;
+    }
+
+    .selected {
+      background-color: #dedede;
+      cursor: default !important;
+    }
+
+    .selected:hover {
+      border-left: 0;
+    }
+  }
+
+  &:hover {
+    .inline-dropdown-child {
+      max-height: 500px;
+      z-index: 1000;
+      visibility: visible;
+      overflow-y: auto;
+      span:first-child:after {
+          transform: rotate(0deg);
+      }
+    }
   }
 }
