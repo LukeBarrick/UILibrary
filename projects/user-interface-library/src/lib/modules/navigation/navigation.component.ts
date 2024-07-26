@@ -3,51 +3,30 @@ import { NavigationLink } from '../../core/models/navigation-link';
 import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 
 @Component({
-  selector: 'uilibrary-navigation',
+  selector: 'conferma-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements AfterViewInit {
   @Input() showRightAlignedContent: boolean = true;
-  @ViewChild('navLinks') navLinks!: ElementRef;
-
-  visibleLinks: NavigationLink[] = [
-    { label:'Home', path:'home', type: NavigationLinkType.Route },
-    { label:'Tools', path:'/tools', type: NavigationLinkType.Route, children: [
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route },
-    ]},
-    { label:'Contact Us', path:'/contact', type: NavigationLinkType.Route },
-    { label:'Home', path:'/home', type: NavigationLinkType.Route },
-    { label:'Tools', path:'/tools', type: NavigationLinkType.Route, children: [
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route }
-    ]},
-    { label:'Contact Us', path:'/contact', type: NavigationLinkType.Route },
-    { label:'Home', path:'/home', type: NavigationLinkType.Route },
-    { label:'Tools', path:'/tools', type: NavigationLinkType.Route, children: [
-      { label:'The Tool', path:'/thetool', type: NavigationLinkType.Route }
-    ]},
-    { label:'Contact Us', path:'/contact', type: NavigationLinkType.Route },
+  @Input() links: NavigationLink[] = [
+    { label:'Route', path:'/thetools', type: NavigationLinkType.Route },
+    { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
+    { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL },
+    { label: 'DropDown', path:'', type: NavigationLinkType.Route, children: [
+      { label:'Route', path:'/thetools', type: NavigationLinkType.Route },
+      { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
+      { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL }
+    ]}
   ];
 
+  @ViewChild('navLinks') navLinks!: ElementRef;
   overflowLinks: NavigationLink[] = [];
+  navigationLinkType: typeof NavigationLinkType;
 
-  dropdownVisible = false;
-
-  constructor() { }
+  constructor() { 
+    this.navigationLinkType = NavigationLinkType;
+  }
 
   @HostListener('window:resize')
     onResize() {
@@ -59,12 +38,7 @@ export class NavigationComponent implements AfterViewInit {
   }
 
   get allNavigationLinks() {
-    return [...this.visibleLinks, ...this.overflowLinks];
-  }
-
-  public toggleDropdown($event: MouseEvent) {
-    $event.preventDefault();
-    this.dropdownVisible = !this.dropdownVisible;
+    return [...this.links, ...this.overflowLinks];
   }
 
   private adjustNav() {
@@ -74,15 +48,15 @@ export class NavigationComponent implements AfterViewInit {
     const navbarWidth: number = navLinks.parentElement.offsetWidth;
     const logoWidth: number = navLinks.previousElementSibling.offsetWidth;
 
-    const allLinks = [...this.visibleLinks, ...this.overflowLinks]
+    const allLinks = [...this.links, ...this.overflowLinks]
 
     let totalSpaceRemaining: number = navbarWidth - (logoWidth + navLinkWidth * 2 + rightAlignedContentWidth); //Add 1 navlink for overflow dropdown
 
-    this.visibleLinks = [];
+    this.links = [];
     this.overflowLinks = [];
     allLinks.forEach(navLink => {
       if(totalSpaceRemaining >= navLinkWidth) {
-        this.visibleLinks.push(navLink);
+        this.links.push(navLink);
         totalSpaceRemaining = totalSpaceRemaining - navLinkWidth;
       } else {
         this.overflowLinks.push(navLink);
