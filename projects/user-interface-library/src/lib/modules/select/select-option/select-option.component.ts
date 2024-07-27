@@ -12,5 +12,6 @@ export class SelectOptionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 }

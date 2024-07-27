@@ -139,9 +139,20 @@
 </section>
 
 <section [formGroup]="form2" class="small">
-  <uilibrary-select formControlName="selectControl">
+  <uilibrary-select formControlName="selectControl" [items]="items">
+   
     @for(item of items; track item) {
-      <uilibrary-select-option [value]="item.id" [label]="item.name"></uilibrary-select-option>
+      <ng-template #labelTemplate let-item>               
+        <label>
+          <b>{{item.id}}</b> - {{item.name}}
+        </label>
+      </ng-template>
+      <ng-template #optionTemplate let-item>               
+        <label>
+          <b>{{item.name}}</b>
+        </label>
+      </ng-template>
+      <uilibrary-select-option>{{item.id}} {{item.name}}</uilibrary-select-option>
     }
   </uilibrary-select>
 </section>

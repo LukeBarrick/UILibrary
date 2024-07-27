@@ -1,10 +1,18 @@
 <ng-select
   class="custom"
   [(ngModel)]="value"
-  [items]="options"
+  [items]="items"
   [disabled]="disabled"
   bindLabel="label"
   bindValue="value"
   [compareWith]="compareFn"
   (change)="handleChange($event)">
+
+  <ng-template ng-label-tmp let-item="item">
+    <ng-container *ngTemplateOutlet="labelTemplate; context: { $implicit: item }"></ng-container>
+  </ng-template>
+  
+  <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+    <ng-container *ngTemplateOutlet="optionTemplate; context: { $implicit: item }"></ng-container>
+  </ng-template>
 </ng-select>

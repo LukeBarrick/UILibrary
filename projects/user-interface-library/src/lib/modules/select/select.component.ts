@@ -1,4 +1,4 @@
-import { Component, ContentChildren, forwardRef, Input, QueryList, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ContentChild, ContentChildren, forwardRef, Input, QueryList, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectOptionComponent } from './select-option/select-option.component';
 
@@ -16,6 +16,11 @@ import { SelectOptionComponent } from './select-option/select-option.component';
 })
 export class SelectComponent implements ControlValueAccessor {
   @ContentChildren(SelectOptionComponent) customOptions: QueryList<SelectOptionComponent> | undefined;
+
+  @ContentChild('labelTemplate', {static: false}) labelTemplate: TemplateRef<any> | null = null;
+  @ContentChild('optionTemplate', {static: false}) optionTemplate: TemplateRef<any> | null = null;
+
+  @Input() items: any;
 
   value: any;
   disabled: boolean = false;
@@ -51,11 +56,11 @@ export class SelectComponent implements ControlValueAccessor {
   }
 
   ngAfterContentInit(): void {
-    if(this.customOptions != undefined) {
-      this.options = this.customOptions.map(option => ({
-        value: option.value,
-        label: option.label
-      }));
-    }
+    // if(this.customOptions != undefined) {
+    //   this.options = this.customOptions.map(option => ({
+    //     value: option.value,
+    //     label: option.label
+    //   }));
+    // }
   }
 }
