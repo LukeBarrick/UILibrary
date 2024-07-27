@@ -15712,5 +15712,16 @@ input:hover + .slider:before {
     transform: scaleY(1);
   }
 }
+.ng.select.custom.hasErrors .ng-select.ng-select-opened > .ng-select-container {
+  border-color: var(--danger);
+}
+
+.ng-touched.hasErrors .ng-select-container {
+  border-color: var(--danger) !important;
+  color: var(--danger);
+}
+.ng-touched.hasErrors .ng-dropdown-panel.ng-select-bottom {
+  border-color: var(--danger);
+}
 
 /*# sourceMappingURL=styles.css.map */

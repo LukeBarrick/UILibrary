@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+export interface Item {
+  id: number;
+  name: string;
+}
+
 @Component({
   selector: 'uilibrary-showcase',
   templateUrl: './showcase.component.html',
@@ -17,24 +22,26 @@ export class ShowcaseComponent {
     });
   }
 
+  //Select Area Setup
   form2 = new FormGroup({
-    selectControl: new FormControl(null),
-    selectControl2: new FormControl(null)
+    selectControl: new FormControl('', [Validators.required]),
+    selectControl2: new FormControl('', [Validators.required])
   });
 
-  items = [
+  items: Item[] = [
     { id: 1, name: 'Option 1' },
     { id: 2, name: 'Option 2' },
     { id: 3, name: 'Option 3' }
   ];
 
-  debug() {
-    console.log(this.form2)
-  }
-
-  customSearchFn(term: string, item: any) {
+  customSearchFn(term: string, item: Item) {
     item.name = item.name.replace(',','');
     term = term.toLocaleLowerCase();
     return item.name.toLocaleLowerCase().indexOf(term) > -1;
   }
+
+  debug() {
+    console.log(this.form2)
+  }
+
 }

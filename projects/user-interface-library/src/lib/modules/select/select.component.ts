@@ -5,7 +5,7 @@ import {
   Input,
   TemplateRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'uilibrary-select',
@@ -28,6 +28,7 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() items: any;
 
   @Input() prefillFirstOption: boolean = false;
+  @Input() errors: ValidationErrors | null = null;
   @Input() ariaLabel: string = ''
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
@@ -88,7 +89,6 @@ export class SelectComponent implements ControlValueAccessor {
       }
     }
     this.onChange(this.value);
-    this.onTouched();
   }
 
   compareFn(item: any, selected: any) {
