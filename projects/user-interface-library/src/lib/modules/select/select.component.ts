@@ -27,7 +27,9 @@ export class SelectComponent implements ControlValueAccessor {
 
   @Input() items: any;
 
+  @Input() prefillFirstOption: boolean = false;
   @Input() ariaLabel: string = ''
+  @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() loadingText: string = 'Loading...';
   @Input() multiple: boolean = false;
@@ -50,7 +52,6 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() inputAttrs: { [key: string]: string } = { ['']: '' };
 
   value: any;
-  disabled: boolean = false;
   options: any[] = [];
 
   onChange: any = () => {};
@@ -75,6 +76,18 @@ export class SelectComponent implements ControlValueAccessor {
   handleChange(event: any): void {
     this.value = event;
     this.onChange(event);
+    this.onTouched();
+  }
+
+  ngAfterViewInit() {
+    if(this.prefillFirstOption) {
+      if(!this.multiple) {
+        this.value = this.items[0];
+      } else {
+        this.value = [this.items[0]];
+      }
+    }
+    this.onChange(this.value);
     this.onTouched();
   }
 

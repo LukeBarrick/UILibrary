@@ -128,7 +128,7 @@
   </uilibrary-textarea>
 
   <uilibrary-textarea>
-    <textarea input required type="text" placeholder="" [class.error]="true"></textarea>
+    <textarea input required type="text" placeholder="" [class.error]="true" [disabled]="true"></textarea>
     <label label for="#input">Text Area w/ Error, Hint, Tooltip</label>
     <uilibrary-hint>Please provider a value.</uilibrary-hint>
     <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
@@ -138,7 +138,7 @@
 </section>
 
 <section [formGroup]="form2" class="small">
-  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [searchable]="true" [searchFn]="customSearchFn">
+  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [searchable]="true" [searchFn]="customSearchFn" [prefillFirstOption]="true">
     @for(item of items; track item) {
     <ng-template #labelTemplate let-item>
       <div>
@@ -153,7 +153,7 @@
     }
   </uilibrary-select>
 
-  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
+  <uilibrary-select formControlName="selectControl2" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5" [prefillFirstOption]="true">
     @for(item of items; track item) {
     <ng-template #labelTemplate let-item>
       <div>
@@ -169,7 +169,7 @@
     <uilibrary-hint variant="normal">Select an option from the list.</uilibrary-hint>
   </uilibrary-select>
 
-  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
+  <uilibrary-select [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
     @for(item of items; track item) {
     <ng-template #labelTemplate let-item>
       <div>
@@ -188,7 +188,7 @@
     </uilibrary-tooltip>
   </uilibrary-select>
 
-  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
+  <uilibrary-select [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
     @for(item of items; track item) {
     <ng-template #labelTemplate let-item>
       <div>

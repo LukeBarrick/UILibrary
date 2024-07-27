@@ -18,7 +18,8 @@ export class ShowcaseComponent {
   }
 
   form2 = new FormGroup({
-    selectControl: new FormControl(null)
+    selectControl: new FormControl(null),
+    selectControl2: new FormControl(null)
   });
 
   items = [
@@ -26,7 +27,6 @@ export class ShowcaseComponent {
     { id: 2, name: 'Option 2' },
     { id: 3, name: 'Option 3' }
   ];
-
 
   debug() {
     console.log(this.form2)
