@@ -138,7 +138,7 @@
 </section>
 
 <section [formGroup]="form2" class="small">
-  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
+  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [searchable]="true" [searchFn]="customSearchFn">
     @for(item of items; track item) {
     <ng-template #labelTemplate let-item>
       <div>
@@ -166,11 +166,43 @@
       </div>
     </ng-template>
     }
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
-    <uilibrary-required required></uilibrary-required>
+    <uilibrary-hint variant="normal">Select an option from the list.</uilibrary-hint>
+  </uilibrary-select>
+
+  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
+    @for(item of items; track item) {
+    <ng-template #labelTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    <ng-template #optionTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    }
+    <uilibrary-hint variant="normal">Please make a selection.</uilibrary-hint>
     <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
     </uilibrary-tooltip>
+  </uilibrary-select>
+
+  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
+    @for(item of items; track item) {
+    <ng-template #labelTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    <ng-template #optionTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    }
+    <uilibrary-hint>This is a required field.</uilibrary-hint>
+    <uilibrary-required required></uilibrary-required>
   </uilibrary-select>
 </section>
 

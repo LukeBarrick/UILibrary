@@ -1342,8 +1342,8 @@ input:hover+.slider:before {
       padding: 5px;
       transform: translate(0px, 5px);
       border-color: #63636363;
-      animation-name: navscroll;
-      animation-duration: 0.5s;
+      animation: growDown 100ms ease-in-out forwards;
+      transform-origin: top center;
       min-width: 100%;
 
       button {
@@ -1374,12 +1374,6 @@ input:hover+.slider:before {
       display: none;
     }
   }
-}
-
-/* Scroll animation for Dropdown */
-@keyframes navscroll {
-  from {max-height: 30px; overflow-y: hidden;}
-  to {max-height: 1000px; overflow-y: hidden;}
 }
 
 .navigation-dropdown-input-custom {

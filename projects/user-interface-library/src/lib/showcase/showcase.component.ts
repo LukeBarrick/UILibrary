@@ -31,4 +31,10 @@ export class ShowcaseComponent {
   debug() {
     console.log(this.form2)
   }
+
+  customSearchFn(term: string, item: any) {
+    item.name = item.name.replace(',','');
+    term = term.toLocaleLowerCase();
+    return item.name.toLocaleLowerCase().indexOf(term) > -1;
+  }
 }
