@@ -26,4 +26,9 @@ export class ShowcaseComponent {
     { id: 2, name: 'Option 2' },
     { id: 3, name: 'Option 3' }
   ];
+
+
+  debug() {
+    console.log(this.form2)
+  }
 }

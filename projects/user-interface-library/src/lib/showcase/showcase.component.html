@@ -19,7 +19,7 @@
   <a href="https://www.google.co.uk">Links</a>
 </section>
 <section class="small">
-  <button class="btn btn-primary">Primary Button</button>
+  <button class="btn btn-primary" (click)="debug()">Primary Button</button>
   <button class="btn btn-primary" disabled>Disabled Primary Button</button>
   <button class="btn-small btn-primary">Small Primary Button</button>
   <button class="btn-small btn-primary" disabled>Small Disabled Primary Button</button>
@@ -135,27 +135,45 @@
       <span content><strong>Title</strong><br />This is tooltip content.</span>
     </uilibrary-tooltip>
   </uilibrary-textarea>
-
 </section>
 
 <section [formGroup]="form2" class="small">
-  <uilibrary-select formControlName="selectControl" [items]="items">
-   
+  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
     @for(item of items; track item) {
-      <ng-template #labelTemplate let-item>               
-        <label>
-          <b>{{item.id}}</b> - {{item.name}}
-        </label>
-      </ng-template>
-      <ng-template #optionTemplate let-item>               
-        <label>
-          <b>{{item.name}}</b>
-        </label>
-      </ng-template>
-      <uilibrary-select-option>{{item.id}} {{item.name}}</uilibrary-select-option>
+    <ng-template #labelTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    <ng-template #optionTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
     }
   </uilibrary-select>
+
+  <uilibrary-select formControlName="selectControl" [items]="items" [clearable]="false" [multiple]="true" [maxSelectedItems]="5">
+    @for(item of items; track item) {
+    <ng-template #labelTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    <ng-template #optionTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    }
+    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+    <uilibrary-required required></uilibrary-required>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+  </uilibrary-select>
 </section>
+
 
 <section class="small" [formGroup]="form">
   <uilibrary-dropdown>

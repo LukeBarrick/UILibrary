@@ -1,6 +1,11 @@
-import { Component, ContentChild, ContentChildren, forwardRef, Input, QueryList, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  forwardRef,
+  Input,
+  TemplateRef,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectOptionComponent } from './select-option/select-option.component';
 
 @Component({
   selector: 'uilibrary-select',
@@ -15,12 +20,34 @@ import { SelectOptionComponent } from './select-option/select-option.component';
   ],
 })
 export class SelectComponent implements ControlValueAccessor {
-  @ContentChildren(SelectOptionComponent) customOptions: QueryList<SelectOptionComponent> | undefined;
-
-  @ContentChild('labelTemplate', {static: false}) labelTemplate: TemplateRef<any> | null = null;
-  @ContentChild('optionTemplate', {static: false}) optionTemplate: TemplateRef<any> | null = null;
+  @ContentChild('labelTemplate', { static: false })
+  labelTemplate: TemplateRef<any> | null = null;
+  @ContentChild('optionTemplate', { static: false })
+  optionTemplate: TemplateRef<any> | null = null;
 
   @Input() items: any;
+
+  @Input() ariaLabel: string = ''
+  @Input() loading: boolean = false;
+  @Input() loadingText: string = 'Loading...';
+  @Input() multiple: boolean = false;
+  @Input() maxSelectedItems: number = 1;
+  @Input() hideSelected: boolean = false;
+  @Input() clearSearchOnAdd: boolean = true;
+  @Input() readonly: boolean = false;
+  @Input() placeholder: string = '';
+  @Input() notFoundText: string = 'No items found.';
+  @Input() markFirst: boolean = false;
+  @Input() clearOnBackspace: boolean = true;
+  @Input() clearable: boolean = true;
+  @Input() closeOnSelect: boolean = true;
+
+  @Input() searchable: boolean = true;
+  @Input() searchFn: ((term: string, item: any) => boolean) | undefined 
+  @Input() isOpen: boolean | undefined = undefined;
+  @Input() trackByFn: ((item: any) => any) | undefined;
+  @Input() virtualScroll: boolean = false;
+  @Input() inputAttrs: { [key: string]: string } = { ['']: '' };
 
   value: any;
   disabled: boolean = false;
@@ -52,15 +79,6 @@ export class SelectComponent implements ControlValueAccessor {
   }
 
   compareFn(item: any, selected: any) {
-    return item.value === selected.value;
-  }
-
-  ngAfterContentInit(): void {
-    // if(this.customOptions != undefined) {
-    //   this.options = this.customOptions.map(option => ({
-    //     value: option.value,
-    //     label: option.label
-    //   }));
-    // }
+    return item === selected;
   }
 }
