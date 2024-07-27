@@ -1,5 +1,10 @@
-<ng-select [(ngModel)]="selectedCar">
-  @for (car of cars; track car.id) {
-      <ng-option [value]="car.id">{{car.name}}</ng-option>
-  }
+<ng-select
+  class="custom"
+  [(ngModel)]="value"
+  [items]="options"
+  [disabled]="disabled"
+  bindLabel="label"
+  bindValue="value"
+  [compareWith]="compareFn"
+  (change)="handleChange($event)">
 </ng-select>

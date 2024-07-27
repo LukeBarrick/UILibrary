@@ -1,7 +1,7 @@
 @import "variable";
 
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
-
+@import "../../../node_modules/@ng-select/ng-select/scss/default.theme.scss";
 //(Required file)
 // Overrides bootstrap default variables
 @import "variable-override";
@@ -1598,5 +1598,49 @@ input:hover+.slider:before {
           transform: rotate(0deg);
       }
     }
+  }
+}
+
+//Select Overrides
+.ng-select.custom {
+  border:0px;
+  border-radius: 0;
+  height: 50px !important;
+}
+.ng-select.custom .ng-select-container  {            
+  min-height: 50px !important;
+  border-radius: 7px !important;
+}
+
+.ng-select.custom .ng-input {
+  top: unset !important;
+}
+
+.ng-select.custom .ng-select-single .ng-select-container .ng-value-container .ng-input {
+  top: 0px !important ;
+}
+
+.ng-select.custom .ng-clear-wrapper {
+  height: 17px;
+}
+
+.ng-select.custom .ng-arrow-wrapper .ng-arrow {
+  content: " " !important;
+  background-size: contain !important;
+  background-image: url('../assets/images/caret_black.svg') !important;
+  background-repeat: no-repeat !important;
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-block !important;
+  transition: transform 0.2s ease-in-out !important;
+  border: none !important;
+  top: 3px !important;
+}
+
+//Active Select styles
+.ng-select.custom:has(.ng-dropdown-panel) {
+
+  .ng-arrow-wrapper .ng-arrow  {
+    transform: rotateX(180deg);
   }
 }

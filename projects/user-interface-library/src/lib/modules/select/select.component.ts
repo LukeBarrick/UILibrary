@@ -1,8 +1,9 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, ContentChildren, forwardRef, Input, QueryList, ViewChild, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectOptionComponent } from './select-option/select-option.component';
 
 @Component({
-  selector: 'app-select',
+  selector: 'uilibrary-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.css'],
   providers: [
@@ -14,21 +15,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class SelectComponent implements ControlValueAccessor {
-  selectedCar: number = 0;
-
-  cars = [
-    { id: 1, name: 'Volvo' },
-    { id: 2, name: 'Saab' },
-    { id: 3, name: 'Opel' },
-    { id: 4, name: 'Audi' },
-  ];
-
-  
-
-  @Input() items: any[] = [];
+  @ContentChildren(SelectOptionComponent) customOptions: QueryList<SelectOptionComponent> | undefined;
 
   value: any;
   disabled: boolean = false;
+  options: any[] = [];
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -53,5 +44,18 @@ export class SelectComponent implements ControlValueAccessor {
     this.value = event;
     this.onChange(event);
     this.onTouched();
+  }
+
+  compareFn(item: any, selected: any) {
+    return item.value === selected.value;
+  }
+
+  ngAfterContentInit(): void {
+    if(this.customOptions != undefined) {
+      this.options = this.customOptions.map(option => ({
+        value: option.value,
+        label: option.label
+      }));
+    }
   }
 }

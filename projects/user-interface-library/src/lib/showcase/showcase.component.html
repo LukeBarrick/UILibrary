@@ -138,6 +138,14 @@
 
 </section>
 
+<section [formGroup]="form2" class="small">
+  <uilibrary-select formControlName="selectControl">
+    @for(item of items; track item) {
+      <uilibrary-select-option [value]="item.id" [label]="item.name"></uilibrary-select-option>
+    }
+  </uilibrary-select>
+</section>
+
 <section class="small" [formGroup]="form">
   <uilibrary-dropdown>
     <input type="text" input formControlName="button" placeholder="Dropdown" readonly />

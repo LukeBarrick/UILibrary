@@ -10,6 +10,8 @@ import { CheckboxesModule } from './modules/checkboxes/checkboxes.module';
 import { InputAnnotationsModule } from './modules/input-annotations/input-annotations.module';
 import { NavigationModule } from './modules/navigation/navigation.module';
 import { DropdownsModule } from './modules/dropdowns/dropdowns.module';
+import { SelectModule } from '../public-api';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { DropdownsModule } from './modules/dropdowns/dropdowns.module';
   imports: [
     CommonModule,
     NgbModule,
+    NgSelectModule,
     ReactiveFormsModule,
     RouterModule,
     TextInputsModule,
     CheckboxesModule,
     InputAnnotationsModule,
     NavigationModule,
-    DropdownsModule
+    DropdownsModule,
+    SelectModule
   ],
   exports: [
     UserInterfaceLibraryComponent,

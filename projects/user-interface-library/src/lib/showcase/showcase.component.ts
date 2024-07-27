@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'uilibrary-showcase',
@@ -16,4 +16,14 @@ export class ShowcaseComponent {
       button: $event,
     });
   }
+
+  form2 = new FormGroup({
+    selectControl: new FormControl(null)
+  });
+
+  items = [
+    { id: 1, name: 'Option 1' },
+    { id: 2, name: 'Option 2' },
+    { id: 3, name: 'Option 3' }
+  ];
 }
