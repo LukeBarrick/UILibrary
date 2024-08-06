@@ -1,11 +1,13 @@
 import {
   Component,
   ContentChild,
+  EventEmitter,
   forwardRef,
   Input,
+  Output,
   TemplateRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'uilibrary-select',
@@ -42,18 +44,18 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() notFoundText: string = 'No items found.';
   @Input() markFirst: boolean = false;
   @Input() clearOnBackspace: boolean = true;
-  @Input() clearable: boolean = true;
+  @Input() clearable: boolean = false;
   @Input() closeOnSelect: boolean = true;
 
-  @Input() searchable: boolean = true;
+  @Input() searchable: boolean = false;
   @Input() searchFn: ((term: string, item: any) => boolean) | undefined 
   @Input() isOpen: boolean | undefined = undefined;
   @Input() trackByFn: ((item: any) => any) | undefined;
   @Input() virtualScroll: boolean = false;
   @Input() inputAttrs: { [key: string]: string } = { ['']: '' };
 
-  value: any;
-  options: any[] = [];
+  @Input() value: any;
+  @Output() valueChange = new EventEmitter<any>();
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -77,18 +79,29 @@ export class SelectComponent implements ControlValueAccessor {
   handleChange(event: any): void {
     this.value = event;
     this.onChange(event);
+    this.valueChange.emit(event);
     this.onTouched();
   }
 
-  ngAfterViewInit() {
-    if(this.prefillFirstOption) {
-      if(!this.multiple) {
-        this.value = this.items[0];
-      } else {
-        this.value = [this.items[0]];
+  handleChangeUntouched(event: any): void {
+    this.value = event;
+    this.onChange(event);
+    this.valueChange.emit(event);
+  }
+
+  ngOnInit() {
+    setTimeout(() => {
+      let _value: any;
+      if(this.prefillFirstOption && this.value == undefined) {
+        if(!this.multiple) {
+          this.value = this.items[0];
+        } else {
+          this.value = [this.items[0]];
+        }
       }
-    }
-    this.onChange(this.value);
+      this.onChange(this.value);
+      this.valueChange.emit(this.value);
+    }, 0);
   }
 
   compareFn(item: any, selected: any) {

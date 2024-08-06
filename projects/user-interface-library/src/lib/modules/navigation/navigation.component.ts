@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { NavigationLink } from '../../core/models/navigation-link';
 import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 
@@ -7,7 +7,7 @@ import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements AfterViewInit {
+export class NavigationComponent implements OnInit {
   @Input() showRightAlignedContent: boolean = true;
   @Input() links: NavigationLink[] = [
     { label:'Route', path:'/thetools', type: NavigationLinkType.Route },
@@ -33,7 +33,7 @@ export class NavigationComponent implements AfterViewInit {
         this.adjustNav();
     }
 
-  ngAfterViewInit() {
+  ngOnInit() {
       this.adjustNav();
   }
 

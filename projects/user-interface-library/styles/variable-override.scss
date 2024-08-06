@@ -132,6 +132,7 @@ body {
     }
   
     &:disabled {
+      pointer-events: none;
       svg {
         filter: grayscale(100%);
       }

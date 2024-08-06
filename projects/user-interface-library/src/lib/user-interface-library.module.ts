@@ -9,9 +9,9 @@ import { TextInputsModule } from './modules/text-inputs/text-inputs.module';
 import { CheckboxesModule } from './modules/checkboxes/checkboxes.module';
 import { InputAnnotationsModule } from './modules/input-annotations/input-annotations.module';
 import { NavigationModule } from './modules/navigation/navigation.module';
-import { DropdownsModule } from './modules/dropdowns/dropdowns.module';
 import { SelectModule } from '../public-api';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FormControlModule } from './modules/form-control/form-control.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CheckboxesModule,
     InputAnnotationsModule,
     NavigationModule,
-    DropdownsModule,
-    SelectModule
+    SelectModule,
+    FormControlModule
   ],
   exports: [
     UserInterfaceLibraryComponent,

@@ -137,6 +137,10 @@ uilibrary-textarea {
   flex-grow: 1;
 }
 
+uilibrary-select {
+  flex-grow: 1;
+}
+
 .required {
   color: var(--danger);
   font-weight: bold;
@@ -1511,96 +1515,18 @@ input:hover+.slider:before {
   }
 }
 
-/* Inline dropdown */ 
-.inline-dropdown-parent {
-  .inline-dropdown-content{
-    position: relative;
-  }
-
-  label {
-      padding: 0.35em 0.5em 0.35em 0.35em;
-  }
-
-  label:after {
-      display: inline-block;
-      margin-left: 0.255em;
-      vertical-align: 0.255em;
-      content: "";
-      border-top: 0;
-      border-right: 0.3em solid transparent;
-      border-bottom: 0.3em solid;
-      border-left: 0.3em solid transparent;
-      transition: transform 0.2s ease;
-      transform: rotate(180deg);
-  }
-
-  .inline-dropdown-child {
-    position:absolute;
-    top: -35px;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-    max-height: 0px;
-    transition: max-height 0.2s ease-in-out;
-    width: 100%;
-    visibility: hidden;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-
-    span {
-      width: 100%;
-      padding: 0.35em 0 0.35em 0.35em;
-      transition: border-width 0.1s ease-in-out;
-      cursor: pointer;
-    }
-
-    span:first-child:after {
-      display: inline-block;
-      margin-left: 0.255em;
-      vertical-align: 0.255em;
-      content: "";
-      border-top: 0;
-      border-right: 0.3em solid transparent;
-      border-bottom: 0.3em solid;
-      border-left: 0.3em solid transparent;
-      transition: transform 0.2s ease;
-      transform: rotate(180deg);
-    }
-
-    span:hover {
-      border-left: 0.25em solid $primary;
-    }
-
-    .selected {
-      background-color: #dedede;
-      cursor: default !important;
-    }
-
-    .selected:hover {
-      border-left: 0;
-    }
-  }
-
-  &:hover {
-    .inline-dropdown-child {
-      max-height: 500px;
-      z-index: 1000;
-      visibility: visible;
-      overflow-y: auto;
-      span:first-child:after {
-          transform: rotate(0deg);
-      }
-    }
-  }
-}
-
 //Select Overrides
 .ng-select.custom {
   border:0px;
   border-radius: 0;
   height: 50px !important;
   flex: 1;
+  appearance: none !important; 
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  box-shadow: unset;
+  border-color: $borderColour;
 }
 
 .ng-select.custom .ng-select-container  {            
@@ -1633,7 +1559,6 @@ input:hover+.slider:before {
   top: 3px !important;
 }
 
-
 .ng-select.ng-select-opened.ng-select-bottom >.ng-select-container {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
@@ -1661,6 +1586,24 @@ input:hover+.slider:before {
   transform-origin: top center;
 }
 
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+  top: unset !important;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  color: black;
+  font-size: 14px;
+  left: 15px;
+}
+
+.ng-select .ng-select-container .ng-value-container {
+  padding-left: 20px;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-input>input {
+  margin-left: 10px;
+}
+
 @keyframes growDown {
   0% {
     transform: scaleY(0)
@@ -1670,17 +1613,14 @@ input:hover+.slider:before {
   }
 }
 
-
-.ng.select.custom.hasErrors {
-  .ng-select.ng-select-opened > .ng-select-container {
-    border-color: var(--danger);
-  }
-}
-
 .ng-touched.hasErrors {
   .ng-select-container {
     border-color: var(--danger) !important;
     color: var(--danger);
+  }
+
+  .ng-select.ng-select-opened > .ng-select-container {
+    border-color: var(--danger);
   }
 
   .ng-dropdown-panel.ng-select-bottom {

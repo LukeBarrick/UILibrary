@@ -14,9 +14,6 @@ export * from './lib/modules/input-annotations/hint/hint.component';
 export * from './lib/modules/input-annotations/required/required.component';
 export * from './lib/modules/input-annotations/tooltip/tooltip.component';
 
-export * from './lib/modules/dropdowns/dropdowns.module';
-export * from './lib/modules/dropdowns/dropdown/dropdown.component';
-
 export * from './lib/modules/checkboxes/checkboxes.module';
 
 export * from './lib/modules/navigation/navigation.module';
@@ -26,3 +23,6 @@ export * from './lib/modules/navigation/navigation-option/navigation-option.comp
 
 export * from './lib/modules/select/select.module';
 export * from './lib/modules/select/select.component';
+
+export * from './lib/modules/form-control/form-control.module';
+export * from './lib/modules/form-control/form-control.component';
