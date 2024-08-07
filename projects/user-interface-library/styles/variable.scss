@@ -8,18 +8,28 @@ $primaryFont: #577399 !default;
 $secondaryFont: #FFFFFF !default;
 $tertiaryFont: #FFFFFF !default;
 
-$primary-light: rgba($primary, 0.25);
-$secondary-light:  rgba($secondary, 0.25);
-$tertiary-light: rgba($tertiary, 0.25);
+$primary-light: lighten($primary, 25%);
+$secondary-light:  lighten($secondary, 25%);
+$tertiary-light: lighten($tertiary, 25%);
 
-$primary-dark: darken($primary, 20%);
-$secondary-dark: darken($secondary, 20%);
-$tertiary-dark: darken($tertiary, 20%);
+$primary-dark: darken($primary, 25%);
+$secondary-dark: darken($secondary, 25%);
+$tertiary-dark: darken($tertiary, 25%);
 
 $success: #028A4D !default;
 $info: #007EAB !default;
 $warning: #E8C557 !default;
 $danger: #D63D52 !default;
+
+$danger-light: #F7BDC9 !default;
+$success-light: #D6E7C3 !default;
+$warning-light: #F2E5C0 !default;
+$info-light: #D9EEF5 !default;
+
+$danger-dark: #430F13 !default;
+$success-dark: #405C25 !default;
+$warning-dark: #422C13 !default;
+$info-dark: #172C4A !default;
 
 :root {
   --primary: #{$primary};
@@ -42,15 +52,15 @@ $danger: #D63D52 !default;
   --warning: #{$warning};
   --danger: #{$danger};
 
-  --light-danger: #F7BDC9;
-  --light-success: #D6E7C3;
-  --light-warning: #F2E5C0;
-  --light-info: #D9EEF5;
+  --success-light: #{$success-light};
+  --info-light: #{$info-light};
+  --warning-light: #{$warning-light};
+  --danger-light: #{$danger-light};
 
-  --dark-danger: #430F13;
-  --dark-success: #405C25;
-  --dark-warning: #422C13;
-  --dark-info: #172C4A;
+  --success-dark: #{$success-dark};
+  --info-dark: #{$info-dark};
+  --warning-dark: #{$warning-dark};
+  --danger-dark: #{$danger-dark};
 
   --page-wrapper-max-width: 100%;
 }
@@ -79,8 +89,6 @@ $transparent-dark-bg: rgba(0, 0, 0, 0.05);
 $lft: left;
 $rgt: right;
 $card-alt: #e4e9ef;
-
-
 
 // ======================================================
 // Bootstrap override colors
@@ -139,10 +147,7 @@ $muted: $gray-500 !default;
 //
 // Light Colors
 //
-$light-danger: #F7BDC9;
-$light-success: #D6E7C3;
-$light-warning: #F2E5C0;
-$light-info: #D9EEF5;
+
 $light-primary: #f1effd;
 $light-inverse: #f6f6f6;
 $light-megna: #e0f2f4;
@@ -150,10 +155,6 @@ $light-megna: #e0f2f4;
 //
 // Dark Colors
 //
-$danger-dark: #430F13;
-$success-dark: #405C25;
-$warning-dark: #422C13;
-$info-dark: #172C4A;
 $primary-dark: #6352ce;
 $red-dark: #d61f1f;
 $inverse-dark: #232a37;
@@ -175,13 +176,18 @@ $theme-colors: map-merge(
     "cyan": $cyan,
     "orange": $orange,
     "purple": $purple,
-    "light-danger": $light-danger,
-    "light-success": $light-success,
-    "light-warning": $light-warning,
-    "light-primary": $light-primary,
-    "light-info": $light-info,
     "light-inverse": $light-inverse,
     "light-megna": $light-megna,
+    "light-primary": $primary,
+    "danger-light": $danger-light,
+    "success-light": $success-light,
+    "warning-light": $warning-light,
+    "info-light": $info-light,
+    "success-dark": $success-dark,
+    "warning-dark": $warning-dark,
+    "danger-dark": $danger-dark,
+    "info-dark": $info-dark,
+   
   ),
   $theme-colors
 );

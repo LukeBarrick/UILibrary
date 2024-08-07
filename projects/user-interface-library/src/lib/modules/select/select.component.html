@@ -1,5 +1,5 @@
   <ng-select class="custom" [(ngModel)]="value" [items]="items" [disabled]="disabled" bindLabel="label"
-  [ngClass]="{'hasErrors': errors !== null ? true : false}" bindValue="value" [compareWith]="compareFn"
+  bindValue="value" [compareWith]="compareFn"
   (change)="handleChange($event)" (focus)="onTouched($event)" [loading]="loading" [loadingText]="loadingText"
   [multiple]="multiple" [maxSelectedItems]="maxSelectedItems" [hideSelected]="hideSelected"
   [clearSearchOnAdd]="clearSearchOnAdd" [readonly]="readonly" [placeholder]="placeholder" [notFoundText]="notFoundText"

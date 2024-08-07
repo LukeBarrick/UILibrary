@@ -44,68 +44,52 @@
   <button class="btn-small btn-secondary success">Small Secondary Success Button</button>
   <button class="btn-small btn-secondary success" disabled>Small Disabled Secondary Success Button</button>
 </section>
-<section class="medium d-flex flex-row">
-  <uilibrary-tooltip [placement]="'top'">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
-  </uilibrary-tooltip>
-  <uilibrary-tooltip [placement]="'bottom'">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
-  </uilibrary-tooltip>
-  <uilibrary-tooltip [placement]="'left'">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
-  </uilibrary-tooltip>
-  <uilibrary-tooltip [placement]="'right'">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
-  </uilibrary-tooltip>
-</section>
-<section class="small d-flex flex-column">
+
+<section [formGroup]="textInputs" class="small d-flex flex-column">
 
   <uilibrary-textinput>
-    <input input type="text" placeholder="" />
     <label label for="#input">Text Input</label>
   </uilibrary-textinput>
 
   <uilibrary-form-control>
     <uilibrary-textinput>
-      <input input type="text" placeholder="" />
       <label label for="#input">Text Input w/ Hint</label>
     </uilibrary-textinput>
-    <uilibrary-hint variant="normal">Please provider a value.</uilibrary-hint>
+    <uilibrary-hint variant="normal">This is a text input.</uilibrary-hint>
   </uilibrary-form-control>
 
-
-  <uilibrary-textinput>
-    <input input type="text" placeholder="" [class.error]="true" />
+  <!-- TO DO ARIA LABELS FOR TEXT INPUT LABELS -->
+  <uilibrary-textinput formControlName="textInput1" >
     <label label for="#input">Text Input w/ Error</label>
   </uilibrary-textinput>
 
   <uilibrary-form-control>
-    <uilibrary-textinput input>
-      <input input type="text" placeholder="" [class.error]="true" />
+    <uilibrary-textinput input formControlName="textInput2" >
       <label label for="#input">Text Input w/ Error, Hint</label>
     </uilibrary-textinput>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+    <uilibrary-hint
+    *ngIf="textInputs.controls.textInput1.hasError('required') && textInputs.controls.textInput2.touched">
+    Please provide a value.
+  </uilibrary-hint>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
-    <uilibrary-textinput input>
-      <input input type="text" placeholder="" [class.error]="true" />
+    <uilibrary-textinput input formControlName="textInput3" >
       <label label for="#input">Text Input w/ Error, Hint, Tooltip</label>
     </uilibrary-textinput>
     <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
     </uilibrary-tooltip>
-    <uilibrary-hint>Please provider a value</uilibrary-hint>
+    <uilibrary-hint *ngIf="textInputs.controls.textInput3.hasError('required') && textInputs.controls.textInput3.touched">Please provide your full name.</uilibrary-hint>
   </uilibrary-form-control>
 
 
   <uilibrary-form-control>
-    <uilibrary-textinput input>
-      <input input required type="text" placeholder="" [class.error]="true" />
+    <uilibrary-textinput input formControlName="textInput4" >
       <label label for="#input">Text Input w/ Error, Hint, Required</label>
     </uilibrary-textinput>
     <uilibrary-required required></uilibrary-required>
-    <uilibrary-hint>Please enter your full name.</uilibrary-hint>
+    <uilibrary-hint *ngIf="textInputs.controls.textInput4.hasError('required') && textInputs.controls.textInput4.touched">Please provide your full name.</uilibrary-hint>
   </uilibrary-form-control>
 
 </section>
@@ -157,7 +141,7 @@
   </uilibrary-form-control>
 </section>
 
-<section [formGroup]="form2" class="small">
+<section [formGroup]="selectControls" class="small">
   <uilibrary-select [items]="items" placeholder="Basic Select">
     <ng-template #labelTemplate let-item>
       <div>
@@ -185,6 +169,20 @@
   </uilibrary-select>
 
   <uilibrary-select [(value)]="currentSelection" [items]="items" placeholder="Basic Select w/ Two Way Binding"
+    [clearable]="true">
+    <ng-template #labelTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    <ng-template #optionTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+  </uilibrary-select>
+
+  <uilibrary-select [(value)]="currentSelection" [items]="items" placeholder="Basic Select w/ Errors" [class.error]="true"
     [clearable]="true">
     <ng-template #labelTemplate let-item>
       <div>
@@ -241,13 +239,13 @@
         </div>
       </ng-template>
     </uilibrary-select>
-    <uilibrary-hint variant="normal">The selected value is {{form2.controls['selectControl'].value}}</uilibrary-hint>
+    <uilibrary-hint variant="normal">The selected value is {{selectControls.controls.selectControl.value}}</uilibrary-hint>
   </uilibrary-form-control>
 
 
   <uilibrary-form-control>
-    <uilibrary-select input formControlName="selectControl2" [errors]="form2.controls['selectControl2'].errors"
-      [items]="items" placeholder="Form Control Select w/ Errors" [searchable]="true" [searchFn]="customSearchFn"
+    <uilibrary-select input formControlName="selectControl2" [items]="items"
+      placeholder="Form Control Select w/ Errors" 
       [clearable]="true">
       <ng-template #labelTemplate let-item>
         <div>
@@ -260,15 +258,15 @@
         </div>
       </ng-template>
     </uilibrary-select>
-    <uilibrary-hint variant="normal">The selected value is {{form2.value.selectControl2}}</uilibrary-hint>
+    <uilibrary-hint variant="normal">The selected value is {{selectControls.value.selectControl2}}</uilibrary-hint>
     <uilibrary-hint
-      *ngIf="form2.controls['selectControl2'].hasError('required') && form2.controls['selectControl2'].touched">
-      Please provider a value.
+      *ngIf="selectControls.controls.selectControl2.hasError('required') && selectControls.controls.selectControl2.touched">
+      Please provide a value.
     </uilibrary-hint>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
-    <uilibrary-select formControlName="selectControl4" input [items]="items" [multiple]="true" [maxSelectedItems]="5"
+    <uilibrary-select formControlName="selectControl4" input [items]="items" [multiple]="true" [maxSelectedItems]="4"
       [closeOnSelect]="false" placeholder="Select w/ multi-selection">
       <ng-template #labelTemplate let-item>
         <div>
@@ -281,6 +279,51 @@
         </div>
       </ng-template>
     </uilibrary-select>
+  </uilibrary-form-control>
+
+  <uilibrary-form-control>
+    <uilibrary-select formControlName="selectControl5" input [items]="items" 
+      placeholder="Required Select" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+    <uilibrary-required required></uilibrary-required>
+    <uilibrary-hint
+    *ngIf="selectControls.controls.selectControl5.hasError('required') && selectControls.controls.selectControl5.touched">
+    Please provide a value.
+  </uilibrary-hint>
+  </uilibrary-form-control>
+
+  <uilibrary-form-control>
+    <uilibrary-select formControlName="selectControl6" input [items]="items"
+      placeholder="Select w/ Tooltip" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+    <uilibrary-required required></uilibrary-required>
+    <uilibrary-hint
+    *ngIf="selectControls.controls.selectControl6.hasError('required') && selectControls.controls.selectControl6.touched">
+    Please provide a value.
+  </uilibrary-hint>
   </uilibrary-form-control>
 </section>
 
@@ -366,3 +409,49 @@
     <label label>This is a label</label>
   </uilibrary-toggle>
 </section> -->
+
+<section class="medium d-flex flex-row">
+  <uilibrary-tooltip [placement]="'top'">
+    <span content><strong>Hello</strong> <br /> this is a name </span>
+  </uilibrary-tooltip>
+  <uilibrary-tooltip [placement]="'bottom'">
+    <span content><strong>Hello</strong> <br /> this is a name </span>
+  </uilibrary-tooltip>
+  <uilibrary-tooltip [placement]="'left'">
+    <span content><strong>Hello</strong> <br /> this is a name </span>
+  </uilibrary-tooltip>
+  <uilibrary-tooltip [placement]="'right'">
+    <span content><strong>Hello</strong> <br /> this is a name </span>
+  </uilibrary-tooltip>
+</section>
+
+<section class="medium d-flex flex-column">
+  <div class="status-tag information">Information</div>
+  <div class="status-tag warning">Warning</div>
+  <div class="status-tag error">Error</div>
+  <div class="status-tag success">Success</div>
+</section>
+
+<section class="medium d-flex flex-column">
+
+  <div class="ui-toast information">
+    <b>Information</b>
+    <span>No activity in the last 7 days.</span>
+  </div>
+
+  <div class="ui-toast warning">
+    <b>Warning</b>
+    <span>Altering rule configuration will immediately impact deployment activity.</span>
+  </div>
+
+  <div class="ui-toast error">
+    <b>Error</b>
+    <span>This routing rule cannot be deleted.</span>
+  </div>
+
+  <div class="ui-toast success">
+    <b>Success</b>
+    <span>Verification completed successfully.</span>
+  </div>
+
+</section>

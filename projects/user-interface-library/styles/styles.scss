@@ -6,6 +6,8 @@
 // Overrides bootstrap default variables
 @import "variable-override";
 
+
+
 h1 {
   color: var(--primary);
   text-align: left;
@@ -152,35 +154,7 @@ uilibrary-select {
 
 
 
-.error {
-  button {
-    border-color: var(--danger) !important;
-    color: var(--danger)  !important;
-  }
 
-  label {
-    border-color: var(--danger)  !important;
-    color: var(--danger)  !important;
-  }
-
-  input {
-    border-color: var(--danger)  !important;
-    color: var(--danger)  !important;
-  }
-
-  .dropdown-input-custom {
-    input {
-      &::placeholder {
-        color: var(--danger) !important;
-      }
-    }
-  }
-  
-  textarea {
-    border-color: var(--danger) !important;
-    color: var(--danger)  !important;
-  }
-}
 
 .dropdown-menu.show {
   font: inherit;
@@ -188,12 +162,6 @@ uilibrary-select {
 
 .input-field {
   position: relative;
-}
-
-.input-field > .error,
-.input-field > .error + .input-label .label-name label {
-  border-color: var(--danger)  !important;
-  color: var(--danger)  !important;
 }
 
 .input-field>input[type=text] {
@@ -342,12 +310,6 @@ uilibrary-select {
 
 .textarea-field {
   position: relative;
-}
-
-.textarea-field > .error,
-.textarea-field > .error + .textarea-label .textarea-label-name label {
-  border-color: var(--danger)  !important;
-  color: var(--danger)  !important;
 }
 
 .textarea-field>textarea {
@@ -1604,6 +1566,32 @@ input:hover+.slider:before {
   margin-left: 10px;
 }
 
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  background-color: #DEDEDE;
+  padding: 5px;
+  border-radius: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  margin: 5px;
+  border-radius: 7px;
+
+
+  &.ng-option-selected {
+    background-color: #DEDEDE;
+  }
+
+  &.ng-option-selected.ng-option-marked {
+    background-color: #DEDEDE;
+  }
+
+  &.ng-option-marked {
+    background-color: #EEEEEE;
+  }
+}
+
 @keyframes growDown {
   0% {
     transform: scaleY(0)
@@ -1613,17 +1601,152 @@ input:hover+.slider:before {
   }
 }
 
-.ng-touched.hasErrors {
-  .ng-select-container {
+
+
+//Status Tags
+.status-tag {
+  border: 1px, solid;
+  max-width: 240px;
+  border-radius: 7px;
+  text-align: center;
+
+  b, strong {
+    font-weight: 600;
+  }
+
+  &.information {
+    border-color: var(--info);
+    background-color: var(--info-light);
+    color: var(--info-dark);
+  }
+
+  &.warning {
+    border-color: var(--warning);
+    background-color: var(--warning-light);
+    color: var(--warning-dark);
+  }
+
+  &.error {
+    border-color: var(--danger);
+    background-color: var(--danger-light);
+    color: var(--danger-dark);
+  }
+
+  &.success {
+    border-color: var(--success);
+    background-color: var(--success-light);
+    color: var(--success-dark);
+  }
+}
+
+//Toasts
+//Status Tags
+.ui-toast {
+  border: 1px, solid;
+  border-radius: 7px;
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  flex-direction: column;
+  justify-content: left;
+  align-content: center;
+
+  p {
+    margin-bottom: 0px;
+  }
+
+  b, strong {
+    font-weight: 600;
+  }
+
+  &.information {
+    border-color: var(--info);
+    background-color: var(--info-light);
+    color: var(--info-dark);
+  }
+
+  &.warning {
+    border-color: var(--warning);
+    background-color: var(--warning-light);
+    color: var(--warning-dark);
+  }
+
+  &.error {
+    border-color: var(--danger);
+    background-color: var(--danger-light);
+    color: var(--danger-dark);
+  }
+
+  &.success {
+    border-color: var(--success);
+    background-color: var(--success-light);
+    color: var(--success-dark);
+  }
+}
+
+//Invalid Form Control styles 
+//Select
+.ng-invalid.ng-touched {
+  >.ng-touched {
+    &.ng-select .ng-select-container {
+      border-color: var(--danger) !important;
+    }
+
+    &.ng-select.ng-select-opened>.ng-select-container {
+      border-color: var(--danger);
+    }
+
+    &.ng-select.ng-select-opened .ng-dropdown-panel {
+      border-color: var(--danger) !important;
+    }
+
+    &.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+      color: var(--danger) !important;
+    }
+  }
+
+  .ng-touched {
+    .textarea-field input[type=text],
+    .textarea-field input[type=text]+.textarea-label .label-name label {
+      border-color: var(--danger) !important;
+      color: var(--danger) !important;
+    }
+
+    .input-field input[type=text],
+    .input-field input[type=text]+.input-label .label-name label {
+      border-color: var(--danger) !important;
+      color: var(--danger) !important;
+    }
+  }
+}
+
+//Class.Error
+.error {
+  input[type=text] {
     border-color: var(--danger) !important;
-    color: var(--danger);
+    color: var(--danger)  !important;
   }
 
-  .ng-select.ng-select-opened > .ng-select-container {
+  textarea {
+    border-color: var(--danger) !important;
+    color: var(--danger)  !important;
+  }
+
+  .ng-select .ng-select-container {
+    border-color: var(--danger) !important;
+  }
+
+  .ng-select.ng-select-opened>.ng-select-container {
     border-color: var(--danger);
   }
 
-  .ng-dropdown-panel.ng-select-bottom {
-    border-color: var(--danger);
+  .ng-select.ng-select-opened .ng-dropdown-panel {
+    border-color: var(--danger) !important;
+  }
+
+  .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    color: var(--danger) !important;
   }
 }

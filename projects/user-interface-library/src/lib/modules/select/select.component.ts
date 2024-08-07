@@ -30,7 +30,6 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() items: any;
 
   @Input() prefillFirstOption: boolean = false;
-  @Input() errors: ValidationErrors | null = null;
   @Input() ariaLabel: string = ''
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
@@ -60,6 +59,8 @@ export class SelectComponent implements ControlValueAccessor {
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  touched = false;
+
   writeValue(value: any): void {
     this.value = value;
   }
@@ -70,6 +71,13 @@ export class SelectComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  markAsTouched() {
+    if (!this.touched) {
+      this.onTouched();
+      this.touched = true;
+    }
   }
 
   setDisabledState?(isDisabled: boolean): void {
