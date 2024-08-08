@@ -378,14 +378,14 @@
   </uilibrary-checkbox>
 </section>
 <section [formGroup]="checkBoxes" class="large d-flex flex-row">
+  <uilibrary-checkbox variant='branded' formControlName="checkbox1">
+    <label label>Form Control Text box</label>
+  </uilibrary-checkbox>
   <uilibrary-checkbox variant="fail">
     <label label>Fail Basic Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass" [(value)]="checked">
     <label label>Pass Two way Binding Checkbox</label>
-  </uilibrary-checkbox>
-  <uilibrary-checkbox variant='branded' formControlName="checkbox1">
-    <label label>Form Control Text box</label>
   </uilibrary-checkbox>
 </section>
 
@@ -393,15 +393,15 @@
 
   <uilibrary-radio-group input [(value)]="currentSelection3">
     <uilibrary-radio-button value="option1" labelPosition="right"><label label>Option 1</label></uilibrary-radio-button>
-    <uilibrary-radio-button value="option2" labelPosition="left"><label label>Option 2</label></uilibrary-radio-button>
+    <uilibrary-radio-button value="option2" labelPosition="right"><label label>Option 2</label></uilibrary-radio-button>
     <uilibrary-radio-button value="option3" labelPosition="right"><label label>Option 3</label></uilibrary-radio-button>
   </uilibrary-radio-group>
 
   <uilibrary-form-control>
     <uilibrary-radio-group input formControlName="radioButton1">
-      <uilibrary-radio-button value="option1" labelPosition="right"><label label>Option 1</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="option1" labelPosition="left"><label label>Option 1</label></uilibrary-radio-button>
       <uilibrary-radio-button value="option2" labelPosition="left"><label label>Option 2</label></uilibrary-radio-button>
-      <uilibrary-radio-button value="option3" labelPosition="right"><label label>Option 3</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="option3" labelPosition="left"><label label>Option 3</label></uilibrary-radio-button>
     </uilibrary-radio-group>
     <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
