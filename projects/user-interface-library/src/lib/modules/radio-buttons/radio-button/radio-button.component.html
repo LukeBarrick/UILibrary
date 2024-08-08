@@ -1,0 +1,13 @@
+<div class="d-flex flex-row input-radio">
+  <div class="form-check">
+    <div class="check-input">
+      <input type="radio" [value]="value" [checked]="selected" [disabled]="disabled" (change)="selectButton()"/>
+    </div>
+  </div>
+  <div class="check-label" [ngClass]="{'left': labelPosition === 'left', 'right': labelPosition === 'right'}">
+    <ng-content></ng-content>
+  </div>
+</div>
+
+
+

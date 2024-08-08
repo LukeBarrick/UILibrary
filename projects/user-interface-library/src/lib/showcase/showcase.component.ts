@@ -53,11 +53,32 @@ export class ShowcaseComponent implements OnInit {
     textInput2: new FormControl('',[Validators.required]),
     textInput3: new FormControl('',[Validators.required]),
     textInput4: new FormControl('',[Validators.required]),
-  
+    textArea1: new FormControl('',[Validators.required]),
+    textArea2: new FormControl('',[Validators.required]),
+    textArea3: new FormControl('',[Validators.required]),
+    textArea4: new FormControl('',[Validators.required]),
   });
+
+  textAreas = new FormGroup({
+    textArea1: new FormControl('',[Validators.required]),
+    textArea2: new FormControl('',[Validators.required]),
+    textArea3: new FormControl('',[Validators.required]),
+    textArea4: new FormControl('',[Validators.required]),
+  });
+
+  radioButtons = new FormGroup({
+    radioButton1: new FormControl(undefined, [Validators.required]),
+  });
+
+  checkBoxes = new FormGroup({
+    checkbox1: new FormControl(undefined, [Validators.required]),
+  });
+
+  checked: boolean = true;
 
   currentSelection: Item | undefined;
   currentSelection2: Item | undefined;
+  currentSelection3: string = 'option1';
 
   customSearchFn(term: string, item: Item) {
     term = term.toLocaleLowerCase();
@@ -67,6 +88,9 @@ export class ShowcaseComponent implements OnInit {
   debug() {
     console.log(this.selectControls)
     console.log(this.textInputs)
+    console.log(this.textAreas)
+    console.log(this.radioButtons)
+    console.log(this.checkBoxes)
     console.log(this.currentSelection)
     console.log(this.currentSelection2)
 

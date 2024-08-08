@@ -14656,6 +14656,57 @@ body {
   border-radius: var(--bs-dropdown-border-radius);
 }
 
+.ng-invalid.ng-touched .ng-invalid.ng-touched .ng-touched.ng-select .ng-select-container {
+  border-color: var(--danger) !important;
+}
+.ng-invalid.ng-touched .ng-invalid.ng-touched .ng-touched.ng-select.ng-select-opened > .ng-select-container {
+  border-color: var(--danger);
+}
+.ng-invalid.ng-touched .ng-invalid.ng-touched .ng-touched.ng-select.ng-select-opened .ng-dropdown-panel {
+  border-color: var(--danger) !important;
+}
+.ng-invalid.ng-touched .ng-invalid.ng-touched .ng-touched.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--danger) !important;
+}
+.ng-invalid.ng-touched .ng-invalid.ng-touched label {
+  color: var(--danger) !important;
+}
+.ng-invalid.ng-touched .ng-invalid.ng-touched textarea {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+.ng-invalid.ng-touched .ng-invalid.ng-touched input[type=text] {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+
+.error .input-field input[type=text],
+.error .input-field input[type=text] + .input-label .label-name label {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+.error .textarea-field textarea,
+.error .textarea-field > .textarea-label .textarea-label-name label {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+.error .ng-select .ng-select-container {
+  border-color: var(--danger) !important;
+}
+.error .ng-select.ng-select-opened > .ng-select-container {
+  border-color: var(--danger);
+}
+.error .ng-select.ng-select-opened .ng-dropdown-panel {
+  border-color: var(--danger) !important;
+}
+.error .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--danger) !important;
+}
+
+.input-radio .form-check {
+  order: 1 !important;
+}
+
 h1, .h1 {
   color: var(--primary);
   text-align: left;
@@ -15056,7 +15107,7 @@ uilibrary-select {
 }
 
 .checkbox-small-margin {
-  margin-left: 30px;
+  margin-left: 15px;
   line-height: 25px;
   display: flex;
   align-items: center;
@@ -16105,50 +16156,6 @@ input:hover + .slider:before {
   border-color: var(--success);
   background-color: var(--success-light);
   color: var(--success-dark);
-}
-
-.ng-invalid.ng-touched > .ng-touched.ng-select .ng-select-container {
-  border-color: var(--danger) !important;
-}
-.ng-invalid.ng-touched > .ng-touched.ng-select.ng-select-opened > .ng-select-container {
-  border-color: var(--danger);
-}
-.ng-invalid.ng-touched > .ng-touched.ng-select.ng-select-opened .ng-dropdown-panel {
-  border-color: var(--danger) !important;
-}
-.ng-invalid.ng-touched > .ng-touched.ng-select .ng-select-container .ng-value-container .ng-placeholder {
-  color: var(--danger) !important;
-}
-.ng-invalid.ng-touched .ng-touched .textarea-field input[type=text],
-.ng-invalid.ng-touched .ng-touched .textarea-field input[type=text] + .textarea-label .label-name label {
-  border-color: var(--danger) !important;
-  color: var(--danger) !important;
-}
-.ng-invalid.ng-touched .ng-touched .input-field input[type=text],
-.ng-invalid.ng-touched .ng-touched .input-field input[type=text] + .input-label .label-name label {
-  border-color: var(--danger) !important;
-  color: var(--danger) !important;
-}
-
-.error input[type=text] {
-  border-color: var(--danger) !important;
-  color: var(--danger) !important;
-}
-.error textarea {
-  border-color: var(--danger) !important;
-  color: var(--danger) !important;
-}
-.error .ng-select .ng-select-container {
-  border-color: var(--danger) !important;
-}
-.error .ng-select.ng-select-opened > .ng-select-container {
-  border-color: var(--danger);
-}
-.error .ng-select.ng-select-opened .ng-dropdown-panel {
-  border-color: var(--danger) !important;
-}
-.error .ng-select .ng-select-container .ng-value-container .ng-placeholder {
-  color: var(--danger) !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -354,3 +354,75 @@ body {
     border-radius: var(--bs-dropdown-border-radius);
   }
 
+
+//Invalid Form Control styles 
+.ng-invalid.ng-touched {
+  .ng-invalid.ng-touched {
+    .ng-touched {
+      &.ng-select .ng-select-container {
+        border-color: var(--danger) !important;
+      }
+  
+      &.ng-select.ng-select-opened>.ng-select-container {
+        border-color: var(--danger);
+      }
+  
+      &.ng-select.ng-select-opened .ng-dropdown-panel {
+        border-color: var(--danger) !important;
+      }
+  
+      &.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+        color: var(--danger) !important;
+      }
+    }
+
+    label {
+      color: var(--danger) !important;
+    }
+
+    textarea {
+      border-color: var(--danger) !important;
+      color: var(--danger) !important;
+    }
+
+    input[type=text] {
+      border-color: var(--danger) !important;
+      color: var(--danger) !important;
+    }
+  }
+}
+
+//Class.Error
+.error {
+  .input-field input[type=text],
+  .input-field input[type=text]+.input-label .label-name label {
+    border-color: var(--danger) !important;
+    color: var(--danger) !important;
+  }
+
+  .textarea-field textarea,
+  .textarea-field > .textarea-label .textarea-label-name label {
+    border-color: var(--danger) !important;
+    color: var(--danger)  !important;
+  }
+
+  .ng-select .ng-select-container {
+    border-color: var(--danger) !important;
+  }
+
+  .ng-select.ng-select-opened>.ng-select-container {
+    border-color: var(--danger);
+  }
+
+  .ng-select.ng-select-opened .ng-dropdown-panel {
+    border-color: var(--danger) !important;
+  }
+
+  .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    color: var(--danger) !important;
+  }
+}
+
+.input-radio .form-check {
+  order: 1 !important;
+}

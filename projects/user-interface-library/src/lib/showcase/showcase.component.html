@@ -51,6 +51,15 @@
     <label label for="#input">Text Input</label>
   </uilibrary-textinput>
 
+  <uilibrary-textinput [class.error]="true">
+    <label label for="#input">Text Input w/ Error</label>
+  </uilibrary-textinput>
+
+  <uilibrary-textinput [disabled]="true">
+    <label label for="#input">Disabled Text Input</label>
+  </uilibrary-textinput>
+
+  <!-- TO DO ARIA LABELS FOR TEXT INPUT LABELS -->
   <uilibrary-form-control>
     <uilibrary-textinput>
       <label label for="#input">Text Input w/ Hint</label>
@@ -58,17 +67,12 @@
     <uilibrary-hint variant="normal">This is a text input.</uilibrary-hint>
   </uilibrary-form-control>
 
-  <!-- TO DO ARIA LABELS FOR TEXT INPUT LABELS -->
-  <uilibrary-textinput formControlName="textInput1" >
-    <label label for="#input">Text Input w/ Error</label>
-  </uilibrary-textinput>
-
   <uilibrary-form-control>
     <uilibrary-textinput input formControlName="textInput2" >
       <label label for="#input">Text Input w/ Error, Hint</label>
     </uilibrary-textinput>
     <uilibrary-hint
-    *ngIf="textInputs.controls.textInput1.hasError('required') && textInputs.controls.textInput2.touched">
+    *ngIf="textInputs.controls.textInput2.hasError('required') && textInputs.controls.textInput2.touched">
     Please provide a value.
   </uilibrary-hint>
   </uilibrary-form-control>
@@ -83,7 +87,6 @@
     <uilibrary-hint *ngIf="textInputs.controls.textInput3.hasError('required') && textInputs.controls.textInput3.touched">Please provide your full name.</uilibrary-hint>
   </uilibrary-form-control>
 
-
   <uilibrary-form-control>
     <uilibrary-textinput input formControlName="textInput4" >
       <label label for="#input">Text Input w/ Error, Hint, Required</label>
@@ -93,51 +96,50 @@
   </uilibrary-form-control>
 
 </section>
-<section class="medium">
+<section class="medium" [formGroup]="textAreas">
   <uilibrary-textarea>
-    <textarea input type="text" placeholder=""></textarea>
     <label label for="#input">Text Area</label>
+  </uilibrary-textarea>
+
+  <uilibrary-textarea [class.error]="true">
+    <label label for="#input">Text Area w/ Error</label>
+  </uilibrary-textarea>
+
+  <uilibrary-textarea [disabled]="true">
+    <label label for="#input">Disabled Text Area</label>
   </uilibrary-textarea>
 
   <uilibrary-form-control>
     <uilibrary-textarea>
-      <textarea input type="text" placeholder=""></textarea>
       <label label for="#input">Text Area w/ Hint</label>
     </uilibrary-textarea>
     <uilibrary-hint variant="normal">Please rate your recent visit and give us some feedback</uilibrary-hint>
   </uilibrary-form-control>
 
-  <uilibrary-textarea>
-    <textarea input type="text" placeholder="" [class.error]="true"></textarea>
-    <label label for="#input">Text Area w/ Error</label>
-  </uilibrary-textarea>
-
   <uilibrary-form-control>
-    <uilibrary-textarea>
-      <textarea input type="text" placeholder="" [class.error]="true"></textarea>
-      <label label for="#input">Text Area w/ Error, Hint</label>
+    <uilibrary-textarea input formControlName="textArea1">
+      <label label for="#input">Text Area Form Control w/ Error, Hint</label>
     </uilibrary-textarea>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+    <uilibrary-hint *ngIf="textAreas.controls.textArea1.hasError('required') && textAreas.controls.textArea1.touched">Please provider a value.</uilibrary-hint>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
-    <uilibrary-textarea input>
-      <textarea input required type="text" placeholder="" [class.error]="true"></textarea>
-      <label label for="#input">Text Area w/ Error, Hint, Required</label>
+    <uilibrary-textarea input formControlName="textArea2">
+      <label label for="#input">Text Area Form Control w/ Error, Hint, Required</label>
     </uilibrary-textarea>
     <uilibrary-required required></uilibrary-required>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+    <uilibrary-hint variant="normal" *ngIf="textAreas.controls.textArea2.valid || !textAreas.controls.textArea2.touched">Some information about the field.</uilibrary-hint>
+    <uilibrary-hint *ngIf="textAreas.controls.textArea2.hasError('required') && textAreas.controls.textArea2.touched">Please provider a value.</uilibrary-hint>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
-    <uilibrary-textarea input>
-      <textarea input required type="text" placeholder="" [class.error]="true"></textarea>
-      <label label for="#input">Text Area w/ Error, Hint, Tooltip</label>
+    <uilibrary-textarea input formControlName="textArea3">
+      <label label for="#input">Text Area Form Control w/ Error, Hint, Tooltip</label>
     </uilibrary-textarea>
-    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+    <uilibrary-tooltip tooltip placement='right' margin='left'>
       <span content><strong>Title</strong><br />This is tooltip content.</span>
     </uilibrary-tooltip>
-    <uilibrary-hint>Please provider a value.</uilibrary-hint>
+    <uilibrary-hint *ngIf="textAreas.controls.textArea3.hasError('required') && textAreas.controls.textArea3.touched">Please provider a value.</uilibrary-hint>
   </uilibrary-form-control>
 </section>
 
@@ -182,7 +184,21 @@
     </ng-template>
   </uilibrary-select>
 
-  <uilibrary-select [(value)]="currentSelection" [items]="items" placeholder="Basic Select w/ Errors" [class.error]="true"
+  <uilibrary-select [items]="items" placeholder="Basic Select w/ Errors" [class.error]="true"
+    [clearable]="true">
+    <ng-template #labelTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    <ng-template #optionTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+  </uilibrary-select>
+
+  <uilibrary-select [items]="items" placeholder="Disabled Select" [disabled]="true"
     [clearable]="true">
     <ng-template #labelTemplate let-item>
       <div>
@@ -327,58 +343,74 @@
   </uilibrary-form-control>
 </section>
 
-<!-- 
+
 <section class="small d-flex flex-row">
-  <uilibrary-checkbox [variant]="'branded'" [size]="'large'">
+  <uilibrary-checkbox variant="branded" size="large">
     <input input type="checkbox">
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'pass'" [size]="'large'">
+  <uilibrary-checkbox variant="pass" size="large">
     <input input type="checkbox">
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'fail'" [size]="'large'">
+  <uilibrary-checkbox variant="fail" size="large">
     <input input type="checkbox">
   </uilibrary-checkbox>
 </section>
 <section class="medium d-flex flex-row">
-  <uilibrary-checkbox [variant]="'branded'" [size]="'large'">
-    <input input type="checkbox">
+  <uilibrary-checkbox variant="branded" size="large">
     <label label>This is a label</label>
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'pass'" [size]="'large'">
-    <input input type="checkbox">
+  <uilibrary-checkbox variant="pass" size="large">
     <label label>This is a label</label>
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'fail'" [size]="'large'">
-    <input input type="checkbox">
+  <uilibrary-checkbox variant="fail" size="large">
     <label label>This is a label</label>
   </uilibrary-checkbox>
 </section>
 <section class="small d-flex flex-row">
-  <uilibrary-checkbox [variant]="'branded'">
+  <uilibrary-checkbox variant="branded">
     <input input type="checkbox">
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'pass'">
+  <uilibrary-checkbox variant="pass">
     <input input type="checkbox">
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'fail'">
+  <uilibrary-checkbox variant="fail">
     <input input type="checkbox">
   </uilibrary-checkbox>
 </section>
-<section class="medium d-flex flex-row">
-  <uilibrary-checkbox [variant]="'branded'">
-    <input input type="checkbox">
-    <label label>This is a label</label>
+<section [formGroup]="checkBoxes" class="large d-flex flex-row">
+  <uilibrary-checkbox variant="fail">
+    <label label>Fail Basic Checkbox</label>
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'pass'">
-    <input input type="checkbox">
-    <label label>This is a label</label>
+  <uilibrary-checkbox variant="pass" [(value)]="checked">
+    <label label>Pass Two way Binding Checkbox</label>
   </uilibrary-checkbox>
-  <uilibrary-checkbox [variant]="'fail'">
-    <input input type="checkbox">
-    <label label>This is a label</label>
+  <uilibrary-checkbox variant='branded' formControlName="checkbox1">
+    <label label>Form Control Text box</label>
   </uilibrary-checkbox>
 </section>
-<section class="medium">
+
+<section class="small" [formGroup]="radioButtons">
+
+  <uilibrary-radio-group input [(value)]="currentSelection3">
+    <uilibrary-radio-button value="option1" labelPosition="right"><label label>Option 1</label></uilibrary-radio-button>
+    <uilibrary-radio-button value="option2" labelPosition="left"><label label>Option 2</label></uilibrary-radio-button>
+    <uilibrary-radio-button value="option3" labelPosition="right"><label label>Option 3</label></uilibrary-radio-button>
+  </uilibrary-radio-group>
+
+  <uilibrary-form-control>
+    <uilibrary-radio-group input formControlName="radioButton1">
+      <uilibrary-radio-button value="option1" labelPosition="right"><label label>Option 1</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="option2" labelPosition="left"><label label>Option 2</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="option3" labelPosition="right"><label label>Option 3</label></uilibrary-radio-button>
+    </uilibrary-radio-group>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+  </uilibrary-form-control>
+  
+</section>
+
+<!-- <section class="medium">
   <uilibrary-radiogroup>
     <uilibrary-radiobutton>
       <input input type="radio">

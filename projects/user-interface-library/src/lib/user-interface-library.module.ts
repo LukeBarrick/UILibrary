@@ -9,7 +9,7 @@ import { TextInputsModule } from './modules/text-inputs/text-inputs.module';
 import { CheckboxesModule } from './modules/checkboxes/checkboxes.module';
 import { InputAnnotationsModule } from './modules/input-annotations/input-annotations.module';
 import { NavigationModule } from './modules/navigation/navigation.module';
-import { SelectModule } from '../public-api';
+import { RadioButtonsModule, SelectModule } from '../public-api';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormControlModule } from './modules/form-control/form-control.module';
 
@@ -26,6 +26,7 @@ import { FormControlModule } from './modules/form-control/form-control.module';
     RouterModule,
     TextInputsModule,
     CheckboxesModule,
+    RadioButtonsModule,
     InputAnnotationsModule,
     NavigationModule,
     SelectModule,

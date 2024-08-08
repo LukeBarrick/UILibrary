@@ -15,6 +15,11 @@ export * from './lib/modules/input-annotations/required/required.component';
 export * from './lib/modules/input-annotations/tooltip/tooltip.component';
 
 export * from './lib/modules/checkboxes/checkboxes.module';
+export * from './lib/modules/checkboxes/checkbox/checkbox.component';
+
+export * from './lib/modules/radio-buttons/radio-buttons.module';
+export * from './lib/modules/radio-buttons/radio-group/radio-group.component';
+export * from './lib/modules/radio-buttons/radio-button/radio-button.component';
 
 export * from './lib/modules/navigation/navigation.module';
 export * from './lib/modules/navigation/navigation.component';

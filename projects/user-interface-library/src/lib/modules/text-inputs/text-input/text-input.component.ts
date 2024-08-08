@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class TextInputComponent implements ControlValueAccessor {
-  disabled: boolean = false;
+  @Input() disabled: boolean = false;
 
   constructor() {}
 

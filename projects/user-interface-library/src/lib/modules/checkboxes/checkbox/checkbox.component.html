@@ -1,0 +1,13 @@
+<div class="d-flex flex-row">
+  <div [ngClass]="{'branded': variant === 'branded', 'pass': variant === 'pass', 'fail': variant === 'fail'}">
+    <div [ngClass]="{'checkbox-small': size === 'small', 'checkbox': size === 'large'}">
+      <div class="circle"></div>
+      <label>
+        <input type="checkbox" [(ngModel)]="value" [disabled]="disabled" (click)="handleChange()"/>
+      </label>
+    </div>
+  </div>
+  <div [ngClass]="{'checkbox-small-margin': size === 'small', 'checkbox-large-margin': size === 'large'}">
+    <ng-content select="[label]"></ng-content>
+  </div>
+</div>
