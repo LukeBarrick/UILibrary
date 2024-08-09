@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class TextAreaComponent implements ControlValueAccessor {
-  @Input() disabled: boolean = false;
+  @Input() isDisabled: boolean = false;
 
   constructor() {}
 
@@ -46,7 +46,7 @@ export class TextAreaComponent implements ControlValueAccessor {
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.isDisabled = isDisabled;
   }
 
   handleChange(event: any): void {

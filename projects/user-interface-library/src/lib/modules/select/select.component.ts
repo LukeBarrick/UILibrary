@@ -31,7 +31,7 @@ export class SelectComponent implements ControlValueAccessor {
 
   @Input() prefillFirstOption: boolean = false;
   @Input() ariaLabel: string = ''
-  @Input() disabled: boolean = false;
+  @Input() isDisabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() loadingText: string = 'Loading...';
   @Input() multiple: boolean = false;
@@ -81,7 +81,7 @@ export class SelectComponent implements ControlValueAccessor {
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.isDisabled = isDisabled;
   }
 
   handleChange(event: any): void {

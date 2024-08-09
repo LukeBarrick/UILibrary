@@ -80,6 +80,8 @@ export class ShowcaseComponent implements OnInit {
   currentSelection2: Item | undefined;
   currentSelection3: string = 'option1';
 
+  isDisabled: boolean = true;
+
   customSearchFn(term: string, item: Item) {
     term = term.toLocaleLowerCase();
     return item.name.toLocaleLowerCase().indexOf(term) > -1;
@@ -94,9 +96,15 @@ export class ShowcaseComponent implements OnInit {
     console.log(this.currentSelection)
     console.log(this.currentSelection2)
 
+    this.textInputs.disable();
+    this.textAreas.disable()
+    this.selectControls.disable()
+    this.radioButtons.disable()
+    this.checkBoxes.disable()
+
+    this.isDisabled = false;
+
     //Getting values from select form control
     let value = this.selectControls.controls.selectControl.value as Item | null;
-    console.log(value?.id);
-    console.log(value?.name);
   }
 }

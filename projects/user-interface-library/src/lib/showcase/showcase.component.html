@@ -55,7 +55,7 @@
     <label label for="#input">Text Input w/ Error</label>
   </uilibrary-textinput>
 
-  <uilibrary-textinput [disabled]="true">
+  <uilibrary-textinput [isDisabled]="true">
     <label label for="#input">Disabled Text Input</label>
   </uilibrary-textinput>
 
@@ -91,7 +91,11 @@
     <uilibrary-textinput input formControlName="textInput4" >
       <label label for="#input">Text Input w/ Error, Hint, Required</label>
     </uilibrary-textinput>
+    
     <uilibrary-required required></uilibrary-required>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
     <uilibrary-hint *ngIf="textInputs.controls.textInput4.hasError('required') && textInputs.controls.textInput4.touched">Please provide your full name.</uilibrary-hint>
   </uilibrary-form-control>
 
@@ -105,7 +109,7 @@
     <label label for="#input">Text Area w/ Error</label>
   </uilibrary-textarea>
 
-  <uilibrary-textarea [disabled]="true">
+  <uilibrary-textarea [isDisabled]="true">
     <label label for="#input">Disabled Text Area</label>
   </uilibrary-textarea>
 
@@ -198,7 +202,7 @@
     </ng-template>
   </uilibrary-select>
 
-  <uilibrary-select [items]="items" placeholder="Disabled Select" [disabled]="true"
+  <uilibrary-select [items]="items" placeholder="Disabled Select" [isDisabled]="true"
     [clearable]="true">
     <ng-template #labelTemplate let-item>
       <div>
@@ -387,6 +391,9 @@
   <uilibrary-checkbox variant="pass" [(value)]="checked">
     <label label>Pass Two way Binding Checkbox</label>
   </uilibrary-checkbox>
+  <uilibrary-checkbox variant="branded" [isDisabled]="true">
+    <label label>Disabled Checkbox</label>
+  </uilibrary-checkbox>
 </section>
 
 <section class="small" [formGroup]="radioButtons">
@@ -398,7 +405,7 @@
   </uilibrary-radio-group>
 
   <uilibrary-form-control>
-    <uilibrary-radio-group input formControlName="radioButton1">
+    <uilibrary-radio-group input >
       <uilibrary-radio-button value="option1" labelPosition="left"><label label>Option 1</label></uilibrary-radio-button>
       <uilibrary-radio-button value="option2" labelPosition="left"><label label>Option 2</label></uilibrary-radio-button>
       <uilibrary-radio-button value="option3" labelPosition="left"><label label>Option 3</label></uilibrary-radio-button>
@@ -407,6 +414,19 @@
       <span content><strong>Title</strong><br />This is tooltip content.</span>
     </uilibrary-tooltip>
   </uilibrary-form-control>
+
+  <uilibrary-radio-group input >
+    <uilibrary-radio-button value="option1" labelPosition="right"><label label>Option 1</label></uilibrary-radio-button>
+    <uilibrary-radio-button value="option2" labelPosition="right"><label label>Option 2</label></uilibrary-radio-button>
+    <uilibrary-radio-button value="option3" labelPosition="right"><label label>Option 3</label></uilibrary-radio-button>
+  </uilibrary-radio-group>
+
+  <uilibrary-radio-group input formControlName="radioButton1">
+    <uilibrary-radio-button value="option1" labelPosition="right"><label label>Option 1</label></uilibrary-radio-button>
+    <uilibrary-radio-button value="option2" labelPosition="right"><label label>Option 2</label></uilibrary-radio-button>
+    <uilibrary-radio-button value="option3" labelPosition="right"><label label>Option 3</label></uilibrary-radio-button>
+  </uilibrary-radio-group>
+
   
 </section>
 

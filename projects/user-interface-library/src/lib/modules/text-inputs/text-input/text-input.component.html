@@ -1,7 +1,7 @@
 <div class="formfield d-flex flex-row">
   <div class="input-form">
     <div class="input-field" >
-      <input type="text" placeholder="" [(ngModel)]="value" [disabled]="disabled" (input)="handleChange($event)" (blur)="markAsTouched()"/> 
+      <input type="text" placeholder="" [(ngModel)]="value" [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"/> 
       <div class="input-label">
         <span class="label-name">
           <ng-content select="[label]"></ng-content>

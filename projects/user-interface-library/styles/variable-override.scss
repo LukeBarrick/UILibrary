@@ -3,20 +3,20 @@
 // ======================================================
 // Font Imports
 // ======================================================
-// @font-face {
-//   font-family: "Borna Semibold";
-//   src: url("../assets/fonts/borna-semibold.48c4e4.ttf") format("truetype");
-// }
+@font-face {
+  font-family: "Borna Semibold";
+  src: url("../assets/fonts/borna-semibold.48c4e4.ttf") format("truetype");
+}
 
-// @font-face {
-//   font-family: "Borna Medium";
-//   src: url("../assets/fonts/borna-medium.43b358.ttf") format("truetype");
-// }
+@font-face {
+  font-family: "Borna Medium";
+  src: url("../assets/fonts/borna-medium.43b358.ttf") format("truetype");
+}
 
-// @font-face {
-//   font-family: "Borna Regular";
-//   src: url("../assets/fonts/borna-regular.83323b.ttf") format("truetype");
-// }
+@font-face {
+  font-family: "Borna Regular";
+  src: url("../assets/fonts/borna-regular.83323b.ttf") format("truetype");
+}
 
 // ======================================================
 // Bootstrap Override Variables variables
@@ -425,4 +425,9 @@ body {
 
 .input-radio .form-check {
   order: 1 !important;
+}
+
+//Bootstrap dropdwon
+.dropdown-toggle::after {
+  display: none;
 }

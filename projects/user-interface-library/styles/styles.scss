@@ -1,11 +1,15 @@
+
 @import "variable";
 
+//Library style sheet imports
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../../../node_modules/@ng-select/ng-select/scss/default.theme.scss";
-//(Required file)
-// Overrides bootstrap default variables
-@import "variable-override";
 
+//(Required files)
+// Overrides bootstrap default variables
+
+@import "variable-override";
+@import "animations";
 
 
 h1 {
@@ -328,6 +332,10 @@ uilibrary-select {
   padding-right: 20px;
   line-height: 35px;
 
+  &:disabled {
+    background-color: #eeeeee;
+  }
+
   &:focus {
     border-color: var(--secondary);
   }
@@ -511,12 +519,22 @@ uilibrary-select {
     text-align: center;
     line-height: 15px;
   }
+
+  &:has(input[type=checkbox]:disabled) label:before {
+    background-color: #EEEEEE;
+    border-color: #CBCBCB;
+    pointer-events: none;
+  }
+
+  &:has(input[type=checkbox]:disabled) .circle {
+   opacity: 0;
+  }
 }
 
 .fail {
   &:has(input[type=checkbox]:checked) label:before {
     content: "";
-   // background-image: url('../assets/images/Cross.png');
+    background-image: url('../assets/images/Cross.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -590,7 +608,7 @@ uilibrary-select {
 .pass {
   &:has(input[type=checkbox]:checked) label:before {
     content: "";
-   // background-image: url('../assets/images/Tick.png');
+    background-image: url('../assets/images/Tick.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -665,7 +683,7 @@ uilibrary-select {
 .branded {
   &:has(input[type=checkbox]:checked) label:before {
     content: "";
-   // background-image: url('../assets/images/Tick.png');
+    background-image: url('../assets/images/Tick.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -757,18 +775,6 @@ uilibrary-select {
     margin-left: 10px;
   }
 
-  .invert-row {
-    flex-direction: row;
-  }
-
-
-  .check-input>input[type=radio]:checked {
-    background-color: white;
-    border-color: var(--secondary);
-    border-width: 2px;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23" + $secondaryEscaped + "'/%3e%3c/svg%3e");
-  }
-
   .check-input>input[type=radio] {
     width: 1em;
     height: 1em;
@@ -782,51 +788,35 @@ uilibrary-select {
     appearance: none;
     print-color-adjust: exact;
     border-radius: 50% !important;
-  }
 
-  .check-input[type=radio]>input[type=radio] {
-    border-radius: 50%;
-  }
+    &:checked {
+      background-color: white;
+      border-color: var(--secondary);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23" + $secondaryEscaped + "'/%3e%3c/svg%3e");
+    }
 
-  .check-input>input[type=radio]:active {
-    filter: brightness(90%);
-  }
+    &:checked:disabled {
+      background-color: white;
+      border-color: #CBCBCB;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23CBCBCB'/%3e%3c/svg%3e");
+    }
 
-  .check-input>input[type=radio]:hover {
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba($color: $secondary, $alpha: 0.2);
-    background-color: rgba($color: $secondary, $alpha: 0.2);
-  }
+    &:disabled {
+      background-color: white;
+      border-color: #CBCBCB;
+      pointer-events: none;
+      filter: none;
+    }
 
-  .check-input>input[type=checkbox]:indeterminate {
-    background-color: #000000;
-    border-color: #000000;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
-  }
+    &:active {
+      filter: brightness(90%);
+    }
 
-  .check-input>input[type=radio]:disabled {
-    pointer-events: none;
-    filter: none;
-    opacity: 0.5;
-  }
-
-  .check-input>input[type=radio][disabled]~.form-check-label>label,
-  .check-input>input[type=radio]:disabled~.form-check-label>label {
-    cursor: default;
-    opacity: 0.5;
-  }
-
-  .form-switch {
-    padding-left: 2.5em;
-  }
-
-  .form-switch .check-input>input[type=radio] {
-    width: 2em;
-    margin-left: -2.5em;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
-    background-position: left center;
-    border-radius: 2em;
-    transition: background-position 0.15s ease-in-out;
+    &:hover {
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgba($color: $secondary, $alpha: 0.2);
+      background-color: rgba($color: $secondary, $alpha: 0.2);
+    }
   }
 }
 
@@ -890,171 +880,6 @@ input:hover+.slider:before {
   box-shadow: 0 0 0 0.75rem rgba($color: $secondary, $alpha: 0.2);
 }
 
-//DROPDOWN 
-.dropdown-parent-custom {
-  position: relative;
-  flex-grow: 1;
-
-  &:has(.dropdown-menu.show) {
-    .dropdown-menu {
-      margin-top: 0px;
-      padding: 0px;
-    }
-
-    .dropdown-menu.show {
-      transform: translate(1px, 50px) !important;
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-      border-top-width: 0;
-      border-color: var(--secondary);
-      animation-name: scroll;
-      animation-duration: 0.5s;
-      min-width: 100%;
-
-      input {
-        color: black !important;
-
-        &::placeholder {
-          color: black !important;
-        }
-      }
-
-      button {
-        color: black !important;
-      }
-    }
-
-    input {
-      border-color: var(--secondary) !important;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-width: 0 !important;
-    }
-
-    label {
-      border-color: var(--secondary) !important;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-width: 0 !important;
-    }
-
-    span {
-      &:after {
-        transform: rotateX(180deg);
-      }
-    }
-  }
-
-  &:not(:focus-within) {
-    .dropdown-menu.show {
-      display: none;
-    }
-  }
-}
-
-/* Scroll animation for Dropdown */
-@keyframes scroll {
-  from {max-height: 30px; overflow-y: hidden;}
-  to {max-height: 250px; overflow-y: auto;}
-}
-
-.dropdown-input-custom {
-  appearance: none;
-    
-  input {
-    text-align: left;
-  }
-
-  input,
-  input[type=text] {
-    user-select: none;
-    cursor: pointer;
-    color: var(--tertiary);
-    font-size: 14px;
-    font-family: $font;
-    letter-spacing: $letterSpacing;
-    background-color: white !important;
-    border-radius: 7px;
-    border: 1px solid $borderColour;
-    width: 100%;
-    height: 50px;
-    vertical-align: top;
-    margin: 1px;
-    outline: none;
-    padding-left: 15px;
-    padding-right: 20px;
-
-    &::placeholder {
-      color: var(--tertiary);
-    }
-
-    &:disabled {
-      background-color: #eeeeee;
-    }   
-  }
-
-  span {
-    &:after {
-      content: " ";
-      background-size: contain;
-      background-image: url('../assets/images/caret_black.svg');
-      background-repeat: no-repeat;
-      width: 20px;
-      height: 20px;
-      position: absolute;
-      display: inline;
-      right: 30px;
-      top: 16.5px;
-      transition: transform 0.2s ease-in-out;
-    }
-  }
-}
-
-.dropdown-toggle::after {
-  display: none;
-}
-
-.drop-option-custom {
-  max-height: 225px;
-  overflow-y: auto;
-  transform: translate(0px, 30px) !important;
-  min-width: 100%;
-
-  button {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    border: none;
-    font-size: 14px;
-    height: 30px;
-    width: 100%;
-    line-height: 30px;
-    text-align: left;
-    appearance: none;
-    background-color: white;
-
-    span {
-      width: 100%;
-    }
-  }
-
-  button:hover {
-    background-color: #eeeeee;
-  }
-}
-
-.dropdown-item-custom {
-  border-radius: 5px;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  width: 100% !important;
-  margin-bottom: 2px;
-  margin-top: 2px;
-
-  &:focus {
-    outline: 0;
-  }
-}
 
 /* ToolTip */
 .tooltip-custom {
@@ -1574,6 +1399,10 @@ input:hover+.slider:before {
   padding-right: 10px;
 }
 
+.ng-select.ng-select-disabled > .ng-select-container {
+  background-color: #EEEEEE;
+}
+
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
   margin: 5px;
   border-radius: 7px;
@@ -1589,15 +1418,6 @@ input:hover+.slider:before {
 
   &.ng-option-marked {
     background-color: #EEEEEE;
-  }
-}
-
-@keyframes growDown {
-  0% {
-    transform: scaleY(0)
-  }
-  100% {
-    transform: scaleY(1)
   }
 }
 

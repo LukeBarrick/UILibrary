@@ -20,11 +20,15 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
   @Input() value: any;
   @Output() valueChange = new EventEmitter<any>();
 
+  isDisabled: boolean = false;
+
   onChange: any = () => {};
   onTouched: any = () => {};
 
   ngAfterContentInit() {
-    this.updateRadioButtons();
+    setTimeout(() => {
+      this.updateRadioButtons();
+    }, 0)
   }
 
   writeValue(value: any): void {
@@ -39,8 +43,10 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
     this.onTouched = fn;
   }
 
+  
   setDisabledState?(isDisabled: boolean): void {
     if (this.radioButtons) {
+      this.isDisabled = isDisabled;
       this.radioButtons.forEach(button => button.disabled = isDisabled);
     }
   }
@@ -49,14 +55,12 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
     if (this.radioButtons) {
       this.radioButtons.forEach(button => {
         button.selected = button.value === this.value;
-
         button.select.subscribe(() => {
           this.value = button.value;
           this.radioButtons.forEach(radio => radio.selected = radio.value === this.value);
           this.onChange(this.value);
           this.onTouched();
           this.valueChange.emit(this.value);
-          this.updateRadioButtons();
         });
       });
     }

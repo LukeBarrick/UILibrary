@@ -20,7 +20,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() value: boolean = false;
   @Output() valueChange = new EventEmitter<boolean>();
 
-  @Input() disabled: boolean = false;
+  @Input() isDisabled: boolean = false;
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -38,7 +38,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.isDisabled = isDisabled;
   }
 
   handleChange() {

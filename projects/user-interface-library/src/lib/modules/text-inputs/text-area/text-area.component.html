@@ -2,7 +2,7 @@
   <div class="formfield d-flex flex-row">
     <div class="textarea-form">
       <div class="textarea-field">
-        <textarea type="text" placeholder="" [(ngModel)]="value" [disabled]="disabled" (input)="handleChange($event)" (blur)="markAsTouched()"></textarea>
+        <textarea type="text" placeholder="" [(ngModel)]="value" [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"></textarea>
         <div class="textarea-label">
           <span class="textarea-label-name">
             <ng-content select="[label]"></ng-content>

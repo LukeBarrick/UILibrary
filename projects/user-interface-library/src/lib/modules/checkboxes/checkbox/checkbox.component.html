@@ -3,7 +3,7 @@
     <div [ngClass]="{'checkbox-small': size === 'small', 'checkbox': size === 'large'}">
       <div class="circle"></div>
       <label>
-        <input type="checkbox" [(ngModel)]="value" [disabled]="disabled" (click)="handleChange()"/>
+        <input type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()"/>
       </label>
     </div>
   </div>
