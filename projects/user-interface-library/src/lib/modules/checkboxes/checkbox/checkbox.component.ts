@@ -21,6 +21,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Output() valueChange = new EventEmitter<boolean>();
 
   @Input() isDisabled: boolean = false;
+  @Output() isDisabledChange = new EventEmitter<boolean>();
 
   onChange: any = () => {};
   onTouched: any = () => {};

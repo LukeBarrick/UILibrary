@@ -72,6 +72,7 @@ export class ShowcaseComponent implements OnInit {
 
   checkBoxes = new FormGroup({
     checkbox1: new FormControl(undefined, [Validators.required]),
+    checkbox2: new FormControl(undefined, [Validators.required]),
   });
 
   checked: boolean = true;

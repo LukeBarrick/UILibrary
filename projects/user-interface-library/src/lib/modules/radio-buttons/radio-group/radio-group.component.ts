@@ -20,7 +20,14 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
   @Input() value: any;
   @Output() valueChange = new EventEmitter<any>();
 
-  isDisabled: boolean = false;
+  private _isDisabled: boolean = false;
+
+  @Input() set isDisabled (disabled: boolean) {
+    setTimeout(() => {
+      this.radioButtons.forEach(button => button.disabled = disabled);
+    }, 0)
+  };
+  @Output() isDisabledChange = new EventEmitter<boolean>();
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -46,8 +53,8 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
   
   setDisabledState?(isDisabled: boolean): void {
     if (this.radioButtons) {
-      this.isDisabled = isDisabled;
-      this.radioButtons.forEach(button => button.disabled = isDisabled);
+      this._isDisabled = isDisabled;
+      this.radioButtons.forEach(button => button.disabled = this._isDisabled);
     }
   }
 

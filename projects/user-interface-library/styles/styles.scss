@@ -452,6 +452,17 @@ uilibrary-select {
     padding-left: 1px;
     padding-top: 2px;
   }
+
+  &:has(input[type=checkbox]:disabled) label:before,
+  &:has(input[type=checkbox]:checked:disabled) label:before {
+    background-color: #EEEEEE;
+    border-color: #CBCBCB;
+    pointer-events: none;
+  }
+
+  &:has(input[type=checkbox]:disabled) .circle {
+   opacity: 0;
+  }
 }
 
 .checkbox-small-margin {
@@ -563,6 +574,18 @@ uilibrary-select {
     }
   }
 
+  .checkbox:has(input[type=checkbox]:checked:disabled) {
+    .circle {
+      background-color: #EEEEEE !important;
+      opacity: 1;
+    }
+
+    label:before {
+      background-color: #CBCBCB;
+    }
+  }
+
+
   .checkbox:hover {
     .circle {
       background-color: red;
@@ -586,6 +609,17 @@ uilibrary-select {
       line-height: 15px;
       padding-top: 0;
       padding-left: 0;
+    }
+  }
+
+  .checkbox-small:has(input[type=checkbox]:checked:disabled) {
+    .circle {
+      background-color: #EEEEEE !important;
+      opacity: 1;
+    }
+
+    label:before {
+      background-color: #CBCBCB;
     }
   }
 
@@ -642,6 +676,17 @@ uilibrary-select {
     }
   }
 
+  .checkbox:has(input[type=checkbox]:checked:disabled) {
+    .circle {
+      background-color: #EEEEEE !important;
+      opacity: 1;
+    }
+
+    label:before {
+      background-color: #CBCBCB;
+    }
+  }
+
   .checkbox:hover {
     .circle {
       background-color: green;
@@ -663,6 +708,17 @@ uilibrary-select {
       background-color: darkgreen;
       font-size: 15px;
       padding-top: 0px;
+    }
+  }
+
+  .checkbox-small:has(input[type=checkbox]:checked:disabled) {
+    .circle {
+      background-color: #EEEEEE !important;
+      opacity: 1;
+    }
+
+    label:before {
+      background-color: #CBCBCB;
     }
   }
 
@@ -716,6 +772,17 @@ uilibrary-select {
     }
   }
 
+  .checkbox:has(input[type=checkbox]:checked:disabled) {
+    .circle {
+      background-color: #EEEEEE !important;
+      opacity: 1;
+    }
+
+    label:before {
+      background-color: #CBCBCB;
+    }
+  }
+
   .checkbox:hover {
     .circle {
       background-color: #E3F1EA;
@@ -737,6 +804,17 @@ uilibrary-select {
       background-color: var(--secondary);
       font-size: 15px;
       padding-top: 0px;
+    }
+  }
+
+  .checkbox-small:has(input[type=checkbox]:checked:disabled) {
+    .circle {
+      background-color: #EEEEEE !important;
+      opacity: 1;
+    }
+
+    label:before {
+      background-color: #CBCBCB;
     }
   }
 
