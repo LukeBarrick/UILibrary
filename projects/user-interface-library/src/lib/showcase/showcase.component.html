@@ -221,7 +221,7 @@
   </uilibrary-select>
 
   <h3>Two Way Binding Select with Prefill</h3>
-  <p>Current binding takes precedence over prefilled value, set current selection as undefined</p>
+  <p>Current binding takes precedence over prefilled value, current binding needs to be undefined to take precedence</p>
   <uilibrary-select [(value)]="currentSelection2" [items]="items" [prefillFirstOption]="true"
     placeholder="Two Way Binding w/ Prefill first option" [clearable]="true">
     <ng-template #labelTemplate let-item>
