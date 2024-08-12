@@ -1,0 +1,9 @@
+<div class="switch-container d-flex align-items-center">
+  <label class="switch d-flex">
+    <input input type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()">
+    <span class="slider"></span>
+  </label>
+  <div class="toggle-lineheight" [ngClass]="{'large': labelSize === 'large'}">
+    <ng-content select="[label]"></ng-content>
+  </div>
+</div>

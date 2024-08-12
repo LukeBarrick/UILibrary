@@ -17,6 +17,7 @@ export class ShowcaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentSelection2 = this.items[1];
+    this.currentSelection5 = this.items[1];
   }
 
   items: Item[] = [
@@ -75,11 +76,18 @@ export class ShowcaseComponent implements OnInit {
     checkbox2: new FormControl(undefined, [Validators.required]),
   });
 
+  toggles = new FormGroup({
+    toggle1: new FormControl(undefined, [Validators.required]),
+  })
+
   checked: boolean = true;
 
   currentSelection: Item | undefined;
   currentSelection2: Item | undefined;
-  currentSelection3: string = 'option1';
+  currentSelection3: string = '1';
+  currentSelection4: string = 'Some text...';
+  currentSelection5: Item | undefined;
+
 
   isDisabled: boolean = true;
 
@@ -94,6 +102,7 @@ export class ShowcaseComponent implements OnInit {
     console.log(this.textAreas)
     console.log(this.radioButtons)
     console.log(this.checkBoxes)
+    console.log(this.toggles)
     console.log(this.currentSelection)
     console.log(this.currentSelection2)
 
@@ -102,6 +111,7 @@ export class ShowcaseComponent implements OnInit {
     this.selectControls.disable()
     this.radioButtons.disable()
     this.checkBoxes.disable()
+    this.toggles.disable()
 
     this.isDisabled = false;
 

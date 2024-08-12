@@ -15146,6 +15146,7 @@ uilibrary-select {
   line-height: 25px;
   display: flex;
   align-items: center;
+  font-size: 14px;
 }
 
 .checkbox-large-margin {
@@ -15173,7 +15174,7 @@ uilibrary-select {
   display: inline-block;
   cursor: pointer;
   position: relative;
-  font-size: 11px;
+  font-size: 11px !important;
   left: -31.5px;
 }
 .checkbox-small label:before {
@@ -15471,22 +15472,26 @@ uilibrary-select {
 }
 
 /* SLIDE TOGGLE */
-.switch {
+.switch-container {
+  margin-bottom: 10px;
+}
+.switch-container .switch {
   position: relative;
   display: inline-block;
   width: 40px;
   margin-right: 10px;
 }
-
-.toggle-lineheight {
+.switch-container .toggle-lineheight {
   line-height: 15px;
+  font-size: 14px;
 }
-
-.switch input {
+.switch-container .toggle-lineheight.large {
+  font-size: 16px;
+}
+.switch-container .switch input {
   opacity: 0;
 }
-
-.slider {
+.switch-container .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -15499,8 +15504,7 @@ uilibrary-select {
   height: 15px;
   border-radius: 34px;
 }
-
-.slider:before {
+.switch-container .slider:before {
   position: absolute;
   content: "";
   height: 25px;
@@ -15512,21 +15516,30 @@ uilibrary-select {
   border-radius: 50%;
   box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.2);
 }
-
-input:checked + .slider {
+.switch-container input:checked + .slider {
   background-color: var(--secondary);
 }
-
-input:focus + .slider {
+.switch-container input:disabled + .slider:before {
+  background-color: #696969;
+}
+.switch-container input:checked:disabled + .slider {
+  background-color: #CBCBCB;
+}
+.switch-container input:checked:disabled + .slider:before {
+  transform: translateX(15px);
+  background-color: #696969;
+}
+.switch-container input:hover:disabled + .slider:before {
+  box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.switch-container input:focus + .slider {
   box-shadow: 0 0 1px var(--secondary);
 }
-
-input:checked + .slider:before {
-  transform: translateX(20px);
+.switch-container input:checked + .slider:before {
+  transform: translateX(15px);
   background-color: #000000;
 }
-
-input:hover + .slider:before {
+.switch-container input:hover + .slider:before {
   box-shadow: 0 0 0 0.75rem rgba(64, 132, 103, 0.2);
 }
 

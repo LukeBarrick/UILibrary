@@ -21,6 +21,9 @@ export * from './lib/modules/radio-buttons/radio-buttons.module';
 export * from './lib/modules/radio-buttons/radio-group/radio-group.component';
 export * from './lib/modules/radio-buttons/radio-button/radio-button.component';
 
+export * from './lib/modules/toggles/toggles.module';
+export * from './lib/modules/toggles/toggle/toggle.component';
+
 export * from './lib/modules/navigation/navigation.module';
 export * from './lib/modules/navigation/navigation.component';
 export * from './lib/modules/navigation/navigation-dropdown/navigation-dropdown.component';

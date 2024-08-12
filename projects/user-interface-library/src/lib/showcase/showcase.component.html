@@ -3,6 +3,7 @@
   <div rightAlignedContent></div>
 </uilibrary-navigation>
 <section class="medium">
+  <h1>Typography</h1>
   <h1 class="large">Headline 1</h1>
   <h2 class="large">Headline 2</h2>
   <h3 class="large">Headline 3</h3>
@@ -19,6 +20,7 @@
   <a href="https://www.google.co.uk">Links</a>
 </section>
 <section class="small">
+  <h1>Buttons</h1>
   <button class="btn btn-primary" (click)="debug()">Primary Button</button>
   <button class="btn btn-primary" disabled>Disabled Primary Button</button>
   <button class="btn-small btn-primary">Small Primary Button</button>
@@ -46,20 +48,23 @@
 </section>
 
 <section [formGroup]="textInputs" class="small d-flex flex-column">
-
+  <h1>Text Inputs</h1>
+  <h3>Basic Text Input</h3>
   <uilibrary-textinput>
     <label label for="#input">Text Input</label>
   </uilibrary-textinput>
 
+  <h3>Basic Text Input with Error</h3>
   <uilibrary-textinput [class.error]="true">
     <label label for="#input">Text Input w/ Error</label>
   </uilibrary-textinput>
 
+  <h3>Disabled Text Input</h3>
   <uilibrary-textinput [isDisabled]="true">
     <label label for="#input">Disabled Text Input</label>
   </uilibrary-textinput>
 
-  <!-- TO DO ARIA LABELS FOR TEXT INPUT LABELS -->
+  <h3>Basic Text Input with Hint</h3>
   <uilibrary-form-control>
     <uilibrary-textinput>
       <label label for="#input">Text Input w/ Hint</label>
@@ -67,6 +72,12 @@
     <uilibrary-hint variant="normal">This is a text input.</uilibrary-hint>
   </uilibrary-form-control>
 
+  <h3>Two Way Binding Text Input</h3>
+  <uilibrary-textinput [(value)]="currentSelection4">
+    <label label for="#input">Two Way Binding Text Input</label>
+  </uilibrary-textinput>
+
+  <h3>Form Control Inputs with Annotations</h3>
   <uilibrary-form-control>
     <uilibrary-textinput input formControlName="textInput2" >
       <label label for="#input">Text Input w/ Error, Hint</label>
@@ -101,18 +112,23 @@
 
 </section>
 <section class="medium" [formGroup]="textAreas">
+  <h1>Text Areas</h1>
+  <h3>Basic Text Area</h3>
   <uilibrary-textarea>
     <label label for="#input">Text Area</label>
   </uilibrary-textarea>
 
+  <h3>Basic Text Area with Errors</h3>
   <uilibrary-textarea [class.error]="true">
     <label label for="#input">Text Area w/ Error</label>
   </uilibrary-textarea>
 
+  <h3>Disabled Text Area</h3>
   <uilibrary-textarea [isDisabled]="true">
     <label label for="#input">Disabled Text Area</label>
   </uilibrary-textarea>
 
+  <h3>Text Area with Hint</h3>
   <uilibrary-form-control>
     <uilibrary-textarea>
       <label label for="#input">Text Area w/ Hint</label>
@@ -120,6 +136,14 @@
     <uilibrary-hint variant="normal">Please rate your recent visit and give us some feedback</uilibrary-hint>
   </uilibrary-form-control>
 
+  <h3>Two Way Binding Text Area</h3>
+  <uilibrary-form-control>
+    <uilibrary-textarea [(value)]="currentSelection4">
+      <label label for="#input">Text Area w/ Two Way Binding</label>
+    </uilibrary-textarea>
+  </uilibrary-form-control>
+
+  <h3>Form Control Text Area with Annotations</h3>
   <uilibrary-form-control>
     <uilibrary-textarea input formControlName="textArea1">
       <label label for="#input">Text Area Form Control w/ Error, Hint</label>
@@ -147,7 +171,11 @@
   </uilibrary-form-control>
 </section>
 
+
 <section [formGroup]="selectControls" class="small">
+  <h1>Select Areas</h1>
+  <h3>Basic Select</h3>
+
   <uilibrary-select [items]="items" placeholder="Basic Select">
     <ng-template #labelTemplate let-item>
       <div>
@@ -160,6 +188,8 @@
       </div>
     </ng-template>
   </uilibrary-select>
+
+  <h3>Clearable Select</h3>
 
   <uilibrary-select [items]="items" placeholder="Clearable Select" [clearable]="true">
     <ng-template #labelTemplate let-item>
@@ -174,7 +204,9 @@
     </ng-template>
   </uilibrary-select>
 
-  <uilibrary-select [(value)]="currentSelection" [items]="items" placeholder="Basic Select w/ Two Way Binding"
+  <h3>Basic Select with Two Way Binding</h3>
+
+  <uilibrary-select [(value)]="currentSelection5" [items]="items" placeholder="Basic Select w/ Two Way Binding"
     [clearable]="true">
     <ng-template #labelTemplate let-item>
       <div>
@@ -187,6 +219,25 @@
       </div>
     </ng-template>
   </uilibrary-select>
+
+  <h3>Two Way Binding Select with Prefill</h3>
+  <p>Current Selection takes precedence over prefilled value, set current selection as undefined</p>
+  <uilibrary-select [(value)]="currentSelection2" [items]="items" [prefillFirstOption]="true"
+    placeholder="Two Way Binding w/ Prefill first option" [clearable]="true">
+    <ng-template #labelTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+    <ng-template #optionTemplate let-item>
+      <div>
+        <b>{{item.name}}</b>
+      </div>
+    </ng-template>
+  </uilibrary-select>
+
+
+  <h3>Basic Select with Errors</h3>
 
   <uilibrary-select [items]="items" placeholder="Basic Select w/ Errors" [class.error]="true"
     [clearable]="true">
@@ -202,6 +253,8 @@
     </ng-template>
   </uilibrary-select>
 
+  <h3>Disabled Select</h3>
+
   <uilibrary-select [items]="items" placeholder="Disabled Select" [isDisabled]="true"
     [clearable]="true">
     <ng-template #labelTemplate let-item>
@@ -216,20 +269,7 @@
     </ng-template>
   </uilibrary-select>
 
-  <!-- Current Selection takes precedence over prefilled value, set current selection as undefined -->
-  <uilibrary-select [(value)]="currentSelection2" [items]="items" [prefillFirstOption]="true"
-    placeholder="Two Way Binding w/ Prefill first option" [clearable]="true">
-    <ng-template #labelTemplate let-item>
-      <div>
-        <b>{{item.name}}</b>
-      </div>
-    </ng-template>
-    <ng-template #optionTemplate let-item>
-      <div>
-        <b>{{item.name}}</b>
-      </div>
-    </ng-template>
-  </uilibrary-select>
+  <h3>Searchable Select</h3>
 
   <uilibrary-select [items]="items" [clearable]="true" [searchable]="true" [searchFn]="customSearchFn"
     placeholder="Searchable Select">
@@ -244,6 +284,8 @@
       </div>
     </ng-template>
   </uilibrary-select>
+
+  <h3>Basic Form Control Select</h3>
 
   <uilibrary-form-control>
     <uilibrary-select input formControlName="selectControl" [items]="items" placeholder="Form Control Select"
@@ -262,6 +304,25 @@
     <uilibrary-hint variant="normal">The selected value is {{selectControls.controls.selectControl.value}}</uilibrary-hint>
   </uilibrary-form-control>
 
+  <h3>Form Control Select with multi-selection</h3>
+
+  <uilibrary-form-control>
+    <uilibrary-select formControlName="selectControl4" input [items]="items" [multiple]="true" [maxSelectedItems]="4"
+      [closeOnSelect]="false" placeholder="Select w/ multi-selection">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-control>
+
+  <h3>Form Control Select with Annotations</h3>
 
   <uilibrary-form-control>
     <uilibrary-select input formControlName="selectControl2" [items]="items"
@@ -283,22 +344,6 @@
       *ngIf="selectControls.controls.selectControl2.hasError('required') && selectControls.controls.selectControl2.touched">
       Please provide a value.
     </uilibrary-hint>
-  </uilibrary-form-control>
-
-  <uilibrary-form-control>
-    <uilibrary-select formControlName="selectControl4" input [items]="items" [multiple]="true" [maxSelectedItems]="4"
-      [closeOnSelect]="false" placeholder="Select w/ multi-selection">
-      <ng-template #labelTemplate let-item>
-        <div>
-          <b>{{item.name}}</b>
-        </div>
-      </ng-template>
-      <ng-template #optionTemplate let-item>
-        <div>
-          <b>{{item.name}}</b>
-        </div>
-      </ng-template>
-    </uilibrary-select>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
@@ -348,62 +393,57 @@
 </section>
 
 <section [formGroup]="checkBoxes" class="large d-flex flex-column">
+  <h1>Checkboxes</h1>
   <h3>Large Checkboxes</h3>
   <uilibrary-checkbox variant="branded" size="large">
-    <input input type="checkbox">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass" size="large">
-    <input input type="checkbox">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="fail" size="large">
-    <input input type="checkbox">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2">
     <label label>Large Form Control Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass" size="large">
-    <label label>This is a label</label>
+    <label label>Large Pass Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="fail" size="large">
-    <label label>This is a label</label>
+    <label label>Large Fail Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" size="large" [(isDisabled)]="isDisabled">
-    <label label>This is a label</label>
+    <label label>Large Disabled Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" size="large" [(isDisabled)]="isDisabled" [value]="true">
-    <label label>This is a label</label>
+    <label label>Large Checked Disabled Checkbox</label>
   </uilibrary-checkbox>
 </section>
 <section [formGroup]="checkBoxes" class="large d-flex flex-column">
   <h3>Small Checkboxes (Normal Usage)</h3>
   <uilibrary-checkbox variant="branded">
-    <input input type="checkbox">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass">
-    <input input type="checkbox">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="fail">
-    <input input type="checkbox">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant='branded' formControlName="checkbox1">
     <label label>Small Form Control Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="fail">
-    <label label>Fail Small Checkbox</label>
+    <label label>Small Fail Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass" [(value)]="checked">
-    <label label>Pass Small Two way Binding Checkbox</label>
+    <label label>Small Pass Two way Binding Checkbox</label>
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" [(isDisabled)]="isDisabled">
-    <label label>Disabled Small Checkbox</label>
+    <label label>Small Disabled Checkbox</label>
   </uilibrary-checkbox>
-
   <uilibrary-checkbox variant="branded" [(isDisabled)]="isDisabled" [value]="true">
-    <label label>Checked Disabled Small Checkbox</label>
+    <label label>Small Checked Disabled Checkbox</label>
   </uilibrary-checkbox>
 </section>
 
 <section class="small" [formGroup]="radioButtons">
+  <h1>Radio Groups</h1>
   <h3>Basic Radio Group</h3>
   <uilibrary-radio-group>
     @for(item of items; track item) {
@@ -425,6 +465,13 @@
     }
   </uilibrary-radio-group>
 
+  <h3>Disabled & Checked Radio Group</h3>
+  <uilibrary-radio-group [(isDisabled)]="isDisabled" [(value)]="currentSelection3">
+    @for(item of items; track item) {
+      <uilibrary-radio-button value="{{item.id}}"><label label>{{item.name}}</label></uilibrary-radio-button>
+    }
+  </uilibrary-radio-group>
+
   <h3>Form Control Radio Group w/ Tool Tip</h3>
   <uilibrary-form-control>
     <uilibrary-radio-group input formControlName="radioButton1">
@@ -432,55 +479,53 @@
         <uilibrary-radio-button value="{{item.id}}"><label label>{{item.name}}</label></uilibrary-radio-button>
       }
     </uilibrary-radio-group>
-    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+    <uilibrary-tooltip tooltip placement="right" margin="left">
       <span content><strong>Title</strong><br />This is tooltip content.</span>
     </uilibrary-tooltip>
   </uilibrary-form-control>
 </section>
 
-<!-- <section class="medium">
-  <uilibrary-radiogroup>
-    <uilibrary-radiobutton>
-      <input input type="radio">
-      <label label>
-        Default radio
-      </label>
-    </uilibrary-radiobutton>
-    <uilibrary-radiobutton [labelPosition]="'left'">
-      <input input type="radio">
-      <label label>
-        Default radio
-      </label>
-    </uilibrary-radiobutton>
-    <uilibrary-radiobutton> 
-      <input input type="radio">
-      <label label>
-        Default radio
-      </label>
-    </uilibrary-radiobutton>
-  </uilibrary-radiogroup>
+<section [formGroup]="toggles" class="medium">
+  <h1>Toggles</h1>
+
+  <uilibrary-toggle></uilibrary-toggle>
+
+  <uilibrary-toggle>
+    <label label>Normal Label</label>
+  </uilibrary-toggle>
+
+  <uilibrary-toggle labelSize="large">
+    <label label>Large Label</label>
+  </uilibrary-toggle>
+
+  <uilibrary-toggle [(isDisabled)]="isDisabled">
+    <label label>Disabled Toggle</label>
+  </uilibrary-toggle>
+
+  <uilibrary-toggle [(isDisabled)]="isDisabled" [value]="true">
+    <label label>Disabled & Checked Toggle</label>
+  </uilibrary-toggle>
+
+  <uilibrary-toggle [(value)]="checked">
+    <label label>Two way binding Toggle</label>
+  </uilibrary-toggle>
+
+  <uilibrary-toggle formControlName="toggle1">
+    <label label>Form Control Toggle</label>
+  </uilibrary-toggle>
 </section>
-<section class="medium">
-  <uilibrary-toggle>
-    <input input type="checkbox">
-  </uilibrary-toggle>
-  <uilibrary-toggle>
-    <input input type="checkbox">
-    <label label>This is a label</label>
-  </uilibrary-toggle>
-</section> -->
 
 <section class="medium d-flex flex-row">
-  <uilibrary-tooltip [placement]="'top'">
+  <uilibrary-tooltip placement="top">
     <span content><strong>Hello</strong> <br /> this is a name </span>
   </uilibrary-tooltip>
-  <uilibrary-tooltip [placement]="'bottom'">
+  <uilibrary-tooltip placement="bottom">
     <span content><strong>Hello</strong> <br /> this is a name </span>
   </uilibrary-tooltip>
-  <uilibrary-tooltip [placement]="'left'">
+  <uilibrary-tooltip placement="left">
     <span content><strong>Hello</strong> <br /> this is a name </span>
   </uilibrary-tooltip>
-  <uilibrary-tooltip [placement]="'right'">
+  <uilibrary-tooltip placement="right">
     <span content><strong>Hello</strong> <br /> this is a name </span>
   </uilibrary-tooltip>
 </section>
