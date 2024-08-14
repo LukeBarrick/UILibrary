@@ -15478,6 +15478,9 @@ uilibrary-select {
 .input-radio .check-input {
   order: 1;
 }
+.input-radio label {
+  cursor: pointer;
+}
 .input-radio .left {
   order: 0;
   margin-right: 10px;
@@ -15519,7 +15522,7 @@ uilibrary-select {
 .input-radio .check-input > input[type=radio]:active {
   filter: brightness(90%);
 }
-.input-radio .check-input > input[type=radio]:hover {
+.input-radio .check-input > input[type=radio]:hover:not(:disabled) {
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(64, 132, 103, 0.2);
   background-color: rgba(64, 132, 103, 0.2);

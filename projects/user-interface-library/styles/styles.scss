@@ -933,6 +933,10 @@ uilibrary-select {
     order: 1;
   }
 
+  label {
+    cursor: pointer;
+  }
+
   .left {
     order: 0;
     margin-right: 10px;
@@ -980,7 +984,7 @@ uilibrary-select {
       filter: brightness(90%);
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
       outline: 0;
       box-shadow: 0 0 0 0.25rem rgba($color: $secondary, $alpha: 0.2);
       background-color: rgba($color: $secondary, $alpha: 0.2);
