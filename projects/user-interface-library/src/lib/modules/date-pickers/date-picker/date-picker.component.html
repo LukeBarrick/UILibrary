@@ -1,0 +1,8 @@
+<div class="datepicker-container">
+  <input type="text" (click)="toggleOpen()"/>
+  <div class="datepicker-calendar-container">
+    <label *ngFor="let dayName of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']">
+      {{dayName}}
+    </label>
+  </div>
+</div>

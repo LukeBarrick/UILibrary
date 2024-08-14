@@ -16,6 +16,7 @@ import { CheckboxesModule } from './modules/checkboxes/checkboxes.module';
 import { InputAnnotationsModule } from './modules/input-annotations/input-annotations.module';
 import { FormControlModule } from './modules/form-control/form-control.module';
 import { TogglesModule } from './modules/toggles/toggles.module';
+import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
 
 @NgModule({
   declarations: [
@@ -35,8 +36,9 @@ import { TogglesModule } from './modules/toggles/toggles.module';
     InputAnnotationsModule,
     NavigationModule,
     SelectModule,
-    FormControlModule
-  ],
+    FormControlModule,
+    DatePickersModule
+],
   exports: [
     UserInterfaceLibraryComponent,
     ShowcaseComponent

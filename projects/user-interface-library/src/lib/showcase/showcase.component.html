@@ -160,12 +160,7 @@
     <uilibrary-textarea input formControlName="textArea1">
       Text Area Form Control w/ Error, Hint
     </uilibrary-textarea>
-    <uilibrary-hint *ngIf
-    
-    
-    
-    
-    ="textAreas.controls.textArea1.hasError('required') && textAreas.controls.textArea1.touched">Please provider a value.</uilibrary-hint>
+    <uilibrary-hint *ngIf="textAreas.controls.textArea1.hasError('required') && textAreas.controls.textArea1.touched">Please provider a value.</uilibrary-hint>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
@@ -407,6 +402,11 @@
     Please provide a value.
   </uilibrary-hint>
   </uilibrary-form-control>
+</section>
+
+<section class="medium">
+  <h1>Date Pickers</h1>
+  <uilibrary-date-picker></uilibrary-date-picker>
 </section>
 
 <section [formGroup]="checkBoxes" class="large d-flex flex-column">

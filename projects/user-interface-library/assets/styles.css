@@ -14874,7 +14874,7 @@ uilibrary-select {
   background-color: white;
   height: 50px;
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
   border: 1px solid #CBCBCB;
   outline: none;
   z-index: 1;
@@ -15007,13 +15007,13 @@ uilibrary-select {
 }
 
 .textarea-field > textarea {
+  font-size: 14px;
   color: #000000;
   font-family: inherit;
   letter-spacing: 0px;
   background-color: white;
   height: 100%;
   width: 100%;
-  font-size: 1rem;
   border: 1px solid #CBCBCB;
   outline: none;
   border-radius: 3px;
@@ -16140,6 +16140,14 @@ uilibrary-select {
   border-color: var(--success);
   background-color: var(--success-light);
   color: var(--success-dark);
+}
+
+.datepicker-container input[type=text] {
+  border: 1px solid #CBCBCB;
+  border-radius: 7px;
+  height: 50px;
+  padding-left: 20px;
+  outline: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -172,7 +172,7 @@ uilibrary-select {
   background-color: white;
   height: $input_height;
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
   border: 1px solid $borderColour;
   outline: none;
   z-index: 1;
@@ -315,13 +315,13 @@ uilibrary-select {
 }
 
 .textarea-field>textarea {
+  font-size: 14px;
   color: $primary;
   font-family: $font;
   letter-spacing: $letterSpacing;
   background-color: white;
   height: 100%;
   width: 100%;
-  font-size: 1rem;
   border: 1px solid $borderColour;
   outline: none;
   border-radius: 3px;
@@ -1598,6 +1598,7 @@ uilibrary-select {
   background-color: #EEEEEE;
 }
 
+
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
   margin: 5px;
   border-radius: 7px;
@@ -1696,5 +1697,21 @@ uilibrary-select {
     border-color: var(--success);
     background-color: var(--success-light);
     color: var(--success-dark);
+  }
+}
+
+//Date Picker 
+.datepicker-container {
+
+  input[type=text] {
+    border: 1px solid $borderColour;
+    border-radius: 7px;
+    height: 50px;
+    padding-left: 20px;
+    outline: none;
+  }
+
+  .datepicker-calendar-container {
+
   }
 }

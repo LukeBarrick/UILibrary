@@ -34,3 +34,6 @@ export * from './lib/modules/select/select.component';
 
 export * from './lib/modules/form-control/form-control.module';
 export * from './lib/modules/form-control/form-control.component';
+
+export * from './lib/modules/date-pickers/date-pickers.module';
+export * from './lib/modules/date-pickers/date-picker/date-picker.component';
