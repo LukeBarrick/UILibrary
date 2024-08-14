@@ -1,4 +1,3 @@
-
 @import "variable";
 
 //Library style sheet imports
@@ -104,12 +103,12 @@ a {
   background: $lighter-gray;
   border-radius: 10px;
   transition: all 1s;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:  $dark-gray;
+  background: $dark-gray;
   border-radius: 10px;
   transition: all 1s;
 }
@@ -435,7 +434,7 @@ uilibrary-select {
   .circle2 {
     position: relative;
     right: 30px;
-    height:15px;
+    height: 15px;
     width: 15px;
     border-radius: 50%;
     transition: box-shadow 0.5s ease-in-out;
@@ -471,7 +470,7 @@ uilibrary-select {
 
   .label-left {
     order: 1;
-    margin-left: 20px;
+    margin-left: 25px;
   }
 
   input[type=checkbox] {
@@ -501,7 +500,7 @@ uilibrary-select {
   }
 
   &:has(input[type=checkbox]:disabled) .circle {
-   opacity: 0;
+    opacity: 0;
   }
 }
 
@@ -522,7 +521,7 @@ uilibrary-select {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
-  
+
   .circle2 {
     position: relative;
     right: 25px;
@@ -560,7 +559,7 @@ uilibrary-select {
 
   .label-left {
     order: 1;
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
   input[type=checkbox] {
@@ -586,7 +585,7 @@ uilibrary-select {
   }
 
   &:has(input[type=checkbox]:disabled) .circle {
-   opacity: 0;
+    opacity: 0;
   }
 }
 
@@ -1215,7 +1214,7 @@ uilibrary-select {
 
   .navigation-dropdown-input-custom {
     position: relative;
-  } 
+  }
 }
 
 //NAVIGATION OPTION 
@@ -1262,7 +1261,7 @@ uilibrary-select {
         right: 0;
         z-index: 0;
         width: 100%;
-    }
+      }
     }
 
     &:after {
@@ -1274,8 +1273,8 @@ uilibrary-select {
       top: 60px;
       transition: all 0.1s ease-in-out;
     }
-   
-  
+
+
     &:hover {
       &:after {
         content: "";
@@ -1342,13 +1341,13 @@ uilibrary-select {
 
     button {
       border-color: var(--secondary) !important;
-     
+
       a {
         color: var(--primary);
         text-decoration: none;
       }
     }
-    
+
 
     span {
       &:after {
@@ -1367,7 +1366,7 @@ uilibrary-select {
 .navigation-dropdown-input-custom {
   appearance: none;
   height: 100%;
-    
+
   button {
     text-align: center;
   }
@@ -1394,7 +1393,7 @@ uilibrary-select {
 
     &:disabled {
       background-color: #eeeeee;
-    }   
+    }
 
     &:after {
       content: "";
@@ -1417,8 +1416,8 @@ uilibrary-select {
       transition: all 0.1s ease-in-out;
       width: 100%;
     }
-   
-  
+
+
     &:hover {
       &:after {
         content: "";
@@ -1463,8 +1462,8 @@ uilibrary-select {
   min-width: 100%;
 
   button {
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     border: none;
     font-size: 14px;
@@ -1501,19 +1500,19 @@ uilibrary-select {
 
 //Select Overrides
 .ng-select.custom {
-  border:0px;
+  border: 0px;
   border-radius: 0;
   height: 50px !important;
   flex: 1;
-  appearance: none !important; 
+  appearance: none !important;
 }
 
-.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
   box-shadow: unset;
   border-color: $borderColour;
 }
 
-.ng-select.custom .ng-select-container  {            
+.ng-select.custom .ng-select-container {
   min-height: 50px !important;
   border-radius: 7px !important;
 }
@@ -1523,7 +1522,7 @@ uilibrary-select {
 }
 
 .ng-select.custom .ng-select-single .ng-select-container .ng-value-container .ng-input {
-  top: 0px !important ;
+  top: 0px !important;
 }
 
 .ng-select.custom .ng-clear-wrapper {
@@ -1543,7 +1542,7 @@ uilibrary-select {
   top: 3px !important;
 }
 
-.ng-select.ng-select-opened.ng-select-bottom >.ng-select-container {
+.ng-select.ng-select-opened.ng-select-bottom>.ng-select-container {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
   border-color: var(--secondary);
@@ -1557,13 +1556,13 @@ uilibrary-select {
 }
 
 .ng-select.ng-select-opened {
-  .ng-arrow-wrapper .ng-arrow  {
+  .ng-arrow-wrapper .ng-arrow {
     transform: rotateX(180deg);
   }
 }
 
 .ng-dropdown-panel.ng-select-bottom .ng-dropdown-panel-items .ng-option:last-child {
-  border-bottom-left-radius: 7px !important; 
+  border-bottom-left-radius: 7px !important;
   border-bottom-right-radius: 7px !important;
 }
 
@@ -1598,7 +1597,7 @@ uilibrary-select {
   padding-right: 10px;
 }
 
-.ng-select.ng-select-disabled > .ng-select-container {
+.ng-select.ng-select-disabled>.ng-select-container {
   background-color: #EEEEEE;
 }
 
@@ -1628,7 +1627,8 @@ uilibrary-select {
   border-radius: 7px;
   text-align: center;
 
-  b, strong {
+  b,
+  strong {
     font-weight: 600;
   }
 
@@ -1675,7 +1675,8 @@ uilibrary-select {
     margin-bottom: 0px;
   }
 
-  b, strong {
+  b,
+  strong {
     font-weight: 600;
   }
 
@@ -1715,17 +1716,87 @@ uilibrary-select {
     padding-left: 20px;
     outline: none;
     width: 100%;
+
+    &:focus {
+      border-color: var(--secondary);
+    }
+
+    &:focus::-webkit-input-placeholder {
+      font-size: 16px;
+      color: $darkFontColour;
+      transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:focus,
+    .input-field:not(:placeholder-shown) {}
+
+    &:focus~.input-label::after,
+    .input-field:not(:placeholder-shown)~.input-label::after {
+      width: 100%;
+    }
+
+    &::-webkit-input-placeholder {
+      color: transparent;
+    }
+
+    &:disabled {
+      background-color: $disabledColour;
+    }
+
+    &+.datepicker-label {
+      position: relative;
+
+      label {
+        transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        transform: translateY(-14px);
+      }
+    }
   }
 
-    .datepicker-calendar-container {
+  input[type=text]:focus+.datepicker-label label,
+  input[type=text]:not(:placeholder-shown)+.datepicker-label label {
+    font-size: 0.75rem;
+    transform: translate(-10px, -40px);
+    background-color: transparent;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 30px;
+    color: var(--secondary);
+
+    &:after {
+      content: "";
+      display: block;
       position: absolute;
-      top: 60px;
+      background: white;
+      height: 2px;
+      top: 8px;
       left: 0;
-      height: 280px;
-      width: 100%;
-      border: 1px solid $borderColour;
-      border-radius: 7px;
-      background-color: white;
-      z-index: 200;
+      right: 0;
+      z-index: -1;
     }
+
+    label {
+      position: relative;
+      z-index: 1;
+      color: var(--secondary);
+    }
+  }
+
+  .datepicker-calendar-container {
+    position: absolute;
+    left: 0;
+    top: 55px;
+    height: 280px;
+    width: 100%;
+    border: 1px solid $borderColour;
+    border-radius: 7px;
+    background-color: white;
+    z-index: 200;
+    animation: growDown 100ms ease-in-out forwards;
+    transform-origin: top center;
+  }
 }

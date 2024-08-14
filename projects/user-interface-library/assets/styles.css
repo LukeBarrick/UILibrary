@@ -15146,7 +15146,7 @@ uilibrary-select {
 }
 .checkbox .label-left {
   order: 1;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 .checkbox input[type=checkbox] {
   display: none;
@@ -15222,7 +15222,7 @@ uilibrary-select {
 }
 .checkbox-small .label-left {
   order: 1;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .checkbox-small input[type=checkbox] {
   display: none;
@@ -16083,7 +16083,8 @@ uilibrary-select {
   border-radius: 7px;
   text-align: center;
 }
-.status-tag b, .status-tag strong {
+.status-tag b,
+.status-tag strong {
   font-weight: 600;
 }
 .status-tag.information {
@@ -16122,7 +16123,8 @@ uilibrary-select {
 .ui-toast p {
   margin-bottom: 0px;
 }
-.ui-toast b, .ui-toast strong {
+.ui-toast b,
+.ui-toast strong {
   font-weight: 600;
 }
 .ui-toast.information {
@@ -16157,16 +16159,75 @@ uilibrary-select {
   outline: none;
   width: 100%;
 }
+.datepicker-container input[type=text]:focus {
+  border-color: var(--secondary);
+}
+.datepicker-container input[type=text]:focus::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #696969;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.datepicker-container input[type=text]:focus ~ .input-label::after,
+.datepicker-container input[type=text] .input-field:not(:placeholder-shown) ~ .input-label::after {
+  width: 100%;
+}
+.datepicker-container input[type=text]::-webkit-input-placeholder {
+  color: transparent;
+}
+.datepicker-container input[type=text]:disabled {
+  background-color: #eeeeee;
+}
+.datepicker-container input[type=text] + .datepicker-label {
+  position: relative;
+}
+.datepicker-container input[type=text] + .datepicker-label label {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  transform: translateY(-14px);
+}
+.datepicker-container input[type=text]:focus + .datepicker-label label,
+.datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label {
+  font-size: 0.75rem;
+  transform: translate(-10px, -40px);
+  background-color: transparent;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 30px;
+  color: var(--secondary);
+}
+.datepicker-container input[type=text]:focus + .datepicker-label label:after,
+.datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: white;
+  height: 2px;
+  top: 8px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.datepicker-container input[type=text]:focus + .datepicker-label label label,
+.datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label label {
+  position: relative;
+  z-index: 1;
+  color: var(--secondary);
+}
 .datepicker-container .datepicker-calendar-container {
   position: absolute;
-  top: 60px;
   left: 0;
+  top: 55px;
   height: 280px;
   width: 100%;
   border: 1px solid #CBCBCB;
   border-radius: 7px;
   background-color: white;
   z-index: 200;
+  animation: growDown 100ms ease-in-out forwards;
+  transform-origin: top center;
 }
 
 /*# sourceMappingURL=styles.css.map */
