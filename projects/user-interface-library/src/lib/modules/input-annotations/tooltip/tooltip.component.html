@@ -1,7 +1,9 @@
 <div class="tooltip-custom" [ngClass]="{'tooltip-margin-left': margin == 'left', 'tooltip-margin-right': margin == 'right', 'tooltip-margin-both': margin == 'both'}">
   <div>
     <ng-template #tip_content>
-      <ng-content select="[content]"></ng-content>
+      <span><strong><ng-content select="[title]"></ng-content></strong></span>
+      <br /> 
+      <span><ng-content select="[content]"></ng-content></span>
     </ng-template>
   </div>
   <div>

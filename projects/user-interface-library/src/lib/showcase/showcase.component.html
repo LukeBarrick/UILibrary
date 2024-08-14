@@ -160,7 +160,12 @@
     <uilibrary-textarea input formControlName="textArea1">
       Text Area Form Control w/ Error, Hint
     </uilibrary-textarea>
-    <uilibrary-hint *ngIf="textAreas.controls.textArea1.hasError('required') && textAreas.controls.textArea1.touched">Please provider a value.</uilibrary-hint>
+    <uilibrary-hint *ngIf
+    
+    
+    
+    
+    ="textAreas.controls.textArea1.hasError('required') && textAreas.controls.textArea1.touched">Please provider a value.</uilibrary-hint>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
@@ -513,42 +518,46 @@
   <uilibrary-toggle></uilibrary-toggle>
 
   <uilibrary-toggle>
-    <label label>Normal Label</label>
+    Normal Label
   </uilibrary-toggle>
 
   <uilibrary-toggle labelSize="large">
-    <label label>Large Label</label>
+    Large Label
   </uilibrary-toggle>
 
   <uilibrary-toggle [(isDisabled)]="isDisabled">
-    <label label>Disabled Toggle</label>
+    Disabled Toggle
   </uilibrary-toggle>
 
   <uilibrary-toggle [(isDisabled)]="isDisabled" [value]="true">
-    <label label>Disabled & Checked Toggle</label>
+    Disabled & Checked Toggle
   </uilibrary-toggle>
 
   <uilibrary-toggle [(value)]="checked">
-    <label label>Two way binding Toggle</label>
+    Two way binding Toggle
   </uilibrary-toggle>
 
   <uilibrary-toggle formControlName="toggle1">
-    <label label>Form Control Toggle</label>
+    Form Control Toggle
   </uilibrary-toggle>
 </section>
 
 <section class="medium d-flex flex-row">
   <uilibrary-tooltip placement="top">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
   </uilibrary-tooltip>
   <uilibrary-tooltip placement="bottom">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
   </uilibrary-tooltip>
   <uilibrary-tooltip placement="left">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
   </uilibrary-tooltip>
   <uilibrary-tooltip placement="right">
-    <span content><strong>Hello</strong> <br /> this is a name </span>
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
   </uilibrary-tooltip>
 </section>
 

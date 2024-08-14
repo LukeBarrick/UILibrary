@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { UUIDService } from '../../../core/services/UUID.service';
 
 @Component({
   selector: 'uilibrary-toggle',
@@ -14,6 +15,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class ToggleComponent implements ControlValueAccessor {
+  public id = this.UUID.generate();
+
+  constructor(private UUID: UUIDService) {}
+
   @Input() labelSize: string = '';
 
   @Input() value: boolean = false;
