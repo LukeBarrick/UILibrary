@@ -14,12 +14,14 @@ export class DatePickerComponent implements OnInit {
   
   isOpen: boolean = false;
 
+  //Focus trap to ensure field doesn't lose focus for accessiblity reasons.
   @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
-
+  
     if(this.isOpen && !this.elRef.nativeElement.contains(target)) {
       this.isOpen = false;
     } else {
+      
       let inputField = this.elRef.nativeElement.querySelector('input');
       inputField.focus();
     }
