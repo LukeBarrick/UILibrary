@@ -8,13 +8,13 @@ $primaryFont: #408467 !default;
 $secondaryFont: #FFFFFF !default;
 $tertiaryFont: #FFFFFF !default;
 
-$primary-light: lighten($primary, 25%);
-$secondary-light:  lighten($secondary, 25%);
+$primary-light: lighten($primary, 50%);
+$secondary-light:  lighten($secondary, 50%);
 $tertiary-light: lighten($tertiary, 25%);
 
-$primary-dark: darken($primary, 25%);
-$secondary-dark: darken($secondary, 25%);
-$tertiary-dark: darken($tertiary, 25%);
+$primary-dark: darken($primary, 50%);
+$secondary-dark: darken($secondary, 50%);
+$tertiary-dark: darken($tertiary, 50%);
 
 $success: #028A4D !default;
 $info: #007EAB !default;

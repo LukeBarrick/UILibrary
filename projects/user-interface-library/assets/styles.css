@@ -6,11 +6,11 @@
   --primaryFont: #408467;
   --secondaryFont: #FFFFFF;
   --tertiaryFont: #FFFFFF;
-  --primary-light: #404040;
-  --secondary-light: #81c2a7;
+  --primary-light: gray;
+  --secondary-light: #d7ece3;
   --tertiary-light: #5f6262;
   --primary-dark: black;
-  --secondary-dark: #162e24;
+  --secondary-dark: black;
   --tertiary-dark: black;
   --success: #028A4D;
   --info: #007EAB;
@@ -14347,11 +14347,11 @@ textarea.form-control-lg {
   --primaryFont: #408467;
   --secondaryFont: #FFFFFF;
   --tertiaryFont: #FFFFFF;
-  --primary-light: #404040;
-  --secondary-light: #81c2a7;
+  --primary-light: gray;
+  --secondary-light: #d7ece3;
   --tertiary-light: #5f6262;
   --primary-dark: black;
-  --secondary-dark: #162e24;
+  --secondary-dark: black;
   --tertiary-dark: black;
   --success: #028A4D;
   --info: #007EAB;
@@ -15084,7 +15084,8 @@ uilibrary-select {
 /* CHECKBOXES */
 .checkbox {
   display: flex;
-  width: 35px;
+  width: 100%;
+  margin-bottom: 15px;
 }
 .checkbox .circle {
   position: relative;
@@ -15092,19 +15093,32 @@ uilibrary-select {
   top: -2px;
   border-radius: 50%;
   height: 40px;
-  min-width: 40px;
+  width: 40px;
   background-color: transparent;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-.checkbox label {
-  display: inline-block;
+.checkbox .circle2 {
+  position: relative;
+  right: 27px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  transition: box-shadow 0.5s ease-in-out;
+  z-index: -1;
+  opacity: 0.2;
+}
+.checkbox .checkbox-label {
+  position: relative;
+}
+.checkbox .check-input {
+  display: flex;
+  align-items: center;
   cursor: pointer;
   position: relative;
-  font-size: 11px;
-  left: -35px;
+  font-size: 16px;
 }
-.checkbox label:before {
+.checkbox .check-input:before {
   content: "";
   display: inline-block;
   border-radius: 5px;
@@ -15113,16 +15127,19 @@ uilibrary-select {
   margin-right: 10px;
   position: relative;
   left: 5px;
-  top: 5px;
   bottom: 1px;
+}
+.checkbox .label-left {
+  order: 1;
+  margin-left: 10px;
 }
 .checkbox input[type=checkbox] {
   display: none;
 }
-.checkbox .checkbox label:before {
+.checkbox .checkbox .check-input:before {
   border-radius: 3px;
 }
-.checkbox input[type=checkbox]:checked + label:before {
+.checkbox input[type=checkbox]:checked + .check-input:before {
   content: "✔";
   font-size: 18px;
   color: #fff;
@@ -15132,7 +15149,7 @@ uilibrary-select {
   padding-left: 1px;
   padding-top: 2px;
 }
-.checkbox:has(input[type=checkbox]:disabled) label:before, .checkbox:has(input[type=checkbox]:checked:disabled) label:before {
+.checkbox:has(input[type=checkbox]:disabled) .check-input:before, .checkbox:has(input[type=checkbox]:checked:disabled) .check-input:before {
   background-color: #EEEEEE;
   border-color: #CBCBCB;
   pointer-events: none;
@@ -15141,28 +15158,15 @@ uilibrary-select {
   opacity: 0;
 }
 
-.checkbox-small-margin {
-  margin-left: 15px;
-  line-height: 25px;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-
-.checkbox-large-margin {
-  margin-left: 20px;
-  line-height: 35px;
-}
-
 .checkbox-small {
   display: flex;
-  width: 40px;
-  align-items: center;
+  width: 100%;
+  margin-left: 3px;
+  margin-bottom: 5px;
 }
 .checkbox-small .circle {
   position: relative;
-  top: 0px;
-  left: 2.5px;
+  left: 3px;
   border-radius: 50%;
   height: 40px;
   min-width: 40px;
@@ -15170,39 +15174,60 @@ uilibrary-select {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-.checkbox-small label {
-  display: inline-block;
+.checkbox-small .circle2 {
+  position: relative;
+  right: 25px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  transition: box-shadow 0.5s ease-in-out;
+  z-index: -1;
+  opacity: 0.2;
+}
+.checkbox-small .checkbox-label {
+  position: relative;
+}
+.checkbox-small .checkbox-label:empty {
+  display: none;
+}
+.checkbox-small .check-input:empty {
+  display: none;
+}
+.checkbox-small .check-input {
+  display: flex;
+  align-items: center;
   cursor: pointer;
   position: relative;
-  font-size: 11px !important;
-  left: -31.5px;
+  font-size: 14px !important;
 }
-.checkbox-small label:before {
+.checkbox-small .check-input:before {
   content: "";
   display: inline-block;
   border-radius: 5px;
-  width: 19px;
-  height: 19px;
+  width: 20px;
+  height: 20px;
   margin-right: 10px;
   position: relative;
   left: 5px;
-  top: 3px;
-  bottom: 1px;
+}
+.checkbox-small .label-left {
+  order: 1;
+  margin-left: 10px;
 }
 .checkbox-small input[type=checkbox] {
   display: none;
 }
-.checkbox-small .checkbox label:before {
+.checkbox-small .checkbox .check-input:before {
   border-radius: 3px;
 }
-.checkbox-small:has(input[type=checkbox]:checked) label:before {
+.checkbox-small:has(input[type=checkbox]:checked) .check-input:before {
   content: "";
   font-size: 15px;
   color: #fff;
   text-align: center;
   line-height: 15px;
 }
-.checkbox-small:has(input[type=checkbox]:disabled) label:before {
+.checkbox-small:has(input[type=checkbox]:disabled) .check-input:before {
   background-color: #EEEEEE;
   border-color: #CBCBCB;
   pointer-events: none;
@@ -15211,7 +15236,7 @@ uilibrary-select {
   opacity: 0;
 }
 
-.fail:has(input[type=checkbox]:checked) label:before {
+.fail:has(input[type=checkbox]:checked) .check-input:before {
   content: "";
   background-image: url("../assets/images/Cross.png");
   background-size: contain;
@@ -15224,55 +15249,51 @@ uilibrary-select {
   padding-top: 2px;
   padding-left: 0px;
 }
-.fail label:before {
+.fail .check-input:before {
   background-color: white;
   border: 2px solid darkred;
   transition: background-color 0.2s ease-in-out;
 }
-.fail .checkbox:has(input[type=checkbox]:checked) .circle {
-  background-color: red !important;
-  opacity: 0.2;
+.fail .checkbox:has(input[type=checkbox]:checked) .circle2 {
+  box-shadow: 0px 0px 0px 15px red !important;
 }
-.fail .checkbox:has(input[type=checkbox]:checked) label:before {
+.fail .checkbox:has(input[type=checkbox]:checked) .check-input:before {
   background-color: darkred;
 }
-.fail .checkbox:has(input[type=checkbox]:checked:disabled) .circle {
-  background-color: #EEEEEE !important;
+.fail .checkbox:has(input[type=checkbox]:checked:disabled) .circle2 {
+  box-shadow: 0px 0px 0px 15px #EEEEEE !important;
   opacity: 1;
 }
-.fail .checkbox:has(input[type=checkbox]:checked:disabled) label:before {
+.fail .checkbox:has(input[type=checkbox]:checked:disabled) .check-input:before {
   background-color: #CBCBCB;
 }
-.fail .checkbox:hover .circle {
-  background-color: red;
-  opacity: 0.2;
+.fail .checkbox:hover .circle2 {
+  box-shadow: 0px 0px 0px 15px red;
 }
-.fail .checkbox:hover label:before {
+.fail .checkbox:hover .check-input:before {
   background-color: darkred;
 }
-.fail .checkbox-small:has(input[type=checkbox]:checked) .circle {
-  background-color: red !important;
-  opacity: 0.2;
+.fail .checkbox-small:has(input[type=checkbox]:checked) .circle2 {
+  box-shadow: 0px 0px 0px 10px red !important;
 }
-.fail .checkbox-small:has(input[type=checkbox]:checked) label:before {
+.fail .checkbox-small:has(input[type=checkbox]:checked) .check-input:before {
   background-color: darkred;
   font-size: 15px;
   line-height: 15px;
   padding-top: 0;
   padding-left: 0;
 }
-.fail .checkbox-small:has(input[type=checkbox]:checked:disabled) .circle {
-  background-color: #EEEEEE !important;
+.fail .checkbox-small:has(input[type=checkbox]:checked:disabled) .circle2 {
+  box-shadow: 0px 0px 0px 10px #EEEEEE !important;
   opacity: 1;
 }
-.fail .checkbox-small:has(input[type=checkbox]:checked:disabled) label:before {
+.fail .checkbox-small:has(input[type=checkbox]:checked:disabled) .check-input:before {
   background-color: #CBCBCB;
 }
-.fail .checkbox-small:hover .circle {
-  background-color: red;
-  opacity: 0.2;
+.fail .checkbox-small:hover .circle2 {
+  box-shadow: 0px 0px 0px 10px red;
 }
-.fail .checkbox-small:hover label:before {
+.fail .checkbox-small:hover .check-input:before {
   background-color: darkred;
   font-size: 15px;
   line-height: 15px;
@@ -15280,7 +15301,7 @@ uilibrary-select {
   padding-left: 0;
 }
 
-.pass:has(input[type=checkbox]:checked) label:before {
+.pass:has(input[type=checkbox]:checked) .check-input:before {
   content: "";
   background-image: url("../assets/images/Tick.png");
   background-size: contain;
@@ -15293,62 +15314,57 @@ uilibrary-select {
   padding-top: 2px;
   padding-left: 0px;
 }
-.pass label:before {
+.pass .check-input:before {
   background-color: white;
   border: 2px solid darkgreen;
   transition: background-color 0.2s ease-in-out;
 }
-.pass label:before:hover {
+.pass .check-input:before:hover {
   background-color: white;
 }
-.pass .checkbox:has(input[type=checkbox]:checked) .circle {
-  background-color: green !important;
-  opacity: 0.2;
+.pass .checkbox:has(input[type=checkbox]:checked) .circle2 {
+  box-shadow: 0px 0px 0px 15px green !important;
 }
-.pass .checkbox:has(input[type=checkbox]:checked) label:before {
+.pass .checkbox:has(input[type=checkbox]:checked) .check-input:before {
   background-color: darkgreen;
 }
-.pass .checkbox:has(input[type=checkbox]:checked:disabled) .circle {
-  background-color: #EEEEEE !important;
+.pass .checkbox:has(input[type=checkbox]:checked:disabled) .circle2 {
+  box-shadow: 0px 0px 0px 15px #EEEEEE !important;
   opacity: 1;
 }
-.pass .checkbox:has(input[type=checkbox]:checked:disabled) label:before {
+.pass .checkbox:has(input[type=checkbox]:checked:disabled) .check-input:before {
   background-color: #CBCBCB;
 }
-.pass .checkbox:hover .circle {
-  background-color: green;
-  opacity: 0.2;
+.pass .checkbox:hover .circle2 {
+  box-shadow: 0px 0px 0px 15px green;
 }
-.pass .checkbox:hover label:before {
+.pass .checkbox:hover .check-input:before {
   background-color: darkgreen;
 }
-.pass .checkbox-small:has(input[type=checkbox]:checked) .circle {
-  background-color: green !important;
-  opacity: 0.2;
+.pass .checkbox-small:has(input[type=checkbox]:checked) .circle2 {
+  box-shadow: 0px 0px 0px 10px green !important;
 }
-.pass .checkbox-small:has(input[type=checkbox]:checked) label:before {
+.pass .checkbox-small:has(input[type=checkbox]:checked) .check-input:before {
   background-color: darkgreen;
   font-size: 15px;
   padding-top: 0px;
 }
-.pass .checkbox-small:has(input[type=checkbox]:checked:disabled) .circle {
-  background-color: #EEEEEE !important;
+.pass .checkbox-small:has(input[type=checkbox]:checked:disabled) .circle2 {
+  box-shadow: 0px 0px 0px 10px #EEEEEE;
   opacity: 1;
 }
-.pass .checkbox-small:has(input[type=checkbox]:checked:disabled) label:before {
+.pass .checkbox-small:has(input[type=checkbox]:checked:disabled) .check-input:before {
   background-color: #CBCBCB;
 }
-.pass .checkbox-small:hover .circle {
-  background-color: green;
-  opacity: 0.2;
+.pass .checkbox-small:hover .circle2 {
+  box-shadow: 0px 0px 0px 10px green;
 }
-.pass .checkbox-small:hover label:before {
+.pass .checkbox-small:hover .check-input:before {
   background-color: darkgreen;
-  font-size: 15px;
   padding-top: 0px;
 }
 
-.branded:has(input[type=checkbox]:checked) label:before {
+.branded:has(input[type=checkbox]:checked) .check-input:before {
   content: "";
   background-image: url("../assets/images/Tick.png");
   background-size: contain;
@@ -15361,59 +15377,53 @@ uilibrary-select {
   padding-top: 2px;
   padding-left: 0px;
 }
-.branded label:before {
+.branded .check-input:before {
   background-color: white;
   border: 2px solid var(--secondary);
-  transition: background-color 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
 }
-.branded label:before:hover {
+.branded .check-input:before:hover {
   background-color: white;
 }
-.branded .checkbox:has(input[type=checkbox]:checked) .circle {
-  background-color: #E3F1EA !important;
-  opacity: 1;
+.branded .checkbox:has(input[type=checkbox]:checked) .circle2 {
+  box-shadow: 0px 0px 0px 15px var(--secondary);
 }
-.branded .checkbox:has(input[type=checkbox]:checked) label:before {
+.branded .checkbox:has(input[type=checkbox]:checked) .check-input:before {
   background-color: var(--secondary);
 }
-.branded .checkbox:has(input[type=checkbox]:checked:disabled) .circle {
-  background-color: #EEEEEE !important;
-  opacity: 1;
+.branded .checkbox:has(input[type=checkbox]:checked:disabled) .circle2 {
+  box-shadow: 0px 0px 0px 15px #EEEEEE !important;
 }
-.branded .checkbox:has(input[type=checkbox]:checked:disabled) label:before {
+.branded .checkbox:has(input[type=checkbox]:checked:disabled) .check-input:before {
   background-color: #CBCBCB;
 }
-.branded .checkbox:hover .circle {
-  background-color: #E3F1EA;
-  opacity: 1;
-}
-.branded .checkbox:hover label:before {
+.branded .checkbox:hover .check-input:before {
   background-color: var(--secondary);
+  padding-top: 0px;
 }
-.branded .checkbox-small:has(input[type=checkbox]:checked) .circle {
-  background-color: #E3F1EA !important;
-  opacity: 1;
+.branded .checkbox:hover .circle2 {
+  box-shadow: 0px 0px 0px 15px var(--secondary);
 }
-.branded .checkbox-small:has(input[type=checkbox]:checked) label:before {
+.branded .checkbox-small:has(input[type=checkbox]:checked) .circle2 {
+  box-shadow: 0px 0px 0px 10px var(--secondary);
+}
+.branded .checkbox-small:has(input[type=checkbox]:checked) .check-input:before {
   background-color: var(--secondary);
   font-size: 15px;
   padding-top: 0px;
 }
-.branded .checkbox-small:has(input[type=checkbox]:checked:disabled) .circle {
-  background-color: #EEEEEE !important;
-  opacity: 1;
+.branded .checkbox-small:has(input[type=checkbox]:checked:disabled) .circle2 {
+  box-shadow: 0px 0px 0px 10px #EEEEEE !important;
 }
-.branded .checkbox-small:has(input[type=checkbox]:checked:disabled) label:before {
+.branded .checkbox-small:has(input[type=checkbox]:checked:disabled) .check-input:before {
   background-color: #CBCBCB;
 }
-.branded .checkbox-small:hover .circle {
-  background-color: #E3F1EA;
-  opacity: 1;
-}
-.branded .checkbox-small:hover label:before {
+.branded .checkbox-small:hover .check-input:before {
   background-color: var(--secondary);
-  font-size: 15px;
   padding-top: 0px;
+}
+.branded .checkbox-small:hover .circle2 {
+  box-shadow: 0px 0px 0px 10px var(--secondary);
 }
 
 /* RADIO BUTTON */

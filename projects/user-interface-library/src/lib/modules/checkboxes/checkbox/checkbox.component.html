@@ -1,13 +1,13 @@
-<div class="d-flex flex-row">
+<div class="d-flex flex-row checkbox-container">
   <div [ngClass]="{'branded': variant === 'branded', 'pass': variant === 'pass', 'fail': variant === 'fail'}">
-    <div [ngClass]="{'checkbox-small': size === 'small', 'checkbox': size === 'large'}">
-      <div class="circle"></div>
-      <label>
-        <input type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()" (onKeyPress)="handleChange()"/>
+    <div  [ngClass]="{'checkbox-small': size === 'small', 'checkbox': size === 'large'}">
+      <label class="check-input" [ngClass]="{'label-left': labelPosition === 'left'}">
+        <div class="circle2"></div>
+        <input [id]="id" type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()" (onKeyPress)="handleChange()" [attr.aria-checked]="value"/>
       </label>
+      <div>
+        <label [for]="id"><ng-content></ng-content></label>
+      </div>
     </div>
-  </div>
-  <div [ngClass]="{'checkbox-small-margin': size === 'small', 'checkbox-large-margin': size === 'large'}">
-    <ng-content select="[label]"></ng-content>
   </div>
 </div>  

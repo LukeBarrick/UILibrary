@@ -402,43 +402,53 @@
   <uilibrary-checkbox variant="fail" size="large">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2">
-    <label label>Large Form Control Checkbox</label>
+    Large Form Control Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass" size="large">
-    <label label>Large Pass Checkbox</label>
+    Large Pass Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="fail" size="large">
-    <label label>Large Fail Checkbox</label>
+   Large Fail Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" size="large" [(isDisabled)]="isDisabled">
-    <label label>Large Disabled Checkbox</label>
+    Large Disabled Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" size="large" [(isDisabled)]="isDisabled" [value]="true">
-    <label label>Large Checked Disabled Checkbox</label>
+    Large Checked Disabled Checkbox
+  </uilibrary-checkbox>
+
+  <h3>Large Left Aligned Checkboxes</h3>
+  <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2" labelPosition="left">
+    Large Form Control Checkbox
   </uilibrary-checkbox>
 </section>
 <section [formGroup]="checkBoxes" class="large d-flex flex-column">
   <h3>Small Checkboxes (Normal Usage)</h3>
-  <uilibrary-checkbox variant="branded">
+  <uilibrary-checkbox variant='branded' formControlName="checkbox1">
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="fail">
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass">
   </uilibrary-checkbox>
-  <uilibrary-checkbox variant="fail">
-  </uilibrary-checkbox>
   <uilibrary-checkbox variant='branded' formControlName="checkbox1">
-    <label label>Small Form Control Checkbox</label>
+    Small Form Control Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="fail">
-    <label label>Small Fail Checkbox</label>
+    Small Fail Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="pass" [(value)]="checked">
-    <label label>Small Pass Two way Binding Checkbox</label>
+    Small Pass Two way Binding Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" [(isDisabled)]="isDisabled">
-    <label label>Small Disabled Checkbox</label>
+    Small Disabled Checkbox
   </uilibrary-checkbox>
   <uilibrary-checkbox variant="branded" [(isDisabled)]="isDisabled" [value]="true">
-    <label label>Small Checked Disabled Checkbox</label>
+    Small Checked Disabled Checkbox
+  </uilibrary-checkbox>
+
+  <h3>Normal Left Aligned Checkbox</h3>
+  <uilibrary-checkbox variant='branded' formControlName="checkbox1" labelPosition="left">
+    Small Form Control Checkbox
   </uilibrary-checkbox>
 </section>
 
@@ -447,28 +457,28 @@
   <h3>Basic Radio Group</h3>
   <uilibrary-radio-group>
     @for(item of items; track item) {
-      <uilibrary-radio-button value="{{item.id}}"><label label>{{item.name}}</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="{{item.id}}">{{item.name}}</uilibrary-radio-button>
     }
   </uilibrary-radio-group>
 
   <h3>Two Way Binding Radio Group</h3>
   <uilibrary-radio-group [(value)]="currentSelection3">
     @for(item of items; track item) {
-      <uilibrary-radio-button value="{{item.id}}"><label label>{{item.name}}</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="{{item.id}}">{{item.name}}</uilibrary-radio-button>
     }
   </uilibrary-radio-group>
 
  <h3>Disabled Radio Group</h3>
   <uilibrary-radio-group [(isDisabled)]="isDisabled">
     @for(item of items; track item) {
-      <uilibrary-radio-button value="{{item.id}}"><label label>{{item.name}}</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="{{item.id}}">{{item.name}}</uilibrary-radio-button>
     }
   </uilibrary-radio-group>
 
   <h3>Disabled & Checked Radio Group</h3>
   <uilibrary-radio-group [(isDisabled)]="isDisabled" [(value)]="currentSelection3">
     @for(item of items; track item) {
-      <uilibrary-radio-button value="{{item.id}}"><label label>{{item.name}}</label></uilibrary-radio-button>
+      <uilibrary-radio-button value="{{item.id}}">{{item.name}}</uilibrary-radio-button>
     }
   </uilibrary-radio-group>
 
@@ -476,7 +486,7 @@
   <uilibrary-form-control>
     <uilibrary-radio-group input formControlName="radioButton1">
       @for(item of items; track item) {
-        <uilibrary-radio-button value="{{item.id}}"><label label>{{item.name}}</label></uilibrary-radio-button>
+        <uilibrary-radio-button value="{{item.id}}">{{item.name}}</uilibrary-radio-button>
       }
     </uilibrary-radio-group>
     <uilibrary-tooltip tooltip placement="right" margin="left">

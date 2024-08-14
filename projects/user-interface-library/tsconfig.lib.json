@@ -3,6 +3,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
+    "lib": ["ES2022", "dom"],
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
