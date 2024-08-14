@@ -478,6 +478,13 @@
     }
   </uilibrary-radio-group>
 
+  <h3>Left Aligned Radio Group</h3>
+  <uilibrary-radio-group>
+    @for(item of items; track item) {
+      <uilibrary-radio-button value="{{item.id}}" labelPosition="right">{{item.name}}</uilibrary-radio-button>
+    }
+  </uilibrary-radio-group>
+
   <h3>Two Way Binding Radio Group</h3>
   <uilibrary-radio-group [(value)]="currentSelection3">
     @for(item of items; track item) {

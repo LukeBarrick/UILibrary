@@ -1,10 +1,10 @@
-<div class="switch-container d-flex align-items-center">
-  <label class="switch d-flex">
-    <input input type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()">
+<div class="switch-container d-flex">
+  <label class="switch d-flex align-items-center">
+    <input [id]="id" input type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()">
     <span class="slider"></span>
   </label>
   <div class="toggle-lineheight" [ngClass]="{'large': labelSize === 'large'}">
-    <label>
+    <label [for]="id">
       <ng-content></ng-content>
     </label>
   </div>

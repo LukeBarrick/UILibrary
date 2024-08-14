@@ -926,6 +926,7 @@ uilibrary-select {
 .input-radio {
   .form-check {
     display: flex;
+    align-items: center;
     padding-left: 0;
   }
 
@@ -1004,7 +1005,6 @@ uilibrary-select {
   }
 
   .toggle-lineheight {
-    line-height: 15px;
     font-size: 14px;
 
     &.large {
@@ -1019,10 +1019,8 @@ uilibrary-select {
   .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     background-color: #9D9D9D;
     -webkit-transition: .4s;
     transition: .4s;
