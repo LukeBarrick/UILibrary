@@ -16159,9 +16159,6 @@ uilibrary-select {
   outline: none;
   width: 100%;
 }
-.datepicker-container input[type=text]:focus {
-  border-color: var(--secondary);
-}
 .datepicker-container input[type=text]:focus::-webkit-input-placeholder {
   font-size: 16px;
   color: #696969;
@@ -16187,10 +16184,12 @@ uilibrary-select {
   left: 20px;
   transform: translateY(-14px);
 }
-.datepicker-container input[type=text]:focus + .datepicker-label label,
-.datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label {
+.datepicker-container .datepicker-input-focus {
+  border-color: var(--secondary) !important;
+}
+.datepicker-container .datepicker-label-shift label {
   font-size: 0.75rem;
-  transform: translate(-10px, -40px);
+  transform: translate(-10px, -40px) !important;
   background-color: transparent;
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   padding-left: 4px;
@@ -16198,8 +16197,7 @@ uilibrary-select {
   border-radius: 30px;
   color: var(--secondary);
 }
-.datepicker-container input[type=text]:focus + .datepicker-label label:after,
-.datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label:after {
+.datepicker-container .datepicker-label-shift label:after {
   content: "";
   display: block;
   position: absolute;
@@ -16210,8 +16208,7 @@ uilibrary-select {
   right: 0;
   z-index: -1;
 }
-.datepicker-container input[type=text]:focus + .datepicker-label label label,
-.datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label label {
+.datepicker-container .datepicker-label-shift label label {
   position: relative;
   z-index: 1;
   color: var(--secondary);

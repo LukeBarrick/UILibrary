@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { UUIDService } from '../../../core/services/UUID.service';
 export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
   public value: string | undefined = undefined;
+
+  @Input() placeholder: string = "";
   
   isOpen: boolean = false;
 
@@ -17,6 +19,9 @@ export class DatePickerComponent implements OnInit {
 
     if(this.isOpen && !this.elRef.nativeElement.contains(target)) {
       this.isOpen = false;
+    } else {
+      let inputField = this.elRef.nativeElement.querySelector('input');
+      inputField.focus();
     }
   }
 
@@ -63,7 +68,7 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
-  onFocus(event: any): void {
-    this.isOpen = !this.isOpen;
+  open(): void {
+    this.isOpen = true;
   }
 }
