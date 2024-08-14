@@ -16164,10 +16164,6 @@ uilibrary-select {
   color: #696969;
   transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.datepicker-container input[type=text]:focus ~ .input-label::after,
-.datepicker-container input[type=text] .input-field:not(:placeholder-shown) ~ .input-label::after {
-  width: 100%;
-}
 .datepicker-container input[type=text]::-webkit-input-placeholder {
   color: transparent;
 }

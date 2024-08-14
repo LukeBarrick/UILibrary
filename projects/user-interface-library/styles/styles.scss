@@ -1717,22 +1717,10 @@ uilibrary-select {
     outline: none;
     width: 100%;
 
-    &:focus {
-    
-    }
-
     &:focus::-webkit-input-placeholder {
       font-size: 16px;
       color: $darkFontColour;
       transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    &:focus,
-    .input-field:not(:placeholder-shown) {}
-
-    &:focus~.input-label::after,
-    .input-field:not(:placeholder-shown)~.input-label::after {
-      width: 100%;
     }
 
     &::-webkit-input-placeholder {
