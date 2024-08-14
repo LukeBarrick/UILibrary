@@ -51,8 +51,6 @@ export class ShowcaseComponent implements OnInit {
     });
   }
 
- 
-
   selectControls = new FormGroup({
     selectControl: new FormControl(undefined, [Validators.required]),
     selectControl2: new FormControl(undefined, [Validators.required]),

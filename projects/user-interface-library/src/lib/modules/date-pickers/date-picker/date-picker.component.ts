@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 
 @Component({
@@ -12,13 +12,23 @@ export class DatePickerComponent implements OnInit {
   
   isOpen: boolean = false;
 
+  @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+
+    if(this.isOpen && !this.elRef.nativeElement.contains(target)) {
+      this.isOpen = false;
+    }
+  }
+
   currentDay!: number;
   currentMonth!: number;
   currentYear!: number;
   daysInMonth: number[] = [];
   weeksInMonth: any[][] = [];
 
-  constructor(private UUID: UUIDService) {
+  constructor(private UUID: UUIDService,
+              private elRef: ElementRef
+  ) {
     const today = new Date();
     this.currentDay = today.getDay();
     this.currentMonth = today.getMonth();

@@ -1,5 +1,5 @@
 <div class="datepicker-container">
-  <input [id]="id" type="text" placeholder="" (focus)="onFocus($event)" (blur)="onFocus($event)"/>
+  <input [id]="id" type="text" placeholder="" (focus)="onFocus($event)"/>
   <div class="datepicker-label">
     <label [for]="id">
       <ng-content></ng-content>
@@ -9,7 +9,7 @@
     @for(month of ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']; track month) {
       {{month}}
     }
-    @for(day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']; track day) {
+    @for(day of ['S', 'M', 'T', 'W', 'T', 'F', 'S']; track day) {
       {{day}}
     }
     @for(week of weeksInMonth; track week;) {

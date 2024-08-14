@@ -17,6 +17,7 @@ import { InputAnnotationsModule } from './modules/input-annotations/input-annota
 import { FormControlModule } from './modules/form-control/form-control.module';
 import { TogglesModule } from './modules/toggles/toggles.module';
 import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
   imports: [
     CommonModule,
     NgbModule,
+    CoreModule,
     NgSelectModule,
     ReactiveFormsModule,
     RouterModule,
@@ -41,7 +43,7 @@ import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
 ],
   exports: [
     UserInterfaceLibraryComponent,
-    ShowcaseComponent
+    ShowcaseComponent,
   ]
 })
 export class UserInterfaceLibraryModule { }

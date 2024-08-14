@@ -8,13 +8,11 @@ import { UUIDService } from './services/UUID.service';
     CommonModule
   ],
   declarations: [
-
   ],
   providers: [
     UUIDService
   ],
   exports: [
-    
   ]
 })
 
