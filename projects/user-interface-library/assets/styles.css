@@ -14693,12 +14693,12 @@ body {
 }
 
 .error .input-field input[type=text],
-.error .input-field input[type=text] + .input-label .label-name label {
+.error .input-field input[type=text] + .input-label .label-name {
   border-color: var(--danger) !important;
   color: var(--danger) !important;
 }
 .error .textarea-field textarea,
-.error .textarea-field > .textarea-label .textarea-label-name label {
+.error .textarea-field > .textarea-label .textarea-label-name {
   border-color: var(--danger) !important;
   color: var(--danger) !important;
 }
@@ -14775,9 +14775,10 @@ p {
   text-align: left;
   letter-spacing: 0px;
   opacity: 1;
+  font-size: 14px;
 }
 p.large {
-  font-size: 21px;
+  font-size: 16px;
 }
 
 label {
@@ -14909,6 +14910,7 @@ uilibrary-select {
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 30px;
+  color: var(--secondary);
 }
 .input-field > input[type=text]:focus + .input-label .label-name:after,
 .input-field > input[type=text]:not(:placeholder-shown) + .input-label .label-name:after {

@@ -395,13 +395,13 @@ body {
 //Class.Error
 .error {
   .input-field input[type=text],
-  .input-field input[type=text]+.input-label .label-name label {
+  .input-field input[type=text]+.input-label .label-name {
     border-color: var(--danger) !important;
     color: var(--danger) !important;
   }
 
   .textarea-field textarea,
-  .textarea-field > .textarea-label .textarea-label-name label {
+  .textarea-field > .textarea-label .textarea-label-name {
     border-color: var(--danger) !important;
     color: var(--danger)  !important;
   }

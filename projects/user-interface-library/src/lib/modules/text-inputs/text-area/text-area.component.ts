@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { UUIDService } from '../../../core/services/UUID.service';
 
 @Component({
   selector: 'uilibrary-textarea',
@@ -14,11 +15,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class TextAreaComponent implements ControlValueAccessor {
+  public id = this.UUID.generate();
+
+  constructor(private UUID: UUIDService) {}
+
   @Input() placeholder: string = '';
   @Input() isDisabled: boolean = false;
-
-  constructor() {}
-
   @Input() value: any;
   @Output() valueChange = new EventEmitter<any>();
 

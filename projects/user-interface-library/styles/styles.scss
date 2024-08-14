@@ -59,9 +59,10 @@ p {
   text-align: left;
   letter-spacing: 0px;
   opacity: 1;
+  font-size: 14px;
 
   &.large {
-    font-size: 21px;
+    font-size: 16px;
   }
 }
 
@@ -216,6 +217,7 @@ uilibrary-select {
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 30px;
+  color: var(--secondary);
 
   &:after {
     content: "";
