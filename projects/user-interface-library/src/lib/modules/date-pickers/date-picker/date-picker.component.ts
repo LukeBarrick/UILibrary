@@ -14,16 +14,19 @@ export class DatePickerComponent implements OnInit {
   
   isOpen: boolean = false;
 
+  open(): void {
+    this.isOpen = true;
+  }
+
   //Focus trap to ensure field doesn't lose focus for accessiblity reasons.
   @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
   
     if(this.isOpen && !this.elRef.nativeElement.contains(target)) {
       this.isOpen = false;
-    } else {
-      
-      let inputField = this.elRef.nativeElement.querySelector('input');
-      inputField.focus();
+    } else if (this.isOpen) {
+      let input = this.elRef.nativeElement.querySelector('input');
+      input.focus();
     }
   }
 
@@ -68,9 +71,5 @@ export class DatePickerComponent implements OnInit {
     while(calendarDays.length) {
       this.weeksInMonth.push(calendarDays.splice(0, 7))
     }
-  }
-
-  open(): void {
-    this.isOpen = true;
   }
 }
