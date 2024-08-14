@@ -327,7 +327,8 @@ uilibrary-select {
   border-radius: 3px;
   padding-left: 20px;
   padding-right: 20px;
-  line-height: 35px;
+  padding-top: 10px;
+  min-height: 75px;
 
   &:disabled {
     background-color: #eeeeee;
