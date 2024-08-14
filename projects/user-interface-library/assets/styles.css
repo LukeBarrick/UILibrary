@@ -15113,13 +15113,16 @@ uilibrary-select {
 }
 .checkbox .circle2 {
   position: relative;
-  right: 27px;
-  height: 20px;
-  width: 20px;
+  right: 30px;
+  height: 15px;
+  width: 15px;
   border-radius: 50%;
   transition: box-shadow 0.5s ease-in-out;
   z-index: -1;
   opacity: 0.2;
+}
+.checkbox label {
+  cursor: pointer;
 }
 .checkbox .checkbox-label {
   position: relative;
@@ -15139,8 +15142,6 @@ uilibrary-select {
   height: 25px;
   margin-right: 10px;
   position: relative;
-  left: 5px;
-  bottom: 1px;
 }
 .checkbox .label-left {
   order: 1;
@@ -15197,14 +15198,8 @@ uilibrary-select {
   z-index: -1;
   opacity: 0.2;
 }
-.checkbox-small .checkbox-label {
-  position: relative;
-}
-.checkbox-small .checkbox-label:empty {
-  display: none;
-}
-.checkbox-small .check-input:empty {
-  display: none;
+.checkbox-small label {
+  cursor: pointer;
 }
 .checkbox-small .check-input {
   display: flex;
