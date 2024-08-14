@@ -14,6 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class TextAreaComponent implements ControlValueAccessor {
+  @Input() placeholder: string = '';
   @Input() isDisabled: boolean = false;
 
   constructor() {}

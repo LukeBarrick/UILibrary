@@ -15026,6 +15026,18 @@ uilibrary-select {
 .textarea-field > textarea:focus {
   border-color: var(--secondary);
 }
+.textarea-field > textarea:focus::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #696969;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.textarea-field > textarea:focus ~ .input-label::after,
+.textarea-field > textarea .input-field:not(:placeholder-shown) ~ .input-label::after {
+  width: 100%;
+}
+.textarea-field > textarea::-webkit-input-placeholder {
+  color: transparent;
+}
 
 .textarea-label {
   position: absolute;
@@ -15131,7 +15143,7 @@ uilibrary-select {
 }
 .checkbox .label-left {
   order: 1;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .checkbox input[type=checkbox] {
   display: none;
