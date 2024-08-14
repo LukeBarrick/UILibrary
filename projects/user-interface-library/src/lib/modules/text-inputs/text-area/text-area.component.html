@@ -4,9 +4,9 @@
       <div class="textarea-field">
         <textarea type="text" [placeholder]="placeholder" [(ngModel)]="value" [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"></textarea>
         <div class="textarea-label">
-          <span class="textarea-label-name">
-            <ng-content select="[label]"></ng-content>
-          </span>
+          <label class="textarea-label-name">
+            <ng-content></ng-content>
+          </label>
         </div>
       </div>
     </div>

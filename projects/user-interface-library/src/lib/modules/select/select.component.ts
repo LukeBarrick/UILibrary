@@ -7,7 +7,7 @@ import {
   Output,
   TemplateRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'uilibrary-select',
@@ -40,7 +40,7 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() clearSearchOnAdd: boolean = true;
   @Input() readonly: boolean = false;
   @Input() placeholder: string = '';
-  @Input() notFoundText: string = 'No items found.';
+  @Input() notFoundText: string = 'No options found.';
   @Input() markFirst: boolean = false;
   @Input() clearOnBackspace: boolean = true;
   @Input() clearable: boolean = false;

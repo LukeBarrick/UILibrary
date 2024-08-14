@@ -226,7 +226,7 @@ uilibrary-select {
     top: 8px;
     left: 0;
     right: 0;
-    z-index: 0;
+    z-index: -1;
   }
 
   label {
@@ -322,7 +322,6 @@ uilibrary-select {
   font-size: 1rem;
   border: 1px solid $borderColour;
   outline: none;
-  z-index: 1;
   border-radius: 3px;
   padding-left: 20px;
   padding-right: 20px;
@@ -399,7 +398,7 @@ uilibrary-select {
     top: 8px;
     left: 0;
     right: 0;
-    z-index: 0;
+    z-index: -1;
   }
 
   label {

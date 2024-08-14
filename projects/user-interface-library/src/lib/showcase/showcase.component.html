@@ -141,7 +141,7 @@
   <h3>Text Area with Hint</h3>
   <uilibrary-form-control>
     <uilibrary-textarea>
-      <label label for="#input">Text Area w/ Hint</label>
+      Text Area w/ Hint
     </uilibrary-textarea>
     <uilibrary-hint variant="normal">Please rate your recent visit and give us some feedback</uilibrary-hint>
   </uilibrary-form-control>
@@ -149,21 +149,21 @@
   <h3>Two Way Binding Text Area</h3>
   <uilibrary-form-control>
     <uilibrary-textarea [(value)]="currentSelection4">
-      <label label for="#input">Text Area w/ Two Way Binding</label>
+      Text Area w/ Two Way Binding
     </uilibrary-textarea>
   </uilibrary-form-control>
 
   <h3>Form Control Text Area with Annotations</h3>
   <uilibrary-form-control>
     <uilibrary-textarea input formControlName="textArea1">
-      <label label for="#input">Text Area Form Control w/ Error, Hint</label>
+      Text Area Form Control w/ Error, Hint
     </uilibrary-textarea>
     <uilibrary-hint *ngIf="textAreas.controls.textArea1.hasError('required') && textAreas.controls.textArea1.touched">Please provider a value.</uilibrary-hint>
   </uilibrary-form-control>
 
   <uilibrary-form-control>
     <uilibrary-textarea input formControlName="textArea2">
-      <label label for="#input">Text Area Form Control w/ Error, Hint, Required</label>
+      Text Area Form Control w/ Error, Hint, Required
     </uilibrary-textarea>
     <uilibrary-required required></uilibrary-required>
     <uilibrary-hint variant="normal" *ngIf="textAreas.controls.textArea2.valid || !textAreas.controls.textArea2.touched">Some information about the field.</uilibrary-hint>
@@ -172,7 +172,7 @@
 
   <uilibrary-form-control>
     <uilibrary-textarea input formControlName="textArea3">
-      <label label for="#input">Text Area Form Control w/ Error, Hint, Tooltip</label>
+      Text Area Form Control w/ Error, Hint, Tooltip
     </uilibrary-textarea>
     <uilibrary-tooltip tooltip placement='right' margin='left'>
       <span content><strong>Title</strong><br />This is tooltip content.</span>

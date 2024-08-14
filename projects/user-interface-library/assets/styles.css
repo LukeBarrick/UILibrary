@@ -14920,7 +14920,7 @@ uilibrary-select {
   top: 8px;
   left: 0;
   right: 0;
-  z-index: 0;
+  z-index: -1;
 }
 .input-field > input[type=text]:focus + .input-label .label-name label,
 .input-field > input[type=text]:not(:placeholder-shown) + .input-label .label-name label {
@@ -15014,7 +15014,6 @@ uilibrary-select {
   font-size: 1rem;
   border: 1px solid #CBCBCB;
   outline: none;
-  z-index: 1;
   border-radius: 3px;
   padding-left: 20px;
   padding-right: 20px;
@@ -15084,7 +15083,7 @@ uilibrary-select {
   top: 8px;
   left: 0;
   right: 0;
-  z-index: 0;
+  z-index: -1;
 }
 .textarea-field > textarea:focus + .textarea-label .textarea-label-name label,
 .textarea-field > textarea:not(:placeholder-shown) + .textarea-label .textarea-label-name label {
