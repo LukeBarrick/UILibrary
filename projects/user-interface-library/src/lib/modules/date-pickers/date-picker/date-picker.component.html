@@ -1,8 +1,21 @@
 <div class="datepicker-container">
-  <input type="text" (click)="toggleOpen()"/>
-  <div class="datepicker-calendar-container">
-    <label *ngFor="let dayName of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']">
-      {{dayName}}
-    </label>
+  <input [id]="id" type="text" (focus)="onFocus($event)" (blur)="onFocus($event)"/>
+  <div class="datepicker-calendar-container" *ngIf="isOpen">
+    @for(month of ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']; track month) {
+      {{month}}
+    }
+    @for(day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']; track day) {
+      {{day}}
+    }
+    @for(week of weeksInMonth; track week;) {
+      @for(day of week; track day) {
+        @if(day !== null) {
+          {{day + 1}}
+        } @else {
+          NULL
+        }
+      
+      }
+    }
   </div>
 </div>

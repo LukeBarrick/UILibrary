@@ -15200,6 +15200,7 @@ uilibrary-select {
 }
 .checkbox-small label {
   cursor: pointer;
+  font-size: 14px;
 }
 .checkbox-small .check-input {
   display: flex;
@@ -16007,12 +16008,14 @@ uilibrary-select {
 .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+  border-color: var(--secondary);
 }
 
 .ng-dropdown-panel.ng-select-bottom {
   border-top: none;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
+  border-color: var(--secondary);
 }
 
 .ng-select.ng-select-opened .ng-arrow-wrapper .ng-arrow {
@@ -16142,12 +16145,27 @@ uilibrary-select {
   color: var(--success-dark);
 }
 
+.datepicker-container {
+  position: relative;
+}
 .datepicker-container input[type=text] {
   border: 1px solid #CBCBCB;
   border-radius: 7px;
   height: 50px;
   padding-left: 20px;
   outline: none;
+  width: 100%;
+}
+.datepicker-container .datepicker-calendar-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  height: 280px;
+  width: 100%;
+  border: 1px solid #CBCBCB;
+  border-radius: 7px;
+  background-color: white;
+  z-index: 200;
 }
 
 /*# sourceMappingURL=styles.css.map */
