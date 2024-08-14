@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavigationLink } from '../core/models/navigation-link';
+import { NavigationLinkType } from '../core/enums/navigation-link-type.enum';
 
 export interface Item {
   id: number;
@@ -19,6 +21,17 @@ export class ShowcaseComponent implements OnInit {
     this.currentSelection2 = this.items[1];
     this.currentSelection5 = this.items[1];
   }
+
+  links: NavigationLink[] = [
+    { label:'Route', path:'/thetools', type: NavigationLinkType.Route },
+    { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
+    { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL },
+    { label: 'DropDown', path:'', type: NavigationLinkType.Route, children: [
+      { label:'Route', path:'/thetools', type: NavigationLinkType.Route },
+      { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
+      { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL }
+    ]}
+  ];
 
   items: Item[] = [
     { id: 1, name: 'Option 1' },

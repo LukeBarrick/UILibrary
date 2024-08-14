@@ -9,16 +9,7 @@ import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 })
 export class NavigationComponent implements OnInit {
   @Input() showRightAlignedContent: boolean = true;
-  @Input() links: NavigationLink[] = [
-    { label:'Route', path:'/thetools', type: NavigationLinkType.Route },
-    { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
-    { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL },
-    { label: 'DropDown', path:'', type: NavigationLinkType.Route, children: [
-      { label:'Route', path:'/thetools', type: NavigationLinkType.Route },
-      { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
-      { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL }
-    ]}
-  ];
+  @Input() links: NavigationLink[] = [];
 
   @ViewChild('navLinks') navLinks!: ElementRef;
   overflowLinks: NavigationLink[] = [];
