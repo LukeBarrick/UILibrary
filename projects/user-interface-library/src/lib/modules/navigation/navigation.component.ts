@@ -10,14 +10,13 @@ import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 export class NavigationComponent implements OnInit {
   @Input() showRightAlignedContent: boolean = true;
   @Input() links: NavigationLink[] = [];
+  @Input() showExtraMobileMenuContent: boolean = true;
+  @Input() hideRightAllignedContentOnMobile: boolean = false;
 
   @ViewChild('navLinks') navLinks!: ElementRef;
   overflowLinks: NavigationLink[] = [];
-  navigationLinkType: typeof NavigationLinkType;
 
-  constructor() { 
-    this.navigationLinkType = NavigationLinkType;
-  }
+  NavigationLinkType = NavigationLinkType;
 
   @HostListener('window:resize')
     onResize() {
@@ -33,6 +32,9 @@ export class NavigationComponent implements OnInit {
   }
 
   private adjustNav() {
+    if (!this.navLinks?.nativeElement)
+      return;
+      
     const navLinks = this.navLinks.nativeElement;
     const navLinkWidth: number = 160; 
     const rightAlignedContentWidth: number =  this.showRightAlignedContent ? 300 : 0
