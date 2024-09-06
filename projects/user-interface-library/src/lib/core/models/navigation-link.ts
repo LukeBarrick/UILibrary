@@ -5,4 +5,6 @@ export interface NavigationLink {
     path: string;
     type: NavigationLinkType;
     children?: NavigationLink[];
+    /** When nested dropdowns are in use toggle if the label for the parent of the child items should be visible */
+    hidenLabelOnNestedChildren?: boolean
 }
