@@ -1,8 +1,39 @@
 <div ngbDropdown class="navigation-dropdown-parent-custom">
-  <div class="navigation-dropdown-input-custom" ngbDropdownToggle>
-    <span><ng-content select="[button]"></ng-content></span>
+  <div class="navigation-dropdown-input-custom" ngbDropdownToggle [class.active]="isRoutesActive()">
+    <span><button type="button">{{label}}</button></span>
   </div>
-  <div id="transaction" class="navigation-dropdown-option-custom transaction-text-alignment" ngbDropdownMenu>
-    <ng-content select="[option]"></ng-content>
+
+  <div ngbDropdownMenu>
+    @for (link of links; track link.path) {
+      @if (link.children) {
+        @if(!link.hidenLabelOnNestedChildren) {
+          <div class="navigation-dropdown-nested-title-custom">{{link.label}}</div>
+        }
+          
+        @for (child of link.children; track child.path) {
+          @if(child.type === NavigationLinkType.Route) {
+            <a option ngbDropdownItem [routerLink]="child.path + '/' + child.path" routerLinkActive="active">
+              {{child.label}}
+            </a>
+          } @else {
+            <a option ngbDropdownItem [attr.href]="child.path" target="" rel="noopener"
+              [attr.target]="child.type === NavigationLinkType.TargetBlankURL ? '_blank' : ''">
+              {{child.label}}
+            </a>
+          }
+        }
+      } @else if(link.type === NavigationLinkType.Route) {
+      <a option ngbDropdownItem [routerLink]="link.path + '/' + link.path" routerLinkActive="active">
+        {{link.label}}
+      </a>
+      } @else {
+      <a option ngbDropdownItem [attr.href]="link.path" target="" rel="noopener"
+        [attr.target]="link.type === NavigationLinkType.TargetBlankURL ? '_blank' : ''">
+        {{link.label}}
+      </a>
+      }
+    }
+
+    <ng-content></ng-content>
   </div>
 </div>
