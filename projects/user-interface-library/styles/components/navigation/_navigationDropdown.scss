@@ -1,0 +1,178 @@
+.navigation-dropdown-parent-custom {
+    height: -webkit-fill-available;
+    position: relative;
+    flex-grow: 1;
+
+    .dropdown-item.active,
+    .dropdown-item:active {
+        color: initial !important;
+        background-color: initial !important;
+    }
+
+    .dropdown-toggle.active, a.active {
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: var(--secondary);
+            left: 0px;
+            height: 4px;
+            top: 100%;
+            transition: all 0.1s ease-in-out;
+            width: 100%;
+            border: 0px;
+        }
+    }
+
+    .dropdown-toggle.active:after {
+        top: calc(100% - 4px);
+        margin: 0px;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 7px;
+        height: 40px;
+
+        padding-left: 20px;
+        padding-right: 20px;
+        color: var(--primary);
+        text-decoration: none;
+
+        border-color: var(--secondary) !important;
+        font-weight: 600;
+
+        position: relative;
+
+        width: 100%;
+
+        &:hover {
+            background-color: #ebebeb;
+        }
+
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+    }
+
+    &:has(.dropdown-menu.show) {
+        .dropdown-menu.show {
+            padding: 5px;
+            transform: translate(0px, 5px);
+            border-color: #63636363;
+            animation: growDown 100ms ease-in-out forwards;
+            transform-origin: top center;
+            min-width: 100%;
+        }
+
+        span {
+            &:after {
+                transform: rotateX(180deg);
+            }
+        }
+    }
+
+    // nested dropdown header
+    .navigation-dropdown-nested-title-custom {
+        margin-top: 10px;
+        color: var(--secondary);
+        font-weight: 600;       
+        padding-left: 20px; 
+        padding-right: 20px;                
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // represents the toggle to show a dropdown
+    .navigation-dropdown-input-custom {
+        appearance: none;
+        height: 100%;
+
+        button {
+            text-align: center;
+            user-select: none;
+            cursor: pointer;
+            color: var(--secondaryFont);
+            font-family: $font;
+            background-color: transparent !important;
+            border: none;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            height: -webkit-fill-available;
+            border: 0;
+            transition: border 0.1s ease-in-out;
+            padding-left: 20px;
+            padding-right: 30px;
+
+            &::placeholder {
+                color: var(--tertiary);
+            }
+
+            &:disabled {
+                background-color: #eeeeee;
+            }
+
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                background: var(--secondary);
+                height: 0px;
+                top: 60px;
+                transition: all 0.1s ease-in-out;
+            }
+
+            &.active::after {
+                content: "";
+                display: block;
+                position: absolute;
+                background: var(--secondary);
+                left: 0px;
+                height: 4px;
+                top: 56px;
+                transition: all 0.1s ease-in-out;
+                width: 100%;
+            }
+
+
+            &:hover,
+            &:focus {
+                &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    background: var(--secondary);
+                    height: 6px;
+                    top: 54px;
+                    left: 0;
+                    right: 0;
+                    z-index: 0;
+                }
+            }
+        }
+
+        span {
+            &:after {
+                pointer-events: none;
+                content: "";
+                background-size: contain;
+                background-image: url('../assets/images/caret_white.svg');
+                background-repeat: no-repeat;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                display: inline;
+                right: 10px;
+                top: 20px;
+                transition: transform 0.2s ease-in-out;
+            }
+        }
+    }
+}
