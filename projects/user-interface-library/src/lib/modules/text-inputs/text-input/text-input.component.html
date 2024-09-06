@@ -1,7 +1,7 @@
 <div class="formfield d-flex flex-row">
   <div class="input-form">
     <div class="input-field" >
-      <input [id]="id" type="text" [placeholder]="placeholder" [(ngModel)]="value" [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"/> 
+      <input [attr.autocomplete]="autocomplete" [id]="id" type="text" [placeholder]="placeholder" [(ngModel)]="value" [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"/> 
       <div class="input-label">
         <label [for]="id" class="label-name">
           <ng-content></ng-content>
