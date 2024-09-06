@@ -1,7 +1,82 @@
-<uilibrary-navigation [links]="links">
-  <img logo src="https://ssl.uilibrary.com/Logos/uilibrary_Logo-04.svg" alt="Logo">
-  <div rightAlignedContent></div>
-</uilibrary-navigation>
+<section class="medium w-100">
+  <h1>Nav bars</h1>
+
+  <div class="alert alert-warning" role="alert">
+    Content projection is used when providing extra content into the Nav Menu. Its has some limitations to be aware of.
+
+    see <a href="#limitations-on-content-projection">Limitations on Content Projection</a> below.
+  </div>
+
+  <h2>Basic nav bar</h2>
+  <uilibrary-navigation [links]="links">
+    <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+  </uilibrary-navigation>
+
+  <div class="alert alert-info" role="alert">Should there be nested dropdowns, say within the mobile menu, it is possible to hide the label of the parent item which would have
+    triggered the dropdown with <em>hidenLabelOnNestedChildren</em>
+  </div>
+
+  <h2>Nav Bar with right aligned desktop content</h2>
+  <p>Nav bars can have some extra content displayed to the right, this area has a limited width however.</p>
+  <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
+    <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+    <div rightAlignedContent>
+      <p style="color: white;">I'm somne right content bro</p>
+    </div>
+  </uilibrary-navigation>
+
+  <h2>Nav Bar with extra content visible in mobile menu</h2>
+  <p>
+    It is also possible to append any extra content to the bottom of the menu when visible in mobile mode.
+  </p>
+  <div class="alert alert-info">
+    This extra content can be toggled with <em>showExtraMobileMenuContent</em>
+  </div>
+  <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
+    <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+    <div extraMobileMenuContent>
+      <p>I'm some extra mobile content bro</p>
+    </div>
+  </uilibrary-navigation>
+
+  <h2>Nav Bar with right aligned content and extra content within the mobile menu</h2>
+  <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
+    <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+    <div extraMobileMenuContent>
+      <p>I'm some extra mobile content bro</p>
+    </div>
+    <div rightAlignedContent>
+      <p style="color: white;">I'm somne right content bro</p>
+    </div>
+  </uilibrary-navigation>
+
+  <h2>Nav Bar with right aligned content hidden on mobile</h2>
+  <div class="alert alert-warning">
+    <strong>Note: </strong> Right aligned content is only hidden via <em>CSS</em> so the underlying Angular components will always be rendered.
+  </div>
+  <uilibrary-navigation [links]="links" [showRightAlignedContent]="true" [hideRightAllignedContentOnMobile]="true">
+    <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+    <div rightAlignedContent>
+      <p style="color: white;">I'm somne right content bro only visible on desktop</p>
+    </div>
+  </uilibrary-navigation>
+
+  <h2 id="limitations-on-content-projection">Limitations on Content Projection</h2>
+
+  <p>Angular's content projection runs at compile time. This is the mechanism used that allows us to project the extra menu content into 
+    the various menu's. As such it has the following limitations:
+  </p>
+
+  <ul>
+    <li>Static projection slots (everything is done at compile time)</li>
+    <li>Only one projection per slot. <em>rightAlignedContent</em> and <em>extraMobileMenuContent</em> cannot be used on the same element</li>
+    <li>Project content does nto play well with conditional logic <em>&#64;for/&#64;if</em> etc</li>
+  </ul>
+
+  <p>See <a href="https://brandonclapp.com/how-to-use-ng-content-for-content-projection-in-angular-a-basic-overview">https://brandonclapp.com/how-to-use-ng-content-for-content-projection-in-angular-a-basic-overview</a> for a good write up on how <em>ng-content</em> works and its limitations.</p>
+  
+</section>
+
 <section class="medium">
   <h1>Typography</h1>
   <h1 class="large">Headline 1</h1>
@@ -49,10 +124,18 @@
 
 <section [formGroup]="textInputs" class="small d-flex flex-column">
   <h1>Text Inputs</h1>
+
   <h3>Basic Text Input</h3>
   <uilibrary-textinput>
     Text Input
   </uilibrary-textinput>
+
+  <h3>Basic Text Input with autocomplete set</h3>
+  <p>Note AutoComplete defaults to <em>off</em> if not set.</p>
+  <uilibrary-textinput autocomplete="given-name">
+    Text Input
+  </uilibrary-textinput>
+  <p>The behaviour may not seem different but if looking in devtools we can see the value is correctly set.</p>
 
   <h3>Basic Text Input with Placeholder</h3>
   <p>A placeholder should not have the same text as the label.</p>
@@ -123,6 +206,13 @@
   <uilibrary-textarea>
     Text Area
   </uilibrary-textarea>
+
+  <h3>Basic Text Area with autocomplete set</h3>
+  <p>Note AutoComplete defaults to <em>off</em> if not set.</p>
+  <uilibrary-textarea autocomplete="given-name">
+    Text Area with AutoComplete set
+  </uilibrary-textarea>
+  <p>The behaviour may not seem different but if looking in devtools we can see the value is correctly set.</p>
 
   <h3>Basic Text Area with Placeholder</h3>
   <p>A placeholder should not have the same text as the label.</p>
