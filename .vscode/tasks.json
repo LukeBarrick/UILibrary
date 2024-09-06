@@ -50,7 +50,7 @@
       "type": "shell",
       "command": "sleep",
       "args": [
-        "5s"
+        "5"
       ],
       "problemMatcher": [],
       "options": {

@@ -8,10 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:showcase": "node dist/showcase/server/server.mjs",
-    "build-lib:dev": "ng build user-interface-library --watch",
-    "build-lib": "ng build user-interface-library --configuration production",
-    "build-sass:dev": "sass projects/user-interface-library/styles/styles.scss projects/user-interface-library/assets/styles.css --watch",
-    "build-sass": "sass projects/user-interface-library/styles/styles.scss projects/user-interface-library/assets/styles.css"
+    "build-lib:dev": "ng build uilibrary --watch",
+    "build-lib": "ng build uilibrary --configuration production",
+    "build-sass:dev": "sass projects/uilibrary/styles/styles.scss projects/uilibrary/assets/styles.css --watch",
+    "build-sass": "sass projects/uilibrary/styles/styles.scss projects/uilibrary/assets/styles.css"
   },
   "private": true,
   "dependencies": {

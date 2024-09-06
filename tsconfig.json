@@ -24,9 +24,6 @@
       "uilibrary": [
         "./dist/uilibrary"
       ],
-      "user-interface-library": [
-        "./dist/user-interface-library"
-      ]
     },
     "lib": [
       "ES2022",

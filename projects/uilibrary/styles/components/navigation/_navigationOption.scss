@@ -13,6 +13,9 @@
         border: 0;
         transition: border 0.1s ease-in-out;
         position: relative;
+        padding-left: 20px;
+        padding-right: 20px;
+        position: relative;
 
         a {
             outline: none;
@@ -22,9 +25,6 @@
             color: var(--secondaryFont);
             height: 100%;
             width: 100%;
-            padding-left: 20px;
-            padding-right: 20px;
-            color: var(--secondaryFont);
             text-decoration: none;
             display: flex;
             justify-content: center;

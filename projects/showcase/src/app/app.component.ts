@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UserInterfaceLibraryModule } from '../../../user-interface-library/src/public-api';
+import { UserInterfaceLibraryModule } from '../../../uilibrary/src/public-api';
 
 @Component({
   selector: 'app-root',

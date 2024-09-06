@@ -1,6 +1,6 @@
 <div class="datepicker-container">
   <input [id]="id" type="text"  [ngClass]="{'datepicker-input-focus': isOpen === true}" [placeholder]="placeholder" (click)="open()"/>
-  <div class="datepicker-label" [ngClass]="{'datepicker-label-shift': isOpen === true}">
+  <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen === true}">
     <label [for]="id">
       <ng-content></ng-content>
     </label>

@@ -4,9 +4,9 @@
       <label class="check-input" [ngClass]="{'label-left': labelPosition === 'left'}">
         <div class="circle2"></div>
         <input [id]="id" type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()" (onKeyPress)="handleChange()" [attr.aria-checked]="value"/>
+        <label [for]="id"><ng-content></ng-content></label>
       </label>
       <div>
-        <label [for]="id"><ng-content></ng-content></label>
       </div>
     </div>
   </div>
