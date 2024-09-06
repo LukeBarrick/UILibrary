@@ -28,6 +28,8 @@ export * from './lib/modules/navigation/navigation.module';
 export * from './lib/modules/navigation/navigation.component';
 export * from './lib/modules/navigation/navigation-dropdown/navigation-dropdown.component';
 export * from './lib/modules/navigation/navigation-option/navigation-option.component';
+export * from './lib/core/enums/navigation-link-type.enum';
+export * from './lib/core/models/navigation-link';
 
 export * from './lib/modules/select/select.module';
 export * from './lib/modules/select/select.component';
