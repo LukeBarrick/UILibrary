@@ -3,39 +3,74 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "start",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
-          }
-        }
+      "label": "Build SASS",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "build-sass:dev"
+      ],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
       }
     },
     {
-      "type": "npm",
-      "script": "test",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
-          }
-        }
+      "label": "Build Library",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "build-lib:dev"
+      ],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Start Showcase",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "start",
+        "--",
+        "--open"
+      ],
+      "problemMatcher": [],
+      // We need to give the other tasks time to compile before trying to start
+      // So delay by a few seconds
+      "dependsOn": ["delay 5 seconds"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "delay 5 seconds",
+      "type": "shell",
+      "command": "sleep",
+      "args": [
+        "5s"
+      ],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Start All",
+      "dependsOn": [
+        "Build SASS",
+        "Build Library",
+        "Start Showcase"
+      ],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
       }
     }
   ]
