@@ -19,6 +19,7 @@ export class TextInputComponent implements ControlValueAccessor {
 
   constructor(private UUID: UUIDService) {}
 
+  @Input() autocomplete?: string = 'off';
   @Input() placeholder: string = '';
   @Input() isDisabled: boolean = false;
   @Input() value: any;
