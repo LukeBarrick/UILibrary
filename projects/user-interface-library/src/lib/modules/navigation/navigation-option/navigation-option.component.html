@@ -1,3 +1,28 @@
-<section class="navigation-option">
-  <div class="navigation-option-button" select="[button]"><ng-content></ng-content></div>
-</section>
+
+@if(link) {
+  <section class="navigation-option">
+    <div class="navigation-option-button">    
+      @if (link.type === NavigationLinkType.Route) {
+        <a 
+          option
+          ngbDropdownItem
+          [routerLink]="link.path" 
+          routerLinkActive="active"
+        >
+          {{link.label}}
+        </a>
+      } @else {
+        <a 
+          option
+          ngbDropdownItem
+          [attr.href]="link.path" 
+          target="" 
+          rel="noopener"
+          [attr.target]="link.type === NavigationLinkType.TargetBlankURL ? '_blank' : ''"
+        >
+          {{link.label}}
+        </a>
+      }
+    </div>
+  </section>
+}
