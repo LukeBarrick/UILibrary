@@ -1,0 +1,74 @@
+.navigation-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+
+    .navigation-option-button {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        transition: border 0.1s ease-in-out;
+        position: relative;
+
+        a {
+            outline: none;
+            appearance: none;
+            border: none;
+            background-color: transparent;
+            color: var(--secondaryFont);
+            height: 100%;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: var(--secondaryFont);
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            &.active::after {
+                content: "";
+                display: block;
+                position: absolute;
+                background: var(--secondary);
+                height: 4px;
+                top: 56px;
+                left: 0;
+                right: 0;
+                z-index: 0;
+                width: 100%;
+            }
+
+            &:hover, &:focus {
+                &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    background: var(--secondary);
+                    height: 6px;
+                    top: 54px;
+                    left: 0;
+                    right: 0;
+                    z-index: 0;
+                }
+            }
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: var(--secondary);
+            height: 0px;
+            top: 60px;
+            transition: all 0.1s ease-in-out;
+        }
+
+
+        
+    }
+}
