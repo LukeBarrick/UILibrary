@@ -1,6 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { UUIDService } from '../../../core/services/UUID.service';
+import { LabelPosition } from '../../../core/enums/label-position.enum';
 
 @Component({
   selector: 'uilibrary-toggle',
@@ -20,6 +21,9 @@ export class ToggleComponent implements ControlValueAccessor {
   constructor(private UUID: UUIDService) {}
 
   @Input() labelSize: string = '';
+  @Input() labelPosition: string = LabelPosition.Left;
+  LabelPosition = LabelPosition;
+  @Input() hideLabel: boolean = false;
 
   @Input() value: boolean = false;
   @Output() valueChange = new EventEmitter<boolean>();

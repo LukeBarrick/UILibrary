@@ -1,6 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { UUIDService } from '../../../core/services/UUID.service';
+import { LabelPosition } from '../../../core/enums/label-position.enum';
 
 @Component({
   selector: 'uilibrary-checkbox',
@@ -15,7 +16,9 @@ import { UUIDService } from '../../../core/services/UUID.service';
   ]
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input() labelPosition: string = 'right';
+  @Input() labelPosition: string = LabelPosition.Right;
+  LabelPosition = LabelPosition;
+  @Input() hideLabel: boolean = false;
 
   constructor(private UUID: UUIDService) {}
 

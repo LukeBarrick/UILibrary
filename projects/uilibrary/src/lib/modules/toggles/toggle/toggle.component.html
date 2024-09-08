@@ -1,11 +1,9 @@
 <div class="switch-container d-flex">
-  <label class="switch d-flex align-items-center">
-    <input [id]="id" input type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()">
+  <label class="switch d-flex align-items-center" [ngClass]="{'large': labelSize === 'large'}">
+    <input class="order-base d-none" [id]="id" input type="checkbox" [(ngModel)]="value" [disabled]="isDisabled" (click)="handleChange()" [attr.aria-checked]="value">
     <span class="slider"></span>
-  </label>
-  <div class="toggle-lineheight" [ngClass]="{'large': labelSize === 'large'}">
-    <label [for]="id">
+    <div [ngClass]="{'visually-hidden': hideLabel === true, 'order-1 margin-left-20px': labelPosition == LabelPosition.Right, 'order-n1 margin-right-20px': labelPosition == LabelPosition.Left}">
       <ng-content></ng-content>
-    </label>
-  </div>
+    </div>
+  </label>
 </div>

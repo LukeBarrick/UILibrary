@@ -14668,51 +14668,50 @@ body {
   border-radius: var(--bs-dropdown-border-radius);
 }
 
-uilibrary-select.ng-invalid.ng-touched .ng-select-container {
+uilibrary-select.ng-invalid.ng-touched .ng-select-container,
+uilibrary-select.error .ng-select-container {
   border-color: var(--danger) !important;
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened > .ng-select-container {
+uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened > .ng-select-container,
+uilibrary-select.error .ng-select.ng-select-opened > .ng-select-container {
   border-color: var(--danger);
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened .ng-dropdown-panel {
+uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened .ng-dropdown-panel,
+uilibrary-select.error .ng-select.ng-select-opened .ng-dropdown-panel {
   border-color: var(--danger) !important;
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+uilibrary-select.ng-invalid.ng-touched .ng-select .ng-select-container .ng-value-container .ng-placeholder,
+uilibrary-select.error .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   color: var(--danger) !important;
 }
 
-.ng-invalid.ng-touched label {
+uilibrary-textarea.ng-invalid.ng-touched label,
+uilibrary-textarea.error label {
   color: var(--danger) !important;
 }
-.ng-invalid.ng-touched textarea {
-  border-color: var(--danger) !important;
-  color: var(--danger) !important;
-}
-.ng-invalid.ng-touched input[type=text] {
+uilibrary-textarea.ng-invalid.ng-touched textarea,
+uilibrary-textarea.error textarea {
   border-color: var(--danger) !important;
   color: var(--danger) !important;
 }
 
-.error .input-field input[type=text],
-.error .input-field input[type=text] + .input-label .label-name {
+uilibrary-textinput.ng-invalid.ng-touched label,
+uilibrary-textinput.error label {
+  color: var(--danger) !important;
+}
+uilibrary-textinput.ng-invalid.ng-touched input[type=text],
+uilibrary-textinput.error input[type=text] {
   border-color: var(--danger) !important;
   color: var(--danger) !important;
 }
-.error .textarea-field textarea,
-.error .textarea-field > .textarea-label .textarea-label-name {
-  border-color: var(--danger) !important;
+
+uilibrary-datepicker.ng-invalid.ng-touched label,
+uilibrary-datepicker.error label {
   color: var(--danger) !important;
 }
-.error .ng-select .ng-select-container {
+uilibrary-datepicker.ng-invalid.ng-touched input[type=text],
+uilibrary-datepicker.error input[type=text] {
   border-color: var(--danger) !important;
-}
-.error .ng-select.ng-select-opened > .ng-select-container {
-  border-color: var(--danger);
-}
-.error .ng-select.ng-select-opened .ng-dropdown-panel {
-  border-color: var(--danger) !important;
-}
-.error .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   color: var(--danger) !important;
 }
 
@@ -14732,6 +14731,42 @@ uilibrary-select.ng-invalid.ng-touched .ng-select .ng-select-container .ng-value
     transform: scaleY(1);
   }
 }
+.order-n3 {
+  order: -3;
+}
+
+.order-n2 {
+  order: -2;
+}
+
+.order-n1 {
+  order: -1;
+}
+
+.order-base {
+  order: 0;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
+.margin-left-20px {
+  margin-left: 20px;
+}
+
+.margin-right-20px {
+  margin-right: 20px;
+}
+
 :root {
   --primary: #000000;
   --secondary: #408467;
@@ -15088,51 +15123,50 @@ body {
   border-radius: var(--bs-dropdown-border-radius);
 }
 
-uilibrary-select.ng-invalid.ng-touched .ng-select-container {
+uilibrary-select.ng-invalid.ng-touched .ng-select-container,
+uilibrary-select.error .ng-select-container {
   border-color: var(--danger) !important;
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened > .ng-select-container {
+uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened > .ng-select-container,
+uilibrary-select.error .ng-select.ng-select-opened > .ng-select-container {
   border-color: var(--danger);
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened .ng-dropdown-panel {
+uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened .ng-dropdown-panel,
+uilibrary-select.error .ng-select.ng-select-opened .ng-dropdown-panel {
   border-color: var(--danger) !important;
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+uilibrary-select.ng-invalid.ng-touched .ng-select .ng-select-container .ng-value-container .ng-placeholder,
+uilibrary-select.error .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   color: var(--danger) !important;
 }
 
-.ng-invalid.ng-touched label {
+uilibrary-textarea.ng-invalid.ng-touched label,
+uilibrary-textarea.error label {
   color: var(--danger) !important;
 }
-.ng-invalid.ng-touched textarea {
-  border-color: var(--danger) !important;
-  color: var(--danger) !important;
-}
-.ng-invalid.ng-touched input[type=text] {
+uilibrary-textarea.ng-invalid.ng-touched textarea,
+uilibrary-textarea.error textarea {
   border-color: var(--danger) !important;
   color: var(--danger) !important;
 }
 
-.error .input-field input[type=text],
-.error .input-field input[type=text] + .input-label .label-name {
+uilibrary-textinput.ng-invalid.ng-touched label,
+uilibrary-textinput.error label {
+  color: var(--danger) !important;
+}
+uilibrary-textinput.ng-invalid.ng-touched input[type=text],
+uilibrary-textinput.error input[type=text] {
   border-color: var(--danger) !important;
   color: var(--danger) !important;
 }
-.error .textarea-field textarea,
-.error .textarea-field > .textarea-label .textarea-label-name {
-  border-color: var(--danger) !important;
+
+uilibrary-datepicker.ng-invalid.ng-touched label,
+uilibrary-datepicker.error label {
   color: var(--danger) !important;
 }
-.error .ng-select .ng-select-container {
+uilibrary-datepicker.ng-invalid.ng-touched input[type=text],
+uilibrary-datepicker.error input[type=text] {
   border-color: var(--danger) !important;
-}
-.error .ng-select.ng-select-opened > .ng-select-container {
-  border-color: var(--danger);
-}
-.error .ng-select.ng-select-opened .ng-dropdown-panel {
-  border-color: var(--danger) !important;
-}
-.error .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   color: var(--danger) !important;
 }
 
@@ -15430,6 +15464,10 @@ uilibrary-select.ng-invalid.ng-touched .ng-select .ng-select-container .ng-value
   }
 }
 
+.margin-left-3px {
+  margin-left: 3px;
+}
+
 h1, .h1 {
   color: var(--primary);
   text-align: left;
@@ -15440,7 +15478,7 @@ h1, .h1 {
   font-weight: bold !important;
 }
 h1.large, .large.h1 {
-  font-size: 63px;
+  font-size: 63px !important;
 }
 
 h2, .h2 {
@@ -15453,7 +15491,7 @@ h2, .h2 {
   font-weight: bold !important;
 }
 h2.large, .large.h2 {
-  font-size: 44px;
+  font-size: 44px !important;
 }
 
 h3, .h3 {
@@ -15466,7 +15504,7 @@ h3, .h3 {
   font-weight: bold !important;
 }
 h3.large, .large.h3 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 p {
@@ -15477,7 +15515,7 @@ p {
   font-size: 14px;
 }
 p.large {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 label {
@@ -15487,7 +15525,7 @@ label {
   opacity: 1;
 }
 label.large {
-  font-size: 21px;
+  font-size: 21px !important;
 }
 
 a {
@@ -15495,7 +15533,7 @@ a {
   font-size: 12pt;
 }
 a.large {
-  font-size: 21px;
+  font-size: 21px !important;
 }
 
 /* Custom Scroller */
@@ -15799,6 +15837,7 @@ uilibrary-select {
   display: flex;
   width: 100%;
   margin-bottom: 15px;
+  position: relative;
 }
 .checkbox .circle {
   position: relative;
@@ -15812,14 +15851,18 @@ uilibrary-select {
   transition: opacity 0.5s ease-in-out;
 }
 .checkbox .circle2 {
-  position: relative;
-  right: 30px;
+  position: absolute;
+  left: 5px;
   height: 15px;
   width: 15px;
   border-radius: 50%;
   transition: box-shadow 0.5s ease-in-out;
   z-index: -1;
   opacity: 0.2;
+}
+.checkbox:has(label > .order-n1) .circle2 {
+  left: unset;
+  right: 5px;
 }
 .checkbox label {
   cursor: pointer;
@@ -15832,7 +15875,6 @@ uilibrary-select {
   align-items: center;
   cursor: pointer;
   position: relative;
-  font-size: 16px;
 }
 .checkbox .check-input:before {
   content: "";
@@ -15840,12 +15882,7 @@ uilibrary-select {
   border-radius: 5px;
   width: 25px;
   height: 25px;
-  margin-right: 10px;
   position: relative;
-}
-.checkbox .label-left {
-  order: 1;
-  margin-left: 25px;
 }
 .checkbox input[type=checkbox] {
   display: none;
@@ -15875,8 +15912,8 @@ uilibrary-select {
 .checkbox-small {
   display: flex;
   width: 100%;
-  margin-left: 3px;
   margin-bottom: 5px;
+  position: relative;
 }
 .checkbox-small .circle {
   position: relative;
@@ -15889,14 +15926,18 @@ uilibrary-select {
   transition: opacity 0.5s ease-in-out;
 }
 .checkbox-small .circle2 {
-  position: relative;
-  right: 25px;
+  position: absolute;
+  left: 3px;
   height: 20px;
   width: 20px;
   border-radius: 50%;
   transition: box-shadow 0.5s ease-in-out;
   z-index: -1;
   opacity: 0.2;
+}
+.checkbox-small:has(label > .order-n1) .circle2 {
+  left: unset;
+  right: -3px;
 }
 .checkbox-small label {
   cursor: pointer;
@@ -15915,9 +15956,8 @@ uilibrary-select {
   border-radius: 5px;
   width: 20px;
   height: 20px;
-  margin-right: 10px;
   position: relative;
-  left: 5px;
+  left: 3px;
 }
 .checkbox-small .label-left {
   order: 1;
@@ -16237,8 +16277,15 @@ uilibrary-select {
 .switch-container .switch {
   position: relative;
   display: inline-block;
-  width: 40px;
   margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.switch-container .switch input[type=checkbox] {
+  width: 40px;
+}
+.switch-container .switch span {
+  width: 40px;
 }
 .switch-container .toggle-lineheight {
   font-size: 14px;
@@ -16250,7 +16297,7 @@ uilibrary-select {
   opacity: 0;
 }
 .switch-container .slider {
-  position: absolute;
+  position: relative;
   cursor: pointer;
   left: 0;
   right: 0;

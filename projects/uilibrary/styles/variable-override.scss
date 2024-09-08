@@ -356,7 +356,8 @@ body {
 
 
 //Invalid Form Control styles 
-uilibrary-select.ng-invalid.ng-touched {
+uilibrary-select.ng-invalid.ng-touched,
+uilibrary-select.error {
   .ng-select-container {
     border-color: var(--danger) !important;
   }
@@ -374,13 +375,21 @@ uilibrary-select.ng-invalid.ng-touched {
   }
 }
 
-.ng-invalid.ng-touched {
+uilibrary-textarea.ng-invalid.ng-touched,
+uilibrary-textarea.error {
   label {
     color: var(--danger) !important;
   }
 
   textarea {
     border-color: var(--danger) !important;
+    color: var(--danger) !important;
+  }
+}
+
+uilibrary-textinput.ng-invalid.ng-touched,
+uilibrary-textinput.error {
+  label {
     color: var(--danger) !important;
   }
 
@@ -390,33 +399,14 @@ uilibrary-select.ng-invalid.ng-touched {
   }
 }
 
-//Class.Error
-.error {
-  .input-field input[type=text],
-  .input-field input[type=text]+.input-label .label-name {
-    border-color: var(--danger) !important;
+uilibrary-datepicker.ng-invalid.ng-touched,
+uilibrary-datepicker.error {
+  label {
     color: var(--danger) !important;
   }
 
-  .textarea-field textarea,
-  .textarea-field > .textarea-label .textarea-label-name {
+  input[type=text] {
     border-color: var(--danger) !important;
-    color: var(--danger)  !important;
-  }
-
-  .ng-select .ng-select-container {
-    border-color: var(--danger) !important;
-  }
-
-  .ng-select.ng-select-opened>.ng-select-container {
-    border-color: var(--danger);
-  }
-
-  .ng-select.ng-select-opened .ng-dropdown-panel {
-    border-color: var(--danger) !important;
-  }
-
-  .ng-select .ng-select-container .ng-value-container .ng-placeholder {
     color: var(--danger) !important;
   }
 }
