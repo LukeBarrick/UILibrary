@@ -209,8 +209,8 @@ uilibrary-select {
 }
 
 
-.input-field>input[type=text]:focus+.input-label .label-name,
-.input-field>input[type=text]:not(:placeholder-shown)+.input-label .label-name {
+.input-field>input[type=text]:focus+.label-name,
+.input-field>input[type=text]:not(:placeholder-shown)+.label-name {
   font-size: 0.75rem;
   transform: translate(-10px, -40px);
   background-color: transparent;
@@ -250,6 +250,7 @@ uilibrary-select {
   left: 15px;
   transform: translateY(calc($input_height) - 64px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
 }
 
 .formfield {
@@ -358,33 +359,20 @@ uilibrary-select {
   }
 }
 
-.textarea-label {
-  position: absolute;
-  top: 14px;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  z-index: 2;
-  pointer-events: none;
-}
-
 .textarea-label-name {
   font-family: $font;
   letter-spacing: $letterSpacing;
   color: $darkFontColour;
   font-size: 14px;
   position: absolute;
-  top: 0px;
   left: 15px;
-  transform: translateY(calc($input_height) - 45px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 15px;
 }
 
-.textarea-field>textarea:focus+.textarea-label .textarea-label-name,
-.textarea-field>textarea:not(:placeholder-shown)+.textarea-label .textarea-label-name {
+.textarea-field>textarea:focus+.textarea-label-name,
+.textarea-field>textarea:not(:placeholder-shown)+.textarea-label-name {
   color: var(--primaryFont);
   font-size: 0.75rem;
   transform: translate(-10px, -23px);

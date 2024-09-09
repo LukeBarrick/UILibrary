@@ -1,12 +1,11 @@
 <div class="formfield d-flex flex-row">
   <div class="input-form">
-    <div class="input-field" >
-      <input [attr.autocomplete]="autocomplete" [id]="id" type="text" [placeholder]="placeholder" [(ngModel)]="value" [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"/> 
-      <div class="input-label">
-        <label [for]="id" class="label-name">
-          <ng-content></ng-content>
-        </label>
+    <label class="input-field">
+      <input [attr.autocomplete]="autocomplete" [id]="id" type="text" [placeholder]="placeholder" [(ngModel)]="value"
+        [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()" />
+      <div class="label-name">
+        <ng-content></ng-content>
       </div>
-    </div>
+    </label>
   </div>
 </div>

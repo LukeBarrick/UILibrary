@@ -14685,8 +14685,8 @@ uilibrary-select.error .ng-select .ng-select-container .ng-value-container .ng-p
   color: var(--danger) !important;
 }
 
-uilibrary-textarea.ng-invalid.ng-touched label,
-uilibrary-textarea.error label {
+uilibrary-textarea.ng-invalid.ng-touched .textarea-label-name,
+uilibrary-textarea.error .textarea-label-name {
   color: var(--danger) !important;
 }
 uilibrary-textarea.ng-invalid.ng-touched textarea,
@@ -14695,8 +14695,8 @@ uilibrary-textarea.error textarea {
   color: var(--danger) !important;
 }
 
-uilibrary-textinput.ng-invalid.ng-touched label,
-uilibrary-textinput.error label {
+uilibrary-textinput.ng-invalid.ng-touched .label-name,
+uilibrary-textinput.error .label-name {
   color: var(--danger) !important;
 }
 uilibrary-textinput.ng-invalid.ng-touched input[type=text],
@@ -15140,8 +15140,8 @@ uilibrary-select.error .ng-select .ng-select-container .ng-value-container .ng-p
   color: var(--danger) !important;
 }
 
-uilibrary-textarea.ng-invalid.ng-touched label,
-uilibrary-textarea.error label {
+uilibrary-textarea.ng-invalid.ng-touched .textarea-label-name,
+uilibrary-textarea.error .textarea-label-name {
   color: var(--danger) !important;
 }
 uilibrary-textarea.ng-invalid.ng-touched textarea,
@@ -15150,8 +15150,8 @@ uilibrary-textarea.error textarea {
   color: var(--danger) !important;
 }
 
-uilibrary-textinput.ng-invalid.ng-touched label,
-uilibrary-textinput.error label {
+uilibrary-textinput.ng-invalid.ng-touched .label-name,
+uilibrary-textinput.error .label-name {
   color: var(--danger) !important;
 }
 uilibrary-textinput.ng-invalid.ng-touched input[type=text],
@@ -15638,8 +15638,8 @@ uilibrary-select {
   background-color: #eeeeee;
 }
 
-.input-field > input[type=text]:focus + .input-label .label-name,
-.input-field > input[type=text]:not(:placeholder-shown) + .input-label .label-name {
+.input-field > input[type=text]:focus + .label-name,
+.input-field > input[type=text]:not(:placeholder-shown) + .label-name {
   font-size: 0.75rem;
   transform: translate(-10px, -40px);
   background-color: transparent;
@@ -15649,8 +15649,8 @@ uilibrary-select {
   border-radius: 30px;
   color: var(--secondary);
 }
-.input-field > input[type=text]:focus + .input-label .label-name:after,
-.input-field > input[type=text]:not(:placeholder-shown) + .input-label .label-name:after {
+.input-field > input[type=text]:focus + .label-name:after,
+.input-field > input[type=text]:not(:placeholder-shown) + .label-name:after {
   content: "";
   display: block;
   position: absolute;
@@ -15661,8 +15661,8 @@ uilibrary-select {
   right: 0;
   z-index: -1;
 }
-.input-field > input[type=text]:focus + .input-label .label-name label,
-.input-field > input[type=text]:not(:placeholder-shown) + .input-label .label-name label {
+.input-field > input[type=text]:focus + .label-name label,
+.input-field > input[type=text]:not(:placeholder-shown) + .label-name label {
   position: relative;
   z-index: 1;
   color: var(--secondary);
@@ -15678,6 +15678,7 @@ uilibrary-select {
   left: 15px;
   transform: translateY(-14px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
 }
 
 .formfield {
@@ -15778,33 +15779,20 @@ uilibrary-select {
   color: transparent;
 }
 
-.textarea-label {
-  position: absolute;
-  top: 14px;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  z-index: 2;
-  pointer-events: none;
-}
-
 .textarea-label-name {
   font-family: inherit;
   letter-spacing: 0px;
   color: #696969;
   font-size: 14px;
   position: absolute;
-  top: 0px;
   left: 15px;
-  transform: translateY(5px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 15px;
 }
 
-.textarea-field > textarea:focus + .textarea-label .textarea-label-name,
-.textarea-field > textarea:not(:placeholder-shown) + .textarea-label .textarea-label-name {
+.textarea-field > textarea:focus + .textarea-label-name,
+.textarea-field > textarea:not(:placeholder-shown) + .textarea-label-name {
   color: var(--primaryFont);
   font-size: 0.75rem;
   transform: translate(-10px, -23px);
@@ -15813,8 +15801,8 @@ uilibrary-select {
   padding-right: 4px;
   border-radius: 30px;
 }
-.textarea-field > textarea:focus + .textarea-label .textarea-label-name:after,
-.textarea-field > textarea:not(:placeholder-shown) + .textarea-label .textarea-label-name:after {
+.textarea-field > textarea:focus + .textarea-label-name:after,
+.textarea-field > textarea:not(:placeholder-shown) + .textarea-label-name:after {
   content: "";
   display: block;
   position: absolute;
@@ -15825,8 +15813,8 @@ uilibrary-select {
   right: 0;
   z-index: -1;
 }
-.textarea-field > textarea:focus + .textarea-label .textarea-label-name label,
-.textarea-field > textarea:not(:placeholder-shown) + .textarea-label .textarea-label-name label {
+.textarea-field > textarea:focus + .textarea-label-name label,
+.textarea-field > textarea:not(:placeholder-shown) + .textarea-label-name label {
   position: relative;
   z-index: 1;
   color: var(--secondary);

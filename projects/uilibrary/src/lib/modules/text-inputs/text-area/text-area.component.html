@@ -1,14 +1,11 @@
-<div>
-  <div class="formfield d-flex flex-row">
-    <div class="textarea-form">
-      <div class="textarea-field">
-        <textarea [attr.autocomplete]="autocomplete" [id]="id" type="text" [placeholder]="placeholder" [(ngModel)]="value" [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"></textarea>
-        <div class="textarea-label">
-          <label [for]="id" class="textarea-label-name">
-            <ng-content></ng-content>
-          </label>
-        </div>
+<div class="formfield d-flex flex-row">
+  <div class="textarea-form">
+    <label class="textarea-field">
+      <textarea [attr.autocomplete]="autocomplete" [id]="id" type="text" [placeholder]="placeholder" [(ngModel)]="value"
+        [disabled]="isDisabled" (input)="handleChange($event)" (blur)="markAsTouched()"></textarea>
+      <div class="textarea-label-name">
+        <ng-content></ng-content>
       </div>
-    </div>
+    </label>
   </div>
 </div>

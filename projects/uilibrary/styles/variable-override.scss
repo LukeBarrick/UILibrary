@@ -377,7 +377,7 @@ uilibrary-select.error {
 
 uilibrary-textarea.ng-invalid.ng-touched,
 uilibrary-textarea.error {
-  label {
+  .textarea-label-name {
     color: var(--danger) !important;
   }
 
@@ -389,7 +389,7 @@ uilibrary-textarea.error {
 
 uilibrary-textinput.ng-invalid.ng-touched,
 uilibrary-textinput.error {
-  label {
+  .label-name {
     color: var(--danger) !important;
   }
 
