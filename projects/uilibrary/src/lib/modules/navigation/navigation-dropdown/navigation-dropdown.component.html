@@ -23,7 +23,7 @@
           }
         }
       } @else if(link.type === NavigationLinkType.Route) {
-      <a option ngbDropdownItem [routerLink]="link.path + '/' + link.path" routerLinkActive="active">
+      <a option ngbDropdownItem [routerLink]="link.path + '/' + link.path" routerLinkActive="child-active">
         {{link.label}}
       </a>
       } @else {

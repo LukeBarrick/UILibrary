@@ -15,7 +15,6 @@
         position: relative;
         padding-left: 20px;
         padding-right: 20px;
-        position: relative;
 
         a {
             outline: none;
@@ -30,6 +29,19 @@
             justify-content: center;
             flex-direction: column;
 
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                background: var(--secondary);
+                height: 0px;
+                top: 60px;
+                left: 0;
+                right: 0;
+                z-index: 0;
+                transition: all $transitions;
+            }
+
             &.active::after {
                 content: "";
                 display: block;
@@ -41,9 +53,10 @@
                 right: 0;
                 z-index: 0;
                 width: 100%;
+                transition: all $transitions;
             }
 
-            &:hover, &:focus {
+            &:hover {
                 &:after {
                     content: "";
                     display: block;
@@ -54,21 +67,9 @@
                     left: 0;
                     right: 0;
                     z-index: 0;
+                    transition: all $transitions;
                 }
             }
         }
-
-        &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            background: var(--secondary);
-            height: 0px;
-            top: 60px;
-            transition: all 0.1s ease-in-out;
-        }
-
-
-        
     }
 }

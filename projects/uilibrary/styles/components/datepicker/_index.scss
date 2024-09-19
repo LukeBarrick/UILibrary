@@ -1,0 +1,86 @@
+//Date Picker 
+.datepicker-container {
+    position: relative;
+  
+    input[type=text] {
+      border: 1px solid $borderColour;
+      border-radius: 7px;
+      height: 50px;
+      padding-left: 20px;
+      outline: none;
+      width: 100%;
+  
+      &:focus::-webkit-input-placeholder {
+        font-size: 16px;
+        color: $darkFontColour;
+        transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+  
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+  
+      &:disabled {
+        background-color: $disabledColour;
+      }
+  
+      &+.datepicker-label {
+        position: relative;
+  
+        label {
+          transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+          position: absolute;
+          bottom: 0;
+          left: 20px;
+          transform: translateY(-14px);
+        }
+      }
+    }
+  
+    .datepicker-input-focus {
+      border-color: var(--secondary) !important;
+    }
+  
+    .datepicker-label-float label {
+      font-size: 0.75rem;
+      transform: translate(-10px, -40px) !important;
+      background-color: transparent;
+      transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      padding-left: 4px;
+      padding-right: 4px;
+      border-radius: 30px;
+      color: var(--secondary);
+  
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: white;
+        height: 2px;
+        top: 8px;
+        left: 0;
+        right: 0;
+        z-index: -1;
+      }
+  
+      label {
+        position: relative;
+        z-index: 1;
+        color: var(--secondary);
+      }
+    }
+  
+    .datepicker-calendar-container {
+      position: absolute;
+      left: 0;
+      top: 55px;
+      height: 280px;
+      width: 100%;
+      border: 1px solid $borderColour;
+      border-radius: 7px;
+      background-color: white;
+      z-index: 200;
+      animation: growDown 100ms ease-in-out forwards;
+      transform-origin: top center;
+    }
+  }

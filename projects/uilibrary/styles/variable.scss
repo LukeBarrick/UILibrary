@@ -31,6 +31,19 @@ $success-dark: #405C25 !default;
 $warning-dark: #422C13 !default;
 $info-dark: #172C4A !default;
 
+$white: #fff !default;
+$gray-100: #EEEEEE !default;
+$gray-200: #DEDEDE !default;
+$gray-300: #CBCBCB !default;
+$gray-400: #ced4da !default;
+$gray-500: #99abb4 !default;
+$gray-600: #cccccc !default;
+$gray-700: #636363 !default;
+$gray-800: #263238 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+
 :root {
   --primary: #{$primary};
   --secondary: #{$secondary};
@@ -62,6 +75,13 @@ $info-dark: #172C4A !default;
   --warning-dark: #{$warning-dark};
   --danger-dark: #{$danger-dark};
 
+  --almost-white: #{$gray-100};
+  --lighter-gray: #{$gray-200};
+  --light-gray: #{$gray-300};
+  --mute-gray: #{$gray-500};
+  --dark-gray: #{$gray-700};
+  --darker-gray: #{$gray-900};
+
   --page-wrapper-max-width: 100%;
 }
 
@@ -77,14 +97,13 @@ $theme-dark: #212529;
 // ======================================================
 // Layout settings
 // ======================================================
-
 $page-wrapper-max-width: 100%;
 
 // ======================================================
 // Common settings
 // ======================================================
 $shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
-$transitions: 0.2s ease-in;
+$transitions: 100ms ease-in-out;
 $transparent-dark-bg: rgba(0, 0, 0, 0.05);
 $lft: left;
 $rgt: right;
@@ -93,182 +112,11 @@ $card-alt: #e4e9ef;
 // ======================================================
 // Bootstrap override colors
 // ======================================================
-$white: #fff !default;
-$gray-100: #ebf3f5 !default;
-$gray-200: #e9edf2 !default;
-$gray-300: #a6b7bf !default;
-$gray-400: #ced4da !default;
-$gray-500: #99abb4 !default;
-$gray-600: #cccccc !default;
-$gray-700: #4f5467 !default;
-$gray-800: #263238 !default;
-$gray-900: #212529 !default;
-$black: #000 !default;
 
-$blue: #0088CC !default;
-$dark-blue: #051626 !default;
-$light-blue: #F3F9FC !default;
-$lighter-gray: #DEDEDE !default;
-$light-gray: #F8F8F8 !default;
-$gray: #EDEDED !default;
-$dark-gray: #949494 !default;
-$darker-gray: #8C8C8C !default;
-$indigo: #6610f2 !default;
-$purple: #745af2 !default;
-$pink: #e83e8c !default;
-$red: #ef5350 !default;
-$orange: #fb8c00 !default;
-$yellow: #ffb22b !default;
-$green: #06d79c !default;
-$teal: #20c997 !default;
-$cyan: #4fc3f7 !default;
-$text-muted: $gray-500 !default;
-$megna: #01c0c8 !default;
-
-$colors: (
-  "blue": $blue,
-  "indigo": $indigo,
-  "purple": $purple,
-  "pink": $pink,
-  "red": $red,
-  "orange": $orange,
-  "yellow": $yellow,
-  "green": $green,
-  "teal": $teal,
-  "cyan": $cyan,
-  "white": $white,
-  "gray": $gray-600,
-  "gray-dark": $gray-800,
-);
 
 $light: $gray-200 !default;
-$dark: $gray-800 !default;
+$dark: $gray-700 !default;
 $muted: $gray-500 !default;
-//
-// Light Colors
-//
 
-$light-primary: #f1effd;
-$light-inverse: #f6f6f6;
-$light-megna: #e0f2f4;
-
-//
-// Dark Colors
-//
-$primary-dark: #6352ce;
-$red-dark: #d61f1f;
-$inverse-dark: #232a37;
-$dark-transparent: rgba(0, 0, 0, 0.05);
-
-$theme-colors: () !default;
-
-$theme-colors: map-merge(
-  (
-    "primary": $primary,
-    "secondary": $secondary,
-    "success": $success,
-    "info": $info,
-    "warning": $warning,
-    "danger": $danger,
-    "light": $light,
-    "dark": $dark,
-    "muted": $muted,
-    "cyan": $cyan,
-    "orange": $orange,
-    "purple": $purple,
-    "light-inverse": $light-inverse,
-    "light-megna": $light-megna,
-    "light-primary": $primary,
-    "danger-light": $danger-light,
-    "success-light": $success-light,
-    "warning-light": $warning-light,
-    "info-light": $info-light,
-    "success-dark": $success-dark,
-    "warning-dark": $warning-dark,
-    "danger-dark": $danger-dark,
-    "info-dark": $info-dark,
-   
-  ),
-  $theme-colors
-);
-
-// ======================================================
-// Dark Theme Colors Settings
-// ======================================================
-$theme-dark-bg-layout: #323743;
-$theme-dark-text-color: #b2b9bf !default;
-$theme-dark-border-color: rgba(255, 255, 255, 0.2) !default;
-$theme-dark-focus-border-color: rgba(255, 255, 255, 0.4) !default;
-$theme-dark-card-bg: #272b34;
-$theme-dark-bg-light: #3c424e;
-$main-body-bg-dark: $gray-900 !default;
-$background-alt: #2b2b2b !default;
-
-// ======================================================
-// Enable optional
-// ======================================================
-$enable-caret: true !default;
-$enable-rounded: true !default;
-$enable-shadows: false !default;
-$enable-gradients: false !default;
-$enable-transitions: true !default;
-$enable-hover-media-query: false !default;
-$enable-grid-classes: true !default;
-$enable-print-styles: false !default;
-$enable-negative-margins: true;
-
-// ======================================================
-// Body
-// ======================================================
-$main-body-bg: #fff !default;
-$body-bg: #f4f6f9;
-$body-color: $black !default;
-$grid-gutter-width: 20px !default;
-
-// ======================================================
-// Typography
-// ======================================================
-$font-size-base: 1rem;
-$font-weight-base: 300 !default;
-$font-family-sans-serif: "Arial,Helvetica", sans-serif !default;
-$font-weight-light: 300 !default;
-$font-weight-normal: 400 !default;
-$font-weight-medium: 500 !default;
-$font-weight-bold: 700 !default;
-$headings-margin-bottom: 8px !default;
-$headings-font-weight: 400 !default;
-$headings-color: $black !default;
-
-// Font size
-$font-sizes: (
-  1: 10px,
-  2: 12px,
-  3: 14px,
-  4: 15px,
-  5: 18px,
-  6: 20px,
-  7: 24px,
-);
-
-// display
-$display-font-sizes: (
-  1: 5rem,
-  2: 4.5rem,
-  3: 4rem,
-  4: 3.5rem,
-  5: 3rem,
-  6: 2.5rem,
-  7: 2rem,
-  8: 1.75rem,
-) !default;
-
-// ======================================================
-// Navbar
-// ======================================================
-$navbar-dark-color: rgba($white, 0.8) !default;
-$navbar-dark-hover-color: rgba($white, 1) !default;
-
-$navbar-light-color: rgba($black, 0.3) !default;
-$navbar-light-hover-color: rgba($black, 0.8) !default;
 
 $font: inherit;

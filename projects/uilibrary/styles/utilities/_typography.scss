@@ -1,0 +1,74 @@
+h1 {
+  color: var(--primary);
+  text-align: left;
+  font-family: var(--bs-header-font-family);
+  font-size: 25pt;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-weight: bold !important;
+
+  &.large {
+    font-size: 63px !important;
+  }
+}
+
+h2 {
+  color: var(--secondary);
+  text-align: left;
+  font-family: var(--bs-header-font-family);
+  font-size: 20pt;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-weight: bold !important;
+
+  &.large {
+    font-size: 44px !important;
+  }
+}
+
+h3 {
+  color: var(--primary);
+  text-align: left;
+  font-family: var(--bs-header-font-family);
+  font-size: 15pt;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-weight: bold !important;
+
+  &.large {
+    font-size: 24px !important;
+  }
+}
+
+p {
+  color: var(--tertiary);
+  text-align: left;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-size: 14px;
+
+  &.large {
+    font-size: 16px !important;
+  }
+}
+
+label {
+  color: var(--tertiary);
+  text-align: left;
+  letter-spacing: 0px;
+  opacity: 1;
+
+  &.large {
+    font-size: 21px !important;
+  }
+}
+
+
+a {
+  color: var(--info);
+  font-size: 12pt;
+
+  &.large {
+    font-size: 21px !important;
+  }
+}

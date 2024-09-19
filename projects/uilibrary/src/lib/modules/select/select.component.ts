@@ -99,7 +99,6 @@ export class SelectComponent implements ControlValueAccessor {
 
   ngOnInit() {
     setTimeout(() => {
-      let _value: any;
       if(this.prefillFirstOption && this.value == undefined) {
         if(!this.multiple) {
           this.value = this.items[0];

@@ -1,0 +1,35 @@
+.status-tag {
+    border: 1px, solid;
+    max-width: 240px;
+    border-radius: 7px;
+    text-align: center;
+  
+    b,
+    strong {
+      font-weight: 600;
+    }
+  
+    &.information {
+      border-color: var(--info);
+      background-color: var(--info-light);
+      color: var(--info-dark);
+    }
+  
+    &.warning {
+      border-color: var(--warning);
+      background-color: var(--warning-light);
+      color: var(--warning-dark);
+    }
+  
+    &.error {
+      border-color: var(--danger);
+      background-color: var(--danger-light);
+      color: var(--danger-dark);
+    }
+  
+    &.success {
+      border-color: var(--success);
+      background-color: var(--success-light);
+      color: var(--success-dark);
+    }
+  }
