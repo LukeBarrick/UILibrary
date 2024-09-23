@@ -1,9 +1,5 @@
 uilibrary-select.ng-invalid.ng-touched,
 uilibrary-select.error {
-    &:focus-within .ng-select-container {
-      border-color: black !important;
-    }
-  
     .ng-select-container {
         border-color: var(--danger) !important;
     }

@@ -13214,7 +13214,7 @@ uilibrary-datepicker.error input[type=text] {
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) .dropdown-menu.show {
   padding: 5px;
   transform: translate(0px, 5px);
-  border-color: rgba(99, 99, 99, 0.3882352941);
+  border-color: #636363;
   animation: growDown 100ms ease-in-out forwards;
   transform-origin: top center;
   min-width: 100%;
