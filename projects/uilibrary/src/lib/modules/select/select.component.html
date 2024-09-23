@@ -1,4 +1,4 @@
-  <ng-select class="custom" [(ngModel)]="value" [items]="items" [disabled]="isDisabled" bindLabel="label"
+  <ng-select class="custom" libSelectWcagHelper [(ngModel)]="value" [items]="items" [disabled]="isDisabled" bindLabel="label"
   bindValue="value" [compareWith]="compareFn"
   (change)="handleChange($event)" (focus)="onTouched($event)" [loading]="loading" [loadingText]="loadingText"
   [multiple]="multiple" [maxSelectedItems]="maxSelectedItems" [hideSelected]="hideSelected"
