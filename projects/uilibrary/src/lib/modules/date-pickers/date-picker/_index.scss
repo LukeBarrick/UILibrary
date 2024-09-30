@@ -82,5 +82,16 @@
       z-index: 200;
       animation: growDown 100ms ease-in-out forwards;
       transform-origin: top center;
+
+      .calendar {
+        display: grid;
+        height: 100%;
+        width: 100%;
+        grid-template-columns: repeat(7, 1fr);
+        grid-gap: 5px;
+      }
+
+      .item {
+      }
     }
   }

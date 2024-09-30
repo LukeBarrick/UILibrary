@@ -1,26 +1,29 @@
 <div class="datepicker-container">
-  <input [id]="id" type="text"  [ngClass]="{'datepicker-input-focus': isOpen === true}" [placeholder]="placeholder" (click)="open()"/>
-  <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen === true}">
+  <input [id]="id" type="text"  [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" (click)="open()"/>
+  <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen}">
     <label [for]="id">
       <ng-content></ng-content>
     </label>
   </div>
   <div class="datepicker-calendar-container" *ngIf="isOpen">
-    @for(month of ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']; track month) {
-      {{month}}
-    }
-    @for(day of ['S', 'M', 'T', 'W', 'T', 'F', 'S']; track day) {
-      {{day}}
-    }
-    @for(week of weeksInMonth; track week;) {
-      @for(day of week; track day) {
-        @if(day !== null) {
-          {{day + 1}}
-        } @else {
-          NULL
-        }
-      
+    <div class="calendar">
+      <!-- @for(month of ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']; track month) {
+        {{month}}
+      } -->
+      @for(day of ['S', 'M', 'T', 'W', 'T', 'F', 'S']; track day) {
+        <div class="day-name">{{day}}</div>
       }
-    }
+      
+      @for(week of weeksInMonth; track week;) {
+        @for(day of week; track day) {
+          @if(day !== null) {
+            <div class="day">{{day + 1}}</div>
+          } @else {
+            <div class="day">NULL</div>
+          }
+        
+        }
+      }
+    </div>
   </div>
 </div>
