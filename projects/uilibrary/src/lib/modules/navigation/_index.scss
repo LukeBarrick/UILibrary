@@ -1,8 +1,5 @@
-@import "../../variable";
-@import "../../variable-override";
-
-@import "./navigationDropdown";
-@import "./navigationOption";
+@import "./navigation-dropdown/";
+@import "./navigation-option/";
 
 .navbar {
     display: flex;

@@ -4,7 +4,6 @@ import { UUIDService } from '../../../core/services/UUID.service';
 @Component({
   selector: 'uilibrary-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();

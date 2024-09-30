@@ -5,7 +5,6 @@ import { RadioButtonComponent } from '../radio-button/radio-button.component';
 @Component({
   selector: 'uilibrary-radio-group',
   templateUrl: './radio-group.component.html',
-  styleUrls: ['./radio-group.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

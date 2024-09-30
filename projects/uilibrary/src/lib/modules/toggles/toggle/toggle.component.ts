@@ -6,7 +6,6 @@ import { LabelPosition } from '../../../core/enums/label-position.enum';
 @Component({
   selector: 'uilibrary-toggle',
   templateUrl: './toggle.component.html',
-  styleUrls: ['./toggle.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

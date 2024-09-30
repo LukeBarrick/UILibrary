@@ -3,8 +3,7 @@ import { UUIDService } from '../../../core/services/UUID.service';
 
 @Component({
   selector: 'uilibrary-radio-button',
-  templateUrl: './radio-button.component.html',
-  styleUrls: ['./radio-button.component.css']
+  templateUrl: './radio-button.component.html'
 })
 export class RadioButtonComponent {
   public id = this.UUID.generate();

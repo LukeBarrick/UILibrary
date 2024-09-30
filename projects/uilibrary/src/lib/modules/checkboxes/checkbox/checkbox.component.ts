@@ -6,7 +6,6 @@ import { LabelPosition } from '../../../core/enums/label-position.enum';
 @Component({
   selector: 'uilibrary-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

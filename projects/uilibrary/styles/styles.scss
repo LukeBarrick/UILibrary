@@ -11,16 +11,15 @@
 
 @import "utilities/";
 
-@import "components/navigation/";
-@import "components/checkbox/";
-@import "components/select/";
-@import "components/textinput/";
-@import "components/textarea/";
-@import "components/dropdown/";
-@import "components/required/";
-@import "components/datepicker/";
-@import "components/hint/";
-@import "components/radiobutton/";
-@import "components/statustag/";
-@import "components/toggle/";
-@import "components/tooltip/";
+@import "../src/lib/modules/checkboxes/checkbox/";
+@import "../src/lib/modules/select/";
+@import "../src/lib/modules/text-inputs/text-input/";
+@import "../src/lib/modules/text-inputs/text-area/";
+@import "../src/lib/modules/input-annotations/hint/";
+@import "../src/lib/modules/input-annotations/required/";
+@import "../src/lib/modules/input-annotations/tooltip/";
+@import "../src/lib/modules/date-pickers/date-picker/";
+@import "../src/lib/modules/radio-buttons/radio-button/";
+@import "../src/lib/modules/status-tags/status-tag/";
+@import "../src/lib/modules/toggles/toggle/";
+@import "../src/lib/modules/navigation/"

@@ -5,7 +5,6 @@ import { UUIDService } from '../../../core/services/UUID.service';
 @Component({
   selector: 'uilibrary-textarea',
   templateUrl: './text-area.component.html',
-  styleUrls: ['./text-area.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
