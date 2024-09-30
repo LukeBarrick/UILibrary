@@ -49,6 +49,28 @@ export class DatePickerComponent implements OnInit {
     console.log('Date picker is work in progress, please do not use.')
   }
 
+  next(): void {
+    if(this.currentMonth === 11) {
+      this.currentMonth = 0;
+      this.currentYear++;
+    } else {
+      this.currentMonth++;
+    }
+
+    this.generateCalendar(this.currentMonth, this.currentYear);
+  }
+
+  previous(): void {
+    if(this.currentMonth === 0) {
+      this.currentMonth = 11;
+      this.currentYear--;
+    } else {
+      this.currentMonth--;
+    }
+    
+    this.generateCalendar(this.currentMonth, this.currentYear);
+  }
+
   generateCalendar(month: number, year: number) {
     const firstDayOfMonth = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();

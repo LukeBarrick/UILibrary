@@ -13619,6 +13619,15 @@ uilibrary-textarea {
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 5px;
 }
+.datepicker-container .datepicker-calendar-container .day-name {
+  align-self: center;
+  justify-self: center;
+}
+.datepicker-container .datepicker-calendar-container .day {
+  align-self: center;
+  justify-self: center;
+}
+
 .input-radio .form-check {
   display: flex;
   align-items: center;

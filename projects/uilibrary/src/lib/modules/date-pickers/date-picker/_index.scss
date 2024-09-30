@@ -91,7 +91,14 @@
         grid-gap: 5px;
       }
 
-      .item {
+      .day-name {
+        align-self: center;
+        justify-self: center;
+      }
+
+      .day {
+        align-self: center;
+        justify-self: center;
       }
     }
   }

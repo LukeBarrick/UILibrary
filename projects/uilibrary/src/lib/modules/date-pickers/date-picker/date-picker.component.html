@@ -6,11 +6,13 @@
     </label>
   </div>
   <div class="datepicker-calendar-container" *ngIf="isOpen">
+    <button (click)="previous()">prev</button>
+    <button (click)="next()">next</button>
     <div class="calendar">
       <!-- @for(month of ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']; track month) {
         {{month}}
       } -->
-      @for(day of ['S', 'M', 'T', 'W', 'T', 'F', 'S']; track day) {
+      @for(day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; track day) {
         <div class="day-name">{{day}}</div>
       }
       
@@ -19,7 +21,7 @@
           @if(day !== null) {
             <div class="day">{{day + 1}}</div>
           } @else {
-            <div class="day">NULL</div>
+            <div class="day"></div>
           }
         
         }
