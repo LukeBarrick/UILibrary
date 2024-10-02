@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-status-tag',
-  templateUrl: './status-tag.component.html',
-  styleUrls: ['./status-tag.component.css']
+  templateUrl: './status-tag.component.html'
 })
 export class StatusTagComponent implements OnInit {
 
