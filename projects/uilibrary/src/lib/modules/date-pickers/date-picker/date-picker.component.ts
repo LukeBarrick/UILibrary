@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 
 @Component({
@@ -29,34 +29,48 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
+  today = new Date();
+
   currentDay!: number;
   currentMonth!: number;
   currentYear!: number;
+  currentMonthLiteral: string = '';
   daysInMonth: number[] = [];
   weeksInMonth: any[][] = [];
 
-  constructor(private UUID: UUIDService,
-              private elRef: ElementRef
+  constructor(@Inject(LOCALE_ID) protected localeId: string,
+              private readonly UUID: UUIDService,
+              private readonly elRef: ElementRef,
   ) {
-    const today = new Date();
-    this.currentDay = today.getDay();
-    this.currentMonth = today.getMonth();
-    this.currentYear = today.getFullYear();
+    
+    this.currentDay = this.today.getDay();
+    this.currentMonth = this.today.getMonth();
+    this.currentYear = this.today.getFullYear();
+    this.currentMonthLiteral = this.today.toLocaleString(this.localeId, { month: 'long' }); //Localise
     this.generateCalendar(this.currentMonth, this.currentYear);
   }
 
   ngOnInit() {
-    console.log('Date picker is work in progress, please do not use.')
+    console.log('Date picker is work in progress, please do not use.');
+    console.log(this.localeId)
+  }
+  
+  selectDate(day: number) {
+    const date = new Date(day, this.currentMonth, this.currentYear);
   }
 
   next(): void {
     if(this.currentMonth === 11) {
       this.currentMonth = 0;
       this.currentYear++;
+      this.today.setMonth(0);
+      this.today.setFullYear(this.currentYear);
     } else {
       this.currentMonth++;
+      this.today.setMonth(this.currentMonth);
     }
 
+    this.currentMonthLiteral = this.today.toLocaleString(this.localeId, { month: 'long' }); //Localise
     this.generateCalendar(this.currentMonth, this.currentYear);
   }
 
@@ -64,10 +78,14 @@ export class DatePickerComponent implements OnInit {
     if(this.currentMonth === 0) {
       this.currentMonth = 11;
       this.currentYear--;
+      this.today.setMonth(11);
+      this.today.setFullYear(this.currentYear);
     } else {
       this.currentMonth--;
+      this.today.setMonth(this.currentMonth);
     }
     
+    this.currentMonthLiteral = this.today.toLocaleString(this.localeId, { month: 'long' }); //Localise
     this.generateCalendar(this.currentMonth, this.currentYear);
   }
 

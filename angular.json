@@ -13,6 +13,12 @@
       "root": "projects/showcase",
       "sourceRoot": "projects/showcase/src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -107,6 +113,11 @@
       "root": "projects/uilibrary",
       "sourceRoot": "projects/uilibrary/src",
       "prefix": "lib",
+      "i18n": {
+        "locales": {
+
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

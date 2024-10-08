@@ -6,8 +6,14 @@
     </label>
   </div>
   <div class="datepicker-calendar-container" *ngIf="isOpen">
-    <button (click)="previous()">prev</button>
-    <button (click)="next()">next</button>
+    <div class="d-flex justify-content-between align-items-center datepicker-title-row">
+      <button class="nav-button" (click)="previous()">P</button>
+    
+      {{currentMonthLiteral}} {{currentYear}}
+  
+      <button class="nav-button" (click)="next()">N</button>
+    </div>
+   
     <div class="calendar">
       <!-- @for(month of ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']; track month) {
         {{month}}
@@ -19,7 +25,7 @@
       @for(week of weeksInMonth; track week;) {
         @for(day of week; track day) {
           @if(day !== null) {
-            <div class="day">{{day + 1}}</div>
+            <div class="day" (click)="selectDate(day)">{{day + 1}}</div>
           } @else {
             <div class="day"></div>
           }

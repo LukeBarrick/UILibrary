@@ -74,7 +74,7 @@ uilibrary-date-picker {
       position: absolute;
       left: 0;
       top: 55px;
-      height: 280px;
+      height: 320px;
       width: 100%;
       border: 1px solid var(--light-gray);
       border-radius: 7px;
@@ -82,7 +82,25 @@ uilibrary-date-picker {
       z-index: 200;
       animation: growDown 100ms ease-in-out forwards;
       transform-origin: top center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
 
+      .nav-button {
+        appearance: none;
+        outline: none;
+        border: none;
+        background-color: var(--secondary);
+        height: 30px;
+        width: 30px;
+        border-radius: 7px;
+      }
+
+
+      .datepicker-title-row {
+        margin-bottom: 10px;
+      }
+   
       .calendar {
         display: grid;
         height: 100%;
