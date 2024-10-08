@@ -1,6 +1,7 @@
-.hint-normal {
+uilibrary-hint {
+  .hint-normal {
     font-size: 12px;
-    color: $darkFontColour;
+    color: var(--dark-gray);
     padding-inline-start: 10px;
   }
   
@@ -9,3 +10,4 @@
     color: var(--danger);
     padding-inline-start: 10px;
   }
+}

@@ -18,6 +18,7 @@ import { FormControlModule } from './modules/form-control/form-control.module';
 import { TogglesModule } from './modules/toggles/toggles.module';
 import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
 import { CoreModule } from './core/core.module';
+import { StatusTagsModule } from './modules/status-tags/status-tags.module';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CoreModule } from './core/core.module';
     NavigationModule,
     SelectModule,
     FormControlModule,
-    DatePickersModule
+    DatePickersModule,
+    StatusTagsModule
 ],
   exports: [
     UserInterfaceLibraryComponent,

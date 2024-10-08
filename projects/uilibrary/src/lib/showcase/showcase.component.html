@@ -611,7 +611,8 @@
       }
     </uilibrary-radio-group>
     <uilibrary-tooltip tooltip placement="right" margin="left">
-      <span content><strong>Title</strong><br />This is tooltip content.</span>
+      <span title>Title</span>
+      <span content>This is some tooltip content.</span>
     </uilibrary-tooltip>
   </uilibrary-form-control>
 </section>
@@ -673,10 +674,10 @@
 </section>
 
 <section class="medium d-flex flex-column">
-  <div class="status-tag information">Information</div>
-  <div class="status-tag warning">Warning</div>
-  <div class="status-tag error">Error</div>
-  <div class="status-tag success">Success</div>
+  <uilibrary-status-tag statusType="info">Information</uilibrary-status-tag>
+  <uilibrary-status-tag statusType="warning">Warning</uilibrary-status-tag>
+  <uilibrary-status-tag statusType="error">Error</uilibrary-status-tag>
+  <uilibrary-status-tag statusType="success">Success</uilibrary-status-tag>
 </section>
 
 <section class="medium d-flex flex-column">

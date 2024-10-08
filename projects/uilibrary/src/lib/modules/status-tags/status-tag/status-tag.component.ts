@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-status-tag',
+  selector: 'uilibrary-status-tag',
   templateUrl: './status-tag.component.html',
-  styleUrls: ['./status-tag.component.css']
 })
 export class StatusTagComponent implements OnInit {
 
+  @Input() statusType: string = '';
+  
   constructor() { }
 
   ngOnInit() {
   }
-
 }

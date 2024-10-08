@@ -8,6 +8,9 @@ import { StatusTagComponent } from './status-tag/status-tag.component';
   ],
   declarations: [
     StatusTagComponent
+  ],
+  exports: [
+    StatusTagComponent
   ]
 })
 export class StatusTagsModule { }

@@ -43,7 +43,6 @@ $gray-800: #263238 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-
 :root {
   --primary: #{$primary};
   --secondary: #{$secondary};
@@ -120,3 +119,4 @@ $muted: $gray-500 !default;
 
 
 $font: inherit;
+$input_height: 50px;

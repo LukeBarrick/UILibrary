@@ -1,5 +1,11 @@
 @import "variable";
 
+//These variables need refactoring all over the place
+
+
+$secondaryEscaped: 408467 !default;
+$letterSpacing: 0px;
+
 //Library style sheet imports
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../../../node_modules/@ng-select/ng-select/scss/default.theme.scss";
@@ -12,15 +18,5 @@
 @import "utilities/";
 
 //Component
-@import "../src/lib/modules/checkboxes/checkbox/";
-@import "../src/lib/modules/select/";
-@import "../src/lib/modules/text-inputs/text-input/";
-@import "../src/lib/modules/text-inputs/text-area/";
-@import "../src/lib/modules/input-annotations/hint/";
-@import "../src/lib/modules/input-annotations/required/";
-@import "../src/lib/modules/input-annotations/tooltip/";
-@import "../src/lib/modules/date-pickers/date-picker/";
-@import "../src/lib/modules/radio-buttons/radio-button/";
-@import "../src/lib/modules/status-tags/status-tag/";
-@import "../src/lib/modules/toggles/toggle/";
-@import "../src/lib/modules/navigation/";
+@import "components/";
+
