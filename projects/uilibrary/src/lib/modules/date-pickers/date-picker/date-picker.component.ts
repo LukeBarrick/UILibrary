@@ -8,7 +8,8 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 })
 export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
-  public value: string | undefined = undefined;
+  @Input() value: string | undefined = undefined;
+
 
   @Input() placeholder: string = '';
   
@@ -65,7 +66,7 @@ export class DatePickerComponent implements OnInit {
   }
   
   selectDate(day: number) {
-    const date = new Date(day, this.currentMonth, this.currentYear);
+    const date = new Date(day, this.currentMonth, this.currentYear)
   }
 
   next(): void {

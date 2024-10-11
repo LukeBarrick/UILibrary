@@ -13167,7 +13167,7 @@ uilibrary-date-picker .datepicker-container input[type=text] + .datepicker-label
 uilibrary-date-picker .datepicker-container .datepicker-input-focus {
   border-color: var(--secondary) !important;
 }
-uilibrary-date-picker .datepicker-container input[type=text]:focus + .datepicker-label label,
+uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label,
 uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label {
   font-size: 0.75rem;
   transform: translate(-10px, -40px) !important;
@@ -13178,7 +13178,7 @@ uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-sh
   border-radius: 30px;
   color: var(--secondary);
 }
-uilibrary-date-picker .datepicker-container input[type=text]:focus + .datepicker-label label:after,
+uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label:after,
 uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label:after {
   content: "";
   display: block;
@@ -13190,7 +13190,7 @@ uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-sh
   right: 0;
   z-index: -1;
 }
-uilibrary-date-picker .datepicker-container input[type=text]:focus + .datepicker-label label label,
+uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label label,
 uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label label {
   position: relative;
   z-index: 1;
@@ -13252,6 +13252,9 @@ uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day-
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day {
   align-self: center;
   justify-self: center;
+}
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .today {
+  background-color: red;
 }
 
 uilibrary-hint .hint-normal {
