@@ -42,7 +42,9 @@ uilibrary-date-picker {
     }
 
     &:focus-within .datepicker-label label,
-    input[type=text]:not(:placeholder-shown) + .datepicker-label label {
+    .datepicker-calendar-container:focus-within + .datepicker-label label,
+    input[type=text]:not(:placeholder-shown) + .datepicker-label label,
+    .datepicker-label-float label {
       font-size: 0.75rem;
       transform: translate(-10px, -40px) !important;
       background-color: transparent;

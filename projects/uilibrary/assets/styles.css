@@ -13168,7 +13168,9 @@ uilibrary-date-picker .datepicker-container .datepicker-input-focus {
   border-color: var(--secondary) !important;
 }
 uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label {
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label,
+uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label,
+uilibrary-date-picker .datepicker-container .datepicker-label-float label {
   font-size: 0.75rem;
   transform: translate(-10px, -40px) !important;
   background-color: transparent;
@@ -13179,7 +13181,9 @@ uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-sh
   color: var(--secondary);
 }
 uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label:after,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label:after {
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label:after,
+uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label:after,
+uilibrary-date-picker .datepicker-container .datepicker-label-float label:after {
   content: "";
   display: block;
   position: absolute;
@@ -13191,7 +13195,9 @@ uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-sh
   z-index: -1;
 }
 uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label label,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label label {
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label label,
+uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label label,
+uilibrary-date-picker .datepicker-container .datepicker-label-float label label {
   position: relative;
   z-index: 1;
   color: var(--secondary);

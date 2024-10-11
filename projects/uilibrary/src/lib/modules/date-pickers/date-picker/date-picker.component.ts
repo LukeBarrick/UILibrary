@@ -8,9 +8,8 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 })
 export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
+
   @Input() value: string | undefined = undefined;
-
-
   @Input() placeholder: string = '';
   
   isOpen: boolean = false;
@@ -39,6 +38,8 @@ export class DatePickerComponent implements OnInit {
   daysInMonth: number[] = [];
   weeksInMonth: any[][] = [];
 
+  selectedDate: Date | undefined;
+
   mon = new Date("1/1/0001 12:00:00");
   tue = new Date("1/2/0001 12:00:00");
   wed = new Date("1/3/0001 12:00:00");
@@ -52,7 +53,6 @@ export class DatePickerComponent implements OnInit {
               private readonly UUID: UUIDService,
               private readonly elRef: ElementRef
   ) {
-    this.dateTracker.setHours(0,0,0,0);
     this.currentDay = this.dateTracker.getDay();
     this.currentMonth = this.dateTracker.getMonth();
     this.currentYear = this.dateTracker.getFullYear();
@@ -66,7 +66,8 @@ export class DatePickerComponent implements OnInit {
   }
   
   selectDate(day: number) {
-    const date = new Date(day, this.currentMonth, this.currentYear)
+    const date = new Date(day, this.currentMonth, this.currentYear);
+    this.selectedDate = date;
   }
 
   next(): void {
