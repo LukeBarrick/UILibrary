@@ -13262,6 +13262,9 @@ uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day 
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .today {
   background-color: red;
 }
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .selected {
+  background-color: blue;
+}
 
 uilibrary-hint .hint-normal {
   font-size: 12px;

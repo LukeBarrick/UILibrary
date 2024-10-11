@@ -66,7 +66,8 @@ export class DatePickerComponent implements OnInit {
   }
   
   selectDate(day: number) {
-    const date = new Date(day, this.currentMonth, this.currentYear);
+    const date = new Date(this.currentYear, this.currentMonth, day);
+    console.log(date)
     this.selectedDate = date;
   }
 
@@ -125,11 +126,21 @@ export class DatePickerComponent implements OnInit {
 
   isToday(day: number): boolean {
     const relativeDate = new Date(this.currentYear, this.currentMonth, day);
-
+  
     return (
       relativeDate.getDate() === this.today.getDate() &&
       relativeDate.getMonth() === this.today.getMonth() &&
       relativeDate.getFullYear() === this.today.getFullYear()
+    )
+  }
+
+  isSelected(day:number): boolean {
+    const selectedDate = new Date(this.currentYear, this.currentMonth, day);
+
+    return (
+      selectedDate.getDate() == this.selectedDate?.getDate() &&
+      selectedDate.getMonth() == this.selectedDate?.getMonth() &&
+      selectedDate.getFullYear() == this.selectedDate?.getFullYear()
     )
   }
 }
