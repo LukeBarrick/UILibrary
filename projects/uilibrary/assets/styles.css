@@ -13221,14 +13221,6 @@ uilibrary-date-picker .datepicker-container .datepicker-calendar-container .nav-
   font-size: 14pt;
   color: white;
 }
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .nav-button.left::after {
-  content: "<";
-  display: inline;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .nav-button.right:after {
-  content: ">";
-  display: inline;
-}
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .datepicker-title-row {
   margin-bottom: 10px;
   font-weight: bold;
@@ -13257,6 +13249,9 @@ uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day-
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day {
   align-self: center;
   justify-self: center;
+}
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .today {
+  background-color: red;
 }
 
 uilibrary-hint .hint-normal {

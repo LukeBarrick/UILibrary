@@ -97,18 +97,7 @@ uilibrary-date-picker {
         font-family: var(--bs-header-font-family);
         font-size: 14pt;
         color: white;
-
-        &.left::after {
-          content: '<';
-          display: inline;
-        }
-
-        &.right:after {
-          content: '>';
-          display: inline;
-        }
       }
-
 
       .datepicker-title-row {
         margin-bottom: 10px;
@@ -142,6 +131,10 @@ uilibrary-date-picker {
       .day {
         align-self: center;
         justify-self: center;
+      }
+
+      .today {
+        background-color: red;
       }
     }
   }

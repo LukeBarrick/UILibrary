@@ -119,4 +119,16 @@ export class DatePickerComponent implements OnInit {
       this.weeksInMonth.push(calendarDays.splice(0, 7))
     }
   }
+
+  isToday(day: number): boolean {
+    const today = new Date(this.currentYear, this.currentMonth, day + 1);
+
+    if(today.getDate() === this.today.getDate() &&
+        today.getMonth() === this.today.getMonth() &&
+        today.getFullYear() === today.getFullYear()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

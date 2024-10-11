@@ -32,9 +32,9 @@
    
     <div class="calendar">
       @for(week of weeksInMonth; track week;) {
-        @for(day of week; track day) {
+        @for(day of week; track day;) {
           @if(day !== null) {
-            <div class="day" (click)="selectDate(day)">{{day + 1}}</div>
+            <div class="day" [ngClass]="{'today': day && isToday(day)}"  (click)="day && selectDate(day)">{{day + 1}}</div>
           } @else {
             <div class="day"></div>
           }
