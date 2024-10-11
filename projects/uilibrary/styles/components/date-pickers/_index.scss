@@ -41,7 +41,8 @@ uilibrary-date-picker {
       border-color: var(--secondary) !important;
     }
 
-    .datepicker-label-float label {
+    input[type=text]:focus + .datepicker-label label,
+    input[type=text]:not(:placeholder-shown) + .datepicker-label label {
       font-size: 0.75rem;
       transform: translate(-10px, -40px) !important;
       background-color: transparent;
@@ -131,10 +132,6 @@ uilibrary-date-picker {
       .day {
         align-self: center;
         justify-self: center;
-      }
-
-      .today {
-        background-color: red;
       }
     }
   }

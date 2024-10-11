@@ -1,6 +1,6 @@
 <div class="datepicker-container">
-  <input [id]="id" type="text"  [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" (click)="open()"/>
-  <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen}">
+  <input [id]="id" type="text" [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" (click)="open()"/>
+  <div class="datepicker-label">
     <label [for]="id">
       <ng-content></ng-content>
     </label>
@@ -34,7 +34,7 @@
       @for(week of weeksInMonth; track week;) {
         @for(day of week; track day;) {
           @if(day !== null) {
-            <div class="day" [ngClass]="{'today': day && isToday(day)}"  (click)="day && selectDate(day)">{{day + 1}}</div>
+            <div class="day" [class.today]="day && isToday(day)"  (click)="day && selectDate(day)">{{day + 1}}</div>
           } @else {
             <div class="day"></div>
           }

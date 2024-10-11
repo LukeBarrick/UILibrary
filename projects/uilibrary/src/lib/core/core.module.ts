@@ -25,6 +25,10 @@ registerLocaleData(localeIt);
 registerLocaleData(localePt);
 registerLocaleData(localeJa);
 
+export function initialiseDate(date: Date) {
+  return date.setHours(0,0,0,0);
+}
+
 @NgModule({
   imports: [
     CommonModule
@@ -33,7 +37,7 @@ registerLocaleData(localeJa);
   ],
   providers: [
     UUIDService,
-    { provide: DATE_NOW, useFactory: () => new Date() }
+    { provide: DATE_NOW, useFactory: () => new Date()}
   ],
   exports: [
   ]

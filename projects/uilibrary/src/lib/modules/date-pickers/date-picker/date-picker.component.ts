@@ -10,7 +10,7 @@ export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
   public value: string | undefined = undefined;
 
-  @Input() placeholder: string = "";
+  @Input() placeholder: string = '';
   
   isOpen: boolean = false;
 
@@ -30,6 +30,7 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
+  dateTracker = new Date();
   currentDay!: number;
   currentMonth!: number;
   currentYear!: number;
@@ -50,11 +51,11 @@ export class DatePickerComponent implements OnInit {
               private readonly UUID: UUIDService,
               private readonly elRef: ElementRef
   ) {
-    
-    this.currentDay = this.today.getDay();
-    this.currentMonth = this.today.getMonth();
-    this.currentYear = this.today.getFullYear();
-    this.currentMonthLiteral = this.today.toLocaleString(this.localeId, { month: 'long' }); //Localise
+    this.dateTracker.setHours(0,0,0,0);
+    this.currentDay = this.dateTracker.getDay();
+    this.currentMonth = this.dateTracker.getMonth();
+    this.currentYear = this.dateTracker.getFullYear();
+    this.currentMonthLiteral = this.dateTracker.toLocaleString(this.localeId, { month: 'long' }); //Localise
     this.generateCalendar(this.currentMonth, this.currentYear);
   }
 
@@ -71,14 +72,14 @@ export class DatePickerComponent implements OnInit {
     if(this.currentMonth === 11) {
       this.currentMonth = 0;
       this.currentYear++;
-      this.today.setMonth(0);
-      this.today.setFullYear(this.currentYear);
+      this.dateTracker.setMonth(0);
+      this.dateTracker.setFullYear(this.currentYear);
     } else {
       this.currentMonth++;
-      this.today.setMonth(this.currentMonth);
+      this.dateTracker.setMonth(this.currentMonth);
     }
 
-    this.currentMonthLiteral = this.today.toLocaleString(this.localeId, { month: 'long' }); //Localise
+    this.currentMonthLiteral = this.dateTracker.toLocaleString(this.localeId, { month: 'long' }); //Localise
     this.generateCalendar(this.currentMonth, this.currentYear);
   }
 
@@ -86,14 +87,14 @@ export class DatePickerComponent implements OnInit {
     if(this.currentMonth === 0) {
       this.currentMonth = 11;
       this.currentYear--;
-      this.today.setMonth(11);
-      this.today.setFullYear(this.currentYear);
+      this.dateTracker.setMonth(11);
+      this.dateTracker.setFullYear(this.currentYear);
     } else {
       this.currentMonth--;
-      this.today.setMonth(this.currentMonth);
+      this.dateTracker.setMonth(this.currentMonth);
     }
     
-    this.currentMonthLiteral = this.today.toLocaleString(this.localeId, { month: 'long' }); //Localise
+    this.currentMonthLiteral = this.dateTracker.toLocaleString(this.localeId, { month: 'long' }); //Localise
     this.generateCalendar(this.currentMonth, this.currentYear);
   }
 
@@ -121,14 +122,12 @@ export class DatePickerComponent implements OnInit {
   }
 
   isToday(day: number): boolean {
-    const today = new Date(this.currentYear, this.currentMonth, day + 1);
+    const relativeDate = new Date(this.currentYear, this.currentMonth, day);
 
-    if(today.getDate() === this.today.getDate() &&
-        today.getMonth() === this.today.getMonth() &&
-        today.getFullYear() === today.getFullYear()) {
-      return true;
-    } else {
-      return false;
-    }
+    return (
+      relativeDate.getDate() === this.today.getDate() &&
+      relativeDate.getMonth() === this.today.getMonth() &&
+      relativeDate.getFullYear() === this.today.getFullYear()
+    )
   }
 }
