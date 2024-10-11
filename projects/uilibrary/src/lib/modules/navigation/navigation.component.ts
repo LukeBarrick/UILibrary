@@ -4,8 +4,7 @@ import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 
 @Component({
   selector: 'uilibrary-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements OnInit {
   @Input() showRightAlignedContent: boolean = true;

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { UserInterfaceLibraryComponent } from './user-interface-library.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +19,7 @@ import { TogglesModule } from './modules/toggles/toggles.module';
 import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
 import { CoreModule } from './core/core.module';
 import { StatusTagsModule } from './modules/status-tags/status-tags.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { StatusTagsModule } from './modules/status-tags/status-tags.module';
     CommonModule,
     NgbModule,
     CoreModule,
+    SharedModule,
     NgSelectModule,
     ReactiveFormsModule,
     RouterModule,
@@ -42,10 +44,16 @@ import { StatusTagsModule } from './modules/status-tags/status-tags.module';
     FormControlModule,
     DatePickersModule,
     StatusTagsModule
-],
+  ],
   exports: [
     UserInterfaceLibraryComponent,
     ShowcaseComponent,
+  ],
+  providers: [
+  
   ]
 })
-export class UserInterfaceLibraryModule { }
+
+export class UserInterfaceLibraryModule { 
+  
+}

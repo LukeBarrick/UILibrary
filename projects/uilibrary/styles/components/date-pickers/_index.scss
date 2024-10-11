@@ -1,7 +1,7 @@
 uilibrary-date-picker {
   .datepicker-container {
     position: relative;
-  
+
     input[type=text] {
       border: 1px solid var(--light-gray);
       border-radius: 7px;
@@ -9,24 +9,24 @@ uilibrary-date-picker {
       padding-left: 20px;
       outline: none;
       width: 100%;
-  
+
       &:focus::-webkit-input-placeholder {
         font-size: 16px;
         color: var(--dark-gray);
         transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
       }
-  
+
       &::-webkit-input-placeholder {
         color: transparent;
       }
-  
+
       &:disabled {
         background-color: var(--almost-white);
       }
-  
+
       &+.datepicker-label {
         position: relative;
-  
+
         label {
           transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
           position: absolute;
@@ -36,11 +36,11 @@ uilibrary-date-picker {
         }
       }
     }
-  
+
     .datepicker-input-focus {
       border-color: var(--secondary) !important;
     }
-  
+
     .datepicker-label-float label {
       font-size: 0.75rem;
       transform: translate(-10px, -40px) !important;
@@ -50,7 +50,7 @@ uilibrary-date-picker {
       padding-right: 4px;
       border-radius: 30px;
       color: var(--secondary);
-  
+
       &:after {
         content: "";
         display: block;
@@ -62,14 +62,14 @@ uilibrary-date-picker {
         right: 0;
         z-index: -1;
       }
-  
+
       label {
         position: relative;
         z-index: 1;
         color: var(--secondary);
       }
     }
-  
+
     .datepicker-calendar-container {
       position: absolute;
       left: 0;
@@ -94,24 +94,49 @@ uilibrary-date-picker {
         height: 30px;
         width: 30px;
         border-radius: 7px;
+        font-family: var(--bs-header-font-family);
+        font-size: 14pt;
+        color: white;
+
+        &.left::after {
+          content: '<';
+          display: inline;
+        }
+
+        &.right:after {
+          content: '>';
+          display: inline;
+        }
       }
 
 
       .datepicker-title-row {
         margin-bottom: 10px;
+        font-weight: bold;
+        font-family: var(--bs-header-font-family);
+        font-size: 12pt;
       }
-   
+
+      .day-names {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(7, 1fr);
+        grid-gap: 5px;
+      }
+
       .calendar {
         display: grid;
         height: 100%;
         width: 100%;
         grid-template-columns: repeat(7, 1fr);
         grid-gap: 5px;
+        font-size: 12pt;
       }
 
       .day-name {
         align-self: center;
         justify-self: center;
+        font-weight: bold;
       }
 
       .day {

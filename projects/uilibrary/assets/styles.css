@@ -13217,9 +13217,29 @@ uilibrary-date-picker .datepicker-container .datepicker-calendar-container .nav-
   height: 30px;
   width: 30px;
   border-radius: 7px;
+  font-family: var(--bs-header-font-family);
+  font-size: 14pt;
+  color: white;
+}
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .nav-button.left::after {
+  content: "<";
+  display: inline;
+}
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .nav-button.right:after {
+  content: ">";
+  display: inline;
 }
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .datepicker-title-row {
   margin-bottom: 10px;
+  font-weight: bold;
+  font-family: var(--bs-header-font-family);
+  font-size: 12pt;
+}
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day-names {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
 }
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .calendar {
   display: grid;
@@ -13227,10 +13247,12 @@ uilibrary-date-picker .datepicker-container .datepicker-calendar-container .cale
   width: 100%;
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 5px;
+  font-size: 12pt;
 }
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day-name {
   align-self: center;
   justify-self: center;
+  font-weight: bold;
 }
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day {
   align-self: center;

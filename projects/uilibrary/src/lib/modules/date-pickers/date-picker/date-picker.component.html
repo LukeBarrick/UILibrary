@@ -7,21 +7,30 @@
   </div>
   <div class="datepicker-calendar-container" *ngIf="isOpen">
     <div class="d-flex justify-content-between align-items-center datepicker-title-row">
-      <button class="nav-button" (click)="previous()">P</button>
+      <button class="nav-button left" (click)="previous()">
+        <svg-icon name="chevron_left"></svg-icon>
+      </button>
     
       {{currentMonthLiteral}} {{currentYear}}
   
-      <button class="nav-button" (click)="next()">N</button>
+      <button class="nav-button right" (click)="next()">
+        <svg-icon name="chevron_right"></svg-icon>
+      </button>
+    </div>
+
+    <div class="day-names">
+      @for(day of [sun.toLocaleDateString(this.localeId, {weekday: 'short'}),
+                   mon.toLocaleDateString(this.localeId, {weekday: 'short'}),
+                   tue.toLocaleDateString(this.localeId, {weekday: 'short'}),
+                   wed.toLocaleDateString(this.localeId, {weekday: 'short'}),
+                   thu.toLocaleDateString(this.localeId, {weekday: 'short'}),
+                   fri.toLocaleDateString(this.localeId, {weekday: 'short'}),
+                   sat.toLocaleDateString(this.localeId, {weekday: 'short'})]; track day) {
+        <div class="day-name">{{day}}</div>
+      }
     </div>
    
     <div class="calendar">
-      <!-- @for(month of ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']; track month) {
-        {{month}}
-      } -->
-      @for(day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; track day) {
-        <div class="day-name">{{day}}</div>
-      }
-      
       @for(week of weeksInMonth; track week;) {
         @for(day of week; track day) {
           @if(day !== null) {

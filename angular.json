@@ -14,7 +14,7 @@
       "sourceRoot": "projects/showcase/src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en-US",
+        "sourceLocale": "en-GB",
         "locales": {
           
         }
@@ -31,9 +31,17 @@
             ],
             "tsConfig": "projects/showcase/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/showcase/src/favicon.ico",
-              "projects/showcase/src/assets"
+            "assets":[
+              {
+                "glob": "**/*",
+                "input": "./projects/uilibrary/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./src/assets/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "projects/showcase/src/styles.scss"

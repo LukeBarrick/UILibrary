@@ -4,8 +4,7 @@ import { NavigationLink } from '../../../core/models/navigation-link';
 
 @Component({
   selector: 'uilibrary-navigation-option',
-  templateUrl: './navigation-option.component.html',
-  styleUrls: ['./navigation-option.component.css']
+  templateUrl: './navigation-option.component.html'
 })
 export class NavigationOptionComponent implements OnInit {
 

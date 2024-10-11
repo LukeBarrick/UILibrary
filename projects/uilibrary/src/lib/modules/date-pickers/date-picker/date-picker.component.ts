@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
+import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 
 @Component({
   selector: 'uilibrary-date-picker',
@@ -29,8 +30,6 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
-  today = new Date();
-
   currentDay!: number;
   currentMonth!: number;
   currentYear!: number;
@@ -38,9 +37,18 @@ export class DatePickerComponent implements OnInit {
   daysInMonth: number[] = [];
   weeksInMonth: any[][] = [];
 
+  mon = new Date("1/1/0001 12:00:00");
+  tue = new Date("1/2/0001 12:00:00");
+  wed = new Date("1/3/0001 12:00:00");
+  thu = new Date("1/4/0001 12:00:00");
+  fri = new Date("1/5/0001 12:00:00");
+  sat = new Date("1/6/0001 12:00:00");
+  sun = new Date("1/7/0001 12:00:00");
+
   constructor(@Inject(LOCALE_ID) protected localeId: string,
+              @Inject(DATE_NOW) protected today: Date,
               private readonly UUID: UUIDService,
-              private readonly elRef: ElementRef,
+              private readonly elRef: ElementRef
   ) {
     
     this.currentDay = this.today.getDay();

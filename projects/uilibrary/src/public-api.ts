@@ -44,3 +44,5 @@ export * from './lib/modules/date-pickers/date-picker/date-picker.component';
 
 export * from './lib/modules/status-tags/status-tags.module';
 export * from './lib/modules/status-tags/status-tag/status-tag.component';
+
+export * from './lib/core/services/icon.service';
