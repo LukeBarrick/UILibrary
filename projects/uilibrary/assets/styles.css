@@ -13256,14 +13256,45 @@ uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day-
   font-weight: bold;
 }
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day {
+  display: flex;
   align-self: center;
   justify-self: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .today {
-  background-color: red;
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button {
+  appearance: none;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: unset;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 100ms ease-in-out;
 }
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .selected {
-  background-color: blue;
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button:hover {
+  background-color: var(--lighter-gray) !important;
+}
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button.today {
+  background-color: var(--almost-white);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button.selected {
+  background-color: var(--secondary-light) !important;
+  color: var(--secondary);
+  font-family: var(--bs-header-font-family);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 uilibrary-hint .hint-normal {

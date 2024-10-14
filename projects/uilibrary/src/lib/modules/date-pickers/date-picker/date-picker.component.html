@@ -34,7 +34,11 @@
       @for(week of weeksInMonth; track week;) {
         @for(day of week; track day;) {
           @if(day !== null) {
-            <div class="day" [class.today]="day && isToday(day + 1)" [class.selected]="isSelected(day + 1)"  (click)="selectDate(day + 1)">{{day + 1}}</div>
+            <div class="day" (click)="day + 1 && selectDate(day + 1)">
+              <button class="day-button" [class.today]="day + 1 && isToday(day + 1)" [class.selected]="isSelected(day + 1)">
+                {{day + 1}}
+              </button>
+            </div>
           } @else {
             <div class="day"></div>
           }

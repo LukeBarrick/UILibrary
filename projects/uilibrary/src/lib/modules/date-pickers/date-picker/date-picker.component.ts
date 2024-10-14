@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'uilibrary-date-picker',
@@ -9,8 +10,9 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
 
-  @Input() value: string | undefined = undefined;
+  @Input() value: string | null = null;
   @Input() placeholder: string = '';
+  @Input() dualSelect: boolean = false;
   
   isOpen: boolean = false;
 
@@ -69,6 +71,10 @@ export class DatePickerComponent implements OnInit {
     const date = new Date(this.currentYear, this.currentMonth, day);
     console.log(date)
     this.selectedDate = date;
+    this.value = date.toDateString();
+
+    const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
+    this.value = datePipe.transform(date);
   }
 
   next(): void {
