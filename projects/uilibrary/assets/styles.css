@@ -12779,7 +12779,7 @@ uilibrary-checkbox .checkbox .circle2 {
   width: 15px;
   border-radius: 50%;
   transition: box-shadow 0.5s ease-in-out;
-  z-index: 0;
+  z-index: 1;
   opacity: 0.2;
 }
 uilibrary-checkbox .checkbox:has(label > .order-n1) .circle2 {
@@ -12853,7 +12853,7 @@ uilibrary-checkbox .checkbox-small .circle2 {
   width: 20px;
   border-radius: 50%;
   transition: box-shadow 0.5s ease-in-out;
-  z-index: 0;
+  z-index: 1;
   opacity: 0.2;
 }
 uilibrary-checkbox .checkbox-small:has(label > .order-n1) .circle2 {
@@ -12922,6 +12922,7 @@ uilibrary-checkbox .fail .check-input:before {
   background-color: white;
   border: 2px solid darkred;
   transition: background-color 0.2s ease-in-out;
+  z-index: 2;
 }
 uilibrary-checkbox .fail .checkbox:has(input[type=checkbox]:checked) .circle2 {
   box-shadow: 0px 0px 0px 15px red !important;
@@ -12998,6 +12999,7 @@ uilibrary-checkbox .pass .check-input:before {
   background-color: white;
   border: 2px solid darkgreen;
   transition: background-color 0.2s ease-in-out;
+  z-index: 2;
 }
 uilibrary-checkbox .pass .check-input:before:hover {
   background-color: white;
@@ -13072,6 +13074,7 @@ uilibrary-checkbox .branded .check-input:before {
   background-color: white;
   border: 2px solid var(--secondary);
   transition: box-shadow 0.2s ease-in-out;
+  z-index: 2;
 }
 uilibrary-checkbox .branded .check-input:before:hover {
   background-color: white;

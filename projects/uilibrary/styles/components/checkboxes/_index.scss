@@ -24,7 +24,7 @@ uilibrary-checkbox {
             width: 15px;
             border-radius: 50%;
             transition: box-shadow 0.5s ease-in-out;
-            z-index: 0;
+            z-index: 1;
             opacity: 0.2;
         }
 
@@ -116,7 +116,7 @@ uilibrary-checkbox {
             width: 20px;
             border-radius: 50%;
             transition: box-shadow 0.5s ease-in-out;
-            z-index: 0;
+            z-index: 1;
             opacity: 0.2;
         }
 
@@ -202,6 +202,7 @@ uilibrary-checkbox {
             background-color: white;
             border: 2px solid darkred;
             transition: background-color 0.2s ease-in-out;
+            z-index: 2;
         }
 
         .checkbox:has(input[type=checkbox]:checked) {
@@ -315,6 +316,7 @@ uilibrary-checkbox {
             background-color: white;
             border: 2px solid darkgreen;
             transition: background-color 0.2s ease-in-out;
+            z-index: 2;
         }
 
         .check-input:before:hover {
@@ -426,6 +428,7 @@ uilibrary-checkbox {
             background-color: white;
             border: 2px solid var(--secondary);
             transition: box-shadow 0.2s ease-in-out;
+            z-index: 2;
         }
 
         .check-input:before:hover {
