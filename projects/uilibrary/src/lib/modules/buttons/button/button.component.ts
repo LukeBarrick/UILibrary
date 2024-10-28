@@ -10,6 +10,7 @@ export class ButtonComponent implements OnInit {
   @Input() appearance: string | undefined;
   @Input() disabled: boolean | undefined;
   @Input() aria_label: string | undefined;
+  @Input() icon: string | undefined;
 
   sizeClass: string | undefined;
   appearanceClass: string | undefined;
