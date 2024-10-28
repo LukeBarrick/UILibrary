@@ -16,4 +16,4 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     IconComponent
   ]
 })
-export class IconModule { }
+export class IconsModule { }

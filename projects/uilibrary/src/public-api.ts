@@ -48,3 +48,6 @@ export * from './lib/modules/status-tags/status-tag/status-tag.component';
 export * from './lib/core/services/icon.service';
 export * from './lib/modules/icons/icon.module';
 export * from './lib/modules/icons/icons/icon.component';
+
+export * from './lib/modules/buttons/buttons.module';
+export * from './lib/modules/buttons/button/button.component';

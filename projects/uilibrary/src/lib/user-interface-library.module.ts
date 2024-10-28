@@ -20,7 +20,8 @@ import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
 import { CoreModule } from './core/core.module';
 import { StatusTagsModule } from './modules/status-tags/status-tags.module';
 import { SharedModule } from './shared/shared.module';
-import { IconModule } from './modules/icons/icon.module';
+import { IconsModule } from './modules/icons/icon.module';
+import { ButtonsModule } from './modules/buttons/buttons.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { IconModule } from './modules/icons/icon.module';
     FormControlModule,
     DatePickersModule,
     StatusTagsModule,
-    IconModule
+    IconsModule,
+    ButtonsModule
   ],
   exports: [
     UserInterfaceLibraryComponent,

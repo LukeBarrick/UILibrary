@@ -97,30 +97,78 @@
 </section>
 <section class="small">
   <h1>Buttons</h1>
-  <button class="btn btn-primary" (click)="debug()">Primary Button</button>
-  <button class="btn btn-primary" disabled>Disabled Primary Button</button>
-  <button class="btn-small btn-primary">Small Primary Button</button>
-  <button class="btn-small btn-primary" disabled>Small Disabled Primary Button</button>
-  <button class="btn btn-secondary">Secondary Button</button>
-  <button class="btn btn-secondary" disabled>Disabled Secondary Button</button>
-  <button class="btn-small btn-secondary">Small Secondary Button</button>
-  <button class="btn-small btn-secondary" disabled>Small Disabled Secondary Button</button>
-  <button class="btn btn-primary success">Primary Success Button</button>
-  <button class="btn btn-primary success" disabled>Disabled Primary Success Button</button>
-  <button class="btn-small btn-primary success">Small Primary Success Button</button>
-  <button class="btn-small btn-primary success" disabled>Small Disabled Primary Success Button</button>
-  <button class="btn btn-primary delete">Primary Danger Button</button>
-  <button class="btn btn-primary delete" disabled>Disabled Primary Danger Button</button>
-  <button class="btn-small btn-primary delete">Small Primary Danger Button</button>
-  <button class="btn-small btn-primary delete" disabled>Small Disabled Primary Danger Button</button>
-  <button class="btn btn-secondary delete">Secondary Danger Button</button>
-  <button class="btn btn-secondary delete" disabled>Disabled Secondary Danger Button</button>
-  <button class="btn-small btn-secondary delete">Small Secondary Danger Button</button>
-  <button class="btn-small btn-secondary delete" disabled>Small Disabled Secondary Danger Button</button>
-  <button class="btn btn-secondary success">Secondary Success Button</button>
-  <button class="btn btn-secondary success" disabled>Disabled Secondary Success Button</button>
-  <button class="btn-small btn-secondary success">Small Secondary Success Button</button>
-  <button class="btn-small btn-secondary success" disabled>Small Disabled Secondary Success Button</button>
+  <uilibrary-button appearance="primary">
+    Primary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary" [disabled]="true">
+    Disabled Primary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary" size="small">
+    Small Primary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary" size="small" [disabled]="true">
+    Small Disabled Primary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary">
+    Secondary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary" [disabled]="true">
+    Disabled Secondary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary" size="small">
+    Small Secondary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary" size="small" [disabled]="true">
+    Small Disabled Secondary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-success">
+    Primary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-success" [disabled]="true">
+    Disabled Primary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-success" size="small">
+    Small Primary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-success" size="small" [disabled]="true">
+    Small Disabled Primary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-delete">
+    Primary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-delete" [disabled]="true">
+    Disabled Primary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-delete" size="small">
+    Small Primary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-delete" size="small" [disabled]="true">
+    Small Disabled Primary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-success">
+    Secondary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-success" [disabled]="true">
+    Disabled Secondary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-success" size="small">
+    Small Secondary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-success" size="small" [disabled]="true">
+    Small Disabled Secondary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-delete">
+    Secondary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-delete" [disabled]="true">
+    Disabled Secondary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-delete" size="small">
+    Small Secondary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-delete" size="small" [disabled]="true">
+    Small Disabled Secondary Danger Button
+  </uilibrary-button>
 </section>
 
 <section [formGroup]="textInputs" class="small d-flex flex-column">
