@@ -24,7 +24,7 @@ uilibrary-checkbox {
             width: 15px;
             border-radius: 50%;
             transition: box-shadow 0.5s ease-in-out;
-            z-index: -1;
+            z-index: 0;
             opacity: 0.2;
         }
 
@@ -116,7 +116,7 @@ uilibrary-checkbox {
             width: 20px;
             border-radius: 50%;
             transition: box-shadow 0.5s ease-in-out;
-            z-index: -1;
+            z-index: 0;
             opacity: 0.2;
         }
 

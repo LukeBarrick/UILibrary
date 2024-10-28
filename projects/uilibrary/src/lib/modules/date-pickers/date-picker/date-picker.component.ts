@@ -64,12 +64,10 @@ export class DatePickerComponent implements OnInit {
 
   ngOnInit() {
     console.log('Date picker is work in progress, please do not use.');
-    console.log(this.localeId)
   }
   
   selectDate(day: number) {
     const date = new Date(this.currentYear, this.currentMonth, day);
-    console.log(date)
     this.selectedDate = date;
     this.value = date.toDateString();
 

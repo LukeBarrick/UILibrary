@@ -14,7 +14,6 @@ import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import localePt from '@angular/common/locales/pt';
 import localeJa from '@angular/common/locales/ja';
-import { LibIconService } from './services/icon.service';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeUs);
@@ -24,10 +23,6 @@ registerLocaleData(localeFr);
 registerLocaleData(localeIt);
 registerLocaleData(localePt);
 registerLocaleData(localeJa);
-
-export function initialiseDate(date: Date) {
-  return date.setHours(0,0,0,0);
-}
 
 @NgModule({
   imports: [

@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { IconComponent } from './icons/icon.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    AngularSvgIconModule.forRoot()
+  ],
+  declarations: [
+    IconComponent
   ],
   exports: [
-    
+    AngularSvgIconModule,
+    IconComponent
   ]
 })
-
-export class SharedModule {
- 
-}
+export class IconModule { }

@@ -9,7 +9,7 @@ export class LibIconService {
 
   constructor(private iconReg: SvgIconRegistryService) { }
 
-  registerIcon(iconName: string) {
+  private registerIcon(iconName: string) {
     this.iconReg.loadSvg(`./assets/images/${iconName}.svg`, iconName)?.subscribe();
   }
 

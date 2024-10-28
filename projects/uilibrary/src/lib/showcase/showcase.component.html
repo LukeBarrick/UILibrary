@@ -1,3 +1,4 @@
+<div style="background-color: #eae7e1;">
 <section class="medium w-100">
   <h1>Nav bars</h1>
 
@@ -9,7 +10,7 @@
 
   <h2>Basic nav bar</h2>
   <uilibrary-navigation [links]="links">
-    <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+    <img logo src="" style="height: 50px" alt="Logo">
   </uilibrary-navigation>
 
   <div class="alert alert-info" role="alert">Should there be nested dropdowns, say within the mobile menu, it is possible to hide the label of the parent item which would have
@@ -21,7 +22,7 @@
   <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
     <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
     <div rightAlignedContent>
-      <p style="color: white;">I'm somne right content bro</p>
+      <p style="color: white;">Right Aligned Content</p>
     </div>
   </uilibrary-navigation>
 
@@ -46,7 +47,7 @@
       <p>I'm some extra mobile content bro</p>
     </div>
     <div rightAlignedContent>
-      <p style="color: white;">I'm somne right content bro</p>
+      <p style="color: white;">Right Aligned Content</p>
     </div>
   </uilibrary-navigation>
 
@@ -57,7 +58,7 @@
   <uilibrary-navigation [links]="links" [showRightAlignedContent]="true" [hideRightAllignedContentOnMobile]="true">
     <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
     <div rightAlignedContent>
-      <p style="color: white;">I'm somne right content bro only visible on desktop</p>
+      <p style="color: white;">Right Aligned Content only visible on desktop</p>
     </div>
   </uilibrary-navigation>
 
@@ -441,7 +442,7 @@
         </div>
       </ng-template>
     </uilibrary-select>
-    <uilibrary-hint variant="normal">The selected value is {{selectControls.value.selectControl2}}</uilibrary-hint>
+    <uilibrary-hint variant="normal">Select a value from the list.</uilibrary-hint>
     <uilibrary-hint
       *ngIf="selectControls.controls.selectControl2.hasError('required') && selectControls.controls.selectControl2.touched">
       Please provide a value.
@@ -500,9 +501,33 @@
     Date Picker
   </uilibrary-date-picker>
 
-  <uilibrary-date-picker>
-    Date Picker
-  </uilibrary-date-picker>
+  <uilibrary-form-control>
+    <uilibrary-date-picker input>
+      Date Picker
+    </uilibrary-date-picker>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+    <uilibrary-hint
+    *ngIf="selectControls.controls.selectControl6.hasError('required') && selectControls.controls.selectControl6.touched">
+    Please provide a value.
+  </uilibrary-hint>
+  </uilibrary-form-control>
+ 
+
+  <uilibrary-form-control>
+    <uilibrary-date-picker input>
+      Date Picker
+    </uilibrary-date-picker>
+    <uilibrary-tooltip tooltip [placement]="'right'" [margin]="'left'">
+      <span content><strong>Title</strong><br />This is tooltip content.</span>
+    </uilibrary-tooltip>
+    <uilibrary-required required></uilibrary-required>
+    <uilibrary-hint
+    *ngIf="selectControls.controls.selectControl6.hasError('required') && selectControls.controls.selectControl6.touched">
+    Please provide a value.
+  </uilibrary-hint>
+  </uilibrary-form-control>
 </section>
 
 <section [formGroup]="checkBoxes" class="large d-flex flex-column">
@@ -677,6 +702,27 @@
   </uilibrary-tooltip>
 </section>
 
+<section class="medium d-flex flex-row">
+  <uilibrary-icon name="icon-air"></uilibrary-icon>
+</section>
+
+<section class="medium d-flex flex-row">
+  <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
+  <uilibrary-icon name="icon-air" size="medium"></uilibrary-icon>
+  <uilibrary-icon name="icon-air" size="large"> </uilibrary-icon>
+</section>
+
+<section class="medium d-flex flex-row">
+  <uilibrary-icon name="icon-air" size="large" appearance="primary"></uilibrary-icon>
+  <uilibrary-icon name="icon-air" size="large" appearance="secondary"></uilibrary-icon>
+  <uilibrary-icon name="icon-air" size="large" appearance="tertiary"> </uilibrary-icon>
+  <uilibrary-icon name="icon-air" size="large" appearance="light-gray"> </uilibrary-icon>
+  <uilibrary-icon name="icon-air" size="large" appearance="dark-gray"> </uilibrary-icon>
+  <div style="color: pink;">
+    <uilibrary-icon name="icon-air" size="large" appearance="custom"> </uilibrary-icon>
+  </div>
+</section>
+
 <section class="medium d-flex flex-column">
   <uilibrary-status-tag statusType="info">Information</uilibrary-status-tag>
   <uilibrary-status-tag statusType="warning">Warning</uilibrary-status-tag>
@@ -707,3 +753,5 @@
   </div>
 
 </section>
+
+

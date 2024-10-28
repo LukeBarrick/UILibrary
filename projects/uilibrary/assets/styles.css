@@ -12779,7 +12779,7 @@ uilibrary-checkbox .checkbox .circle2 {
   width: 15px;
   border-radius: 50%;
   transition: box-shadow 0.5s ease-in-out;
-  z-index: -1;
+  z-index: 0;
   opacity: 0.2;
 }
 uilibrary-checkbox .checkbox:has(label > .order-n1) .circle2 {
@@ -12853,7 +12853,7 @@ uilibrary-checkbox .checkbox-small .circle2 {
   width: 20px;
   border-radius: 50%;
   transition: box-shadow 0.5s ease-in-out;
-  z-index: -1;
+  z-index: 0;
   opacity: 0.2;
 }
 uilibrary-checkbox .checkbox-small:has(label > .order-n1) .circle2 {
@@ -13132,6 +13132,9 @@ uilibrary-checkbox .margin-left-3px {
   margin-left: 3px;
 }
 
+uilibrary-date-picker {
+  flex-grow: 1;
+}
 uilibrary-date-picker .datepicker-container {
   position: relative;
 }
