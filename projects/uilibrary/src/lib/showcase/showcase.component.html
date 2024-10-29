@@ -187,6 +187,25 @@
   <uilibrary-button appearance="secondary-success" icon="icon-air">
     Secondary Success Button
   </uilibrary-button>
+
+  <uilibrary-button appearance="primary" size="small" icon="icon-air">
+    Primary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-delete" size="small" icon="icon-air">
+    Primary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="primary-success" size="small" icon="icon-air">
+    Primary Success Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary" size="small" icon="icon-air">
+    Secondary Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-delete" size="small" icon="icon-air">
+    Secondary Danger Button
+  </uilibrary-button>
+  <uilibrary-button appearance="secondary-success" size="small" icon="icon-air">
+    Secondary Success Button
+  </uilibrary-button>
 </section>
 
 <section [formGroup]="textInputs" class="small d-flex flex-column">
@@ -567,9 +586,10 @@
     Basic Date Picker
   </uilibrary-date-picker>
 
-  <uilibrary-date-picker [value]="dateBindingValue1">
+  <uilibrary-date-picker [(value)]="dateBindingValue1">
     Two Way Binding Date Picker
   </uilibrary-date-picker>
+  doesn't recieve value for some reason
 
   <uilibrary-date-picker [isDisabled]="true">
     Disabled Date Picker

@@ -1,6 +1,6 @@
 <button class="d-flex flex-row justify-content-evenly align-items-center {{sizeClass}} {{appearanceClass}}" [attr.aria-label]="aria_label" [disabled]="disabled">
   @if(icon) {
-    <uilibrary-icon appearance="custom" name="{{icon}}"></uilibrary-icon>
+    <uilibrary-icon appearance="custom" size="{{iconSizeClass}}" name="{{icon}}"></uilibrary-icon>
   }
   <ng-content></ng-content>
 </button>

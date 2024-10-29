@@ -19,7 +19,7 @@ export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
 
   @Input() value: string | null = null;
-  @Output() valueChange = new EventEmitter<string>();
+  @Output() valueChange = new EventEmitter<string | null>();
 
   @Input() placeholder: string = '';
   @Input() dualSelect: boolean = false;
@@ -124,11 +124,12 @@ export class DatePickerComponent implements OnInit {
     const date = new Date(this.currentYear, this.currentMonth, day);
     this.selectedDate = date;
     this.value = date.toDateString();
-
     const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
     this.value = datePipe.transform(date);
 
+
     this.onChange(this.value);
+    this.valueChange.next(this.value);
     this.onTouched();
     this.isOpen = false;
   }

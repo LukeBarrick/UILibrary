@@ -20,8 +20,8 @@ export class IconComponent implements OnInit {
   ngOnInit() {
     switch(this.size) {
       case 'small': 
-        this.width = 20;
-        this.height = 20;
+        this.width = 30;
+        this.height = 30;
         break;
       case 'medium': 
         this.width = 40;

@@ -13,6 +13,7 @@ export class ButtonComponent implements OnInit {
   @Input() icon: string | undefined;
 
   sizeClass: string | undefined;
+  iconSizeClass: string | undefined;
   appearanceClass: string | undefined;
 
   constructor() { }
@@ -20,6 +21,7 @@ export class ButtonComponent implements OnInit {
   ngOnInit() {
     if(this.size === 'small') {
       this.sizeClass = 'btn-small';
+      this.iconSizeClass = 'small'
     } else {
       this.sizeClass = 'btn';
     }
