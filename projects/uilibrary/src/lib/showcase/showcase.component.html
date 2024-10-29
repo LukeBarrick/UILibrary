@@ -564,11 +564,19 @@
 <section [formGroup]="datePickers" class="small">
   <h1>Date Pickers (WIP)</h1>
   <uilibrary-date-picker>
-    Date Picker
+    Basic Date Picker
+  </uilibrary-date-picker>
+
+  <uilibrary-date-picker [value]="dateBindingValue1">
+    Two Way Binding Date Picker
+  </uilibrary-date-picker>
+
+  <uilibrary-date-picker [isDisabled]="true">
+    Disabled Date Picker
   </uilibrary-date-picker>
 
   <uilibrary-date-picker formControlName="datePicker1">
-    Date Picker
+    Basic Form Control Date Picker
   </uilibrary-date-picker>
 
   <uilibrary-button (click)="debug2()">

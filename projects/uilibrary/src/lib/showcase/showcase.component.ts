@@ -94,6 +94,7 @@ export class ShowcaseComponent implements OnInit {
   datePickers = new FormGroup({
     datePicker1: new FormControl(undefined,[Validators.required])
   });
+  dateBindingValue1: string = new Date().toDateString();
 
   checked: boolean = true;
 
@@ -102,7 +103,7 @@ export class ShowcaseComponent implements OnInit {
   currentSelection3: string = '1';
   currentSelection4: string = 'Some text...';
   currentSelection5: Item | undefined;
-
+  
 
   isDisabled: boolean = true;
 

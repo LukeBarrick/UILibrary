@@ -1,5 +1,5 @@
 <div class="datepicker-container">
-  <input [id]="id" type="text" [ngModel]="value" [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" (click)="open()"/>
+  <input [id]="id" type="text" [ngModel]="value" [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" [disabled]="disabled" (click)="open()"/>
   <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen}">
     <label [for]="id">
       <ng-content></ng-content>

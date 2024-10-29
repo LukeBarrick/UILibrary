@@ -19,11 +19,59 @@ export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
 
   @Input() value: string | null = null;
+  @Output() valueChange = new EventEmitter<string>();
+
   @Input() placeholder: string = '';
   @Input() dualSelect: boolean = false;
-  
-  @Input() disabled: boolean = false;
-  @Output() disabledChange = new EventEmitter<boolean>();
+  @Input() set isDisabled (disabled: boolean) {
+    setTimeout(() => {
+      this.disabled = disabled;
+    }, 0)
+  };
+  @Output() isDisabledChange = new EventEmitter<boolean>();
+  disabled: boolean = false;
+
+  dateTracker = new Date();
+  currentDay!: number;
+  currentMonth!: number;
+  currentYear!: number;
+  currentMonthLiteral: string = '';
+  daysInMonth: number[] = [];
+  weeksInMonth: any[][] = [];
+
+  selectedDate: Date | undefined;
+
+  mon = new Date("1/1/0001 12:00:00");
+  tue = new Date("1/2/0001 12:00:00");
+  wed = new Date("1/3/0001 12:00:00");
+  thu = new Date("1/4/0001 12:00:00");
+  fri = new Date("1/5/0001 12:00:00");
+  sat = new Date("1/6/0001 12:00:00");
+  sun = new Date("1/7/0001 12:00:00");
+
+  constructor(@Inject(LOCALE_ID) protected localeId: string,
+              @Inject(DATE_NOW) protected today: Date,
+              private readonly UUID: UUIDService,
+              private readonly elRef: ElementRef
+  ) { }
+
+  ngOnInit() {
+    if(this.value) {
+      const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
+      const formattedDate = datePipe.transform(this.value)
+      if(formattedDate) {
+        this.dateTracker = new Date(this.value);
+        this.selectedDate = new Date(this.value);
+        this.value = formattedDate;
+      }
+    }
+ 
+    this.currentDay = this.dateTracker.getDay();
+    this.currentMonth = this.dateTracker.getMonth();
+    this.currentYear = this.dateTracker.getFullYear();
+    this.currentMonthLiteral = this.dateTracker.toLocaleString(this.localeId, { month: 'long' }); //Localise
+    this.generateCalendar(this.currentMonth, this.currentYear);
+  }
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -70,40 +118,6 @@ export class DatePickerComponent implements OnInit {
       let input = this.elRef.nativeElement.querySelector('input');
       input.focus();
     }
-  }
-
-  dateTracker = new Date();
-  currentDay!: number;
-  currentMonth!: number;
-  currentYear!: number;
-  currentMonthLiteral: string = '';
-  daysInMonth: number[] = [];
-  weeksInMonth: any[][] = [];
-
-  selectedDate: Date | undefined;
-
-  mon = new Date("1/1/0001 12:00:00");
-  tue = new Date("1/2/0001 12:00:00");
-  wed = new Date("1/3/0001 12:00:00");
-  thu = new Date("1/4/0001 12:00:00");
-  fri = new Date("1/5/0001 12:00:00");
-  sat = new Date("1/6/0001 12:00:00");
-  sun = new Date("1/7/0001 12:00:00");
-
-  constructor(@Inject(LOCALE_ID) protected localeId: string,
-              @Inject(DATE_NOW) protected today: Date,
-              private readonly UUID: UUIDService,
-              private readonly elRef: ElementRef
-  ) {
-    this.currentDay = this.dateTracker.getDay();
-    this.currentMonth = this.dateTracker.getMonth();
-    this.currentYear = this.dateTracker.getFullYear();
-    this.currentMonthLiteral = this.dateTracker.toLocaleString(this.localeId, { month: 'long' }); //Localise
-    this.generateCalendar(this.currentMonth, this.currentYear);
-  }
-
-  ngOnInit() {
-    console.log('Date picker is work in progress, please do not use.');
   }
   
   selectDate(day: number) {
@@ -173,12 +187,12 @@ export class DatePickerComponent implements OnInit {
   }
 
   isToday(day: number): boolean {
-    const relativeDate = new Date(this.currentYear, this.currentMonth, day);
+    const todaysDate = new Date(this.currentYear, this.currentMonth, day);
   
     return (
-      relativeDate.getDate() === this.today.getDate() &&
-      relativeDate.getMonth() === this.today.getMonth() &&
-      relativeDate.getFullYear() === this.today.getFullYear()
+      todaysDate.getDate() === this.today.getDate() &&
+      todaysDate.getMonth() === this.today.getMonth() &&
+      todaysDate.getFullYear() === this.today.getFullYear()
     )
   }
 
