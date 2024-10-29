@@ -1,11 +1,19 @@
-import { Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, HostListener, Inject, Input, LOCALE_ID, OnInit, Output } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 import { DatePipe } from '@angular/common';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'uilibrary-date-picker',
   templateUrl: './date-picker.component.html',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatePickerComponent),
+      multi: true 
+    }
+  ]
 })
 export class DatePickerComponent implements OnInit {
   public id = this.UUID.generate();
@@ -14,6 +22,38 @@ export class DatePickerComponent implements OnInit {
   @Input() placeholder: string = '';
   @Input() dualSelect: boolean = false;
   
+  @Input() disabled: boolean = false;
+  @Output() disabledChange = new EventEmitter<boolean>();
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(value: any): void {
+    if(value) {
+      const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
+      this.value = datePipe.transform(this.value);
+    } else {
+      this.value = null;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  handleChange() {
+    this.onChange(this.value);
+    this.onTouched()
+  }
+
   isOpen: boolean = false;
 
   open(): void {
@@ -73,6 +113,10 @@ export class DatePickerComponent implements OnInit {
 
     const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
     this.value = datePipe.transform(date);
+
+    this.onChange(this.value);
+    this.onTouched();
+    this.isOpen = false;
   }
 
   next(): void {

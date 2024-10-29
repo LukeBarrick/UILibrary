@@ -91,6 +91,10 @@ export class ShowcaseComponent implements OnInit {
     toggle1: new FormControl(undefined, [Validators.required]),
   })
 
+  datePickers = new FormGroup({
+    datePicker1: new FormControl(undefined,[Validators.required])
+  });
+
   checked: boolean = true;
 
   currentSelection: Item | undefined;
@@ -128,5 +132,9 @@ export class ShowcaseComponent implements OnInit {
 
     //Getting values from select form control
     let value = this.selectControls.controls.selectControl.value as Item | null;
+  }
+
+  debug2() {
+    console.log(this.datePickers);
   }
 }

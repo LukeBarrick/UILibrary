@@ -43,6 +43,9 @@ export class ButtonComponent implements OnInit {
       case 'secondary-delete':
           this.appearanceClass = 'btn-secondary delete'
           break;
+      default: 
+          this.appearanceClass = 'btn-primary'
+          break;
     }
   }
 }

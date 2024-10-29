@@ -561,11 +561,19 @@
   </uilibrary-form-control>
 </section>
 
-<section class="small">
+<section [formGroup]="datePickers" class="small">
   <h1>Date Pickers (WIP)</h1>
   <uilibrary-date-picker>
     Date Picker
   </uilibrary-date-picker>
+
+  <uilibrary-date-picker formControlName="datePicker1">
+    Date Picker
+  </uilibrary-date-picker>
+
+  <uilibrary-button (click)="debug2()">
+    Debug
+  </uilibrary-button>
 
   <uilibrary-form-control>
     <uilibrary-date-picker input>
