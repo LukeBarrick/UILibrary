@@ -1,10 +1,10 @@
 <div class="datepicker-container">
-  <input [id]="id" type="text" [ngModel]="value" [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" [disabled]="disabled" (click)="open()"/>
-  <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen}">
-    <label [for]="id">
+  <label>
+    <input [id]="id" type="text" [ngModel]="value" [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" [disabled]="disabled" (click)="open()"/>
+    <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen}">
       <ng-content></ng-content>
-    </label>
-  </div>
+    </div>
+  </label>
   <div class="datepicker-calendar-container" *ngIf="isOpen">
     <div class="d-flex justify-content-between align-items-center datepicker-title-row">
       <button class="nav-button left" (click)="previous()">

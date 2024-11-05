@@ -89,7 +89,6 @@ uilibrary-textinput {
         left: 15px;
         transform: translateY(calc($input_height) - 64px);
         transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-        position: absolute;
     }
     
     *,

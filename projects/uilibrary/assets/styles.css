@@ -12296,6 +12296,9 @@ body {
 .btn:disabled svg {
   filter: grayscale(100%);
 }
+.btn uilibrary-icon {
+  margin-right: 15px;
+}
 
 .btn-small {
   --bs-btn-padding-x: 0.75rem;
@@ -12343,6 +12346,9 @@ body {
 }
 .btn-small:disabled svg {
   filter: grayscale(100%);
+}
+.btn-small uilibrary-icon {
+  margin-right: 15px;
 }
 
 .btn-primary {
@@ -12712,7 +12718,7 @@ label.large {
 }
 
 a {
-  color: var(--info);
+  color: var(--secondary);
   font-size: 12pt;
 }
 a.large {
@@ -13141,7 +13147,10 @@ uilibrary-date-picker {
 uilibrary-date-picker .datepicker-container {
   position: relative;
 }
-uilibrary-date-picker .datepicker-container input[type=text] {
+uilibrary-date-picker .datepicker-container label {
+  width: 100%;
+}
+uilibrary-date-picker .datepicker-container label input[type=text] {
   border: 1px solid var(--light-gray);
   border-radius: 7px;
   height: 50px;
@@ -13149,34 +13158,28 @@ uilibrary-date-picker .datepicker-container input[type=text] {
   outline: none;
   width: 100%;
 }
-uilibrary-date-picker .datepicker-container input[type=text]:focus::-webkit-input-placeholder {
+uilibrary-date-picker .datepicker-container label input[type=text]:focus::-webkit-input-placeholder {
   font-size: 16px;
   color: var(--dark-gray);
   transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-uilibrary-date-picker .datepicker-container input[type=text]::-webkit-input-placeholder {
+uilibrary-date-picker .datepicker-container label input[type=text]::-webkit-input-placeholder {
   color: transparent;
 }
-uilibrary-date-picker .datepicker-container input[type=text]:disabled {
+uilibrary-date-picker .datepicker-container label input[type=text]:disabled {
   background-color: var(--almost-white);
 }
-uilibrary-date-picker .datepicker-container input[type=text] + .datepicker-label {
-  position: relative;
-}
-uilibrary-date-picker .datepicker-container input[type=text] + .datepicker-label label {
+uilibrary-date-picker .datepicker-container label .datepicker-label {
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   position: absolute;
   bottom: 0;
   left: 20px;
   transform: translateY(-14px);
 }
-uilibrary-date-picker .datepicker-container .datepicker-input-focus {
-  border-color: var(--secondary) !important;
-}
-uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label,
-uilibrary-date-picker .datepicker-container .datepicker-label-float label {
+uilibrary-date-picker .datepicker-container:focus-within .datepicker-label,
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label,
+uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label,
+uilibrary-date-picker .datepicker-container .datepicker-label-float {
   font-size: 0.75rem;
   transform: translate(-10px, -40px) !important;
   background-color: transparent;
@@ -13186,10 +13189,10 @@ uilibrary-date-picker .datepicker-container .datepicker-label-float label {
   border-radius: 30px;
   color: var(--secondary);
 }
-uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label:after,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label:after,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label:after,
-uilibrary-date-picker .datepicker-container .datepicker-label-float label:after {
+uilibrary-date-picker .datepicker-container:focus-within .datepicker-label:after,
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label:after,
+uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label:after,
+uilibrary-date-picker .datepicker-container .datepicker-label-float:after {
   content: "";
   display: block;
   position: absolute;
@@ -13200,19 +13203,23 @@ uilibrary-date-picker .datepicker-container .datepicker-label-float label:after 
   right: 0;
   z-index: -1;
 }
-uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label label,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label label,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label label,
-uilibrary-date-picker .datepicker-container .datepicker-label-float label label {
+uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label,
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label,
+uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label,
+uilibrary-date-picker .datepicker-container .datepicker-label-float label {
   position: relative;
   z-index: 1;
   color: var(--secondary);
+}
+uilibrary-date-picker .datepicker-container .datepicker-input-focus {
+  border-color: var(--secondary) !important;
 }
 uilibrary-date-picker .datepicker-container .datepicker-calendar-container {
   position: absolute;
   left: 0;
   top: 55px;
   height: 320px;
+  max-width: 350px;
   width: 100%;
   border: 1px solid var(--light-gray);
   border-radius: 7px;
@@ -13314,12 +13321,15 @@ uilibrary-hint .hint-error {
   padding-inline-start: 10px;
 }
 
+uilibrary-required {
+  height: 100%;
+}
 uilibrary-required .required {
   color: var(--danger);
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
   position: relative;
-  top: -13px;
+  top: -7px;
   margin-left: 10px;
 }
 
@@ -13430,22 +13440,11 @@ uilibrary-tooltip .tooltip-margin-both {
 }
 .navigation-dropdown-parent-custom .dropdown-item.active,
 .navigation-dropdown-parent-custom .dropdown-item:active {
-  color: initial !important;
   background-color: initial !important;
 }
-.navigation-dropdown-parent-custom .dropdown-toggle.active:after,
-.navigation-dropdown-parent-custom a.active:after {
-  content: "";
-  display: block;
-  position: absolute;
-  background: var(--secondary);
-  left: 0px;
-  height: 4px;
-  top: 100%;
-  transition: height 100ms ease-in-out;
-  width: 100%;
-  border: 0px;
-  top: calc(100% - 4px);
+.navigation-dropdown-parent-custom .dropdown-toggle.active,
+.navigation-dropdown-parent-custom .dropdown-item.active {
+  color: var(--secondary);
 }
 .navigation-dropdown-parent-custom a.child-active {
   background-color: var(--light-gray);
@@ -13486,7 +13485,8 @@ uilibrary-tooltip .tooltip-margin-both {
 }
 .navigation-dropdown-parent-custom .navigation-dropdown-nested-title-custom {
   margin-top: 10px;
-  color: var(--secondary);
+  color: var(--dark-gray);
+  font-family: var(--bs-header-font-family);
   font-weight: 600;
   padding-left: 20px;
   padding-right: 20px;
@@ -14021,7 +14021,6 @@ uilibrary-textinput .label-name {
   left: 15px;
   transform: translateY(-14px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
 }
 uilibrary-textinput *,
 uilibrary-textinput *::before,
