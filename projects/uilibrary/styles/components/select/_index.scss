@@ -27,6 +27,10 @@ uilibrary-select {
         flex: 1;
         appearance: none !important;
     }
+
+    .ng-select.custom .ng-clear-wrapper {
+        height: 17px !important;
+    }
     
     .ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
         box-shadow: unset;
