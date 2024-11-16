@@ -1,7 +1,7 @@
 <div class="datepicker-container">
   <label>
     <input [id]="id" type="text" [ngModel]="value" [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" [disabled]="disabled" (click)="open()"/>
-    <div class="datepicker-label" [ngClass]="{'datepicker-label-float': isOpen}">
+    <div class="datepicker-label">
       <ng-content></ng-content>
     </div>
   </label>
@@ -11,7 +11,7 @@
         <svg-icon name="chevron_left"></svg-icon>
       </button>
     
-      {{currentMonthLiteral}} {{currentYear}}
+      {{selectedMonthLiteral}} {{selectedYear}}
   
       <button class="nav-button right" (click)="next()">
         <svg-icon name="chevron_right"></svg-icon>

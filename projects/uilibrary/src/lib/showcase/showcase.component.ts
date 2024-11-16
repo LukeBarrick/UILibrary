@@ -92,7 +92,8 @@ export class ShowcaseComponent implements OnInit {
   })
 
   datePickers = new FormGroup({
-    datePicker1: new FormControl(undefined,[Validators.required])
+    datePicker1: new FormControl(undefined,[Validators.required]),
+    datePicker2: new FormControl(undefined,[Validators.required])
   });
   dateBindingValue1: string = new Date().toDateString();
 
