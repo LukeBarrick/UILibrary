@@ -14,24 +14,40 @@ uilibrary-status-tag {
             border-color: var(--info);
             background-color: var(--info-light);
             color: var(--info-dark);
+
+            a {
+                color: var(--info-dark);
+            }
         }
     
         &.warning {
             border-color: var(--warning);
             background-color: var(--warning-light);
             color: var(--warning-dark);
+
+            a {
+                color: var(--warning-dark);
+            }
         }
     
         &.error {
             border-color: var(--danger);
             background-color: var(--danger-light);
             color: var(--danger-dark);
+
+            a {
+                color: var(--danger-dark);
+            }
         }
     
         &.success {
             border-color: var(--success);
             background-color: var(--success-light);
             color: var(--success-dark);
+
+            a {
+                color: var(--success-dark);
+            }
         }
     }
 }

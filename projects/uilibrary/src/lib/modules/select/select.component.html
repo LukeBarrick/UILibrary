@@ -5,7 +5,7 @@
   [clearSearchOnAdd]="clearSearchOnAdd" [readonly]="readonly" [placeholder]="placeholder" [notFoundText]="notFoundText"
   [markFirst]="markFirst" [clearOnBackspace]="clearOnBackspace" [clearable]="clearable" [closeOnSelect]="closeOnSelect"
   [searchable]="searchable" [searchFn]="searchFn" [isOpen]="isOpen" [trackByFn]="trackByFn"
-  [virtualScroll]="virtualScroll">
+  [virtualScroll]="virtualScroll" [attr.aria-invalid]="hasErrors()">
   <ng-template ng-label-tmp let-item="item">
     <ng-container *ngTemplateOutlet="labelTemplate; context: { $implicit: item }"></ng-container>
   </ng-template>

@@ -4,20 +4,18 @@ import {
   EventEmitter,
   forwardRef,
   Input,
+  Optional,
   Output,
+  Self,
   TemplateRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'uilibrary-select',
   templateUrl: './select.component.html',
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectComponent),
-      multi: true,
-    },
+ 
   ],
 })
 export class SelectComponent implements ControlValueAccessor {
@@ -29,7 +27,7 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() items: any;
 
   @Input() prefillFirstOption: boolean = false;
-  @Input() ariaLabel: string = ''
+  @Input() ariaLabel: string = '';
   @Input() isDisabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() loadingText: string = 'Loading...';
@@ -46,7 +44,7 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() closeOnSelect: boolean = true;
 
   @Input() searchable: boolean = false;
-  @Input() searchFn: ((term: string, item: any) => boolean) | undefined 
+  @Input() searchFn: ((term: string, item: any) => boolean) | undefined;
   @Input() isOpen: boolean | undefined = undefined;
   @Input() trackByFn: ((item: any) => any) | undefined;
   @Input() virtualScroll: boolean = false;
@@ -59,6 +57,12 @@ export class SelectComponent implements ControlValueAccessor {
   onTouched: any = () => {};
 
   touched = false;
+
+  constructor(@Optional() @Self() public control: NgControl) {
+    if(this.control) {
+      this.control.valueAccessor = this;
+    }
+  }
 
   writeValue(value: any): void {
     this.value = value;
@@ -90,16 +94,10 @@ export class SelectComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
-  handleChangeUntouched(event: any): void {
-    this.value = event;
-    this.onChange(event);
-    this.valueChange.emit(event);
-  }
-
   ngOnInit() {
     setTimeout(() => {
-      if(this.prefillFirstOption && this.value == undefined) {
-        if(!this.multiple) {
+      if (this.prefillFirstOption && this.value == undefined) {
+        if (!this.multiple) {
           this.value = this.items[0];
         } else {
           this.value = [this.items[0]];
@@ -112,5 +110,13 @@ export class SelectComponent implements ControlValueAccessor {
 
   compareFn(item: any, selected: any) {
     return item === selected;
+  }
+
+  hasErrors(): boolean {
+    if(this.control?.errors){
+      return true;
+    } else {
+      return false;
+    }
   }
 }

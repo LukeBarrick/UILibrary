@@ -136,6 +136,7 @@ export class ShowcaseComponent implements OnInit {
   }
 
   debug2() {
+    console.log(this.selectControls)
     console.log(this.datePickers);
     console.log(this.dateBindingValue1);
   }

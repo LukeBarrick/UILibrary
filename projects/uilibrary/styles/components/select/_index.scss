@@ -1,19 +1,23 @@
-uilibrary-select.ng-invalid.ng-touched,
+uilibrary-select .ng-select[aria-invalid="true"].ng-touched,
 uilibrary-select.error {
     .ng-select-container {
         border-color: var(--danger) !important;
     }
 
-    .ng-select.ng-select-opened>.ng-select-container {
+    .ng-select-opened>.ng-select-container {
         border-color: var(--danger);
     }
 
-    .ng-select.ng-select-opened .ng-dropdown-panel {
+    .ng-select-opened .ng-dropdown-panel {
         border-color: var(--danger) !important;
     }
 
-    .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    .ng-select-container .ng-value-container .ng-placeholder {
         color: var(--danger) !important;
+    }
+
+    .ng-dropdown-panel.ng-select-bottom {
+        border-color: var(--danger) !important;
     }
 }
 
@@ -30,6 +34,7 @@ uilibrary-select {
 
     .ng-select.custom .ng-clear-wrapper {
         height: 17px !important;
+        width: 17px !important;
     }
     
     .ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {

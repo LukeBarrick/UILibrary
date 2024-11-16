@@ -39,7 +39,10 @@ export class DatePickerComponent implements OnInit {
   daysInMonth: number[] = [];
   weeksInMonth: any[][] = [];
 
+  datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' }); 
+
   selectedDate: Date | undefined;
+  selectedDate2: Date | undefined;
 
   mon = new Date("1/1/0001 12:00:00");
   tue = new Date("1/2/0001 12:00:00");
@@ -57,8 +60,7 @@ export class DatePickerComponent implements OnInit {
 
   ngOnInit() {
     if(this.value) {
-      const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
-      const formattedDate = datePipe.transform(this.value)
+      const formattedDate = this.datePipe.transform(this.value)
       if(formattedDate) {
         this.dateTracker = new Date(this.value);
         this.selectedDate = new Date(this.value);
@@ -78,8 +80,7 @@ export class DatePickerComponent implements OnInit {
 
   writeValue(value: any): void {
     if(value) {
-      const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
-      this.value = datePipe.transform(this.value);
+      this.value = this.datePipe.transform(this.value);
     } else {
       this.value = null;
     }
@@ -124,9 +125,7 @@ export class DatePickerComponent implements OnInit {
     const date = new Date(this.currentYear, this.currentMonth, day);
     this.selectedDate = date;
     this.value = date.toDateString();
-    const datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
-    this.value = datePipe.transform(date);
-
+    this.value = this.datePipe.transform(date);
 
     this.onChange(this.value);
     this.valueChange.next(this.value);

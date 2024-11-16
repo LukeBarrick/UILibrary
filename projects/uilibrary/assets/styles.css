@@ -13442,12 +13442,17 @@ uilibrary-tooltip .tooltip-margin-both {
 .navigation-dropdown-parent-custom .dropdown-item:active {
   background-color: initial !important;
 }
-.navigation-dropdown-parent-custom .dropdown-toggle.active,
+.navigation-dropdown-parent-custom .dropdown-toggle.active {
+  color: var(--secondary);
+}
 .navigation-dropdown-parent-custom .dropdown-item.active {
   color: var(--secondary);
 }
+.navigation-dropdown-parent-custom .dropdown-item.active:hover {
+  background-color: var(--lighter-gray) !important;
+}
 .navigation-dropdown-parent-custom a.child-active {
-  background-color: var(--light-gray);
+  color: var(--secondary);
 }
 .navigation-dropdown-parent-custom .dropdown-toggle.active:after {
   margin: 0px;
@@ -13707,21 +13712,25 @@ uilibrary-radio-button .input-radio .check-input > input[type=radio]:hover:not(:
   background-color: rgba(64, 132, 103, 0.2);
 }
 
-uilibrary-select.ng-invalid.ng-touched .ng-select-container,
+uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-container,
 uilibrary-select.error .ng-select-container {
   border-color: var(--danger) !important;
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened > .ng-select-container,
-uilibrary-select.error .ng-select.ng-select-opened > .ng-select-container {
+uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-opened > .ng-select-container,
+uilibrary-select.error .ng-select-opened > .ng-select-container {
   border-color: var(--danger);
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select.ng-select-opened .ng-dropdown-panel,
-uilibrary-select.error .ng-select.ng-select-opened .ng-dropdown-panel {
+uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-opened .ng-dropdown-panel,
+uilibrary-select.error .ng-select-opened .ng-dropdown-panel {
   border-color: var(--danger) !important;
 }
-uilibrary-select.ng-invalid.ng-touched .ng-select .ng-select-container .ng-value-container .ng-placeholder,
-uilibrary-select.error .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-container .ng-value-container .ng-placeholder,
+uilibrary-select.error .ng-select-container .ng-value-container .ng-placeholder {
   color: var(--danger) !important;
+}
+uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-dropdown-panel.ng-select-bottom,
+uilibrary-select.error .ng-dropdown-panel.ng-select-bottom {
+  border-color: var(--danger) !important;
 }
 
 uilibrary-select {
@@ -13733,6 +13742,10 @@ uilibrary-select .ng-select.custom {
   height: 50px !important;
   flex: 1;
   appearance: none !important;
+}
+uilibrary-select .ng-select.custom .ng-clear-wrapper {
+  height: 17px !important;
+  width: 17px !important;
 }
 uilibrary-select .ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
   box-shadow: unset;
@@ -13841,9 +13854,15 @@ uilibrary-status-tag .status-tag.information {
   background-color: var(--info-light);
   color: var(--info-dark);
 }
+uilibrary-status-tag .status-tag.information a {
+  color: var(--info-dark);
+}
 uilibrary-status-tag .status-tag.warning {
   border-color: var(--warning);
   background-color: var(--warning-light);
+  color: var(--warning-dark);
+}
+uilibrary-status-tag .status-tag.warning a {
   color: var(--warning-dark);
 }
 uilibrary-status-tag .status-tag.error {
@@ -13851,9 +13870,15 @@ uilibrary-status-tag .status-tag.error {
   background-color: var(--danger-light);
   color: var(--danger-dark);
 }
+uilibrary-status-tag .status-tag.error a {
+  color: var(--danger-dark);
+}
 uilibrary-status-tag .status-tag.success {
   border-color: var(--success);
   background-color: var(--success-light);
+  color: var(--success-dark);
+}
+uilibrary-status-tag .status-tag.success a {
   color: var(--success-dark);
 }
 

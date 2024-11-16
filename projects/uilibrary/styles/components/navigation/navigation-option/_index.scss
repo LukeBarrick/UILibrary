@@ -8,15 +8,22 @@
         background-color: initial !important;
     }
 
+    .dropdown-toggle.active {
+        color: var(--secondary);
+    }
+
     //Parent
-    .dropdown-toggle.active,
     .dropdown-item.active {
         color: var(--secondary);
+
+        &:hover {
+            background-color: var(--lighter-gray) !important;
+        }
     }
 
     //Child
     a.child-active {
-        background-color: var(--light-gray);
+        color: var(--secondary);
     }
 
     .dropdown-toggle.active:after {
