@@ -589,7 +589,6 @@
   <uilibrary-date-picker [(value)]="dateBindingValue1">
     Two Way Binding Date Picker
   </uilibrary-date-picker>
-  doesn't recieve value for some reason
 
   <uilibrary-date-picker [isDisabled]="true">
     Disabled Date Picker
@@ -601,6 +600,10 @@
 
   <uilibrary-date-picker [multi]="true" formControlName="datePicker2">
     Dual Select Form Control Date Picker
+  </uilibrary-date-picker>
+
+  <uilibrary-date-picker [multi]="true" [closeOnSelect]="false">
+    Don't Close On Form Control Date Picker
   </uilibrary-date-picker>
 
   <uilibrary-button (click)="debug2()">
@@ -766,7 +769,6 @@
   <uilibrary-toggle labelPosition="right">
     Right Aligned Label
   </uilibrary-toggle>
-
 
   <uilibrary-toggle labelSize="large">
     Large Label

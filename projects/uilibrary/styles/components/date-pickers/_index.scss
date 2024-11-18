@@ -177,6 +177,11 @@ uilibrary-date-picker {
             align-items: center;
             justify-content: center;
           }
+
+          &.active-range {
+            background-color: var(--almost-white);
+            color: var(--secondary);
+          }
         }
       }
     }

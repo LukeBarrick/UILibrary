@@ -35,6 +35,7 @@ export class DatePickerComponent implements OnInit {
   @Input() placeholder: string = '';
   @Input() multi: boolean = false;
   @Input() multiAmount: number = 2;
+  @Input() closeOnSelect: boolean = true;
   @Input() set isDisabled(disabled: boolean) {
     setTimeout(() => {
       this.disabled = disabled;
@@ -85,7 +86,7 @@ export class DatePickerComponent implements OnInit {
     this.selectedYear = this.dateTracker.getFullYear();
     this.selectedMonthLiteral = this.dateTracker.toLocaleString(this.localeId, {
       month: 'long',
-    }); //Localise
+    });
     this.generateCalendar(this.selectedMonth, this.selectedYear);
   }
 
@@ -153,7 +154,7 @@ export class DatePickerComponent implements OnInit {
         this.selectedDate.push(date);
       }
 
-      if (this.selectedDate.length === this.multiAmount) {
+      if (this.selectedDate.length === this.multiAmount && this.closeOnSelect) {
         this.isOpen = false;
       }
 
@@ -163,7 +164,10 @@ export class DatePickerComponent implements OnInit {
       this.selectedDate.push(date);
       this.value = date.toDateString();
       this.value = this.datePipe.transform(date);
-      this.isOpen = false;
+
+      if(this.closeOnSelect) {
+        this.isOpen = false;
+      }
     }
 
     this.onChange(this.value);
@@ -246,11 +250,11 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
-  isToday(selecteDay: number): boolean {
+  isToday(day: number): boolean {
     const todaysDate = new Date(
       this.selectedYear,
       this.selectedMonth,
-      selecteDay
+      day
     );
 
     return (
@@ -260,11 +264,11 @@ export class DatePickerComponent implements OnInit {
     );
   }
 
-  isSelected(selecteDay: number): boolean {
+  isSelected(day: number): boolean {
     const selecteDate = new Date(
       this.selectedYear,
       this.selectedMonth,
-      selecteDay
+      day
     );
 
     return !!this.selectedDate.find(
@@ -273,5 +277,22 @@ export class DatePickerComponent implements OnInit {
         _selecteDate.getMonth() === selecteDate.getMonth() &&
         _selecteDate.getFullYear() === selecteDate.getFullYear()
     );
+  }
+
+  isWithinActiveRange(day: number): boolean {
+    if(this.selectedDate.length <= 1) {
+      return false;
+    }
+
+    const activeStartRange: Date = this.selectedDate[0];
+    const activeEndRange: Date = this.selectedDate[this.selectedDate.length - 1];
+
+    const currentDate = new Date(
+      this.selectedYear,
+      this.selectedMonth,
+      day
+    );
+
+    return currentDate >= activeStartRange && currentDate <= activeEndRange;
   }
 }
