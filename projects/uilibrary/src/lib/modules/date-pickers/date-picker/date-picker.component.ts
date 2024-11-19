@@ -12,8 +12,9 @@ import {
 } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
-import { DatePipe } from '@angular/common';
+import { DatePipe, FormatWidth, getLocaleDateFormat } from '@angular/common';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { parse } from 'date-fns';
 
 @Component({
   selector: 'uilibrary-date-picker',
@@ -54,21 +55,21 @@ export class DatePickerComponent implements OnInit {
 
   datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
 
-  selectedDate: Date[] = [];
+  selectedDates: Date[] = [];
 
-  mon = new Date('1/1/0001 12:00:00');
-  tue = new Date('1/2/0001 12:00:00');
-  wed = new Date('1/3/0001 12:00:00');
-  thu = new Date('1/4/0001 12:00:00');
-  fri = new Date('1/5/0001 12:00:00');
-  sat = new Date('1/6/0001 12:00:00');
-  sun = new Date('1/7/0001 12:00:00');
+  mon = new Date('0001-01-01T00:00:00');
+  tue = new Date('0001-02-01T00:00:00');
+  wed = new Date('0001-03-01T00:00:00');
+  thu = new Date('0001-04-01T00:00:00');
+  fri = new Date('0001-05-01T00:00:00');
+  sat = new Date('0001-06-01T00:00:00');
+  sun = new Date('0001-07-01T00:00:00');
 
   constructor(
     @Inject(LOCALE_ID) protected localeId: string,
     @Inject(DATE_NOW) protected today: Date,
     private readonly UUID: UUIDService,
-    private readonly elRef: ElementRef
+    private readonly elRef: ElementRef,
   ) {}
 
   ngOnInit() {
@@ -76,7 +77,7 @@ export class DatePickerComponent implements OnInit {
       const formattedDate = this.datePipe.transform(this.value);
       if (formattedDate) {
         this.dateTracker = new Date(this.value);
-        this.selectedDate.push(new Date(this.value));
+        this.selectedDates.push(new Date(this.value));
         this.value = formattedDate;
       }
     }
@@ -136,10 +137,38 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
+  parseDates(e: any): void {
+    this.selectedDates = [];
+    let input: string = e.target.value;
+    if(input.trim()) {
+      input = input.replaceAll(' ', '');
+
+      const dates: string[] = input.split('-');
+      
+      dates.forEach(_date => {
+        const date = this.parseDate(_date);
+        if(date)
+          this.selectedDates.push(date);
+      });
+      
+      this.value = this.setValue();
+    }
+  }
+
+  private parseDate(dateString: string): Date | null {
+    const format = getLocaleDateFormat(this.localeId, FormatWidth.Short);
+    try {
+      const parsedDate = parse(dateString, format, new Date())
+      return parsedDate;
+    } catch(error) {
+      return null;
+    }
+  }
+
   selectDate(day: number) {
     const date = new Date(this.selectedYear, this.selectedMonth, day);
     if (this.multi) {
-      let index = this.selectedDate.findIndex(
+      let index = this.selectedDates.findIndex(
         (_selecteDate) =>
           _selecteDate.getDate() === date.getDate() &&
           _selecteDate.getMonth() === date.getMonth() &&
@@ -147,23 +176,22 @@ export class DatePickerComponent implements OnInit {
       );
 
       if (index > -1) {
-        this.selectedDate.splice(index, 1);
+        this.selectedDates.splice(index, 1);
       }
 
-      if (this.selectedDate.length < this.multiAmount && index === -1) {
-        this.selectedDate.push(date);
+      if (this.selectedDates.length < this.multiAmount && index === -1) {
+        this.selectedDates.push(date);
       }
 
-      if (this.selectedDate.length === this.multiAmount && this.closeOnSelect) {
+      if (this.selectedDates.length === this.multiAmount && this.closeOnSelect) {
         this.isOpen = false;
       }
 
-      this.value = this.setMultiValue();
+      this.value = this.setValue();
     } else {
-      this.selectedDate.pop();
-      this.selectedDate.push(date);
-      this.value = date.toDateString();
-      this.value = this.datePipe.transform(date);
+      this.selectedDates = [];
+      this.selectedDates.push(date);
+      this.value = this.setValue();
 
       if(this.closeOnSelect) {
         this.isOpen = false;
@@ -175,14 +203,14 @@ export class DatePickerComponent implements OnInit {
     this.onTouched();
   }
 
-  setMultiValue(): string {
+  setValue(): string {
     let value: string = '';
-    this.selectedDate.sort((a, b) => a.getTime() - b.getTime());
+    this.selectedDates.sort((a, b) => a.getTime() - b.getTime());
 
-    for (let index = 0; index < this.selectedDate.length; index++) {
-      const element = this.selectedDate[index];
+    for (let index = 0; index < this.selectedDates.length; index++) {
+      const element = this.selectedDates[index];
       
-      if(index + 1 === this.selectedDate.length) {
+      if(index + 1 === this.selectedDates.length) {
         value = value + this.datePipe.transform(element);
 
       } else {
@@ -271,7 +299,7 @@ export class DatePickerComponent implements OnInit {
       day
     );
 
-    return !!this.selectedDate.find(
+    return !!this.selectedDates.find(
       (_selecteDate) =>
         _selecteDate.getDate() === selecteDate.getDate() &&
         _selecteDate.getMonth() === selecteDate.getMonth() &&
@@ -280,12 +308,12 @@ export class DatePickerComponent implements OnInit {
   }
 
   isWithinActiveRange(day: number): boolean {
-    if(this.selectedDate.length <= 1) {
+    if(this.selectedDates.length <= 1) {
       return false;
     }
 
-    const activeStartRange: Date = this.selectedDate[0];
-    const activeEndRange: Date = this.selectedDate[this.selectedDate.length - 1];
+    const activeStartRange: Date = this.selectedDates[0];
+    const activeEndRange: Date = this.selectedDates[this.selectedDates.length - 1];
 
     const currentDate = new Date(
       this.selectedYear,

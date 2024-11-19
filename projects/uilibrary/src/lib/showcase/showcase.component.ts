@@ -95,7 +95,7 @@ export class ShowcaseComponent implements OnInit {
     datePicker1: new FormControl(undefined,[Validators.required]),
     datePicker2: new FormControl(undefined,[Validators.required])
   });
-  dateBindingValue1: string = new Date().toDateString();
+  dateBindingValue1: string = '2024-11-19T00:00:00';
 
   checked: boolean = true;
 
