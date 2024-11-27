@@ -10,6 +10,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   ],
   exports: [
     
+  ],
+  providers: [
   ]
 })
 

@@ -2,14 +2,13 @@ import {
   Component,
   ContentChild,
   EventEmitter,
-  forwardRef,
   Input,
   Optional,
   Output,
   Self,
   TemplateRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'uilibrary-select',

@@ -3,22 +3,55 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "uilibrary": {
+      "projectType": "library",
+      "root": "projects/uilibrary",
+      "sourceRoot": "projects/uilibrary/src",
+      "prefix": "lib",
+      "i18n": {
+        "locales": {}
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/uilibrary/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/uilibrary/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/uilibrary/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/uilibrary/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
     "showcase": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "projects/showcase",
       "sourceRoot": "projects/showcase/src",
       "prefix": "app",
-      "i18n": {
-        "sourceLocale": "en-GB",
-        "locales": {
-          
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -26,12 +59,9 @@
             "outputPath": "dist/showcase",
             "index": "projects/showcase/src/index.html",
             "browser": "projects/showcase/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/showcase/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets":[
+            "assets": [
               {
                 "glob": "**/*",
                 "input": "./projects/uilibrary/assets/",
@@ -43,15 +73,8 @@
                 "output": "/assets/"
               }
             ],
-            "styles": [
-              "projects/showcase/src/styles.scss"
-            ],
-            "scripts": [],
-            "server": "projects/showcase/src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "projects/showcase/server.ts"
-            }
+            "styles": ["projects/showcase/src/styles.scss"],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -98,58 +121,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/showcase/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "projects/showcase/src/favicon.ico",
               "projects/showcase/src/assets"
             ],
-            "styles": [
-              "projects/showcase/src/styles.scss"
-            ],
+            "styles": ["projects/showcase/src/styles.scss"],
             "scripts": []
-          }
-        }
-      }
-    },
-    "uilibrary": {
-      "projectType": "library",
-      "root": "projects/uilibrary",
-      "sourceRoot": "projects/uilibrary/src",
-      "prefix": "lib",
-      "i18n": {
-        "locales": {
-
-        }
-      },
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/uilibrary/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/uilibrary/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/uilibrary/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/uilibrary/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
           }
         }
       }

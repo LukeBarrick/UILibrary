@@ -1,8 +1,9 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { ThrowIfAlreadyLoaded } from './module-import-guard';
 
 import { UUIDService } from './services/UUID.service';
+import { ToastService } from './services/toast.service';
 
 import { DATE_NOW } from './tokens/DATE_NOW';
 
@@ -14,6 +15,8 @@ import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import localePt from '@angular/common/locales/pt';
 import localeJa from '@angular/common/locales/ja';
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from '../shared/shared.module';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeUs);
@@ -26,12 +29,13 @@ registerLocaleData(localeJa);
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
   ],
   providers: [
     UUIDService,
+    ToastService,
     { provide: DATE_NOW, useFactory: () => new Date()}
   ],
   exports: [

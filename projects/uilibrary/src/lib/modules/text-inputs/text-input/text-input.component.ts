@@ -1,7 +1,6 @@
 import {
   Component,
   EventEmitter,
-  forwardRef,
   Input,
   Optional,
   Output,
@@ -9,7 +8,6 @@ import {
 } from '@angular/core';
 import {
   ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
   NgControl,
 } from '@angular/forms';
 import { UUIDService } from '../../../core/services/UUID.service';

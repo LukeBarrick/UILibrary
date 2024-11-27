@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationLink } from '../core/models/navigation-link';
 import { NavigationLinkType } from '../core/enums/navigation-link-type.enum';
+import { ToastService } from '../core/services/toast.service';
 
 export interface Item {
   id: number;
@@ -14,8 +15,10 @@ export interface Item {
   styleUrls: ['./showcase.component.css'],
 })
 export class ShowcaseComponent implements OnInit {
- 
-  constructor(private formBuilder: FormBuilder) {}
+
+  constructor(private formBuilder: FormBuilder,
+              private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.currentSelection2 = this.items[1];
@@ -130,6 +133,8 @@ export class ShowcaseComponent implements OnInit {
     this.checkBoxes.disable()
     this.toggles.disable()
 
+   
+
     this.isDisabled = false;
 
     //Getting values from select form control
@@ -137,6 +142,11 @@ export class ShowcaseComponent implements OnInit {
   }
 
   debug2() {
+    this.toastService.success("message", "title");
+    this.toastService.info("message", "title");
+    this.toastService.warning("message", "title");
+    this.toastService.error("message", "title");
+
     console.log(this.datePickers);
   }
 }

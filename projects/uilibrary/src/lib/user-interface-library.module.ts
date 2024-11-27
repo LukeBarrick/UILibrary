@@ -22,6 +22,8 @@ import { StatusTagsModule } from './modules/status-tags/status-tags.module';
 import { SharedModule } from './shared/shared.module';
 import { IconsModule } from './modules/icons/icon.module';
 import { ButtonsModule } from './modules/buttons/buttons.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,10 @@ import { ButtonsModule } from './modules/buttons/buttons.module';
   ],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     NgbModule,
     CoreModule,
+    ToastrModule.forRoot(),
     SharedModule,
     NgSelectModule,
     ReactiveFormsModule,

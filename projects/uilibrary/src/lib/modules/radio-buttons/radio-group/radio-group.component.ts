@@ -1,5 +1,5 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, forwardRef, Input, Optional, Output, QueryList, Self } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Optional, Output, QueryList, Self } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { RadioButtonComponent } from '../radio-button/radio-button.component';
 
 @Component({
