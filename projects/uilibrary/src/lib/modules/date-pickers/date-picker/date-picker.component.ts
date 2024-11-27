@@ -2,32 +2,28 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  forwardRef,
   HostListener,
   Inject,
   Input,
   LOCALE_ID,
   OnInit,
+  Optional,
   Output,
+  Self,
 } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 import { DatePipe, FormatWidth, getLocaleDateFormat } from '@angular/common';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { parse } from 'date-fns';
 
 @Component({
   selector: 'uilibrary-date-picker',
   templateUrl: './date-picker.component.html',
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatePickerComponent),
-      multi: true,
-    },
   ],
 })
-export class DatePickerComponent implements OnInit {
+export class DatePickerComponent implements OnInit, ControlValueAccessor {
   public id = this.UUID.generate();
 
   @Input() value: string | null = null;
@@ -53,6 +49,8 @@ export class DatePickerComponent implements OnInit {
   daysInMonth: number[] = [];
   weeksInMonth: any[][] = [];
 
+  isOpen: boolean = false;
+
   datePipe = new DatePipe(this.localeId, null, { dateFormat: 'shortDate' });
 
   selectedDates: Date[] = [];
@@ -65,12 +63,29 @@ export class DatePickerComponent implements OnInit {
   sat = new Date('0001-06-01T00:00:00');
   sun = new Date('0001-07-01T00:00:00');
 
+  //Focus trap to ensure field doesn't lose focus for accessiblity reasons.
+  @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+
+    if (this.isOpen && !this.elRef.nativeElement.contains(target)) {
+      this.isOpen = false;
+    } else if (this.isOpen) {
+      let input = this.elRef.nativeElement.querySelector('input');
+      input.focus();
+    }
+  }
+
   constructor(
+    @Optional() @Self() public ngControl: NgControl,
     @Inject(LOCALE_ID) protected localeId: string,
     @Inject(DATE_NOW) protected today: Date,
     private readonly UUID: UUIDService,
     private readonly elRef: ElementRef,
-  ) {}
+  ) {
+    if(this.ngControl != null) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
 
   ngOnInit() {
     if (this.value) {
@@ -91,50 +106,8 @@ export class DatePickerComponent implements OnInit {
     this.generateCalendar(this.selectedMonth, this.selectedYear);
   }
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
-
-  writeValue(value: any): void {
-    if (value) {
-      this.value = this.datePipe.transform(this.value);
-    } else {
-      this.value = null;
-    }
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState?(disabled: boolean): void {
-    this.disabled = disabled;
-  }
-
-  handleChange() {
-    this.onChange(this.value);
-    this.onTouched();
-  }
-
-  isOpen: boolean = false;
-
   open(): void {
     this.isOpen = true;
-  }
-
-  //Focus trap to ensure field doesn't lose focus for accessiblity reasons.
-  @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
-    const target = event.target as HTMLElement;
-
-    if (this.isOpen && !this.elRef.nativeElement.contains(target)) {
-      this.isOpen = false;
-    } else if (this.isOpen) {
-      let input = this.elRef.nativeElement.querySelector('input');
-      input.focus();
-    }
   }
 
   parseDates(e: any): void {
@@ -144,7 +117,7 @@ export class DatePickerComponent implements OnInit {
       input = input.replaceAll(' ', '');
 
       const dates: string[] = input.split('-');
-      
+
       dates.forEach(_date => {
         const date = this.parseDate(_date);
         if(date)
@@ -203,8 +176,8 @@ export class DatePickerComponent implements OnInit {
     this.onTouched();
   }
 
-  setValue(): string {
-    let value: string = '';
+  setValue(_value: string = ''): string {
+    let value: string = _value;
     this.selectedDates.sort((a, b) => a.getTime() - b.getTime());
 
     for (let index = 0; index < this.selectedDates.length; index++) {
@@ -322,5 +295,30 @@ export class DatePickerComponent implements OnInit {
     );
 
     return currentDate >= activeStartRange && currentDate <= activeEndRange;
+  }
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  writeValue(value: any): void {
+    this.value = value; //this doesn't work as it parses the full date + only can handle one date
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  handleChange() {
+    this.onChange(this.value);
+    this.onTouched();
+    this.valueChange.emit(this.value);
   }
 }

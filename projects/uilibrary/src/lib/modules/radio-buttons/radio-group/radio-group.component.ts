@@ -1,16 +1,12 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, forwardRef, Input, OnInit, Output, QueryList } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, forwardRef, Input, Optional, Output, QueryList, Self } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { RadioButtonComponent } from '../radio-button/radio-button.component';
 
 @Component({
   selector: 'uilibrary-radio-group',
   templateUrl: './radio-group.component.html',
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RadioGroupComponent),
-      multi: true 
-    }
+
   ]
 })
 export class RadioGroupComponent implements ControlValueAccessor, AfterContentInit  {
@@ -18,6 +14,12 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
   
   @Input() value: any;
   @Output() valueChange = new EventEmitter<any>();
+
+  constructor(@Optional() @Self() public ngControl: NgControl) {
+    if(this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
 
   private _isDisabled: boolean = false;
 

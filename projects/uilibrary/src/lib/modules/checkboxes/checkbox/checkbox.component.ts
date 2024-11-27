@@ -1,5 +1,5 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Optional, Output, Self } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { UUIDService } from '../../../core/services/UUID.service';
 import { LabelPosition } from '../../../core/enums/label-position.enum';
 
@@ -7,19 +7,21 @@ import { LabelPosition } from '../../../core/enums/label-position.enum';
   selector: 'uilibrary-checkbox',
   templateUrl: './checkbox.component.html',
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxComponent),
-      multi: true
-    }
-  ]
+  ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() labelPosition: string = LabelPosition.Right;
   LabelPosition = LabelPosition;
   @Input() hideLabel: boolean = false;
 
-  constructor(private UUID: UUIDService) {}
+  constructor(
+    @Optional() @Self() public ngControl: NgControl,
+    private UUID: UUIDService
+  ) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
 
   public id = this.UUID.generate();
 
@@ -54,6 +56,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   handleChange() {
     this.value = !this.value;
     this.onChange(this.value);
-    this.onTouched()
+    this.valueChange.next(this.value);
+    this.onTouched();
   }
 }

@@ -92,10 +92,10 @@ export class ShowcaseComponent implements OnInit {
   })
 
   datePickers = new FormGroup({
-    datePicker1: new FormControl(undefined,[Validators.required]),
+    datePicker1: new FormControl(new Date().toISOString(),[Validators.required]),
     datePicker2: new FormControl(undefined,[Validators.required])
   });
-  dateBindingValue1: string = '2024-11-19T00:00:00';
+  dateBindingValue1: string = new Date().toISOString();
 
   checked: boolean = true;
 
@@ -137,8 +137,6 @@ export class ShowcaseComponent implements OnInit {
   }
 
   debug2() {
-    console.log(this.selectControls)
     console.log(this.datePickers);
-    console.log(this.dateBindingValue1);
   }
 }

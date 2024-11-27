@@ -1,22 +1,23 @@
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Input, Optional, Output, Self } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { UUIDService } from '../../../core/services/UUID.service';
 
 @Component({
   selector: 'uilibrary-textarea',
   templateUrl: './text-area.component.html',
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TextAreaComponent),
-      multi: true
-    }
+  
   ]
 })
 export class TextAreaComponent implements ControlValueAccessor {
   public id = this.UUID.generate();
 
-  constructor(private UUID: UUIDService) {}
+  constructor(@Optional() @Self() public ngControl: NgControl,
+              private UUID: UUIDService) {
+                if(this.ngControl) {
+                  this.ngControl.valueAccessor = this;
+                }
+              }
 
   @Input() autocomplete?: string = 'off';
   @Input() placeholder: string = '';
