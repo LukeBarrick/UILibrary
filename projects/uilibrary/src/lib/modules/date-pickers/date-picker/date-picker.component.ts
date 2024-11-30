@@ -148,6 +148,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
           _selecteDate.getFullYear() === date.getFullYear()
       );
 
+      //Remove an already selected date
       if (index > -1) {
         this.selectedDates.splice(index, 1);
       }

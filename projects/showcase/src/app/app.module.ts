@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { UserInterfaceLibraryModule } from 'uilibrary';
 import { RouterOutlet } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
+import { FeatureModule } from './feature/feature.module';
+import { SharedModule } from '../../../../dist/uilibrary/lib/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
+    FeatureModule,
     ToastrModule.forRoot(),
     UserInterfaceLibraryModule,
   ],
