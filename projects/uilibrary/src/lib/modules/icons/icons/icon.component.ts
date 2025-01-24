@@ -39,7 +39,7 @@ export class IconComponent implements OnInit {
 
     switch(this.appearance) {
       case "primary":
-        this.fillColor = 'var(--primary)'
+        this.fillColor = 'var(--primary)' //TODO refactor the var lol
         break;
       case 'secondary':
         this.fillColor = 'var(--secondary)'
@@ -61,5 +61,4 @@ export class IconComponent implements OnInit {
         break;
     }
   }
-
 }
