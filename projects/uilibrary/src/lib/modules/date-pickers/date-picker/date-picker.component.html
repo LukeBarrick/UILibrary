@@ -1,6 +1,11 @@
+
+
 <div class="datepicker-container">
-  <label>
-    <input [id]="id" type="text" [(ngModel)]="value" [ngClass]="{'datepicker-input-focus': isOpen}" [placeholder]="placeholder" [disabled]="disabled" (click)="open()" (input)="parseDates($event)"/>
+  <label class="input-container" [ngClass]="{'datepicker-input-focus': isOpen}" (click)="open()">
+    <ng-content select="[startDate]"></ng-content>
+    <ng-content select="[endDate]"></ng-content>
+    <!-- <input type="text" [placeholder]="placeholder" [disabled]="disabled" (input)="parseDates($event)"/>
+    <input type="text" [placeholder]="placeholder" [disabled]="disabled" (input)="parseDates($event)"/> -->
     <div class="datepicker-label">
       <ng-content></ng-content>
     </div>

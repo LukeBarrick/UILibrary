@@ -1,5 +1,6 @@
 import {
   Component,
+  ContentChildren,
   ElementRef,
   EventEmitter,
   HostListener,
@@ -9,13 +10,15 @@ import {
   OnInit,
   Optional,
   Output,
-  Self,
+  QueryList,
+  Self
 } from '@angular/core';
 import { UUIDService } from '../../../core/services/UUID.service';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 import { DatePipe, FormatWidth, getLocaleDateFormat } from '@angular/common';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { parse } from 'date-fns';
+import { DatePickerInputComponent } from './date-picker-input/date-picker-input.component';
 
 @Component({
   selector: 'uilibrary-date-picker',
@@ -24,6 +27,10 @@ import { parse } from 'date-fns';
   ],
 })
 export class DatePickerComponent implements OnInit, ControlValueAccessor {
+
+  @ContentChildren(DatePickerInputComponent) child!: QueryList<DatePickerInputComponent>;
+
+
   public id = this.UUID.generate();
 
   @Input() value: string | null = null;
@@ -108,6 +115,11 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
   open(): void {
     this.isOpen = true;
+    console.log(this.child)
+
+    this.child.get(0)?.writeValue(new Date().toISOString())
+    this.child.get(0)?.handleChange()
+    console.log(this.child.get(0)?.value)
   }
 
   parseDates(e: any): void {
