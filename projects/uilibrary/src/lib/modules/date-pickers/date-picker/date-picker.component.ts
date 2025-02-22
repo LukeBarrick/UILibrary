@@ -119,36 +119,16 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
     this.child.get(0)?.writeValue(new Date().toISOString())
     this.child.get(0)?.handleChange()
+
+    this.child.get(1)?.writeValue(new Date().toISOString())
+    this.child.get(1)?.handleChange()
+    
+    console.log(this.localeId)
+
     console.log(this.child.get(0)?.value)
+    console.log(this.child.get(1)?.value)
   }
 
-  parseDates(e: any): void {
-    this.selectedDates = [];
-    let input: string = e.target.value;
-    if(input.trim()) {
-      input = input.replaceAll(' ', '');
-
-      const dates: string[] = input.split('-');
-
-      dates.forEach(_date => {
-        const date = this.parseDate(_date);
-        if(date)
-          this.selectedDates.push(date);
-      });
-      
-      this.value = this.setValue();
-    }
-  }
-
-  private parseDate(dateString: string): Date | null {
-    const format = getLocaleDateFormat(this.localeId, FormatWidth.Short);
-    try {
-      const parsedDate = parse(dateString, format, new Date())
-      return parsedDate;
-    } catch(error) {
-      return null;
-    }
-  }
 
   selectDate(day: number) {
     const date = new Date(this.selectedYear, this.selectedMonth, day);
@@ -173,11 +153,9 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
         this.isOpen = false;
       }
 
-      this.value = this.setValue();
     } else {
       this.selectedDates = [];
       this.selectedDates.push(date);
-      this.value = this.setValue();
 
       if(this.closeOnSelect) {
         this.isOpen = false;
@@ -189,23 +167,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     this.onTouched();
   }
 
-  setValue(_value: string = ''): string {
-    let value: string = _value;
-    this.selectedDates.sort((a, b) => a.getTime() - b.getTime());
-
-    for (let index = 0; index < this.selectedDates.length; index++) {
-      const element = this.selectedDates[index];
-      
-      if(index + 1 === this.selectedDates.length) {
-        value = value + this.datePipe.transform(element);
-
-      } else {
-        value = value + this.datePipe.transform(element) + ' - ';
-      }
-    }
-
-    return value;
-  }
 
   next(): void {
     if (this.selectedMonth === 11) {

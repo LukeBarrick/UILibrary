@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Inject, LOCALE_ID, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { UserInterfaceLibraryComponent } from './user-interface-library.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +24,10 @@ import { IconsModule } from './modules/icons/icon.module';
 import { ButtonsModule } from './modules/buttons/buttons.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+export function localeIdFactory(parentLocaleId: string | null) {
+  return parentLocaleId || 'en-GB'; // Fallback to 'en-US' if no locale is set
+}
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShowcaseComponent,
   ],
   providers: [
-  
+    // {
+    //   provide: LOCALE_ID,
+    //   useFactory: localeIdFactory,
+    //   deps: [[new Inject(LOCALE_ID), new Optional()]] // Get LOCALE_ID if available
+    // }
   ]
 })
 

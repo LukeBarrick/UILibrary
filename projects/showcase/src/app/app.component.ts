@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { LibIconService, UserInterfaceLibraryModule } from 'uilibrary';
+import { Component, Inject, inject, LOCALE_ID, OnInit } from '@angular/core';
+import { LibIconService } from 'uilibrary';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,14 @@ export class AppComponent implements OnInit {
 
   private libIconService = inject(LibIconService);
 
+ 
+  constructor(@Inject(LOCALE_ID) protected localeId: string) {
+  
+    
+  }
+
   ngOnInit(): void {
     this.libIconService.registerIcons();
+    console.log(this.localeId)
   }
 }

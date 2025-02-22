@@ -15,8 +15,6 @@ import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import localePt from '@angular/common/locales/pt';
 import localeJa from '@angular/common/locales/ja';
-import { ToastrModule } from 'ngx-toastr';
-import { SharedModule } from '../shared/shared.module';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeUs);

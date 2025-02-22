@@ -1,7 +1,7 @@
 /*
  * Public API Surface of user-interface-library
  */
-import '@angular/localize/init';
+// import '@angular/localize/init';
 
 export * from './lib/user-interface-library.component';
 export * from './lib/user-interface-library.module';

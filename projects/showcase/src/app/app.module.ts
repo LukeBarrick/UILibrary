@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserInterfaceLibraryModule } from 'uilibrary';
 import { RouterOutlet } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
-import { FeatureModule } from './feature/feature.module';
-import { SharedModule } from '../../../../dist/uilibrary/lib/shared/shared.module';
+import { UserInterfaceLibraryModule } from 'uilibrary';
 
 @NgModule({
   declarations: [
@@ -17,11 +15,12 @@ import { SharedModule } from '../../../../dist/uilibrary/lib/shared/shared.modul
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
-    FeatureModule,
     ToastrModule.forRoot(),
     UserInterfaceLibraryModule,
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

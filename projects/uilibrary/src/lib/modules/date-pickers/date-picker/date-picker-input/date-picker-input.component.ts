@@ -5,7 +5,6 @@ import {
   HostListener,
   Inject,
   Input,
-  LOCALE_ID,
   OnInit,
   Optional,
   Output,
@@ -59,7 +58,7 @@ export class DatePickerInputComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
-    @Inject(LOCALE_ID) protected localeId: string
+    // @Inject(LOCALE_ID) protected localeId: string
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
