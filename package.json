@@ -1,5 +1,5 @@
 {
-  "name": "uilibrary-locale-standalone",
+  "name": "uilibrary",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
