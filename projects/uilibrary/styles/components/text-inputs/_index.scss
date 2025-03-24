@@ -2,49 +2,78 @@
 @import './text-input/';
 
 uilibrary2-form-field {
- .form-field {
-    color: var(--primary);
-    font-family: $font;
-    letter-spacing: $letterSpacing;
-    background-color: white;
-    height: $input_height;
-    width: 100%;
-    font-size: 14px;
-    border: 1px solid var(--light-gray);
-    outline: none;
-    z-index: 1;
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 1px;
-    position: relative;
-    align-content: center;
-
-    input[type=text] {
-        appearance: none;
-        outline: none;
-        height: max-content;
+    .form-field {
+        color: var(--primary);
+        font-family: $font;
+        letter-spacing: $letterSpacing;
+        background-color: white;
+        height: $input_height;
         width: 100%;
         font-size: 14px;
-        border:none;
-        margin: 1px;
+        border: 1px solid var(--light-gray);
+        outline: none;
+        z-index: 1;
+        border-radius: 5px;
+        padding-left: 15px;
+        padding-right: 1px;
+        position: relative;
+        align-content: center;
 
-        &:disabled {
-            background-color: blue;
+        input[type=text] {
+            appearance: none;
+            outline: none;
+            height: max-content;
+            width: 100%;
+            font-size: 14px;
+            border: none;
+            margin: 1px;
+
+            &:disabled {
+                background-color: var(--almost-white);
+            }
+        }
+
+        label {
+            position: absolute;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            top: 7px;
+            left: 7px;
+            font-size: 14px;
+            width: max-content;
+            pointer-events: none;
         }
     }
 
-    label {
-        position: absolute;
-        top: -5px;
-        left: 5px;
+    &.form-field-label-float {
+        .form-field {
+            label {
+                font-size: 12px;
+                color: var(--secondary);
+                transform: translate(-5px, -12px);
+
+                &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    background: white;
+                    height: 2px;
+                    top: 8px;
+                    left: 0;
+                    right: 0;
+                    z-index: -1;
+                }
+            }
+        }
     }
- }
+
+  
+    &.form-field-disabled {
+        .form-field {
+            background-color: var(--almost-white);
+
+            label {
+                color: var(--dark-gray);
+            };
+        }
+    }
 }
-
-.form-field-disabled {
-   
-    .form-field {
-        background-color: red !important;
-    }
- }
-

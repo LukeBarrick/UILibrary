@@ -1,7 +1,6 @@
-import { AfterContentChecked, Component, ContentChild, ElementRef, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, ContentChild, OnInit } from '@angular/core';
 import { UIFormFieldControl } from './form-field-control';
-import { Observable, Subscription } from 'rxjs';
-import { NgControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'uilibrary2-form-field',
@@ -9,6 +8,7 @@ import { NgControl } from '@angular/forms';
   styleUrls: ['./form-field.component.css'],
   host: {
     '[class.form-field-disabled]': '_control.disabled',
+    '[class.form-field-label-float]': '_control.shouldLabelFloat'
   }
 })
 
@@ -17,7 +17,6 @@ export class FormFieldComponent implements AfterContentChecked, OnInit {
 
   value: any = 1;
   stateChanges: Subscription | undefined;
-  floatLabel: boolean = false;
   empty: boolean = true;
 
   constructor() { }

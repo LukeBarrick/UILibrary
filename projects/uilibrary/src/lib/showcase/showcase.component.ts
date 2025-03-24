@@ -79,6 +79,7 @@ export class ShowcaseComponent implements OnInit {
   textInputs2 = new FormGroup({
     textInput21: new FormControl('',[Validators.required]),
     textInput22: new FormControl({value: '', disabled: true},[Validators.required]),
+    textInput23: new FormControl({value: 'Nancy', disabled: true},[Validators.required]),
   });
 
   textAreas = new FormGroup({

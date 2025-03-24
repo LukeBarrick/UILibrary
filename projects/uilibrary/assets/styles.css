@@ -14387,16 +14387,38 @@ uilibrary2-form-field .form-field input[type=text] {
   margin: 1px;
 }
 uilibrary2-form-field .form-field input[type=text]:disabled {
-  background-color: blue;
+  background-color: var(--almost-white);
 }
 uilibrary2-form-field .form-field label {
   position: absolute;
-  top: -5px;
-  left: 5px;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  top: 7px;
+  left: 7px;
+  font-size: 14px;
+  width: max-content;
+  pointer-events: none;
 }
-
-.form-field-disabled .form-field {
-  background-color: red !important;
+uilibrary2-form-field.form-field-label-float .form-field label {
+  font-size: 12px;
+  color: var(--secondary);
+  transform: translate(-5px, -12px);
+}
+uilibrary2-form-field.form-field-label-float .form-field label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: white;
+  height: 2px;
+  top: 8px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+uilibrary2-form-field.form-field-disabled .form-field {
+  background-color: var(--almost-white);
+}
+uilibrary2-form-field.form-field-disabled .form-field label {
+  color: var(--dark-gray);
 }
 
 uilibrary-toggle .switch-container {

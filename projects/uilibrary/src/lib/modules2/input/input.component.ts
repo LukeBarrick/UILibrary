@@ -27,7 +27,7 @@ import { Observable } from 'rxjs';
   ],
 })
 export class InputComponent
-  extends UIFormFieldControl<any>
+  extends UIFormFieldControl<string>
   implements ControlValueAccessor, OnInit
 {
   override id = this.UUID.generate();
@@ -35,15 +35,13 @@ export class InputComponent
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  ngOnInit(): void {
-    console.log('yoohoo');
-  }
+  ngOnInit(): void { }
 
   constructor(
     @Optional() @Self() public override ngControl: NgControl,
-    private UUID: UUIDService,
-    private el: ElementRef<HTMLInputElement>,
-    private renderer: Renderer2
+    private readonly UUID: UUIDService,
+    private readonly el: ElementRef<HTMLInputElement>,
+    private readonly renderer: Renderer2
   ) {
     super();
     if (this.ngControl) {
@@ -57,12 +55,15 @@ export class InputComponent
   @Input() override value: any;
   @Output() valueChange = new EventEmitter<any>();
   
-
   @Input() override set disabled(disabled: boolean) {
-      this.renderer.setProperty(this.el.nativeElement, 'disabled', disabled)
+    this.setDisabledState(disabled);
   }
   override get disabled() {
     return this.el.nativeElement.disabled;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled)
   }
 
   writeValue(value: any): void {
@@ -77,11 +78,6 @@ export class InputComponent
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    console.log('disabled: ' + isDisabled)
-    this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled)
-  }
-
   @HostListener('input', ['$event.target.value'])
    _onInput(value: any): void {
      this.onChange(value);
@@ -90,5 +86,13 @@ export class InputComponent
    @HostListener('blur')
    _onBlur(): void {
      this.onTouched();
+   }
+ 
+   get _empty(): boolean {
+     return this.ngControl ? !this.ngControl.control?.value : false;
+   }
+   
+   override get shouldLabelFloat(): boolean {
+      return !this._empty;
    }
 }
