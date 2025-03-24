@@ -13410,6 +13410,7 @@ uilibrary-date-picker .datepicker-container .input-container {
   padding-left: 20px;
   outline: none;
   width: 100%;
+  background-color: white;
 }
 uilibrary-date-picker .datepicker-container .input-container:focus-within::-webkit-input-placeholder {
   font-size: 16px;
@@ -13429,9 +13430,33 @@ uilibrary-date-picker .datepicker-container .input-container .datepicker-label {
   left: 20px;
   transform: translateY(-14px);
 }
+uilibrary-date-picker .datepicker-container input[type=text] {
+  border: none;
+  border-radius: 7px;
+  height: 45px;
+  outline: none;
+}
+uilibrary-date-picker .datepicker-container input[type=text]:focus::-webkit-input-placeholder {
+  font-size: 16px;
+  color: var(--dark-gray);
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+uilibrary-date-picker .datepicker-container input[type=text]::-webkit-input-placeholder {
+  color: transparent;
+}
+uilibrary-date-picker .datepicker-container input[type=text]:disabled {
+  background-color: var(--almost-white);
+}
+uilibrary-date-picker .datepicker-container .datepicker-label {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  transform: translateY(-14px);
+}
 uilibrary-date-picker .datepicker-container:focus-within .datepicker-label,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label,
 uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label,
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label,
 uilibrary-date-picker .datepicker-container .datepicker-label-float {
   font-size: 0.75rem;
   transform: translate(-10px, -40px) !important;
@@ -13443,8 +13468,8 @@ uilibrary-date-picker .datepicker-container .datepicker-label-float {
   color: var(--secondary);
 }
 uilibrary-date-picker .datepicker-container:focus-within .datepicker-label:after,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label:after,
 uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label:after,
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label:after,
 uilibrary-date-picker .datepicker-container .datepicker-label-float:after {
   content: "";
   display: block;
@@ -13457,8 +13482,8 @@ uilibrary-date-picker .datepicker-container .datepicker-label-float:after {
   z-index: -1;
 }
 uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label,
 uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label,
+uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label,
 uilibrary-date-picker .datepicker-container .datepicker-label-float label {
   position: relative;
   z-index: 1;
@@ -14333,6 +14358,45 @@ uilibrary-textinput .input-label::after {
   bottom: -10px;
   left: 0;
   width: 0%;
+}
+
+uilibrary2-form-field .form-field {
+  color: var(--primary);
+  font-family: inherit;
+  letter-spacing: 0px;
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid var(--light-gray);
+  outline: none;
+  z-index: 1;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 1px;
+  position: relative;
+  align-content: center;
+}
+uilibrary2-form-field .form-field input[type=text] {
+  appearance: none;
+  outline: none;
+  height: max-content;
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  margin: 1px;
+}
+uilibrary2-form-field .form-field input[type=text]:disabled {
+  background-color: blue;
+}
+uilibrary2-form-field .form-field label {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+}
+
+.form-field-disabled .form-field {
+  background-color: red !important;
 }
 
 uilibrary-toggle .switch-container {

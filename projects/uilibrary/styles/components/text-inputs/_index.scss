@@ -1,2 +1,50 @@
 @import './text-area/';
 @import './text-input/';
+
+uilibrary2-form-field {
+ .form-field {
+    color: var(--primary);
+    font-family: $font;
+    letter-spacing: $letterSpacing;
+    background-color: white;
+    height: $input_height;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid var(--light-gray);
+    outline: none;
+    z-index: 1;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 1px;
+    position: relative;
+    align-content: center;
+
+    input[type=text] {
+        appearance: none;
+        outline: none;
+        height: max-content;
+        width: 100%;
+        font-size: 14px;
+        border:none;
+        margin: 1px;
+
+        &:disabled {
+            background-color: blue;
+        }
+    }
+
+    label {
+        position: absolute;
+        top: -5px;
+        left: 5px;
+    }
+ }
+}
+
+.form-field-disabled {
+   
+    .form-field {
+        background-color: red !important;
+    }
+ }
+

@@ -2,7 +2,7 @@ import { APP_INITIALIZER, Inject, LOCALE_ID, ModuleWithProviders, NgModule, Opti
 import { UserInterfaceLibraryComponent } from './user-interface-library.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
@@ -24,6 +24,8 @@ import { IconsModule } from './modules/icons/icon.module';
 import { ButtonsModule } from './modules/buttons/buttons.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Input2Module } from './modules2/input/input.module';
+import { FormField2Module } from './modules2/form-field/form-field.module';
 
 export function localeIdFactory(parentLocaleId: string | null) {
   return parentLocaleId || 'en-GB'; // Fallback to 'en-US' if no locale is set
@@ -37,6 +39,7 @@ export function localeIdFactory(parentLocaleId: string | null) {
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+    FormsModule,
     NgbModule,
     CoreModule,
     ToastrModule.forRoot(),
@@ -55,7 +58,9 @@ export function localeIdFactory(parentLocaleId: string | null) {
     DatePickersModule,
     StatusTagsModule,
     IconsModule,
-    ButtonsModule
+    ButtonsModule,
+    Input2Module,
+    FormField2Module
   ],
   exports: [
     UserInterfaceLibraryComponent,

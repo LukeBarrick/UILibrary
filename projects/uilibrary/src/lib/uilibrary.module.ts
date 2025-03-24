@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { UilibraryComponent } from './uilibrary.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -8,6 +9,7 @@ import { UilibraryComponent } from './uilibrary.component';
     UilibraryComponent
   ],
   imports: [
+    
   ],
   exports: [
     UilibraryComponent

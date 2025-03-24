@@ -1,9 +1,7 @@
-import { FormatWidth, getLocaleDateFormat } from '@angular/common';
 import {
   Component,
   EventEmitter,
   HostListener,
-  Inject,
   Input,
   OnInit,
   Optional,
@@ -28,6 +26,7 @@ export class DatePickerInputComponent implements OnInit, ControlValueAccessor {
       this.disabled = disabled;
     }, 0);
   }
+  
   @Output() isDisabledChange = new EventEmitter<boolean>();
   disabled: boolean = false;
 

@@ -1,5 +1,6 @@
 import {
   Component,
+  ContentChild,
   ContentChildren,
   ElementRef,
   EventEmitter,
@@ -27,11 +28,11 @@ import { DatePickerInputComponent } from './date-picker-input/date-picker-input.
   ],
 })
 export class DatePickerComponent implements OnInit, ControlValueAccessor {
-
-  @ContentChildren(DatePickerInputComponent) child!: QueryList<DatePickerInputComponent>;
-
+  @ContentChild("StartDate", {static: false}) startDate!: DatePickerInputComponent;
+  @ContentChild("EndDate", {static: false}) endDate!: DatePickerInputComponent;
 
   public id = this.UUID.generate();
+  hasValue: boolean = true;
 
   @Input() value: string | null = null;
   @Output() valueChange = new EventEmitter<string | null>();
@@ -70,7 +71,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   sat = new Date('0001-06-01T00:00:00');
   sun = new Date('0001-07-01T00:00:00');
 
-  //Focus trap to ensure field doesn't lose focus for accessiblity reasons.
+  //TODO Figure out which field to focus
   @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
 
@@ -115,18 +116,12 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
   open(): void {
     this.isOpen = true;
-    console.log(this.child)
 
-    this.child.get(0)?.writeValue(new Date().toISOString())
-    this.child.get(0)?.handleChange()
+    this.startDate.writeValue("yooo")
+    this.startDate.handleChange();
 
-    this.child.get(1)?.writeValue(new Date().toISOString())
-    this.child.get(1)?.handleChange()
-    
-    console.log(this.localeId)
-
-    console.log(this.child.get(0)?.value)
-    console.log(this.child.get(1)?.value)
+    this.endDate.writeValue("from the past")
+    this.endDate.handleChange();
   }
 
 

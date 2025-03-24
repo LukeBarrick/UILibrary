@@ -52,3 +52,11 @@ export * from './lib/modules/icons/icons/icon.component';
 
 export * from './lib/modules/buttons/buttons.module';
 export * from './lib/modules/buttons/button/button.component';
+
+
+
+export * from './lib/modules2/form-field/form-field.component';
+export * from './lib/modules2/form-field/form-field.module';
+
+export * from './lib/modules2/input/input.component';
+export * from './lib/modules2/input/input.module';

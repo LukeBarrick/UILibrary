@@ -9,6 +9,8 @@ import { LabelPosition } from '../../../core/enums/label-position.enum';
   providers: [
   ],
 })
+
+//TODO Form Control emit value does not work, ngModel won't emit it on its own lol
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() labelPosition: string = LabelPosition.Right;
   LabelPosition = LabelPosition;

@@ -1,12 +1,11 @@
 
 
 <div class="datepicker-container">
-  <label class="input-container" [ngClass]="{'datepicker-input-focus': isOpen}" (click)="open()">
-    <ng-content select="[startDate]"></ng-content>
-    <ng-content select="[endDate]"></ng-content>
+  <label class="input-container d-flex flex-row" [ngClass]="{'datepicker-input-focus': isOpen}" (click)="open()">
+    <ng-content select="[StartDate], [EndDate]"></ng-content>
     <!-- <input type="text" [placeholder]="placeholder" [disabled]="disabled" (input)="parseDates($event)"/>
     <input type="text" [placeholder]="placeholder" [disabled]="disabled" (input)="parseDates($event)"/> -->
-    <div class="datepicker-label">
+    <div [ngClass]="{'datepicker-label-float': hasValue}" class="datepicker-label">
       <ng-content></ng-content>
     </div>
   </label>

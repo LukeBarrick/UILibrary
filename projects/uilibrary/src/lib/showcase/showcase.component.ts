@@ -74,6 +74,13 @@ export class ShowcaseComponent implements OnInit {
     textArea4: new FormControl('',[Validators.required]),
   });
 
+  textInput: string = '';
+
+  textInputs2 = new FormGroup({
+    textInput21: new FormControl('',[Validators.required]),
+    textInput22: new FormControl({value: '', disabled: true},[Validators.required]),
+  });
+
   textAreas = new FormGroup({
     textArea1: new FormControl('',[Validators.required]),
     textArea2: new FormControl('',[Validators.required]),
@@ -96,6 +103,7 @@ export class ShowcaseComponent implements OnInit {
 
   datePickers = new FormGroup({
     startDate: new FormControl(new Date().toISOString(),[Validators.required]),
+    endDate: new FormControl(new Date().toISOString(),[Validators.required]),
     datePicker2: new FormControl(undefined,[Validators.required])
   });
   dateBindingValue1: string = new Date().toISOString();
@@ -116,23 +124,34 @@ export class ShowcaseComponent implements OnInit {
     return item.name.toLocaleLowerCase().indexOf(term) > -1;
   }
 
+  debugme() {
+    console.log(this.textInputs2);
+
+    console.log(this.textInput);
+
+    console.log(this.textInputs2.controls.textInput21.disabled)
+    console.log(this.textInputs2.controls.textInput22.disabled)
+  }
+
   debug() {
     console.log(this.selectControls)
     console.log(this.textInputs)
     console.log(this.textAreas)
-    console.log(this.radioButtons)
+   
     console.log(this.checkBoxes)
     console.log(this.toggles)
     console.log(this.currentSelection)
     console.log(this.currentSelection2)
 
-    this.textInputs.disable();
-    this.textAreas.disable()
-    this.selectControls.disable()
-    this.radioButtons.disable()
-    this.checkBoxes.disable()
-    this.toggles.disable()
+    // this.textInputs.disable();
+    // this.textAreas.disable()
+    // this.selectControls.disable()
+    // this.radioButtons.disable()
+    // this.checkBoxes.disable()
+    // this.toggles.disable()
 
+    console.log(this.checkBoxes)
+    console.log(this.radioButtons)
    
 
     this.isDisabled = false;
