@@ -210,6 +210,16 @@
 
 <section class="small d-flex flex-column" [formGroup]="textInputs2">
   <uilibrary2-form-field>
+    <label ui-label>Basic Text Input</label>
+    <input ui-input type="text">
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <label ui-label>Basic Text Input Binding</label>
+    <input ui-input type="text" [(ngModel)]="textInput" [ngModelOptions]="{ standalone: true }">
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
     <label ui-label>Text Input Form Control</label>
     <input ui-input type="text" formControlName="textInput21">
   </uilibrary2-form-field>
@@ -229,13 +239,13 @@
     <input ui-input type="text" formControlName="textInput24">
   </uilibrary2-form-field>
 
-  <uilibrary2-form-field>
-    <label ui-label>hello</label>
-    <input ui-input type="text" [(ngModel)]="textInput" [ngModelOptions]="{ standalone: true }">
+  <uilibrary2-form-field [class.error]="!textInputError">
+    <label ui-label>Error Text Input Binding</label>
+    <input ui-input type="text" [(ngModel)]="textInputError" [ngModelOptions]="{ standalone: true }">
   </uilibrary2-form-field>
 
   <uilibrary2-form-field>
-    <label ui-label>hello</label>
+    <label ui-label>Error Text Input Form Control</label>
     <input ui-input type="text" [disabled]="true">
   </uilibrary2-form-field>
 

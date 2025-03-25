@@ -91,8 +91,16 @@ export class InputComponent
    get _empty(): boolean {
      return this.ngControl ? !this.ngControl.control?.value : false;
    }
-   
+
    override get shouldLabelFloat(): boolean {
       return !this._empty;
+   }
+
+  override get hasErrors(): boolean {
+    return this.ngControl ? !!this.ngControl.control?.invalid : false;
+   }
+
+   override get touched(): boolean {
+    return this.ngControl ? !!this.ngControl.touched : false;
    }
 }

@@ -75,6 +75,7 @@ export class ShowcaseComponent implements OnInit {
   });
 
   textInput: string = '';
+  textInputError: string = '';
 
   textInputs2 = new FormGroup({
     textInput21: new FormControl('',[Validators.required]),

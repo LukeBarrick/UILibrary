@@ -14397,6 +14397,7 @@ uilibrary2-form-field .form-field label {
   font-size: 14px;
   width: max-content;
   pointer-events: none;
+  font-weight: 500;
 }
 uilibrary2-form-field.form-field-label-float .form-field label {
   font-size: 12px;
@@ -14419,6 +14420,21 @@ uilibrary2-form-field.form-field-disabled .form-field {
 }
 uilibrary2-form-field.form-field-disabled .form-field label {
   color: var(--dark-gray);
+}
+uilibrary2-form-field.form-field-touched.form-field-errors .form-field {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+uilibrary2-form-field.form-field-touched.form-field-errors .form-field label {
+  color: var(--danger) !important;
+}
+uilibrary2-form-field.error .form-field {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+uilibrary2-form-field.error .form-field label {
+  color: var(--danger) !important;
+  font-weight: 500;
 }
 
 uilibrary-toggle .switch-container {

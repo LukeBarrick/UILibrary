@@ -41,6 +41,7 @@ uilibrary2-form-field {
             font-size: 14px;
             width: max-content;
             pointer-events: none;
+            font-weight: 500;
         }
     }
 
@@ -74,6 +75,34 @@ uilibrary2-form-field {
             label {
                 color: var(--dark-gray);
             };
+        }
+    }
+
+    &.form-field-touched {
+        &.form-field-errors {
+            .form-field {
+                border-color: var(--danger) !important;
+                color: var(--danger) !important;
+    
+                label {
+                    color: var(--danger) !important;
+                }
+    
+            }
+        }
+    }
+
+
+    &.error {
+        .form-field {
+            border-color: var(--danger) !important;
+            color: var(--danger) !important;
+
+            label {
+                color: var(--danger) !important;
+                font-weight: 500;
+            }
+
         }
     }
 }

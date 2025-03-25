@@ -8,7 +8,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./form-field.component.css'],
   host: {
     '[class.form-field-disabled]': '_control.disabled',
-    '[class.form-field-label-float]': '_control.shouldLabelFloat'
+    '[class.form-field-label-float]': '_control.shouldLabelFloat',
+    '[class.form-field-errors]': '_control.hasErrors',
+    '[class.form-field-touched]': '_control.touched'
   }
 })
 
@@ -26,7 +28,6 @@ export class FormFieldComponent implements AfterContentChecked, OnInit {
   }
 
   ngOnInit(): void {
-    
   }
 
   get _control() {

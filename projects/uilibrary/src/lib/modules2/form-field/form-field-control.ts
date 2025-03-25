@@ -11,11 +11,19 @@ export abstract class UIFormFieldControl<T> {
   readonly empty!: boolean;
   readonly ngControl!: NgControl;
   private readonly _disabled!: boolean;
+  public get disabled(): boolean {
+    return this._disabled;
+  }
   private readonly _shouldLabelFloat: boolean = false;
   public get shouldLabelFloat(): boolean {
     return this._shouldLabelFloat;
   }
-  public get disabled(): boolean {
-    return this._disabled;
+  private readonly _hasErrors: boolean = false;
+  public get hasErrors(): boolean {
+    return this._hasErrors;
+  }
+  private readonly _touched: boolean = false;
+  public get touched(): boolean {
+    return this._touched;
   }
 }
