@@ -27,40 +27,72 @@ import { Observable } from 'rxjs';
   ],
 })
 export class InputComponent
-  extends UIFormFieldControl<string>
-  implements ControlValueAccessor, OnInit
-{
-  override id = this.UUID.generate();
-
-  onChange: any = () => {};
-  onTouched: any = () => {};
-
+  implements UIFormFieldControl<string>, ControlValueAccessor, OnInit {
   ngOnInit(): void { }
 
   constructor(
-    @Optional() @Self() public override ngControl: NgControl,
+    @Optional() @Self() public ngControl: NgControl,
     private readonly UUID: UUIDService,
     private readonly el: ElementRef<HTMLInputElement>,
     private readonly renderer: Renderer2
   ) {
-    super();
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
   }
+  empty: boolean = false;
 
-  override stateChanges: Observable<void> = new Observable<void>
+  id = this.UUID.generate();
 
-  @Input() override placeholder: string = '';
-  @Input() override value: any;
+  stateChanges: Observable<void> = new Observable<void>
+
+  @Input() placeholder: string = '';
+  @Input() value: any;
   @Output() valueChange = new EventEmitter<any>();
-  
-  @Input() override set disabled(disabled: boolean) {
+
+  @Input() set disabled(disabled: boolean) {
     this.setDisabledState(disabled);
   }
-  override get disabled() {
+  get disabled() {
     return this.el.nativeElement.disabled;
   }
+
+  get _empty(): boolean {
+    return this.ngControl ? !this.ngControl.control?.value : false;
+  }
+
+  get shouldLabelFloat(): boolean {
+    return !this._empty || this._focussed;
+  }
+
+  get hasErrors(): boolean {
+    return this.ngControl ? !!this.ngControl.control?.invalid : false;
+  }
+
+  get touched(): boolean {
+    return this.ngControl ? !!this.ngControl.touched : false;
+  }
+
+  private _focussed: boolean = false;
+
+  @HostListener('input', ['$event.target.value'])
+  _onInput(value: any): void {
+    this.onChange(value);
+  }
+
+  @HostListener('blur')
+  _onBlur(): void {
+    this._focussed = false;
+    this.onTouched();
+  }
+
+  @HostListener('focus')
+  _onFocus(): void {
+    this._focussed = true;
+  }
+
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
   setDisabledState(isDisabled: boolean): void {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled)
@@ -77,30 +109,4 @@ export class InputComponent
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-
-  @HostListener('input', ['$event.target.value'])
-   _onInput(value: any): void {
-     this.onChange(value);
-   }
- 
-   @HostListener('blur')
-   _onBlur(): void {
-     this.onTouched();
-   }
- 
-   get _empty(): boolean {
-     return this.ngControl ? !this.ngControl.control?.value : false;
-   }
-
-   override get shouldLabelFloat(): boolean {
-      return !this._empty;
-   }
-
-  override get hasErrors(): boolean {
-    return this.ngControl ? !!this.ngControl.control?.invalid : false;
-   }
-
-   override get touched(): boolean {
-    return this.ngControl ? !!this.ngControl.touched : false;
-   }
 }
