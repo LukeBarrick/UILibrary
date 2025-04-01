@@ -1,0 +1,68 @@
+uilibrary2-form-field {
+    .form-field {
+        textarea {
+            margin-top: 15px;
+            appearance: none;
+            outline: none;
+            height: 100%;
+            width: 100%;
+            font-size: 14px;
+            border: none;
+            min-height:  $input_height;
+            border-radius: 7px;
+
+            &:disabled {
+                background-color: var(--almost-white);
+            }
+        }
+
+        textarea::-webkit-input-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+
+        textarea:-moz-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+
+        textarea::-moz-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+
+        textarea:-ms-input-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+
+        textarea::placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+    }
+
+    &.form-field-label-float {
+        .form-field {
+            textarea::-webkit-input-placeholder {
+                color: var(--dark-gray);
+            }
+    
+            textarea:-moz-placeholder {
+                color: var(--dark-gray);
+            }
+    
+            textarea::-moz-placeholder {
+                color: var(--dark-gray);
+            }
+    
+            textarea:-ms-input-placeholder {
+                color: var(--dark-gray);
+            }
+    
+            textarea::placeholder {
+                color: var(--dark-gray);
+            }
+        }
+    }
+}

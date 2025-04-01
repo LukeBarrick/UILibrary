@@ -1,0 +1,67 @@
+uilibrary2-form-field {
+    .form-field { 
+        input[type=text] {
+            padding-left: 15px;
+            appearance: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            border: none;
+            margin: 1px;
+           
+            &:disabled {
+                background-color: var(--almost-white);
+            }
+        }
+    
+        ::-webkit-input-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+    
+        :-moz-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+    
+        ::-moz-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+    
+        :-ms-input-placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+    
+        input::placeholder {
+            color: transparent;
+            transition: color 200ms linear;
+        }
+    }
+
+    &.form-field-label-float {
+        .form-field {
+            ::-webkit-input-placeholder {
+                color: var(--dark-gray);
+            }
+    
+            :-moz-placeholder {
+                color: var(--dark-gray);
+            }
+    
+            ::-moz-placeholder {
+                color: var(--dark-gray);
+            }
+    
+            :-ms-input-placeholder {
+                color: var(--dark-gray);
+            }
+
+            input::placeholder {
+                color: var(--dark-gray);
+            }
+    
+        }
+    }
+}

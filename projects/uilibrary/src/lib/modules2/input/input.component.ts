@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   Directive,
   ElementRef,
@@ -27,8 +28,11 @@ import { Observable } from 'rxjs';
   ],
 })
 export class InputComponent
-  implements UIFormFieldControl<string>, ControlValueAccessor, OnInit {
-  ngOnInit(): void { }
+  //###############################################
+  //Implement UIFormFieldControl interface to allow UIFormField component to query for it.
+  //###############################################
+  implements UIFormFieldControl<string>, ControlValueAccessor, AfterViewInit {
+  ngAfterViewInit(): void { }
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
@@ -40,15 +44,39 @@ export class InputComponent
       this.ngControl.valueAccessor = this;
     }
   }
+
+  private _focussed: boolean = false;
   empty: boolean = false;
 
+  @HostListener('input', ['$event.target.value'])
+  _onInput(value: any): void {
+    this.onChange(value);
+  }
+
+  @HostListener('blur')
+  _onBlur(): void {
+    this._focussed = false;
+    this.onTouched();
+  }
+
+  @HostListener('focus')
+  _onFocus(): void {
+    this._focussed = true;
+  }
+   //###############################################
+  //UIFormFieldControl interface implementation.
+   //###############################################
+  //ID
+  //Randomly generated ID auto-assigned to input on instantiation.
   id = this.UUID.generate();
 
+  //State changes
+  //Used to hand data to parent consumers via subscription.
   stateChanges: Observable<void> = new Observable<void>
 
-  @Input() placeholder: string = '';
-  @Input() value: any;
-  @Output() valueChange = new EventEmitter<any>();
+  //Placeholder
+  //Not required as an input as we *should*  directly expose the input here.
+  placeholder: string = '';
 
   @Input() set disabled(disabled: boolean) {
     this.setDisabledState(disabled);
@@ -76,24 +104,11 @@ export class InputComponent
   get dirty(): boolean {
     return this.ngControl ? !!this.ngControl.dirty : false;
   }
-
-  private _focussed: boolean = false;
-
-  @HostListener('input', ['$event.target.value'])
-  _onInput(value: any): void {
-    this.onChange(value);
-  }
-
-  @HostListener('blur')
-  _onBlur(): void {
-    this._focussed = false;
-    this.onTouched();
-  }
-
-  @HostListener('focus')
-  _onFocus(): void {
-    this._focussed = true;
-  }
+  //###############################################
+  //ControlValueAccessor interface implementation.
+  //###############################################
+  @Input() value: any;
+  @Output() valueChange = new EventEmitter<any>();
 
   onChange: any = () => { };
   onTouched: any = () => { };
@@ -113,4 +128,5 @@ export class InputComponent
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+  //###############################################
 }

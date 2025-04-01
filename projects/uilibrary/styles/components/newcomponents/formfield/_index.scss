@@ -1,0 +1,93 @@
+uilibrary2-form-field {
+    .form-field {
+        display: flex;
+        align-items: center;
+        color: var(--primary);
+        font-family: $font;
+        letter-spacing: $letterSpacing;
+        background-color: white;
+        min-height: 50px;
+        width: 100%;
+        font-size: 14px;
+        border: 1px solid var(--light-gray);
+        outline: none;
+        z-index: 1;
+        border-radius: 7px;
+        position: relative;
+        align-content: center;
+
+        
+        label {
+            position: absolute;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            top: 7px;
+            left: 9px;
+            font-size: 14px;
+            width: max-content;
+            pointer-events: none;
+            font-weight: 500;
+            z-index: 10;
+        }
+    }
+
+    &.form-field-label-float {
+        .form-field {
+            label {
+                font-size: 12px;
+                color: var(--secondary);
+                transform: translate(-5px, -12px);
+
+                &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    background: white;
+                    height: 2px;
+                    top: 8px;
+                    left: 0;
+                    right: 0;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+
+    &.form-field-disabled {
+        .form-field {
+            background-color: var(--almost-white);
+
+            label {
+                color: var(--dark-gray);
+            }
+
+            ;
+        }
+    }
+
+    &.form-field-touched {
+        &.form-field-errors {
+            .form-field {
+                border-color: var(--danger) !important;
+                color: var(--danger) !important;
+
+                label {
+                    color: var(--danger) !important;
+                }
+            }
+        }
+    }
+
+    &.error {
+        .form-field {
+            border-color: var(--danger) !important;
+            color: var(--danger) !important;
+
+            label {
+                color: var(--danger) !important;
+                font-weight: 500;
+            }
+
+            
+        }
+    }
+}
