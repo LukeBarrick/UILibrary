@@ -1,11 +1,11 @@
-<ng-select class="custom" libSelectWcagHelper [attr.data-ariaLabel]="ariaLabel || placeholder" [attr.aria-invalid]="hasErrors()" [(ngModel)]="value" [items]="items" [disabled]="isDisabled" bindLabel="label"
+<ng-select class="custom" libSelectWcagHelper2 [attr.data-ariaLabel]="ariaLabel || placeholder" [attr.aria-invalid]="" [(ngModel)]="value" [items]="items" [disabled]="disabled" bindLabel="label"
   bindValue="value" [compareWith]="compareFn"
-  (change)="handleChange($event)" (focus)="onTouched($event)" [loading]="loading" [loadingText]="loadingText"
+  (change)="handleChange($event)" [loading]="loading" [loadingText]="loadingText"
   [multiple]="multiple" [maxSelectedItems]="maxSelectedItems" [hideSelected]="hideSelected"
   [clearSearchOnAdd]="clearSearchOnAdd" [readonly]="readonly" [placeholder]="placeholder" [notFoundText]="notFoundText"
   [markFirst]="markFirst" [clearOnBackspace]="clearOnBackspace" [clearable]="clearable" [closeOnSelect]="closeOnSelect"
   [searchable]="searchable" [searchFn]="searchFn" [isOpen]="isOpen" [trackByFn]="trackByFn"
-  [virtualScroll]="virtualScroll">
+  [virtualScroll]="virtualScroll" (blur)="_onBlur()" (input)="_onInput($event)" (focus)="_onFocus()">
   <ng-template ng-label-tmp let-item="item">
     <ng-container *ngTemplateOutlet="labelTemplate; context: { $implicit: item }"></ng-container>
   </ng-template>

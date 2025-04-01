@@ -10,7 +10,8 @@ import { Subscription } from 'rxjs';
     '[class.form-field-disabled]': '_control.disabled',
     '[class.form-field-label-float]': '_control.shouldLabelFloat',
     '[class.form-field-errors]': '_control.hasErrors',
-    '[class.form-field-touched]': '_control.touched'
+    '[class.form-field-touched]': '_control.touched',
+    '[class.form-field-dirty]': '_control.dirty'
   }
 })
 

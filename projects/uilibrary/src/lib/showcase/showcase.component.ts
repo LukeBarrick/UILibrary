@@ -82,6 +82,18 @@ export class ShowcaseComponent implements OnInit {
     textInput22: new FormControl('Nancy',[Validators.required]),
     textInput23: new FormControl({value: '', disabled: true},[Validators.required]),
     textInput24: new FormControl({value: 'Nancy', disabled: true},[Validators.required]),
+    placeholderFormControl: new FormControl('', [Validators.required])
+  });
+
+  textAreas2 = new FormGroup({
+    textArea1: new FormControl('',[Validators.required]),
+    textArea2: new FormControl('Nancy',[Validators.required]),
+    textArea3: new FormControl({value: '', disabled: true},[Validators.required]),
+    textArea4: new FormControl({value: 'Nancy', disabled: true},[Validators.required]),
+  });
+
+  selectControls2 = new FormGroup({
+    selectControl: new FormControl(undefined, [Validators.required]),
   });
 
   textAreas = new FormGroup({
@@ -129,6 +141,7 @@ export class ShowcaseComponent implements OnInit {
 
   debugme() {
     console.log(this.textInputs2);
+    console.log(this.selectControls2)
 
     console.log(this.textInput);
 

@@ -15,4 +15,5 @@ export abstract class UIFormFieldControl<T> {
   readonly shouldLabelFloat: boolean = false;
   readonly hasErrors: boolean = false;
   readonly touched: boolean = false;
+  readonly dirty: boolean = false;
 }

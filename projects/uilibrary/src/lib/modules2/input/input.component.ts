@@ -73,6 +73,10 @@ export class InputComponent
     return this.ngControl ? !!this.ngControl.touched : false;
   }
 
+  get dirty(): boolean {
+    return this.ngControl ? !!this.ngControl.dirty : false;
+  }
+
   private _focussed: boolean = false;
 
   @HostListener('input', ['$event.target.value'])
