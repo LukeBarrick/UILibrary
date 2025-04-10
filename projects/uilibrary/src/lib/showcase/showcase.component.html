@@ -272,7 +272,24 @@
 <section class="small d-flex" [formGroup]="selectControls2">
   <uilibrary2-form-field>
     <label ui-label>Select Form Control</label>
-    <uilibrary2-select ui-select [items]="items" placeholder="Please select an item from the dropdown list." formControlName="selectControl" [clearable]="true">
+    <uilibrary2-select ui-select  [items]="items" placeholder="Please select an item from the dropdown list." formControlName="selectControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary2-select>
+  </uilibrary2-form-field>
+
+
+  <uilibrary2-form-field>
+    <label ui-label>Two Way Binding Select</label>
+    <uilibrary2-select ui-select  [(ngModel)]="selectModel"  [ngModelOptions]="{ standalone: true }" [items]="items" placeholder="Please select an item from the dropdown list." [clearable]="true">
       <ng-template #labelTemplate let-item>
         <div>
           <b>{{item.name}}</b>
@@ -286,6 +303,8 @@
     </uilibrary2-select>
   </uilibrary2-form-field>
 </section>
+
+{{selectModel}}
 
 <section [formGroup]="textInputs" class="small d-flex flex-column">
   <h1>Text Inputs</h1>
@@ -442,6 +461,10 @@
 <section [formGroup]="selectControls" class="small">
   <h1>Select Areas</h1>
   <h3>Basic Select</h3>
+
+  <uilibrary-select placeholder="Basic Select">
+    <ng-option [value]="1">One</ng-option>
+  </uilibrary-select>
 
   <uilibrary-select [items]="items" placeholder="Basic Select">
     <ng-template #labelTemplate let-item>

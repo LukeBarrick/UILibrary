@@ -96,6 +96,8 @@ export class ShowcaseComponent implements OnInit {
     selectControl: new FormControl(undefined, [Validators.required]),
   });
 
+  selectModel =  { id: 1, name: 'Option 1' };
+
   textAreas = new FormGroup({
     textArea1: new FormControl('',[Validators.required]),
     textArea2: new FormControl('',[Validators.required]),
@@ -144,7 +146,6 @@ export class ShowcaseComponent implements OnInit {
     console.log(this.selectControls2)
 
     console.log(this.textInput);
-
     console.log(this.textInputs2.controls.textInput21.disabled)
     console.log(this.textInputs2.controls.textInput22.disabled)
   }

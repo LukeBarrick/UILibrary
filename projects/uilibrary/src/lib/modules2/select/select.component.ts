@@ -47,8 +47,7 @@ export class Select2Component
   @Input() virtualScroll: boolean = false;
   @Input() inputAttrs: { [key: string]: string } = { ['']: '' };
 
-  @Input() value: any;
-  @Output() valueChange = new EventEmitter<any>();
+  value: any;
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -123,8 +122,9 @@ export class Select2Component
   handleChange(event: any): void {
     this.value = event;
     this.onChange(event);
-    this.valueChange.emit(event);
+    // this.valueChange.emit(event);
     this.onTouched();
+    console.log('i changed')
   }
 
   ngOnInit() {
@@ -137,13 +137,11 @@ export class Select2Component
         }
       }
       this.onChange(this.value);
-      this.valueChange.emit(this.value);
+      // this.valueChange.emit(this.value);
     }, 0);
   }
 
   compareFn(item: any, selected: any) {
     return item === selected;
   }
-
- 
 }

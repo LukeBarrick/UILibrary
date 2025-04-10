@@ -14447,7 +14447,6 @@ uilibrary2-form-field .form-field {
   font-size: 14px;
   border: 1px solid var(--light-gray);
   outline: none;
-  z-index: 1;
   border-radius: 7px;
   position: relative;
   align-content: center;
