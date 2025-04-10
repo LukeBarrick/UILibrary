@@ -10,6 +10,10 @@ uilibrary2-form-field {
         uilibrary2-select {
             flex-grow: 1;
 
+            .ng-select {
+                position: unset !important;
+            }
+
             .ng-select.custom {
                 border: 0px;
                 border-radius: 0;

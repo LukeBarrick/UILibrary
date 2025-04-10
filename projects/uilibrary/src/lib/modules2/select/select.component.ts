@@ -124,7 +124,6 @@ export class Select2Component
     this.onChange(event);
     // this.valueChange.emit(event);
     this.onTouched();
-    console.log('i changed')
   }
 
   ngOnInit() {

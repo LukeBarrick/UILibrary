@@ -14506,6 +14506,9 @@ uilibrary2-form-field .form-field:has(uilibrary2-select) {
 uilibrary2-form-field .form-field uilibrary2-select {
   flex-grow: 1;
 }
+uilibrary2-form-field .form-field uilibrary2-select .ng-select {
+  position: unset !important;
+}
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom {
   border: 0px;
   border-radius: 0;
