@@ -256,6 +256,26 @@
     <input ui-input type="text" [disabled]="true">
   </uilibrary2-form-field>
 
+  <uilibrary2-form-field>
+    <uilibrary-icon ui-prefix name="icon-air" size="small"></uilibrary-icon>
+    <!-- <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div> -->
+    <label ui-label>Prefix Form Control</label>
+    <input ui-input type="text" formControlName="prefixFormControl" placeholder="This is a placeholder">
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <label ui-label>Suffix Form Control</label>
+    <input ui-input type="text" formControlName="suffixFormControl" placeholder="This is a placeholder">
+    <uilibrary-icon ui-suffix name="icon-air" size="small"></uilibrary-icon>
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Prefix & Suffix Form Control</label>
+    <input ui-input type="text" formControlName="prefixSuffixFormControl" placeholder="This is a placeholder">
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  </uilibrary2-form-field>
+
   <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="debugme()">
     debug me
   </uilibrary-button>
@@ -267,12 +287,53 @@
     <label ui-label>Text Area Form Control</label>
     <textarea ui-input formControlName="textArea1"></textarea>
   </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="placeholderFormControl" placeholder="This is a text area"></textarea>
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="prefixFormControl"></textarea>
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="suffixFormControl"></textarea>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="prefixSuffixFormControl"></textarea>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  </uilibrary2-form-field>
 </section>
 
 <section class="small d-flex" [formGroup]="selectControls2">
   <uilibrary2-form-field>
+    <label ui-label>Basic Select</label>
+    <uilibrary2-select ui-select  [items]="items" formControlName="selectControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      </uilibrary2-select>
+    </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
     <label ui-label>Select Form Control</label>
-    <uilibrary2-select ui-select  [items]="items" placeholder="Please select an item from the dropdown list." formControlName="selectControl" [clearable]="true">
+    <uilibrary2-select ui-select  [items]="items" placeholder="Please select an item from the dropdown list." formControlName="placeholderFormControl" [clearable]="true">
       <ng-template #labelTemplate let-item>
         <div>
           <b>{{item.name}}</b>
@@ -284,6 +345,60 @@
         </div>
       </ng-template>
     </uilibrary2-select>
+  </uilibrary2-form-field>
+
+  <uilibrary2-form-field>
+    <label ui-label>Select w/ Prefix</label>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <uilibrary2-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="prefixFormControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary2-select>
+  </uilibrary2-form-field>
+  
+  <uilibrary2-form-field>
+    <label ui-label>Select w/ Suffix</label>
+    <uilibrary2-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="suffixFormControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary2-select>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  </uilibrary2-form-field>
+  
+  <uilibrary2-form-field>
+    <label ui-label>Select w/ Prefix & Suffix</label>
+    <div ui-prefix ui-text-prefix>00.</div>
+    <uilibrary2-select ui-select  [items]="items" placeholder="Please select an item from the dropdown list." formControlName="prefixSuffixFormControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary2-select>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
   </uilibrary2-form-field>
 
 

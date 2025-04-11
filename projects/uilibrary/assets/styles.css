@@ -14462,6 +14462,12 @@ uilibrary2-form-field .form-field label {
   font-weight: 500;
   z-index: 10;
 }
+uilibrary2-form-field .form-field:has(.form-field-prefix) label {
+  left: 20px;
+}
+uilibrary2-form-field .form-field:has(.form-field-suffix) label {
+  left: 20px;
+}
 uilibrary2-form-field.form-field-label-float .form-field label {
   font-size: 12px;
   color: var(--secondary);
@@ -14500,9 +14506,6 @@ uilibrary2-form-field.error .form-field label {
   font-weight: 500;
 }
 
-uilibrary2-form-field .form-field:has(uilibrary2-select) {
-  border: none !important;
-}
 uilibrary2-form-field .form-field uilibrary2-select {
   flex-grow: 1;
 }
@@ -14515,6 +14518,7 @@ uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom {
   height: 50px !important;
   flex: 1;
   appearance: none !important;
+  width: 100%;
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom .ng-clear-wrapper {
   height: 17px !important;
@@ -14525,12 +14529,10 @@ uilibrary2-form-field .form-field uilibrary2-select .ng-select-container {
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
   box-shadow: unset;
-  border-color: var(--secondary);
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom .ng-select-container {
   min-height: 50px !important;
   border-radius: 7px !important;
-  border: 1px solid var(--light-gray);
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom .ng-input {
   top: unset !important;
@@ -14553,16 +14555,16 @@ uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom .ng-arrow-
   border: none !important;
   top: 3px !important;
 }
+uilibrary2-form-field .form-field uilibrary2-select .ng-dropdown-panel.ng-select-bottom {
+  border-radius: 7px;
+}
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
-  border-bottom-left-radius: 0px !important;
-  border-bottom-right-radius: 0px !important;
   border-color: var(--secondary);
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-dropdown-panel.ng-select-bottom {
-  border-top: none;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
+  border: none;
   border-color: var(--secondary);
+  margin-top: 1px;
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.ng-select-opened .ng-arrow-wrapper .ng-arrow {
   transform: rotateX(180deg);
@@ -14620,14 +14622,6 @@ uilibrary2-form-field .form-field uilibrary2-select .ng-select input,
 uilibrary2-form-field .form-field uilibrary2-select .ng-select span {
   font-weight: 300;
 }
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) label {
-  font-size: 12px;
-  color: var(--secondary);
-  transform: translate(-5px, -11px);
-}
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) label:after {
-  top: 8px;
-}
 uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) ::-webkit-input-placeholder {
   color: var(--dark-gray);
 }
@@ -14638,24 +14632,6 @@ uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) 
   color: var(--dark-gray);
 }
 uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) :-ms-input-placeholder {
-  color: var(--dark-gray);
-}
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) input::placeholder {
-  color: var(--dark-gray);
-}
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) textarea::-webkit-input-placeholder {
-  color: var(--dark-gray);
-}
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) textarea:-moz-placeholder {
-  color: var(--dark-gray);
-}
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) textarea::-moz-placeholder {
-  color: var(--dark-gray);
-}
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) textarea:-ms-input-placeholder {
-  color: var(--dark-gray);
-}
-uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) textarea::placeholder {
   color: var(--dark-gray);
 }
 uilibrary2-form-field.form-field-label-float .form-field:has(uilibrary2-select) uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {

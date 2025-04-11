@@ -1,6 +1,7 @@
 import { AfterContentChecked, Component, ContentChild, OnInit } from '@angular/core';
 import { UIFormFieldControl } from './form-field-control';
 import { Subscription } from 'rxjs';
+import { PrefixDirective, UIPrefix } from './directives/UIPrefix';
 
 @Component({
   selector: 'uilibrary2-form-field',
@@ -17,6 +18,8 @@ import { Subscription } from 'rxjs';
 
 export class FormFieldComponent implements AfterContentChecked, OnInit {
   @ContentChild(UIFormFieldControl) formFieldControl: UIFormFieldControl<any> | undefined;
+  @ContentChild(PrefixDirective) prefix: UIPrefix | undefined;
+ 
 
   value: any = 1;
   stateChanges: Subscription | undefined;
@@ -33,6 +36,10 @@ export class FormFieldComponent implements AfterContentChecked, OnInit {
 
   get _control() {
     return this.formFieldControl;
+  }
+
+  get _prefix() {
+    return this.prefix;
   }
 
   private initialiseControl(): void {

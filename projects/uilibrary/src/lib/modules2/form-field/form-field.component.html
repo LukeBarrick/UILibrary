@@ -1,7 +1,12 @@
 <div class="form-field">
+  @if(this._prefix && this._prefix.isText) {
+    <div class="form-field-prefix">
+      <ng-content select="[ui-prefix]"></ng-content>
+    </div>
+  }
   <label>
       <ng-content select="[ui-label]"></ng-content>
   </label>  
-  <ng-content select="[ui-input]"></ng-content>
-  <ng-content select="[ui-select]"></ng-content>
+  <ng-content select="[ui-input], [ui-select]"></ng-content>
+  <ng-content select="[ui-suffix]"></ng-content>
 </div>

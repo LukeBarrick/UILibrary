@@ -29,6 +29,20 @@ uilibrary2-form-field {
         }
     }
 
+    //Perhaps turn this into a flag in the interface
+    .form-field:has(.form-field-prefix) {
+        label {
+            left: 20px;
+        }
+    }
+
+    //Perhaps turn this into a flag in the interface
+    .form-field:has(.form-field-suffix) {
+        label {
+            left: 20px;
+        }
+    }
+
     &.form-field-label-float {
         .form-field {
             label {

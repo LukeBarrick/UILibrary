@@ -82,7 +82,10 @@ export class ShowcaseComponent implements OnInit {
     textInput22: new FormControl('Nancy',[Validators.required]),
     textInput23: new FormControl({value: '', disabled: true},[Validators.required]),
     textInput24: new FormControl({value: 'Nancy', disabled: true},[Validators.required]),
-    placeholderFormControl: new FormControl('', [Validators.required])
+    placeholderFormControl: new FormControl('', [Validators.required]),
+    prefixFormControl: new FormControl('', [Validators.required]),
+    suffixFormControl: new FormControl('', [Validators.required]),
+    prefixSuffixFormControl: new FormControl('', [Validators.required])
   });
 
   textAreas2 = new FormGroup({
@@ -90,10 +93,18 @@ export class ShowcaseComponent implements OnInit {
     textArea2: new FormControl('Nancy',[Validators.required]),
     textArea3: new FormControl({value: '', disabled: true},[Validators.required]),
     textArea4: new FormControl({value: 'Nancy', disabled: true},[Validators.required]),
+    placeholderFormControl: new FormControl('', [Validators.required]),
+    prefixFormControl: new FormControl('', [Validators.required]),
+    suffixFormControl: new FormControl('', [Validators.required]),
+    prefixSuffixFormControl: new FormControl('', [Validators.required])
   });
 
   selectControls2 = new FormGroup({
     selectControl: new FormControl(undefined, [Validators.required]),
+    placeholderFormControl: new FormControl(undefined, [Validators.required]),
+    prefixFormControl: new FormControl(undefined, [Validators.required]),
+    suffixFormControl: new FormControl(undefined, [Validators.required]),
+    prefixSuffixFormControl: new FormControl(undefined, [Validators.required])
   });
 
   selectModel =  { id: 1, name: 'Option 1' };

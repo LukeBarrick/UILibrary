@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormFieldComponent } from './form-field.component';
+import { PrefixDirective } from './directives/UIPrefix';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    FormFieldComponent
+    FormFieldComponent,
+    PrefixDirective
   ],
   exports: [
-    FormFieldComponent
+    FormFieldComponent,
+    PrefixDirective
   ]
 })
 export class FormField2Module { }

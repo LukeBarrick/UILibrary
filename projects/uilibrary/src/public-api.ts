@@ -46,7 +46,7 @@ export * from './lib/modules/date-pickers/date-picker/date-picker-input/date-pic
 export * from './lib/modules/status-tags/status-tags.module';
 export * from './lib/modules/status-tags/status-tag/status-tag.component';
 
-export * from './lib/core/services/icon.service';
+// export * from './lib/core/services/icon.service';
 export * from './lib/modules/icons/icon.module';
 export * from './lib/modules/icons/icons/icon.component';
 
@@ -58,9 +58,14 @@ export * from './lib/modules/buttons/button/button.component';
 
 export * from './lib/modules2/form-field/form-field.component';
 export * from './lib/modules2/form-field/form-field.module';
+export * from './lib/modules2/form-field/directives/UIPrefix';
 
 export * from './lib/modules2/input/input.component';
 export * from './lib/modules2/input/input.module';
 
 export * from './lib/modules2/select/select.module';
 export * from './lib/modules2/select/select.component';
+
+export * from './lib/modules2/icon/icon.module';
+export * from './lib/modules2/icon/icon.component';
+export * from './lib/core/services/icon.service'; 
