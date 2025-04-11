@@ -5,7 +5,7 @@ export abstract class UIPrefix {
 }
 
 @Directive({
-  selector: '[ui-prefix]',
+  selector: '[ui-prefix], [ui-text-prefix]',
   providers: [
     {
       provide: UIPrefix,
@@ -14,12 +14,12 @@ export abstract class UIPrefix {
   ],
 })
 export class PrefixDirective implements UIPrefix {
-  constructor() {}
+  constructor() {
+  }
   public isText: boolean = false;
 
-  @Input('ui-text-prefix]')
+  @Input('ui-text-prefix')
   set _isText(value: '') {
-    console.log('text prefix');
     this.isText = true;
   }
 }

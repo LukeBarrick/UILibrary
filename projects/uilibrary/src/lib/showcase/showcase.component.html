@@ -385,7 +385,7 @@
   
   <uilibrary2-form-field>
     <label ui-label>Select w/ Prefix & Suffix</label>
-    <div ui-prefix ui-text-prefix>00.</div>
+    <div style="flex:1;" ui-text-prefix>00.</div>
     <uilibrary2-select ui-select  [items]="items" placeholder="Please select an item from the dropdown list." formControlName="prefixSuffixFormControl" [clearable]="true">
       <ng-template #labelTemplate let-item>
         <div>

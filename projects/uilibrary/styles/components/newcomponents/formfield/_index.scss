@@ -43,6 +43,16 @@ uilibrary2-form-field {
         }
     }
 
+    //Perhaps turn this into a flag in the interface
+    .form-field:has(.form-field-text-prefix) {
+
+    }
+
+    //Perhaps turn this into a flag in the interface
+    .form-field:has(.form-field-text-suffix) {
+        
+    }
+
     &.form-field-label-float {
         .form-field {
             label {

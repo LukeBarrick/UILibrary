@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
   ],
 })
 export class Select2Component 
-  implements UIFormFieldControl<string>,  ControlValueAccessor {
+  implements UIFormFieldControl<any>,  ControlValueAccessor {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
