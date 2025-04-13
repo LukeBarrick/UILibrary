@@ -31,35 +31,51 @@ uilibrary2-form-field {
 
     .form-field-prefix {
         margin-left: 10px;
+        pointer-events: none;
     }
 
-    //Perhaps turn this into a flag in the interface
+    //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-prefix) {
        
         label {
             left: 25px;
         }
+
+        uilibrary2-select {
+            .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+                left: 15px !important;
+            }
+
+            .ng-select .ng-select-container .ng-value-container .ng-value {
+                left: 15px !important;
+            }
+        }
     }
 
     .form-field-suffix {
         margin-right: 10px;
+        pointer-events: none;
     }
 
-    //Perhaps turn this into a flag in the interface
+    //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-suffix) {
-        // label {
-        //     left: 25px;
-        // }
-
         
     }
 
-    //Perhaps turn this into a flag in the interface
+    //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-text-prefix) {
+         uilibrary2-select {
+            .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+                left: 0px !important;
+            }
 
+            .ng-select .ng-select-container .ng-value-container .ng-value {
+                left: 0px !important;
+            }
+        }
     }
 
-    //Perhaps turn this into a flag in the interface
+    ///TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-text-suffix) {
         
     }

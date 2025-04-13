@@ -1,8 +1,8 @@
 import { AfterContentChecked, Component, ContentChild, OnInit } from '@angular/core';
 import { UIFormFieldControl } from './form-field-control';
 import { Subscription } from 'rxjs';
-import { PrefixDirective, UIPrefix } from './directives/UIPrefix';
-import { SuffixDirective, UISuffix } from './directives/UISuffix';
+import { UIPrefix } from './directives/UIPrefix';
+import { UISuffix } from './directives/UISuffix';
 
 
 @Component({
@@ -20,8 +20,8 @@ import { SuffixDirective, UISuffix } from './directives/UISuffix';
 
 export class FormFieldComponent implements AfterContentChecked, OnInit {
   @ContentChild(UIFormFieldControl) formFieldControl: UIFormFieldControl<any> | undefined;
-  @ContentChild(PrefixDirective) prefix: UIPrefix | undefined;
-  @ContentChild(SuffixDirective) suffix: UISuffix | undefined;
+  @ContentChild(UIPrefix) prefix: UIPrefix | undefined;
+  @ContentChild(UISuffix) suffix: UISuffix | undefined;
  
 
   value: any = 1;
@@ -53,5 +53,10 @@ export class FormFieldComponent implements AfterContentChecked, OnInit {
     if(this._control != undefined) {
       this.stateChanges = this._control.stateChanges.subscribe({})
     }
+  }
+
+
+  public focusControl() {
+    console.log('foxus');
   }
 }

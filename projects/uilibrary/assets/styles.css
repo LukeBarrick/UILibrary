@@ -14464,12 +14464,26 @@ uilibrary2-form-field .form-field label {
 }
 uilibrary2-form-field .form-field-prefix {
   margin-left: 10px;
+  pointer-events: none;
 }
 uilibrary2-form-field .form-field:has(.form-field-prefix) label {
   left: 25px;
 }
+uilibrary2-form-field .form-field:has(.form-field-prefix) uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  left: 15px !important;
+}
+uilibrary2-form-field .form-field:has(.form-field-prefix) uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-value {
+  left: 15px !important;
+}
 uilibrary2-form-field .form-field-suffix {
   margin-right: 10px;
+  pointer-events: none;
+}
+uilibrary2-form-field .form-field:has(.form-field-text-prefix) uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  left: 0px !important;
+}
+uilibrary2-form-field .form-field:has(.form-field-text-prefix) uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-value {
+  left: 0px !important;
 }
 uilibrary2-form-field.form-field-label-float .form-field label {
   font-size: 12px;
@@ -14511,9 +14525,13 @@ uilibrary2-form-field.error .form-field label {
 
 uilibrary2-form-field .form-field uilibrary2-select {
   flex-grow: 1;
+  width: 100%;
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select {
   position: unset !important;
+}
+uilibrary2-form-field .form-field uilibrary2-select .ng-select .ng-arrow-wrapper {
+  padding-right: 0px !important;
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom {
   border: 0px;
@@ -14521,7 +14539,7 @@ uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom {
   height: 50px !important;
   flex: 1;
   appearance: none !important;
-  width: 100%;
+  width: 99%;
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.custom .ng-clear-wrapper {
   height: 17px !important;
@@ -14589,20 +14607,21 @@ uilibrary2-form-field .form-field uilibrary2-select .ng-select .ng-select-contai
 uilibrary2-form-field .form-field uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   color: transparent;
   font-size: 14px;
-  left: 15px;
+  position: relative;
 }
-uilibrary2-form-field .form-field uilibrary2-select .ng-select .ng-select-container .ng-value-container {
-  padding-left: 20px;
+uilibrary2-form-field .form-field uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-value {
+  position: relative;
+  left: 15px;
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-input > input {
   margin-left: 10px;
 }
+uilibrary2-form-field .form-field uilibrary2-select .ng-select .ng-select-container .ng-value-container {
+  padding-left: 0px;
+}
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
   background-color: #DEDEDE;
-  padding: 5px;
   border-radius: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 uilibrary2-form-field .form-field uilibrary2-select .ng-select.ng-select-disabled > .ng-select-container {
   background-color: #EEEEEE;
@@ -14659,7 +14678,6 @@ uilibrary2-form-field .form-field input {
   width: 100%;
   font-size: 14px;
   border: none;
-  margin: 1px;
 }
 uilibrary2-form-field .form-field input:disabled {
   background-color: var(--almost-white);

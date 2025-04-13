@@ -5,14 +5,19 @@ uilibrary2-form-field {
         // border-bottom-left-radius: 0;
         // border-bottom-right-radius: 0;
     }
- 
+
 
     .form-field {
         uilibrary2-select {
             flex-grow: 1;
+            width: 100%;
 
             .ng-select {
                 position: unset !important;
+
+                .ng-arrow-wrapper {
+                    padding-right: 0px !important;
+                }
             }
 
             .ng-select.custom {
@@ -21,7 +26,7 @@ uilibrary2-form-field {
                 height: 50px !important;
                 flex: 1;
                 appearance: none !important;
-                width: 100%;
+                width: 99%;
             }
 
             .ng-select.custom .ng-clear-wrapper {
@@ -31,7 +36,7 @@ uilibrary2-form-field {
 
             .ng-select-container {
                 z-index: 0;
-                
+
             }
 
             .ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
@@ -115,29 +120,30 @@ uilibrary2-form-field {
             .ng-select .ng-select-container .ng-value-container .ng-placeholder {
                 color: transparent;
                 font-size: 14px;
-                left: 15px;
+                position: relative;
             }
 
-            .ng-select .ng-select-container .ng-value-container {
-                padding-left: 20px;
+            .ng-select .ng-select-container .ng-value-container .ng-value {
+                position: relative;
+                left: 15px;
             }
 
             .ng-select .ng-select-container .ng-value-container .ng-input>input {
                 margin-left: 10px;
             }
 
+            .ng-select .ng-select-container .ng-value-container {
+                padding-left: 0px;
+            }
+
             .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
                 background-color: #DEDEDE;
-                padding: 5px;
                 border-radius: 25px;
-                padding-left: 10px;
-                padding-right: 10px;
             }
 
             .ng-select.ng-select-disabled>.ng-select-container {
                 background-color: #EEEEEE;
             }
-
 
             .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
                 margin: 5px;
@@ -168,7 +174,7 @@ uilibrary2-form-field {
     }
 
     &.form-field-label-float {
-    
+
         .form-field:has(uilibrary2-select) {
             ::-webkit-input-placeholder {
                 color: var(--dark-gray);
@@ -186,7 +192,7 @@ uilibrary2-form-field {
                 color: var(--dark-gray);
             }
 
-          
+
             uilibrary2-select {
                 .ng-select .ng-select-container .ng-value-container .ng-placeholder {
                     color: black;
@@ -198,22 +204,55 @@ uilibrary2-form-field {
                     z-index: 0;
                 }
             }
-        } 
+        }
     }
 
-     
-        &.form-field-touched {
-            &.form-field-errors {
-                .form-field {
-                    uilibrary2-select .ng-dropdown-panel.ng-select-bottom {
-                        border-color: var(--danger);
-                    }
 
-                    uilibrary2-select  .ng-select.custom .ng-select-container {
-                        border-color: var(--danger) !important;
-                    }
-
+    &.form-field-touched {
+        &.form-field-errors {
+            .form-field {
+                uilibrary2-select .ng-dropdown-panel.ng-select-bottom {
+                    border-color: var(--danger);
                 }
+
+                uilibrary2-select .ng-select.custom .ng-select-container {
+                    border-color: var(--danger) !important;
+                }
+
             }
         }
     }
+
+    // //TODO Remove use of HAS for browser compatibility
+    // .form-field:has(.form-field-suffix) {}
+
+    // //TODO Remove use of HAS for browser compatibility
+    // .form-field:has(.form-field-text-suffix) {}
+
+    // //TODO Remove use of HAS for browser compatibility
+    // &.form-field:has(.form-field-prefix) {
+    //     uilibrary2-select {
+    //         .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    //             left: 10px !important;
+    //         }
+
+    //         .ng-select .ng-select-container .ng-value-container .ng-value {
+    //             left: 10px !important;
+    //         }
+    //     }
+    // }
+
+    // //TODO Remove use of HAS for browser compatibility
+    // &.form-field:has(.form-field-text-prefix) {
+    //     uilibrary2-select {
+    //         .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    //             left: 0px !important;
+    //         }
+
+    //         .ng-select .ng-select-container .ng-value-container .ng-value {
+    //             left: 0px !important;
+    //         }
+    //     }
+    // }
+
+}

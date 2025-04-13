@@ -1,4 +1,4 @@
-<div class="form-field">
+<div class="form-field" (click)="focusControl()">
   @if(this._prefix && !this._prefix.isText) {
     <div class="form-field-prefix">
       <ng-content select="[ui-prefix]"></ng-content>
@@ -23,7 +23,7 @@
     </div>
   }
 
-  @if(!this._suffix?.isText) {
+  @if(this._suffix?.isText) {
     <div class="form-field-text-suffix">
       <ng-content select="[ui-text-suffix]"></ng-content>
     </div>
