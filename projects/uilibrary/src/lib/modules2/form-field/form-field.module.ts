@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormFieldComponent } from './form-field.component';
 import { PrefixDirective } from './directives/UIPrefix';
+import { SuffixDirective } from './directives/UISuffix';
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { PrefixDirective } from './directives/UIPrefix';
   ],
   declarations: [
     FormFieldComponent,
-    PrefixDirective
+    PrefixDirective,
+    SuffixDirective
   ],
   exports: [
     FormFieldComponent,
-    PrefixDirective
+    PrefixDirective,
+    SuffixDirective
   ]
 })
 export class FormField2Module { }

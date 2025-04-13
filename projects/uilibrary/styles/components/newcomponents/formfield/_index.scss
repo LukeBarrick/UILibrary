@@ -29,18 +29,29 @@ uilibrary2-form-field {
         }
     }
 
+    .form-field-prefix {
+        margin-left: 10px;
+    }
+
     //Perhaps turn this into a flag in the interface
     .form-field:has(.form-field-prefix) {
+       
         label {
-            left: 20px;
+            left: 25px;
         }
+    }
+
+    .form-field-suffix {
+        margin-right: 10px;
     }
 
     //Perhaps turn this into a flag in the interface
     .form-field:has(.form-field-suffix) {
-        label {
-            left: 20px;
-        }
+        // label {
+        //     left: 25px;
+        // }
+
+        
     }
 
     //Perhaps turn this into a flag in the interface

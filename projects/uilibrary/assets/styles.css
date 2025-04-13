@@ -14462,11 +14462,14 @@ uilibrary2-form-field .form-field label {
   font-weight: 500;
   z-index: 10;
 }
-uilibrary2-form-field .form-field:has(.form-field-prefix) label {
-  left: 20px;
+uilibrary2-form-field .form-field-prefix {
+  margin-left: 10px;
 }
-uilibrary2-form-field .form-field:has(.form-field-suffix) label {
-  left: 20px;
+uilibrary2-form-field .form-field:has(.form-field-prefix) label {
+  left: 25px;
+}
+uilibrary2-form-field .form-field-suffix {
+  margin-right: 10px;
 }
 uilibrary2-form-field.form-field-label-float .form-field label {
   font-size: 12px;
@@ -14649,7 +14652,7 @@ uilibrary2-form-field.form-field-touched.form-field-errors .form-field uilibrary
   border-color: var(--danger) !important;
 }
 
-uilibrary2-form-field .form-field input[type=text] {
+uilibrary2-form-field .form-field input {
   padding-left: 15px;
   appearance: none;
   outline: none;
@@ -14658,7 +14661,7 @@ uilibrary2-form-field .form-field input[type=text] {
   border: none;
   margin: 1px;
 }
-uilibrary2-form-field .form-field input[type=text]:disabled {
+uilibrary2-form-field .form-field input:disabled {
   background-color: var(--almost-white);
 }
 uilibrary2-form-field .form-field ::-webkit-input-placeholder {

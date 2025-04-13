@@ -59,6 +59,7 @@ export * from './lib/modules/buttons/button/button.component';
 export * from './lib/modules2/form-field/form-field.component';
 export * from './lib/modules2/form-field/form-field.module';
 export * from './lib/modules2/form-field/directives/UIPrefix';
+export * from './lib/modules2/form-field/directives/UISuffix';
 
 export * from './lib/modules2/input/input.component';
 export * from './lib/modules2/input/input.module';
