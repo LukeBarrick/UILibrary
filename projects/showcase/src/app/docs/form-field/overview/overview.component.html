@@ -1,0 +1,140 @@
+<h1 class="mb-4">Form Field</h1>
+
+<div class="mb-4">
+  <h2>Overview</h2>
+  <p>The <code>FormFieldComponent</code> is a flexible and reusable component that acts as a wrapper for native form
+    control elements (i.e <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, custom input elements),
+    providing a consistent structure and styling behavior. This component supports content projection for prefixes,
+    suffixes, and labels and integrates naturally with the control's validation and interaction state.</p>
+</div>
+
+<div class="mb-4">
+  <h3>✅ Supported Controls</h3>
+  <ul>
+    <li><code>&lt;input&gt;</code> – text, number, password, email, etc.</li>
+    <li><code>&lt;textarea&gt;</code></li>
+    <li>Any custom control implementing <code>UIFormFieldControl&lt;T&gt;</code></li>
+  </ul>
+
+  <h3>🚫 Excluded Controls</h3>
+  <ul>
+    <li><code>&lt;input type="checkbox"&gt;</code></li>
+    <li><code>&lt;input type="radio"&gt;</code></li>
+  </ul>
+  <p>These types have separate, dedicated implementations due to unique UX and accessibility requirements.</p>
+</div>
+
+<div class="mb-4">
+  <h3>🧩 Content Projection Slots</h3>
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>Selector</th>
+        <th>Purpose</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>[ui-prefix]</code></td>
+        <td>Icon/element prefix</td>
+        <td><code>&lt;mat-icon ui-prefix&gt;phone&lt;/mat-icon&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>[ui-text-prefix]</code></td>
+        <td>Text prefix</td>
+        <td><code>&lt;span ui-text-prefix&gt;value&lt;/span&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>[ui-label]</code></td>
+        <td>Label element</td>
+        <td><code>&lt;label ui-label&gt;Email&lt;/label&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>[ui-input]</code></td>
+        <td>Main control</td>
+        <td><code>&lt;input ui-input type="text" /&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>[ui-suffix]</code></td>
+        <td>Icon/element suffix</td>
+        <td><code>&lt;button ui-suffix&gt;...&lt;/button&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>[ui-text-suffix]</code></td>
+        <td>Text suffix</td>
+        <td><code>&lt;span ui-text-suffix&gt;USD&lt;/span&gt;</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="mb-4">
+  <h3>🧠 Internal Behaviors</h3>
+  <ul>
+    <li><code>.form-field-disabled</code> — Applies when the control is disabled</li>
+    <li><code>.form-field-label-float</code> — When label should float</li>
+    <li><code>.form-field-errors</code> — When control has errors</li>
+    <li><code>.form-field-touched</code> — When control has been touched</li>
+    <li><code>.form-field-dirty</code> — When control has been modified</li>
+  </ul>
+  <p>The component also exposes a <code>focusControl()</code> method for managing internal focus on click.</p>
+</div>
+
+<div class="mb-4">
+  <h3>🧪 Required Interface</h3>
+  <p>Custom inputs projected into this component must implement the following interface:</p>
+  <pre class="bg-light p-3 rounded"><code>export interface UIFormFieldControl&lt;T&gt; {{ '{' }}
+  stateChanges: Observable&lt;void&gt;;
+  shouldLabelFloat: boolean;
+  disabled: boolean;
+  hasErrors: boolean;
+  touched: boolean;
+  dirty: boolean;
+{{ '}' }}</code></pre>
+</div>
+
+<div class="mb-4">
+  <h3>🛠 Usage Examples</h3>
+
+  <h5>1. Basic Text Input</h5>
+  <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Email&lt;/label&gt;
+  &lt;input ui-input type="email" [(ngModel)]="email" /&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre>
+
+  <h5>2. With Icon Prefix and Suffix Button</h5>
+  <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-form-field&gt;
+  &lt;mat-icon ui-prefix&gt;email&lt;/mat-icon&gt;
+  &lt;label ui-label&gt;Email&lt;/label&gt;
+  &lt;input ui-input type="email" /&gt;
+  &lt;button ui-suffix (click)="clear()"&gt;Clear&lt;/button&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre>
+
+  <h5>3. Text Prefix/Suffix</h5>
+  <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-form-field&gt;
+  &lt;span ui-text-prefix&gt;$&lt;/span&gt;
+  &lt;label ui-label&gt;Amount&lt;/label&gt;
+  &lt;input ui-input type="number" /&gt;
+  &lt;span ui-text-suffix&gt;USD&lt;/span&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre>
+
+  <h5>4. Custom Component Input</h5>
+  <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Search&lt;/label&gt;
+  &lt;my-custom-search ui-input&gt;&lt;/my-custom-search&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre>
+</div>
+
+<div class="mb-4">
+  <h3>🧼 Style Recommendations</h3>
+  <p>Ensure your global styles or SCSS include styling for these structural classes:</p>
+  <ul>
+    <li><code>.form-field</code></li>
+    <li><code>.form-field-prefix</code></li>
+    <li><code>.form-field-text-prefix</code></li>
+    <li><code>.form-field-suffix</code></li>
+    <li><code>.form-field-text-suffix</code></li>
+    <li><code>.form-field-disabled</code>, <code>.form-field-label-float</code>, etc.</li>
+  </ul>
+</div>

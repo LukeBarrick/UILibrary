@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { RouterOutlet } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { UserInterfaceLibraryModule } from 'uilibrary';
+import { LayoutModule } from './layout/layout.module';
+import { HomeModule } from './home/home.module';
+import { DocumentationModule } from './docs/docs.module';
+import { GuidesModule } from './guides/guides.module';
+import { BlogModule } from './blog/blog.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +22,11 @@ import { UserInterfaceLibraryModule } from 'uilibrary';
     RouterOutlet,
     ToastrModule.forRoot(),
     UserInterfaceLibraryModule,
+    LayoutModule,
+    HomeModule,
+    DocumentationModule,
+    GuidesModule,
+    BlogModule
   ],
   providers: [
     
