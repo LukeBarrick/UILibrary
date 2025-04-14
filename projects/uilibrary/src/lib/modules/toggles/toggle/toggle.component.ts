@@ -14,6 +14,7 @@ import { LabelPosition } from '../../../core/enums/label-position.enum';
     }
   ]
 })
+//TODO fix ngModel imp
 export class ToggleComponent implements ControlValueAccessor {
   public id = this.UUID.generate();
 
