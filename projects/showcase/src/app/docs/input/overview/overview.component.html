@@ -1,3 +1,121 @@
-<p>
-  overview works!
-</p>
+<div class="container my-5">
+  <h1 class="mb-4">Input</h1>
+
+  <div class="mb-4">
+    <h2>Overview</h2>
+    <p>
+      The <code>[ui-input]</code> directive, implemented by <code>InputComponent</code>, is a directive-based form control that plugs into the
+      <code>FormFieldComponent</code> via Angular content projection. It provides native <code>&lt;input&gt;</code>-like behavior and
+      integrates with both Angular Forms APIs and the <code>UIFormFieldControl&lt;T&gt;</code> interface to support a standardized UI and reactive validation feedback.
+    </p>
+  </div>
+
+  <div class="mb-4">
+    <h3>👷 Directive Selector</h3>
+    <p>
+      <code>[ui-input]</code>
+    </p>
+    <p>
+      Attach this directive to a native <code>&lt;input&gt;</code> element to automatically wire it into a <code>&lt;uilibrary2-form-field&gt;</code>
+      wrapper. Example:
+    </p>
+    <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Username&lt;/label&gt;
+  &lt;input type="text" ui-input [(ngModel)]="username" /&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre>
+  </div>
+
+  <div class="mb-4">
+    <h3>🧠 Integrated Interfaces</h3>
+    <ul>
+      <li><strong>UIFormFieldControl&lt;string&gt;</strong> — exposes the form control state to <code>FormFieldComponent</code>.</li>
+      <li><strong>ControlValueAccessor</strong> — allows use with <code>ngModel</code>, <code>formControl</code>, and <code>formControlName</code>.</li>
+    </ul>
+  </div>
+
+  <div class="mb-4">
+    <h3>🧩 Responsibilities</h3>
+    <ul>
+      <li>Generates a unique ID via <code>UUIDService</code> for accessibility/labeling.</li>
+      <li>Handles <code>focus</code>, <code>blur</code>, and <code>input</code> events.</li>
+      <li>Maintains internal focus and empty state flags for UI label floating.</li>
+    </ul>
+  </div>
+
+  <div class="mb-4">
+    <h3>📦 Inputs & Outputs</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>{{'@'}}Input</code></td>
+          <td><code>disabled</code></td>
+          <td>Sets the disabled state of the control.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mb-4">
+    <h3>🔁 Form Control State Mapping</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Property</th>
+          <th>Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>shouldLabelFloat</code></td>
+          <td><code>true</code> when the input has focus or value is not empty.</td>
+        </tr>
+        <tr>
+          <td><code>hasErrors</code></td>
+          <td><code>true</code> if control is invalid.</td>
+        </tr>
+        <tr>
+          <td><code>touched</code></td>
+          <td><code>true</code> if control has been blurred by the user.</td>
+        </tr>
+        <tr>
+          <td><code>dirty</code></td>
+          <td><code>true</code> if the user has modified the value.</td>
+        </tr>
+        <tr>
+          <td><code>empty</code></td>
+          <td><code>true</code> if no value has been entered.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mb-4">
+    <h3>💡 Implementation Details</h3>
+    <ul>
+      <li>Applies the <code>disabled</code> state directly via <code>Renderer2</code>.</li>
+      <li>Reads/writes input value using <code>ElementRef</code> for native control interoperability.</li>
+      <li>Focus state is tracked internally via <code>{{'@'}}HostListener</code> decorators.</li>
+      <li>Form control state is pulled from <code>NgControl</code> when used within Angular Forms.</li>
+    </ul>
+  </div>
+
+  <div class="mb-4">
+    <h3>📌 Example: Complete Usage with Floating Label</h3>
+    <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Email Address&lt;/label&gt;
+  &lt;input
+    ui-input
+    type="email"
+    [disabled]="isDisabled"
+    [(ngModel)]="email"
+/&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre>
+  </div>
+</div>

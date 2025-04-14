@@ -1,0 +1,117 @@
+<div class="container my-5">
+  <h1 class="mb-4">Icons</h1>
+
+  <div class="mb-4">
+    <h2>Overview</h2>
+    <p>
+      The <code>Icon2Component</code> is a lightweight Angular component for rendering SVG icons from a centralized icon registry. 
+      It supports configurable sizes and themed appearances via input properties.
+    </p>
+    <p>
+      This component uses the <code>&lt;svg-icon&gt;</code> component under the hood to load icons by name. The list of available icon names will be published soon.
+      <strong>Icon list documentation: </strong><a href="#" class="text-decoration-underline">TBD</a>
+    </p>
+  </div>
+
+  <div class="mb-4">
+    <h3>👷 Component Selector</h3>
+    <p>
+      <code>&lt;uilibrary2-icon&gt;&lt;/uilibrary2-icon&gt;</code>
+    </p>
+    <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-icon 
+  [name]="'checkmark'" 
+  [size]="'medium'" 
+  [appearance]="'primary'"&gt;
+&lt;/uilibrary2-icon&gt;</code></pre>
+  </div>
+
+  <div class="mb-4">
+    <h3>📦 Inputs</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Input</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>name</code></td>
+          <td><code>string</code></td>
+          <td>Required. The identifier of the icon to load from the shared icon set.</td>
+        </tr>
+        <tr>
+          <td><code>size</code></td>
+          <td><code>'small' | 'medium' | 'large'</code></td>
+          <td>Optional. Sets the icon’s width and height (in pixels).</td>
+        </tr>
+        <tr>
+          <td><code>appearance</code></td>
+          <td>
+            <code>'primary' | 'secondary' | 'tertiary' | 'light-gray' | 'dark-gray' | 'custom'</code>
+          </td>
+          <td>Optional. Determines the icon’s fill color.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mb-4">
+    <h3>🎨 Sizes</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Size</th>
+          <th>Width × Height (px)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>'small'</code></td><td>30 × 30</td></tr>
+        <tr><td><code>'medium'</code> (default)</td><td>40 × 40</td></tr>
+        <tr><td><code>'large'</code></td><td>80 × 80</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mb-4">
+    <h3>🌈 Appearances</h3>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Appearance</th>
+          <th>Fill Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>'primary'</code></td><td><code>var(--primary)</code></td></tr>
+        <tr><td><code>'secondary'</code></td><td><code>var(--secondary)</code></td></tr>
+        <tr><td><code>'tertiary'</code></td><td><code>var(--tertiary)</code></td></tr>
+        <tr><td><code>'light-gray'</code></td><td><code>var(--light-gray)</code></td></tr>
+        <tr><td><code>'dark-gray'</code></td><td><code>var(--dark-gray)</code></td></tr>
+        <tr><td><code>'custom'</code></td><td><code>currentColor</code></td></tr>
+        <tr><td><code>default</code></td><td><code>var(--secondary)</code></td></tr>
+      </tbody>
+    </table>
+    <p class="text-muted">Note: Appearance colors use CSS variables to align with your design system. Customize <code>var(--*)</code> in global stylesheets.</p>
+  </div>
+
+  <div class="mb-4">
+    <h3>💡 Notes</h3>
+    <ul>
+      <li>This component is best used with an icon registry and prebuilt SVG icon set.</li>
+      <li>It delegates rendering to the <code>&lt;svg-icon&gt;</code> component and applies style via property bindings.</li>
+      <li>Size and color styles are applied using inline styles via <code>[svgStyle]</code>.</li>
+    </ul>
+  </div>
+
+  <div class="mb-4">
+    <h3>📌 Examples</h3>
+
+    <h5 class="mt-3">Primary Small Icon</h5>
+    <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-icon name="edit" size="small" appearance="primary"&gt;&lt;/uilibrary2-icon&gt;</code></pre>
+
+    <h5 class="mt-3">Custom Color and Large Size</h5>
+    <pre class="bg-light p-3 rounded"><code>&lt;uilibrary2-icon name="upload" size="large" appearance="custom"&gt;&lt;/uilibrary2-icon&gt;</code></pre>
+  </div>
+</div>
