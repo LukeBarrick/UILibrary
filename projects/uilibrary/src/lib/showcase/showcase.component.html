@@ -994,17 +994,19 @@
     Large Label
   </uilibrary-toggle>
 
-  <uilibrary-toggle [(isDisabled)]="isDisabled">
+  <uilibrary-toggle [disabled]="isDisabled">
     Disabled Toggle
   </uilibrary-toggle>
 
-  <uilibrary-toggle [(isDisabled)]="isDisabled" [value]="true">
+  <uilibrary-toggle [disabled]="isDisabled" [checked]="true"> 
     Disabled & Checked Toggle
   </uilibrary-toggle>
 
-  <uilibrary-toggle [(value)]="checked">
+  <uilibrary-toggle [(ngModel)]="checked" [ngModelOptions]="{ standalone: true }">
     Two way binding Toggle
   </uilibrary-toggle>
+
+  Toggle is currently: {{checked}}
 
   <uilibrary-toggle formControlName="toggle1">
     Form Control Toggle

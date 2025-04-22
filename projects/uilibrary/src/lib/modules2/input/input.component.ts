@@ -107,8 +107,8 @@ export class InputComponent
   //###############################################
   //ControlValueAccessor interface implementation.
   //###############################################
-  @Input() value: any;
-  @Output() valueChange = new EventEmitter<any>();
+  value: any;
+  valueChange = new EventEmitter<any>();
 
   onChange: any = () => { };
   onTouched: any = () => { };

@@ -1,15 +1,12 @@
-import { Component, EventEmitter, forwardRef, Input, Optional, Output, Self } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
-import { UUIDService } from '../../../core/services/UUID.service';
-import { LabelPosition } from '../../../core/enums/label-position.enum';
+import { Component, Input, Optional, Self } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { LabelPosition } from '../../core/enums/label-position.enum';
 
 @Component({
-  selector: 'uilibrary-toggle',
+  selector: 'uilibrary2-toggle',
   templateUrl: './toggle.component.html',
-  providers: [
-  
-  ]
 })
+//Should probably bring checkbox, toggle & radio buttons under a single interface
 export class ToggleComponent implements ControlValueAccessor {
   public id = crypto.randomUUID();
 
