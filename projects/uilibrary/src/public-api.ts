@@ -70,3 +70,10 @@ export * from './lib/modules2/select/select.component';
 export * from './lib/modules2/icon/icon.module';
 export * from './lib/modules2/icon/icon.component';
 export * from './lib/core/services/icon.service'; 
+
+export * from './lib/modules2/toggle/toggle.module';
+export * from './lib/modules2/toggle/toggle.component';
+
+export * from './lib/modules2/radio/radio.module';
+export * from './lib/modules2/radio/button/button.component';
+export * from './lib/modules2/radio/group/group.component';

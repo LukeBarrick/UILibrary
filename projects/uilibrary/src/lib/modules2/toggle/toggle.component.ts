@@ -7,7 +7,7 @@ import { LabelPosition } from '../../core/enums/label-position.enum';
   templateUrl: './toggle.component.html',
 })
 //Should probably bring checkbox, toggle & radio buttons under a single interface
-export class ToggleComponent implements ControlValueAccessor {
+export class Toggle2Component implements ControlValueAccessor {
   public id = crypto.randomUUID();
 
   constructor(@Optional() @Self() ngControl: NgControl) {

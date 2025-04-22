@@ -122,7 +122,6 @@ export class Select2Component
   handleChange(event: any): void {
     this.value = event;
     this.onChange(event);
-    // this.valueChange.emit(event);
     this.onTouched();
   }
 

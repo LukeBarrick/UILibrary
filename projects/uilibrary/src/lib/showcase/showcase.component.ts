@@ -120,6 +120,10 @@ export class ShowcaseComponent implements OnInit {
     radioButton1: new FormControl(undefined, [Validators.required]),
   });
 
+  radioButtons2 = new FormGroup({
+    radioButton1: new FormControl(1, [Validators.required]),
+  });
+
   checkBoxes = new FormGroup({
     checkbox1: new FormControl(undefined, [Validators.required]),
     checkbox2: new FormControl(undefined, [Validators.required]),
@@ -136,7 +140,15 @@ export class ShowcaseComponent implements OnInit {
   });
   dateBindingValue1: string = new Date().toISOString();
 
+  aValue: number = 1;  
   checked: boolean = true;
+  notChecked: boolean = false;
+
+  radioButtonChecked() {
+    this.notChecked = !this.notChecked; 
+    console.log(this.notChecked);
+    console.log(this.radioButtons2.controls.radioButton1.value);
+  }
 
   currentSelection: Item | undefined;
   currentSelection2: Item | undefined;

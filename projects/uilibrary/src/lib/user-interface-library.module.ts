@@ -29,6 +29,7 @@ import { FormField2Module } from './modules2/form-field/form-field.module';
 import { Select2Module } from './modules2/select/select.module';
 import { Icon2Module } from './modules2/icon/icon.module';
 import { Toggle2Module } from './modules2/toggle/toggle.module';
+import { Radio2Module } from './modules2/radio/radio.module';
 
 export function localeIdFactory(parentLocaleId: string | null) {
   return parentLocaleId || 'en-GB'; // Fallback to 'en-US' if no locale is set
@@ -67,7 +68,8 @@ export function localeIdFactory(parentLocaleId: string | null) {
     FormField2Module,
     Select2Module,
     Icon2Module,
-    Toggle2Module
+    Toggle2Module,
+    Radio2Module
   ],
   exports: [
     UserInterfaceLibraryComponent,

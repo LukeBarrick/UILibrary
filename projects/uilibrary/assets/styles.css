@@ -14768,4 +14768,62 @@ uilibrary2-form-field.form-field-label-float .form-field textarea::placeholder {
   color: var(--dark-gray);
 }
 
+uilibrary2-radio-button .input-radio .form-check {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+uilibrary2-radio-button .input-radio .check-input {
+  order: 1;
+}
+uilibrary2-radio-button .input-radio label {
+  cursor: pointer;
+}
+uilibrary2-radio-button .input-radio .left {
+  order: 0;
+  margin-right: 10px;
+}
+uilibrary2-radio-button .input-radio .right {
+  order: 3;
+  margin-left: 10px;
+}
+uilibrary2-radio-button .input-radio .check-input > input[type=radio] {
+  width: 1em;
+  height: 1em;
+  margin-top: 0.25em;
+  vertical-align: top;
+  background-color: #f4f6f9;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 2px solid var(--secondary);
+  appearance: none;
+  print-color-adjust: exact;
+  border-radius: 50% !important;
+}
+uilibrary2-radio-button .input-radio .check-input > input[type=radio]:checked {
+  background-color: white;
+  border-color: var(--secondary);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23408467'/%3e%3c/svg%3e");
+}
+uilibrary2-radio-button .input-radio .check-input > input[type=radio]:checked:disabled {
+  background-color: white;
+  border-color: #CBCBCB;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23CBCBCB'/%3e%3c/svg%3e");
+}
+uilibrary2-radio-button .input-radio .check-input > input[type=radio]:disabled {
+  background-color: white;
+  border-color: #CBCBCB;
+  pointer-events: none;
+  filter: none;
+}
+uilibrary2-radio-button .input-radio .check-input > input[type=radio]:active {
+  filter: brightness(90%);
+}
+uilibrary2-radio-button .input-radio .check-input > input[type=radio]:hover:not(:disabled) {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(64, 132, 103, 0.2);
+  background-color: rgba(64, 132, 103, 0.2);
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToggleComponent } from './toggle.component';
+import { Toggle2Component } from './toggle.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -9,10 +9,10 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   declarations: [
-    ToggleComponent
+    Toggle2Component
   ],
   exports: [
-    ToggleComponent
+    Toggle2Component
   ]
 })
 export class Toggle2Module { }
