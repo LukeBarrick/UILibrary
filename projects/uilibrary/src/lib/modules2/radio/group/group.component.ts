@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Optional, Output, QueryList, Self } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, Optional, QueryList, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { RadioButton2Component } from '../button/button.component';
 
@@ -9,8 +9,7 @@ import { RadioButton2Component } from '../button/button.component';
 export class RadioGroup2Component implements ControlValueAccessor, AfterContentInit {
  @ContentChildren(RadioButton2Component) radioButtons!: QueryList<RadioButton2Component>;
   
-  @Input() value: any;
-  @Output() valueChange = new EventEmitter<any>();
+  value: any;
 
   constructor(@Optional() @Self() public ngControl: NgControl) {
     if(this.ngControl) {
@@ -18,14 +17,14 @@ export class RadioGroup2Component implements ControlValueAccessor, AfterContentI
     }
   }
 
-  private _isDisabled: boolean = false;
+  private _disabled: boolean = false;
 
-  @Input() set isDisabled (disabled: boolean) {
+  @Input() set disabled(disabled: boolean) {
+    this._disabled = disabled;
     setTimeout(() => {
       this.radioButtons.forEach(button => button.disabled = disabled);
     }, 0)
   };
-  @Output() isDisabledChange = new EventEmitter<boolean>();
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -33,7 +32,7 @@ export class RadioGroup2Component implements ControlValueAccessor, AfterContentI
   ngAfterContentInit() {
     setTimeout(() => {
       this.updateRadioButtons();
-    }, 0)
+    }, 0);
   }
 
   writeValue(value: any): void {
@@ -51,21 +50,25 @@ export class RadioGroup2Component implements ControlValueAccessor, AfterContentI
   
   setDisabledState?(isDisabled: boolean): void {
     if (this.radioButtons) {
-      this._isDisabled = isDisabled;
-      this.radioButtons.forEach(button => button.disabled = this._isDisabled);
+      this._disabled = isDisabled;
+      this.radioButtons.forEach(button => button.disabled = this._disabled);
     }
   }
 
   private updateRadioButtons(): void {
     if (this.radioButtons) {
       this.radioButtons.forEach(button => {
-        button.value = button.value === this.value;
-        button.select.subscribe(() => {
+        const isChecked = button.value === this.value;
+        button.checked = isChecked
+
+        button.checkedChange.subscribe(() => {
           this.value = button.value;
-          this.radioButtons.forEach(radio => radio.checked = radio.checked === this.value);
+
+          this.radioButtons.forEach(radio => radio.checked = false);
+          button.checked = true;
+
           this.onChange(this.value);
           this.onTouched();
-          this.valueChange.emit(this.value);
         });
       });
     }

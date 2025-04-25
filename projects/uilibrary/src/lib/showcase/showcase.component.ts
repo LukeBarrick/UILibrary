@@ -116,12 +116,15 @@ export class ShowcaseComponent implements OnInit {
     textArea4: new FormControl('',[Validators.required]),
   });
 
+  radioButtonDisabled: boolean = false;
+  radioButtonModel: string = 'aaa';
+
   radioButtons = new FormGroup({
     radioButton1: new FormControl(undefined, [Validators.required]),
   });
 
   radioButtons2 = new FormGroup({
-    radioButton1: new FormControl(1, [Validators.required]),
+    radioButton1: new FormControl(6, [Validators.required]),
   });
 
   checkBoxes = new FormGroup({
@@ -146,6 +149,7 @@ export class ShowcaseComponent implements OnInit {
 
   radioButtonChecked() {
     this.notChecked = !this.notChecked; 
+    this.radioButtonDisabled = !this.radioButtonDisabled;
     console.log(this.notChecked);
     console.log(this.radioButtons2.controls.radioButton1.value);
   }
