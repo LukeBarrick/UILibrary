@@ -1,9 +1,9 @@
 uilibrary2-form-field {
-
-
+    //Refactor this in form field component, when focussed, set z-index to something astronomical, when unfocussed, set it back
     .form-field:has(uilibrary2-select:focus-within) {
-        // border-bottom-left-radius: 0;
-        // border-bottom-right-radius: 0;
+        label {
+            z-index: 2000;
+        }
     }
 
 
@@ -75,11 +75,6 @@ uilibrary2-form-field {
                 top: 3px !important;
             }
 
-            .ng-dropdown-panel.ng-select-bottom {
-                // border-bottom-left-radius: 7px !important;
-                // border-bottom-right-radius: 7px !important;
-                border-radius: 7px;
-            }
 
             .ng-select.ng-select-opened.ng-select-bottom>.ng-select-container {
                 // border-bottom-left-radius: 0px !important;
@@ -87,11 +82,6 @@ uilibrary2-form-field {
                 border-color: var(--secondary);
             }
 
-            .ng-dropdown-panel.ng-select-bottom {
-                border: none;
-                border-color: var(--secondary);
-                margin-top: 1px;
-            }
 
             .ng-select.ng-select-opened {
                 .ng-arrow-wrapper .ng-arrow {
@@ -105,8 +95,19 @@ uilibrary2-form-field {
             }
 
             .ng-dropdown-panel {
-                animation: growDown 100ms ease-in-out forwards;
-                transform-origin: top center;
+                border-radius: 7px;
+                border: none;
+                border-color: var(--secondary);
+                margin-top: 1px;
+               
+                &.ng-select-bottom {
+                     animation: growDown 100ms ease-in-out forwards;
+                     transform-origin: top center;
+                }
+
+                &.ng-select-top {
+                    bottom: 52px;
+                }
             }
 
             .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {

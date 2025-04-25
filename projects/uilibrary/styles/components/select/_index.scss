@@ -96,7 +96,7 @@ uilibrary-select {
         border-bottom-right-radius: 7px !important;
     }
     
-    .ng-dropdown-panel {
+    .ng-dropdown-panel.ng-select-bottom {
         animation: growDown 100ms ease-in-out forwards;
         transform-origin: top center;
     }

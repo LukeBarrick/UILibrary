@@ -4,6 +4,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { SelectWcagHelperDirective } from './select-wcag-helper/select-wcag-helper.directive';
 import { Select2Component } from './select.component';
+import { CollapseDirective } from './collapse/collapse.directive';
 
 @NgModule({
   imports: [
@@ -11,10 +12,11 @@ import { Select2Component } from './select.component';
     FormsModule,
     NgSelectModule
   ],
-  declarations: [
+  declarations: [	
     Select2Component,
-    SelectWcagHelperDirective
-  ], 
+    SelectWcagHelperDirective,
+    CollapseDirective
+   ], 
   exports: [
     Select2Component
   ]

@@ -452,10 +452,16 @@
       <uilibrary2-radio-button [value]="6" [disabled]="radioButtonDisabled">This is a radio button</uilibrary2-radio-button>
     </uilibrary2-radio-group>
 
-    <uilibrary2-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }" [disabled]="true">
+    <uilibrary2-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }">
       <uilibrary2-radio-button [value]="'aaa'">This is a radio button</uilibrary2-radio-button>
       <uilibrary2-radio-button [value]="2">This is a radio button</uilibrary2-radio-button>
-      <uilibrary2-radio-button [value]="6" [disabled]="radioButtonDisabled">This is a radio button</uilibrary2-radio-button>
+      <uilibrary2-radio-button [value]="6">This is a radio button</uilibrary2-radio-button>
+    </uilibrary2-radio-group>
+
+    <uilibrary2-radio-group [(ngModel)]="radioButtonModel" [disabled]="true">
+      <uilibrary2-radio-button [value]="'aaa'">This is a radio button</uilibrary2-radio-button>
+      <uilibrary2-radio-button [value]="2">This is a radio button</uilibrary2-radio-button>
+      <uilibrary2-radio-button [value]="6">This is a radio button</uilibrary2-radio-button>
     </uilibrary2-radio-group>
 
     Radio Model Value is: {{radioButtonModel}}
