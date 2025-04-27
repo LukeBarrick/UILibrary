@@ -1,8 +1,23 @@
-import { Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnInit, Optional, Output, Renderer2, Self, TemplateRef, forwardRef } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Optional,
+  Output,
+  Renderer2,
+  Self,
+  TemplateRef,
+  ViewChild,
+  forwardRef,
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { UIFormFieldControl } from '../form-field/form-field-control';
 import { Observable } from 'rxjs';
-
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
   selector: 'uilibrary2-select',
@@ -11,15 +26,17 @@ import { Observable } from 'rxjs';
     {
       provide: UIFormFieldControl,
       useExisting: forwardRef(() => Select2Component),
-    }
+    },
   ],
 })
-export class Select2Component 
-  implements UIFormFieldControl<any>,  ControlValueAccessor {
+export class Select2Component
+  implements UIFormFieldControl<any>, ControlValueAccessor
+{
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
   optionTemplate: TemplateRef<any> | null = null;
+  @ViewChild(NgSelectComponent) ngSelect!: NgSelectComponent;
 
   @Input() items: any;
 
@@ -52,20 +69,23 @@ export class Select2Component
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor(@Optional() @Self() public ngControl: NgControl,
-              private readonly el: ElementRef<HTMLInputElement>,
-              private readonly renderer: Renderer2) {
-    if(this.ngControl) {
+  constructor(
+    @Optional() @Self() public ngControl: NgControl,
+    private readonly el: ElementRef<HTMLInputElement>,
+    private readonly renderer: Renderer2
+  ) {
+    if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
   }
 
   _disabled: boolean = false;
+  _open: boolean = false;
   empty: boolean = false;
 
-  stateChanges: Observable<void> = new Observable<void>;
-  id: string ='';
-  
+  stateChanges: Observable<void> = new Observable<void>();
+  id: string = '';
+
   @Input() disabled: boolean = false;
 
   get _empty(): boolean {
@@ -95,12 +115,21 @@ export class Select2Component
   }
 
   _onBlur(): void {
+    // this.ngSelect.blur();
+    // this.ngSelect.close();
     this._focussed = false;
     this.onTouched();
   }
 
   _onFocus(): void {
     this._focussed = true;
+  }
+
+  focus() {
+    //TODO: Figure out way how to focus the select...
+    
+    // this.ngSelect.focus();
+    // this.ngSelect.open();
   }
 
   writeValue(value: any): void {
@@ -135,7 +164,6 @@ export class Select2Component
         }
       }
       this.onChange(this.value);
-      // this.valueChange.emit(this.value);
     }, 0);
   }
 

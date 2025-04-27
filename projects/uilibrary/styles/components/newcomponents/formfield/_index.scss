@@ -31,7 +31,6 @@ uilibrary2-form-field {
 
     .form-field-prefix {
         margin-left: 10px;
-        pointer-events: none;
     }
 
     //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
@@ -54,7 +53,6 @@ uilibrary2-form-field {
 
     .form-field-suffix {
         margin-right: 10px;
-        pointer-events: none;
     }
 
     //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
@@ -109,8 +107,6 @@ uilibrary2-form-field {
             label {
                 color: var(--dark-gray);
             }
-
-            ;
         }
     }
 

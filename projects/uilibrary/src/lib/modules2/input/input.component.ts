@@ -63,6 +63,10 @@ export class InputComponent
   _onFocus(): void {
     this._focussed = true;
   }
+
+  focus() {
+    this.el.nativeElement.focus();
+  }
    //###############################################
   //UIFormFieldControl interface implementation.
    //###############################################

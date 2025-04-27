@@ -14464,7 +14464,6 @@ uilibrary2-form-field .form-field label {
 }
 uilibrary2-form-field .form-field-prefix {
   margin-left: 10px;
-  pointer-events: none;
 }
 uilibrary2-form-field .form-field:has(.form-field-prefix) label {
   left: 25px;
@@ -14477,7 +14476,6 @@ uilibrary2-form-field .form-field:has(.form-field-prefix) uilibrary2-select .ng-
 }
 uilibrary2-form-field .form-field-suffix {
   margin-right: 10px;
-  pointer-events: none;
 }
 uilibrary2-form-field .form-field:has(.form-field-text-prefix) uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   left: 0px !important;
