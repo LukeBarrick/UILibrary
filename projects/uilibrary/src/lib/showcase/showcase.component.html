@@ -292,8 +292,10 @@
     <uilibrary2-form-field>
       <label ui-label>Prefix & Suffix Form Control</label>
       <input ui-input type="text" formControlName="prefixSuffixFormControl" placeholder="This is a placeholder">
-      <uilibrary-tooltip ui-suffix [placement]="'right'" [margin]="'left'">
-        <span content><strong>Title</strong><br />This is tooltip content.</span>
+
+      <uilibrary-tooltip ui-suffix placement="right" margin="left">
+        <span title>Title</span>
+        <span content>This is some tooltip content.</span>
       </uilibrary-tooltip>
     </uilibrary2-form-field>
 
