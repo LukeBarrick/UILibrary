@@ -126,7 +126,8 @@ export class Select2Component
   }
 
   focus() {
-    //TODO: Figure out way how to focus the select...
+    //TODO: Figure out way how to focus the select without it retrigger focus on option selection.
+    //Perhaps onCloseSelect we can force close the field? However clicking retriggers focus and enters back into here to reopen it :D
     
     // this.ngSelect.focus();
     // this.ngSelect.open();
