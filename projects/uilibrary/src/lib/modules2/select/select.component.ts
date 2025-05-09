@@ -2,12 +2,8 @@ import {
   Component,
   ContentChild,
   ElementRef,
-  EventEmitter,
-  HostListener,
   Input,
-  OnInit,
   Optional,
-  Output,
   Renderer2,
   Self,
   TemplateRef,
@@ -81,19 +77,18 @@ export class Select2Component
 
   _disabled: boolean = false;
   _open: boolean = false;
-  empty: boolean = false;
 
   stateChanges: Observable<void> = new Observable<void>();
   id: string = '';
 
   @Input() disabled: boolean = false;
 
-  get _empty(): boolean {
+  get empty(): boolean {
     return this.ngControl ? !this.ngControl.control?.value : false;
   }
 
   get shouldLabelFloat(): boolean {
-    return !this._empty || this._focussed;
+    return !this.empty || this._focussed;
   }
 
   get hasErrors(): boolean {
