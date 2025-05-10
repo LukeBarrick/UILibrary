@@ -46,7 +46,7 @@ export * from './lib/modules/date-pickers/date-picker/date-picker-input/date-pic
 export * from './lib/modules/status-tags/status-tags.module';
 export * from './lib/modules/status-tags/status-tag/status-tag.component';
 
-// export * from './lib/core/services/icon.service';
+// export * from './lib/core/services/icon.service'; //Commented out as V2 version hasn't changed.
 export * from './lib/modules/icons/icon.module';
 export * from './lib/modules/icons/icons/icon.component';
 
@@ -77,3 +77,10 @@ export * from './lib/modules2/toggle/toggle.component';
 export * from './lib/modules2/radio/radio.module';
 export * from './lib/modules2/radio/button/button.component';
 export * from './lib/modules2/radio/group/group.component';
+
+export * from './lib/modules2/datepicker/datepicker.module';
+export * from './lib/modules2/datepicker/date-range-input/date-range-input.component';
+export * from './lib/modules2/datepicker/date-range-input/start-date.directive';
+export * from './lib/modules2/datepicker/date-range-input/end-date.directive';
+export * from './lib/modules2/datepicker/datepicker-input/datepicker-input.component';
+export * from './lib/modules2/datepicker/calendar/calendar.component';
