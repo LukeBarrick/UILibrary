@@ -16,6 +16,13 @@ import { CalendarComponent } from './calendar/calendar.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    Datepicker2InputComponent,
+    DateRangeInput2Component,
+    CalendarComponent,
+    StartDateDirective,
+    EndDateDirective
   ]
 })
 export class Datepicker2Module { }
