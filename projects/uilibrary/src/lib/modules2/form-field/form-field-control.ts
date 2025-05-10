@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Directive()
 export abstract class UIFormFieldControl<T> {

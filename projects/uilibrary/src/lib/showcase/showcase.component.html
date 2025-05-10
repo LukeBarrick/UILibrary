@@ -445,8 +445,20 @@
   {{selectModel}}
 
 
+  <section class="small d-flex flex-column">
+    <uilibrary2-form-field>
+      <label ui-label>Basic Date Picker</label>
+      <uilibrary2-datepicker-input [ngModel]="modelDatePicker1"></uilibrary2-datepicker-input>
+    </uilibrary2-form-field>
 
-
+    <uilibrary2-form-field>
+      <label ui-label>Basic Date Range Picker</label>
+      <uilibrary2-date-range-input>
+        <input startDate/>
+        <input endDate/>
+      </uilibrary2-date-range-input>
+    </uilibrary2-form-field>
+  </section>
 
   <section class="small d-flex flex-column" [formGroup]="radioButtons2">
     <h3>Two Way Binding Radio Group</h3>

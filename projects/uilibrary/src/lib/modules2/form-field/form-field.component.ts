@@ -3,6 +3,7 @@ import {
   Component,
   ContentChild,
   HostListener,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { UIFormFieldControl } from './form-field-control';
@@ -22,7 +23,7 @@ import { UISuffix } from './directives/UISuffix';
     '[class.form-field-dirty]': '_control?.dirty',
   },
 })
-export class FormFieldComponent implements AfterContentChecked, OnInit {
+export class FormFieldComponent implements AfterContentChecked, OnInit, OnDestroy {
   @ContentChild(UIFormFieldControl) formFieldControl:
     | UIFormFieldControl<any>
     | undefined;
@@ -34,6 +35,10 @@ export class FormFieldComponent implements AfterContentChecked, OnInit {
   empty: boolean = true;
 
   constructor() {}
+
+  ngOnDestroy(): void {
+    this.stateChanges?.unsubscribe();
+  }
 
   ngAfterContentChecked(): void {
     this.initialiseControl();

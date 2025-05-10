@@ -1,31 +1,35 @@
 <div class="form-field">
   @if(this._prefix && !this._prefix.isText) {
-    <div class="form-field-prefix">
-      <ng-content select="[ui-prefix]"></ng-content>
-    </div>
+  <div class="form-field-prefix">
+    <ng-content select="[ui-prefix]"></ng-content>
+  </div>
   }
 
   @if(this._prefix?.isText) {
-    <div class="form-field-text-prefix">
-      <ng-content select="[ui-text-prefix]"></ng-content>
-    </div>
+  <div class="form-field-text-prefix">
+    <ng-content select="[ui-text-prefix]"></ng-content>
+  </div>
   }
-  
-  <label>
-      <ng-content select="[ui-label]"></ng-content>
-  </label>  
 
-  <ng-content select="[ui-input], [ui-select]"></ng-content>
+  <label>
+    <ng-content select="[ui-label]"></ng-content>
+  </label>
+
+  <ng-content select="[ui-input],
+                      [ui-select], 
+                      uilibrary2-date-range-input,
+                      uilibrary2-datepicker-input">
+  </ng-content>
 
   @if(this._suffix && !this._suffix.isText) {
-    <div class="form-field-suffix">
-      <ng-content select="[ui-suffix]"></ng-content>
-    </div>
+  <div class="form-field-suffix">
+    <ng-content select="[ui-suffix]"></ng-content>
+  </div>
   }
 
   @if(this._suffix?.isText) {
-    <div class="form-field-text-suffix">
-      <ng-content select="[ui-text-suffix]"></ng-content>
-    </div>
+  <div class="form-field-text-suffix">
+    <ng-content select="[ui-text-suffix]"></ng-content>
+  </div>
   }
 </div>

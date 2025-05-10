@@ -54,6 +54,15 @@ export class ShowcaseComponent implements OnInit {
     });
   }
 
+  datePickers2 = new FormGroup({
+    datePicker1: new FormControl(undefined, [Validators.required]),
+    datePicker2: new FormControl(undefined, [Validators.required]),
+    datePicker3: new FormControl(undefined, [Validators.required]),
+    datePicker4: new FormControl(undefined, [Validators.required])
+  })
+  
+  modelDatePicker1 = new Date().toISOString();
+
   selectControls = new FormGroup({
     selectControl: new FormControl(undefined, [Validators.required]),
     selectControl2: new FormControl(undefined, [Validators.required]),

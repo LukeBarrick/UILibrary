@@ -67,8 +67,6 @@ export class Select2Component
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
-    private readonly el: ElementRef<HTMLInputElement>,
-    private readonly renderer: Renderer2
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
