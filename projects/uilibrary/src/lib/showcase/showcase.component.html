@@ -448,7 +448,7 @@
   <section class="small d-flex flex-column" [formGroup]="datePickers2">
     <uilibrary2-form-field>
       <label ui-label>Basic Date Picker</label>
-      <uilibrary2-datepicker-input [ngModel]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
+      <uilibrary2-datepicker-input [(ngModel)]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
     </uilibrary2-form-field>
 
     Value of control is: {{modelDatePicker1}}

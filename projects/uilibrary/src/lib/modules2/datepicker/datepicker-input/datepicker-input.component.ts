@@ -16,7 +16,6 @@ import { Observable } from 'rxjs';
 })
 export class Datepicker2InputComponent implements UIFormFieldControl<Date>, ControlValueAccessor {
   value: Date | null = null;
-  valueChange = new EventEmitter<Date>();
   
   stateChanges: Observable<void> = new Observable<void>;
   id: string = crypto.randomUUID();
@@ -29,8 +28,8 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
    */
   constructor(@Optional() @Self() public ngControl: NgControl,
               private elRef: ElementRef<Datepicker2InputComponent>) {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
+    if (ngControl) {
+      ngControl.valueAccessor = this;
     }
   }
 
@@ -84,6 +83,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   }
 
   onBlur() {
+    this.onTouched();
     this._focussed = false;
   }
 
@@ -91,8 +91,11 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     this.input.nativeElement.focus();
   }
 
-  onInput(): void {
-    this.onTouched();
+  onInput(event: any): void {
+    console.log('i changed')
+    console.log(event.target.value)
+    this.writeValue(event.target.value);
     this.onChange(this.value);
+    this.onTouched();
   }
 }
