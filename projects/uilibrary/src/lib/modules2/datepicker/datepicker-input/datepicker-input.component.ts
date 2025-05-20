@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, Host, HostListener, Optional, Self, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, Optional, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -16,6 +16,8 @@ import { Observable } from 'rxjs';
 })
 export class Datepicker2InputComponent implements UIFormFieldControl<Date>, ControlValueAccessor {
   value: Date | null = null;
+  valueChange = new EventEmitter<Date>();
+  
   stateChanges: Observable<void> = new Observable<void>;
   id: string = crypto.randomUUID();
   placeholder: string = '';
@@ -53,19 +55,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     this._disabled = isDisabled;
   }
 
-  onFocus() {
-    this._focussed = true;
-  }
-
-  onBlur() {
-    this._focussed = false;
-  }
-
-  focus(): void {
-    this.input.nativeElement.focus();
-  }
-
-  get empty() {
+  get empty(): boolean {
     return this.ngControl ? !this.ngControl.control?.value : false;
   }
 
@@ -73,8 +63,8 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     return this._disabled;
   }
 
-  get shouldLabelFloat() {
-    return !this.empty && this._focussed;
+  get shouldLabelFloat(): boolean {
+    return !this.empty || this._focussed;
   }
 
   get hasErrors() {
@@ -87,5 +77,22 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
 
   get dirty() {
     return this.ngControl ? !!this.ngControl.dirty : false;
+  }
+
+  onFocus() {
+    this._focussed = true;
+  }
+
+  onBlur() {
+    this._focussed = false;
+  }
+
+  focus(): void {
+    this.input.nativeElement.focus();
+  }
+
+  onInput(): void {
+    this.onTouched();
+    this.onChange(this.value);
   }
 }

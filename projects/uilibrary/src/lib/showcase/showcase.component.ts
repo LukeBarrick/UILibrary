@@ -56,12 +56,18 @@ export class ShowcaseComponent implements OnInit {
 
   datePickers2 = new FormGroup({
     datePicker1: new FormControl(undefined, [Validators.required]),
-    datePicker2: new FormControl(undefined, [Validators.required]),
-    datePicker3: new FormControl(undefined, [Validators.required]),
+    startDate1: new FormControl(undefined, [Validators.required]),
+    endDate1: new FormControl(undefined, [Validators.required]),
     datePicker4: new FormControl(undefined, [Validators.required])
   })
+
+  damnson(): void {
+    console.log(this.datePickers2)
+  }
   
   modelDatePicker1 = new Date().toISOString();
+  startDateModel: string | undefined = undefined;
+  endDateModel: string | undefined = undefined;
 
   selectControls = new FormGroup({
     selectControl: new FormControl(undefined, [Validators.required]),

@@ -445,19 +445,36 @@
   {{selectModel}}
 
 
-  <section class="small d-flex flex-column">
+  <section class="small d-flex flex-column" [formGroup]="datePickers2">
     <uilibrary2-form-field>
       <label ui-label>Basic Date Picker</label>
-      <uilibrary2-datepicker-input [ngModel]="modelDatePicker1"></uilibrary2-datepicker-input>
+      <uilibrary2-datepicker-input [ngModel]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
+    </uilibrary2-form-field>
+
+    Value of control is: {{modelDatePicker1}}
+
+    <uilibrary2-form-field>
+      <label ui-label>Form Control Date Picker</label>
+      <uilibrary2-datepicker-input formControlName="datePicker1"></uilibrary2-datepicker-input>
     </uilibrary2-form-field>
 
     <uilibrary2-form-field>
       <label ui-label>Basic Date Range Picker</label>
       <uilibrary2-date-range-input>
-        <input startDate/>
-        <input endDate/>
+        <input startDate [ngModel]="startDateModel" [ngModelOptions]="{ standalone: true }"/>
+        <input endDate [ngModel]="endDateModel" [ngModelOptions]="{ standalone: true }"/>
       </uilibrary2-date-range-input>
     </uilibrary2-form-field>
+
+    <uilibrary2-form-field>
+      <label ui-label>Form Control Date Range Picker</label>
+      <uilibrary2-date-range-input>
+        <input startDate formControlName="startDate1"/>
+        <input endDate formControlName="endDate1"/>
+      </uilibrary2-date-range-input>
+    </uilibrary2-form-field>
+
+    <button (click)="damnson()">debug</button>
   </section>
 
   <section class="small d-flex flex-column" [formGroup]="radioButtons2">
