@@ -92,8 +92,6 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   }
 
   onInput(event: any): void {
-    console.log('i changed')
-    console.log(event.target.value)
     this.writeValue(event.target.value);
     this.onChange(this.value);
     this.onTouched();
