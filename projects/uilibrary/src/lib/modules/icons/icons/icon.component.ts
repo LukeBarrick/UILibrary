@@ -6,38 +6,43 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IconComponent implements OnInit {
   @Input() name: string | undefined;
-  @Input() size: string | undefined;
+  @Input() size: string | number | undefined;
   @Input() appearance: string | undefined;
 
   width: Number = 0;
   height: Number = 0;
   fillColor: string = '';
 
-  constructor() { 
-   
+  constructor() {
+
   }
 
   ngOnInit() {
-    switch(this.size) {
-      case 'small': 
-        this.width = 30;
-        this.height = 30;
-        break;
-      case 'medium': 
-        this.width = 40;
-        this.height = 40;
-        break;
-      case 'large':
-        this.width = 80;
-        this.height = 80;
-        break;
-      default: 
-        this.width = 40;
-        this.height = 40;
-        break;
+    if (typeof this.size == 'number') {
+      this.height = this.size;
+      this.width = this.size;
+    } else if (typeof this.size === 'string') {
+      switch (this.size) {
+        case 'small':
+          this.width = 30;
+          this.height = 30;
+          break;
+        case 'medium':
+          this.width = 40;
+          this.height = 40;
+          break;
+        case 'large':
+          this.width = 80;
+          this.height = 80;
+          break;
+        default:
+          this.width = 40;
+          this.height = 40;
+          break;
+      }
     }
 
-    switch(this.appearance) {
+    switch (this.appearance) {
       case "primary":
         this.fillColor = 'var(--primary)' //TODO refactor the var lol
         break;
@@ -50,7 +55,7 @@ export class IconComponent implements OnInit {
       case 'light-gray':
         this.fillColor = 'var(--light-gray)'
         break;
-      case 'dark-gray': 
+      case 'dark-gray':
         this.fillColor = 'var(--dark-gray)'
         break;
       case 'custom':

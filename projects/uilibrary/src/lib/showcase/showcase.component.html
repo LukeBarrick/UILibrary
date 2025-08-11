@@ -275,6 +275,18 @@
       <uilibrary-icon ui-suffix name="icon-air" size="small"></uilibrary-icon>
     </uilibrary2-form-field>
 
+     <uilibrary2-form-field>
+      <div ui-text-prefix>00.</div>
+      <label ui-label>Text Prefix Form Control</label>
+      <input ui-input type="text" formControlName="prefixFormControl" placeholder="This is a placeholder">
+    </uilibrary2-form-field>
+
+    <uilibrary2-form-field>
+      <label ui-label>Text Suffix Form Control</label>
+      <input ui-input type="text" formControlName="suffixFormControl" placeholder="This is a placeholder">
+       <div ui-text-suffix>.00</div>
+    </uilibrary2-form-field>
+
     <uilibrary2-form-field>
       <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
       <label ui-label>Prefix & Suffix Form Control</label>
@@ -406,7 +418,7 @@
 
     <uilibrary2-form-field>
       <label ui-label>Select w/ Prefix & Suffix</label>
-      <div style="flex:1;" ui-text-prefix>00.</div>
+      <div ui-text-prefix>00.</div>
       <uilibrary2-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
         formControlName="prefixSuffixFormControl" [clearable]="true">
         <ng-template #labelTemplate let-item>

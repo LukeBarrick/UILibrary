@@ -6,6 +6,7 @@ import { EndDateDirective } from './date-range-input/end-date.directive';
 import { Datepicker2InputComponent } from './datepicker-input/datepicker-input.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormsModule } from '@angular/forms';
+import { IconsModule } from "../../../lib/modules/icons/icon.module";
 
 @NgModule({
   declarations: [
@@ -13,12 +14,13 @@ import { FormsModule } from '@angular/forms';
     DateRangeInput2Component,
     CalendarComponent,
     StartDateDirective,
-    EndDateDirective
+    EndDateDirective,
   ],
   imports: [
     CommonModule,
-    FormsModule
-  ],
+    FormsModule,
+    IconsModule
+],
   exports: [
     Datepicker2InputComponent,
     DateRangeInput2Component,

@@ -1,0 +1,138 @@
+uilibrary2-date-range-input {
+    width: 100%;
+}
+
+
+.date-picker-wrapper {
+    position: relative;
+}
+
+.date-picker-calendar-container {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 100%;
+    z-index: 1000;
+}
+
+uilibrary2-datepicker-input {
+    width: 100%;
+    height: 100%;
+
+
+    input[type=text] {
+        width: 100%;
+    }
+}
+
+uilibrary-calendar-select {
+
+    .calendar-wrapper {
+        min-height: 320px;
+        width: 100%;
+        border: 1px solid var(--light-gray);
+        border-radius: 7px;
+        background-color: white;
+        animation: growDown 100ms ease-in-out forwards;
+        transform-origin: top center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .calendar-container {
+            .nav-button {
+                appearance: none;
+                outline: none;
+                border: none;
+                background-color: var(--secondary);
+                height: 30px;
+                width: 30px;
+                border-radius: 7px;
+                font-family: var(--bs-header-font-family);
+                font-size: 14pt;
+                color: white;
+            }
+
+            .datepicker-title-row {
+                margin-bottom: 10px;
+                font-weight: bold;
+                font-family: var(--bs-header-font-family);
+                font-size: 12pt;
+            }
+
+            .day-names {
+                display: grid;
+                width: 100%;
+                grid-template-columns: repeat(7, 1fr);
+                grid-gap: 5px;
+            }
+
+            .calendar {
+                display: grid;
+                height: 100%;
+                width: 100%;
+                grid-template-columns: repeat(7, 1fr);
+                grid-gap: 5px;
+                font-size: 12pt;
+            }
+
+            .day-name {
+                align-self: center;
+                justify-self: center;
+                font-weight: bold;
+            }
+
+            .day {
+                display: flex;
+                align-self: center;
+                justify-self: center;
+                justify-content: center;
+                align-items: center;
+                height: 35px;
+                width: 35px;
+
+                .day-button {
+                    appearance: none;
+                    outline: none;
+                    border: none;
+                    width: 100%;
+                    height: 100%;
+                    background-color: unset;
+                    border-radius: 7px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background-color $transitions;
+
+                    &:hover {
+                        background-color: var(--lighter-gray) !important;
+                    }
+
+                    &.today {
+                        background-color: var(--almost-white);
+                        border-radius: 7px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    &.selected {
+                        background-color: var(--secondary-light) !important;
+                        color: var(--secondary);
+                        font-family: var(--bs-header-font-family);
+                        border-radius: 7px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    &.active-range {
+                        background-color: var(--almost-white);
+                        color: var(--secondary);
+                    }
+                }
+            }
+        }
+    }
+
+}
