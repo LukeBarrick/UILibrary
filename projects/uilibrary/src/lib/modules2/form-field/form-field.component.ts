@@ -4,7 +4,6 @@ import {
   ContentChild,
   HostListener,
   OnDestroy,
-  OnInit,
 } from '@angular/core';
 import { UIFormFieldControl } from './form-field-control';
 import { Subscription } from 'rxjs';
@@ -23,7 +22,7 @@ import { UISuffix } from './directives/UISuffix';
     '[class.form-field-dirty]': '_control?.dirty',
   },
 })
-export class FormFieldComponent implements AfterContentChecked, OnInit, OnDestroy {
+export class FormFieldComponent implements AfterContentChecked, OnDestroy {
   @ContentChild(UIFormFieldControl) formFieldControl:
     | UIFormFieldControl<any>
     | undefined;
@@ -44,8 +43,6 @@ export class FormFieldComponent implements AfterContentChecked, OnInit, OnDestro
     this.initialiseControl();
   }
 
-  ngOnInit(): void {}
-
   get _control() {
     return this.formFieldControl;
   }
@@ -62,11 +59,6 @@ export class FormFieldComponent implements AfterContentChecked, OnInit, OnDestro
     if (this._control != undefined) {
       this.stateChanges = this._control.stateChanges.subscribe({});
     }
-  }
-
-  @HostListener('click', ['$event'])
-  _onFocus($event: any): void {
-    this.focusControl();
   }
 
   public focusControl() {

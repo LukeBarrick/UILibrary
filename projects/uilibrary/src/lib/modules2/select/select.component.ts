@@ -2,6 +2,7 @@ import {
   Component,
   ContentChild,
   ElementRef,
+  HostListener,
   Input,
   Optional,
   Renderer2,
@@ -26,8 +27,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   ],
 })
 export class Select2Component
-  implements UIFormFieldControl<any>, ControlValueAccessor
-{
+  implements UIFormFieldControl<any>, ControlValueAccessor {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
@@ -62,8 +62,8 @@ export class Select2Component
 
   value: any;
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
@@ -108,8 +108,6 @@ export class Select2Component
   }
 
   _onBlur(): void {
-    // this.ngSelect.blur();
-    // this.ngSelect.close();
     this._focussed = false;
     this.onTouched();
   }
@@ -118,11 +116,9 @@ export class Select2Component
     this._focussed = true;
   }
 
+
   focus() {
-    //TODO: Figure out way how to focus the select without it retrigger focus on option selection.
-    //Perhaps onCloseSelect we can force close the field? However clicking retriggers focus and enters back into here to reopen it :D
-    
-    // this.ngSelect.focus();
+    this.ngSelect.focus();
     // this.ngSelect.open();
   }
 

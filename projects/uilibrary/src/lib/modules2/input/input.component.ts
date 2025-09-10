@@ -67,6 +67,7 @@ export class InputComponent
   focus() {
     this.el.nativeElement.focus();
   }
+
    //###############################################
   //UIFormFieldControl interface implementation.
    //###############################################

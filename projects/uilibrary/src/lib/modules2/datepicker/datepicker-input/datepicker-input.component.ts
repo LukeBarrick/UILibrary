@@ -1,7 +1,8 @@
-import { Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, inject, Optional, Self, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, Inject, inject, LOCALE_ID, Optional, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 
 @Component({
   selector: 'uilibrary2-datepicker-input',
@@ -28,7 +29,9 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   /**
    *
    */
-  constructor(@Optional() @Self() public ngControl: NgControl) {
+  constructor(@Optional() @Self() public ngControl: NgControl,
+              @Inject(LOCALE_ID) protected localeId: string,
+              @Inject(DATE_NOW) protected today: Date) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -46,7 +49,6 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   }
 
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
-
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -76,7 +78,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   }
 
   get shouldLabelFloat(): boolean {
-    return !this.empty || this._focussed;
+    return (!this.empty || this._focussed) || this.isOpen;
   }
 
   get hasErrors() {
@@ -96,13 +98,16 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     this.isOpen = true;
   }
 
-  onBlur() {
-    this.onTouched();
-    this._focussed = false;
+  onBlur(event: FocusEvent) {
+    const nextFocused = event.relatedTarget as HTMLElement | null;
+
+    if(!this.elRef.nativeElement.contains(nextFocused)) {
+      this.onTouched();
+      this._focussed = false;
+    }
   }
 
   focus(): void {
-    console.error()
     this.input.nativeElement.focus();
     this.isOpen = true;
   }
@@ -112,6 +117,4 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     this.onChange(this.value);
     this.onTouched();
   }
-
-
 }

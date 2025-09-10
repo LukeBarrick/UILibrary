@@ -1,4 +1,5 @@
 import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 
 @Component({
   selector: 'uilibrary-calendar-select',
@@ -28,7 +29,8 @@ export class CalendarComponent implements OnInit {
   /**
    *
    */
-  constructor(@Inject(LOCALE_ID) protected localeId: string) {
+  constructor(@Inject(LOCALE_ID) protected localeId: string,
+              @Inject(DATE_NOW) protected today: Date) {
 
   }
   
