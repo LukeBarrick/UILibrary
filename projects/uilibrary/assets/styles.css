@@ -14680,6 +14680,7 @@ uilibrary2-form-field .form-field input {
   width: 100%;
   font-size: 14px;
   border: none;
+  background-color: transparent;
 }
 uilibrary2-form-field .form-field input:disabled {
   background-color: var(--almost-white);
@@ -14730,6 +14731,7 @@ uilibrary2-form-field .form-field textarea {
   border: none;
   min-height: 50px;
   border-radius: 7px;
+  background-color: transparent;
 }
 uilibrary2-form-field .form-field textarea:disabled {
   background-color: var(--almost-white);

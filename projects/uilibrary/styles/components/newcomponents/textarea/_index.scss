@@ -10,6 +10,7 @@ uilibrary2-form-field {
             border: none;
             min-height:  $input_height;
             border-radius: 7px;
+            background-color: transparent;
 
             &:disabled {
                 background-color: var(--almost-white);
