@@ -1,2 +1,11 @@
-<ng-content select="[startDate]"></ng-content>
-<ng-content select="[endDate]"></ng-content>
+<div class="date-picker-wrapper">
+    <div class="date-picker-inputs">
+        <ng-content select="[startDate]"></ng-content>
+        <ng-content select="[endDate]"></ng-content>
+    </div>
+    @if(isOpen) {
+    <div class="date-picker-calendar-container">
+        <uilibrary-calendar-select></uilibrary-calendar-select>
+    </div>
+    }
+</div>

@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, forwardRef, Optional, Self, ViewChild } from '@angular/core';
+import { Component, ContentChild, ElementRef, forwardRef, HostListener, inject, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -18,6 +18,7 @@ import { Datepicker2InputComponent } from '../datepicker-input/datepicker-input.
   ]
 })
 export class DateRangeInput2Component implements UIFormFieldControl<Date> {
+  private elRef = inject(ElementRef<DateRangeInput2Component>);
   value: Date | null = null;
 
   stateChanges: Observable<void> = new Observable<void>;
@@ -25,6 +26,19 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   placeholder: string = '';
   private _disabled: boolean = false;
   private _focussed: boolean = false;
+  isOpen: boolean = false;
+  @ViewChildren('input') inputs!: QueryList<ElementRef<HTMLInputElement>>;
+
+  @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    const parent = this.elRef.nativeElement.parentElement;
+
+    if (this.isOpen && !parent.contains(target)) {
+      this.isOpen = false;
+    } else if (this.isOpen) {
+      this.inputs.first.nativeElement.focus(); //Figure out which one to focus 
+    }
+  }
 
   @ContentChild(StartDateDirective) StartDate: UIFormFieldControl<Date> | undefined;
   @ContentChild(EndDateDirective) EndDate: UIFormFieldControl<Date> | undefined;
@@ -53,11 +67,11 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   }
 
   get shouldLabelFloat(): boolean {
-    return !!this.StartDate?.shouldLabelFloat || !!this.EndDate?.shouldLabelFloat;
+    return !!this.StartDate?.shouldLabelFloat || !!this.EndDate?.shouldLabelFloat || this.isOpen;
   }
 
   get hasErrors() {
-    return !!this.StartDate?.hasErrors && this.bothTouched  || !!this.EndDate?.hasErrors && this.bothTouched;
+    return !!this.StartDate?.hasErrors && this.bothTouched || !!this.EndDate?.hasErrors && this.bothTouched;
   }
 
   get touched() {
@@ -74,6 +88,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
 
   onFocus() {
     this._focussed = true;
+    this.isOpen = true;
   }
 
   onBlur() {
@@ -81,6 +96,8 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   }
 
   focus(): void {
+    this.isOpen = true;
+    this.inputs.first.nativeElement.focus(); 
     //custom focus stratergy?
   }
 }

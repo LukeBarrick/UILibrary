@@ -7,6 +7,11 @@ uilibrary2-date-range-input {
     position: relative;
 }
 
+.date-picker-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
 .date-picker-calendar-container {
     position: absolute;
     left: 0;
