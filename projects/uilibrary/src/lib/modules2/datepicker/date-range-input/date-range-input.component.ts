@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, forwardRef, HostListener, inject, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ContentChild, ContentChildren, ElementRef, forwardRef, HostListener, inject, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -27,7 +27,6 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   private _disabled: boolean = false;
   private _focussed: boolean = false;
   isOpen: boolean = false;
-  @ViewChildren('input') inputs!: QueryList<ElementRef<HTMLInputElement>>;
 
   @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
@@ -36,7 +35,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
     if (this.isOpen && !parent.contains(target)) {
       this.isOpen = false;
     } else if (this.isOpen) {
-      this.inputs.first.nativeElement.focus(); //Figure out which one to focus 
+      // this.StartDate?.focus(); 
     }
   }
 
@@ -97,7 +96,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
 
   focus(): void {
     this.isOpen = true;
-    this.inputs.first.nativeElement.focus(); 
+    // this.StartDate?.focus();
     //custom focus stratergy?
   }
 }

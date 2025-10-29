@@ -14864,12 +14864,13 @@ uilibrary-calendar-select .calendar-wrapper {
   width: 100%;
   border: 1px solid var(--light-gray);
   border-radius: 7px;
-  background-color: white;
+  background-color: #fff;
   animation: growDown 100ms ease-in-out forwards;
   transform-origin: top center;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  color: #000;
 }
 uilibrary-calendar-select .calendar-wrapper .calendar-container .nav-button {
   appearance: none;
@@ -14881,7 +14882,7 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .nav-button {
   border-radius: 7px;
   font-family: var(--bs-header-font-family);
   font-size: 14pt;
-  color: white;
+  color: #fff;
 }
 uilibrary-calendar-select .calendar-wrapper .calendar-container .datepicker-title-row {
   margin-bottom: 10px;

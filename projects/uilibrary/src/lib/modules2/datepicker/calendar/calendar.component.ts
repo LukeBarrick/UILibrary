@@ -88,4 +88,9 @@ export class CalendarComponent implements OnInit {
     this.generateCalendar(this.selectedMonth, this.selectedYear);
   }
 
+  selectDay(day: number, month: number, year: number) {
+    const selected = new Date(year, month, day);
+    console.log(selected);
+  }
+
 }

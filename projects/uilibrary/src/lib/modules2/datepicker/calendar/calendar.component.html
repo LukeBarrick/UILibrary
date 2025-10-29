@@ -29,7 +29,7 @@
             @for(day of week; track day;) {
             @if(day !== null) {
             <div class="day">
-                <button class="day-button">
+                <button class="day-button" (click)="selectDay(day, selectedMonth, selectedYear)">
                     {{day}}
                 </button>
             </div>
