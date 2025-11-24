@@ -65,7 +65,7 @@ export class ShowcaseComponent implements OnInit {
     console.log(this.datePickers2.controls)
   }
   
-  modelDatePicker1: string = new Date().toISOString();
+  modelDatePicker1: Date = new Date();
   startDateModel: string | undefined = undefined;
   endDateModel: string | undefined = undefined;
 

@@ -3,6 +3,9 @@ import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
+import { DatePipe } from '@angular/common';
+import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
+import { format, parse } from 'date-fns';
 
 @Component({
   selector: 'uilibrary2-datepicker-input',
@@ -17,7 +20,9 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 })
 export class Datepicker2InputComponent implements UIFormFieldControl<Date>, ControlValueAccessor {
   private elRef = inject(ElementRef<Datepicker2InputComponent>);
+  private dateFnsLocaleService = inject(DateFnsLocaleService);
   value: Date | null = null;
+  displayValue: string = '';
   
   stateChanges: Observable<void> = new Observable<void>;
   id: string = crypto.randomUUID();
@@ -53,8 +58,11 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  writeValue(value: any): void {
+  writeValue(value: Date | null): void {
+    if(!value) return;
     this.value = value;
+    console.log('write value ran')
+    this.displayValue = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
   }
   
   registerOnChange(fn: any): void {
@@ -113,7 +121,17 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   }
 
   onInput(event: any): void {
-    this.writeValue(event.target.value);
+    console.log('i fired')
+    const input = event.target.value;
+    const date = parse(input.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
+    this.writeValue(date);
+    this.onChange(this.value);
+    this.onTouched();
+  }
+
+  dateSelected($event: Date): void {
+    console.log('i fired 2') 
+    this.writeValue($event);
     this.onChange(this.value);
     this.onTouched();
   }

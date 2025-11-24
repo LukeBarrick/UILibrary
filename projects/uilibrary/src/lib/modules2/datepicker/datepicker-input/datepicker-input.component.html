@@ -1,9 +1,9 @@
 <div class="date-picker-wrapper">
-    <input #input type="text" [id]="id" (input)="onInput($event)" [(ngModel)]="value" [disabled]="disabled"
+    <input #input type="text" [id]="id" (input)="onInput($event)" [value]="displayValue" [disabled]="disabled"
         (blur)="onBlur($event)" (focus)="onFocus()">
     @if(isOpen) {
     <div class="date-picker-calendar-container">
-        <uilibrary-calendar-select></uilibrary-calendar-select>
+        <uilibrary-calendar-select (dateSelected)="dateSelected($event)"></uilibrary-calendar-select>
     </div>
     }
 </div>

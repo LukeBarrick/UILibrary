@@ -1,9 +1,10 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { ThrowIfAlreadyLoaded } from './module-import-guard';
 
 import { UUIDService } from './services/UUID.service';
 import { ToastService } from './services/toast.service';
+import { DateFnsLocaleService } from './services/date-fns-locale.service';
 
 import { DATE_NOW } from './tokens/DATE_NOW';
 
@@ -34,6 +35,7 @@ registerLocaleData(localeJa);
   providers: [
     UUIDService,
     ToastService,
+    DateFnsLocaleService,
     { provide: DATE_NOW, useFactory: () => new Date()}
   ],
   exports: [

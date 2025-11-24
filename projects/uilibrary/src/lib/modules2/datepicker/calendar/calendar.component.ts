@@ -1,4 +1,4 @@
-import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, LOCALE_ID, OnInit, Output } from '@angular/core';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 
 @Component({
@@ -8,6 +8,7 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 })
 export class CalendarComponent implements OnInit {
   currentDate = new Date();
+  selecteDate: Date | null = null;
   dateTracker = new Date();
 
   selectedMonth: number = this.currentDate.getMonth();
@@ -15,6 +16,8 @@ export class CalendarComponent implements OnInit {
     month: 'long',
   });
   selectedYear: number = this.currentDate.getFullYear();
+
+  @Output() dateSelected = new EventEmitter<Date>();
 
   mon = new Date('0001-01-01T00:00:00');
   tue = new Date('0001-02-01T00:00:00');
@@ -90,7 +93,36 @@ export class CalendarComponent implements OnInit {
 
   selectDay(day: number, month: number, year: number) {
     const selected = new Date(year, month, day);
+    this.selecteDate = selected;
+    this.dateSelected.emit(selected);
     console.log(selected);
   }
 
+  isSelected(day: number): boolean {
+    if(!this.selecteDate) return false; 
+
+    const selecteDate = new Date(
+      this.selectedYear,
+      this.selectedMonth,
+      day
+    );
+
+    return this.selecteDate.getDate() === selecteDate.getDate() &&
+      this.selecteDate.getMonth() === selecteDate.getMonth() &&
+      this.selecteDate.getFullYear() === selecteDate.getFullYear()
+  }
+
+  isToday(day: number): boolean {
+    const todaysDate = new Date(
+      this.selectedYear,
+      this.selectedMonth,
+      day
+    );
+
+    return (
+      todaysDate.getDate() === this.today.getDate() &&
+      todaysDate.getMonth() === this.today.getMonth() &&
+      todaysDate.getFullYear() === this.today.getFullYear()
+    );
+  }
 }
