@@ -1011,10 +1011,10 @@
     <uilibrary-checkbox variant="fail" size="large">
       Large Fail Checkbox
     </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" size="large" [(isDisabled)]="isDisabled">
+    <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled">
       Large Disabled Checkbox
     </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" size="large" [(isDisabled)]="isDisabled" [value]="true">
+    <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled" [checked]="true">
       Large Checked Disabled Checkbox
     </uilibrary-checkbox>
     <h3>Large Left Aligned Checkboxes</h3>
@@ -1039,13 +1039,13 @@
     <uilibrary-checkbox variant="fail">
       Small Fail Checkbox
     </uilibrary-checkbox>
-    <uilibrary-checkbox variant="pass" [(value)]="checked">
+    <uilibrary-checkbox variant="pass" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
       Small Pass Two way Binding Checkbox
     </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" [(isDisabled)]="isDisabled">
+    <uilibrary-checkbox variant="branded" [disabled]="isDisabled">
       Small Disabled Checkbox
     </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" [(isDisabled)]="isDisabled" [value]="true">
+    <uilibrary-checkbox variant="branded" [disabled]="isDisabled" [checked]="true">
       Small Checked Disabled Checkbox
     </uilibrary-checkbox>
 
@@ -1054,6 +1054,8 @@
       Small Form Control Checkbox
     </uilibrary-checkbox>
   </section>
+
+  <uilibrary-button (click)="damnson()">debug</uilibrary-button>
 
   <section class="small" [formGroup]="radioButtons">
     <h1>Radio Groups</h1>

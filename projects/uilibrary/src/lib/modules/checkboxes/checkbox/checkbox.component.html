@@ -5,7 +5,7 @@
         <div [ngClass]="{'visually-hidden': hideLabel === true, 'order-1 margin-left-20px': labelPosition == LabelPosition.Right, 'order-n1 margin-right-20px': labelPosition == LabelPosition.Left}">
           <ng-content></ng-content>
         </div>
-        <input class="order-base" [id]="id" type="checkbox" [(ngModel)]="value" [disabled]="isDisabled"
+        <input class="order-base" [id]="id" type="checkbox" [(ngModel)]="value" [disabled]="_disabled"
           (click)="handleChange()" (onKeyPress)="handleChange()" [attr.aria-checked]="value" />
         <div class="circle2"></div>
       </label>

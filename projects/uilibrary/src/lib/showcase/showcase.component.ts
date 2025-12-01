@@ -62,7 +62,8 @@ export class ShowcaseComponent implements OnInit {
   })
 
   damnson(): void {
-    console.log(this.datePickers2.controls)
+    console.log(this.checkBoxes.value)
+    console.log(this.checked)
   }
   
   modelDatePicker1: Date = new Date();

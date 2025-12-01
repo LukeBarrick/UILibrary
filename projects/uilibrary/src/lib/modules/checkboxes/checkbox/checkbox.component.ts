@@ -30,11 +30,20 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() variant: string = 'branded';
   @Input() size: string = 'small';
 
-  @Input() value: boolean = false;
-  @Output() valueChange = new EventEmitter<boolean>();
+  @Input() set checked(value: boolean) {
+    this.writeValue(value);
+  };
 
-  @Input() isDisabled: boolean = false;
-  @Output() isDisabledChange = new EventEmitter<boolean>();
+  value: boolean = false;
+  valueChange = new EventEmitter<boolean>();
+
+  _disabled: boolean = false;
+  @Input() set disabled(disabled: boolean) {
+    this.setDisabledState(disabled);
+  }
+  get disabled() {
+    return this._disabled;
+  }
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -51,8 +60,8 @@ export class CheckboxComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+  setDisabledState(isDisabled: boolean): void {
+    this._disabled  = isDisabled;
   }
 
   handleChange() {
