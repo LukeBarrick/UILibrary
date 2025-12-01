@@ -57,11 +57,14 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  writeValue(value: Date | null): void {
-    if(!value) return;
-    this.value = value;
-    this.displayValue = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
-    this.addDateToCalendar(value);
+  writeValue(value: Date | string | null): void {
+    if(value instanceof Date) {
+      if(!value) return;
+      this.value = value;
+      this.displayValue = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
+      this.addDateToCalendar(value);
+    }
+    
   }
   
   registerOnChange(fn: any): void {
@@ -126,13 +129,21 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   setValue(): void { return; }
 
   onInput(event: any): void {
-    const input = event.target.value;
-    const date = parse(input.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
-    this.handleInput(date);
+    const value = event.target.value;
+    const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
+
+    if(date.toString() === 'Invalid Date') {
+      this.value = value;
+      this.displayValue = value;
+      this.onChange(value)
+      this.onTouched();
+    } else {
+      this.handleDateInput(date);
+    }
   }
 
   dateSelected($event: Date): void {
-    this.handleInput($event);
+    this.handleDateInput($event);
   }
 
   selecteDate: Date | undefined = undefined;
@@ -141,7 +152,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     this.selecteDate = value;
   }
 
-  handleInput(value: Date): void {
+  handleDateInput(value: Date): void {
     this.writeValue(value);
     this.onChange(this.value);
     this.onTouched();

@@ -113,7 +113,6 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   }
 
   dateSelected(value: Date): void {
-
     if(this.endDate?.shouldLabelFloat) {
       this.startDate?.setValue(value);
     } else if (this.startDate?.shouldLabelFloat) {

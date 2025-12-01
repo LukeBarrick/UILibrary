@@ -59,8 +59,13 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
   @HostListener('input', ['$event.target.value'])
   onInput(value: any): void {
     const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
-    this.onChange(date);
+    if(date.toString() === 'Invalid Date') {
+      this.onChange(value)
+    } else {
+      this.onChange(date);
+    } 
   }
+
 
   @HostListener('blur')
   onBlur(): void {
@@ -110,15 +115,8 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
   }
 
   handleInput(value: Date): void {
-    console.log('value written')
     this.writeValue(value);
     this.onChange(this.value);
     this.onTouched();
-  }
-
-  private _onInput(event: any): void {
-    const input = event.target.value;
-    const date = parse(input.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
-    this.handleInput(date);
   }
 }
