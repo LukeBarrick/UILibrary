@@ -62,8 +62,7 @@ export class ShowcaseComponent implements OnInit {
   })
 
   damnson(): void {
-    console.log(this.checkBoxes.value)
-    console.log(this.checked)
+    console.log(this.datePickers2.value)
   }
   
   modelDatePicker1: Date = new Date();
@@ -227,5 +226,9 @@ export class ShowcaseComponent implements OnInit {
     this.toastService.error("message", "title");
 
     console.log(this.datePickers);
+  }
+
+  stringify(value: any) {
+    return JSON.stringify(value);
   }
 }

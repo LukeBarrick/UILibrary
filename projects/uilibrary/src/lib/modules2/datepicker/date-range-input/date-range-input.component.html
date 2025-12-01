@@ -5,7 +5,7 @@
     </div>
     @if(isOpen) {
     <div class="date-picker-calendar-container">
-        <uilibrary-calendar-select></uilibrary-calendar-select>
+        <uilibrary-calendar-select (dateSelected)="dateSelected($event)" [selecteDates]="selecteDates"></uilibrary-calendar-select>
     </div>
     }
 </div>

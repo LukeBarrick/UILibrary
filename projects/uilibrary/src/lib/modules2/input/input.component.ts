@@ -68,6 +68,10 @@ export class InputComponent
     this.el.nativeElement.focus();
   }
 
+  setValue(value: string): void { 
+    this.handleInput(value); 
+  }
+
    //###############################################
   //UIFormFieldControl interface implementation.
    //###############################################
@@ -102,6 +106,10 @@ export class InputComponent
     return this.ngControl ? !!this.ngControl.control?.invalid : false;
   }
 
+  get hasFocus() {
+    return this._focussed;
+  }
+
   get touched(): boolean {
     return this.ngControl ? !!this.ngControl.touched : false;
   }
@@ -132,6 +140,12 @@ export class InputComponent
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  handleInput(value: string): void {
+    this.writeValue(value);
+    this.onChange(this.value);
+    this.onTouched();
   }
   //###############################################
 }

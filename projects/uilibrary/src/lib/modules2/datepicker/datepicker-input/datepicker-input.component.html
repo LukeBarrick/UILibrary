@@ -3,7 +3,7 @@
         (blur)="onBlur($event)" (focus)="onFocus()">
     @if(isOpen) {
     <div class="date-picker-calendar-container">
-        <uilibrary-calendar-select (dateSelected)="dateSelected($event)"></uilibrary-calendar-select>
+        <uilibrary-calendar-select (dateSelected)="dateSelected($event)" [selecteDates]="selecteDate"></uilibrary-calendar-select>
     </div>
     }
 </div>

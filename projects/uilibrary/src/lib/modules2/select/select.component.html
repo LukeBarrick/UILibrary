@@ -1,6 +1,6 @@
 <ng-select class="custom" libSelectWcagHelper2 [attr.data-ariaLabel]="ariaLabel || placeholder" [attr.aria-invalid]=""
   [(ngModel)]="value" [items]="items" [disabled]="disabled" bindLabel="label" bindValue="value"
-  [compareWith]="compareFn" (change)="handleChange($event)" [loading]="loading" [loadingText]="loadingText"
+  [compareWith]="compareFn" (change)="handleInput($event)" [loading]="loading" [loadingText]="loadingText"
   [multiple]="multiple" [maxSelectedItems]="maxSelectedItems" [hideSelected]="hideSelected"
   [clearSearchOnAdd]="clearSearchOnAdd" [readonly]="readonly" [placeholder]="placeholder" [notFoundText]="notFoundText"
   [markFirst]="markFirst" [clearOnBackspace]="clearOnBackspace" [clearable]="clearable" [closeOnSelect]="closeOnSelect"

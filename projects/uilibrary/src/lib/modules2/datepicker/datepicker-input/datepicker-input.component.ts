@@ -3,7 +3,6 @@ import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
-import { DatePipe } from '@angular/common';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 import { format, parse } from 'date-fns';
 
@@ -61,8 +60,8 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   writeValue(value: Date | null): void {
     if(!value) return;
     this.value = value;
-    console.log('write value ran')
     this.displayValue = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
+    this.addDateToCalendar(value);
   }
   
   registerOnChange(fn: any): void {
@@ -93,6 +92,10 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     return this.ngControl ? !!this.ngControl.control?.invalid : false;
   }
 
+  get hasFocus() {
+    return this._focussed;
+  }
+
   get touched() {
     return this.ngControl ? !!this.ngControl.touched : false;
   }
@@ -120,18 +123,26 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     this.isOpen = true;
   }
 
+  setValue(): void { return; }
+
   onInput(event: any): void {
-    console.log('i fired')
     const input = event.target.value;
     const date = parse(input.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
-    this.writeValue(date);
-    this.onChange(this.value);
-    this.onTouched();
+    this.handleInput(date);
   }
 
   dateSelected($event: Date): void {
-    console.log('i fired 2') 
-    this.writeValue($event);
+    this.handleInput($event);
+  }
+
+  selecteDate: Date | undefined = undefined;
+
+  addDateToCalendar(value: Date): void {
+    this.selecteDate = value;
+  }
+
+  handleInput(value: Date): void {
+    this.writeValue(value);
     this.onChange(this.value);
     this.onTouched();
   }

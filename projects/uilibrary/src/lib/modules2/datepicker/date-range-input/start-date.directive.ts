@@ -1,7 +1,9 @@
-import { Directive, ElementRef, forwardRef, HostListener, Optional, Renderer2, Self, ViewChild } from '@angular/core';
+import { Directive, ElementRef, forwardRef, HostListener, inject, Optional, Renderer2, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { format, parse } from 'date-fns';
+import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 
 @Directive({
   selector: '[startDate]',
@@ -13,6 +15,7 @@ import { Observable } from 'rxjs';
   ]
 })
 export class StartDateDirective implements UIFormFieldControl<Date>, ControlValueAccessor {
+  private dateFnsLocaleService = inject(DateFnsLocaleService);
   value: Date | null = null;
 
   stateChanges: Observable<void> = new Observable<void>;
@@ -35,8 +38,10 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  writeValue(value: any): void {
-    this.el.nativeElement.value = value ?? '';
+  writeValue(value: Date | undefined): void {
+    if(!value) return;
+    this.el.nativeElement.value = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
+    this.value = value;
   }
 
   registerOnChange(fn: any): void {
@@ -53,7 +58,8 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
 
   @HostListener('input', ['$event.target.value'])
   onInput(value: any): void {
-    this.onChange(value);
+    const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
+    this.onChange(date);
   }
 
   @HostListener('blur')
@@ -83,6 +89,10 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
     return this.ngControl ? !!this.ngControl.control?.invalid : false;
   }
 
+  get hasFocus() {
+    return this._focussed;
+  }
+
   get touched() {
     return this.ngControl ? !!this.ngControl.touched : false;
   }
@@ -94,4 +104,20 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   focus(): void {
     this.el.nativeElement.focus();
   }
+
+  setValue(value: Date): void {
+    this.handleInput(value);
+  }
+
+  handleInput(value: Date): void {
+    this.writeValue(value);
+    this.onChange(this.value);
+    this.onTouched();
+  }
+
+  private _onInput(event: any): void {
+    const input = event.target.value;
+    const date = parse(input.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
+    this.handleInput(date);
+  } 
 }

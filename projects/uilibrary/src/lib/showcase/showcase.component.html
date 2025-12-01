@@ -365,7 +365,7 @@
     <uilibrary2-form-field>
       <label ui-label>Select Form Control</label>
       <uilibrary2-select ui-select [items]="items"
-        placeholder="Please select an item from the dropdown list. aaaaaaaaaaaaaaaaaa"
+        placeholder="Please select an item from the dropdown list."
         formControlName="placeholderFormControl" [clearable]="true">
         <ng-template #labelTemplate let-item>
           <div>
@@ -454,7 +454,9 @@
     </uilibrary2-form-field>
   </section>
 
-  {{selectModel}}
+  <section class="small d-flex flex-column">
+   <p>{{stringify(selectModel)}}</p>
+  </section>
 
 
   <section class="small d-flex flex-column" [formGroup]="datePickers2">
@@ -473,10 +475,14 @@
     <uilibrary2-form-field>
       <label ui-label>Basic Date Range Picker</label>
       <uilibrary2-date-range-input>
-        <input startDate [ngModel]="startDateModel" [ngModelOptions]="{ standalone: true }"/>
-        <input endDate [ngModel]="endDateModel" [ngModelOptions]="{ standalone: true }"/>
+        <input startDate [(ngModel)]="startDateModel" [ngModelOptions]="{ standalone: true }"/>
+        <input endDate [(ngModel)]="endDateModel" [ngModelOptions]="{ standalone: true }"/>
       </uilibrary2-date-range-input>
     </uilibrary2-form-field>
+
+    Value of Start Date: {{startDateModel}}
+    <br/>
+    Value of End Date: {{endDateModel}}
 
     <uilibrary2-form-field>
       <label ui-label>Form Control Date Range Picker</label>

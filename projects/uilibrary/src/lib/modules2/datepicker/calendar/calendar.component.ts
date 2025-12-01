@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, LOCALE_ID, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, LOCALE_ID, OnInit, Output } from '@angular/core';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 
 @Component({
@@ -36,6 +36,8 @@ export class CalendarComponent implements OnInit {
               @Inject(DATE_NOW) protected today: Date) {
 
   }
+
+  @Input() selecteDates: Date[] | Date | undefined;
   
   ngOnInit(): void {
     this.generateCalendar(this.selectedMonth, this.selectedYear);
@@ -95,11 +97,11 @@ export class CalendarComponent implements OnInit {
     const selected = new Date(year, month, day);
     this.selecteDate = selected;
     this.dateSelected.emit(selected);
-    console.log(selected);
+    console.log('selected inside calendar');
   }
 
   isSelected(day: number): boolean {
-    if(!this.selecteDate) return false; 
+    if(!this.selecteDates) return false; 
 
     const selecteDate = new Date(
       this.selectedYear,
@@ -107,9 +109,26 @@ export class CalendarComponent implements OnInit {
       day
     );
 
-    return this.selecteDate.getDate() === selecteDate.getDate() &&
-      this.selecteDate.getMonth() === selecteDate.getMonth() &&
-      this.selecteDate.getFullYear() === selecteDate.getFullYear()
+    let isSelected: boolean = false;
+
+    if(Array.isArray(this.selecteDates)) {
+      for(let i = 0; i < this.selecteDates.length; i++) {
+        let selected = this.selecteDates[i].getDate() == selecteDate.getDate() &&
+        this.selecteDates[i].getMonth() === selecteDate.getMonth() &&
+        this.selecteDates[i].getFullYear() === selecteDate.getFullYear()
+
+        if(selected) {
+          isSelected = true;
+          break;
+        }
+      }
+    } else {
+      isSelected = this.selecteDates.getDate() === selecteDate.getDate() &&
+      this.selecteDates.getMonth() === selecteDate.getMonth() &&
+      this.selecteDates.getFullYear() === selecteDate.getFullYear()
+    }
+
+    return isSelected;
   }
 
   isToday(day: number): boolean {

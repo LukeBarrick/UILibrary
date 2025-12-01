@@ -93,6 +93,10 @@ export class Select2Component
     return this.ngControl ? !!this.ngControl.control?.invalid : false;
   }
 
+  get hasFocus() {
+    return this._focussed;
+  }
+
   get touched(): boolean {
     return this.ngControl ? !!this.ngControl.touched : false;
   }
@@ -116,10 +120,13 @@ export class Select2Component
     this._focussed = true;
   }
 
-
   focus() {
     this.ngSelect.focus();
     // this.ngSelect.open();
+  }
+
+  setValue(value: any): void { 
+    this.handleInput(value);
   }
 
   writeValue(value: any): void {
@@ -138,7 +145,7 @@ export class Select2Component
     this._disabled = disabled;
   }
 
-  handleChange(event: any): void {
+  handleInput(event: any): void {
     this.value = event;
     this.onChange(event);
     this.onTouched();

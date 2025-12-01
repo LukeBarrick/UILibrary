@@ -12,10 +12,12 @@ export abstract class UIFormFieldControl<T> {
   readonly ngControl!: NgControl;
 
   focus(): void { return; };
+  setValue(value: T): void { return; }
 
   readonly disabled: boolean = false;
   readonly shouldLabelFloat: boolean = false;
   readonly hasErrors: boolean = false;
+  readonly hasFocus: boolean = false;
   readonly touched: boolean = false;
   readonly dirty: boolean = false;
 }

@@ -35,19 +35,19 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
     if (this.isOpen && !parent.contains(target)) {
       this.isOpen = false;
     } else if (this.isOpen) {
-      // this.StartDate?.focus(); 
+      // this.startDate?.focus(); //figure out which to select won't always be start date
     }
   }
 
-  @ContentChild(StartDateDirective) StartDate: UIFormFieldControl<Date> | undefined;
-  @ContentChild(EndDateDirective) EndDate: UIFormFieldControl<Date> | undefined;
+  @ContentChild(StartDateDirective) startDate: UIFormFieldControl<Date> | undefined;
+  @ContentChild(EndDateDirective) endDate: UIFormFieldControl<Date> | undefined;
 
   get _startDateControl() {
-    return this.StartDate?.ngControl;
+    return this.startDate?.ngControl;
   }
 
   get _endDateControl() {
-    return this.EndDate?.ngControl;
+    return this.endDate?.ngControl;
   }
 
   /**
@@ -66,23 +66,27 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   }
 
   get shouldLabelFloat(): boolean {
-    return !!this.StartDate?.shouldLabelFloat || !!this.EndDate?.shouldLabelFloat || this.isOpen;
+    return !!this.startDate?.shouldLabelFloat || !!this.endDate?.shouldLabelFloat || this.isOpen;
   }
 
   get hasErrors() {
-    return !!this.StartDate?.hasErrors && this.bothTouched || !!this.EndDate?.hasErrors && this.bothTouched;
+    return !!this.startDate?.hasErrors && this.bothTouched || !!this.endDate?.hasErrors && this.bothTouched;
+  }
+
+  get hasFocus() {
+    return !!this.startDate?.hasFocus || !!this.endDate?.hasFocus;
   }
 
   get touched() {
-    return !!this.StartDate?.touched || !!this.EndDate?.touched;
+    return !!this.startDate?.touched || !!this.endDate?.touched;
   }
 
   get dirty() {
-    return !!this.StartDate?.dirty || !!this.EndDate?.dirty;
+    return !!this.startDate?.dirty || !!this.endDate?.dirty;
   }
 
   get bothTouched() {
-    return !!(this.StartDate?.touched && this.EndDate?.touched);
+    return !!(this.startDate?.touched && this.endDate?.touched);
   }
 
   onFocus() {
@@ -98,5 +102,34 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
     this.isOpen = true;
     // this.StartDate?.focus();
     //custom focus stratergy?
+  }
+
+  setValue(): void { return; }
+
+  selecteDates: Date[] = [];
+
+  addDateToCalendar(value: Date): void {
+    this.selecteDates?.push(value);
+  }
+
+  dateSelected(value: Date): void {
+
+    if(this.endDate?.shouldLabelFloat) {
+      this.startDate?.setValue(value);
+    } else if (this.startDate?.shouldLabelFloat) {
+      this.endDate?.setValue(value);
+    } else {
+      this.startDate?.setValue(value);
+    }
+
+    // if (this.startDate?.hasFocus) {
+    //   this.startDate.setValue(value);
+    // }
+
+    // if (this.endDate?.hasFocus) {
+    //   this.endDate.setValue(value);
+    // }
+
+    this.addDateToCalendar(value);
   }
 }
