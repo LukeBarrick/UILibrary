@@ -123,6 +123,8 @@ export class ShowcaseComponent implements OnInit {
   });
 
   selectModel =  { id: 1, name: 'Option 1' };
+  selectMultiModel = [ { id: 2, name: 'Option 2' }, { id: 4, name: 'Option 4' } ];
+  selectMultiModelPrefill: any;
 
   textAreas = new FormGroup({
     textArea1: new FormControl('',[Validators.required]),

@@ -452,11 +452,37 @@
         </ng-template>
       </uilibrary2-select>
     </uilibrary2-form-field>
+    
+    <section class="small d-flex flex-column">
+      <p>{{stringify(selectModel)}}</p>
+    </section>
+    
+    
+    <uilibrary2-form-field>
+      <label ui-label>Multi Select</label>
+      <uilibrary2-select ui-select [items]="items" [(ngModel)]="selectMultiModel" [ngModelOptions]="{ standalone: true }"  
+      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name"
+        placeholder="Please select an item from the dropdown list." [clearable]="true">
+      </uilibrary2-select>
+    </uilibrary2-form-field>
+
+      <section class="small d-flex flex-column">
+      <p>{{stringify(selectMultiModel)}}</p>
+    </section>
+
+    <uilibrary2-form-field>
+      <label ui-label>Multi Select w/ Prefill</label>
+      <uilibrary2-select ui-select [items]="items" [(ngModel)]="selectMultiModelPrefill" [ngModelOptions]="{ standalone: true }"
+      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" [prefillFirstOption]="true"
+        placeholder="Please select an item from the dropdown list." [clearable]="true">
+      </uilibrary2-select>
+    </uilibrary2-form-field>
+
+      <section class="small d-flex flex-column">
+      <p>{{stringify(selectMultiModelPrefill)}}</p>
+    </section>
   </section>
 
-  <section class="small d-flex flex-column">
-   <p>{{stringify(selectModel)}}</p>
-  </section>
 
 
   <section class="small d-flex flex-column" [formGroup]="datePickers2">

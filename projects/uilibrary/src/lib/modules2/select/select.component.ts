@@ -52,6 +52,9 @@ export class Select2Component
   @Input() clearOnBackspace: boolean = true;
   @Input() clearable: boolean = false;
   @Input() closeOnSelect: boolean = true;
+  @Input() useCustomTemplate: boolean = true;
+  @Input() bindLabel: string = '';  
+  @Input() bindValue: string = '';
 
   @Input() searchable: boolean = false;
   @Input() searchFn: ((term: string, item: any) => boolean) | undefined;
@@ -82,7 +85,21 @@ export class Select2Component
   @Input() disabled: boolean = false;
 
   get empty(): boolean {
-    return this.ngControl ? !this.ngControl.control?.value : false;
+    if (!this.ngControl) {
+      return false;
+    }
+
+    const control = this.ngControl.control;
+
+    if (!control) {
+      return true;
+    }
+
+    if(this.multiple) {
+      return !control.value || control.value.length === 0;
+    }
+
+    return !control.value;
   }
 
   get shouldLabelFloat(): boolean {
@@ -146,9 +163,11 @@ export class Select2Component
   }
 
   handleInput(event: any): void {
-    this.value = event;
+   
+    this.writeValue(this.value);
     this.onChange(event);
     this.onTouched();
+     console.log(this.value);
   }
 
   ngOnInit() {
