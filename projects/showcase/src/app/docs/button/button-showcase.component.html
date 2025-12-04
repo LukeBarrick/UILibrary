@@ -1,0 +1,298 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Button Component</h1>
+      <p class="lead">
+        The <code>uilibrary-button</code> component provides consistent, accessible buttons with multiple appearances, 
+        sizes, and states. It supports icons and can be disabled for form validation or loading states.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Button Appearances</h2>
+      <p>Buttons come in various appearances to indicate different action types and importance levels.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="button-row mb-3">
+          <h4>Primary Buttons</h4>
+          <uilibrary-button appearance="primary">Primary Button</uilibrary-button>
+          <uilibrary-button appearance="primary" [disabled]="true">Disabled Primary</uilibrary-button>
+        </div>
+        
+        <div class="button-row mb-3">
+          <h4>Secondary Buttons</h4>
+          <uilibrary-button appearance="secondary">Secondary Button</uilibrary-button>
+          <uilibrary-button appearance="secondary" [disabled]="true">Disabled Secondary</uilibrary-button>
+        </div>
+        
+        <div class="button-row mb-3">
+          <h4>Success Buttons</h4>
+          <uilibrary-button appearance="primary-success">Primary Success</uilibrary-button>
+          <uilibrary-button appearance="primary-success" [disabled]="true">Disabled Primary Success</uilibrary-button>
+          <uilibrary-button appearance="secondary-success">Secondary Success</uilibrary-button>
+          <uilibrary-button appearance="secondary-success" [disabled]="true">Disabled Secondary Success</uilibrary-button>
+        </div>
+        
+        <div class="button-row">
+          <h4>Danger/Delete Buttons</h4>
+          <uilibrary-button appearance="primary-delete">Primary Danger</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" [disabled]="true">Disabled Primary Danger</uilibrary-button>
+          <uilibrary-button appearance="secondary-delete">Secondary Danger</uilibrary-button>
+          <uilibrary-button appearance="secondary-delete" [disabled]="true">Disabled Secondary Danger</uilibrary-button>
+        </div>
+      </div>
+
+      <pre><code>&lt;uilibrary-button appearance="primary"&gt;Primary Button&lt;/uilibrary-button&gt;
+&lt;uilibrary-button appearance="secondary"&gt;Secondary Button&lt;/uilibrary-button&gt;
+&lt;uilibrary-button appearance="primary-success"&gt;Success Button&lt;/uilibrary-button&gt;
+&lt;uilibrary-button appearance="primary-delete"&gt;Danger Button&lt;/uilibrary-button&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Button Sizes</h2>
+      <p>Buttons are available in two sizes: normal (default) and small.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="button-row mb-3">
+          <h4>Normal Size (Default)</h4>
+          <uilibrary-button appearance="primary">Normal Primary</uilibrary-button>
+          <uilibrary-button appearance="secondary">Normal Secondary</uilibrary-button>
+          <uilibrary-button appearance="primary-success">Normal Success</uilibrary-button>
+          <uilibrary-button appearance="primary-delete">Normal Danger</uilibrary-button>
+        </div>
+        
+        <div class="button-row">
+          <h4>Small Size</h4>
+          <uilibrary-button appearance="primary" size="small">Small Primary</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small">Small Secondary</uilibrary-button>
+          <uilibrary-button appearance="primary-success" size="small">Small Success</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" size="small">Small Danger</uilibrary-button>
+        </div>
+      </div>
+
+      <pre><code>&lt;!-- Normal size (default) --&gt;
+&lt;uilibrary-button appearance="primary"&gt;Normal Button&lt;/uilibrary-button&gt;
+
+&lt;!-- Small size --&gt;
+&lt;uilibrary-button appearance="primary" size="small"&gt;Small Button&lt;/uilibrary-button&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Disabled States</h2>
+      <p>Any button can be disabled to prevent user interaction during loading or when actions aren't available.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="button-row mb-3">
+          <h4>Normal Size - Disabled</h4>
+          <uilibrary-button appearance="primary" [disabled]="isDisabled">{{isDisabled ? 'Disabled' : 'Enabled'}} Primary</uilibrary-button>
+          <uilibrary-button appearance="secondary" [disabled]="isDisabled">{{isDisabled ? 'Disabled' : 'Enabled'}} Secondary</uilibrary-button>
+          <uilibrary-button appearance="primary-success" [disabled]="isDisabled">{{isDisabled ? 'Disabled' : 'Enabled'}} Success</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" [disabled]="isDisabled">{{isDisabled ? 'Disabled' : 'Enabled'}} Danger</uilibrary-button>
+        </div>
+        
+        <div class="button-row mb-3">
+          <h4>Small Size - Disabled</h4>
+          <uilibrary-button appearance="primary" size="small" [disabled]="isDisabled">Small {{isDisabled ? 'Disabled' : 'Enabled'}}</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" [disabled]="isDisabled">Small {{isDisabled ? 'Disabled' : 'Enabled'}}</uilibrary-button>
+          <uilibrary-button appearance="primary-success" size="small" [disabled]="isDisabled">Small {{isDisabled ? 'Disabled' : 'Enabled'}}</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" size="small" [disabled]="isDisabled">Small {{isDisabled ? 'Disabled' : 'Enabled'}}</uilibrary-button>
+        </div>
+        
+        <button class="btn btn-secondary" (click)="toggleDisabled()">Toggle Disabled State</button>
+      </div>
+
+      <pre><code>&lt;uilibrary-button appearance="primary" [disabled]="isLoading"&gt;
+  {{isLoading ? 'Loading...' : 'Submit'}}
+&lt;/uilibrary-button&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Buttons with Icons</h2>
+      <p>Buttons can include icons to enhance their meaning and visual appeal.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="button-row mb-3">
+          <h4>Normal Size with Icons</h4>
+          <uilibrary-button appearance="primary" icon="icon-air">Primary with Icon</uilibrary-button>
+          <uilibrary-button appearance="secondary" icon="icon-air">Secondary with Icon</uilibrary-button>
+          <uilibrary-button appearance="primary-success" icon="icon-air">Success with Icon</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" icon="icon-air">Danger with Icon</uilibrary-button>
+          <uilibrary-button appearance="secondary-success" icon="icon-air">Secondary Success</uilibrary-button>
+          <uilibrary-button appearance="secondary-delete" icon="icon-air">Secondary Danger</uilibrary-button>
+        </div>
+        
+        <div class="button-row">
+          <h4>Small Size with Icons</h4>
+          <uilibrary-button appearance="primary" size="small" icon="icon-air">Small Primary</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" icon="icon-air">Small Secondary</uilibrary-button>
+          <uilibrary-button appearance="primary-success" size="small" icon="icon-air">Small Success</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" size="small" icon="icon-air">Small Danger</uilibrary-button>
+          <uilibrary-button appearance="secondary-success" size="small" icon="icon-air">Small Sec Success</uilibrary-button>
+          <uilibrary-button appearance="secondary-delete" size="small" icon="icon-air">Small Sec Danger</uilibrary-button>
+        </div>
+      </div>
+
+      <pre><code>&lt;uilibrary-button appearance="primary" icon="icon-air"&gt;
+  Button with Icon
+&lt;/uilibrary-button&gt;
+
+&lt;uilibrary-button appearance="primary" size="small" icon="icon-accommodation"&gt;
+  Small Button with Icon
+&lt;/uilibrary-button&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Interactive Examples</h2>
+      <p>Buttons can handle click events and integrate with forms and application logic.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="button-row mb-3">
+          <h4>Click Handling</h4>
+          <uilibrary-button appearance="primary" (click)="handleClick('Primary clicked!')">Click Me</uilibrary-button>
+          <uilibrary-button appearance="secondary" icon="icon-air" (click)="handleClick('Secondary with icon clicked!')">Action Button</uilibrary-button>
+          <uilibrary-button appearance="primary-success" size="small" (click)="incrementCounter()">Counter: {{clickCounter}}</uilibrary-button>
+        </div>
+        
+        <div class="button-row mb-3">
+          <h4>Form Integration</h4>
+          <uilibrary-button appearance="primary" (click)="simulateSubmit()" [disabled]="isSubmitting">
+            {{isSubmitting ? 'Submitting...' : 'Submit Form'}}
+          </uilibrary-button>
+          <uilibrary-button appearance="secondary" (click)="resetForm()">Reset</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" (click)="simulateDelete()" [disabled]="isDeleting">
+            {{isDeleting ? 'Deleting...' : 'Delete Item'}}
+          </uilibrary-button>
+        </div>
+        
+        <div class="alert alert-info" *ngIf="lastMessage">
+          <strong>Last Action:</strong> {{lastMessage}}
+        </div>
+      </div>
+
+      <pre><code>&lt;uilibrary-button 
+  appearance="primary" 
+  (click)="handleSubmit()" 
+  [disabled]="isSubmitting"&gt;
+  {{isSubmitting ? 'Submitting...' : 'Submit'}}
+&lt;/uilibrary-button&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Advanced Examples</h2>
+      <p>Complex button usage patterns and combinations.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="button-row mb-3">
+          <h4>Button Groups</h4>
+          <div class="btn-group">
+            <uilibrary-button appearance="primary">Save</uilibrary-button>
+            <uilibrary-button appearance="secondary">Save & Continue</uilibrary-button>
+            <uilibrary-button appearance="secondary">Cancel</uilibrary-button>
+          </div>
+        </div>
+        
+        <div class="button-row mb-3">
+          <h4>Action Buttons</h4>
+          <uilibrary-button appearance="primary-success" icon="icon-air" size="small" (click)="handleClick('Download started')">Download</uilibrary-button>
+          <uilibrary-button appearance="secondary" icon="icon-air" size="small" (click)="handleClick('Share dialog opened')">Share</uilibrary-button>
+          <uilibrary-button appearance="primary" icon="icon-air" size="small" (click)="handleClick('Edit mode enabled')">Edit</uilibrary-button>
+          <uilibrary-button appearance="primary-delete" icon="icon-air" size="small" (click)="handleClick('Delete confirmation shown')">Delete</uilibrary-button>
+        </div>
+        
+        <div class="button-row">
+          <h4>Utility Buttons</h4>
+          <uilibrary-button appearance="secondary" size="small" (click)="handleClick('Debug info logged')">Debug</uilibrary-button>
+          <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="handleClick('Settings opened')">Settings</uilibrary-button>
+          <uilibrary-button appearance="secondary" icon="icon-air" (click)="handleClick('Help dialog shown')">Help</uilibrary-button>
+        </div>
+      </div>
+
+      <pre><code>&lt;!-- Button groups --&gt;
+&lt;div class="btn-group"&gt;
+  &lt;uilibrary-button appearance="primary"&gt;Save&lt;/uilibrary-button&gt;
+  &lt;uilibrary-button appearance="secondary"&gt;Cancel&lt;/uilibrary-button&gt;
+&lt;/div&gt;
+
+&lt;!-- Action buttons --&gt;
+&lt;uilibrary-button appearance="primary-success" icon="icon-download" size="small"&gt;
+  Download
+&lt;/uilibrary-button&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>API Reference</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>appearance</code></td>
+              <td><code>string</code></td>
+              <td><code>'primary'</code></td>
+              <td>Button appearance: 'primary', 'secondary', 'primary-success', 'secondary-success', 'primary-delete', 'secondary-delete'</td>
+            </tr>
+            <tr>
+              <td><code>size</code></td>
+              <td><code>string</code></td>
+              <td><code>'normal'</code></td>
+              <td>Button size: 'normal', 'small'</td>
+            </tr>
+            <tr>
+              <td><code>disabled</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Whether the button is disabled</td>
+            </tr>
+            <tr>
+              <td><code>icon</code></td>
+              <td><code>string</code></td>
+              <td><code>undefined</code></td>
+              <td>Icon name to display in the button</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3 class="mt-4">Events</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>(click)</code></td>
+              <td><code>EventEmitter&lt;Event&gt;</code></td>
+              <td>Emitted when the button is clicked</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14465,6 +14465,12 @@ uilibrary2-form-field .form-field label {
 uilibrary2-form-field .form-field-prefix {
   margin-left: 10px;
 }
+uilibrary2-form-field .form-field-text-prefix {
+  margin-left: 10px;
+}
+uilibrary2-form-field .form-field-text-suffix {
+  margin-right: 10px;
+}
 uilibrary2-form-field .form-field:has(.form-field-prefix) label {
   left: 25px;
 }
@@ -14476,6 +14482,9 @@ uilibrary2-form-field .form-field:has(.form-field-prefix) uilibrary2-select .ng-
 }
 uilibrary2-form-field .form-field-suffix {
   margin-right: 10px;
+}
+uilibrary2-form-field .form-field:has(.form-field-text-prefix) input {
+  padding-left: 0px;
 }
 uilibrary2-form-field .form-field:has(.form-field-text-prefix) uilibrary2-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   left: 0px !important;
@@ -14687,23 +14696,18 @@ uilibrary2-form-field .form-field input:disabled {
 }
 uilibrary2-form-field .form-field ::-webkit-input-placeholder {
   color: transparent;
-  transition: color 200ms linear;
 }
 uilibrary2-form-field .form-field :-moz-placeholder {
   color: transparent;
-  transition: color 200ms linear;
 }
 uilibrary2-form-field .form-field ::-moz-placeholder {
   color: transparent;
-  transition: color 200ms linear;
 }
 uilibrary2-form-field .form-field :-ms-input-placeholder {
   color: transparent;
-  transition: color 200ms linear;
 }
 uilibrary2-form-field .form-field input::placeholder {
   color: transparent;
-  transition: color 200ms linear;
 }
 uilibrary2-form-field.form-field-label-float .form-field ::-webkit-input-placeholder {
   color: var(--dark-gray);

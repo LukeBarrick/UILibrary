@@ -1,0 +1,319 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Form Field & Input Components</h1>
+      <p class="lead">
+        The <code>uilibrary2-form-field</code> component works together with the <code>ui-input</code> directive to 
+        provide consistent, accessible form inputs with support for labels, prefixes, suffixes, and error states.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Basic Text Inputs</h2>
+      <p>Simple text inputs with labels and placeholders.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="textInputs2">
+        <uilibrary2-form-field>
+          <label ui-label>Basic Text Input</label>
+          <input ui-input type="text" placeholder="Enter text here">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Basic Text Input Binding</label>
+          <input ui-input type="text" [(ngModel)]="textInput" [ngModelOptions]="{ standalone: true }" placeholder="Two-way binding">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Text Input Form Control</label>
+          <input ui-input type="text" formControlName="textInput21" placeholder="Form control binding">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Pre-filled Input</label>
+          <input ui-input type="text" formControlName="textInput22">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Placeholder Form Control</label>
+          <input ui-input type="text" formControlName="placeholderFormControl" placeholder="This is a placeholder">
+        </uilibrary2-form-field>
+
+        <p class="mt-3"><strong>Current model value:</strong> "{{textInput}}"</p>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Basic Text Input&lt;/label&gt;
+  &lt;input ui-input type="text" placeholder="Enter text here"&gt;
+&lt;/uilibrary2-form-field&gt;
+
+&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Two-Way Binding&lt;/label&gt;
+  &lt;input ui-input type="text" [(ngModel)]="textValue" [ngModelOptions]="{ standalone: true }"&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Disabled Inputs</h2>
+      <p>Form controls can be disabled to prevent user interaction.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="textInputs2">
+        <uilibrary2-form-field>
+          <label ui-label>Disabled Text Input</label>
+          <input ui-input type="text" formControlName="textInput23">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Disabled with Value</label>
+          <input ui-input type="text" formControlName="textInput24">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Manually Disabled</label>
+          <input ui-input type="text" [disabled]="true" placeholder="This input is always disabled">
+        </uilibrary2-form-field>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Disabled Input&lt;/label&gt;
+  &lt;input ui-input type="text" formControlName="disabledControl"&gt;
+&lt;/uilibrary2-form-field&gt;
+
+// In component
+this.form = this.formBuilder.group({
+  disabledControl: [{value: 'Disabled value', disabled: true}]
+});</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Input with Prefixes and Suffixes</h2>
+      <p>Enhance inputs with icons, text, or custom elements as prefixes and suffixes.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="textInputs2">
+        <uilibrary2-form-field>
+          <uilibrary-icon ui-prefix name="icon-air" size="small"></uilibrary-icon>
+          <label ui-label>Icon Prefix</label>
+          <input ui-input type="text" formControlName="prefixFormControl" placeholder="Input with icon prefix">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Icon Suffix</label>
+          <input ui-input type="text" formControlName="suffixFormControl" placeholder="Input with icon suffix">
+          <uilibrary-icon ui-suffix name="icon-air" size="small"></uilibrary-icon>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <div ui-text-prefix>$</div>
+          <label ui-label>Currency Input</label>
+          <input ui-input type="number" formControlName="prefixFormControl" placeholder="0.00">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Percentage Input</label>
+          <input ui-input type="number" formControlName="suffixFormControl" placeholder="Enter percentage">
+          <div ui-text-suffix>%</div>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <div ui-prefix style="height: 30px; width: 30px; background-color: #007bff; border-radius: 4px;"></div>
+          <label ui-label>Custom Prefix & Suffix</label>
+          <input ui-input type="text" formControlName="prefixSuffixFormControl" placeholder="Custom colored elements">
+          <div ui-suffix style="height: 30px; width: 30px; background-color: #28a745; border-radius: 4px;"></div>
+        </uilibrary2-form-field>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;uilibrary-icon ui-prefix name="icon-air" size="small"&gt;&lt;/uilibrary-icon&gt;
+  &lt;label ui-label&gt;Icon Prefix&lt;/label&gt;
+  &lt;input ui-input type="text" placeholder="Input with icon"&gt;
+&lt;/uilibrary2-form-field&gt;
+
+&lt;uilibrary2-form-field&gt;
+  &lt;div ui-text-prefix&gt;$&lt;/div&gt;
+  &lt;label ui-label&gt;Currency&lt;/label&gt;
+  &lt;input ui-input type="number" placeholder="0.00"&gt;
+  &lt;div ui-text-suffix&gt;USD&lt;/div&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Error States</h2>
+      <p>Form fields can display error states for validation feedback.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="textInputs2">
+        <uilibrary2-form-field [class.error]="!textInputError">
+          <label ui-label>Error State Binding</label>
+          <input ui-input type="text" [(ngModel)]="textInputError" [ngModelOptions]="{ standalone: true }" placeholder="Toggle error state">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field [class.error]="textInputs2.get('errorInput')?.invalid && textInputs2.get('errorInput')?.touched">
+          <label ui-label>Required Field</label>
+          <input ui-input type="text" formControlName="errorInput" placeholder="This field is required">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field class="error">
+          <label ui-label>Always Error State</label>
+          <input ui-input type="text" placeholder="This field always shows error styling">
+        </uilibrary2-form-field>
+
+        <button class="btn btn-primary mt-2" (click)="markAllAsTouched()">Trigger Validation</button>
+        
+        <p class="mt-2"><small>Error state is toggled by: "{{textInputError}}" (empty string shows error)</small></p>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field [class.error]="field.invalid && field.touched"&gt;
+  &lt;label ui-label&gt;Required Field&lt;/label&gt;
+  &lt;input ui-input type="text" formControlName="requiredField"&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Textarea Inputs</h2>
+      <p>Form fields also work with textarea elements for multi-line text input.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="textAreas2">
+        <uilibrary2-form-field>
+          <label ui-label>Basic Textarea</label>
+          <textarea ui-input formControlName="textArea1" placeholder="Enter your message here..." rows="4"></textarea>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <div ui-prefix style="height: 30px; width: 30px; background-color: #ffc107; border-radius: 4px;"></div>
+          <label ui-label>Textarea with Prefix</label>
+          <textarea ui-input formControlName="placeholderFormControl" placeholder="This is a text area with prefix" rows="3"></textarea>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <div ui-prefix style="height: 30px; width: 30px; background-color: #dc3545; border-radius: 4px;"></div>
+          <label ui-label>Textarea with Prefix & Suffix</label>
+          <textarea ui-input formControlName="prefixFormControl" placeholder="Multi-line input with decorators" rows="3"></textarea>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Large Textarea</label>
+          <textarea ui-input formControlName="suffixFormControl" placeholder="Large text area for longer content..." rows="6"></textarea>
+          <div ui-suffix style="height: 30px; width: 30px; background-color: #28a745; border-radius: 4px;"></div>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <div ui-prefix style="height: 30px; width: 30px; background-color: #6f42c1; border-radius: 4px;"></div>
+          <label ui-label>Full Featured Textarea</label>
+          <textarea ui-input formControlName="prefixSuffixFormControl" placeholder="Textarea with both prefix and suffix elements" rows="4"></textarea>
+          <div ui-suffix style="height: 30px; width: 30px; background-color: #fd7e14; border-radius: 4px;"></div>
+        </uilibrary2-form-field>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Message&lt;/label&gt;
+  &lt;textarea ui-input formControlName="message" rows="4" placeholder="Enter your message..."&gt;&lt;/textarea&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Advanced Examples</h2>
+      <p>Complex form field configurations with tooltips and special formatting.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="textInputs2">
+        <uilibrary2-form-field>
+          <label ui-label>Field with Tooltip</label>
+          <input ui-input type="text" formControlName="tooltipInput" placeholder="Hover the tooltip for help">
+          <uilibrary-tooltip ui-suffix placement="right" margin="left">
+            <span title>Help</span>
+            <span content>This tooltip provides additional information about the field requirements and format.</span>
+          </uilibrary-tooltip>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <div ui-text-prefix>https://</div>
+          <label ui-label>Website URL</label>
+          <input ui-input type="url" formControlName="urlInput" placeholder="example.com">
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <div ui-text-prefix>+1</div>
+          <label ui-label>Phone Number</label>
+          <input ui-input type="tel" formControlName="phoneInput" placeholder="(555) 123-4567">
+          <div ui-text-suffix>📞</div>
+        </uilibrary2-form-field>
+        
+        <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="debugme()">
+          Debug Form State
+        </uilibrary-button>
+      </div>
+
+      <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Field with Tooltip&lt;/label&gt;
+  &lt;input ui-input type="text" placeholder="Hover for help"&gt;
+  &lt;uilibrary-tooltip ui-suffix placement="right"&gt;
+    &lt;span title&gt;Help&lt;/span&gt;
+    &lt;span content&gt;Helpful information here&lt;/span&gt;
+  &lt;/uilibrary-tooltip&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>API Reference</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Component/Directive</th>
+              <th>Purpose</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>uilibrary2-form-field</code></td>
+              <td>Wrapper component for form inputs</td>
+              <td><code>&lt;uilibrary2-form-field&gt;...&lt;/uilibrary2-form-field&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>ui-label</code></td>
+              <td>Directive for field labels</td>
+              <td><code>&lt;label ui-label&gt;Field Name&lt;/label&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>ui-input</code></td>
+              <td>Directive for input and textarea elements</td>
+              <td><code>&lt;input ui-input type="text"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>ui-prefix</code></td>
+              <td>Directive for prefix elements</td>
+              <td><code>&lt;div ui-prefix&gt;Content&lt;/div&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>ui-suffix</code></td>
+              <td>Directive for suffix elements</td>
+              <td><code>&lt;div ui-suffix&gt;Content&lt;/div&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>ui-text-prefix</code></td>
+              <td>Directive for text-specific prefix styling</td>
+              <td><code>&lt;div ui-text-prefix&gt;$&lt;/div&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>ui-text-suffix</code></td>
+              <td>Directive for text-specific suffix styling</td>
+              <td><code>&lt;div ui-text-suffix&gt;%&lt;/div&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

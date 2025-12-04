@@ -33,6 +33,14 @@ uilibrary2-form-field {
         margin-left: 10px;
     }
 
+    .form-field-text-prefix {
+        margin-left: 10px;
+    }
+
+    .form-field-text-suffix {
+        margin-right: 10px;
+    }
+
     //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-prefix) {
        
@@ -62,6 +70,10 @@ uilibrary2-form-field {
 
     //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-text-prefix) {
+         input {
+            padding-left: 0px;
+        }
+
          uilibrary2-select {
             .ng-select .ng-select-container .ng-value-container .ng-placeholder {
                 left: 0px !important;
@@ -75,7 +87,7 @@ uilibrary2-form-field {
 
     ///TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-text-suffix) {
-        
+       
     }
 
     &.form-field-label-float {

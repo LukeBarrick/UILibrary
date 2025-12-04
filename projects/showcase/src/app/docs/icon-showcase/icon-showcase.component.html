@@ -1,0 +1,321 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Icon Component</h1>
+      <p class="lead">
+        The <code>uilibrary-icon</code> component provides a flexible way to display icons with 
+        multiple sizes, appearances, and styling options throughout your application.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Icon Sizes</h2>
+      <p>Icons are available in three sizes: small, medium (default), and large.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="icon-demo-section">
+          <div class="icon-size-row">
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="small"></uilibrary2-icon>
+              <span class="icon-label">Small</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="medium"></uilibrary2-icon>
+              <span class="icon-label">Medium (Default)</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="large"></uilibrary2-icon>
+              <span class="icon-label">Large</span>
+            </div>
+          </div>
+          
+          <div class="icon-size-row mt-4">
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-air" size="small"></uilibrary2-icon>
+              <span class="icon-label">Small</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-air" size="medium"></uilibrary2-icon>
+              <span class="icon-label">Medium</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-air" size="large"></uilibrary2-icon>
+              <span class="icon-label">Large</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <pre><code>&lt;uilibrary-icon name="icon-accommodation" size="small"&gt;&lt;/uilibrary-icon&gt;
+&lt;uilibrary-icon name="icon-accommodation" size="medium"&gt;&lt;/uilibrary-icon&gt;
+&lt;uilibrary-icon name="icon-accommodation" size="large"&gt;&lt;/uilibrary-icon&gt;
+
+&lt;!-- Default size is medium --&gt;
+&lt;uilibrary-icon name="icon-accommodation"&gt;&lt;/uilibrary-icon&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Icon Appearances</h2>
+      <p>Icons support multiple appearance themes to match different design contexts.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="icon-demo-section">
+          <div class="icon-appearance-row">
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="large" appearance="primary"></uilibrary2-icon>
+              <span class="icon-label">Primary</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="large" appearance="secondary"></uilibrary2-icon>
+              <span class="icon-label">Secondary</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="large" appearance="tertiary"></uilibrary2-icon>
+              <span class="icon-label">Tertiary</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="large" appearance="light-gray"></uilibrary2-icon>
+              <span class="icon-label">Light Gray</span>
+            </div>
+            
+            <div class="icon-item">
+              <uilibrary2-icon name="icon-accommodation" size="large" appearance="dark-gray"></uilibrary2-icon>
+              <span class="icon-label">Dark Gray</span>
+            </div>
+          </div>
+          
+          <div class="icon-appearance-row mt-4">
+            <div class="icon-item custom-color-demo">
+              <uilibrary2-icon name="icon-accommodation" size="large" appearance="custom"></uilibrary2-icon>
+              <span class="icon-label">Custom (Inherits Color)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <pre><code>&lt;uilibrary-icon name="icon-accommodation" appearance="primary"&gt;&lt;/uilibrary-icon&gt;
+&lt;uilibrary-icon name="icon-accommodation" appearance="secondary"&gt;&lt;/uilibrary-icon&gt;
+&lt;uilibrary-icon name="icon-accommodation" appearance="tertiary"&gt;&lt;/uilibrary-icon&gt;
+&lt;uilibrary-icon name="icon-accommodation" appearance="light-gray"&gt;&lt;/uilibrary-icon&gt;
+&lt;uilibrary-icon name="icon-accommodation" appearance="dark-gray"&gt;&lt;/uilibrary-icon&gt;
+
+&lt;!-- Custom appearance inherits parent color --&gt;
+&lt;div style="color: #e74c3c;"&gt;
+  &lt;uilibrary-icon name="icon-accommodation" appearance="custom"&gt;&lt;/uilibrary-icon&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Available Icons</h2>
+      <p>Browse through the available icon set with interactive examples.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="icon-selector mb-4">
+          <label for="iconSelect" class="form-label">Select Icon:</label>
+          <select id="iconSelect" class="form-select" [(ngModel)]="selectedIcon">
+            <option *ngFor="let icon of availableIcons" [value]="icon.name">
+              {{icon.display}} ({{icon.name}})
+            </option>
+          </select>
+        </div>
+        
+        <div class="selected-icon-demo">
+          <h4>{{getSelectedIconDisplay()}} Preview</h4>
+          <div class="icon-preview-grid">
+            <div class="preview-item">
+              <uilibrary2-icon [name]="selectedIcon" size="small" appearance="primary"></uilibrary2-icon>
+              <span>Small Primary</span>
+            </div>
+            <div class="preview-item">
+              <uilibrary2-icon [name]="selectedIcon" size="medium" appearance="secondary"></uilibrary2-icon>
+              <span>Medium Secondary</span>
+            </div>
+            <div class="preview-item">
+              <uilibrary2-icon [name]="selectedIcon" size="large" appearance="tertiary"></uilibrary2-icon>
+              <span>Large Tertiary</span>
+            </div>
+          </div>
+          
+          <div class="code-preview mt-3">
+            <strong>Code for selected icon:</strong>
+            <pre><code>&lt;uilibrary-icon name="{{selectedIcon}}" size="medium" appearance="primary"&gt;&lt;/uilibrary-icon&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Icons in Context</h2>
+      <p>Examples of how icons are used within other UI components and contexts.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="context-examples">
+          <h4>Icons in Buttons</h4>
+          <div class="button-examples mb-4">
+            <uilibrary-button appearance="primary" icon="icon-air">Primary with Icon</uilibrary-button>
+            <uilibrary-button appearance="secondary" icon="icon-accommodation">Secondary with Icon</uilibrary-button>
+            <uilibrary-button appearance="primary-success" icon="icon-air" size="small">Small Success</uilibrary-button>
+            <uilibrary-button appearance="primary-delete" icon="icon-accommodation" size="small">Small Danger</uilibrary-button>
+          </div>
+          
+          <h4>Icons in Form Fields</h4>
+          <div class="form-examples mb-4" [formGroup]="iconDemoForm">
+            <uilibrary2-form-field>
+              <uilibrary-icon ui-prefix name="icon-air" size="small" appearance="secondary"></uilibrary-icon>
+              <label ui-label>Search</label>
+              <input ui-input type="text" formControlName="search" placeholder="Search with icon prefix">
+            </uilibrary2-form-field>
+            
+            <uilibrary2-form-field>
+              <label ui-label>Location</label>
+              <input ui-input type="text" formControlName="location" placeholder="Enter location">
+              <uilibrary-icon ui-suffix name="icon-accommodation" size="small" appearance="tertiary"></uilibrary-icon>
+            </uilibrary2-form-field>
+          </div>
+          
+          <h4>Standalone Icon Usage</h4>
+          <div class="standalone-examples">
+            <div class="icon-with-text">
+              <uilibrary2-icon name="icon-air" size="small" appearance="primary"></uilibrary2-icon>
+              <span>Flight Information</span>
+            </div>
+            
+            <div class="icon-with-text">
+              <uilibrary2-icon name="icon-accommodation" size="small" appearance="secondary"></uilibrary2-icon>
+              <span>Hotel Booking</span>
+            </div>
+            
+            <div class="icon-list">
+              <div class="icon-list-item">
+                <uilibrary2-icon name="icon-air" size="small" appearance="tertiary"></uilibrary2-icon>
+                <span>Available flights: 15</span>
+              </div>
+              <div class="icon-list-item">
+                <uilibrary2-icon name="icon-accommodation" size="small" appearance="tertiary"></uilibrary2-icon>
+                <span>Available hotels: 28</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <pre><code>&lt;!-- Icons in buttons --&gt;
+&lt;uilibrary-button appearance="primary" icon="icon-air"&gt;
+  Button with Icon
+&lt;/uilibrary-button&gt;
+
+&lt;!-- Icons in form fields --&gt;
+&lt;uilibrary2-form-field&gt;
+  &lt;uilibrary-icon ui-prefix name="icon-air" size="small"&gt;&lt;/uilibrary-icon&gt;
+  &lt;input ui-input type="text" placeholder="Search"&gt;
+&lt;/uilibrary2-form-field&gt;
+
+&lt;!-- Standalone icons --&gt;
+&lt;div class="icon-with-text"&gt;
+  &lt;uilibrary-icon name="icon-air" size="small"&gt;&lt;/uilibrary-icon&gt;
+  &lt;span&gt;Flight Information&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Interactive Icon Gallery</h2>
+      <p>Explore all available icons with real-time customization options.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="gallery-controls mb-4">
+          <div class="row">
+            <div class="col-md-4">
+              <label class="form-label">Size:</label>
+              <select class="form-select" [(ngModel)]="gallerySize">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Appearance:</label>
+              <select class="form-select" [(ngModel)]="galleryAppearance">
+                <option value="primary">Primary</option>
+                <option value="secondary">Secondary</option>
+                <option value="tertiary">Tertiary</option>
+                <option value="light-gray">Light Gray</option>
+                <option value="dark-gray">Dark Gray</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Filter:</label>
+              <input type="text" class="form-control" [(ngModel)]="iconFilter" placeholder="Filter icons...">
+            </div>
+          </div>
+        </div>
+        
+        <div class="icon-gallery">
+          <div *ngFor="let icon of getFilteredIcons()" class="gallery-icon-item" (click)="selectIconFromGallery(icon.name)">
+            <uilibrary2-icon [name]="icon.name" [size]="gallerySize" [appearance]="galleryAppearance"></uilibrary2-icon>
+            <span class="icon-name">{{icon.display}}</span>
+          </div>
+        </div>
+        
+        <div class="gallery-footer mt-3" *ngIf="getFilteredIcons().length === 0">
+          <p class="text-muted text-center">No icons match your filter criteria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>API Reference</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>name</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Icon name from the available icon set</td>
+            </tr>
+            <tr>
+              <td><code>size</code></td>
+              <td><code>string</code></td>
+              <td><code>'medium'</code></td>
+              <td>Icon size: 'small', 'medium', 'large'</td>
+            </tr>
+            <tr>
+              <td><code>appearance</code></td>
+              <td><code>string</code></td>
+              <td><code>'primary'</code></td>
+              <td>Icon color theme: 'primary', 'secondary', 'tertiary', 'light-gray', 'dark-gray', 'custom'</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

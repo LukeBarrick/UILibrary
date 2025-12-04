@@ -1,0 +1,344 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Select Component</h1>
+      <p class="lead">
+        The <code>uilibrary2-select</code> component provides a flexible dropdown selection interface with support 
+        for single/multi-select, custom templates, searching, and integration with form controls.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Basic Select</h2>
+      <p>Simple single-selection dropdown with default styling.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="selectControls2">
+        <uilibrary2-form-field>
+          <label ui-label>Basic Select</label>
+          <uilibrary2-select ui-select [items]="items" formControlName="selectControl" [clearable]="true">
+            <ng-template #labelTemplate let-item>
+              <div>
+                <b>{{item.name}}</b>
+              </div>
+            </ng-template>
+            <ng-template #optionTemplate let-item>
+              <div>
+                <b>{{item.name}}</b>
+              </div>
+            </ng-template>
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Select with Placeholder</label>
+          <uilibrary2-select ui-select [items]="items"
+            placeholder="Please select an item from the dropdown list."
+            formControlName="placeholderFormControl" [clearable]="true">
+            <ng-template #labelTemplate let-item>
+              <div>
+                <b>{{item.name}}</b>
+              </div>
+            </ng-template>
+            <ng-template #optionTemplate let-item>
+              <div>
+                <b>{{item.name}}</b>
+              </div>
+            </ng-template>
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Basic Select&lt;/label&gt;
+  &lt;uilibrary2-select ui-select [items]="items" formControlName="selectControl" [clearable]="true"&gt;
+    &lt;ng-template #labelTemplate let-item&gt;
+      &lt;div&gt;&lt;b&gt;{{item.name}}&lt;/b&gt;&lt;/div&gt;
+    &lt;/ng-template&gt;
+    &lt;ng-template #optionTemplate let-item&gt;
+      &lt;div&gt;&lt;b&gt;{{item.name}}&lt;/b&gt;&lt;/div&gt;
+    &lt;/ng-template&gt;
+  &lt;/uilibrary2-select&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Select with Prefixes and Suffixes</h2>
+      <p>Select components can have prefix and suffix elements just like input fields.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="selectControls2">
+        <uilibrary2-form-field>
+          <label ui-label>Select with Prefix</label>
+          <div ui-prefix style="height: 30px; width: 30px; background-color: #007bff; border-radius: 4px;"></div>
+          <uilibrary2-select ui-select [items]="items" placeholder="Select with prefix"
+            formControlName="prefixFormControl" [clearable]="true">
+            <ng-template #labelTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+            <ng-template #optionTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Select with Suffix</label>
+          <uilibrary2-select ui-select [items]="items" placeholder="Select with suffix"
+            formControlName="suffixFormControl" [clearable]="true">
+            <ng-template #labelTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+            <ng-template #optionTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+          </uilibrary2-select>
+          <div ui-suffix style="height: 30px; width: 30px; background-color: #28a745; border-radius: 4px;"></div>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Select with Text Prefix & Suffix</label>
+          <div ui-text-prefix>Type:</div>
+          <uilibrary2-select ui-select [items]="items" placeholder="Choose type"
+            formControlName="prefixSuffixFormControl" [clearable]="true">
+            <ng-template #labelTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+            <ng-template #optionTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+          </uilibrary2-select>
+          <div ui-suffix style="height: 30px; width: 30px; background-color: #dc3545; border-radius: 4px;"></div>
+        </uilibrary2-form-field>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;div ui-prefix style="background-color: #007bff;"&gt;&lt;/div&gt;
+  &lt;label ui-label&gt;Select with Prefix&lt;/label&gt;
+  &lt;uilibrary2-select ui-select [items]="items" [clearable]="true"&gt;
+    &lt;!-- templates --&gt;
+  &lt;/uilibrary2-select&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Two-Way Data Binding</h2>
+      <p>Select components support Angular's two-way data binding with ngModel.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary2-form-field>
+          <label ui-label>Two Way Binding Select</label>
+          <uilibrary2-select ui-select [(ngModel)]="selectModel" [ngModelOptions]="{ standalone: true }" [items]="items"
+            placeholder="Please select an item from the dropdown list." [clearable]="true">
+            <ng-template #labelTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+            <ng-template #optionTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+        
+        <div class="mt-3">
+          <p><strong>Selected Value:</strong></p>
+          <pre>{{stringify(selectModel)}}</pre>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-select 
+  ui-select 
+  [(ngModel)]="selectModel" 
+  [ngModelOptions]="{ standalone: true }" 
+  [items]="items"
+  [clearable]="true"&gt;
+  &lt;!-- templates --&gt;
+&lt;/uilibrary2-select&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Multi-Select</h2>
+      <p>Enable multiple selection with various configuration options.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary2-form-field>
+          <label ui-label>Multi Select</label>
+          <uilibrary2-select ui-select [items]="items" [(ngModel)]="selectMultiModel" [ngModelOptions]="{ standalone: true }"  
+          [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name"
+            placeholder="Please select items from the dropdown list." [clearable]="true">
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+
+        <div class="mt-3">
+          <p><strong>Selected Values:</strong></p>
+          <pre>{{stringify(selectMultiModel)}}</pre>
+        </div>
+
+        <uilibrary2-form-field>
+          <label ui-label>Multi Select with Prefill</label>
+          <uilibrary2-select ui-select [items]="items" [(ngModel)]="selectMultiModelPrefill" [ngModelOptions]="{ standalone: true }"
+          [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" [prefillFirstOption]="true"
+            placeholder="This select prefills the first option." [clearable]="true">
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+
+        <div class="mt-3">
+          <p><strong>Prefilled Values:</strong></p>
+          <pre>{{stringify(selectMultiModelPrefill)}}</pre>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-select 
+  ui-select 
+  [items]="items" 
+  [(ngModel)]="multiSelectModel"
+  [multiple]="true" 
+  [maxSelectedItems]="3" 
+  [closeOnSelect]="false" 
+  [useCustomTemplate]="false" 
+  bindLabel="name"
+  [clearable]="true"&gt;
+&lt;/uilibrary2-select&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Advanced Configuration</h2>
+      <p>Various configuration options for enhanced functionality.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary2-form-field>
+          <label ui-label>Select with Search (Default)</label>
+          <uilibrary2-select ui-select [items]="extendedItems" [(ngModel)]="advancedSelectModel" [ngModelOptions]="{ standalone: true }"
+            placeholder="Type to search..." [clearable]="true" bindLabel="name" bindValue="id">
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Custom Search Function</label>
+          <uilibrary2-select ui-select [items]="extendedItems" [(ngModel)]="customSearchModel" [ngModelOptions]="{ standalone: true }"
+            placeholder="Custom search behavior..." [clearable]="true" [searchFn]="customSearchFn">
+            <ng-template #optionTemplate let-item>
+              <div>
+                <strong>{{item.name}}</strong>
+                <br>
+                <small style="color: #666;">{{item.description}}</small>
+              </div>
+            </ng-template>
+          </uilibrary2-select>
+        </uilibrary2-form-field>
+
+        <div class="mt-3">
+          <p><strong>Advanced Select Value:</strong> {{advancedSelectModel}}</p>
+          <p><strong>Custom Search Value:</strong> {{stringify(customSearchModel)}}</p>
+        </div>
+      </div>
+
+      <!-- <pre><code>// Custom search function
+customSearchFn(term: string, item: any) {
+  term = term.toLowerCase();
+  return item.name.toLowerCase().indexOf(term) > -1 ||
+         item.description.toLowerCase().indexOf(term) > -1;
+}
+
+&lt;uilibrary2-select 
+  [items]="items" 
+  [searchFn]="customSearchFn"
+  bindLabel="name"
+  bindValue="id"&gt;
+&lt;/uilibrary2-select&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>API Reference</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>items</code></td>
+              <td><code>any[]</code></td>
+              <td><code>[]</code></td>
+              <td>Array of items to display in dropdown</td>
+            </tr>
+            <tr>
+              <td><code>multiple</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Enable multiple selection</td>
+            </tr>
+            <tr>
+              <td><code>clearable</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Show clear button to reset selection</td>
+            </tr>
+            <tr>
+              <td><code>placeholder</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Placeholder text when no selection</td>
+            </tr>
+            <tr>
+              <td><code>bindLabel</code></td>
+              <td><code>string</code></td>
+              <td><code>'label'</code></td>
+              <td>Property name for display label</td>
+            </tr>
+            <tr>
+              <td><code>bindValue</code></td>
+              <td><code>string</code></td>
+              <td><code>null</code></td>
+              <td>Property name for value binding</td>
+            </tr>
+            <tr>
+              <td><code>maxSelectedItems</code></td>
+              <td><code>number</code></td>
+              <td><code>null</code></td>
+              <td>Maximum selectable items (multi-select)</td>
+            </tr>
+            <tr>
+              <td><code>closeOnSelect</code></td>
+              <td><code>boolean</code></td>
+              <td><code>true</code></td>
+              <td>Close dropdown after selection</td>
+            </tr>
+            <tr>
+              <td><code>useCustomTemplate</code></td>
+              <td><code>boolean</code></td>
+              <td><code>true</code></td>
+              <td>Use custom templates for display</td>
+            </tr>
+            <tr>
+              <td><code>prefillFirstOption</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Automatically select first option</td>
+            </tr>
+            <tr>
+              <td><code>searchFn</code></td>
+              <td><code>function</code></td>
+              <td><code>null</code></td>
+              <td>Custom search function</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

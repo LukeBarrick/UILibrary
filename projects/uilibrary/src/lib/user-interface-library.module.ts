@@ -58,7 +58,7 @@ import { Datepicker2Module } from './modules2/datepicker/datepicker.module';
     FormControlModule,
     DatePickersModule,
     StatusTagsModule,
-    IconsModule,
+
     ButtonsModule,
     
     Input2Module,

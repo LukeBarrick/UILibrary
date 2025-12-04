@@ -1,0 +1,327 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Checkbox Component</h1>
+      <p class="lead">
+        The <code>uilibrary-checkbox</code> component provides accessible checkboxes with multiple variants, sizes, 
+        and states. It supports form integration and various styling options.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Checkbox Variants</h2>
+      <p>Checkboxes come in three variants: branded, pass (success), and fail (error).</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="checkbox-section mb-4">
+          <h4>Basic Variants (Small Size)</h4>
+          <uilibrary-checkbox variant="branded">Branded Checkbox</uilibrary-checkbox>
+          <uilibrary-checkbox variant="pass">Pass/Success Checkbox</uilibrary-checkbox>
+          <uilibrary-checkbox variant="fail">Fail/Error Checkbox</uilibrary-checkbox>
+        </div>
+        
+        <div class="checkbox-section">
+          <h4>Hidden Label Variants</h4>
+          <uilibrary-checkbox [hideLabel]="true" variant="branded">
+            This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+          </uilibrary-checkbox>
+          <uilibrary-checkbox [hideLabel]="true" variant="pass">
+            This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+          </uilibrary-checkbox>
+          <uilibrary-checkbox [hideLabel]="true" variant="fail">
+            This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+          </uilibrary-checkbox>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary-checkbox variant="branded"&gt;Branded Checkbox&lt;/uilibrary-checkbox&gt;
+&lt;uilibrary-checkbox variant="pass"&gt;Success Checkbox&lt;/uilibrary-checkbox&gt;
+&lt;uilibrary-checkbox variant="fail"&gt;Error Checkbox&lt;/uilibrary-checkbox&gt;
+
+&lt;!-- Hidden label for accessibility --&gt;
+&lt;uilibrary-checkbox [hideLabel]="true" variant="branded"&gt;
+  Descriptive text for screen readers
+&lt;/uilibrary-checkbox&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Checkbox Sizes</h2>
+      <p>Checkboxes are available in two sizes: small (default) and large.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="checkbox-section mb-4">
+          <h4>Small Checkboxes (Default)</h4>
+          <uilibrary-checkbox variant="branded">Small Branded Checkbox</uilibrary-checkbox>
+          <uilibrary-checkbox variant="pass">Small Pass Checkbox</uilibrary-checkbox>
+          <uilibrary-checkbox variant="fail">Small Fail Checkbox</uilibrary-checkbox>
+        </div>
+        
+        <div class="checkbox-section">
+          <h4>Large Checkboxes</h4>
+          <uilibrary-checkbox variant="branded" size="large">Large Branded Checkbox</uilibrary-checkbox>
+          <uilibrary-checkbox variant="pass" size="large">Large Pass Checkbox</uilibrary-checkbox>
+          <uilibrary-checkbox variant="fail" size="large">Large Fail Checkbox</uilibrary-checkbox>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;!-- Small size (default) --&gt;
+&lt;uilibrary-checkbox variant="branded"&gt;Small Checkbox&lt;/uilibrary-checkbox&gt;
+
+&lt;!-- Large size --&gt;
+&lt;uilibrary-checkbox variant="branded" size="large"&gt;Large Checkbox&lt;/uilibrary-checkbox&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Form Control Integration</h2>
+      <p>Checkboxes integrate seamlessly with Angular reactive forms.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="checkBoxes">
+        <div class="checkbox-section mb-4">
+          <h4>Form Control Checkboxes</h4>
+          <uilibrary-checkbox variant="branded" formControlName="checkbox1">
+            Small Form Control Checkbox
+          </uilibrary-checkbox>
+          <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2">
+            Large Form Control Checkbox
+          </uilibrary-checkbox>
+        </div>
+        
+        <div class="checkbox-section">
+          <h4>Two-Way Data Binding</h4>
+          <uilibrary-checkbox variant="pass" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
+            Two-Way Binding Checkbox
+          </uilibrary-checkbox>
+          <p class="mt-2"><strong>Current value:</strong> {{checked}}</p>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;!-- Form control --&gt;
+&lt;uilibrary-checkbox variant="branded" formControlName="checkbox1"&gt;
+  Form Control Checkbox
+&lt;/uilibrary-checkbox&gt;
+
+&lt;!-- Two-way binding --&gt;
+&lt;uilibrary-checkbox variant="pass" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"&gt;
+  Two-Way Binding
+&lt;/uilibrary-checkbox&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Disabled States</h2>
+      <p>Checkboxes can be disabled in both checked and unchecked states.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="checkbox-section mb-4">
+          <h4>Small Disabled Checkboxes</h4>
+          <uilibrary-checkbox variant="branded" [disabled]="isDisabled">
+            Small Disabled Checkbox ({{isDisabled ? 'Disabled' : 'Enabled'}})
+          </uilibrary-checkbox>
+          <uilibrary-checkbox variant="branded" [disabled]="isDisabled" [checked]="true">
+            Small Checked Disabled Checkbox ({{isDisabled ? 'Disabled' : 'Enabled'}})
+          </uilibrary-checkbox>
+        </div>
+        
+        <div class="checkbox-section mb-4">
+          <h4>Large Disabled Checkboxes</h4>
+          <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled">
+            Large Disabled Checkbox ({{isDisabled ? 'Disabled' : 'Enabled'}})
+          </uilibrary-checkbox>
+          <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled" [checked]="true">
+            Large Checked Disabled Checkbox ({{isDisabled ? 'Disabled' : 'Enabled'}})
+          </uilibrary-checkbox>
+        </div>
+        
+        <button class="btn btn-primary" (click)="toggleDisabled()">
+          {{isDisabled ? 'Enable' : 'Disable'}} Checkboxes
+        </button>
+      </div>
+
+      <pre><code>&lt;uilibrary-checkbox variant="branded" [disabled]="isDisabled"&gt;
+  Disabled Checkbox
+&lt;/uilibrary-checkbox&gt;
+
+&lt;uilibrary-checkbox variant="branded" [disabled]="isDisabled" [checked]="true"&gt;
+  Disabled Checked Checkbox
+&lt;/uilibrary-checkbox&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Label Positioning</h2>
+      <p>Checkbox labels can be positioned on either side of the checkbox.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="checkBoxes">
+        <div class="checkbox-section mb-4">
+          <h4>Right-Aligned Labels (Default)</h4>
+          <uilibrary-checkbox variant="branded" formControlName="checkbox1">
+            Label on the right (default)
+          </uilibrary-checkbox>
+          <uilibrary-checkbox variant="pass" size="large">
+            Large checkbox with right label
+          </uilibrary-checkbox>
+        </div>
+        
+        <div class="checkbox-section">
+          <h4>Left-Aligned Labels</h4>
+          <uilibrary-checkbox variant="branded" formControlName="checkbox1" labelPosition="left">
+            Label on the left
+          </uilibrary-checkbox>
+          <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2" labelPosition="left">
+            Large checkbox with left label
+          </uilibrary-checkbox>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;!-- Default right positioning --&gt;
+&lt;uilibrary-checkbox variant="branded"&gt;
+  Right Label (default)
+&lt;/uilibrary-checkbox&gt;
+
+&lt;!-- Left positioning --&gt;
+&lt;uilibrary-checkbox variant="branded" labelPosition="left"&gt;
+  Left Label
+&lt;/uilibrary-checkbox&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Interactive Examples</h2>\n      <p>Complex checkbox scenarios and interactions.</p>
+      
+      <div class="border p-3 mb-3">
+        <div class="checkbox-section mb-4">
+          <h4>Dynamic Checkbox Groups</h4>
+          <uilibrary-checkbox variant="branded" [(ngModel)]="option1" [ngModelOptions]="{standalone: true}">
+            Option 1 ({{option1 ? 'Checked' : 'Unchecked'}})
+          </uilibrary-checkbox>
+          <uilibrary-checkbox variant="pass" [(ngModel)]="option2" [ngModelOptions]="{standalone: true}">
+            Option 2 ({{option2 ? 'Checked' : 'Unchecked'}})
+          </uilibrary-checkbox>
+          <uilibrary-checkbox variant="fail" [(ngModel)]="option3" [ngModelOptions]="{standalone: true}">
+            Option 3 ({{option3 ? 'Checked' : 'Unchecked'}})
+          </uilibrary-checkbox>
+        </div>
+        
+        <div class="checkbox-section mb-4">
+          <h4>Master Checkbox</h4>
+          <uilibrary-checkbox variant="branded" size="large" [checked]="allSelected" (change)="toggleAll($event)">
+            Select All ({{selectedCount}} of 3 selected)
+          </uilibrary-checkbox>
+        </div>
+        
+        <div class="actions">
+          <button class="btn btn-secondary me-2" (click)="selectAll()">Select All</button>
+          <button class="btn btn-secondary me-2" (click)="clearAll()">Clear All</button>
+          <button class="btn btn-primary" (click)="logSelectedItems()">Log Selected</button>
+        </div>
+        
+        <div class="mt-3" *ngIf="lastAction">
+          <div class="alert alert-info">
+            <strong>Last Action:</strong> {{lastAction}}
+          </div>
+        </div>
+      </div>
+
+      <!-- <pre><code>// Component logic
+toggleAll(event: any): void {
+  const checked = event.target.checked;
+  this.option1 = checked;
+  this.option2 = checked;
+  this.option3 = checked;
+}
+
+get allSelected(): boolean {
+  return this.option1 && this.option2 && this.option3;
+}
+
+get selectedCount(): number {
+  return [this.option1, this.option2, this.option3].filter(Boolean).length;
+}</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>API Reference</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>variant</code></td>
+              <td><code>string</code></td>
+              <td><code>'branded'</code></td>
+              <td>Checkbox style: 'branded', 'pass', 'fail'</td>
+            </tr>
+            <tr>
+              <td><code>size</code></td>
+              <td><code>string</code></td>
+              <td><code>'small'</code></td>
+              <td>Checkbox size: 'small', 'large'</td>
+            </tr>
+            <tr>
+              <td><code>checked</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Whether the checkbox is checked</td>
+            </tr>
+            <tr>
+              <td><code>disabled</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Whether the checkbox is disabled</td>
+            </tr>
+            <tr>
+              <td><code>hideLabel</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Hide the label visually (for accessibility)</td>
+            </tr>
+            <tr>
+              <td><code>labelPosition</code></td>
+              <td><code>string</code></td>
+              <td><code>'right'</code></td>
+              <td>Label position: 'left', 'right'</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3 class="mt-4">Events</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>(change)</code></td>
+              <td><code>EventEmitter&lt;any&gt;</code></td>
+              <td>Emitted when checkbox state changes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

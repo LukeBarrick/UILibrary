@@ -1,0 +1,290 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Navigation Component</h1>
+      <p class="lead">
+        The <code>uilibrary-navigation</code> component provides a responsive navigation bar with support for logos, 
+        links, dropdowns, and mobile-friendly collapsible menus. It supports content projection for custom elements.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Basic Navigation Bar</h2>
+      <p>The simplest navigation bar contains just links and an optional logo.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary-navigation [links]="links">
+          <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+        </uilibrary-navigation>
+      </div>
+<!-- 
+      <pre><code>&lt;uilibrary-navigation [links]="links"&gt;
+  &lt;img logo src="assets/logo.jpg" style="height: 50px" alt="Logo"&gt;
+&lt;/uilibrary-navigation&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Navigation with Right-Aligned Content</h2>
+      <p>Navigation bars can display additional content on the right side (desktop only). This area has limited width.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
+          <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+          <div rightAlignedContent>
+            <p style="color: white; margin: 0;">Right Aligned Content</p>
+          </div>
+        </uilibrary-navigation>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary-navigation [links]="links" [showRightAlignedContent]="true"&gt;
+  &lt;img logo src="assets/logo.jpg" style="height: 50px" alt="Logo"&gt;
+  &lt;div rightAlignedContent&gt;
+    &lt;p style="color: white;"&gt;Right Aligned Content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/uilibrary-navigation&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Navigation with Mobile Menu Content</h2>
+      <p>Extra content can be appended to the bottom of the menu when visible in mobile mode.</p>
+      
+      <div class="alert alert-info" role="alert">
+        This extra content can be toggled with <em>showExtraMobileMenuContent</em>
+      </div>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
+          <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+          <div extraMobileMenuContent>
+            <p>I'm some extra mobile content!</p>
+            <button class="btn btn-secondary">Mobile Action</button>
+          </div>
+        </uilibrary-navigation>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary-navigation [links]="links"&gt;
+  &lt;img logo src="assets/logo.jpg" style="height: 50px" alt="Logo"&gt;
+  &lt;div extraMobileMenuContent&gt;
+    &lt;p&gt;I'm some extra mobile content!&lt;/p&gt;
+    &lt;button class="btn btn-secondary"&gt;Mobile Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/uilibrary-navigation&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Combined Right-Aligned and Mobile Content</h2>
+      <p>You can combine both right-aligned desktop content and extra mobile menu content.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
+          <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+          <div extraMobileMenuContent>
+            <p>Mobile-only content here</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary btn-sm">Login</button>
+              <button class="btn btn-outline-primary btn-sm">Sign Up</button>
+            </div>
+          </div>
+          <div rightAlignedContent>
+            <div class="d-flex align-items-center gap-2">
+              <span style="color: white;">Welcome, User!</span>
+              <button class="btn btn-sm btn-outline-light">Logout</button>
+            </div>
+          </div>
+        </uilibrary-navigation>
+      </div>
+<!-- 
+      <pre><code>&lt;uilibrary-navigation [links]="links" [showRightAlignedContent]="true"&gt;
+  &lt;img logo src="assets/logo.jpg" style="height: 50px" alt="Logo"&gt;
+  &lt;div extraMobileMenuContent&gt;
+    &lt;p&gt;Mobile-only content&lt;/p&gt;
+    &lt;button class="btn btn-primary"&gt;Login&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div rightAlignedContent&gt;
+    &lt;span style="color: white;"&gt;Welcome, User!&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/uilibrary-navigation&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Hide Right-Aligned Content on Mobile</h2>
+      <p>Right-aligned content can be hidden on mobile devices using CSS (the components are still rendered).</p>
+      
+      <div class="alert alert-warning" role="alert">
+        <strong>Note:</strong> Right aligned content is only hidden via <em>CSS</em> so the underlying Angular components
+        will always be rendered.
+      </div>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary-navigation [links]="links" [showRightAlignedContent]="true" [hideRightAllignedContentOnMobile]="true">
+          <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+          <div rightAlignedContent>
+            <p style="color: white; margin: 0;">Desktop Only Content</p>
+          </div>
+        </uilibrary-navigation>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary-navigation 
+  [links]="links" 
+  [showRightAlignedContent]="true" 
+  [hideRightAllignedContentOnMobile]="true"&gt;
+  &lt;img logo src="assets/logo.jpg" style="height: 50px" alt="Logo"&gt;
+  &lt;div rightAlignedContent&gt;
+    &lt;p style="color: white;"&gt;Desktop Only Content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/uilibrary-navigation&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Navigation with Dropdown Menus</h2>
+      <p>Navigation supports nested dropdown menus. Use the <em>hideNLabelOnNestedChildren</em> option for mobile menus.</p>
+      
+      <div class="alert alert-info" role="alert">
+        Should there be nested dropdowns, say within the mobile menu, it is possible to hide the label of the parent item 
+        which would have triggered the dropdown with <em>hideNLabelOnNestedChildren</em>
+      </div>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary-navigation [links]="linksWithDropdowns">
+          <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+        </uilibrary-navigation>
+      </div>
+<!-- 
+      <pre><code>// Component property
+linksWithDropdowns: NavigationLink[] = [
+  { label: 'Home', path: '/', type: NavigationLinkType.Route },
+  { label: 'Products', path: '', type: NavigationLinkType.Route, children: [
+    { label: 'Product 1', path: '/products/1', type: NavigationLinkType.Route },
+    { label: 'Product 2', path: '/products/2', type: NavigationLinkType.Route }
+  ]},
+  { label: 'About', path: '/about', type: NavigationLinkType.Route }
+];
+
+&lt;uilibrary-navigation [links]="linksWithDropdowns"&gt;
+  &lt;img logo src="assets/logo.jpg" style="height: 50px" alt="Logo"&gt;
+&lt;/uilibrary-navigation&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Different Link Types</h2>
+      <p>Navigation supports different types of links: routes, external URLs, and target blank URLs.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary-navigation [links]="mixedLinks">
+          <img logo src="assets/logo.jpg" style="height: 50px" alt="Logo">
+        </uilibrary-navigation>
+      </div>
+
+      <!-- <pre><code>import { NavigationLinkType } from '../core/enums/navigation-link-type.enum';
+
+mixedLinks: NavigationLink[] = [
+  { label: 'Route', path: '/', type: NavigationLinkType.Route },
+  { label: 'External URL', path: 'https://www.google.com', type: NavigationLinkType.URL },
+  { label: 'New Tab URL', path: 'https://www.github.com', type: NavigationLinkType.TargetBlankURL }
+];</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2 id="limitations-on-content-projection">Limitations on Content Projection</h2>
+      <p>Angular's content projection runs at compile time. This mechanism allows projecting extra menu content into various menus, but has limitations:</p>
+      
+      <ul>
+        <li>Static projection slots (everything is done at compile time)</li>
+        <li>Only one projection per slot. <em>rightAlignedContent</em> and <em>extraMobileMenuContent</em> cannot be used on the same element</li>
+        <li>Projected content does not play well with conditional logic <em>*ngIf</em> etc</li>
+      </ul>
+
+      <p>See <a href="https://brandonclapp.com/how-to-use-ng-content-for-content-projection-in-angular-a-basic-overview" target="_blank">this article</a> for a good write up on how <em>ng-content</em> works and its limitations.</p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>API Reference</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>links</code></td>
+              <td><code>NavigationLink[]</code></td>
+              <td><code>[]</code></td>
+              <td>Array of navigation links to display</td>
+            </tr>
+            <tr>
+              <td><code>showRightAlignedContent</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Whether to show right-aligned content area</td>
+            </tr>
+            <tr>
+              <td><code>hideRightAllignedContentOnMobile</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Hide right-aligned content on mobile devices</td>
+            </tr>
+            <tr>
+              <td><code>showExtraMobileMenuContent</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Whether to show extra content in mobile menu</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3 class="mt-4">Content Projection Slots</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Description</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>logo</code></td>
+              <td>Logo element (typically an image)</td>
+              <td><code>&lt;img logo src="..." alt="Logo"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>rightAlignedContent</code></td>
+              <td>Content displayed on the right (desktop)</td>
+              <td><code>&lt;div rightAlignedContent&gt;...&lt;/div&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>extraMobileMenuContent</code></td>
+              <td>Additional content in mobile menu</td>
+              <td><code>&lt;div extraMobileMenuContent&gt;...&lt;/div&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

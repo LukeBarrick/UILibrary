@@ -5,7 +5,7 @@
   </div>
   }
 
-  @if(this._prefix?.isText) {
+  @if(this._prefix?.isText && _control?.shouldLabelFloat) {
   <div class="form-field-text-prefix">
     <ng-content select="[ui-text-prefix]"></ng-content>
   </div>
@@ -27,7 +27,7 @@
   </div>
   }
 
-  @if(this._suffix?.isText) {
+  @if(this._suffix?.isText && _control?.shouldLabelFloat) {
   <div class="form-field-text-suffix">
     <ng-content select="[ui-text-suffix]"></ng-content>
   </div>

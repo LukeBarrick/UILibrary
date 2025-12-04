@@ -1,0 +1,280 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Date Picker Components</h1>
+      <p class="lead">
+        The <code>uilibrary2-datepicker-input</code> and <code>uilibrary2-date-range-input</code> components 
+        provide intuitive date selection interfaces with form integration and validation support.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Single Date Picker</h2>
+      <p>Basic date picker for selecting individual dates with form control integration.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="datePickers2">
+        <uilibrary2-form-field>
+          <label ui-label>Basic Date Picker</label>
+          <uilibrary2-datepicker-input [(ngModel)]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
+        </uilibrary2-form-field>
+
+        <p class="mt-2"><strong>Selected Date:</strong> {{modelDatePicker1}}</p>
+
+        <uilibrary2-form-field>
+          <label ui-label>Form Control Date Picker</label>
+          <uilibrary2-datepicker-input formControlName="datePicker1"></uilibrary2-datepicker-input>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Required Date Field</label>
+          <uilibrary2-datepicker-input formControlName="datePicker4"></uilibrary2-datepicker-input>
+        </uilibrary2-form-field>
+
+        <div class="mt-3">
+          <p><strong>Form Values:</strong></p>
+          <pre>{{stringify(datePickers2.value)}}</pre>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Date Picker&lt;/label&gt;
+  &lt;uilibrary2-datepicker-input [(ngModel)]="dateValue" [ngModelOptions]="{ standalone: true }"&gt;
+  &lt;/uilibrary2-datepicker-input&gt;
+&lt;/uilibrary2-form-field&gt;
+
+&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Form Control Date&lt;/label&gt;
+  &lt;uilibrary2-datepicker-input formControlName="datePicker"&gt;&lt;/uilibrary2-datepicker-input&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Date Range Picker</h2>
+      <p>Select start and end dates for date ranges with coordinated validation.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="datePickers2">
+        <uilibrary2-form-field>
+          <label ui-label>Basic Date Range Picker</label>
+          <uilibrary2-date-range-input>
+            <input startDate [(ngModel)]="startDateModel" [ngModelOptions]="{ standalone: true }"/>
+            <input endDate [(ngModel)]="endDateModel" [ngModelOptions]="{ standalone: true }"/>
+          </uilibrary2-date-range-input>
+        </uilibrary2-form-field>
+
+        <div class="mt-2">
+          <p><strong>Start Date:</strong> {{startDateModel}}</p>
+          <p><strong>End Date:</strong> {{endDateModel}}</p>
+        </div>
+
+        <uilibrary2-form-field>
+          <label ui-label>Form Control Date Range</label>
+          <uilibrary2-date-range-input>
+            <input startDate formControlName="startDate1"/>
+            <input endDate formControlName="endDate1"/>
+          </uilibrary2-date-range-input>
+        </uilibrary2-form-field>
+
+        <div class="mt-3">
+          <p><strong>Form Range Values:</strong></p>
+          <pre>Start: {{datePickers2.get('startDate1')?.value}}
+End: {{datePickers2.get('endDate1')?.value}}</pre>
+        </div>
+      </div>
+
+      <!-- <pre><code>&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Date Range&lt;/label&gt;
+  &lt;uilibrary2-date-range-input&gt;
+    &lt;input startDate [(ngModel)]="startDate" [ngModelOptions]="{ standalone: true }"/&gt;
+    &lt;input endDate [(ngModel)]="endDate" [ngModelOptions]="{ standalone: true }"/&gt;
+  &lt;/uilibrary2-date-range-input&gt;
+&lt;/uilibrary2-form-field&gt;
+
+&lt;uilibrary2-form-field&gt;
+  &lt;label ui-label&gt;Form Control Range&lt;/label&gt;
+  &lt;uilibrary2-date-range-input&gt;
+    &lt;input startDate formControlName="startDate"/&gt;
+    &lt;input endDate formControlName="endDate"/&gt;
+  &lt;/uilibrary2-date-range-input&gt;
+&lt;/uilibrary2-form-field&gt;</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Advanced Date Picker Examples</h2>
+      <p>Complex date picker configurations and validation scenarios.</p>
+      
+      <div class="border p-3 mb-3">
+        <uilibrary2-form-field>
+          <label ui-label>Pre-filled Date Picker</label>
+          <uilibrary2-datepicker-input [(ngModel)]="prefilledDate" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field>
+          <label ui-label>Interactive Date Range</label>
+          <uilibrary2-date-range-input>
+            <input startDate [(ngModel)]="interactiveStart" [ngModelOptions]="{ standalone: true }"/>
+            <input endDate [(ngModel)]="interactiveEnd" [ngModelOptions]="{ standalone: true }"/>
+          </uilibrary2-date-range-input>
+        </uilibrary2-form-field>
+
+        <div class="mt-3">
+          <p><strong>Date Range Duration:</strong> {{calculateDuration()}} days</p>
+          <p><strong>Range Valid:</strong> {{isRangeValid() ? 'Yes' : 'No'}}</p>
+        </div>
+
+        <div class="actions mt-3">
+          <button class="btn btn-primary me-2" (click)="setToday()">Set Today</button>
+          <button class="btn btn-secondary me-2" (click)="setThisWeek()">Set This Week</button>
+          <button class="btn btn-secondary me-2" (click)="setThisMonth()">Set This Month</button>
+          <button class="btn btn-outline-primary" (click)="clearDates()">Clear All</button>
+        </div>
+
+        <div class="mt-3" *ngIf="lastDateAction">
+          <div class="alert alert-info">
+            <strong>Last Action:</strong> {{lastDateAction}}
+          </div>
+        </div>
+      </div>
+
+      <!-- <pre><code>// Component methods
+setToday(): void {
+  const today = new Date();
+  this.prefilledDate = today;
+  this.interactiveStart = today;
+  this.interactiveEnd = today;
+}
+
+setThisWeek(): void {
+  const today = new Date();
+  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+  const endOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 6));
+  this.interactiveStart = startOfWeek;
+  this.interactiveEnd = endOfWeek;
+}
+
+calculateDuration(): number {
+  if (this.interactiveStart && this.interactiveEnd) {
+    const diffTime = Math.abs(this.interactiveEnd.getTime() - this.interactiveStart.getTime());
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  }
+  return 0;
+}</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Validation and Error Handling</h2>
+      <p>Date pickers with validation rules and error states.</p>
+      
+      <div class="border p-3 mb-3" [formGroup]="validationForm">
+        <uilibrary2-form-field [class.error]="validationForm.get('requiredDate')?.invalid && validationForm.get('requiredDate')?.touched">
+          <label ui-label>Required Date</label>
+          <uilibrary2-datepicker-input formControlName="requiredDate"></uilibrary2-datepicker-input>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field [class.error]="validationForm.get('futureDate')?.invalid && validationForm.get('futureDate')?.touched">
+          <label ui-label>Future Date Only</label>
+          <uilibrary2-datepicker-input formControlName="futureDate"></uilibrary2-datepicker-input>
+        </uilibrary2-form-field>
+
+        <uilibrary2-form-field [class.error]="dateRangeInvalid">
+          <label ui-label>Validated Date Range</label>
+          <uilibrary2-date-range-input>
+            <input startDate formControlName="validatedStartDate"/>
+            <input endDate formControlName="validatedEndDate"/>
+          </uilibrary2-date-range-input>
+        </uilibrary2-form-field>
+
+        <div class="mt-3">
+          <button class="btn btn-primary me-2" (click)="validateForm()">Validate Form</button>
+          <button class="btn btn-secondary" (click)="resetValidationForm()">Reset Form</button>
+        </div>
+
+        <div class="mt-3" *ngIf="validationErrors.length > 0">
+          <div class="alert alert-danger">
+            <strong>Validation Errors:</strong>
+            <ul class="mb-0 mt-2">
+              <li *ngFor="let error of validationErrors">{{error}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- <pre><code>// Validation example
+this.validationForm = this.formBuilder.group({
+  requiredDate: ['', Validators.required],
+  futureDate: ['', [Validators.required, this.futureDateValidator]],
+  validatedStartDate: [''],
+  validatedEndDate: ['']
+});
+
+futureDateValidator(control: AbstractControl): ValidationErrors | null {
+  const selectedDate = new Date(control.value);
+  const today = new Date();
+  return selectedDate > today ? null : { pastDate: true };
+}</code></pre> -->
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Debug and Development</h2>
+      <p>Debug tools and form state inspection.</p>
+      
+      <div class="border p-3 mb-3">
+        <button class="btn btn-info me-2" (click)="debugDatePickers()">Debug Date Pickers</button>
+        <button class="btn btn-outline-info" (click)="logFormState()">Log Form State</button>
+        
+        <div class="mt-3" *ngIf="debugInfo">
+          <h5>Debug Information:</h5>
+          <!-- <pre>{{debugInfo}}</pre> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>API Reference</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Purpose</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>uilibrary2-datepicker-input</code></td>
+              <td>Single date selection component</td>
+              <td><code>&lt;uilibrary2-datepicker-input [(ngModel)]="date"&gt;&lt;/uilibrary2-datepicker-input&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>uilibrary2-date-range-input</code></td>
+              <td>Date range selection wrapper</td>
+              <td><code>&lt;uilibrary2-date-range-input&gt;&lt;input startDate&gt;&lt;input endDate&gt;&lt;/uilibrary2-date-range-input&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>startDate</code> directive</td>
+              <td>Marks input as start date in range</td>
+              <td><code>&lt;input startDate formControlName="start"/&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>endDate</code> directive</td>
+              <td>Marks input as end date in range</td>
+              <td><code>&lt;input endDate formControlName="end"/&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

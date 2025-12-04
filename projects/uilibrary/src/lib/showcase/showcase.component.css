@@ -24,3 +24,7 @@
     flex-direction: column;
     gap: 15px;
 }
+
+.example-right-align {
+    text-align: right;
+}
