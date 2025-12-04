@@ -1,0 +1,162 @@
+<div class="docs-container">
+  <!-- Header Section -->
+  <div class="docs-header">
+    <div class="header-content">
+      <h1 class="docs-title">
+        <uilibrary2-icon name="icon-home" size="large" appearance="primary"></uilibrary2-icon>
+        UI Library Documentation
+      </h1>
+      <p class="docs-subtitle">
+        Explore our comprehensive component library with interactive examples, 
+        code snippets, and implementation guides.
+      </p>
+    </div>
+  </div>
+
+  <!-- Search and Filter Section -->
+  <div class="controls-section">
+    <div class="search-container">
+      <uilibrary2-form-field>
+        <uilibrary2-icon ui-prefix name="icon-search" size="small" appearance="secondary"></uilibrary2-icon>
+        <label ui-label>Search Components</label>
+        <input 
+          ui-input
+          type="text" 
+          placeholder="Search components..."
+          [(ngModel)]="searchTerm"
+        >
+        <uilibrary-button 
+          *ngIf="searchTerm" 
+          ui-suffix
+          appearance="ghost"
+          size="small"
+          (click)="clearSearch()"
+          title="Clear search"
+        >
+          <uilibrary2-icon name="icon-close" size="small"></uilibrary2-icon>
+        </uilibrary-button>
+      </uilibrary2-form-field>
+    </div>
+
+    <div class="category-filters">
+      <uilibrary-button 
+        *ngFor="let category of categories"
+        [appearance]="selectedCategory === category ? 'primary' : 'secondary'"
+        size="medium"
+        (click)="selectedCategory = category"
+      >
+        {{category}}
+        <span class="category-count">({{getCategoryCount(category)}})</span>
+      </uilibrary-button>
+    </div>
+  </div>
+
+  <!-- Results Summary -->
+  <div class="results-summary" *ngIf="searchTerm || selectedCategory !== 'All'">
+    <p>
+      <strong>{{getFilteredTiles().length}}</strong> 
+      component{{getFilteredTiles().length !== 1 ? 's' : ''}} found
+      <span *ngIf="selectedCategory !== 'All'">
+        in <strong>{{selectedCategory}}</strong>
+      </span>
+      <span *ngIf="searchTerm">
+        matching <strong>"{{searchTerm}}"</strong>
+      </span>
+    </p>
+  </div>
+
+  <!-- Component Tiles Grid -->
+  <div class="tiles-grid">
+    <div 
+      *ngFor="let tile of getFilteredTiles(); trackBy: trackByPath"
+      class="component-tile"
+      [class.hovered]="hoveredTile === tile.path"
+      (mouseenter)="onTileHover(tile.path)"
+      (mouseleave)="onTileLeave()"
+      (click)="navigateToComponent(tile)"
+    >
+      <!-- Tile Header -->
+      <div class="tile-header">
+        <div class="tile-icon">
+          <uilibrary2-icon 
+            [name]="tile.icon" 
+            size="large" 
+            appearance="primary"
+          ></uilibrary2-icon>
+        </div>
+        <div class="tile-category">{{tile.category}}</div>
+      </div>
+
+      <!-- Tile Content -->
+      <div class="tile-content">
+        <h3 class="tile-title">{{tile.title}}</h3>
+        <p class="tile-description">{{tile.description}}</p>
+      </div>
+
+      <!-- Tile Footer -->
+      <div class="tile-footer">
+        <div class="component-info">
+          <span class="component-name">{{tile.component}}</span>
+          <span class="route-path">/docs/{{tile.path}}</span>
+        </div>
+        <div class="tile-action">
+          <uilibrary2-icon name="icon-arrow-right" size="small" appearance="primary"></uilibrary2-icon>
+        </div>
+      </div>
+
+      <!-- Hover Overlay -->
+      <div class="tile-overlay" [class.visible]="hoveredTile === tile.path">
+        <div class="overlay-content">
+          <h4>{{tile.title}}</h4>
+          <p>Click to explore interactive examples, code snippets, and API documentation.</p>
+          <div class="overlay-actions">
+             <uilibrary-button class="view-docs-btn" appearance="primary" icon="icon-air">View Documentation</uilibrary-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="getFilteredTiles().length === 0">
+    <div class="empty-content">
+      <uilibrary2-icon name="icon-search" size="large" appearance="secondary"></uilibrary2-icon>
+      <h3>No components found</h3>
+      <p>
+        No components match your current filters.
+        <span *ngIf="searchTerm">Try a different search term</span>
+        <span *ngIf="!searchTerm && selectedCategory !== 'All'">or select a different category</span>.
+      </p>
+      <uilibrary-button 
+        appearance="primary" 
+        size="medium"
+        (click)="selectedCategory = 'All'; searchTerm = ''"
+      >
+        <uilibrary2-icon name="icon-close" size="small"></uilibrary2-icon>
+        Clear Filters
+      </uilibrary-button>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">{{docsTiles.length}}</div>
+        <div class="stat-label">Total Components</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{categories.length - 1}}</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Interactive Examples</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Possibilities</div>
+      </div>
+    </div>
+  </div>
+</div>

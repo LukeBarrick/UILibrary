@@ -176,15 +176,17 @@
           <h4>Icons in Form Fields</h4>
           <div class="form-examples mb-4" [formGroup]="iconDemoForm">
             <uilibrary2-form-field>
-              <uilibrary-icon ui-prefix name="icon-air" size="small" appearance="secondary"></uilibrary-icon>
+              <uilibrary2-icon ui-prefix name="icon-air" size="small" appearance="secondary"></uilibrary2-icon>
               <label ui-label>Search</label>
               <input ui-input type="text" formControlName="search" placeholder="Search with icon prefix">
             </uilibrary2-form-field>
+
+            <br/>
             
             <uilibrary2-form-field>
               <label ui-label>Location</label>
               <input ui-input type="text" formControlName="location" placeholder="Enter location">
-              <uilibrary-icon ui-suffix name="icon-accommodation" size="small" appearance="tertiary"></uilibrary-icon>
+              <uilibrary2-icon ui-suffix name="icon-accommodation" size="small" appearance="tertiary"></uilibrary2-icon>
             </uilibrary2-form-field>
           </div>
           

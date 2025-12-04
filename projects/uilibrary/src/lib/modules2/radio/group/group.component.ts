@@ -1,12 +1,13 @@
-import { AfterContentInit, Component, ContentChildren, Input, Optional, QueryList, Self } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { AfterContentInit, Component, ContentChildren, forwardRef, Input, OnDestroy, OnInit, Optional, QueryList, Self } from '@angular/core';
+import { ControlValueAccessor, NgControl, RadioControlValueAccessor } from '@angular/forms';
 import { RadioButton2Component } from '../button/button.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'uilibrary2-radio-group',
   templateUrl: './group.component.html'
 })
-export class RadioGroup2Component implements ControlValueAccessor, AfterContentInit {
+export class RadioGroup2Component implements ControlValueAccessor, AfterContentInit, OnInit, OnDestroy {
  @ContentChildren(RadioButton2Component) radioButtons!: QueryList<RadioButton2Component>;
   
   value: any;
@@ -29,7 +30,30 @@ export class RadioGroup2Component implements ControlValueAccessor, AfterContentI
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  $valueChanges: Subscription | undefined;
+  $radioButtonChanges: Subscription | undefined;
+
+  ngOnInit(): void {
+    if(this.ngControl?.control) {
+      this.$valueChanges = this.ngControl.control.valueChanges.subscribe(value => {
+        this.radioButtons.forEach(button => {
+          button.checked = button.value === value;
+        });
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.$valueChanges?.unsubscribe();
+  }
+
   ngAfterContentInit() {
+    if (this.radioButtons) {
+      this.$radioButtonChanges = this.radioButtons.changes.subscribe(() => {
+        this.updateRadioButtons();
+      });
+    }
+
     setTimeout(() => {
       this.updateRadioButtons();
     }, 0);
@@ -47,7 +71,6 @@ export class RadioGroup2Component implements ControlValueAccessor, AfterContentI
     this.onTouched = fn;
   }
 
-  
   setDisabledState?(isDisabled: boolean): void {
     if (this.radioButtons) {
       this._disabled = isDisabled;
@@ -67,6 +90,7 @@ export class RadioGroup2Component implements ControlValueAccessor, AfterContentI
           this.radioButtons.forEach(radio => radio.checked = false);
           button.checked = true;
 
+          this.writeValue(this.value);
           this.onChange(this.value);
           this.onTouched();
         });

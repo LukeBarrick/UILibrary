@@ -45,6 +45,7 @@ const routes: Routes = [
     Datepicker2Module,
     FormField2Module,
     Icon2Module,
+    IconsModule,
     Radio2Module,
     Toggle2Module,
     StatusTagsModule,

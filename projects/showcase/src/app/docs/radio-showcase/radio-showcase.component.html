@@ -62,8 +62,10 @@
           
           <div class="mt-2">
             <p><strong>Selected Value:</strong> {{radioButtons2.get('radioButton1')?.value}}</p>
-            <button class="btn btn-secondary btn-sm me-2" (click)="toggleRadioDisabled()">{{radioButtonDisabled ? 'Enable' : 'Disable'}} Option 3</button>
-            <button class="btn btn-primary btn-sm" (click)="setRadioValue(2)">Select Option 2</button>
+            <div class="d-flex">
+              <uilibrary-button appearance="secondary" (click)="toggleRadioDisabled()">{{radioButtonDisabled ? 'Enable' : 'Disable'}} Option 3</uilibrary-button>
+              <uilibrary-button appearance="primary" class="ms-2"(click)="setRadioValue(2)">Select Option 2</uilibrary-button>
+            </div>
           </div>
         </div>
         

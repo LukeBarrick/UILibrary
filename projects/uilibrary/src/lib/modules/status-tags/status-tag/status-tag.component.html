@@ -1,6 +1,10 @@
 <div class="status-tag" [ngClass]="{'information': statusType === 'info', 
                                     'warning': statusType === 'warning',
                                     'error': statusType === 'error',
-                                    'success': statusType === 'success'}">
+                                    'success': statusType === 'success',
+                                    'primary': statusType === 'primary',
+                                    'secondary': statusType === 'secondary',
+                                    'inactive': statusType === 'inactive',
+                                    'pending': statusType === 'pending'}">
   <ng-content></ng-content>
 </div>

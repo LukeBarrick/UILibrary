@@ -215,15 +215,18 @@
       <div class="border p-3 mb-3">
         <uilibrary2-form-field>
           <label ui-label>Select with Search (Default)</label>
-          <uilibrary2-select ui-select [items]="extendedItems" [(ngModel)]="advancedSelectModel" [ngModelOptions]="{ standalone: true }"
+          <uilibrary2-select ui-select [items]="extendedItems" [(ngModel)]="advancedSelectModel" [ngModelOptions]="{ standalone: true }" [useCustomTemplate]="false" [searchable]="true"
             placeholder="Type to search..." [clearable]="true" bindLabel="name" bindValue="id">
           </uilibrary2-select>
         </uilibrary2-form-field>
 
         <uilibrary2-form-field>
           <label ui-label>Custom Search Function</label>
-          <uilibrary2-select ui-select [items]="extendedItems" [(ngModel)]="customSearchModel" [ngModelOptions]="{ standalone: true }"
+          <uilibrary2-select ui-select [items]="extendedItems" [(ngModel)]="customSearchModel" [ngModelOptions]="{ standalone: true }" [searchable]="true"
             placeholder="Custom search behavior..." [clearable]="true" [searchFn]="customSearchFn">
+            <ng-template #labelTemplate let-item>
+              <div><b>{{item.name}}</b></div>
+            </ng-template>
             <ng-template #optionTemplate let-item>
               <div>
                 <strong>{{item.name}}</strong>

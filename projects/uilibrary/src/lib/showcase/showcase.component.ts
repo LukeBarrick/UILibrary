@@ -167,6 +167,7 @@ export class ShowcaseComponent implements OnInit {
   radioButtonChecked() {
     this.notChecked = !this.notChecked; 
     this.radioButtonDisabled = !this.radioButtonDisabled;
+    this.radioButtonModel = '2';
     console.log(this.notChecked);
     console.log(this.radioButtons2.controls.radioButton1.value);
   }

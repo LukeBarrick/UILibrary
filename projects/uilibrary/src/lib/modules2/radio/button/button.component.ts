@@ -15,10 +15,8 @@ export class RadioButton2Component {
   @Input() value: any;
   @Input() checked: boolean | undefined;
   @Output() checkedChange = new EventEmitter<boolean>();
-
   @Input() disabled = false;
   @Input() labelPosition: string = 'left';
-  @Output() select = new EventEmitter<void>();
 
   check() {
     if (!this.disabled) {

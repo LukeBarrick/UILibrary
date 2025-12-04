@@ -4,7 +4,9 @@ uilibrary-status-tag {
         max-width: 240px;
         border-radius: 7px;
         text-align: center;
-    
+        padding-left: 10px;
+        padding-right: 10px;
+
         b,
         strong {
             font-weight: 600;
@@ -47,6 +49,46 @@ uilibrary-status-tag {
 
             a {
                 color: var(--success-dark);
+            }
+        }
+         
+        &.primary {
+            border-color: var(--primary);
+            background-color: var(--primary);
+            color: var(--primaryFont);
+
+            a {
+                color: var(--primaryFont);
+            }
+        }
+
+         &.secondary {
+            border-color: var(--secondary);
+            background-color: var(--secondary);
+            color: var(--secondaryFont);
+
+            a {
+                color: var(--secondary-font);
+            }
+        }
+
+        &.inactive {
+            border-color: var(--dark-gray);
+            background-color: var(--light-gray);
+            color: var(--darker-gray);
+
+            a {
+                color: var(--secondary-font);
+            }
+        }
+
+         &.pending {
+            border-color: var(--warning);
+            background-color: var(--warning-light);
+            color: var(--warning-dark);
+
+            a {
+                color: var(--warning-dark);
             }
         }
     }

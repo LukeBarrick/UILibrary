@@ -14126,6 +14126,8 @@ uilibrary-status-tag .status-tag {
   max-width: 240px;
   border-radius: 7px;
   text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 uilibrary-status-tag .status-tag b,
 uilibrary-status-tag .status-tag strong {
@@ -14162,6 +14164,38 @@ uilibrary-status-tag .status-tag.success {
 }
 uilibrary-status-tag .status-tag.success a {
   color: var(--success-dark);
+}
+uilibrary-status-tag .status-tag.primary {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--primaryFont);
+}
+uilibrary-status-tag .status-tag.primary a {
+  color: var(--primaryFont);
+}
+uilibrary-status-tag .status-tag.secondary {
+  border-color: var(--secondary);
+  background-color: var(--secondary);
+  color: var(--secondaryFont);
+}
+uilibrary-status-tag .status-tag.secondary a {
+  color: var(--secondary-font);
+}
+uilibrary-status-tag .status-tag.inactive {
+  border-color: var(--dark-gray);
+  background-color: var(--light-gray);
+  color: var(--darker-gray);
+}
+uilibrary-status-tag .status-tag.inactive a {
+  color: var(--secondary-font);
+}
+uilibrary-status-tag .status-tag.pending {
+  border-color: var(--warning);
+  background-color: var(--warning-light);
+  color: var(--warning-dark);
+}
+uilibrary-status-tag .status-tag.pending a {
+  color: var(--warning-dark);
 }
 
 uilibrary-textarea {
@@ -14726,6 +14760,7 @@ uilibrary2-form-field.form-field-label-float .form-field input::placeholder {
 }
 
 uilibrary2-form-field .form-field textarea {
+  padding-left: 15px;
   margin-top: 15px;
   appearance: none;
   outline: none;

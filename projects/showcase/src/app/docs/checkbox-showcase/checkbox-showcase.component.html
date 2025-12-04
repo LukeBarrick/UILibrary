@@ -138,10 +138,8 @@
             Large Checked Disabled Checkbox ({{isDisabled ? 'Disabled' : 'Enabled'}})
           </uilibrary-checkbox>
         </div>
-        
-        <button class="btn btn-primary" (click)="toggleDisabled()">
-          {{isDisabled ? 'Enable' : 'Disable'}} Checkboxes
-        </button>
+
+        <uilibrary-button appearance="primary" (click)="toggleDisabled()">{{isDisabled ? 'Enable' : 'Disable'}} Checkboxes</uilibrary-button>
       </div>
 
       <pre><code>&lt;uilibrary-checkbox variant="branded" [disabled]="isDisabled"&gt;
@@ -195,7 +193,8 @@
 
   <div class="row mt-5">
     <div class="col-12">
-      <h2>Interactive Examples</h2>\n      <p>Complex checkbox scenarios and interactions.</p>
+      <h2>Interactive Examples</h2>
+      <p>Complex checkbox scenarios and interactions.</p>
       
       <div class="border p-3 mb-3">
         <div class="checkbox-section mb-4">
@@ -219,9 +218,9 @@
         </div>
         
         <div class="actions">
-          <button class="btn btn-secondary me-2" (click)="selectAll()">Select All</button>
-          <button class="btn btn-secondary me-2" (click)="clearAll()">Clear All</button>
-          <button class="btn btn-primary" (click)="logSelectedItems()">Log Selected</button>
+          <uilibrary-button appearance="secondary" (click)="selectAll()">Select All</uilibrary-button>
+          <uilibrary-button appearance="secondary" class="ms-2" (click)="clearAll()">Clear All</uilibrary-button>
+          <uilibrary-button appearance="primary" class="ms-2" (click)="logSelectedItems()">Log Selected</uilibrary-button>
         </div>
         
         <div class="mt-3" *ngIf="lastAction">
