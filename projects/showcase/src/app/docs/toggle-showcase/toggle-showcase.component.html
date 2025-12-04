@@ -17,28 +17,28 @@
       <div class="border p-3 mb-3">
         <div class="toggle-section mb-4">
           <h4>Basic Toggles</h4>
-          <uilibrary2-toggle [hideLabel]="true">
+          <uilibrary-toggle [hideLabel]="true">
             This is descriptive text about the toggle for accessibility reasons. Do not leave blank.
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
-          <uilibrary2-toggle>
+          <uilibrary-toggle>
             Normal Label Toggle
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
-          <uilibrary2-toggle [checked]="true">
+          <uilibrary-toggle [checked]="true">
             Pre-checked Toggle
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
         </div>
         
         <div class="toggle-section">
           <h4>Disabled States</h4>
-          <uilibrary2-toggle [disabled]="isDisabled">
+          <uilibrary-toggle [disabled]="isDisabled">
             Disabled Toggle ({{isDisabled ? 'Disabled' : 'Enabled'}})
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
-          <uilibrary2-toggle [disabled]="isDisabled" [checked]="true">
+          <uilibrary-toggle [disabled]="isDisabled" [checked]="true">
             Disabled & Checked Toggle ({{isDisabled ? 'Disabled' : 'Enabled'}})
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
           <button class="btn btn-secondary btn-sm mt-2" (click)="toggleDisabled()">
             {{isDisabled ? 'Enable' : 'Disable'}} Toggles
@@ -68,32 +68,32 @@
       <div class="border p-3 mb-3">
         <div class="toggle-section mb-4">
           <h4>Label Positions</h4>
-          <uilibrary2-toggle>
+          <uilibrary-toggle>
             Default Label Position (Right)
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
-          <uilibrary2-toggle labelPosition="right">
+          <uilibrary-toggle labelPosition="right">
             Explicit Right Label Position
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
-          <uilibrary2-toggle labelPosition="left">
+          <uilibrary-toggle labelPosition="left">
             Left Label Position
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
         </div>
         
         <div class="toggle-section">
           <h4>Label Sizes</h4>
-          <uilibrary2-toggle>
+          <uilibrary-toggle>
             Normal Label Size
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
-          <uilibrary2-toggle labelSize="large">
+          <uilibrary-toggle labelSize="large">
             Large Label Size
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
           
-          <uilibrary2-toggle labelSize="large" labelPosition="left">
+          <uilibrary-toggle labelSize="large" labelPosition="left">
             Large Left-Positioned Label
-          </uilibrary2-toggle>
+          </uilibrary-toggle>
         </div>
       </div>
 

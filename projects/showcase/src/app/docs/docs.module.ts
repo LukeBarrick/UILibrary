@@ -13,7 +13,7 @@ import { StatusTagShowcaseComponent } from './status-tag-showcase/status-tag-sho
 import { ToastShowcaseComponent } from './toast-showcase/toast-showcase.component';
 import { ToggleShowcaseComponent } from './toggle-showcase/toggle-showcase.component';
 import { TooltipShowcaseComponent } from './tooltip-showcase/tooltip-showcase.component';
-import { ButtonsModule, CheckboxesModule, Datepicker2Module, FormField2Module, Icon2Module, IconsModule, Input2Module, InputAnnotationsModule, NavigationModule, Radio2Module, Select2Module, StatusTagsModule, Toggle2Module } from 'uilibrary';
+import { ButtonsModule, CheckboxesModule, Datepicker2Module, FormField2Module, Icon2Module, IconsModule, Input2Module, InputAnnotationsModule, NavigationModule, Radio2Module, Select2Module, StatusTagsModule, Toggle2Module, TogglesModule } from 'uilibrary';
 import { NavigationShowcaseComponent } from './navigation/navigation-showcase.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -47,7 +47,7 @@ const routes: Routes = [
     Icon2Module,
     IconsModule,
     Radio2Module,
-    Toggle2Module,
+    TogglesModule,
     StatusTagsModule,
     CheckboxesModule,
     NavigationModule,
