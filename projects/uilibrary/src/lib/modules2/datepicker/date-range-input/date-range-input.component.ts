@@ -1,11 +1,13 @@
 import { Component, ContentChild, ContentChildren, ElementRef, forwardRef, HostListener, inject, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { NgControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { debounce, Observable, Subscription } from 'rxjs';
 import { StartDateDirective } from './start-date.directive';
 import { EndDateDirective } from './end-date.directive';
 import { DateSelectionStrategy } from '../date-selection-strategy';
 import { DateRange } from '../date-range';
+import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
+import { parse } from 'date-fns';
 
 @Component({
   selector: 'uilibrary2-date-range-input',
@@ -20,37 +22,32 @@ import { DateRange } from '../date-range';
 })
 export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
   private elRef = inject(ElementRef<DateRangeInput2Component>);
+  private dateFnsLocaleService = inject(DateFnsLocaleService);
   
   value: DateRange | null = null;
 
   stateChanges: Observable<void> = new Observable<void>;
+
+  $startDateValueChanges: Subscription | undefined = undefined;
+  $endDateValueChanges: Subscription | undefined = undefined;
+
   id: string = crypto.randomUUID();
   placeholder: string = '';
   private _disabled: boolean = false;
   private _focussed: boolean = false;
   isOpen: boolean = false;
-
+  
   @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
     const parent = this.elRef.nativeElement.parentElement;
 
     if (this.isOpen && !parent.contains(target)) {
       this.isOpen = false;
-    } else if (this.isOpen) {
-      // this.startDate?.focus(); //figure out which to select won't always be start date
-    }
+    } 
   }
 
   @ContentChild(StartDateDirective) startDate: UIFormFieldControl<Date> | undefined;
   @ContentChild(EndDateDirective) endDate: UIFormFieldControl<Date> | undefined;
-
-  get _startDateControl() {
-    return this.startDate?.ngControl;
-  }
-
-  get _endDateControl() {
-    return this.endDate?.ngControl;
-  }
 
   /**
    *
@@ -103,8 +100,6 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
 
   focus(): void {
     this.isOpen = true;
-    // this.StartDate?.focus();
-    //custom focus stratergy?
   }
 
   setValue(): void { return; }
@@ -120,18 +115,29 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
       //throw warning 
       return;
 
-    // let dateRange: DateRange = {
-    //   start: this.startDate?.value,
-    //   end: this.endDate?.value
-    // }
+    let dateRange: DateRange = { start: null, end: null };
+
+    if(this.startDate.value instanceof Date) {
+      dateRange.start = this.startDate.value;
+      console.log('start date is a date')
+    }
+
+    if(this.endDate.value instanceof Date) {
+      dateRange.end = this.endDate.value;
+      console.log('end date is a date')
+    }
 
     //seet 
 
-    // const nextRange = this.strategy.calculateSelection(value, dateRange);
+    const nextRange = this.strategy.calculateSelection(value, dateRange);
 
-    // this.startDate.setValue(nextRange.start);
-    // this.endDate.setValue(nextRange.end);
+    console.log('next range is {0}', nextRange)
+    
+    this.startDate.setValue(nextRange.start);
+    this.endDate.setValue(nextRange.end);
 
     this.addDateToCalendar(value);
   }
+
+
 }

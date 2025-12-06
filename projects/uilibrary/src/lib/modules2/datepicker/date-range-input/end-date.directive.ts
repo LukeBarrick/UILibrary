@@ -39,11 +39,13 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
   onTouched: any = () => { };
 
   writeValue(value: Date | string |null): void {
-    if(value instanceof Date) {
+     if(value instanceof Date) {
       const formattedDate = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
       this.el.nativeElement.value = formattedDate;
+    } else if(value !== undefined) {
+      this.el.nativeElement.value = value;
     }
-    
+
     this.value = value;
   }
 

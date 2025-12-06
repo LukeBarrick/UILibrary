@@ -4,5 +4,5 @@ export abstract class DateSelectionStrategy {
   /**
    * Called when the start date changes.
    */
-  abstract calculateSelection(start: Date | null, current: DateRange): DateRange;
+  abstract calculateSelection(value: Date | null, current: DateRange): DateRange;
 }

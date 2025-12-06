@@ -38,12 +38,14 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  writeValue(value: Date | string |null): void {
+  writeValue(value: Date | string | null): void {
     if(value instanceof Date) {
       const formattedDate = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
       this.el.nativeElement.value = formattedDate;
+    } else if(value !== undefined) {
+      this.el.nativeElement.value = value;
     }
-    
+
     this.value = value;
   }
 
