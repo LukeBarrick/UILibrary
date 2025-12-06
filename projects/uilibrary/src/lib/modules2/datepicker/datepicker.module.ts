@@ -7,6 +7,8 @@ import { Datepicker2InputComponent } from './datepicker-input/datepicker-input.c
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormsModule } from '@angular/forms';
 import { IconsModule } from "../../../lib/modules/icons/icon.module";
+import { DefaultDateSelectionStrategy } from './default-date-selection-strategy';
+import { DateSelectionStrategy } from './date-selection-strategy';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { IconsModule } from "../../../lib/modules/icons/icon.module";
     CalendarComponent,
     StartDateDirective,
     EndDateDirective
+  ],
+  providers: [
+    { provide: DateSelectionStrategy, useClass: DefaultDateSelectionStrategy }
   ]
 })
 export class Datepicker2Module { }

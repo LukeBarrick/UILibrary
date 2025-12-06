@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 
 @Directive()
 export abstract class UIFormFieldControl<T> {
-  value!: T | null;
+  value!: T | string | null;
   readonly stateChanges!: Observable<void>;
   readonly id!: string;
   readonly placeholder!: string;
@@ -12,7 +12,7 @@ export abstract class UIFormFieldControl<T> {
   readonly ngControl!: NgControl;
 
   focus(): void { return; };
-  setValue(value: T): void { return; }
+  setValue(value: T | null): void { return; }
 
   readonly disabled: boolean = false;
   readonly shouldLabelFloat: boolean = false;

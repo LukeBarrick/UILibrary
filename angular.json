@@ -20,7 +20,7 @@
       "sourceRoot": "projects/showcase/src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale":"de",
+        "sourceLocale":"en-GB",
         "locales": {}
       },
       "architect": {

@@ -16,7 +16,7 @@ import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.ser
 })
 export class StartDateDirective implements UIFormFieldControl<Date>, ControlValueAccessor {
   private dateFnsLocaleService = inject(DateFnsLocaleService);
-  value: Date | null = null;
+  value: Date | string | null = null;
 
   stateChanges: Observable<void> = new Observable<void>;
   id: string = crypto.randomUUID();
@@ -38,9 +38,12 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  writeValue(value: Date | undefined): void {
-    if(!value) return;
-    this.el.nativeElement.value = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
+  writeValue(value: Date | string |null): void {
+    if(value instanceof Date) {
+      const formattedDate = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
+      this.el.nativeElement.value = formattedDate;
+    }
+    
     this.value = value;
   }
 
@@ -57,12 +60,12 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   }
 
   @HostListener('input', ['$event.target.value'])
-  onInput(value: any): void {
+  onInput(value: string): void {
     const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
     if(date.toString() === 'Invalid Date') {
-      this.onChange(value)
+      this.handleInput(value);
     } else {
-      this.onChange(date);
+      this.handleInput(date);
     } 
   }
 
@@ -109,11 +112,11 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
     this.el.nativeElement.focus();
   }
 
-  setValue(value: Date): void {
+  setValue(value: Date | string | null): void {
     this.handleInput(value);
   }
 
-  handleInput(value: Date): void {
+  handleInput(value: Date | string | null): void {
     this.writeValue(value);
     this.onChange(this.value);
     this.onTouched();

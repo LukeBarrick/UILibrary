@@ -4,7 +4,8 @@ import { NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { StartDateDirective } from './start-date.directive';
 import { EndDateDirective } from './end-date.directive';
-import { Datepicker2InputComponent } from '../datepicker-input/datepicker-input.component';
+import { DateSelectionStrategy } from '../date-selection-strategy';
+import { DateRange } from '../date-range';
 
 @Component({
   selector: 'uilibrary2-date-range-input',
@@ -17,9 +18,10 @@ import { Datepicker2InputComponent } from '../datepicker-input/datepicker-input.
     }
   ]
 })
-export class DateRangeInput2Component implements UIFormFieldControl<Date> {
+export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
   private elRef = inject(ElementRef<DateRangeInput2Component>);
-  value: Date | null = null;
+  
+  value: DateRange | null = null;
 
   stateChanges: Observable<void> = new Observable<void>;
   id: string = crypto.randomUUID();
@@ -53,12 +55,13 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   /**
    *
    */
-  constructor(@Optional() @Self() public ngControl: NgControl) {
-
+  constructor(private readonly strategy: DateSelectionStrategy,
+              @Optional() @Self() public ngControl: NgControl) {
+   
   }
 
   get empty(): boolean {
-    return this.ngControl ? !this.ngControl.control?.value : false;
+    return !!this.value;
   }
 
   get disabled() {
@@ -113,21 +116,21 @@ export class DateRangeInput2Component implements UIFormFieldControl<Date> {
   }
 
   dateSelected(value: Date): void {
-    if(this.endDate?.shouldLabelFloat) {
-      this.startDate?.setValue(value);
-    } else if (this.startDate?.shouldLabelFloat) {
-      this.endDate?.setValue(value);
-    } else {
-      this.startDate?.setValue(value);
-    }
+    if(!this.startDate || !this.endDate) 
+      //throw warning 
+      return;
 
-    // if (this.startDate?.hasFocus) {
-    //   this.startDate.setValue(value);
+    // let dateRange: DateRange = {
+    //   start: this.startDate?.value,
+    //   end: this.endDate?.value
     // }
 
-    // if (this.endDate?.hasFocus) {
-    //   this.endDate.setValue(value);
-    // }
+    //seet 
+
+    // const nextRange = this.strategy.calculateSelection(value, dateRange);
+
+    // this.startDate.setValue(nextRange.start);
+    // this.endDate.setValue(nextRange.end);
 
     this.addDateToCalendar(value);
   }

@@ -20,7 +20,7 @@ import { format, parse } from 'date-fns';
 export class Datepicker2InputComponent implements UIFormFieldControl<Date>, ControlValueAccessor {
   private elRef = inject(ElementRef<Datepicker2InputComponent>);
   private dateFnsLocaleService = inject(DateFnsLocaleService);
-  value: Date | null = null;
+  value: Date | string | null = null;
   displayValue: string = '';
   
   stateChanges: Observable<void> = new Observable<void>;
@@ -59,12 +59,11 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
 
   writeValue(value: Date | string | null): void {
     if(value instanceof Date) {
-      if(!value) return;
-      this.value = value;
       this.displayValue = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
       this.addDateToCalendar(value);
     }
     
+    this.value = value;
   }
   
   registerOnChange(fn: any): void {
