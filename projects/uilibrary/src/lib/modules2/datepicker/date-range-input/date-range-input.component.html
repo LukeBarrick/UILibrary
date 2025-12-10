@@ -3,7 +3,7 @@
         <ng-content select="[startDate]"></ng-content>
         <ng-content select="[endDate]"></ng-content>
     </div>
-    @if(isOpen) {
+    @if(open) {
     <div class="date-picker-calendar-container">
         <uilibrary-calendar-select (dateSelected)="dateSelected($event)" [selecteDates]="selecteDates"></uilibrary-calendar-select>
     </div>

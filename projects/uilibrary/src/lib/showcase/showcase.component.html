@@ -518,6 +518,17 @@
       </uilibrary2-date-range-input>
     </uilibrary2-form-field>
 
+    <uilibrary2-form-field>
+      <label ui-label>Open Form Control Date Range Picker</label>
+      <uilibrary2-date-range-input [(open)]="datePickerOpen">
+        <input startDate formControlName="startDate2"/>
+        <input endDate formControlName="endDate2"/>
+      </uilibrary2-date-range-input>
+    </uilibrary2-form-field>
+
+    <uilibrary-button appearance="primary" (click)="toggleOpen()">Toggle Open</uilibrary-button>
+
+
     <button (click)="damnson()">debug</button>
   </section>
 

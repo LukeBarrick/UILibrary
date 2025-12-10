@@ -58,6 +58,8 @@ export class ShowcaseComponent implements OnInit {
     datePicker1: new FormControl(undefined, [Validators.required]),
     startDate1: new FormControl(undefined, [Validators.required]),
     endDate1: new FormControl(undefined, [Validators.required]),
+    startDate2: new FormControl(undefined, [Validators.required]),
+    endDate2: new FormControl(undefined, [Validators.required]),
     datePicker4: new FormControl(undefined, [Validators.required])
   })
 
@@ -68,6 +70,13 @@ export class ShowcaseComponent implements OnInit {
   modelDatePicker1: Date = new Date();
   startDateModel: string | undefined = undefined;
   endDateModel: string | undefined = undefined;
+  datePickerOpen: boolean = false;
+
+  toggleOpen(): void {
+    this.datePickerOpen = !this.datePickerOpen
+    console.log(this.datePickerOpen)
+
+  }
 
   selectControls = new FormGroup({
     selectControl: new FormControl(undefined, [Validators.required]),

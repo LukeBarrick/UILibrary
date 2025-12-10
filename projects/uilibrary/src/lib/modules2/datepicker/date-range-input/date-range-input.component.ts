@@ -1,13 +1,11 @@
-import { AfterViewInit, Component, ContentChild, ContentChildren, DestroyRef, ElementRef, forwardRef, HostListener, inject, Input, OnDestroy, OnInit, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ContentChildren, DestroyRef, ElementRef, EventEmitter, forwardRef, HostListener, inject, Input, OnDestroy, OnInit, Optional, Output, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { NgControl } from '@angular/forms';
-import { debounce, debounceTime, filter, map, Observable, Subscription, takeUntil, tap } from 'rxjs';
+import { filter, map, Observable, Subscription, takeUntil, tap } from 'rxjs';
 import { StartDateDirective } from './start-date.directive';
 import { EndDateDirective } from './end-date.directive';
 import { DateSelectionStrategy } from '../date-selection-strategy';
 import { DateRange } from '../date-range';
-import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
-import { parse } from 'date-fns';
 
 @Component({
   selector: 'uilibrary2-date-range-input',
@@ -35,16 +33,19 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   placeholder: string = '';
   private _disabled: boolean = false;
   private _focussed: boolean = false;
-  isOpen: boolean = false;
-
+  _open: boolean = false;
+  
+  @Input() open: boolean = false;
+  @Output() openChange = new EventEmitter<boolean>();
   @Input() editable: boolean = true;
   
-  @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
+  @HostListener('document:mousedown', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
     const parent = this.elRef.nativeElement.parentElement;
 
-    if (this.isOpen && !parent.contains(target)) {
-      this.isOpen = false;
+    if (this.open && !parent.contains(target)) {
+      this.open = false;
+      this.openChange.emit(this._open);
     } 
   }
 
@@ -63,16 +64,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
     if(this.startDate?.ngControl) {
       this.$startDateValueChanges = this.startDate.ngControl.valueChanges?.pipe(
         tap(() => this.removeStartDateFromCalendar()),
-        filter(value => {
-
-          const isDateInstance = value instanceof Date;
-
-          
-            
-          
-
-          return value instanceof Date;
-        }), 
+        filter(value => value instanceof Date), 
         tap(value => this.addStartDateToCalendar(value))
       ).subscribe();
     } 
@@ -80,14 +72,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
     if(this.endDate?.ngControl) {
         this.$endDateValueChanges = this.endDate.ngControl.valueChanges?.pipe(
           tap(() => this.removeEndDateFromCalendar()),
-          filter(value => {
-
-            
-              // this.removeEndDateFromCalendar();
-            
-  
-            return value instanceof Date;
-          }), 
+          filter(value => value instanceof Date), 
           tap(value => this.addEndDateToCalendar(value))
         ).subscribe();
     } 
@@ -107,7 +92,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   }
 
   get shouldLabelFloat(): boolean {
-    return !!this.startDate?.shouldLabelFloat || !!this.endDate?.shouldLabelFloat || this.isOpen;
+    return !!this.startDate?.shouldLabelFloat || !!this.endDate?.shouldLabelFloat || this.open;
   }
 
   get hasErrors() {
@@ -132,7 +117,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
 
   onFocus() {
     this._focussed = true;
-    this.isOpen = true;
+    this.open = true;
   }
 
   onBlur() {
@@ -140,7 +125,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   }
 
   focus(): void {
-    this.isOpen = true;
+    this.open = true;
   }
 
   setValue(): void { return; }

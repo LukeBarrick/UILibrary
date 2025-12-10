@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, Inject, inject, LOCALE_ID, Optional, Self, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, Inject, inject, Input, LOCALE_ID, Optional, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -28,7 +28,8 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   placeholder: string = '';
   private _disabled: boolean = false;
   private _focussed: boolean = false;
-  isOpen: boolean = false;
+  @Input() open: boolean = false;
+  @Input() editable: boolean = false;
 
   /**
    *
@@ -45,9 +46,9 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     const target = event.target as HTMLElement;
     const parent = this.elRef.nativeElement.parentElement;
 
-    if (this.isOpen && !parent.contains(target)) {
-      this.isOpen = false;
-    } else if (this.isOpen) {
+    if (this.open && !parent.contains(target)) {
+      this.open = false;
+    } else if (this.open) {
       this.input.nativeElement.focus();
     }
   }
@@ -87,7 +88,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   }
 
   get shouldLabelFloat(): boolean {
-    return (!this.empty || this._focussed) || this.isOpen;
+    return (!this.empty || this._focussed) || this.open;
   }
 
   get hasErrors() {
@@ -108,7 +109,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
 
   onFocus() {
     this._focussed = true;
-    this.isOpen = true;
+    this.open = true;
   }
 
   onBlur(event: FocusEvent) {
@@ -122,7 +123,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
 
   focus(): void {
     this.input.nativeElement.focus();
-    this.isOpen = true;
+    this.open = true;
   }
 
   setValue(): void { return; }
