@@ -14,7 +14,7 @@ import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.ser
     }
   ]
 })
-export class StartDateDirective implements UIFormFieldControl<Date>, ControlValueAccessor, OnDestroy {
+export class StartDateDirective implements UIFormFieldControl<Date>, ControlValueAccessor {
   private dateFnsLocaleService = inject(DateFnsLocaleService);
   value: Date | string | null = null;
 
@@ -23,7 +23,7 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   placeholder: string = '';
   private _disabled: boolean = false;
   private _focussed: boolean = false;
-
+ 
   /**
    *
    */
@@ -33,11 +33,6 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
-  }
-
-  ngOnDestroy(): void {
-    this.$onInput.unsubscribe();
-    this.$onInputHandler.unsubscribe();
   }
 
   onChange: any = () => { };
@@ -66,25 +61,27 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 
+  private debounceTimer: ReturnType<typeof setTimeout> | null = null;
   @HostListener('input', ['$event.target.value'])
   onInput(value: string): void {
-    this.$onInput.next(value);
+    if (this.debounceTimer !== null) {
+      clearTimeout(this.debounceTimer);
+    }
+
+    this.debounceTimer = setTimeout(() => {
+      this.handleDebouncedInput(value);
+    }, 300);
   }
 
-  $onInput: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
-  $onInputHandler = this.$onInput.pipe(
-    debounceTime(500),
-    tap(value => {
-      if(!value) return;
-
-      const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
-      if (date.toString() === 'Invalid Date') {
-        this.handleInput(value);
-      } else {
-        this.handleInput(date);
-      }
-    })
-  ).subscribe();
+  handleDebouncedInput(value: string) {
+    const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
+    if (date.toString() === 'Invalid Date') {
+      this.handleInput(value);
+    } else {
+      console.log('i went here')
+      this.handleInput(date);
+    }
+  }
 
   @HostListener('blur')
   onBlur(): void {

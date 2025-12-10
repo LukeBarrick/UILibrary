@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Inject, Input, LOCALE_ID, OnInit, Output } from '@angular/core';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
+import { isAfter, isBefore } from 'date-fns';
 
 @Component({
   selector: 'uilibrary-calendar-select',
@@ -140,5 +141,24 @@ export class CalendarComponent implements OnInit {
       todaysDate.getMonth() === this.today.getMonth() &&
       todaysDate.getFullYear() === this.today.getFullYear()
     );
+  }
+
+  isWithinActiveRange(day: number): boolean {
+    const date = new Date(
+      this.selectedYear,
+      this.selectedMonth,
+      day
+    );
+
+    if(Array.isArray(this.selecteDates) && this.selecteDates.length >= 2) {
+      const dates = this.selecteDates.sort((a, b) => a.getTime() - b.getTime());
+
+      const firstDate = dates[0];
+      const lastDate = dates[dates.length - 1]; 
+
+      return isAfter(date, firstDate) && isBefore(date, lastDate);
+    }
+
+    return false; 
   }
 }
