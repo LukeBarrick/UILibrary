@@ -1,7 +1,7 @@
 import { Directive, ElementRef, forwardRef, HostListener, inject, OnDestroy, Optional, Renderer2, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { BehaviorSubject, debounceTime, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { format, parse } from 'date-fns';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 
@@ -67,13 +67,14 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
   onInput(value: string): void {
     //Debounce or handle via regex checked completness?
     //Regex probably more UI friendly option
-    if (this.debounceTimer !== null) {
-      clearTimeout(this.debounceTimer);
-    }
+    // if (this.debounceTimer !== null) {
+    //   clearTimeout(this.debounceTimer);
+    // }
 
-    this.debounceTimer = setTimeout(() => {
-      this.handleDebouncedInput(value);
-    }, 500);
+    // this.debounceTimer = setTimeout(() => {
+    //   this.handleDebouncedInput(value);
+    // }, 500);
+    this.handleDebouncedInput(value);
   }
 
   handleDebouncedInput(value: string) {
@@ -81,7 +82,6 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
     if (date.toString() === 'Invalid Date') {
       this.handleInput(value);
     } else {
-      console.log('i went here')
       this.handleInput(date);
     }
   }

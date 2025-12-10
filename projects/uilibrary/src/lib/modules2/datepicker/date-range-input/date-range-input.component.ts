@@ -62,17 +62,33 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   ngAfterViewInit(): void {
     if(this.startDate?.ngControl) {
       this.$startDateValueChanges = this.startDate.ngControl.valueChanges?.pipe(
-        debounceTime(200),
-        filter(value => value instanceof Date),
-        tap(value => this.addDateToCalendar(value))
+        tap(() => this.removeStartDateFromCalendar()),
+        filter(value => {
+
+          const isDateInstance = value instanceof Date;
+
+          
+            
+          
+
+          return value instanceof Date;
+        }), 
+        tap(value => this.addStartDateToCalendar(value))
       ).subscribe();
     } 
 
     if(this.endDate?.ngControl) {
         this.$endDateValueChanges = this.endDate.ngControl.valueChanges?.pipe(
-          debounceTime(200),
-          filter(value => value instanceof Date),
-          tap(value => this.addDateToCalendar(value))
+          tap(() => this.removeEndDateFromCalendar()),
+          filter(value => {
+
+            
+              // this.removeEndDateFromCalendar();
+            
+  
+            return value instanceof Date;
+          }), 
+          tap(value => this.addEndDateToCalendar(value))
         ).subscribe();
     } 
   }
@@ -131,9 +147,24 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
 
   selecteDates: Date[] = [];
 
-  addDateToCalendar(value: Date): void {
-    var dateIndex = this.selecteDates.indexOf(value);
-    this.selecteDates?.push(value);
+  addStartDateToCalendar(value: Date): void {
+    let nextRange: DateRange = {start: value, end: null};
+
+    if(this.endDate?.value instanceof Date) {
+      nextRange.end = this.endDate.value;
+    }
+
+    this.addDatesToCalendar(nextRange);
+  }
+
+  addEndDateToCalendar(value: Date): void {
+    let nextRange: DateRange = {start: null, end: value};
+
+    if(this.startDate?.value instanceof Date) {
+      nextRange.start = this.startDate.value;
+    }
+
+    this.addDatesToCalendar(nextRange);
   }
 
   dateSelected(value: Date): void {
@@ -159,13 +190,29 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
     if(dateRange.end != nextRange.end)
       this.endDate.setValue(nextRange.end);
 
+    this.addDatesToCalendar(nextRange);
+  }
+
+  removeStartDateFromCalendar() {
+    if(this.selecteDates.length) {
+      this.selecteDates.splice(0, 1);
+    }
+  }
+
+  removeEndDateFromCalendar() {
+    if(this.selecteDates.length) {
+      this.selecteDates.pop();
+    }
+  }
+
+  addDatesToCalendar(range: DateRange) {
     const dates: Date[] = [];
 
-    if(nextRange.start) 
-      dates.push(nextRange.start);
+    if(range.start) 
+      dates.push(range.start);
 
-    if (nextRange.end)
-      dates.push(nextRange.end);
+    if (range.end)
+      dates.push(range.end);
 
     this.selecteDates = dates;
   }

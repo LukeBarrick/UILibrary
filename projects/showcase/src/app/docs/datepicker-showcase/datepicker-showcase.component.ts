@@ -55,6 +55,9 @@ export class DatepickerShowcaseComponent implements OnInit {
   }
 
   calculateDuration(): number {
+    if(this.interactiveStart instanceof Date && this.interactiveEnd instanceof Date)
+      return 0;
+
     if (this.interactiveStart && this.interactiveEnd) {
       const diffTime = Math.abs(this.interactiveEnd.getTime() - this.interactiveStart.getTime());
       return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;

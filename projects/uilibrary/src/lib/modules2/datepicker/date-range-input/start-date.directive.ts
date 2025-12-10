@@ -64,13 +64,14 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   private debounceTimer: ReturnType<typeof setTimeout> | null = null;
   @HostListener('input', ['$event.target.value'])
   onInput(value: string): void {
-    if (this.debounceTimer !== null) {
-      clearTimeout(this.debounceTimer);
-    }
+    // if (this.debounceTimer !== null) {
+    //   clearTimeout(this.debounceTimer);
+    // }
 
-    this.debounceTimer = setTimeout(() => {
-      this.handleDebouncedInput(value);
-    }, 300);
+    // this.debounceTimer = setTimeout(() => {
+    //   this.handleDebouncedInput(value);
+    // }, 500);
+    this.handleDebouncedInput(value);
   }
 
   handleDebouncedInput(value: string) {
@@ -78,7 +79,6 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
     if (date.toString() === 'Invalid Date') {
       this.handleInput(value);
     } else {
-      console.log('i went here')
       this.handleInput(date);
     }
   }
