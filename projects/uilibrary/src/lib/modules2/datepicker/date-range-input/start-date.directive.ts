@@ -60,21 +60,11 @@ export class StartDateDirective implements UIFormFieldControl<Date>, ControlValu
   setDisabledState?(isDisabled: boolean): void {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
-
-  private debounceTimer: ReturnType<typeof setTimeout> | null = null;
+  
   @HostListener('input', ['$event.target.value'])
   onInput(value: string): void {
-    // if (this.debounceTimer !== null) {
-    //   clearTimeout(this.debounceTimer);
-    // }
-
-    // this.debounceTimer = setTimeout(() => {
-    //   this.handleDebouncedInput(value);
-    // }, 500);
-    this.handleDebouncedInput(value);
-  }
-
-  handleDebouncedInput(value: string) {
+    //Debounce or handle via regex checked completness?
+    //Regex probably more UI friendly option
     const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
     if (date.toString() === 'Invalid Date') {
       this.handleInput(value);

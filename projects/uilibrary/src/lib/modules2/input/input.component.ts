@@ -1,15 +1,12 @@
 import {
   AfterViewInit,
-  Component,
   Directive,
   ElementRef,
   EventEmitter,
   forwardRef,
   HostListener,
   Input,
-  OnInit,
   Optional,
-  Output,
   Renderer2,
   Self,
 } from '@angular/core';
@@ -28,9 +25,6 @@ import { Observable } from 'rxjs';
   ],
 })
 export class InputComponent
-  //###############################################
-  //Implement UIFormFieldControl interface to allow UIFormField component to query for it.
-  //###############################################
   implements UIFormFieldControl<string>, ControlValueAccessor, AfterViewInit {
   ngAfterViewInit(): void { }
 
@@ -72,10 +66,6 @@ export class InputComponent
     this.handleInput(value); 
   }
 
-   //###############################################
-  //UIFormFieldControl interface implementation.
-   //###############################################
-  //ID
   //Randomly generated ID auto-assigned to input on instantiation.
   id = this.UUID.generate();
 
@@ -117,9 +107,7 @@ export class InputComponent
   get dirty(): boolean {
     return this.ngControl ? !!this.ngControl.dirty : false;
   }
-  //###############################################
-  //ControlValueAccessor interface implementation.
-  //###############################################
+
   value: any;
   valueChange = new EventEmitter<any>();
 
@@ -147,5 +135,4 @@ export class InputComponent
     this.onChange(this.value);
     this.onTouched();
   }
-  //###############################################
 }
