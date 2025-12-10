@@ -1,4 +1,4 @@
-import { Directive, ElementRef, forwardRef, HostListener, inject, Optional, Renderer2, Self, ViewChild } from '@angular/core';
+import { Directive, ElementRef, forwardRef, HostListener, inject, OnDestroy, Optional, Renderer2, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { BehaviorSubject, debounceTime, Observable, tap } from 'rxjs';
@@ -14,7 +14,7 @@ import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.ser
     }
   ]
 })
-export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueAccessor {
+export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueAccessor, OnDestroy {
   private dateFnsLocaleService = inject(DateFnsLocaleService);
   value: Date | string | null = null;
 
@@ -33,6 +33,11 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.$onInput.unsubscribe();
+    this.$onInputHandler.unsubscribe();
   }
 
   onChange: any = () => { };
