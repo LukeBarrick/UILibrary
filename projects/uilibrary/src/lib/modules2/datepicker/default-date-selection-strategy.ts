@@ -13,16 +13,18 @@ export class DefaultDateSelectionStrategy implements DateSelectionStrategy {
 
         let isToggle: boolean = false;
 
-        if (isSameDay(value!, current.start!)) {
-            _new.start = null;
-            _new.end = current.end;
-            isToggle = true
-        } else if (isSameDay(value!, current.end!)) {
-            _new.start = current.start;
-            _new.end = null;
-            isToggle = true;
+        if(value) {
+            if (current.start && isSameDay(value, current.start)) {
+                _new.start = null;
+                _new.end = current.end;
+                isToggle = true
+            } else if (current.end && isSameDay(value, current.end)) {
+                _new.start = current.start;
+                _new.end = null;
+                isToggle = true;
+            }
         }
-
+      
         if (!isToggle) {
             if (!current.start) {
                 _new.start = value;
