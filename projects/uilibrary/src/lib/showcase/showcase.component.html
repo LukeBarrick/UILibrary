@@ -400,7 +400,7 @@
 
     <uilibrary2-form-field>
       <label ui-label>Select w/ Suffix</label>
-      <uilibrary2-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      <uilibrary2-select ui-select #select [items]="items" placeholder="Please select an item from the dropdown list."
         formControlName="suffixFormControl" [clearable]="true">
         <ng-template #labelTemplate let-item>
           <div>
@@ -413,7 +413,7 @@
           </div>
         </ng-template>
       </uilibrary2-select>
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+      <div ui-suffix style="height: 30px; width: 30px; background-color: red;" (click)="select._open = true"></div>
     </uilibrary2-form-field>
 
     <uilibrary2-form-field>
@@ -490,13 +490,39 @@
       <label ui-label>Basic Date Picker</label>
       <uilibrary2-datepicker-input [(ngModel)]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
     </uilibrary2-form-field>
-
     Value of control is: {{modelDatePicker1}}
-
+   
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
     <uilibrary2-form-field>
       <label ui-label>Form Control Date Picker</label>
       <uilibrary2-datepicker-input formControlName="datePicker1"></uilibrary2-datepicker-input>
     </uilibrary2-form-field>
+
+    <uilibrary2-form-field>
+      <label ui-label>Button Toggle Date Picker</label>
+      <uilibrary2-datepicker-input #picker1 formControlName="datePicker2"></uilibrary2-datepicker-input>
+    </uilibrary2-form-field>
+
+    <uilibrary-button appearance="primary" (click)="picker1.open()">Toggle Open</uilibrary-button>
+
+    <uilibrary2-form-field>
+      <label ui-label>Suffix Date Picker</label>
+      <uilibrary2-datepicker-input #picker2 formControlName="datePicker3"></uilibrary2-datepicker-input>
+      <div ui-suffix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="picker2.open()"></div>
+    </uilibrary2-form-field>
+
+    <uilibrary2-form-field>
+      <div ui-prefix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="picker3.open()"></div>
+      <label ui-label>Prefix Date Picker</label>
+      <uilibrary2-datepicker-input #picker3 formControlName="datePicker4"></uilibrary2-datepicker-input>
+    </uilibrary2-form-field>
+
+    <!-- <uilibrary2-form-field>
+      <label ui-label>Don't Close On Select Date Picker</label>
+      <uilibrary2-datepicker-input formControlName="datePicker4" [closeOnSelection]="false"></uilibrary2-datepicker-input>
+    </uilibrary2-form-field>
+ -->
+
 
     <uilibrary2-form-field>
       <label ui-label>Basic Date Range Picker</label>
@@ -519,14 +545,40 @@
     </uilibrary2-form-field>
 
     <uilibrary2-form-field>
-      <label ui-label>Open Form Control Date Range Picker</label>
-      <uilibrary2-date-range-input [(open)]="datePickerOpen">
+      <label ui-label>Toggle Open Form Control Date Range Picker</label>
+      <uilibrary2-date-range-input #pickerRange>
         <input startDate formControlName="startDate2"/>
         <input endDate formControlName="endDate2"/>
       </uilibrary2-date-range-input>
     </uilibrary2-form-field>
 
-    <uilibrary-button appearance="primary" (click)="toggleOpen()">Toggle Open</uilibrary-button>
+    <uilibrary-button appearance="primary" (click)="pickerRange.open()">Toggle Open</uilibrary-button>
+
+    <uilibrary2-form-field>
+      <label ui-label>Suffix Date Range Picker</label>
+      <uilibrary2-date-range-input #pickerRange1>
+        <input startDate formControlName="startDate3"/>
+        <input endDate formControlName="endDate3"/>
+      </uilibrary2-date-range-input>
+      <div ui-suffix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="pickerRange1.open()"></div>
+    </uilibrary2-form-field>
+
+    <uilibrary2-form-field>
+      <div ui-prefix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="pickerRange2.open()"></div>
+      <label ui-label>Prefix Date Range Picker</label>
+      <uilibrary2-date-range-input #pickerRange2>
+        <input startDate formControlName="startDate4"/>
+        <input endDate formControlName="endDate4"/>
+      </uilibrary2-date-range-input>
+    </uilibrary2-form-field>
+
+    <uilibrary2-form-field>
+      <label ui-label>Don't Close On Select Date Range</label>
+      <uilibrary2-date-range-input [closeOnSelection]="false">
+        <input startDate formControlName="startDate5"/>
+        <input endDate formControlName="endDate5"/>
+      </uilibrary2-date-range-input>
+    </uilibrary2-form-field>
 
 
     <button (click)="damnson()">debug</button>

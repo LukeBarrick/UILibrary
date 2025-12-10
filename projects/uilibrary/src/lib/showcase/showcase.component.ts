@@ -56,11 +56,19 @@ export class ShowcaseComponent implements OnInit {
 
   datePickers2 = new FormGroup({
     datePicker1: new FormControl(undefined, [Validators.required]),
+    datePicker2: new FormControl(undefined, [Validators.required]),
+    datePicker3: new FormControl(undefined, [Validators.required]),
+    datePicker4: new FormControl(undefined, [Validators.required]),
     startDate1: new FormControl(undefined, [Validators.required]),
     endDate1: new FormControl(undefined, [Validators.required]),
     startDate2: new FormControl(undefined, [Validators.required]),
     endDate2: new FormControl(undefined, [Validators.required]),
-    datePicker4: new FormControl(undefined, [Validators.required])
+    startDate3: new FormControl(undefined, [Validators.required]),
+    endDate3: new FormControl(undefined, [Validators.required]),
+    startDate4: new FormControl(undefined, [Validators.required]),
+    endDate4: new FormControl(undefined, [Validators.required]),
+    startDate5: new FormControl(undefined, [Validators.required]),
+    endDate: new FormControl(undefined, [Validators.required]),
   })
 
   damnson(): void {

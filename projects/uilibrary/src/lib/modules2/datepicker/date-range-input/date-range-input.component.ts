@@ -33,19 +33,30 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   placeholder: string = '';
   private _disabled: boolean = false;
   private _focussed: boolean = false;
-  _open: boolean = false;
   
-  @Input() open: boolean = false;
-  @Output() openChange = new EventEmitter<boolean>();
+  _open: boolean = false;
   @Input() editable: boolean = true;
+  @Input() closeOnSelection: boolean = true;
   
   @HostListener('document:mousedown', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
     const parent = this.elRef.nativeElement.parentElement;
 
-    if (this.open && !parent.contains(target)) {
-      this.open = false;
-      this.openChange.emit(this._open);
+    if (this._open && !parent.contains(target)) {
+      this._open = false;
+    } 
+  }
+
+  @HostListener('document:click', ['$event']) onClickOutside2(event: Event) {
+    const target = event.target as HTMLElement;
+    const parent = this.elRef.nativeElement.parentElement;
+
+    if (this._open && parent.contains(target)) {
+      if(!this.startDate?.value) {
+        this.startDate?.focus();
+      } else if (!this.endDate?.value) {
+        this.endDate?.focus();
+      } 
     } 
   }
 
@@ -92,7 +103,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   }
 
   get shouldLabelFloat(): boolean {
-    return !!this.startDate?.shouldLabelFloat || !!this.endDate?.shouldLabelFloat || this.open;
+    return !!this.startDate?.shouldLabelFloat || !!this.endDate?.shouldLabelFloat || this._open;
   }
 
   get hasErrors() {
@@ -117,7 +128,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
 
   onFocus() {
     this._focussed = true;
-    this.open = true;
+    this._open = true;
   }
 
   onBlur() {
@@ -125,14 +136,16 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   }
 
   focus(): void {
-    this.open = true;
+    this._open = true;
   }
 
-  setValue(): void { return; }
+  setValue(value: DateRange | null): void { 
+    this.addDatesToCalendar(value ? value : {start: null, end: null});
+  }
 
   selecteDates: Date[] = [];
 
-  addStartDateToCalendar(value: Date): void {
+  private addStartDateToCalendar(value: Date): void {
     let nextRange: DateRange = {start: value, end: null};
 
     if(this.endDate?.value instanceof Date) {
@@ -142,7 +155,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
     this.addDatesToCalendar(nextRange);
   }
 
-  addEndDateToCalendar(value: Date): void {
+  private addEndDateToCalendar(value: Date): void {
     let nextRange: DateRange = {start: null, end: value};
 
     if(this.startDate?.value instanceof Date) {
@@ -176,21 +189,25 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
       this.endDate.setValue(nextRange.end);
 
     this.addDatesToCalendar(nextRange);
+
+    if(nextRange.start && nextRange.end && this.closeOnSelection) {
+      this.close();
+    }
   }
 
-  removeStartDateFromCalendar() {
+  private removeStartDateFromCalendar() {
     if(this.selecteDates.length) {
       this.selecteDates.splice(0, 1);
     }
   }
 
-  removeEndDateFromCalendar() {
+  private removeEndDateFromCalendar() {
     if(this.selecteDates.length) {
       this.selecteDates.pop();
     }
   }
 
-  addDatesToCalendar(range: DateRange) {
+  private addDatesToCalendar(range: DateRange) {
     const dates: Date[] = [];
 
     if(range.start) 
@@ -200,5 +217,13 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
       dates.push(range.end);
 
     this.selecteDates = dates;
+  }
+
+  open(): void {
+    this._open = true;
+  }
+
+  close(): void {
+    this._open = false;
   }
 }

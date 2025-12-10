@@ -1,7 +1,7 @@
 <div class="date-picker-wrapper">
     <input #input type="text" [id]="id" (input)="onInput($event)" [value]="displayValue" [disabled]="disabled"
         (blur)="onBlur($event)" (focus)="onFocus()">
-    @if(open) {
+    @if(_open) {
     <div class="date-picker-calendar-container">
         <uilibrary-calendar-select (dateSelected)="dateSelected($event)" [selecteDates]="selecteDate"></uilibrary-calendar-select>
     </div>
