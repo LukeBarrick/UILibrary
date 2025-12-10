@@ -1,7 +1,7 @@
-import { Component, ContentChild, ContentChildren, ElementRef, forwardRef, HostListener, inject, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ContentChildren, DestroyRef, ElementRef, forwardRef, HostListener, inject, Input, OnDestroy, OnInit, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { NgControl } from '@angular/forms';
-import { debounce, Observable, Subscription } from 'rxjs';
+import { debounce, debounceTime, filter, map, Observable, Subscription, takeUntil, tap } from 'rxjs';
 import { StartDateDirective } from './start-date.directive';
 import { EndDateDirective } from './end-date.directive';
 import { DateSelectionStrategy } from '../date-selection-strategy';
@@ -20,9 +20,9 @@ import { parse } from 'date-fns';
     }
   ]
 })
-export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
+export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, AfterViewInit, OnDestroy  {
   private elRef = inject(ElementRef<DateRangeInput2Component>);
-  private dateFnsLocaleService = inject(DateFnsLocaleService);
+  private destroyRef = inject(DestroyRef)
   
   value: DateRange | null = null;
 
@@ -36,6 +36,8 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
   private _disabled: boolean = false;
   private _focussed: boolean = false;
   isOpen: boolean = false;
+
+  @Input() editable: boolean = true;
   
   @HostListener('document:click', ['$event']) onClickOutside(event: Event) {
     const target = event.target as HTMLElement;
@@ -57,6 +59,29 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
    
   }
 
+  ngAfterViewInit(): void {
+    if(this.startDate?.ngControl) {
+      this.$startDateValueChanges = this.startDate.ngControl.valueChanges?.pipe(
+        debounceTime(200),
+        filter(value => value instanceof Date),
+        tap(value => this.addDateToCalendar(value))
+      ).subscribe();
+    } 
+
+    if(this.endDate?.ngControl) {
+        this.$endDateValueChanges = this.endDate.ngControl.valueChanges?.pipe(
+          debounceTime(200),
+          filter(value => value instanceof Date),
+          tap(value => this.addDateToCalendar(value))
+        ).subscribe();
+    } 
+  }
+
+  ngOnDestroy(): void {
+    this.$startDateValueChanges?.unsubscribe();
+    this.$endDateValueChanges?.unsubscribe();
+  }
+
   get empty(): boolean {
     return !!this.value;
   }
@@ -70,7 +95,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
   }
 
   get hasErrors() {
-    return !!this.startDate?.hasErrors && this.bothTouched || !!this.endDate?.hasErrors && this.bothTouched;
+    return !!(this.startDate?.hasErrors && this.bothTouched) || !!(this.endDate?.hasErrors && this.bothTouched);
   }
 
   get hasFocus() {
@@ -107,6 +132,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
   selecteDates: Date[] = [];
 
   addDateToCalendar(value: Date): void {
+    var dateIndex = this.selecteDates.indexOf(value);
     this.selecteDates?.push(value);
   }
 
@@ -119,25 +145,28 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange> {
 
     if(this.startDate.value instanceof Date) {
       dateRange.start = this.startDate.value;
-      console.log('start date is a date')
     }
 
     if(this.endDate.value instanceof Date) {
       dateRange.end = this.endDate.value;
-      console.log('end date is a date')
     }
 
-    //seet 
-
     const nextRange = this.strategy.calculateSelection(value, dateRange);
+ 
+    if(dateRange.start != nextRange.start)
+      this.startDate.setValue(nextRange.start);
 
-    console.log('next range is {0}', nextRange)
-    
-    this.startDate.setValue(nextRange.start);
-    this.endDate.setValue(nextRange.end);
+    if(dateRange.end != nextRange.end)
+      this.endDate.setValue(nextRange.end);
 
-    this.addDateToCalendar(value);
+    const dates: Date[] = [];
+
+    if(nextRange.start) 
+      dates.push(nextRange.start);
+
+    if (nextRange.end)
+      dates.push(nextRange.end);
+
+    this.selecteDates = dates;
   }
-
-
 }

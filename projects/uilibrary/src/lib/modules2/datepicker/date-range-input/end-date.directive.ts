@@ -1,7 +1,7 @@
 import { Directive, ElementRef, forwardRef, HostListener, inject, Optional, Renderer2, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, debounceTime, Observable, tap } from 'rxjs';
 import { format, parse } from 'date-fns';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 
@@ -38,11 +38,11 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  writeValue(value: Date | string |null): void {
-     if(value instanceof Date) {
+  writeValue(value: Date | string | null): void {
+    if (value instanceof Date) {
       const formattedDate = format(value, 'P', { locale: this.dateFnsLocaleService.locale });
       this.el.nativeElement.value = formattedDate;
-    } else if(value !== undefined) {
+    } else if (value !== undefined) {
       this.el.nativeElement.value = value;
     }
 
@@ -63,13 +63,23 @@ export class EndDateDirective implements UIFormFieldControl<Date>, ControlValueA
 
   @HostListener('input', ['$event.target.value'])
   onInput(value: string): void {
-    const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
-    if(date.toString() === 'Invalid Date') {
-      this.handleInput(value);
-    } else {
-      this.handleInput(date);
-    } 
+    this.$onInput.next(value);
   }
+
+  $onInput: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
+  $onInputHandler = this.$onInput.pipe(
+    debounceTime(500),
+    tap(value => {
+      if (!value) return;
+
+      const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });
+      if (date.toString() === 'Invalid Date') {
+        this.handleInput(value);
+      } else {
+        this.handleInput(date);
+      }
+    })
+  ).subscribe();
 
   @HostListener('blur')
   onBlur(): void {

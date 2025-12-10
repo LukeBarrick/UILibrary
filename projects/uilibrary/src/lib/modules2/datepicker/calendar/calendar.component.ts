@@ -8,7 +8,6 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 })
 export class CalendarComponent implements OnInit {
   currentDate = new Date();
-  selecteDate: Date | null = null;
   dateTracker = new Date();
 
   selectedMonth: number = this.currentDate.getMonth();
@@ -95,9 +94,7 @@ export class CalendarComponent implements OnInit {
 
   selectDay(day: number, month: number, year: number) {
     const selected = new Date(year, month, day);
-    this.selecteDate = selected;
     this.dateSelected.emit(selected);
-    console.log('selected inside calendar');
   }
 
   isSelected(day: number): boolean {
