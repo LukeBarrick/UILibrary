@@ -25,9 +25,20 @@ export class DatepickerShowcaseComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.datePickers2 = this.formBuilder.group({
       datePicker1: [undefined, [Validators.required]],
+      datePicker2: [undefined],
+      datePicker3: [undefined],
+      datePicker4: [undefined, [Validators.required]],
+      datePicker5: [undefined],
       startDate1: [undefined, [Validators.required]],
       endDate1: [undefined, [Validators.required]],
-      datePicker4: [undefined, [Validators.required]]
+      startDate2: [undefined],
+      endDate2: [undefined],
+      startDate3: [undefined],
+      endDate3: [undefined],
+      startDate4: [undefined],
+      endDate4: [undefined],
+      startDate5: [undefined],
+      endDate5: [undefined]
     });
 
     this.validationForm = this.formBuilder.group({
@@ -55,14 +66,18 @@ export class DatepickerShowcaseComponent implements OnInit {
   }
 
   calculateDuration(): number {
-    if(this.interactiveStart instanceof Date && this.interactiveEnd instanceof Date)
-      return 0;
-
-    if (this.interactiveStart && this.interactiveEnd) {
+    if (!this.startDateModel || !this.endDateModel) {
+      if (!this.interactiveStart || !this.interactiveEnd) {
+        return 0;
+      }
       const diffTime = Math.abs(this.interactiveEnd.getTime() - this.interactiveStart.getTime());
       return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
     }
-    return 0;
+    
+    const start = new Date(this.startDateModel);
+    const end = new Date(this.endDateModel);
+    const diffTime = Math.abs(end.getTime() - start.getTime());
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
   }
 
   isRangeValid(): boolean {
@@ -82,7 +97,9 @@ export class DatepickerShowcaseComponent implements OnInit {
     this.prefilledDate = today;
     this.interactiveStart = today;
     this.interactiveEnd = today;
-    this.lastDateAction = 'All dates set to today';
+    this.startDateModel = today.toISOString().split('T')[0];
+    this.endDateModel = today.toISOString().split('T')[0];
+    this.lastDateAction = `All dates set to today (${today.toDateString()})`;
   }
 
   setThisWeek(): void {
@@ -93,6 +110,8 @@ export class DatepickerShowcaseComponent implements OnInit {
     
     this.interactiveStart = startOfWeek;
     this.interactiveEnd = endOfWeek;
+    this.startDateModel = startOfWeek.toISOString().split('T')[0];
+    this.endDateModel = endOfWeek.toISOString().split('T')[0];
     this.lastDateAction = `Date range set to this week (${startOfWeek.toDateString()} - ${endOfWeek.toDateString()})`;
   }
 
@@ -103,7 +122,34 @@ export class DatepickerShowcaseComponent implements OnInit {
     
     this.interactiveStart = startOfMonth;
     this.interactiveEnd = endOfMonth;
+    this.startDateModel = startOfMonth.toISOString().split('T')[0];
+    this.endDateModel = endOfMonth.toISOString().split('T')[0];
     this.lastDateAction = `Date range set to this month (${startOfMonth.toDateString()} - ${endOfMonth.toDateString()})`;
+  }
+
+  setLastWeek(): void {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const startOfLastWeek = new Date(today.getTime() - (dayOfWeek + 7) * 24 * 60 * 60 * 1000);
+    const endOfLastWeek = new Date(startOfLastWeek.getTime() + 6 * 24 * 60 * 60 * 1000);
+    
+    this.interactiveStart = startOfLastWeek;
+    this.interactiveEnd = endOfLastWeek;
+    this.startDateModel = startOfLastWeek.toISOString().split('T')[0];
+    this.endDateModel = endOfLastWeek.toISOString().split('T')[0];
+    this.lastDateAction = `Date range set to last week (${startOfLastWeek.toDateString()} - ${endOfLastWeek.toDateString()})`;
+  }
+
+  setLastMonth(): void {
+    const today = new Date();
+    const startOfLastMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    const endOfLastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+    
+    this.interactiveStart = startOfLastMonth;
+    this.interactiveEnd = endOfLastMonth;
+    this.startDateModel = startOfLastMonth.toISOString().split('T')[0];
+    this.endDateModel = endOfLastMonth.toISOString().split('T')[0];
+    this.lastDateAction = `Date range set to last month (${startOfLastMonth.toDateString()} - ${endOfLastMonth.toDateString()})`;
   }
 
   clearDates(): void {
@@ -112,6 +158,23 @@ export class DatepickerShowcaseComponent implements OnInit {
     this.interactiveEnd = null;
     this.startDateModel = undefined;
     this.endDateModel = undefined;
+    this.datePickers2.patchValue({
+      datePicker1: undefined,
+      datePicker2: undefined,
+      datePicker3: undefined,
+      datePicker4: undefined,
+      datePicker5: undefined,
+      startDate1: undefined,
+      endDate1: undefined,
+      startDate2: undefined,
+      endDate2: undefined,
+      startDate3: undefined,
+      endDate3: undefined,
+      startDate4: undefined,
+      endDate4: undefined,
+      startDate5: undefined,
+      endDate5: undefined
+    });
     this.lastDateAction = 'All dates cleared';
   }
 
@@ -148,13 +211,15 @@ export class DatepickerShowcaseComponent implements OnInit {
   }
 
   debugDatePickers(): void {
-    console.log('Date Pickers Debug:', {
+    const debugData = {
       modelDatePicker1: this.modelDatePicker1,
       startDateModel: this.startDateModel,
       endDateModel: this.endDateModel,
       formValues: this.datePickers2.value,
-      validationFormValues: this.validationForm.value
-    });
+      validationFormValues: this.validationForm.value,
+      duration: this.calculateDuration()
+    };
+    console.log('Date Pickers Debug:', debugData);
     this.lastDateAction = 'Debug information logged to console';
   }
 
@@ -163,11 +228,15 @@ export class DatepickerShowcaseComponent implements OnInit {
       datePickers2: {
         value: this.datePickers2.value,
         valid: this.datePickers2.valid,
+        pristine: this.datePickers2.pristine,
+        dirty: this.datePickers2.dirty,
         errors: this.getFormErrors(this.datePickers2)
       },
       validationForm: {
         value: this.validationForm.value,
         valid: this.validationForm.valid,
+        pristine: this.validationForm.pristine,
+        dirty: this.validationForm.dirty,
         errors: this.getFormErrors(this.validationForm)
       },
       modelValues: {
@@ -175,9 +244,11 @@ export class DatepickerShowcaseComponent implements OnInit {
         startDateModel: this.startDateModel,
         endDateModel: this.endDateModel,
         interactiveStart: this.interactiveStart,
-        interactiveEnd: this.interactiveEnd
+        interactiveEnd: this.interactiveEnd,
+        duration: this.calculateDuration()
       }
     }, null, 2);
+    this.lastDateAction = 'Form state logged';
   }
 
   private getFormErrors(form: FormGroup): any {

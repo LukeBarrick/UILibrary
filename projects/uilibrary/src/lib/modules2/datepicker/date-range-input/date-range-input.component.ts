@@ -47,19 +47,6 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
     } 
   }
 
-  @HostListener('document:click', ['$event']) onClickOutside2(event: Event) {
-    const target = event.target as HTMLElement;
-    const parent = this.elRef.nativeElement.parentElement;
-
-    if (this._open && parent.contains(target)) {
-      if(!this.startDate?.value) {
-        this.startDate?.focus();
-      } else if (!this.endDate?.value) {
-        this.endDate?.focus();
-      } 
-    } 
-  }
-
   @ContentChild(StartDateDirective) startDate: UIFormFieldControl<Date> | undefined;
   @ContentChild(EndDateDirective) endDate: UIFormFieldControl<Date> | undefined;
 
@@ -221,6 +208,11 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
 
   open(): void {
     this._open = true;
+
+    if(!this.startDate?.value) 
+      this.startDate?.focus();
+    else if (!this.endDate?.value)
+      this.endDate?.focus();
   }
 
   close(): void {

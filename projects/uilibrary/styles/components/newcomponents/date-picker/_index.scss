@@ -3,8 +3,8 @@ uilibrary2-date-range-input {
 }
 
 
-.date-picker-wrapper {
-   
+.date-picker-wrapper:focus-visible {
+   outline: 1px solid black;
 }
 
 .date-picker-inputs {

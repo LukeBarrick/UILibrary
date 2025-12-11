@@ -1,5 +1,6 @@
 
 uilibrary-calendar-select {
+
     .calendar-wrapper {
         min-height: 320px;
         width: 100%;
@@ -25,6 +26,10 @@ uilibrary-calendar-select {
                 font-family: var(--bs-header-font-family);
                 font-size: 14pt;
                 color: $white;
+
+                &:focus-visible {
+                    outline: 3px dotted black;
+                }
             }
 
             .datepicker-title-row {
@@ -78,6 +83,11 @@ uilibrary-calendar-select {
                     justify-content: center;
                     transition: background-color $transitions;
 
+                    &:focus-visible {
+                        outline: 3px dotted black;
+                    }
+
+                    
                     &:hover {
                         background-color: var(--lighter-gray) !important;
                     }

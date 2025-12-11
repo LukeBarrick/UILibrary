@@ -14873,6 +14873,10 @@ uilibrary2-date-range-input {
   width: 100%;
 }
 
+.date-picker-wrapper:focus-visible {
+  outline: 1px solid black;
+}
+
 .date-picker-inputs {
   display: flex;
   flex-direction: row;
@@ -14918,6 +14922,9 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .nav-button {
   font-family: var(--bs-header-font-family);
   font-size: 14pt;
   color: #fff;
+}
+uilibrary-calendar-select .calendar-wrapper .calendar-container .nav-button:focus-visible {
+  outline: 3px dotted black;
 }
 uilibrary-calendar-select .calendar-wrapper .calendar-container .datepicker-title-row {
   margin-bottom: 10px;
@@ -14965,6 +14972,9 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   align-items: center;
   justify-content: center;
   transition: background-color 100ms ease-in-out;
+}
+uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button:focus-visible {
+  outline: 3px dotted black;
 }
 uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button:hover {
   background-color: var(--lighter-gray) !important;

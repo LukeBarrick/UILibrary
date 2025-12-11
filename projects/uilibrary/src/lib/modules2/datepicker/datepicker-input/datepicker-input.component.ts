@@ -174,6 +174,7 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
 
   open(): void {
     this._open = true;
+    this.focus();
   }
 
   close(): void {
