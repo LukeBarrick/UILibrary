@@ -49,19 +49,17 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
 
     if (this._open && !parent.contains(target)) {
       this._open = false;
-    } else if (this._open) {
-      this.input.nativeElement.focus();
     }
   }
 
-  @HostListener('document:click', ['$event']) onClickOutside2(event: Event) {
-    const target = event.target as HTMLElement;
-    const parent = this.elRef.nativeElement.parentElement;
+  // @HostListener('document:click', ['$event']) onClickOutside2(event: Event) {
+  //   const target = event.target as HTMLElement;
+  //   const parent = this.elRef.nativeElement.parentElement;
 
-    if (this._open && parent.contains(target)) {
-      this.input.nativeElement.focus();;
-    }
-  }
+  //   if (this._open && parent.contains(target)) {
+  //     this.input.nativeElement.focus();;
+  //   }
+  // }
 
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
 
