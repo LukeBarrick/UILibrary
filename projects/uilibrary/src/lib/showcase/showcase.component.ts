@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationLink } from '../core/models/navigation-link';
 import { NavigationLinkType } from '../core/enums/navigation-link-type.enum';
 import { ToastService } from '../core/services/toast.service';
+import { MenuTrigger } from '../modules2/context-menu/menu-trigger.directive';
 
 export interface Item {
   id: number;
@@ -52,6 +53,13 @@ export class ShowcaseComponent implements OnInit {
     this.form.patchValue({
       button: $event,
     });
+  }
+
+  @ViewChild(MenuTrigger, { static: true }) menuTrigger!: MenuTrigger;
+
+  rightClick(event: MouseEvent): void {
+    event.preventDefault();
+    this.menuTrigger.openMenu(event);
   }
 
   datePickers2 = new FormGroup({

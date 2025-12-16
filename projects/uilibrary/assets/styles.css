@@ -15000,4 +15000,60 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   color: var(--secondary);
 }
 
+.context-menu {
+  position: fixed;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 150px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.context-menu button {
+  padding: 2.5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  background-color: white;
+}
+
+.context-menu button:hover {
+  background-color: var(--light-gray);
+}
+
+.context-sidemenu {
+  position: relative;
+}
+.context-sidemenu:hover .context-sidemenu-container, .context-sidemenu:focus-within .context-sidemenu-container {
+  display: block;
+}
+.context-sidemenu .context-sidemenu-container {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.context-sidemenu .context-sidemenu-container .context-sidemenu-item,
+.context-sidemenu .context-sidemenu-container div {
+  background-color: white;
+  min-width: 100px;
+  border-radius: 4px;
+  width: 100%;
+  cursor: pointer;
+  padding: 5px 5px;
+}
+.context-sidemenu .context-sidemenu-container .context-sidemenu-item:hover,
+.context-sidemenu .context-sidemenu-container div:hover {
+  background-color: var(--light-gray);
+}
+
 /*# sourceMappingURL=styles.css.map */

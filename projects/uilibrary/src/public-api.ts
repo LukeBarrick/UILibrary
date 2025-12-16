@@ -86,3 +86,12 @@ export * from './lib/modules2/datepicker/datepicker-input/datepicker-input.compo
 export * from './lib/modules2/datepicker/calendar/calendar.component';
 export * from './lib/modules2/datepicker/date-range';
 export * from './lib/modules2/datepicker/date-selection-strategy';
+
+export * from './lib/modules2/context-menu/context-menu.module';
+export * from './lib/modules2/context-menu/context-menu.component';
+export * from './lib/modules2/context-menu/menu-trigger.directive';
+export * from './lib/modules2/context-menu/context-side-menu/context-side-menu.component';
+
+export * from './lib/modules2/keyboard-navigation/keyboard-navigation.module';
+export * from './lib/modules2/keyboard-navigation/cell-nav.directive';
+export * from './lib/modules2/keyboard-navigation/nav-registry.service';

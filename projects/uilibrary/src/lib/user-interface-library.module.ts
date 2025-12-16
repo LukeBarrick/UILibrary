@@ -31,6 +31,8 @@ import { Icon2Module } from './modules2/icon/icon.module';
 import { Toggle2Module } from './modules2/toggle/toggle.module';
 import { Radio2Module } from './modules2/radio/radio.module';
 import { Datepicker2Module } from './modules2/datepicker/datepicker.module';
+import { KeyboardNavigationModule } from './modules2/keyboard-navigation/keyboard-navigation.module';
+import { ContextMenuModule } from './modules2/context-menu/context-menu.module';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { Datepicker2Module } from './modules2/datepicker/datepicker.module';
     Icon2Module,
     Toggle2Module,
     Radio2Module,
-    Datepicker2Module
+    Datepicker2Module,
+    KeyboardNavigationModule,
+    ContextMenuModule
   ],
   exports: [
     UserInterfaceLibraryComponent,

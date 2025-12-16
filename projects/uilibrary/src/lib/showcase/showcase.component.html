@@ -1,4 +1,16 @@
-<div style="background-color: #eae7e1;">
+<div [menuTriggerFor]="contextMenu"></div>
+<uilibrary2-context-menu #contextMenu>
+  <button [disabled]="false">Fill all tax</button>
+  <uilibrary2-context-side-menu [disabled]="false">
+    <span context-menu-label>Add New Line</span>
+    <div>Above</div>
+    <div>Below</div>
+  </uilibrary2-context-side-menu>
+</uilibrary2-context-menu>
+
+
+
+<div style="background-color: #eae7e1;" (contextmenu)="rightClick($event)">
   <section class="medium w-100">
     <h1>Nav bars</h1>
 
