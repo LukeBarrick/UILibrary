@@ -86,7 +86,7 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   }
 
   get disabled() {
-    return this._disabled;
+    return !!this.startDate?.disabled || !!this.endDate?.disabled;
   }
 
   get shouldLabelFloat(): boolean {
@@ -114,8 +114,10 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   }
 
   onFocus() {
-    this._focussed = true;
-    this._open = true;
+    if(!this.disabled) {
+      this._focussed = true;
+      this._open = true;
+    }
   }
 
   onBlur() {
@@ -123,7 +125,9 @@ export class DateRangeInput2Component implements UIFormFieldControl<DateRange>, 
   }
 
   focus(): void {
-    this._open = true;
+    if(!this.disabled) {
+       this._open = true;
+    }
   }
 
   setValue(value: DateRange | null): void { 

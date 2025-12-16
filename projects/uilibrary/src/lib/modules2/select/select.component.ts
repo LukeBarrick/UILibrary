@@ -82,7 +82,7 @@ export class Select2Component
   stateChanges: Observable<void> = new Observable<void>();
   id: string = '';
 
-  @Input() disabled: boolean = false;
+ 
 
   get empty(): boolean {
     if (!this.ngControl) {
@@ -100,6 +100,14 @@ export class Select2Component
     }
 
     return !control.value;
+  }
+
+  @Input() set disabled(value: boolean) {
+    this.setDisabledState(value);
+  }
+
+  get disabled() {
+    return this._disabled;
   }
 
   get shouldLabelFloat(): boolean {

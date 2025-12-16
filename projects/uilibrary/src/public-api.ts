@@ -82,6 +82,7 @@ export * from './lib/modules2/datepicker/datepicker.module';
 export * from './lib/modules2/datepicker/date-range-input/date-range-input.component';
 export * from './lib/modules2/datepicker/date-range-input/start-date.directive';
 export * from './lib/modules2/datepicker/date-range-input/end-date.directive';
+export * from './lib/modules2/datepicker/date-range-input/date-input.directive';
 export * from './lib/modules2/datepicker/datepicker-input/datepicker-input.component';
 export * from './lib/modules2/datepicker/calendar/calendar.component';
 export * from './lib/modules2/datepicker/date-range';

@@ -76,7 +76,9 @@ export class ShowcaseComponent implements OnInit {
     startDate4: new FormControl(undefined, [Validators.required]),
     endDate4: new FormControl(undefined, [Validators.required]),
     startDate5: new FormControl(undefined, [Validators.required]),
-    endDate: new FormControl(undefined, [Validators.required]),
+    endDate5: new FormControl(undefined, [Validators.required]),
+    startDate6: new FormControl({value: undefined, disabled: true}, [Validators.required]),
+    endDate6: new FormControl({value: undefined, disabled: true}, [Validators.required]),
   })
 
   damnson(): void {
@@ -123,6 +125,7 @@ export class ShowcaseComponent implements OnInit {
     textInput23: new FormControl({value: '', disabled: true},[Validators.required]),
     textInput24: new FormControl({value: 'Nancy', disabled: true},[Validators.required]),
     placeholderFormControl: new FormControl('', [Validators.required]),
+   
     prefixFormControl: new FormControl('', [Validators.required]),
     suffixFormControl: new FormControl('', [Validators.required]),
     prefixSuffixFormControl: new FormControl('', [Validators.required])
@@ -142,7 +145,8 @@ export class ShowcaseComponent implements OnInit {
   selectControls2 = new FormGroup({
     selectControl: new FormControl(undefined, [Validators.required]),
     placeholderFormControl: new FormControl(undefined, [Validators.required]),
-    prefixFormControl: new FormControl(undefined, [Validators.required]),
+    placeholderFormControl2: new FormControl({value: undefined, disabled: true}, [Validators.required]),
+    prefixFormControl: new FormControl({value: undefined, disabled: true}, [Validators.required]),
     suffixFormControl: new FormControl(undefined, [Validators.required]),
     prefixSuffixFormControl: new FormControl(undefined, [Validators.required])
   });

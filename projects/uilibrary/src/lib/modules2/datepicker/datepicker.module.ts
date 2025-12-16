@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { IconsModule } from "../../../lib/modules/icons/icon.module";
 import { DefaultDateSelectionStrategy } from './default-date-selection-strategy';
 import { DateSelectionStrategy } from './date-selection-strategy';
+import { DateInputDirective } from './date-range-input/date-input.directive';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DateSelectionStrategy } from './date-selection-strategy';
     CalendarComponent,
     StartDateDirective,
     EndDateDirective,
+    DateInputDirective
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { DateSelectionStrategy } from './date-selection-strategy';
     DateRangeInput2Component,
     CalendarComponent,
     StartDateDirective,
-    EndDateDirective
+    EndDateDirective,
+    DateInputDirective
   ],
   providers: [
     { provide: DateSelectionStrategy, useClass: DefaultDateSelectionStrategy }

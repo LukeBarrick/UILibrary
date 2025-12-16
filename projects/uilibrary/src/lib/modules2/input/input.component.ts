@@ -80,6 +80,7 @@ export class InputComponent
   @Input() set disabled(disabled: boolean) {
     this.setDisabledState(disabled);
   }
+  
   get disabled() {
     return this.el.nativeElement.disabled;
   }

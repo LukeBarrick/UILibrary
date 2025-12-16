@@ -392,6 +392,24 @@
       </uilibrary2-select>
     </uilibrary2-form-field>
 
+     <uilibrary2-form-field>
+      <label ui-label>Disabled Select Form Control</label>
+      <uilibrary2-select ui-select [items]="items"
+        placeholder="Please select an item from the dropdown list."
+        formControlName="placeholderFormControl2" [clearable]="true">
+        <ng-template #labelTemplate let-item>
+          <div>
+            <b>{{item.name}}</b>
+          </div>
+        </ng-template>
+        <ng-template #optionTemplate let-item>
+          <div>
+            <b>{{item.name}}</b>
+          </div>
+        </ng-template>
+      </uilibrary2-select>
+    </uilibrary2-form-field>
+
     <uilibrary2-form-field>
       <label ui-label>Select w/ Prefix</label>
       <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
@@ -592,11 +610,20 @@
       </uilibrary2-date-range-input>
     </uilibrary2-form-field>
 
+    <uilibrary2-form-field>
+      <label ui-label>Disabled Form Control Date Range</label>
+      <uilibrary2-date-range-input [closeOnSelection]="false">
+        <input startDate formControlName="startDate6" [disabled]="true"/>
+        <input endDate formControlName="endDate6" [disabled]="true"/>
+      </uilibrary2-date-range-input>
+    </uilibrary2-form-field>
+
     stuff I want to do:
     on tab focus leave, close calendar 
     keyboard nav within calendar
     improve date selection strategy for selecting same start date as end date to switch dates?
     when date is selected move active month when calendar is open to this date range
+    Make single date picker input removal deactivate the date in the calendar
 
 
     <button (click)="damnson()">debug</button>
