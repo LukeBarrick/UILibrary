@@ -11,6 +11,4 @@ import { DateInputDirective } from './date-input.directive';
     }
   ]
 })
-export class EndDateDirective extends DateInputDirective {
- 
-}
+export class EndDateDirective extends DateInputDirective { }

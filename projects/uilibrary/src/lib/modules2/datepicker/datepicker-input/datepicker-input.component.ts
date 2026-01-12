@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, Inject, inject, Input, LOCALE_ID, Optional, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { filter, Observable, Subscription, tap } from 'rxjs';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 import { format, parse } from 'date-fns';
@@ -32,6 +32,8 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
   @Input() editable: boolean = false;
   @Input() closeOnSelection: boolean = true;
 
+  $dateValueChanges: Subscription | undefined = undefined;
+
   /**
    *
    */
@@ -40,6 +42,12 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
     @Inject(DATE_NOW) protected today: Date) {
     if (ngControl) {
       ngControl.valueAccessor = this;
+
+      this.$dateValueChanges = ngControl.valueChanges?.pipe(
+        tap(() => this.removeDateFromCalendar()),
+        filter(date => date instanceof Date),
+        tap((date: Date) => this.addDateToCalendar(date))
+      ).subscribe();
     }
   }
 
@@ -158,6 +166,10 @@ export class Datepicker2InputComponent implements UIFormFieldControl<Date>, Cont
 
   addDateToCalendar(value: Date): void {
     this.selecteDate = value;
+  }
+
+  removeDateFromCalendar(): void {
+    this.selecteDate = undefined;
   }
 
   handleDateInput(value: Date): void {
