@@ -67,6 +67,7 @@ export class ShowcaseComponent implements OnInit {
     datePicker2: new FormControl(undefined, [Validators.required]),
     datePicker3: new FormControl(undefined, [Validators.required]),
     datePicker4: new FormControl(undefined, [Validators.required]),
+    datePicker5: new FormControl({value: undefined, disabled: true}, [Validators.required]),
     startDate1: new FormControl(undefined, [Validators.required]),
     endDate1: new FormControl(undefined, [Validators.required]),
     startDate2: new FormControl(undefined, [Validators.required]),

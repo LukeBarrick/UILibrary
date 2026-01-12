@@ -547,6 +547,11 @@
       <uilibrary2-datepicker-input #picker3 formControlName="datePicker4"></uilibrary2-datepicker-input>
     </uilibrary2-form-field>
 
+      <uilibrary2-form-field>
+      <label ui-label>Disabled Date Picker</label>
+      <uilibrary2-datepicker-input formControlName="datePicker5"></uilibrary2-datepicker-input>
+    </uilibrary2-form-field>
+
     <!-- <uilibrary2-form-field>
       <label ui-label>Don't Close On Select Date Picker</label>
       <uilibrary2-datepicker-input formControlName="datePicker4" [closeOnSelection]="false"></uilibrary2-datepicker-input>
@@ -613,8 +618,8 @@
     <uilibrary2-form-field>
       <label ui-label>Disabled Form Control Date Range</label>
       <uilibrary2-date-range-input [closeOnSelection]="false">
-        <input startDate formControlName="startDate6" [disabled]="true"/>
-        <input endDate formControlName="endDate6" [disabled]="true"/>
+        <input startDate formControlName="startDate6"/>
+        <input endDate formControlName="endDate6"/>
       </uilibrary2-date-range-input>
     </uilibrary2-form-field>
 
