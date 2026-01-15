@@ -31,6 +31,23 @@
     "request": "launch",
     "preLaunchTask": "npm: test",
     "url": "http://localhost:9876/debug.html"
+  },
+  {
+    "name": "Launch with Build All",
+    "type": "chrome",
+    "request": "launch",
+    "preLaunchTask": "Start All",
+    "url": "http://localhost:4200/",
+    "webRoot": "${workspaceFolder}",
+    "sourceMaps": true,
+    "sourceMapPathOverrides": {
+      "webpack:/*": "${webRoot}/",
+      "/./*": "${webRoot}/",
+      "/src/*": "${webRoot}/",
+      "/*": "*",
+      "/./~/*": "${webRoot}/node_modules/*"
+    },
+    "trace": true
   }
   ]
 }

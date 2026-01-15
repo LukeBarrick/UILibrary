@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectComponent } from './select.component';
-import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 import { SelectWcagHelperDirective } from './select-wcag-helper/select-wcag-helper.directive';
+import { SelectComponent } from './select.component';
+import { CollapseDirective } from './collapse/collapse.directive';
 
 @NgModule({
   imports: [
@@ -11,10 +12,11 @@ import { SelectWcagHelperDirective } from './select-wcag-helper/select-wcag-help
     FormsModule,
     NgSelectModule
   ],
-  declarations: [
+  declarations: [	
     SelectComponent,
-    SelectWcagHelperDirective
-  ],
+    SelectWcagHelperDirective,
+    CollapseDirective
+   ], 
   exports: [
     SelectComponent
   ]

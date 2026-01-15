@@ -13,7 +13,7 @@ import { StatusTagShowcaseComponent } from './status-tag-showcase/status-tag-sho
 import { ToastShowcaseComponent } from './toast-showcase/toast-showcase.component';
 import { ToggleShowcaseComponent } from './toggle-showcase/toggle-showcase.component';
 import { TooltipShowcaseComponent } from './tooltip-showcase/tooltip-showcase.component';
-import { ButtonsModule, CheckboxesModule, Datepicker2Module, FormField2Module, Icon2Module, IconsModule, Input2Module, InputAnnotationsModule, NavigationModule, Radio2Module, Select2Module, StatusTagsModule, Toggle2Module, TogglesModule } from 'uilibrary';
+import { ButtonModule, CheckboxesModule, DatepickerModule, FormFieldModule, IconModule, InputModule, InputAnnotationsModule, NavigationModule, RadioModule, SelectModule, StatusTagsModule, ToggleModule } from 'uilibrary';
 import { NavigationShowcaseComponent } from './navigation/navigation-showcase.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -40,19 +40,18 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    Input2Module,
-    Select2Module,
-    Datepicker2Module,
-    FormField2Module,
-    Icon2Module,
-    IconsModule,
-    Radio2Module,
-    TogglesModule,
+    InputModule,
+    SelectModule,
+    DatepickerModule,
+    FormFieldModule,
+    IconModule,
+    RadioModule,
+    ToggleModule,
     StatusTagsModule,
     CheckboxesModule,
     NavigationModule,
     InputAnnotationsModule,
-    ButtonsModule
+    ButtonModule
   ],
   declarations: [
     DocsComponent,

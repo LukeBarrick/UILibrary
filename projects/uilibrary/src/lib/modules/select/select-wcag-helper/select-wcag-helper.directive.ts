@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Directive, ElementRef, PLATFORM_ID, inject } from '@angular/core';
 
 @Directive({
-  selector: '[libSelectWcagHelper]'
+  selector: '[libSelectWcagHelper2]'
 })
 export class SelectWcagHelperDirective {
 

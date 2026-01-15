@@ -1,27 +1,38 @@
 import {
   Component,
   ContentChild,
-  EventEmitter,
+  ElementRef,
+  HostListener,
   Input,
   Optional,
-  Output,
+  Renderer2,
   Self,
   TemplateRef,
+  ViewChild,
+  forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { UIFormFieldControl } from '../form-field/form-field-control';
+import { Observable } from 'rxjs';
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
-  selector: 'uilibrary-select',
+  selector: 'uilibrary2-select',
   templateUrl: './select.component.html',
   providers: [
- 
+    {
+      provide: UIFormFieldControl,
+      useExisting: forwardRef(() => SelectComponent),
+    },
   ],
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent
+  implements UIFormFieldControl<any>, ControlValueAccessor {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
   optionTemplate: TemplateRef<any> | null = null;
+  @ViewChild(NgSelectComponent) ngSelect!: NgSelectComponent;
 
   @Input() items: any;
 
@@ -41,6 +52,9 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() clearOnBackspace: boolean = true;
   @Input() clearable: boolean = false;
   @Input() closeOnSelect: boolean = true;
+  @Input() useCustomTemplate: boolean = true;
+  @Input() bindLabel: string = '';  
+  @Input() bindValue: string = '';
 
   @Input() searchable: boolean = false;
   @Input() searchFn: ((term: string, item: any) => boolean) | undefined;
@@ -49,18 +63,95 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() virtualScroll: boolean = false;
   @Input() inputAttrs: { [key: string]: string } = { ['']: '' };
 
-  @Input() value: any;
-  @Output() valueChange = new EventEmitter<any>();
+  value: any;
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
-  touched = false;
-
-  constructor(@Optional() @Self() public control: NgControl) {
-    if(this.control) {
-      this.control.valueAccessor = this;
+  constructor(
+    @Optional() @Self() public ngControl: NgControl,
+  ) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
     }
+  }
+
+  _disabled: boolean = false;
+  _open: boolean = false;
+
+  stateChanges: Observable<void> = new Observable<void>();
+  id: string = '';
+
+ 
+
+  get empty(): boolean {
+    if (!this.ngControl) {
+      return false;
+    }
+
+    const control = this.ngControl.control;
+
+    if (!control) {
+      return true;
+    }
+
+    if(this.multiple) {
+      return !control.value || control.value.length === 0;
+    }
+
+    return !control.value;
+  }
+
+  @Input() set disabled(value: boolean) {
+    this.setDisabledState(value);
+  }
+
+  get disabled() {
+    return this._disabled;
+  }
+
+  get shouldLabelFloat(): boolean {
+    return !this.empty || this._focussed;
+  }
+
+  get hasErrors(): boolean {
+    return this.ngControl ? !!this.ngControl.control?.invalid : false;
+  }
+
+  get hasFocus() {
+    return this._focussed;
+  }
+
+  get touched(): boolean {
+    return this.ngControl ? !!this.ngControl.touched : false;
+  }
+
+  get dirty(): boolean {
+    return this.ngControl ? !!this.ngControl.dirty : false;
+  }
+
+  private _focussed: boolean = false;
+
+  _onInput(value: any): void {
+    this.onChange(value);
+  }
+
+  _onBlur(): void {
+    this._focussed = false;
+    this.onTouched();
+  }
+
+  _onFocus(): void {
+    this._focussed = true;
+  }
+
+  focus() {
+    this.ngSelect.focus();
+    // this.ngSelect.open();
+  }
+
+  setValue(value: any): void { 
+    this.handleInput(value);
   }
 
   writeValue(value: any): void {
@@ -75,22 +166,16 @@ export class SelectComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  markAsTouched() {
-    if (!this.touched) {
-      this.onTouched();
-      this.touched = true;
-    }
+  setDisabledState(disabled: boolean): void {
+    this._disabled = disabled;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
-  }
-
-  handleChange(event: any): void {
-    this.value = event;
+  handleInput(event: any): void {
+   
+    this.writeValue(this.value);
     this.onChange(event);
-    this.valueChange.emit(event);
     this.onTouched();
+     console.log(this.value);
   }
 
   ngOnInit() {
@@ -103,19 +188,10 @@ export class SelectComponent implements ControlValueAccessor {
         }
       }
       this.onChange(this.value);
-      this.valueChange.emit(this.value);
     }, 0);
   }
 
   compareFn(item: any, selected: any) {
     return item === selected;
-  }
-
-  hasErrors(): boolean {
-    if(this.control?.errors){
-      return true;
-    } else {
-      return false;
-    }
   }
 }

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { NavigationLink } from '../core/models/navigation-link';
 import { NavigationLinkType } from '../core/enums/navigation-link-type.enum';
 import { ToastService } from '../core/services/toast.service';
-import { MenuTrigger } from '../modules2/context-menu/menu-trigger.directive';
+import { MenuTrigger } from '../modules/context-menu/menu-trigger.directive';
 
 export interface Item {
   id: number;

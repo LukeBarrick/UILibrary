@@ -547,7 +547,7 @@
       <uilibrary2-datepicker-input #picker3 formControlName="datePicker4"></uilibrary2-datepicker-input>
     </uilibrary2-form-field>
 
-      <uilibrary2-form-field>
+    <uilibrary2-form-field>
       <label ui-label>Disabled Date Picker</label>
       <uilibrary2-datepicker-input formControlName="datePicker5"></uilibrary2-datepicker-input>
     </uilibrary2-form-field>
@@ -740,44 +740,46 @@
     </uilibrary-checkbox>
   </section>
 
-  <uilibrary-button (click)="damnson()">debug</uilibrary-button>
+  <uilibrary-button (click)="damnson()">hi</uilibrary-button>
 
   <section [formGroup]="toggles" class="medium">
     <h1>Toggles</h1>
 
-    <uilibrary-toggle [hideLabel]="true">
+    <uilibrary2-toggle [hideLabel]="true">
       This is descriptive text about the toggle for accessibility reasons. Do not leave blank.
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
 
-    <uilibrary-toggle>
+    <uilibrary2-toggle>
       Normal Label
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
 
-    <uilibrary-toggle labelPosition="right">
+    <uilibrary2-toggle labelPosition="right">
       Right Aligned Label
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
 
-    <uilibrary-toggle labelSize="large">
+    hi
+
+    <uilibrary2-toggle labelSize="large">
       Large Label
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
 
-    <uilibrary-toggle [disabled]="isDisabled">
+    <uilibrary2-toggle [disabled]="isDisabled">
       Disabled Toggle
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
 
-    <uilibrary-toggle [disabled]="isDisabled" [checked]="true">
+    <uilibrary2-toggle [disabled]="isDisabled" [checked]="true">
       Disabled & Checked Toggle
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
 
-    <uilibrary-toggle [(ngModel)]="checked" [ngModelOptions]="{ standalone: true }">
+    <uilibrary2-toggle [(ngModel)]="checked" [ngModelOptions]="{ standalone: true }">
       Two way binding Toggle
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
 
     Toggle is currently: {{checked}}
 
-    <uilibrary-toggle formControlName="toggle1">
+    <uilibrary2-toggle formControlName="toggle1">
       Form Control Toggle
-    </uilibrary-toggle>
+    </uilibrary2-toggle>
   </section>
 
   <section class="medium d-flex flex-row">

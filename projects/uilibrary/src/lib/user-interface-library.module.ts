@@ -9,30 +9,23 @@ import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { NavigationModule } from './modules/navigation/navigation.module';
-import { RadioButtonsModule } from './modules/radio-buttons/radio-buttons.module'
-import { SelectModule } from './modules/select/select.module';
-import { TextInputsModule } from './modules/text-inputs/text-inputs.module';
 import { CheckboxesModule } from './modules/checkboxes/checkboxes.module';
 import { InputAnnotationsModule } from './modules/input-annotations/input-annotations.module';
-import { FormControlModule } from './modules/form-control/form-control.module';
-import { TogglesModule } from './modules/toggles/toggles.module';
-import { DatePickersModule } from "./modules/date-pickers/date-pickers.module";
 import { CoreModule } from './core/core.module';
 import { StatusTagsModule } from './modules/status-tags/status-tags.module';
 import { SharedModule } from './shared/shared.module';
-import { IconsModule } from './modules/icons/icon.module';
-import { ButtonsModule } from './modules/buttons/buttons.module';
+import { ButtonModule } from './modules/button/button.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Input2Module } from './modules2/input/input.module';
-import { FormField2Module } from './modules2/form-field/form-field.module';
-import { Select2Module } from './modules2/select/select.module';
-import { Icon2Module } from './modules2/icon/icon.module';
-import { Toggle2Module } from './modules2/toggle/toggle.module';
-import { Radio2Module } from './modules2/radio/radio.module';
-import { Datepicker2Module } from './modules2/datepicker/datepicker.module';
-import { KeyboardNavigationModule } from './modules2/keyboard-navigation/keyboard-navigation.module';
-import { ContextMenuModule } from './modules2/context-menu/context-menu.module';
+import { InputModule } from './modules/input/input.module';
+import { FormFieldModule } from './modules/form-field/form-field.module';
+import { SelectModule } from './modules/select/select.module';
+import { IconModule } from './modules/icon/icon.module';
+import { ToggleModule } from './modules/toggle/toggle.module';
+import { RadioModule } from './modules/radio/radio.module';
+import { DatepickerModule } from './modules/datepicker/datepicker.module';
+import { KeyboardNavigationModule } from './modules/keyboard-navigation/keyboard-navigation.module';
+import { ContextMenuModule } from './modules/context-menu/context-menu.module';
 
 @NgModule({
   declarations: [
@@ -50,26 +43,18 @@ import { ContextMenuModule } from './modules2/context-menu/context-menu.module';
     NgSelectModule,
     ReactiveFormsModule,
     RouterModule,
-    TextInputsModule,
     CheckboxesModule,
-    RadioButtonsModule,
-    TogglesModule,
     InputAnnotationsModule,
     NavigationModule,
-    SelectModule,
-    FormControlModule,
-    DatePickersModule,
     StatusTagsModule,
-
-    ButtonsModule,
-    
-    Input2Module,
-    FormField2Module,
-    Select2Module,
-    Icon2Module,
-    Toggle2Module,
-    Radio2Module,
-    Datepicker2Module,
+    ButtonModule,
+    InputModule,
+    FormFieldModule,
+    SelectModule,
+    IconModule,
+    ToggleModule,
+    RadioModule,
+    DatepickerModule,
     KeyboardNavigationModule,
     ContextMenuModule
   ],
