@@ -6,13 +6,14 @@ import { format, parse } from 'date-fns';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 
 @Directive({
-  selector: '[ui-date-input]',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => DateInputDirective)
-    }
-  ]
+    selector: '[ui-date-input]',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => DateInputDirective)
+        }
+    ],
+    standalone: false
 })
 export class DateInputDirective implements UIFormFieldControl<Date>, ControlValueAccessor {
   private dateFnsLocaleService = inject(DateFnsLocaleService);

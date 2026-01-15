@@ -3,8 +3,9 @@ import { NavigationLinkType } from '../../../core/enums/navigation-link-type.enu
 import { NavigationLink } from '../../../core/models/navigation-link';
 
 @Component({
-  selector: 'uilibrary-navigation-option',
-  templateUrl: './navigation-option.component.html'
+    selector: 'uilibrary-navigation-option',
+    templateUrl: './navigation-option.component.html',
+    standalone: false
 })
 export class NavigationOptionComponent implements OnInit {
 

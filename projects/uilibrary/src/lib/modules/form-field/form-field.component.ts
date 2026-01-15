@@ -11,16 +11,17 @@ import { UIPrefix } from './directives/UIPrefix';
 import { UISuffix } from './directives/UISuffix';
 
 @Component({
-  selector: 'uilibrary-form-field',
-  templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.css'],
-  host: {
-    '[class.form-field-disabled]': '_control?.disabled',
-    '[class.form-field-label-float]': '_control?.shouldLabelFloat',
-    '[class.form-field-errors]': '_control?.hasErrors',
-    '[class.form-field-touched]': '_control?.touched',
-    '[class.form-field-dirty]': '_control?.dirty',
-  },
+    selector: 'uilibrary-form-field',
+    templateUrl: './form-field.component.html',
+    styleUrls: ['./form-field.component.css'],
+    host: {
+        '[class.form-field-disabled]': '_control?.disabled',
+        '[class.form-field-label-float]': '_control?.shouldLabelFloat',
+        '[class.form-field-errors]': '_control?.hasErrors',
+        '[class.form-field-touched]': '_control?.touched',
+        '[class.form-field-dirty]': '_control?.dirty',
+    },
+    standalone: false
 })
 export class FormFieldComponent implements AfterContentChecked, OnDestroy {
   @ContentChild(UIFormFieldControl) formFieldControl:

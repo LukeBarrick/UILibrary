@@ -8,8 +8,9 @@ interface DynamicOption {
 }
 
 @Component({
-  selector: 'app-radio-showcase',
-  templateUrl: './radio-showcase.component.html',
+    selector: 'app-radio-showcase',
+    templateUrl: './radio-showcase.component.html',
+    standalone: false
 })
 export class RadioShowcaseComponent implements OnInit {
   radioButtons2: FormGroup;

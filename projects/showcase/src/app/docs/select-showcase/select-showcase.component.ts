@@ -8,9 +8,10 @@ export interface Item {
 }
 
 @Component({
-  selector: 'app-select-showcase',
-  templateUrl: './select-showcase.component.html',
-  styleUrls: ['./select-showcase.component.css']
+    selector: 'app-select-showcase',
+    templateUrl: './select-showcase.component.html',
+    styleUrls: ['./select-showcase.component.css'],
+    standalone: false
 })
 export class SelectShowcaseComponent implements OnInit {
   selectControls2: FormGroup;

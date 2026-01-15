@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
-  selector: 'app-datepicker-showcase',
-  templateUrl: './datepicker-showcase.component.html',
-  styleUrls: ['./datepicker-showcase.component.css']
+    selector: 'app-datepicker-showcase',
+    templateUrl: './datepicker-showcase.component.html',
+    styleUrls: ['./datepicker-showcase.component.css'],
+    standalone: false
 })
 export class DatepickerShowcaseComponent implements OnInit {
   datePickers2: FormGroup;

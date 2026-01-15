@@ -17,14 +17,15 @@ import { Observable } from 'rxjs';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
-  selector: 'uilibrary-select',
-  templateUrl: './select.component.html',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => SelectComponent),
-    },
-  ],
+    selector: 'uilibrary-select',
+    templateUrl: './select.component.html',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => SelectComponent),
+        },
+    ],
+    standalone: false
 })
 export class SelectComponent
   implements UIFormFieldControl<any>, ControlValueAccessor {

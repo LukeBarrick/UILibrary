@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'uilibrary-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+    selector: 'uilibrary-button',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.css'],
+    standalone: false
 })
 export class ButtonComponent implements OnInit {
   @Input() size: string | undefined;

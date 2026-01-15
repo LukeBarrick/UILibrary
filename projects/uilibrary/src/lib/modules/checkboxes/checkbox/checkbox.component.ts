@@ -4,10 +4,10 @@ import { UUIDService } from '../../../core/services/UUID.service';
 import { LabelPosition } from '../../../core/enums/label-position.enum';
 
 @Component({
-  selector: 'uilibrary-checkbox',
-  templateUrl: './checkbox.component.html',
-  providers: [
-  ],
+    selector: 'uilibrary-checkbox',
+    templateUrl: './checkbox.component.html',
+    providers: [],
+    standalone: false
 })
 
 //TODO Form Control emit value does not work, ngModel won't emit it on its own lol

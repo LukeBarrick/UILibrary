@@ -16,13 +16,14 @@ import { UIFormFieldControl } from '../form-field/form-field-control';
 import { Observable } from 'rxjs';
 
 @Directive({
-  selector: '[ui-input]',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => InputComponent),
-    }
-  ],
+    selector: '[ui-input]',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => InputComponent),
+        }
+    ],
+    standalone: false
 })
 export class InputComponent
   implements UIFormFieldControl<string>, ControlValueAccessor, AfterViewInit {

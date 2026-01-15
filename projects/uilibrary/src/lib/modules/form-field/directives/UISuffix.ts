@@ -5,13 +5,14 @@ export abstract class UISuffix {
 }
 
 @Directive({
-  selector: '[ui-suffix], [ui-text-suffix]',
-  providers: [
-    {
-      provide: UISuffix,
-      useExisting: forwardRef(() => SuffixDirective),
-    },
-  ],
+    selector: '[ui-suffix], [ui-text-suffix]',
+    providers: [
+        {
+            provide: UISuffix,
+            useExisting: forwardRef(() => SuffixDirective),
+        },
+    ],
+    standalone: false
 })
 export class SuffixDirective implements UISuffix {
   constructor() {

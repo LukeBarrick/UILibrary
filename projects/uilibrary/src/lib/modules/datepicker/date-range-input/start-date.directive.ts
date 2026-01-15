@@ -3,12 +3,13 @@ import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { DateInputDirective } from './date-input.directive';
 
 @Directive({
-  selector: '[startDate]',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => StartDateDirective)
-    }
-  ]
+    selector: '[startDate]',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => StartDateDirective)
+        }
+    ],
+    standalone: false
 })
 export class StartDateDirective extends DateInputDirective { }

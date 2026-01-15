@@ -15,6 +15,7 @@ export abstract class MenuTrigger {
             useExisting: forwardRef(() => MenuTriggerDirective)
         }
     ],
+    standalone: false
 })
 export class MenuTriggerDirective implements MenuTrigger {
     @Input('menuTriggerFor') get menu(): ContextMenuComponent | null { return this._menu; }

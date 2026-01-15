@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-checkbox-showcase',
-  templateUrl: './checkbox-showcase.component.html',
-  styleUrls: ['./checkbox-showcase.component.css']
+    selector: 'app-checkbox-showcase',
+    templateUrl: './checkbox-showcase.component.html',
+    styleUrls: ['./checkbox-showcase.component.css'],
+    standalone: false
 })
 export class CheckboxShowcaseComponent implements OnInit {
   checkBoxes: FormGroup;

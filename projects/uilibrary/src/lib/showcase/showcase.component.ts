@@ -11,9 +11,10 @@ export interface Item {
 }
 
 @Component({
-  selector: 'uilibrary-showcase',
-  templateUrl: './showcase.component.html',
-  styleUrls: ['./showcase.component.css'],
+    selector: 'uilibrary-showcase',
+    templateUrl: './showcase.component.html',
+    styleUrls: ['./showcase.component.css'],
+    standalone: false
 })
 export class ShowcaseComponent implements OnInit {
 

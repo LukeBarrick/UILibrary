@@ -5,13 +5,14 @@ export abstract class UIPrefix {
 }
 
 @Directive({
-  selector: '[ui-prefix], [ui-text-prefix]',
-  providers: [
-    {
-      provide: UIPrefix,
-      useExisting: forwardRef(() => PrefixDirective),
-    },
-  ],
+    selector: '[ui-prefix], [ui-text-prefix]',
+    providers: [
+        {
+            provide: UIPrefix,
+            useExisting: forwardRef(() => PrefixDirective),
+        },
+    ],
+    standalone: false
 })
 export class PrefixDirective implements UIPrefix {
   constructor() {

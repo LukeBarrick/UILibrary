@@ -43,9 +43,10 @@ interface DemoItem {
 }
 
 @Component({
-  selector: 'app-status-tag-showcase',
-  templateUrl: './status-tag-showcase.component.html',
-  styleUrls: ['./status-tag-showcase.component.css']
+    selector: 'app-status-tag-showcase',
+    templateUrl: './status-tag-showcase.component.html',
+    styleUrls: ['./status-tag-showcase.component.css'],
+    standalone: false
 })
 export class StatusTagShowcaseComponent implements OnInit {
   selectedStatus: string = 'success';

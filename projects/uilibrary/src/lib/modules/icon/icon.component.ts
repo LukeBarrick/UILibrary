@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'uilibrary-icon',
-  templateUrl: './icon.component.html'
+    selector: 'uilibrary-icon',
+    templateUrl: './icon.component.html',
+    standalone: false
 })
 export class IconComponent implements OnInit {
   @Input() name: string | undefined;

@@ -11,9 +11,10 @@ interface DocsTile {
 }
 
 @Component({
-  selector: 'app-docs',
-  templateUrl: './docs.component.html',
-  styleUrls: ['./docs.component.css']
+    selector: 'app-docs',
+    templateUrl: './docs.component.html',
+    styleUrls: ['./docs.component.css'],
+    standalone: false
 })
 export class DocsComponent implements OnInit {
   docsTiles: DocsTile[] = [
