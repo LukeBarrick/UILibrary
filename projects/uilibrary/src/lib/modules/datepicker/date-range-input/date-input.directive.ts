@@ -65,8 +65,9 @@ export class DateInputDirective implements UIFormFieldControl<Date>, ControlValu
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
   
-  @HostListener('input', ['$event.target.value'])
-  onInput(value: string): void {
+  @HostListener('input', ['$event'])
+  onInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
     //Debounce or handle via regex checked completness?
     //Regex probably more UI friendly option
     const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });

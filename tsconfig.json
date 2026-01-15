@@ -23,11 +23,7 @@
       "uilibrary": [
         "./dist/uilibrary"
       ]
-    },
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

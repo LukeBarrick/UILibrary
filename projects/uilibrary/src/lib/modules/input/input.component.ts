@@ -43,9 +43,12 @@ export class InputComponent
   private _focussed: boolean = false;
   empty: boolean = false;
 
-  @HostListener('input', ['$event.target.value'])
-  _onInput(value: any): void {
-    this.onChange(value);
+  @HostListener('input', ['$event'])
+  _onInput(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target) {
+      this.onChange(target.value);
+    }
   }
 
   @HostListener('blur')

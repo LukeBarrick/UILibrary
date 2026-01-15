@@ -32,6 +32,7 @@ uilibrary-form-field {
             .ng-select.custom .ng-clear-wrapper {
                 height: 17px !important;
                 width: 17px !important;
+                z-index: 2001;
             }
 
             .ng-select-container {
@@ -144,6 +145,10 @@ uilibrary-form-field {
 
             .ng-select.ng-select-disabled>.ng-select-container {
                 background-color: #EEEEEE;
+            }
+
+            .ng-dropdown-panel {
+                z-index: 2001;
             }
 
             .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {

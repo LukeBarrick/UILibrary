@@ -550,12 +550,14 @@ legend {
   padding: 0;
   margin-bottom: 0.5rem;
   font-size: calc(1.275rem + 0.3vw);
-  line-height: inherit;
 }
 @media (min-width: 1200px) {
   legend {
     font-size: 1.5rem;
   }
+}
+legend {
+  line-height: inherit;
 }
 legend + * {
   clear: left;
@@ -629,68 +631,80 @@ progress {
 
 .display-1 {
   font-size: calc(1.625rem + 4.5vw);
-  font-weight: 300;
-  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-1 {
     font-size: 5rem;
   }
 }
+.display-1 {
+  font-weight: 300;
+  line-height: 1.2;
+}
 
 .display-2 {
   font-size: calc(1.575rem + 3.9vw);
-  font-weight: 300;
-  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-2 {
     font-size: 4.5rem;
   }
 }
+.display-2 {
+  font-weight: 300;
+  line-height: 1.2;
+}
 
 .display-3 {
   font-size: calc(1.525rem + 3.3vw);
-  font-weight: 300;
-  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-3 {
     font-size: 4rem;
   }
 }
+.display-3 {
+  font-weight: 300;
+  line-height: 1.2;
+}
 
 .display-4 {
   font-size: calc(1.475rem + 2.7vw);
-  font-weight: 300;
-  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-4 {
     font-size: 3.5rem;
   }
 }
+.display-4 {
+  font-weight: 300;
+  line-height: 1.2;
+}
 
 .display-5 {
   font-size: calc(1.425rem + 2.1vw);
-  font-weight: 300;
-  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-5 {
     font-size: 3rem;
   }
 }
+.display-5 {
+  font-weight: 300;
+  line-height: 1.2;
+}
 
 .display-6 {
   font-size: calc(1.375rem + 1.5vw);
-  font-weight: 300;
-  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-6 {
     font-size: 2.5rem;
   }
+}
+.display-6 {
+  font-weight: 300;
+  line-height: 1.2;
 }
 
 .list-unstyled {
@@ -5454,12 +5468,14 @@ textarea.form-control-lg {
 }
 .modal.fade .modal-dialog {
   transition: transform 0.3s ease-out;
-  transform: translate(0, -50px);
 }
 @media (prefers-reduced-motion: reduce) {
   .modal.fade .modal-dialog {
     transition: none;
   }
+}
+.modal.fade .modal-dialog {
+  transform: translate(0, -50px);
 }
 .modal.show .modal-dialog {
   transform: none;
@@ -13397,201 +13413,6 @@ uilibrary-checkbox .margin-left-3px {
   margin-left: 3px;
 }
 
-uilibrary-date-picker {
-  flex-grow: 1;
-}
-uilibrary-date-picker .datepicker-container {
-  position: relative;
-}
-uilibrary-date-picker .datepicker-container .input-container {
-  border: 1px solid var(--light-gray);
-  border-radius: 7px;
-  height: 50px;
-  padding-left: 20px;
-  outline: none;
-  width: 100%;
-  background-color: white;
-}
-uilibrary-date-picker .datepicker-container .input-container:focus-within::-webkit-input-placeholder {
-  font-size: 16px;
-  color: var(--dark-gray);
-  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-uilibrary-date-picker .datepicker-container .input-container::-webkit-input-placeholder {
-  color: transparent;
-}
-uilibrary-date-picker .datepicker-container .input-container:disabled {
-  background-color: var(--almost-white);
-}
-uilibrary-date-picker .datepicker-container .input-container .datepicker-label {
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
-  bottom: 0;
-  left: 20px;
-  transform: translateY(-14px);
-}
-uilibrary-date-picker .datepicker-container input[type=text] {
-  border: none;
-  border-radius: 7px;
-  height: 45px;
-  outline: none;
-}
-uilibrary-date-picker .datepicker-container input[type=text]:focus::-webkit-input-placeholder {
-  font-size: 16px;
-  color: var(--dark-gray);
-  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-uilibrary-date-picker .datepicker-container input[type=text]::-webkit-input-placeholder {
-  color: transparent;
-}
-uilibrary-date-picker .datepicker-container input[type=text]:disabled {
-  background-color: var(--almost-white);
-}
-uilibrary-date-picker .datepicker-container .datepicker-label {
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
-  bottom: 0;
-  left: 20px;
-  transform: translateY(-14px);
-}
-uilibrary-date-picker .datepicker-container:focus-within .datepicker-label,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label,
-uilibrary-date-picker .datepicker-container .datepicker-label-float {
-  font-size: 0.75rem;
-  transform: translate(-10px, -40px) !important;
-  background-color: transparent;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 30px;
-  color: var(--secondary);
-}
-uilibrary-date-picker .datepicker-container:focus-within .datepicker-label:after,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label:after,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label:after,
-uilibrary-date-picker .datepicker-container .datepicker-label-float:after {
-  content: "";
-  display: block;
-  position: absolute;
-  background: white;
-  height: 2px;
-  top: 8px;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-uilibrary-date-picker .datepicker-container:focus-within .datepicker-label label,
-uilibrary-date-picker .datepicker-container input[type=text]:not(:placeholder-shown) + .datepicker-label label,
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container:focus-within + .datepicker-label label,
-uilibrary-date-picker .datepicker-container .datepicker-label-float label {
-  position: relative;
-  z-index: 1;
-  color: var(--secondary);
-}
-uilibrary-date-picker .datepicker-container .datepicker-input-focus {
-  border-color: var(--secondary) !important;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container {
-  position: absolute;
-  left: 0;
-  top: 55px;
-  height: 320px;
-  max-width: 350px;
-  width: 100%;
-  border: 1px solid var(--light-gray);
-  border-radius: 7px;
-  background-color: white;
-  z-index: 200;
-  animation: growDown 100ms ease-in-out forwards;
-  transform-origin: top center;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .nav-button {
-  appearance: none;
-  outline: none;
-  border: none;
-  background-color: var(--secondary);
-  height: 30px;
-  width: 30px;
-  border-radius: 7px;
-  font-family: var(--bs-header-font-family);
-  font-size: 14pt;
-  color: white;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .datepicker-title-row {
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-family: var(--bs-header-font-family);
-  font-size: 12pt;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day-names {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 5px;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .calendar {
-  display: grid;
-  height: 100%;
-  width: 100%;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 5px;
-  font-size: 12pt;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day-name {
-  align-self: center;
-  justify-self: center;
-  font-weight: bold;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day {
-  display: flex;
-  align-self: center;
-  justify-self: center;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button {
-  appearance: none;
-  outline: none;
-  border: none;
-  width: 100%;
-  height: 100%;
-  background-color: unset;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 100ms ease-in-out;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button:hover {
-  background-color: var(--lighter-gray) !important;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button.today {
-  background-color: var(--almost-white);
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button.selected {
-  background-color: var(--secondary-light) !important;
-  color: var(--secondary);
-  font-family: var(--bs-header-font-family);
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-uilibrary-date-picker .datepicker-container .datepicker-calendar-container .day .day-button.active-range {
-  background-color: var(--almost-white);
-  color: var(--secondary);
-}
-
 uilibrary-hint .hint-normal {
   font-size: 12px;
   color: var(--dark-gray);
@@ -13936,191 +13757,6 @@ uilibrary-navigation .navbar .small-nav-links {
   }
 }
 
-uilibrary-radio-button .input-radio .form-check {
-  display: flex;
-  align-items: center;
-  padding-left: 0;
-}
-uilibrary-radio-button .input-radio .check-input {
-  order: 1;
-}
-uilibrary-radio-button .input-radio label {
-  cursor: pointer;
-}
-uilibrary-radio-button .input-radio .left {
-  order: 0;
-  margin-right: 10px;
-}
-uilibrary-radio-button .input-radio .right {
-  order: 3;
-  margin-left: 10px;
-}
-uilibrary-radio-button .input-radio .check-input > input[type=radio] {
-  width: 1em;
-  height: 1em;
-  margin-top: 0.25em;
-  vertical-align: top;
-  background-color: #f4f6f9;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border: 2px solid var(--secondary);
-  appearance: none;
-  print-color-adjust: exact;
-  border-radius: 50% !important;
-}
-uilibrary-radio-button .input-radio .check-input > input[type=radio]:checked {
-  background-color: white;
-  border-color: var(--secondary);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23408467'/%3e%3c/svg%3e");
-}
-uilibrary-radio-button .input-radio .check-input > input[type=radio]:checked:disabled {
-  background-color: white;
-  border-color: #CBCBCB;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23CBCBCB'/%3e%3c/svg%3e");
-}
-uilibrary-radio-button .input-radio .check-input > input[type=radio]:disabled {
-  background-color: white;
-  border-color: #CBCBCB;
-  pointer-events: none;
-  filter: none;
-}
-uilibrary-radio-button .input-radio .check-input > input[type=radio]:active {
-  filter: brightness(90%);
-}
-uilibrary-radio-button .input-radio .check-input > input[type=radio]:hover:not(:disabled) {
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(64, 132, 103, 0.2);
-  background-color: rgba(64, 132, 103, 0.2);
-}
-
-uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-container,
-uilibrary-select.error .ng-select-container {
-  border-color: var(--danger) !important;
-}
-uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-opened > .ng-select-container,
-uilibrary-select.error .ng-select-opened > .ng-select-container {
-  border-color: var(--danger);
-}
-uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-opened .ng-dropdown-panel,
-uilibrary-select.error .ng-select-opened .ng-dropdown-panel {
-  border-color: var(--danger) !important;
-}
-uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-select-container .ng-value-container .ng-placeholder,
-uilibrary-select.error .ng-select-container .ng-value-container .ng-placeholder {
-  color: var(--danger) !important;
-}
-uilibrary-select .ng-select[aria-invalid=true].ng-touched .ng-dropdown-panel.ng-select-bottom,
-uilibrary-select.error .ng-dropdown-panel.ng-select-bottom {
-  border-color: var(--danger) !important;
-}
-
-uilibrary-select {
-  flex-grow: 1;
-}
-uilibrary-select .ng-select.custom {
-  border: 0px;
-  border-radius: 0;
-  height: 50px !important;
-  flex: 1;
-  appearance: none !important;
-}
-uilibrary-select .ng-select.custom .ng-clear-wrapper {
-  height: 17px !important;
-  width: 17px !important;
-}
-uilibrary-select .ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
-  box-shadow: unset;
-  border-color: var(--secondary);
-}
-uilibrary-select .ng-select.custom .ng-select-container {
-  min-height: 50px !important;
-  border-radius: 7px !important;
-}
-uilibrary-select .ng-select.custom .ng-input {
-  top: unset !important;
-}
-uilibrary-select .ng-select.custom .ng-select-single .ng-select-container .ng-value-container .ng-input {
-  top: 0px !important;
-}
-uilibrary-select .ng-select.custom .ng-clear-wrapper {
-  height: 17px;
-}
-uilibrary-select .ng-select.custom .ng-arrow-wrapper .ng-arrow {
-  content: " " !important;
-  background-size: contain !important;
-  background-image: url("../assets/images/caret_black.svg") !important;
-  background-repeat: no-repeat !important;
-  width: 20px !important;
-  height: 20px !important;
-  display: inline-block !important;
-  transition: transform 0.2s ease-in-out !important;
-  border: none !important;
-  top: 3px !important;
-}
-uilibrary-select .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
-  border-bottom-left-radius: 0px !important;
-  border-bottom-right-radius: 0px !important;
-  border-color: var(--secondary);
-}
-uilibrary-select .ng-dropdown-panel.ng-select-bottom {
-  border-top: none;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-  border-color: var(--secondary);
-}
-uilibrary-select .ng-select.ng-select-opened .ng-arrow-wrapper .ng-arrow {
-  transform: rotateX(180deg);
-}
-uilibrary-select .ng-dropdown-panel.ng-select-bottom .ng-dropdown-panel-items .ng-option:last-child {
-  border-bottom-left-radius: 7px !important;
-  border-bottom-right-radius: 7px !important;
-}
-uilibrary-select .ng-dropdown-panel.ng-select-bottom {
-  animation: growDown 100ms ease-in-out forwards;
-  transform-origin: top center;
-}
-uilibrary-select .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
-  top: unset !important;
-}
-uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
-  color: black;
-  font-size: 14px;
-  left: 15px;
-}
-uilibrary-select .ng-select .ng-select-container .ng-value-container {
-  padding-left: 20px;
-}
-uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input > input {
-  margin-left: 10px;
-}
-uilibrary-select .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
-  background-color: #DEDEDE;
-  padding: 5px;
-  border-radius: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-uilibrary-select .ng-select.ng-select-disabled > .ng-select-container {
-  background-color: #EEEEEE;
-}
-uilibrary-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-  margin: 5px;
-  border-radius: 7px;
-}
-uilibrary-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected {
-  background-color: #DEDEDE;
-}
-uilibrary-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
-  background-color: #DEDEDE;
-}
-uilibrary-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
-  background-color: #EEEEEE;
-}
-uilibrary-select .ng-select div, uilibrary-select .ng-select input, uilibrary-select .ng-select span {
-  font-weight: 300;
-}
-
 uilibrary-status-tag .status-tag {
   border: 1px, solid;
   max-width: 240px;
@@ -14196,202 +13832,6 @@ uilibrary-status-tag .status-tag.pending {
 }
 uilibrary-status-tag .status-tag.pending a {
   color: var(--warning-dark);
-}
-
-uilibrary-textarea {
-  flex-grow: 1;
-}
-uilibrary-textarea .textarea-form {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  flex-grow: 1;
-}
-uilibrary-textarea .textarea-field {
-  position: relative;
-}
-uilibrary-textarea .textarea-field > textarea {
-  font-size: 14px;
-  color: var(--primary);
-  font-family: inherit;
-  letter-spacing: 0px;
-  background-color: white;
-  height: 100%;
-  width: 100%;
-  border: 1px solid var(--light-gray);
-  outline: none;
-  border-radius: 3px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  min-height: 75px;
-}
-uilibrary-textarea .textarea-field > textarea:disabled {
-  background-color: #eeeeee;
-}
-uilibrary-textarea .textarea-field > textarea:focus {
-  border-color: var(--secondary);
-}
-uilibrary-textarea .textarea-field > textarea:focus::-webkit-input-placeholder {
-  font-size: 16px;
-  color: var(--dark-gray);
-  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-uilibrary-textarea .textarea-field > textarea:focus ~ .input-label::after,
-uilibrary-textarea .textarea-field > textarea .input-field:not(:placeholder-shown) ~ .input-label::after {
-  width: 100%;
-}
-uilibrary-textarea .textarea-field > textarea::-webkit-input-placeholder {
-  color: transparent;
-}
-uilibrary-textarea .textarea-label-name {
-  font-family: inherit;
-  letter-spacing: 0px;
-  color: var(--dark-gray);
-  font-size: 14px;
-  position: absolute;
-  left: 15px;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
-  top: 15px;
-}
-uilibrary-textarea .textarea-field > textarea:focus + .textarea-label-name,
-uilibrary-textarea .textarea-field > textarea:not(:placeholder-shown) + .textarea-label-name {
-  color: var(--primaryFont);
-  font-size: 0.75rem;
-  transform: translate(-10px, -23px);
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 30px;
-}
-uilibrary-textarea .textarea-field > textarea:focus + .textarea-label-name:after,
-uilibrary-textarea .textarea-field > textarea:not(:placeholder-shown) + .textarea-label-name:after {
-  content: "";
-  display: block;
-  position: absolute;
-  background: white;
-  height: 2px;
-  top: 8px;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-uilibrary-textarea .textarea-field > textarea:focus + .textarea-label-name label,
-uilibrary-textarea .textarea-field > textarea:not(:placeholder-shown) + .textarea-label-name label {
-  position: relative;
-  z-index: 1;
-  color: var(--secondary);
-}
-
-uilibrary-textinput {
-  flex-grow: 1;
-}
-uilibrary-textinput .input-field {
-  position: relative;
-}
-uilibrary-textinput .input-field > input[type=text] {
-  color: var(--primary);
-  font-family: inherit;
-  letter-spacing: 0px;
-  background-color: white;
-  height: 50px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid var(--light-gray);
-  outline: none;
-  z-index: 1;
-  border-radius: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-uilibrary-textinput .input-field > input[type=text]:focus {
-  border-color: var(--secondary);
-}
-uilibrary-textinput .input-field > input[type=text]:focus::-webkit-input-placeholder {
-  font-size: 16px;
-  color: var(--dark-gray);
-  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-uilibrary-textinput .input-field > input[type=text]:focus ~ .input-label::after,
-uilibrary-textinput .input-field > input[type=text] .input-field:not(:placeholder-shown) ~ .input-label::after {
-  width: 100%;
-}
-uilibrary-textinput .input-field > input[type=text]::-webkit-input-placeholder {
-  color: transparent;
-}
-uilibrary-textinput .input-field > input[type=text]:disabled {
-  background-color: var(--almost-white);
-}
-uilibrary-textinput .input-field > input[type=text]:focus + .label-name,
-uilibrary-textinput .input-field > input[type=text]:not(:placeholder-shown) + .label-name {
-  font-size: 0.75rem;
-  transform: translate(-10px, -40px);
-  background-color: transparent;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 30px;
-  color: var(--secondary);
-}
-uilibrary-textinput .input-field > input[type=text]:focus + .label-name:after,
-uilibrary-textinput .input-field > input[type=text]:not(:placeholder-shown) + .label-name:after {
-  content: "";
-  display: block;
-  position: absolute;
-  background: white;
-  height: 2px;
-  top: 8px;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-uilibrary-textinput .input-field > input[type=text]:focus + .label-name label,
-uilibrary-textinput .input-field > input[type=text]:not(:placeholder-shown) + .label-name label {
-  position: relative;
-  z-index: 1;
-  color: var(--secondary);
-}
-uilibrary-textinput .label-name {
-  font-family: inherit;
-  letter-spacing: 0px;
-  color: var(--dark-gray);
-  font-size: 14px;
-  position: absolute;
-  bottom: 0px;
-  left: 15px;
-  transform: translateY(-14px);
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-uilibrary-textinput *,
-uilibrary-textinput *::before,
-uilibrary-textinput *::after {
-  box-sizing: border-box;
-}
-uilibrary-textinput .input-form {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  flex-grow: 1;
-}
-uilibrary-textinput .input-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  z-index: 2;
-  pointer-events: none;
-}
-uilibrary-textinput .input-label::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 0%;
 }
 
 uilibrary-toggle .switch-container {
@@ -14494,7 +13934,7 @@ uilibrary-form-field .form-field label {
   width: max-content;
   pointer-events: none;
   font-weight: 500;
-  z-index: 10;
+  z-index: 2000;
 }
 uilibrary-form-field .form-field-prefix {
   margin-left: 10px;
@@ -14588,6 +14028,7 @@ uilibrary-form-field .form-field uilibrary-select .ng-select.custom {
 uilibrary-form-field .form-field uilibrary-select .ng-select.custom .ng-clear-wrapper {
   height: 17px !important;
   width: 17px !important;
+  z-index: 2001;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select-container {
   z-index: 0;
@@ -14670,6 +14111,9 @@ uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-multiple 
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-disabled > .ng-select-container {
   background-color: #EEEEEE;
+}
+uilibrary-form-field .form-field uilibrary-select .ng-dropdown-panel {
+  z-index: 2001;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
   margin: 5px;
@@ -14887,7 +14331,7 @@ uilibrary-date-range-input {
   left: 0;
   top: 49px;
   width: 100%;
-  z-index: 1000;
+  z-index: 2001;
 }
 
 uilibrary-datepicker-input {
@@ -14910,6 +14354,7 @@ uilibrary-calendar-select .calendar-wrapper {
   display: flex;
   flex-direction: column;
   color: #000;
+  z-index: 2001;
 }
 uilibrary-calendar-select .calendar-wrapper .calendar-container .nav-button {
   appearance: none;

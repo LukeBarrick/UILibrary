@@ -59,7 +59,6 @@ export class SelectComponent
 
   @Input() searchable: boolean = false;
   @Input() searchFn: ((term: string, item: any) => boolean) | undefined;
-  @Input() isOpen: boolean | undefined = undefined;
   @Input() trackByFn: ((item: any) => any) | undefined;
   @Input() virtualScroll: boolean = false;
   @Input() inputAttrs: { [key: string]: string } = { ['']: '' };
