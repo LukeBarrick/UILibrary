@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>Date Picker Components</h1>
       <p class="lead">
-        The <code>uilibrary-datepicker-input</code> and <code>uilibrary-date-range-input</code> components 
+        The <code>uilibrary-datepicker-input</code> and <code>uilibrary-date-range-input</code> components
         provide intuitive date selection interfaces with form integration and validation support.
       </p>
     </div>
@@ -13,11 +13,11 @@
     <div class="col-12">
       <h2>Single Date Picker</h2>
       <p>Basic date picker for selecting individual dates with form control integration.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="datePickers2">
         <h5>Two-Way Binding</h5>
         <p class="text-muted">Use Angular's two-way binding syntax to bind directly to a component property.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Basic Date Picker (Two-Way Binding)</label>
           <uilibrary-datepicker-input [(ngModel)]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary-datepicker-input>
@@ -26,7 +26,7 @@
 
         <h5 class="mt-4">Form Control Integration</h5>
         <p class="text-muted">Integrate seamlessly with Angular Reactive Forms for validation and form management.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Form Control Date Picker</label>
           <uilibrary-datepicker-input formControlName="datePicker1"></uilibrary-datepicker-input>
@@ -44,11 +44,11 @@
     <div class="col-12">
       <h2>Programmatic Control</h2>
       <p>Control the calendar visibility programmatically using template reference variables and the <code>open()</code> method.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="datePickers2">
         <h5>Button Toggle Date Picker</h5>
         <p class="text-muted">Open the calendar programmatically using a button or any custom trigger element.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Button Toggle Date Picker</label>
           <uilibrary-datepicker-input #picker1 formControlName="datePicker2"></uilibrary-datepicker-input>
@@ -67,11 +67,11 @@
     <div class="col-12">
       <h2>Prefix & Suffix Elements</h2>
       <p>Enhance the user experience by adding icons or custom elements before or after the input field.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="datePickers2">
         <h5>Date Picker with Suffix Icon</h5>
         <p class="text-muted">Add a clickable icon to the right of the input field to trigger the calendar.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Date Picker with Suffix Icon</label>
           <uilibrary-datepicker-input #picker2 formControlName="datePicker3"></uilibrary-datepicker-input>
@@ -80,7 +80,7 @@
 
         <h5 class="mt-4">Date Picker with Prefix Icon</h5>
         <p class="text-muted">Add an icon to the left of the input field for visual clarity and accessibility.</p>
-        
+
         <uilibrary-form-field>
           <uilibrary-icon ui-prefix name="icon-air" size="small" (click)="picker3.open()" style="cursor: pointer;"></uilibrary-icon>
           <label ui-label>Date Picker with Prefix Icon</label>
@@ -94,11 +94,11 @@
     <div class="col-12">
       <h2>Date Range Picker</h2>
       <p>Select start and end dates for date ranges with coordinated validation.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="datePickers2">
         <h5>Two-Way Binding Date Range</h5>
         <p class="text-muted">Bind start and end dates independently using Angular's two-way binding.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Basic Date Range Picker (Two-Way Binding)</label>
           <uilibrary-date-range-input>
@@ -115,7 +115,7 @@
 
         <h5 class="mt-4">Form Control Date Range</h5>
         <p class="text-muted">Use form control names for each input to integrate with Reactive Forms.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Form Control Date Range</label>
           <uilibrary-date-range-input>
@@ -131,11 +131,11 @@
     <div class="col-12">
       <h2>Programmatic Control - Date Range</h2>
       <p>Control date range calendar visibility programmatically using the <code>open()</code> method.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="datePickers2">
         <h5>Button Toggle Date Range Picker</h5>
         <p class="text-muted">Open the date range calendar using external controls like buttons.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Toggle Open Date Range Picker</label>
           <uilibrary-date-range-input #pickerRange>
@@ -157,11 +157,11 @@
     <div class="col-12">
       <h2>Date Range with Prefix & Suffix</h2>
       <p>Add visual indicators and custom triggers to date range inputs.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="datePickers2">
         <h5>Date Range with Suffix Icon</h5>
         <p class="text-muted">Add a clickable icon to trigger the date range calendar from the right side.</p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Date Range with Suffix Icon</label>
           <uilibrary-date-range-input #pickerRange1>
@@ -173,7 +173,7 @@
 
         <h5 class="mt-4">Date Range with Prefix Icon</h5>
         <p class="text-muted">Add an icon to the left of the date range input for better visual hierarchy.</p>
-        
+
         <uilibrary-form-field>
           <uilibrary-icon ui-prefix name="icon-air" size="small" (click)="pickerRange2.open()" style="cursor: pointer;"></uilibrary-icon>
           <label ui-label>Date Range with Prefix Icon</label>
@@ -190,14 +190,14 @@
     <div class="col-12">
       <h2>Advanced Features</h2>
       <p>Advanced calendar behaviors and configurations.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="datePickers2">
         <h5>Persistent Calendar (Don't Close on Selection)</h5>
         <p class="text-muted">
-          Keep the calendar open after selecting a date range using the <code>[closeOnSelection]="false"</code> property. 
+          Keep the calendar open after selecting a date range using the <code>[closeOnSelection]="false"</code> property.
           This is useful when users need to review their selection or make adjustments.
         </p>
-        
+
         <uilibrary-form-field>
           <label ui-label>Don't Close On Select</label>
           <uilibrary-date-range-input [closeOnSelection]="false">
@@ -213,7 +213,7 @@
     <div class="col-12">
       <h2>Interactive Date Presets</h2>
       <p>Quickly set common date ranges using preset buttons for improved user experience.</p>
-      
+
       <div class="border p-3 mb-3">
         <uilibrary-form-field>
           <label ui-label>Pre-filled Date Picker</label>
@@ -249,10 +249,12 @@
           </uilibrary-button>
         </div>
 
-        <div class="ui-toast information mt-3" *ngIf="lastDateAction">
-          <b>Last Action</b>
-          <span>{{lastDateAction}}</span>
-        </div>
+        @if (lastDateAction) {
+          <div class="ui-toast information mt-3">
+            <b>Last Action</b>
+            <span>{{lastDateAction}}</span>
+          </div>
+        }
 
         <div class="mt-3">
           <p><strong>Date Range Duration:</strong> {{calculateDuration()}} days</p>
@@ -266,33 +268,37 @@
     <div class="col-12">
       <h2>Validation and Error Handling</h2>
       <p>Date pickers with validation rules and error states for robust form handling.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="validationForm">
         <h5>Required Date Field</h5>
         <p class="text-muted">Apply standard Angular validators like <code>Validators.required</code> to ensure dates are selected.</p>
-        
+
         <uilibrary-form-field [class.error]="validationForm.get('requiredDate')?.invalid && validationForm.get('requiredDate')?.touched">
           <label ui-label>Required Date</label>
           <uilibrary-datepicker-input formControlName="requiredDate"></uilibrary-datepicker-input>
         </uilibrary-form-field>
-        <div class="text-danger small" *ngIf="validationForm.get('requiredDate')?.hasError('required') && validationForm.get('requiredDate')?.touched">
-          This field is required
-        </div>
+        @if (validationForm.get('requiredDate')?.hasError('required') && validationForm.get('requiredDate')?.touched) {
+          <div class="text-danger small">
+            This field is required
+          </div>
+        }
 
         <h5 class="mt-4">Custom Validation - Future Dates Only</h5>
         <p class="text-muted">Create custom validators to enforce business rules like requiring future dates.</p>
-        
+
         <uilibrary-form-field [class.error]="validationForm.get('futureDate')?.invalid && validationForm.get('futureDate')?.touched">
           <label ui-label>Future Date Only</label>
           <uilibrary-datepicker-input formControlName="futureDate"></uilibrary-datepicker-input>
         </uilibrary-form-field>
-        <div class="text-danger small" *ngIf="validationForm.get('futureDate')?.hasError('pastDate') && validationForm.get('futureDate')?.touched">
-          Date must be today or in the future
-        </div>
+        @if (validationForm.get('futureDate')?.hasError('pastDate') && validationForm.get('futureDate')?.touched) {
+          <div class="text-danger small">
+            Date must be today or in the future
+          </div>
+        }
 
         <h5 class="mt-4">Date Range Validation</h5>
         <p class="text-muted">Validate that the end date is after the start date to prevent invalid ranges.</p>
-        
+
         <uilibrary-form-field [class.error]="dateRangeInvalid">
           <label ui-label>Validated Date Range</label>
           <uilibrary-date-range-input>
@@ -300,9 +306,11 @@
             <input endDate formControlName="validatedEndDate"/>
           </uilibrary-date-range-input>
         </uilibrary-form-field>
-        <div class="text-danger small" *ngIf="dateRangeInvalid">
-          End date must be after start date
-        </div>
+        @if (dateRangeInvalid) {
+          <div class="text-danger small">
+            End date must be after start date
+          </div>
+        }
 
         <div class="mt-3" style="display: flex; gap: 0.5rem;">
           <uilibrary-button appearance="primary" size="small" (click)="validateForm()">
@@ -313,17 +321,23 @@
           </uilibrary-button>
         </div>
 
-        <div class="ui-toast error mt-3" *ngIf="validationErrors.length > 0">
-          <b>Validation Errors</b>
-          <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0;">
-            <li *ngFor="let error of validationErrors">{{error}}</li>
-          </ul>
-        </div>
+        @if (validationErrors.length > 0) {
+          <div class="ui-toast error mt-3">
+            <b>Validation Errors</b>
+            <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0;">
+              @for (error of validationErrors; track error) {
+                <li>{{error}}</li>
+              }
+            </ul>
+          </div>
+        }
 
-        <div class="ui-toast success mt-3" *ngIf="validationErrors.length === 0 && lastDateAction.includes('passed')">
-          <b>Success</b>
-          <span>{{lastDateAction}}</span>
-        </div>
+        @if (validationErrors.length === 0 && lastDateAction.includes('passed')) {
+          <div class="ui-toast success mt-3">
+            <b>Success</b>
+            <span>{{lastDateAction}}</span>
+          </div>
+        }
       </div>
     </div>
   </div>
@@ -332,7 +346,7 @@
     <div class="col-12">
       <h2>Form State & Debugging</h2>
       <p>Debug tools and form state inspection to help during development.</p>
-      
+
       <div class="border p-3 mb-3">
         <div style="display: flex; gap: 0.5rem;">
           <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="debugDatePickers()">
@@ -342,11 +356,13 @@
             Log Form State
           </uilibrary-button>
         </div>
-        
-        <div class="mt-3" *ngIf="debugInfo" style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px;">
-          <h5>Form State:</h5>
-          <pre style="margin: 0; font-size: 12px; white-space: pre-wrap;">{{debugInfo}}</pre>
-        </div>
+
+        @if (debugInfo) {
+          <div class="mt-3" style="background-color: #f5f5f5; padding: 1rem; border-radius: 4px;">
+            <h5>Form State:</h5>
+            <pre style="margin: 0; font-size: 12px; white-space: pre-wrap;">{{debugInfo}}</pre>
+          </div>
+        }
       </div>
     </div>
   </div>
@@ -354,7 +370,7 @@
   <div class="row mt-5">
     <div class="col-12">
       <h2>API Reference</h2>
-      
+
       <h4 class="mt-4">Components</h4>
       <div class="table-responsive">
         <table class="table table-bordered">

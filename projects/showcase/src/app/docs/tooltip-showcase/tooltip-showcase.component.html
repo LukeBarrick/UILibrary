@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>Tooltip Component</h1>
       <p class="lead">
-        The <code>uilibrary-tooltip</code> component provides contextual information on hover or focus. 
+        The <code>uilibrary-tooltip</code> component provides contextual information on hover or focus.
         It supports multiple placements and can be used with any UI element.
       </p>
     </div>
@@ -13,7 +13,7 @@
     <div class="col-12">
       <h2>Basic Tooltip Placements</h2>
       <p>Tooltips can be positioned in four main directions around the target element.</p>
-      
+
       <div class="border p-5 mb-3 text-center">
         <div class="tooltip-demo-grid">
           <div class="tooltip-item">
@@ -22,21 +22,21 @@
               <span content>This tooltip appears above the element.</span>
             </uilibrary-tooltip>
           </div>
-          
+
           <div class="tooltip-item">
             <uilibrary-tooltip placement="right">
               <span title>Right Tooltip</span>
               <span content>This tooltip appears to the right of the element.</span>
             </uilibrary-tooltip>
           </div>
-          
+
           <div class="tooltip-item">
             <uilibrary-tooltip placement="bottom">
               <span title>Bottom Tooltip</span>
               <span content>This tooltip appears below the element.</span>
             </uilibrary-tooltip>
           </div>
-          
+
           <div class="tooltip-item">
             <uilibrary-tooltip placement="left">
               <span title>Left Tooltip</span>
@@ -44,19 +44,19 @@
             </uilibrary-tooltip>
           </div>
         </div>
-        
+
         <p class="mt-4 text-muted"><small>Hover over the tooltip buttons above to see different placements</small></p>
       </div>
 
       <pre><code>&lt;uilibrary-tooltip placement="top"&gt;
-  &lt;span title&gt;Top Tooltip&lt;/span&gt;
-  &lt;span content&gt;This tooltip appears above the element.&lt;/span&gt;
-&lt;/uilibrary-tooltip&gt;
+        &lt;span title&gt;Top Tooltip&lt;/span&gt;
+        &lt;span content&gt;This tooltip appears above the element.&lt;/span&gt;
+        &lt;/uilibrary-tooltip&gt;
 
-&lt;uilibrary-tooltip placement="right"&gt;
-  &lt;span title&gt;Right Tooltip&lt;/span&gt;
-  &lt;span content&gt;This tooltip appears to the right.&lt;/span&gt;
-&lt;/uilibrary-tooltip&gt;</code></pre>
+        &lt;uilibrary-tooltip placement="right"&gt;
+        &lt;span title&gt;Right Tooltip&lt;/span&gt;
+        &lt;span content&gt;This tooltip appears to the right.&lt;/span&gt;
+      &lt;/uilibrary-tooltip&gt;</code></pre>
     </div>
   </div>
 
@@ -64,7 +64,7 @@
     <div class="col-12">
       <h2>Tooltips with Form Elements</h2>
       <p>Tooltips can enhance form fields by providing additional context and help information.</p>
-      
+
       <div class="border p-3 mb-3" [formGroup]="demoForm">
         <uilibrary-form-field>
           <label ui-label>Username</label>
@@ -92,20 +92,20 @@
             <span content>Password must be at least 8 characters with uppercase, lowercase, number, and special character.</span>
           </uilibrary-tooltip>
         </uilibrary-form-field>
-        
+
         <div class="mt-3">
           <p><strong>Form Status:</strong> {{demoForm.valid ? 'Valid' : 'Invalid'}}</p>
         </div>
       </div>
 
       <pre><code>&lt;uilibrary-form-field&gt;
-  &lt;label ui-label&gt;Username&lt;/label&gt;
-  &lt;input ui-input type="text" placeholder="Enter username"&gt;
-  &lt;uilibrary-tooltip ui-suffix placement="right"&gt;
-    &lt;span title&gt;Help&lt;/span&gt;
-    &lt;span content&gt;Helpful information about this field&lt;/span&gt;
-  &lt;/uilibrary-tooltip&gt;
-&lt;/uilibrary-form-field&gt;</code></pre>
+        &lt;label ui-label&gt;Username&lt;/label&gt;
+        &lt;input ui-input type="text" placeholder="Enter username"&gt;
+        &lt;uilibrary-tooltip ui-suffix placement="right"&gt;
+        &lt;span title&gt;Help&lt;/span&gt;
+        &lt;span content&gt;Helpful information about this field&lt;/span&gt;
+        &lt;/uilibrary-tooltip&gt;
+      &lt;/uilibrary-form-field&gt;</code></pre>
     </div>
   </div>
 
@@ -113,26 +113,26 @@
     <div class="col-12">
       <h2>Advanced Tooltip Examples</h2>
       <p>Complex tooltip scenarios with different content types and interactions.</p>
-      
+
       <div class="border p-4 mb-3">
         <div class="row">
           <div class="col-md-6">
             <h4>Rich Content Tooltips</h4>
-            
+
             <div class="mb-3">
               <uilibrary-tooltip placement="top">
                 <span title>User Profile</span>
                 <span content>Click to view detailed user information including activity history, preferences, and account settings.</span>
               </uilibrary-tooltip>
             </div>
-            
+
             <div class="mb-3">
               <uilibrary-tooltip placement="right">
                 <span title>Data Export</span>
                 <span content>Export your data in various formats: CSV, JSON, or PDF. Large datasets may take a few minutes to process.</span>
               </uilibrary-tooltip>
             </div>
-            
+
             <div class="mb-3">
               <uilibrary-tooltip placement="bottom">
                 <span title>Advanced Search</span>
@@ -140,20 +140,22 @@
               </uilibrary-tooltip>
             </div>
           </div>
-          
+
           <div class="col-md-6">
             <h4>Interactive Tooltips</h4>
-            
+
             <div class="mb-3">
               <button class="btn btn-primary" (click)="showDynamicTooltip()">
                 Dynamic Content
               </button>
-              <uilibrary-tooltip placement="right" *ngIf="showDynamic">
-                <span title>Dynamic Tooltip</span>
-                <span content>{{dynamicTooltipContent}}</span>
-              </uilibrary-tooltip>
+              @if (showDynamic) {
+                <uilibrary-tooltip placement="right">
+                  <span title>Dynamic Tooltip</span>
+                  <span content>{{dynamicTooltipContent}}</span>
+                </uilibrary-tooltip>
+              }
             </div>
-            
+
             <div class="mb-3">
               <span class="status-indicator" [class.active]="isActive" (click)="toggleStatus()">
                 Status: {{isActive ? 'Active' : 'Inactive'}}
@@ -163,7 +165,7 @@
                 <span content>Current status: {{isActive ? 'System is running normally' : 'System is offline or under maintenance'}}. Click to toggle.</span>
               </uilibrary-tooltip>
             </div>
-            
+
             <div class="mb-3">
               <div class="progress-container">
                 <div class="progress-bar" [style.width.%]="progressValue"></div>
@@ -177,154 +179,154 @@
           </div>
         </div>
       </div>
-<!-- 
+      <!--
       <pre><code>// Dynamic tooltip content
-showDynamicTooltip(): void {
-  this.showDynamic = true;
-  this.dynamicTooltipContent = `Generated at ${new Date().toLocaleTimeString()}`;
-  
-  // Auto-hide after 3 seconds
-  setTimeout(() => {
-    this.showDynamic = false;
-  }, 3000);
-}
+        showDynamicTooltip(): void {
+        this.showDynamic = true;
+        this.dynamicTooltipContent = `Generated at ${new Date().toLocaleTimeString()}`;
 
-toggleStatus(): void {
-  this.isActive = !this.isActive;
-}</code></pre> -->
-    </div>
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+        this.showDynamic = false;
+        }, 3000);
+      }
+
+      toggleStatus(): void {
+      this.isActive = !this.isActive;
+    }</code></pre> -->
   </div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Tooltip Positioning with Margins</h2>
-      <p>Fine-tune tooltip positioning using margin properties.</p>
-      
-      <div class="border p-4 mb-3 text-center">
-        <div class="margin-demo-grid">
-          <div class="demo-item">
-            <uilibrary-tooltip placement="right" margin="left">
-              <span title>Left Margin</span>
-              <span content>This tooltip has a left margin for better spacing.</span>
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Tooltip Positioning with Margins</h2>
+    <p>Fine-tune tooltip positioning using margin properties.</p>
+
+    <div class="border p-4 mb-3 text-center">
+      <div class="margin-demo-grid">
+        <div class="demo-item">
+          <uilibrary-tooltip placement="right" margin="left">
+            <span title>Left Margin</span>
+            <span content>This tooltip has a left margin for better spacing.</span>
+          </uilibrary-tooltip>
+        </div>
+
+        <div class="demo-item">
+          <uilibrary-tooltip placement="bottom" margin="top">
+            <span title>Top Margin</span>
+            <span content>This tooltip has a top margin to create more space.</span>
+          </uilibrary-tooltip>
+        </div>
+
+        <div class="demo-item">
+          <uilibrary-tooltip placement="left" margin="right">
+            <span title>Right Margin</span>
+            <span content>This tooltip has a right margin for optimal positioning.</span>
+          </uilibrary-tooltip>
+        </div>
+      </div>
+    </div>
+
+    <pre><code>&lt;uilibrary-tooltip placement="right" margin="left"&gt;
+      &lt;span title&gt;Tooltip Title&lt;/span&gt;
+      &lt;span content&gt;Tooltip content with left margin&lt;/span&gt;
+    &lt;/uilibrary-tooltip&gt;</code></pre>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Accessibility and Best Practices</h2>
+    <p>Tooltips should enhance accessibility and provide valuable context without overwhelming users.</p>
+
+    <div class="border p-3 mb-3">
+      <div class="best-practices">
+        <h4>Accessibility Guidelines</h4>
+        <ul>
+          <li><strong>Keep content concise:</strong> Tooltips should provide brief, helpful information</li>
+          <li><strong>Use appropriate titles:</strong> Title should summarize the tooltip purpose</li>
+          <li><strong>Consider keyboard users:</strong> Tooltips should be accessible via keyboard navigation</li>
+          <li><strong>Don't rely solely on tooltips:</strong> Critical information should be visible without hovering</li>
+        </ul>
+
+        <h4 class="mt-4">Example: Good vs Poor Tooltip Usage</h4>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <h5 class="text-success">✓ Good Example</h5>
+            <uilibrary-tooltip placement="top">
+              <span title>Save Document</span>
+              <span content>Save your changes to the current document. Shortcut: Ctrl+S</span>
             </uilibrary-tooltip>
           </div>
-          
-          <div class="demo-item">
-            <uilibrary-tooltip placement="bottom" margin="top">
-              <span title>Top Margin</span>
-              <span content>This tooltip has a top margin to create more space.</span>
-            </uilibrary-tooltip>
-          </div>
-          
-          <div class="demo-item">
-            <uilibrary-tooltip placement="left" margin="right">
-              <span title>Right Margin</span>
-              <span content>This tooltip has a right margin for optimal positioning.</span>
+
+          <div class="col-md-6">
+            <h5 class="text-danger">✗ Poor Example</h5>
+            <uilibrary-tooltip placement="top">
+              <span title>Button</span>
+              <span content>This button does something when you click it and it might be important but we're not sure what exactly it does or why you would want to use it.</span>
             </uilibrary-tooltip>
           </div>
         </div>
       </div>
-
-      <pre><code>&lt;uilibrary-tooltip placement="right" margin="left"&gt;
-  &lt;span title&gt;Tooltip Title&lt;/span&gt;
-  &lt;span content&gt;Tooltip content with left margin&lt;/span&gt;
-&lt;/uilibrary-tooltip&gt;</code></pre>
     </div>
   </div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Accessibility and Best Practices</h2>
-      <p>Tooltips should enhance accessibility and provide valuable context without overwhelming users.</p>
-      
-      <div class="border p-3 mb-3">
-        <div class="best-practices">
-          <h4>Accessibility Guidelines</h4>
-          <ul>
-            <li><strong>Keep content concise:</strong> Tooltips should provide brief, helpful information</li>
-            <li><strong>Use appropriate titles:</strong> Title should summarize the tooltip purpose</li>
-            <li><strong>Consider keyboard users:</strong> Tooltips should be accessible via keyboard navigation</li>
-            <li><strong>Don't rely solely on tooltips:</strong> Critical information should be visible without hovering</li>
-          </ul>
-          
-          <h4 class="mt-4">Example: Good vs Poor Tooltip Usage</h4>
-          
-          <div class="row mt-3">
-            <div class="col-md-6">
-              <h5 class="text-success">✓ Good Example</h5>
-              <uilibrary-tooltip placement="top">
-                <span title>Save Document</span>
-                <span content>Save your changes to the current document. Shortcut: Ctrl+S</span>
-              </uilibrary-tooltip>
-            </div>
-            
-            <div class="col-md-6">
-              <h5 class="text-danger">✗ Poor Example</h5>
-              <uilibrary-tooltip placement="top">
-                <span title>Button</span>
-                <span content>This button does something when you click it and it might be important but we're not sure what exactly it does or why you would want to use it.</span>
-              </uilibrary-tooltip>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>API Reference</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>placement</code></td>
+            <td><code>string</code></td>
+            <td><code>'top'</code></td>
+            <td>Tooltip position: 'top', 'bottom', 'left', 'right'</td>
+          </tr>
+          <tr>
+            <td><code>margin</code></td>
+            <td><code>string</code></td>
+            <td><code>''</code></td>
+            <td>Additional margin: 'left', 'right', 'top', 'bottom'</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt-4">Content Slots</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Slot</th>
+            <th>Purpose</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>title</code></td>
+            <td>Tooltip title/header</td>
+            <td><code>&lt;span title&gt;Tooltip Title&lt;/span&gt;</code></td>
+          </tr>
+          <tr>
+            <td><code>content</code></td>
+            <td>Tooltip body content</td>
+            <td><code>&lt;span content&gt;Tooltip description&lt;/span&gt;</code></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>API Reference</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Property</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>placement</code></td>
-              <td><code>string</code></td>
-              <td><code>'top'</code></td>
-              <td>Tooltip position: 'top', 'bottom', 'left', 'right'</td>
-            </tr>
-            <tr>
-              <td><code>margin</code></td>
-              <td><code>string</code></td>
-              <td><code>''</code></td>
-              <td>Additional margin: 'left', 'right', 'top', 'bottom'</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <h3 class="mt-4">Content Slots</h3>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Slot</th>
-              <th>Purpose</th>
-              <th>Usage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>title</code></td>
-              <td>Tooltip title/header</td>
-              <td><code>&lt;span title&gt;Tooltip Title&lt;/span&gt;</code></td>
-            </tr>
-            <tr>
-              <td><code>content</code></td>
-              <td>Tooltip body content</td>
-              <td><code>&lt;span content&gt;Tooltip description&lt;/span&gt;</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+</div>
 </div>

@@ -1,7 +1,9 @@
-<ul *ngIf="menuVisible"
+@if (menuVisible) {
+  <ul
     [style.left.px]="menuPosition.x"
     [style.top.px]="menuPosition.y"
     class="context-menu"
     (click)="hideMenu()">
-  <ng-content></ng-content>
-</ul>
+    <ng-content></ng-content>
+  </ul>
+}
