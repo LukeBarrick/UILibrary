@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>Date Picker Components</h1>
       <p class="lead">
-        The <code>uilibrary2-datepicker-input</code> and <code>uilibrary2-date-range-input</code> components 
+        The <code>uilibrary-datepicker-input</code> and <code>uilibrary-date-range-input</code> components 
         provide intuitive date selection interfaces with form integration and validation support.
       </p>
     </div>
@@ -18,24 +18,24 @@
         <h5>Two-Way Binding</h5>
         <p class="text-muted">Use Angular's two-way binding syntax to bind directly to a component property.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Basic Date Picker (Two-Way Binding)</label>
-          <uilibrary2-datepicker-input [(ngModel)]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input [(ngModel)]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
         <p class="mt-2"><strong>Selected Date:</strong> {{modelDatePicker1}}</p>
 
         <h5 class="mt-4">Form Control Integration</h5>
         <p class="text-muted">Integrate seamlessly with Angular Reactive Forms for validation and form management.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Form Control Date Picker</label>
-          <uilibrary2-datepicker-input formControlName="datePicker1"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input formControlName="datePicker1"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
 
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Required Date Field</label>
-          <uilibrary2-datepicker-input formControlName="datePicker4"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input formControlName="datePicker4"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
       </div>
     </div>
   </div>
@@ -49,10 +49,10 @@
         <h5>Button Toggle Date Picker</h5>
         <p class="text-muted">Open the calendar programmatically using a button or any custom trigger element.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Button Toggle Date Picker</label>
-          <uilibrary2-datepicker-input #picker1 formControlName="datePicker2"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input #picker1 formControlName="datePicker2"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
 
         <div class="mt-3">
           <uilibrary-button appearance="primary" (click)="picker1.open()">
@@ -72,20 +72,20 @@
         <h5>Date Picker with Suffix Icon</h5>
         <p class="text-muted">Add a clickable icon to the right of the input field to trigger the calendar.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Date Picker with Suffix Icon</label>
-          <uilibrary2-datepicker-input #picker2 formControlName="datePicker3"></uilibrary2-datepicker-input>
-          <uilibrary2-icon ui-suffix name="icon-air" size="small" (click)="picker2.open()" style="cursor: pointer;"></uilibrary2-icon>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input #picker2 formControlName="datePicker3"></uilibrary-datepicker-input>
+          <uilibrary-icon ui-suffix name="icon-air" size="small" (click)="picker2.open()" style="cursor: pointer;"></uilibrary-icon>
+        </uilibrary-form-field>
 
         <h5 class="mt-4">Date Picker with Prefix Icon</h5>
         <p class="text-muted">Add an icon to the left of the input field for visual clarity and accessibility.</p>
         
-        <uilibrary2-form-field>
-          <uilibrary2-icon ui-prefix name="icon-air" size="small" (click)="picker3.open()" style="cursor: pointer;"></uilibrary2-icon>
+        <uilibrary-form-field>
+          <uilibrary-icon ui-prefix name="icon-air" size="small" (click)="picker3.open()" style="cursor: pointer;"></uilibrary-icon>
           <label ui-label>Date Picker with Prefix Icon</label>
-          <uilibrary2-datepicker-input #picker3 formControlName="datePicker5"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input #picker3 formControlName="datePicker5"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
       </div>
     </div>
   </div>
@@ -99,13 +99,13 @@
         <h5>Two-Way Binding Date Range</h5>
         <p class="text-muted">Bind start and end dates independently using Angular's two-way binding.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Basic Date Range Picker (Two-Way Binding)</label>
-          <uilibrary2-date-range-input>
+          <uilibrary-date-range-input>
             <input startDate [(ngModel)]="startDateModel" [ngModelOptions]="{ standalone: true }"/>
             <input endDate [(ngModel)]="endDateModel" [ngModelOptions]="{ standalone: true }"/>
-          </uilibrary2-date-range-input>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+        </uilibrary-form-field>
 
         <div class="mt-2">
           <p><strong>Start Date:</strong> {{startDateModel || 'Not selected'}}</p>
@@ -116,13 +116,13 @@
         <h5 class="mt-4">Form Control Date Range</h5>
         <p class="text-muted">Use form control names for each input to integrate with Reactive Forms.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Form Control Date Range</label>
-          <uilibrary2-date-range-input>
+          <uilibrary-date-range-input>
             <input startDate formControlName="startDate1"/>
             <input endDate formControlName="endDate1"/>
-          </uilibrary2-date-range-input>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+        </uilibrary-form-field>
       </div>
     </div>
   </div>
@@ -136,13 +136,13 @@
         <h5>Button Toggle Date Range Picker</h5>
         <p class="text-muted">Open the date range calendar using external controls like buttons.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Toggle Open Date Range Picker</label>
-          <uilibrary2-date-range-input #pickerRange>
+          <uilibrary-date-range-input #pickerRange>
             <input startDate formControlName="startDate2"/>
             <input endDate formControlName="endDate2"/>
-          </uilibrary2-date-range-input>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+        </uilibrary-form-field>
 
         <div class="mt-3">
           <uilibrary-button appearance="primary" (click)="pickerRange.open()">
@@ -162,26 +162,26 @@
         <h5>Date Range with Suffix Icon</h5>
         <p class="text-muted">Add a clickable icon to trigger the date range calendar from the right side.</p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Date Range with Suffix Icon</label>
-          <uilibrary2-date-range-input #pickerRange1>
+          <uilibrary-date-range-input #pickerRange1>
             <input startDate formControlName="startDate3"/>
             <input endDate formControlName="endDate3"/>
-          </uilibrary2-date-range-input>
-          <uilibrary2-icon ui-suffix name="icon-air" size="small" (click)="pickerRange1.open()" style="cursor: pointer;"></uilibrary2-icon>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+          <uilibrary-icon ui-suffix name="icon-air" size="small" (click)="pickerRange1.open()" style="cursor: pointer;"></uilibrary-icon>
+        </uilibrary-form-field>
 
         <h5 class="mt-4">Date Range with Prefix Icon</h5>
         <p class="text-muted">Add an icon to the left of the date range input for better visual hierarchy.</p>
         
-        <uilibrary2-form-field>
-          <uilibrary2-icon ui-prefix name="icon-air" size="small" (click)="pickerRange2.open()" style="cursor: pointer;"></uilibrary2-icon>
+        <uilibrary-form-field>
+          <uilibrary-icon ui-prefix name="icon-air" size="small" (click)="pickerRange2.open()" style="cursor: pointer;"></uilibrary-icon>
           <label ui-label>Date Range with Prefix Icon</label>
-          <uilibrary2-date-range-input #pickerRange2>
+          <uilibrary-date-range-input #pickerRange2>
             <input startDate formControlName="startDate4"/>
             <input endDate formControlName="endDate4"/>
-          </uilibrary2-date-range-input>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+        </uilibrary-form-field>
       </div>
     </div>
   </div>
@@ -198,13 +198,13 @@
           This is useful when users need to review their selection or make adjustments.
         </p>
         
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Don't Close On Select</label>
-          <uilibrary2-date-range-input [closeOnSelection]="false">
+          <uilibrary-date-range-input [closeOnSelection]="false">
             <input startDate formControlName="startDate5"/>
             <input endDate formControlName="endDate5"/>
-          </uilibrary2-date-range-input>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+        </uilibrary-form-field>
       </div>
     </div>
   </div>
@@ -215,18 +215,18 @@
       <p>Quickly set common date ranges using preset buttons for improved user experience.</p>
       
       <div class="border p-3 mb-3">
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Pre-filled Date Picker</label>
-          <uilibrary2-datepicker-input [(ngModel)]="prefilledDate" [ngModelOptions]="{ standalone: true }"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input [(ngModel)]="prefilledDate" [ngModelOptions]="{ standalone: true }"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
 
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Interactive Date Range</label>
-          <uilibrary2-date-range-input>
+          <uilibrary-date-range-input>
             <input startDate [(ngModel)]="interactiveStart" [ngModelOptions]="{ standalone: true }"/>
             <input endDate [(ngModel)]="interactiveEnd" [ngModelOptions]="{ standalone: true }"/>
-          </uilibrary2-date-range-input>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+        </uilibrary-form-field>
 
         <div class="mt-3" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           <uilibrary-button appearance="primary" size="small" (click)="setToday()">
@@ -271,10 +271,10 @@
         <h5>Required Date Field</h5>
         <p class="text-muted">Apply standard Angular validators like <code>Validators.required</code> to ensure dates are selected.</p>
         
-        <uilibrary2-form-field [class.error]="validationForm.get('requiredDate')?.invalid && validationForm.get('requiredDate')?.touched">
+        <uilibrary-form-field [class.error]="validationForm.get('requiredDate')?.invalid && validationForm.get('requiredDate')?.touched">
           <label ui-label>Required Date</label>
-          <uilibrary2-datepicker-input formControlName="requiredDate"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input formControlName="requiredDate"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
         <div class="text-danger small" *ngIf="validationForm.get('requiredDate')?.hasError('required') && validationForm.get('requiredDate')?.touched">
           This field is required
         </div>
@@ -282,10 +282,10 @@
         <h5 class="mt-4">Custom Validation - Future Dates Only</h5>
         <p class="text-muted">Create custom validators to enforce business rules like requiring future dates.</p>
         
-        <uilibrary2-form-field [class.error]="validationForm.get('futureDate')?.invalid && validationForm.get('futureDate')?.touched">
+        <uilibrary-form-field [class.error]="validationForm.get('futureDate')?.invalid && validationForm.get('futureDate')?.touched">
           <label ui-label>Future Date Only</label>
-          <uilibrary2-datepicker-input formControlName="futureDate"></uilibrary2-datepicker-input>
-        </uilibrary2-form-field>
+          <uilibrary-datepicker-input formControlName="futureDate"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
         <div class="text-danger small" *ngIf="validationForm.get('futureDate')?.hasError('pastDate') && validationForm.get('futureDate')?.touched">
           Date must be today or in the future
         </div>
@@ -293,13 +293,13 @@
         <h5 class="mt-4">Date Range Validation</h5>
         <p class="text-muted">Validate that the end date is after the start date to prevent invalid ranges.</p>
         
-        <uilibrary2-form-field [class.error]="dateRangeInvalid">
+        <uilibrary-form-field [class.error]="dateRangeInvalid">
           <label ui-label>Validated Date Range</label>
-          <uilibrary2-date-range-input>
+          <uilibrary-date-range-input>
             <input startDate formControlName="validatedStartDate"/>
             <input endDate formControlName="validatedEndDate"/>
-          </uilibrary2-date-range-input>
-        </uilibrary2-form-field>
+          </uilibrary-date-range-input>
+        </uilibrary-form-field>
         <div class="text-danger small" *ngIf="dateRangeInvalid">
           End date must be after start date
         </div>
@@ -367,14 +367,14 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>uilibrary2-datepicker-input</code></td>
+              <td><code>uilibrary-datepicker-input</code></td>
               <td>Single date selection component</td>
-              <td><code>&lt;uilibrary2-datepicker-input [(ngModel)]="date"&gt;&lt;/uilibrary2-datepicker-input&gt;</code></td>
+              <td><code>&lt;uilibrary-datepicker-input [(ngModel)]="date"&gt;&lt;/uilibrary-datepicker-input&gt;</code></td>
             </tr>
             <tr>
-              <td><code>uilibrary2-date-range-input</code></td>
+              <td><code>uilibrary-date-range-input</code></td>
               <td>Date range selection wrapper</td>
-              <td><code>&lt;uilibrary2-date-range-input&gt;&lt;input startDate&gt;&lt;input endDate&gt;&lt;/uilibrary2-date-range-input&gt;</code></td>
+              <td><code>&lt;uilibrary-date-range-input&gt;&lt;input startDate&gt;&lt;input endDate&gt;&lt;/uilibrary-date-range-input&gt;</code></td>
             </tr>
           </tbody>
         </table>
@@ -404,12 +404,12 @@
             <tr>
               <td><code>ui-prefix</code></td>
               <td>Add prefix content (icons, text, etc.)</td>
-              <td><code>&lt;uilibrary2-icon ui-prefix name="icon-air"&gt;&lt;/uilibrary2-icon&gt;</code></td>
+              <td><code>&lt;uilibrary-icon ui-prefix name="icon-air"&gt;&lt;/uilibrary-icon&gt;</code></td>
             </tr>
             <tr>
               <td><code>ui-suffix</code></td>
               <td>Add suffix content (icons, text, etc.)</td>
-              <td><code>&lt;uilibrary2-icon ui-suffix name="icon-air"&gt;&lt;/uilibrary2-icon&gt;</code></td>
+              <td><code>&lt;uilibrary-icon ui-suffix name="icon-air"&gt;&lt;/uilibrary-icon&gt;</code></td>
             </tr>
           </tbody>
         </table>

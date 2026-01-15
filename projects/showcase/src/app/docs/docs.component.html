@@ -3,7 +3,7 @@
   <div class="docs-header">
     <div class="header-content">
       <h1 class="docs-title">
-        <uilibrary2-icon name="icon-home" size="large" appearance="primary"></uilibrary2-icon>
+        <uilibrary-icon name="icon-home" size="large" appearance="primary"></uilibrary-icon>
         UI Library Documentation
       </h1>
       <p class="docs-subtitle">
@@ -16,8 +16,8 @@
   <!-- Search and Filter Section -->
   <div class="controls-section">
     <div class="search-container">
-      <uilibrary2-form-field>
-        <uilibrary2-icon ui-prefix name="icon-search" size="small" appearance="secondary"></uilibrary2-icon>
+      <uilibrary-form-field>
+        <uilibrary-icon ui-prefix name="icon-search" size="small" appearance="secondary"></uilibrary-icon>
         <label ui-label>Search Components</label>
         <input 
           ui-input
@@ -33,9 +33,9 @@
           (click)="clearSearch()"
           title="Clear search"
         >
-          <uilibrary2-icon name="icon-close" size="small"></uilibrary2-icon>
+          <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
         </uilibrary-button>
-      </uilibrary2-form-field>
+      </uilibrary-form-field>
     </div>
 
     <div class="category-filters">
@@ -78,11 +78,11 @@
       <!-- Tile Header -->
       <div class="tile-header">
         <div class="tile-icon">
-          <uilibrary2-icon 
+          <uilibrary-icon 
             [name]="tile.icon" 
             size="large" 
             appearance="primary"
-          ></uilibrary2-icon>
+          ></uilibrary-icon>
         </div>
         <div class="tile-category">{{tile.category}}</div>
       </div>
@@ -100,7 +100,7 @@
           <span class="route-path">/docs/{{tile.path}}</span>
         </div>
         <div class="tile-action">
-          <uilibrary2-icon name="icon-arrow-right" size="small" appearance="primary"></uilibrary2-icon>
+          <uilibrary-icon name="icon-arrow-right" size="small" appearance="primary"></uilibrary-icon>
         </div>
       </div>
 
@@ -120,7 +120,7 @@
   <!-- Empty State -->
   <div class="empty-state" *ngIf="getFilteredTiles().length === 0">
     <div class="empty-content">
-      <uilibrary2-icon name="icon-search" size="large" appearance="secondary"></uilibrary2-icon>
+      <uilibrary-icon name="icon-search" size="large" appearance="secondary"></uilibrary-icon>
       <h3>No components found</h3>
       <p>
         No components match your current filters.
@@ -132,7 +132,7 @@
         size="medium"
         (click)="selectedCategory = 'All'; searchTerm = ''"
       >
-        <uilibrary2-icon name="icon-close" size="small"></uilibrary2-icon>
+        <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
         Clear Filters
       </uilibrary-button>
     </div>

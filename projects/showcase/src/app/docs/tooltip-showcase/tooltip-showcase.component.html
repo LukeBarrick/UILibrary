@@ -66,46 +66,46 @@
       <p>Tooltips can enhance form fields by providing additional context and help information.</p>
       
       <div class="border p-3 mb-3" [formGroup]="demoForm">
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Username</label>
           <input ui-input type="text" formControlName="username" placeholder="Enter username">
           <uilibrary-tooltip ui-suffix placement="right" margin="left">
             <span title>Username Help</span>
             <span content>Username must be 3-20 characters long and contain only letters, numbers, and underscores.</span>
           </uilibrary-tooltip>
-        </uilibrary2-form-field>
+        </uilibrary-form-field>
 
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Email Address</label>
           <input ui-input type="email" formControlName="email" placeholder="user@example.com">
           <uilibrary-tooltip ui-suffix placement="top">
             <span title>Email Info</span>
             <span content>We'll never share your email with third parties. Used only for account notifications.</span>
           </uilibrary-tooltip>
-        </uilibrary2-form-field>
+        </uilibrary-form-field>
 
-        <uilibrary2-form-field>
+        <uilibrary-form-field>
           <label ui-label>Password</label>
           <input ui-input type="password" formControlName="password" placeholder="Enter secure password">
           <uilibrary-tooltip ui-suffix placement="left">
             <span title>Password Requirements</span>
             <span content>Password must be at least 8 characters with uppercase, lowercase, number, and special character.</span>
           </uilibrary-tooltip>
-        </uilibrary2-form-field>
+        </uilibrary-form-field>
         
         <div class="mt-3">
           <p><strong>Form Status:</strong> {{demoForm.valid ? 'Valid' : 'Invalid'}}</p>
         </div>
       </div>
 
-      <pre><code>&lt;uilibrary2-form-field&gt;
+      <pre><code>&lt;uilibrary-form-field&gt;
   &lt;label ui-label&gt;Username&lt;/label&gt;
   &lt;input ui-input type="text" placeholder="Enter username"&gt;
   &lt;uilibrary-tooltip ui-suffix placement="right"&gt;
     &lt;span title&gt;Help&lt;/span&gt;
     &lt;span content&gt;Helpful information about this field&lt;/span&gt;
   &lt;/uilibrary-tooltip&gt;
-&lt;/uilibrary2-form-field&gt;</code></pre>
+&lt;/uilibrary-form-field&gt;</code></pre>
     </div>
   </div>
 

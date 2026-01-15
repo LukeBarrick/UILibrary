@@ -70,13 +70,13 @@ pre code {
 }
 
 /* Form field spacing */
-uilibrary2-form-field {
+uilibrary-form-field {
   display: block;
   margin-bottom: 1rem;
 }
 
 /* Error state styling */
-uilibrary2-form-field.error {
+uilibrary-form-field.error {
   /* Error styles handled by the component itself */
 }
 

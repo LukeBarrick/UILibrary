@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
-  selector: 'uilibrary2-select',
+  selector: 'uilibrary-select',
   templateUrl: './select.component.html',
   providers: [
     {

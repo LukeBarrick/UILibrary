@@ -1,6 +1,6 @@
-uilibrary2-form-field {
+uilibrary-form-field {
     //Refactor this in form field component, when focussed, set z-index to something astronomical, when unfocussed, set it back
-    .form-field:has(uilibrary2-select:focus-within) {
+    .form-field:has(uilibrary-select:focus-within) {
         label {
             z-index: 2000;
         }
@@ -8,7 +8,7 @@ uilibrary2-form-field {
 
 
     .form-field {
-        uilibrary2-select {
+        uilibrary-select {
             flex-grow: 1;
             width: 100%;
 
@@ -176,7 +176,7 @@ uilibrary2-form-field {
 
     &.form-field-label-float {
 
-        .form-field:has(uilibrary2-select) {
+        .form-field:has(uilibrary-select) {
             ::-webkit-input-placeholder {
                 color: var(--dark-gray);
             }
@@ -194,7 +194,7 @@ uilibrary2-form-field {
             }
 
 
-            uilibrary2-select {
+            uilibrary-select {
                 .ng-select .ng-select-container .ng-value-container .ng-placeholder {
                     color: black;
                     font-size: 14px;
@@ -212,11 +212,11 @@ uilibrary2-form-field {
     &.form-field-touched {
         &.form-field-errors {
             .form-field {
-                uilibrary2-select .ng-dropdown-panel.ng-select-bottom {
+                uilibrary-select .ng-dropdown-panel.ng-select-bottom {
                     border-color: var(--danger);
                 }
 
-                uilibrary2-select .ng-select.custom .ng-select-container {
+                uilibrary-select .ng-select.custom .ng-select-container {
                     border-color: var(--danger) !important;
                 }
 
@@ -232,7 +232,7 @@ uilibrary2-form-field {
 
     // //TODO Remove use of HAS for browser compatibility
     // &.form-field:has(.form-field-prefix) {
-    //     uilibrary2-select {
+    //     uilibrary-select {
     //         .ng-select .ng-select-container .ng-value-container .ng-placeholder {
     //             left: 10px !important;
     //         }
@@ -245,7 +245,7 @@ uilibrary2-form-field {
 
     // //TODO Remove use of HAS for browser compatibility
     // &.form-field:has(.form-field-text-prefix) {
-    //     uilibrary2-select {
+    //     uilibrary-select {
     //         .ng-select .ng-select-container .ng-value-container .ng-placeholder {
     //             left: 0px !important;
     //         }

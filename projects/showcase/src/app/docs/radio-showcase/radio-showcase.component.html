@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>Radio Button Components</h1>
       <p class="lead">
-        The <code>uilibrary2-radio-button</code> and <code>uilibrary2-radio-group</code> components provide 
+        The <code>uilibrary-radio-button</code> and <code>uilibrary-radio-group</code> components provide 
         accessible radio button interfaces for single-selection scenarios with form integration.
       </p>
     </div>
@@ -17,31 +17,31 @@
       <div class="border p-3 mb-3">
         <div class="radio-section mb-4">
           <h4>Basic Radio Button States</h4>
-          <uilibrary2-radio-button [value]="1" [checked]="false">Basic radio button (unchecked)</uilibrary2-radio-button>
-          <uilibrary2-radio-button [value]="2" [checked]="true">Basic radio button (checked)</uilibrary2-radio-button>
-          <uilibrary2-radio-button [value]="3" [disabled]="true">Disabled radio button</uilibrary2-radio-button>
-          <uilibrary2-radio-button [value]="4" [checked]="true" [disabled]="true">Disabled & checked radio button</uilibrary2-radio-button>
+          <uilibrary-radio-button [value]="1" [checked]="false">Basic radio button (unchecked)</uilibrary-radio-button>
+          <uilibrary-radio-button [value]="2" [checked]="true">Basic radio button (checked)</uilibrary-radio-button>
+          <uilibrary-radio-button [value]="3" [disabled]="true">Disabled radio button</uilibrary-radio-button>
+          <uilibrary-radio-button [value]="4" [checked]="true" [disabled]="true">Disabled & checked radio button</uilibrary-radio-button>
         </div>
         
         <div class="radio-section">
           <h4>Two-Way Data Binding</h4>
-          <uilibrary2-radio-button [value]="1" [(checked)]="singleRadioChecked">Two-way binding radio button</uilibrary2-radio-button>
+          <uilibrary-radio-button [value]="1" [(checked)]="singleRadioChecked">Two-way binding radio button</uilibrary-radio-button>
           <p class="mt-2"><strong>Current state:</strong> {{singleRadioChecked ? 'Checked' : 'Unchecked'}}</p>
           <button class="btn btn-secondary btn-sm" (click)="toggleSingleRadio()">Toggle State</button>
         </div>
       </div>
 
-      <!-- <pre><code>&lt;uilibrary2-radio-button [value]="1" [checked]="false"&gt;
+      <!-- <pre><code>&lt;uilibrary-radio-button [value]="1" [checked]="false"&gt;
   Basic radio button
-&lt;/uilibrary2-radio-button&gt;
+&lt;/uilibrary-radio-button&gt;
 
-&lt;uilibrary2-radio-button [value]="1" [(checked)]="isChecked"&gt;
+&lt;uilibrary-radio-button [value]="1" [(checked)]="isChecked"&gt;
   Two-way binding radio button
-&lt;/uilibrary2-radio-button&gt;
+&lt;/uilibrary-radio-button&gt;
 
-&lt;uilibrary2-radio-button [value]="1" [disabled]="true"&gt;
+&lt;uilibrary-radio-button [value]="1" [disabled]="true"&gt;
   Disabled radio button
-&lt;/uilibrary2-radio-button&gt;</code></pre> -->
+&lt;/uilibrary-radio-button&gt;</code></pre> -->
     </div>
   </div>
 
@@ -53,12 +53,12 @@
       <div class="border p-3 mb-3" [formGroup]="radioButtons2">
         <div class="radio-section mb-4">
           <h4>Form Control Radio Group</h4>
-          <uilibrary2-radio-group formControlName="radioButton1">
-            <uilibrary2-radio-button [value]="1">Option 1</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="2">Option 2</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="6" [disabled]="radioButtonDisabled">Option 3 ({{radioButtonDisabled ? 'Disabled' : 'Enabled'}})</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="4">Option 4</uilibrary2-radio-button>
-          </uilibrary2-radio-group>
+          <uilibrary-radio-group formControlName="radioButton1">
+            <uilibrary-radio-button [value]="1">Option 1</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="2">Option 2</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="6" [disabled]="radioButtonDisabled">Option 3 ({{radioButtonDisabled ? 'Disabled' : 'Enabled'}})</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="4">Option 4</uilibrary-radio-button>
+          </uilibrary-radio-group>
           
           <div class="mt-2">
             <p><strong>Selected Value:</strong> {{radioButtons2.get('radioButton1')?.value}}</p>
@@ -71,26 +71,26 @@
         
         <div class="radio-section">
           <h4>Two-Way Binding Radio Group</h4>
-          <uilibrary2-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }">
-            <uilibrary2-radio-button [value]="'option-a'">Option A</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="'option-b'">Option B</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="'option-c'">Option C</uilibrary2-radio-button>
-          </uilibrary2-radio-group>
+          <uilibrary-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }">
+            <uilibrary-radio-button [value]="'option-a'">Option A</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="'option-b'">Option B</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="'option-c'">Option C</uilibrary-radio-button>
+          </uilibrary-radio-group>
           
           <p class="mt-2"><strong>Selected Model Value:</strong> "{{radioButtonModel}}"</p>
         </div>
       </div>
 <!-- 
-      <pre><code>&lt;uilibrary2-radio-group formControlName="radioGroup"&gt;
-  &lt;uilibrary2-radio-button [value]="1"&gt;Option 1&lt;/uilibrary2-radio-button&gt;
-  &lt;uilibrary2-radio-button [value]="2"&gt;Option 2&lt;/uilibrary2-radio-button&gt;
-  &lt;uilibrary2-radio-button [value]="3"&gt;Option 3&lt;/uilibrary2-radio-button&gt;
-&lt;/uilibrary2-radio-group&gt;
+      <pre><code>&lt;uilibrary-radio-group formControlName="radioGroup"&gt;
+  &lt;uilibrary-radio-button [value]="1"&gt;Option 1&lt;/uilibrary-radio-button&gt;
+  &lt;uilibrary-radio-button [value]="2"&gt;Option 2&lt;/uilibrary-radio-button&gt;
+  &lt;uilibrary-radio-button [value]="3"&gt;Option 3&lt;/uilibrary-radio-button&gt;
+&lt;/uilibrary-radio-group&gt;
 
-&lt;uilibrary2-radio-group [(ngModel)]="selectedValue"&gt;
-  &lt;uilibrary2-radio-button [value]="'a'"&gt;Choice A&lt;/uilibrary2-radio-button&gt;
-  &lt;uilibrary2-radio-button [value]="'b'"&gt;Choice B&lt;/uilibrary2-radio-button&gt;
-&lt;/uilibrary2-radio-group&gt;</code></pre> -->
+&lt;uilibrary-radio-group [(ngModel)]="selectedValue"&gt;
+  &lt;uilibrary-radio-button [value]="'a'"&gt;Choice A&lt;/uilibrary-radio-button&gt;
+  &lt;uilibrary-radio-button [value]="'b'"&gt;Choice B&lt;/uilibrary-radio-button&gt;
+&lt;/uilibrary-radio-group&gt;</code></pre> -->
     </div>
   </div>
 
@@ -102,11 +102,11 @@
       <div class="border p-3 mb-3">
         <div class="radio-section mb-4">
           <h4>Disabled Group Example</h4>
-          <uilibrary2-radio-group [(ngModel)]="disabledGroupModel" [ngModelOptions]="{ standalone: true }" [disabled]="groupDisabled">
-            <uilibrary2-radio-button [value]="'red'">Red Theme</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="'blue'">Blue Theme</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="'green'">Green Theme</uilibrary2-radio-button>
-          </uilibrary2-radio-group>
+          <uilibrary-radio-group [(ngModel)]="disabledGroupModel" [ngModelOptions]="{ standalone: true }" [disabled]="groupDisabled">
+            <uilibrary-radio-button [value]="'red'">Red Theme</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="'blue'">Blue Theme</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="'green'">Green Theme</uilibrary-radio-button>
+          </uilibrary-radio-group>
           
           <div class="mt-3">
             <p><strong>Group Status:</strong> {{groupDisabled ? 'Disabled' : 'Enabled'}}</p>
@@ -116,10 +116,10 @@
         </div>
       </div>
 
-      <!-- <pre><code>&lt;uilibrary2-radio-group [(ngModel)]="model" [disabled]="isDisabled"&gt;
-  &lt;uilibrary2-radio-button [value]="'option1'"&gt;Option 1&lt;/uilibrary2-radio-button&gt;
-  &lt;uilibrary2-radio-button [value]="'option2'"&gt;Option 2&lt;/uilibrary2-radio-button&gt;
-&lt;/uilibrary2-radio-group&gt;</code></pre> -->
+      <!-- <pre><code>&lt;uilibrary-radio-group [(ngModel)]="model" [disabled]="isDisabled"&gt;
+  &lt;uilibrary-radio-button [value]="'option1'"&gt;Option 1&lt;/uilibrary-radio-button&gt;
+  &lt;uilibrary-radio-button [value]="'option2'"&gt;Option 2&lt;/uilibrary-radio-button&gt;
+&lt;/uilibrary-radio-group&gt;</code></pre> -->
     </div>
   </div>
 
@@ -131,11 +131,11 @@
       <div class="border p-3 mb-3">
         <div class="radio-section mb-4">
           <h4>Dynamic Radio Options</h4>
-          <uilibrary2-radio-group [(ngModel)]="dynamicSelection" [ngModelOptions]="{ standalone: true }">
-            <uilibrary2-radio-button *ngFor="let option of dynamicOptions; trackBy: trackByValue" [value]="option.value">
+          <uilibrary-radio-group [(ngModel)]="dynamicSelection" [ngModelOptions]="{ standalone: true }">
+            <uilibrary-radio-button *ngFor="let option of dynamicOptions; trackBy: trackByValue" [value]="option.value">
               {{option.label}} ({{option.description}})
-            </uilibrary2-radio-button>
-          </uilibrary2-radio-group>
+            </uilibrary-radio-button>
+          </uilibrary-radio-group>
           
           <div class="mt-3">
             <p><strong>Selected:</strong> {{getSelectedOptionLabel()}}</p>
@@ -147,11 +147,11 @@
         
         <div class="radio-section">
           <h4>Conditional Radio Groups</h4>
-          <uilibrary2-radio-group [(ngModel)]="conditionalModel" [ngModelOptions]="{ standalone: true }">
-            <uilibrary2-radio-button [value]="'basic'">Basic Plan (Free)</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="'premium'">Premium Plan ($9.99/month)</uilibrary2-radio-button>
-            <uilibrary2-radio-button [value]="'enterprise'">Enterprise Plan (Contact Sales)</uilibrary2-radio-button>
-          </uilibrary2-radio-group>
+          <uilibrary-radio-group [(ngModel)]="conditionalModel" [ngModelOptions]="{ standalone: true }">
+            <uilibrary-radio-button [value]="'basic'">Basic Plan (Free)</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="'premium'">Premium Plan ($9.99/month)</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="'enterprise'">Enterprise Plan (Contact Sales)</uilibrary-radio-button>
+          </uilibrary-radio-group>
           
           <div class="mt-3" *ngIf="conditionalModel">
             <div class="alert alert-info">
@@ -193,7 +193,7 @@ trackByValue(index: number, option: any): any {
           </thead>
           <tbody>
             <tr>
-              <td rowspan="4"><code>uilibrary2-radio-button</code></td>
+              <td rowspan="4"><code>uilibrary-radio-button</code></td>
               <td><code>value</code></td>
               <td><code>any</code></td>
               <td><code>null</code></td>
@@ -218,7 +218,7 @@ trackByValue(index: number, option: any): any {
               <td>Emitted when checked state changes</td>
             </tr>
             <tr>
-              <td rowspan="2"><code>uilibrary2-radio-group</code></td>
+              <td rowspan="2"><code>uilibrary-radio-group</code></td>
               <td><code>disabled</code></td>
               <td><code>boolean</code></td>
               <td><code>false</code></td>

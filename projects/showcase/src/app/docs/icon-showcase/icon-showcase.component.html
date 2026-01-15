@@ -18,34 +18,34 @@
         <div class="icon-demo-section">
           <div class="icon-size-row">
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="small"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="small"></uilibrary-icon>
               <span class="icon-label">Small</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="medium"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="medium"></uilibrary-icon>
               <span class="icon-label">Medium (Default)</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="large"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="large"></uilibrary-icon>
               <span class="icon-label">Large</span>
             </div>
           </div>
           
           <div class="icon-size-row mt-4">
             <div class="icon-item">
-              <uilibrary2-icon name="icon-air" size="small"></uilibrary2-icon>
+              <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
               <span class="icon-label">Small</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-air" size="medium"></uilibrary2-icon>
+              <uilibrary-icon name="icon-air" size="medium"></uilibrary-icon>
               <span class="icon-label">Medium</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-air" size="large"></uilibrary2-icon>
+              <uilibrary-icon name="icon-air" size="large"></uilibrary-icon>
               <span class="icon-label">Large</span>
             </div>
           </div>
@@ -70,34 +70,34 @@
         <div class="icon-demo-section">
           <div class="icon-appearance-row">
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="large" appearance="primary"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="large" appearance="primary"></uilibrary-icon>
               <span class="icon-label">Primary</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="large" appearance="secondary"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="large" appearance="secondary"></uilibrary-icon>
               <span class="icon-label">Secondary</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="large" appearance="tertiary"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="large" appearance="tertiary"></uilibrary-icon>
               <span class="icon-label">Tertiary</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="large" appearance="light-gray"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="large" appearance="light-gray"></uilibrary-icon>
               <span class="icon-label">Light Gray</span>
             </div>
             
             <div class="icon-item">
-              <uilibrary2-icon name="icon-accommodation" size="large" appearance="dark-gray"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="large" appearance="dark-gray"></uilibrary-icon>
               <span class="icon-label">Dark Gray</span>
             </div>
           </div>
           
           <div class="icon-appearance-row mt-4">
             <div class="icon-item custom-color-demo">
-              <uilibrary2-icon name="icon-accommodation" size="large" appearance="custom"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="large" appearance="custom"></uilibrary-icon>
               <span class="icon-label">Custom (Inherits Color)</span>
             </div>
           </div>
@@ -136,15 +136,15 @@
           <h4>{{getSelectedIconDisplay()}} Preview</h4>
           <div class="icon-preview-grid">
             <div class="preview-item">
-              <uilibrary2-icon [name]="selectedIcon" size="small" appearance="primary"></uilibrary2-icon>
+              <uilibrary-icon [name]="selectedIcon" size="small" appearance="primary"></uilibrary-icon>
               <span>Small Primary</span>
             </div>
             <div class="preview-item">
-              <uilibrary2-icon [name]="selectedIcon" size="medium" appearance="secondary"></uilibrary2-icon>
+              <uilibrary-icon [name]="selectedIcon" size="medium" appearance="secondary"></uilibrary-icon>
               <span>Medium Secondary</span>
             </div>
             <div class="preview-item">
-              <uilibrary2-icon [name]="selectedIcon" size="large" appearance="tertiary"></uilibrary2-icon>
+              <uilibrary-icon [name]="selectedIcon" size="large" appearance="tertiary"></uilibrary-icon>
               <span>Large Tertiary</span>
             </div>
           </div>
@@ -175,40 +175,40 @@
           
           <h4>Icons in Form Fields</h4>
           <div class="form-examples mb-4" [formGroup]="iconDemoForm">
-            <uilibrary2-form-field>
-              <uilibrary2-icon ui-prefix name="icon-air" size="small" appearance="secondary"></uilibrary2-icon>
+            <uilibrary-form-field>
+              <uilibrary-icon ui-prefix name="icon-air" size="small" appearance="secondary"></uilibrary-icon>
               <label ui-label>Search</label>
               <input ui-input type="text" formControlName="search" placeholder="Search with icon prefix">
-            </uilibrary2-form-field>
+            </uilibrary-form-field>
 
             <br/>
             
-            <uilibrary2-form-field>
+            <uilibrary-form-field>
               <label ui-label>Location</label>
               <input ui-input type="text" formControlName="location" placeholder="Enter location">
-              <uilibrary2-icon ui-suffix name="icon-accommodation" size="small" appearance="tertiary"></uilibrary2-icon>
-            </uilibrary2-form-field>
+              <uilibrary-icon ui-suffix name="icon-accommodation" size="small" appearance="tertiary"></uilibrary-icon>
+            </uilibrary-form-field>
           </div>
           
           <h4>Standalone Icon Usage</h4>
           <div class="standalone-examples">
             <div class="icon-with-text">
-              <uilibrary2-icon name="icon-air" size="small" appearance="primary"></uilibrary2-icon>
+              <uilibrary-icon name="icon-air" size="small" appearance="primary"></uilibrary-icon>
               <span>Flight Information</span>
             </div>
             
             <div class="icon-with-text">
-              <uilibrary2-icon name="icon-accommodation" size="small" appearance="secondary"></uilibrary2-icon>
+              <uilibrary-icon name="icon-accommodation" size="small" appearance="secondary"></uilibrary-icon>
               <span>Hotel Booking</span>
             </div>
             
             <div class="icon-list">
               <div class="icon-list-item">
-                <uilibrary2-icon name="icon-air" size="small" appearance="tertiary"></uilibrary2-icon>
+                <uilibrary-icon name="icon-air" size="small" appearance="tertiary"></uilibrary-icon>
                 <span>Available flights: 15</span>
               </div>
               <div class="icon-list-item">
-                <uilibrary2-icon name="icon-accommodation" size="small" appearance="tertiary"></uilibrary2-icon>
+                <uilibrary-icon name="icon-accommodation" size="small" appearance="tertiary"></uilibrary-icon>
                 <span>Available hotels: 28</span>
               </div>
             </div>
@@ -222,10 +222,10 @@
 &lt;/uilibrary-button&gt;
 
 &lt;!-- Icons in form fields --&gt;
-&lt;uilibrary2-form-field&gt;
+&lt;uilibrary-form-field&gt;
   &lt;uilibrary-icon ui-prefix name="icon-air" size="small"&gt;&lt;/uilibrary-icon&gt;
   &lt;input ui-input type="text" placeholder="Search"&gt;
-&lt;/uilibrary2-form-field&gt;
+&lt;/uilibrary-form-field&gt;
 
 &lt;!-- Standalone icons --&gt;
 &lt;div class="icon-with-text"&gt;
@@ -271,7 +271,7 @@
         
         <div class="icon-gallery">
           <div *ngFor="let icon of getFilteredIcons()" class="gallery-icon-item" (click)="selectIconFromGallery(icon.name)">
-            <uilibrary2-icon [name]="icon.name" [size]="gallerySize" [appearance]="galleryAppearance"></uilibrary2-icon>
+            <uilibrary-icon [name]="icon.name" [size]="gallerySize" [appearance]="galleryAppearance"></uilibrary-icon>
             <span class="icon-name">{{icon.display}}</span>
           </div>
         </div>

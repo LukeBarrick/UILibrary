@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'uilibrary2-radio-button',
+  selector: 'uilibrary-radio-button',
   templateUrl: './button.component.html',
 })
 export class RadioButtonComponent {

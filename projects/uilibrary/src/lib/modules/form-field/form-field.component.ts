@@ -11,7 +11,7 @@ import { UIPrefix } from './directives/UIPrefix';
 import { UISuffix } from './directives/UISuffix';
 
 @Component({
-  selector: 'uilibrary2-form-field',
+  selector: 'uilibrary-form-field',
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.css'],
   host: {

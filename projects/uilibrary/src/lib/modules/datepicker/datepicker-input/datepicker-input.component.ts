@@ -7,7 +7,7 @@ import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.ser
 import { format, parse } from 'date-fns';
 
 @Component({
-  selector: 'uilibrary2-datepicker-input',
+  selector: 'uilibrary-datepicker-input',
   templateUrl: './datepicker-input.component.html',
   styleUrl: './datepicker-input.component.css',
   providers: [

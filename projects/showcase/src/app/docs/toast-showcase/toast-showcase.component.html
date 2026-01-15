@@ -46,7 +46,7 @@
             <!-- Success Toast -->
             <div class="toast show toast-success" role="alert">
               <div class="toast-header">
-                <uilibrary2-icon name="icon-check" size="small" appearance="custom" class="toast-icon text-success"></uilibrary2-icon>
+                <uilibrary-icon name="icon-check" size="small" appearance="custom" class="toast-icon text-success"></uilibrary-icon>
                 <strong class="me-auto">Success</strong>
                 <small class="text-muted">just now</small>
                 <button type="button" class="btn-close"></button>
@@ -59,7 +59,7 @@
             <!-- Warning Toast -->
             <div class="toast show toast-warning" role="alert">
               <div class="toast-header">
-                <uilibrary2-icon name="icon-warning" size="small" appearance="custom" class="toast-icon text-warning"></uilibrary2-icon>
+                <uilibrary-icon name="icon-warning" size="small" appearance="custom" class="toast-icon text-warning"></uilibrary-icon>
                 <strong class="me-auto">Warning</strong>
                 <small class="text-muted">2 min ago</small>
                 <button type="button" class="btn-close"></button>
@@ -72,7 +72,7 @@
             <!-- Error Toast -->
             <div class="toast show toast-error" role="alert">
               <div class="toast-header">
-                <uilibrary2-icon name="icon-close" size="small" appearance="custom" class="toast-icon text-danger"></uilibrary2-icon>
+                <uilibrary-icon name="icon-close" size="small" appearance="custom" class="toast-icon text-danger"></uilibrary-icon>
                 <strong class="me-auto">Error</strong>
                 <small class="text-muted">5 min ago</small>
                 <button type="button" class="btn-close"></button>
@@ -85,7 +85,7 @@
             <!-- Info Toast -->
             <div class="toast show toast-info" role="alert">
               <div class="toast-header">
-                <uilibrary2-icon name="icon-info" size="small" appearance="custom" class="toast-icon text-info"></uilibrary2-icon>
+                <uilibrary-icon name="icon-info" size="small" appearance="custom" class="toast-icon text-info"></uilibrary-icon>
                 <strong class="me-auto">Information</strong>
                 <small class="text-muted">10 min ago</small>
                 <button type="button" class="btn-close"></button>
@@ -188,13 +188,13 @@
             <div class="preview-container">
               <div class="toast show" [ngClass]="'toast-' + toastConfig.type">
                 <div class="toast-header">
-                  <uilibrary2-icon 
+                  <uilibrary-icon 
                     *ngIf="toastConfig.showIcon" 
                     [name]="getToastIcon(toastConfig.type)" 
                     size="small" 
                     appearance="custom" 
                     [class]="'toast-icon text-' + toastConfig.type">
-                  </uilibrary2-icon>
+                  </uilibrary-icon>
                   <strong class="me-auto">{{toastConfig.title}}</strong>
                   <small class="text-muted">now</small>
                   <button type="button" class="btn-close" *ngIf="toastConfig.closable"></button>
@@ -371,22 +371,22 @@ class ToastService {
           <div class="action-demo mb-4">
             <div class="button-grid">
               <button class="btn btn-success" (click)="performAction('save')">
-                <uilibrary2-icon name="icon-check" size="small"></uilibrary2-icon>
+                <uilibrary-icon name="icon-check" size="small"></uilibrary-icon>
                 Save Document
               </button>
               
               <button class="btn btn-primary" (click)="performAction('export')">
-                <uilibrary2-icon name="icon-air" size="small"></uilibrary2-icon>
+                <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
                 Export Data
               </button>
               
               <button class="btn btn-warning" (click)="performAction('backup')">
-                <uilibrary2-icon name="icon-accommodation" size="small"></uilibrary2-icon>
+                <uilibrary-icon name="icon-accommodation" size="small"></uilibrary-icon>
                 Create Backup
               </button>
               
               <button class="btn btn-info" (click)="performAction('sync')">
-                <uilibrary2-icon name="icon-air" size="small"></uilibrary2-icon>
+                <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
                 Sync Data
               </button>
             </div>

@@ -182,7 +182,7 @@
             <div class="service-grid">
               <div class="service-item" *ngFor="let service of systemServices">
                 <div class="service-icon">
-                  <uilibrary2-icon [name]="service.icon" size="medium" appearance="secondary"></uilibrary2-icon>
+                  <uilibrary-icon [name]="service.icon" size="medium" appearance="secondary"></uilibrary-icon>
                 </div>
                 <div class="service-info">
                   <div class="service-name">{{service.name}}</div>
@@ -259,7 +259,7 @@
               <div class="item-actions">
                 <uilibrary-status-tag [statusType]="item.status" (click)="cycleItemStatus(i)">{{getStatusDisplay(item.status)}}</uilibrary-status-tag>
                 <button class="btn btn-sm btn-outline-danger" (click)="removeItem(i)" title="Remove item">
-                  <uilibrary2-icon name="icon-close" size="small"></uilibrary2-icon>
+                  <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
                 </button>
               </div>
             </div>

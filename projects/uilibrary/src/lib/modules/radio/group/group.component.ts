@@ -4,7 +4,7 @@ import { RadioButtonComponent } from '../button/button.component';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'uilibrary2-radio-group',
+  selector: 'uilibrary-radio-group',
   templateUrl: './group.component.html'
 })
 export class RadioGroupComponent implements ControlValueAccessor, AfterContentInit, OnInit, OnDestroy {

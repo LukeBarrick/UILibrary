@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, HostListener, inject, ViewChild, ViewEnca
 import { MenuTrigger } from './menu-trigger.directive';
 
 @Component({
-  selector: 'uilibrary2-context-menu',
+  selector: 'uilibrary-context-menu',
   templateUrl: './context-menu.component.html',
   styleUrls: ['./context-menu.component.scss'],
   encapsulation: ViewEncapsulation.None

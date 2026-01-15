@@ -1,4 +1,4 @@
-uilibrary2-form-field {
+uilibrary-form-field {
     .form-field {
         display: flex;
         align-items: center;
@@ -48,7 +48,7 @@ uilibrary2-form-field {
             left: 25px;
         }
 
-        uilibrary2-select {
+        uilibrary-select {
             .ng-select .ng-select-container .ng-value-container .ng-placeholder {
                 left: 15px !important;
             }
@@ -74,7 +74,7 @@ uilibrary2-form-field {
             padding-left: 0px;
         }
 
-         uilibrary2-select {
+         uilibrary-select {
             .ng-select .ng-select-container .ng-value-container .ng-placeholder {
                 left: 0px !important;
             }

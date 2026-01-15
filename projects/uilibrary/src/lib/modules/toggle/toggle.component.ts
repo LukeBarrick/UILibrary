@@ -3,7 +3,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { LabelPosition } from '../../core/enums/label-position.enum';
 
 @Component({
-  selector: 'uilibrary2-toggle',
+  selector: 'uilibrary-toggle',
   templateUrl: './toggle.component.html',
 })
 //Should probably bring checkbox, toggle & radio buttons under a single interface
