@@ -8,7 +8,32 @@
   </uilibrary-context-side-menu>
 </uilibrary-context-menu>
 
-
+<uilibrary-table [data]="[1,2,3]">
+  <uilibrary-table-column>
+    <ng-template #header>
+      <p>header1</p>
+    </ng-template>
+    <ng-template uilibrary-table-cell [appTableCellDefOf]="[1, 2, 3]" let-element>
+      <p>{{element}}</p>
+    </ng-template>
+  </uilibrary-table-column>
+  <uilibrary-table-column>
+    <ng-template #header>
+      <p>header2</p>
+    </ng-template>
+    <ng-template #cell>
+      <p>cell2</p>
+    </ng-template>
+  </uilibrary-table-column>
+  <uilibrary-table-column>
+    <ng-template #header>
+      <p>header3</p>
+    </ng-template>
+    <ng-template #cell>
+      <p>cell3</p>
+    </ng-template>
+  </uilibrary-table-column>
+</uilibrary-table>
 
 <div style="background-color: #eae7e1;" (contextmenu)="rightClick($event)">
   <section class="medium w-100">

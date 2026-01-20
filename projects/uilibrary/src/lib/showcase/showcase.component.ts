@@ -29,12 +29,12 @@ export class ShowcaseComponent implements OnInit {
 
   links: NavigationLink[] = [
     { label:'Route', path:'/', type: NavigationLinkType.Route },
-    { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
-    { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL },
+    { label:'URL', path:'http://www.google.com/', type: NavigationLinkType.URL },
+    { label:'Blank', path:'http://www.google.com//', type: NavigationLinkType.TargetBlankURL },
     { label: 'DropDown', path:'', type: NavigationLinkType.Route, children: [
       { label:'Route', path:'/', type: NavigationLinkType.Route },
-      { label:'URL', path:'http://www.google.com', type: NavigationLinkType.URL },
-      { label:'Blank', path:'http://www.google.com', type: NavigationLinkType.TargetBlankURL }
+      { label:'URL', path:'http://www.google.com///', type: NavigationLinkType.URL },
+      { label:'Blank', path:'http://www.google.com////', type: NavigationLinkType.TargetBlankURL }
     ]}
   ];
 

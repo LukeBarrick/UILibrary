@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        @for(column of columns; track column.headerTemplate) {
+        <th>
+            <ng-container *ngTemplateOutlet="column.headerTemplate"></ng-container>
+        </th>
+        }
+    </thead>
+    <tbody>
+        @for(element of data; track element; let rowIndex = $index) {
+        <tr>
+            @for(column of columns.toArray(); track column.cellTemplate; let colIndex = $index) {
+            <td>
+                <ng-container [ngTemplateOutlet]="column.cellTemplate!.template" [ngTemplateOutletContext]="{
+                    $implicit: element,
+                    rowIndex: rowIndex,
+                    colIndex: colIndex
+                }"></ng-container>
+            </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+
+<button (click)="debug()">debug</button>

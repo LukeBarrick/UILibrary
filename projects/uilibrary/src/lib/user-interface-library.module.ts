@@ -26,6 +26,7 @@ import { RadioModule } from './modules/radio/radio.module';
 import { DatepickerModule } from './modules/datepicker/datepicker.module';
 import { KeyboardNavigationModule } from './modules/keyboard-navigation/keyboard-navigation.module';
 import { ContextMenuModule } from './modules/context-menu/context-menu.module';
+import { TableModule } from './modules/table/table.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ContextMenuModule } from './modules/context-menu/context-menu.module';
     RadioModule,
     DatepickerModule,
     KeyboardNavigationModule,
-    ContextMenuModule
+    ContextMenuModule,
+    TableModule
   ],
   exports: [
     UserInterfaceLibraryComponent,

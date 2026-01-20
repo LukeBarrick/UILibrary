@@ -68,3 +68,9 @@ export * from './lib/modules/context-menu/context-side-menu/context-side-menu.co
 export * from './lib/modules/keyboard-navigation/keyboard-navigation.module';
 export * from './lib/modules/keyboard-navigation/cell-nav.directive';
 export * from './lib/modules/keyboard-navigation/nav-registry.service';
+
+export * from './lib/modules/table/table.module';
+export * from './lib/modules/table/table.component';
+export * from './lib/modules/table/header.directive';
+export * from './lib/modules/table/cell.directive';
+export * from './lib/modules/table/table-column.component';
