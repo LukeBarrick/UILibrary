@@ -44,7 +44,7 @@ export class InputComponent
   empty: boolean = false;
 
   @HostListener('input', ['$event'])
-  _onInput(event: Event): void {
+  onInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     if (target) {
       this.onChange(target.value);
@@ -52,13 +52,13 @@ export class InputComponent
   }
 
   @HostListener('blur')
-  _onBlur(): void {
+  onBlur(): void {
     this._focussed = false;
     this.onTouched();
   }
 
   @HostListener('focus')
-  _onFocus(): void {
+  onFocus(): void {
     this._focussed = true;
   }
 
@@ -70,15 +70,10 @@ export class InputComponent
     this.handleInput(value); 
   }
 
-  //Randomly generated ID auto-assigned to input on instantiation.
   id = this.UUID.generate();
 
-  //State changes
-  //Used to hand data to parent consumers via subscription.
   stateChanges: Observable<void> = new Observable<void>
 
-  //Placeholder
-  //Not required as an input as we *should*  directly expose the input here.
   placeholder: string = '';
 
   @Input() set disabled(disabled: boolean) {

@@ -1,6 +1,6 @@
 <ng-select class="custom" libSelectWcagHelper2 [attr.data-ariaLabel]="ariaLabel || placeholder" [attr.aria-invalid]="" 
   [(ngModel)]="value" [items]="items" [disabled]="_disabled" [bindLabel]="bindLabel" [bindValue]="bindValue"
-  [compareWith]="compareFn" (change)="handleInput($event)" [loading]="loading" [loadingText]="loadingText"
+  (change)="handleInput($event)" [loading]="loading" [loadingText]="loadingText"
   [multiple]="multiple" [maxSelectedItems]="maxSelectedItems" [hideSelected]="hideSelected"
   [clearSearchOnAdd]="clearSearchOnAdd" [readonly]="readonly" [placeholder]="placeholder" [notFoundText]="notFoundText"
   [markFirst]="markFirst" [clearOnBackspace]="clearOnBackspace" [clearable]="clearable" [closeOnSelect]="closeOnSelect"
@@ -16,3 +16,7 @@
   </ng-template>
   }
 </ng-select>
+
+  <!-- [compareWith]="compareFn"  -->
+  <!-- Causes issues when displaying setting field value initially on load, the value does not show as a 'selected value' -->
+  <!-- Rather than it being an actual issue, its probably not and im missing something, we should provide the compareFn only if one is provided... but its late and i've been working for 12 hours -->

@@ -1,9 +1,11 @@
 import {
+  AfterViewInit,
   Component,
   ContentChild,
   ElementRef,
   HostListener,
   Input,
+  OnInit,
   Optional,
   Renderer2,
   Self,
@@ -17,18 +19,18 @@ import { Observable } from 'rxjs';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
-    selector: 'uilibrary-select',
-    templateUrl: './select.component.html',
-    providers: [
-        {
-            provide: UIFormFieldControl,
-            useExisting: forwardRef(() => SelectComponent),
-        },
-    ],
-    standalone: false
+  selector: 'uilibrary-select',
+  templateUrl: './select.component.html',
+  providers: [
+    {
+      provide: UIFormFieldControl,
+      useExisting: forwardRef(() => SelectComponent),
+    },
+  ],
+  standalone: false
 })
 export class SelectComponent
-  implements UIFormFieldControl<any>, ControlValueAccessor {
+  implements UIFormFieldControl<any>, ControlValueAccessor, OnInit {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
@@ -54,7 +56,7 @@ export class SelectComponent
   @Input() clearable: boolean = false;
   @Input() closeOnSelect: boolean = true;
   @Input() useCustomTemplate: boolean = true;
-  @Input() bindLabel: string = '';  
+  @Input() bindLabel: string = '';
   @Input() bindValue: string = '';
 
   @Input() searchable: boolean = false;
@@ -82,7 +84,7 @@ export class SelectComponent
   stateChanges: Observable<void> = new Observable<void>();
   id: string = '';
 
- 
+
 
   get empty(): boolean {
     if (!this.ngControl) {
@@ -95,7 +97,7 @@ export class SelectComponent
       return true;
     }
 
-    if(this.multiple) {
+    if (this.multiple) {
       return !control.value || control.value.length === 0;
     }
 
@@ -150,7 +152,7 @@ export class SelectComponent
     // this.ngSelect.open();
   }
 
-  setValue(value: any): void { 
+  setValue(value: any): void {
     this.handleInput(value);
   }
 
@@ -171,22 +173,22 @@ export class SelectComponent
   }
 
   handleInput(event: any): void {
-   
     this.writeValue(this.value);
     this.onChange(event);
     this.onTouched();
-     console.log(this.value);
   }
 
   ngOnInit() {
     setTimeout(() => {
       if (this.prefillFirstOption && this.value == undefined) {
         if (!this.multiple) {
+          this.writeValue(this.items[0]);
           this.value = this.items[0];
         } else {
-          this.value = [this.items[0]];
+          this.writeValue([this.items[0]]);
         }
       }
+      this.writeValue(this.value);
       this.onChange(this.value);
     }, 0);
   }

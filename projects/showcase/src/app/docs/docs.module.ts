@@ -31,7 +31,6 @@ const routes: Routes = [
   { path: 'navigation', component: NavigationShowcaseComponent },
   { path: 'formfields', component: InputShowcaseComponent },
   { path: 'selects', component: SelectShowcaseComponent },
-  // { path: 'icons', component: IconComponent},
 ];
 
 @NgModule({

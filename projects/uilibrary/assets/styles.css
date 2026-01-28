@@ -14005,7 +14005,7 @@ uilibrary-form-field.error .form-field label {
 }
 
 uilibrary-form-field .form-field:has(uilibrary-select:focus-within) label {
-  z-index: 2000;
+  z-index: 2002;
 }
 uilibrary-form-field .form-field uilibrary-select {
   flex-grow: 1;
@@ -14060,6 +14060,12 @@ uilibrary-form-field .form-field uilibrary-select .ng-select.custom .ng-arrow-wr
   transition: transform 0.2s ease-in-out !important;
   border: none !important;
   top: 3px !important;
+}
+uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input {
+  padding-left: 20px !important;
+}
+uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input > input {
+  margin-left: 0px !important;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
   border-color: var(--secondary);
