@@ -14070,7 +14070,7 @@ uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-containe
 uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
   border-color: var(--secondary);
 }
-uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-opened .ng-arrow-wrapper .ng-arrow {
+uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-focused .ng-arrow-wrapper .ng-arrow {
   transform: rotateX(180deg);
 }
 uilibrary-form-field .form-field uilibrary-select .ng-dropdown-panel.ng-select-bottom .ng-dropdown-panel-items .ng-option:last-child {
