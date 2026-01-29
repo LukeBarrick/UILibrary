@@ -14005,7 +14005,7 @@ uilibrary-form-field.error .form-field label {
 }
 
 uilibrary-form-field .form-field:has(uilibrary-select:focus-within) label {
-  z-index: 2002;
+  z-index: 2001;
 }
 uilibrary-form-field .form-field uilibrary-select {
   flex-grow: 1;
@@ -14028,7 +14028,7 @@ uilibrary-form-field .form-field uilibrary-select .ng-select.custom {
 uilibrary-form-field .form-field uilibrary-select .ng-select.custom .ng-clear-wrapper {
   height: 17px !important;
   width: 17px !important;
-  z-index: 2001;
+  z-index: 2000;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select-container {
   z-index: 0;
@@ -14060,6 +14060,9 @@ uilibrary-form-field .form-field uilibrary-select .ng-select.custom .ng-arrow-wr
   transition: transform 0.2s ease-in-out !important;
   border: none !important;
   top: 3px !important;
+}
+uilibrary-form-field .form-field uilibrary-select .ng-select.custom .ng-arrow-wrapper {
+  z-index: 2000;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input {
   padding-left: 20px !important;
@@ -14459,7 +14462,7 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   margin: 0;
   list-style: none;
   width: 150px;
-  z-index: 1000;
+  z-index: 999999;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }

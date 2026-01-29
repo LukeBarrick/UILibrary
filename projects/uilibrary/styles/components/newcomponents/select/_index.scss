@@ -2,7 +2,7 @@ uilibrary-form-field {
     //Refactor this in form field component, when focussed, set z-index to something astronomical, when unfocussed, set it back
     .form-field:has(uilibrary-select:focus-within) {
         label {
-            z-index: 2002;
+            z-index: 2001;
         }
     }
 
@@ -32,7 +32,7 @@ uilibrary-form-field {
             .ng-select.custom .ng-clear-wrapper {
                 height: 17px !important;
                 width: 17px !important;
-                z-index: 2001;
+                z-index: 2000;
             }
 
             .ng-select-container {
@@ -75,6 +75,10 @@ uilibrary-form-field {
                 border: none !important;
                 top: 3px !important;
             }
+
+             .ng-select.custom .ng-arrow-wrapper {
+                z-index: 2000;
+             }
 
             .ng-select .ng-select-container .ng-value-container .ng-input {
                 padding-left: 20px !important;
