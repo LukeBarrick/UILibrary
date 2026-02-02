@@ -3,7 +3,8 @@ import { combineLatest, fromEvent, Subject, Subscription, tap } from 'rxjs';
 import { NavRegistryService } from './nav-registry.service';
 
 @Directive({
-  selector: '[uiCellNav]'
+    selector: '[uiCellNav]',
+    standalone: false
 })
 export class CellNavDirective implements OnInit, OnDestroy, AfterViewInit {
   reg = inject(NavRegistryService);

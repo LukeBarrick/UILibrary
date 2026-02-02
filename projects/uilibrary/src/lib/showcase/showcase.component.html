@@ -8,8 +8,33 @@
   </uilibrary-context-side-menu>
 </uilibrary-context-menu>
 
-
-
+<!-- <uilibrary-table [data]="[1,2,3]">
+  <uilibrary-table-column>
+    <ng-template #header>
+      <p>header1</p>
+    </ng-template>
+    <ng-template uilibrary-table-cell [appTableCellDefOf]="[1, 2, 3]" let-element>
+      <p>{{element}}</p>
+    </ng-template>
+  </uilibrary-table-column>
+  <uilibrary-table-column>
+    <ng-template #header>
+      <p>header2</p>
+    </ng-template>
+    <ng-template #cell>
+      <p>cell2</p>
+    </ng-template>
+  </uilibrary-table-column>
+  <uilibrary-table-column>
+    <ng-template #header>
+      <p>header3</p>
+    </ng-template>
+    <ng-template #cell>
+      <p>cell3</p>
+    </ng-template>
+  </uilibrary-table-column>
+</uilibrary-table>
+--->
 <div style="background-color: #eae7e1;" (contextmenu)="rightClick($event)">
   <section class="medium w-100">
     <h1>Nav bars</h1>
@@ -468,8 +493,8 @@
 
     <uilibrary-form-field>
       <label ui-label>Two Way Binding Select</label>
-      <uilibrary-select ui-select [(ngModel)]="selectModel" [ngModelOptions]="{ standalone: true }" [items]="items"
-        placeholder="Please select an item from the dropdown list." [clearable]="true">
+      <uilibrary-select ui-select [(ngModel)]="selectedPerson" [ngModelOptions]="{ standalone: true }" [items]="$people | async"
+        placeholder="Please select an item from the dropdown list." bindLabel="name" [clearable]="true">
         <ng-template #labelTemplate let-item>
           <div>
             <b>{{item.name}}</b>
@@ -490,20 +515,20 @@
     
     <uilibrary-form-field>
       <label ui-label>Multi Select</label>
-      <uilibrary-select ui-select [items]="items" [(ngModel)]="selectMultiModel" [ngModelOptions]="{ standalone: true }"  
-      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name"
+      <uilibrary-select ui-select [items]="$people | async" [(ngModel)]="selectedPeople" [ngModelOptions]="{ standalone: true }"  
+      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" 
         placeholder="Please select an item from the dropdown list." [clearable]="true">
       </uilibrary-select>
     </uilibrary-form-field>
 
       <section class="small d-flex flex-column">
-      <p>{{stringify(selectMultiModel)}}</p>
+      <p>{{stringify(selectedPeople)}}</p>
     </section>
 
     <uilibrary-form-field>
       <label ui-label>Multi Select w/ Prefill</label>
       <uilibrary-select ui-select [items]="items" [(ngModel)]="selectMultiModelPrefill" [ngModelOptions]="{ standalone: true }"
-      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" [prefillFirstOption]="true"
+      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" bindValue="id" [prefillFirstOption]="true"
         placeholder="Please select an item from the dropdown list." [clearable]="true">
       </uilibrary-select>
     </uilibrary-form-field>

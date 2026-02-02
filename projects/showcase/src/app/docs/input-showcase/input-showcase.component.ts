@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-showcase',
-  templateUrl: './input-showcase.component.html',
-  styleUrls: ['./input-showcase.component.css']
+    selector: 'app-input-showcase',
+    templateUrl: './input-showcase.component.html',
+    styleUrls: ['./input-showcase.component.css'],
+    standalone: false
 })
 export class InputShowcaseComponent implements OnInit {
   textInput: string = '';

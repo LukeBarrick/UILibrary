@@ -15,9 +15,10 @@ interface Features {
 }
 
 @Component({
-  selector: 'app-toggle-showcase',
-  templateUrl: './toggle-showcase.component.html',
-  styleUrls: ['./toggle-showcase.component.css']
+    selector: 'app-toggle-showcase',
+    templateUrl: './toggle-showcase.component.html',
+    styleUrls: ['./toggle-showcase.component.css'],
+    standalone: false
 })
 export class ToggleShowcaseComponent implements OnInit {
   toggles: FormGroup;

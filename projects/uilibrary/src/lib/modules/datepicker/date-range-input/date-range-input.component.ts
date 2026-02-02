@@ -8,15 +8,16 @@ import { DateSelectionStrategy } from '../date-selection-strategy';
 import { DateRange } from '../date-range';
 
 @Component({
-  selector: 'uilibrary-date-range-input',
-  templateUrl: './date-range-input.component.html',
-  styleUrl: './date-range-input.component.css',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => DateRangeInputComponent)
-    }
-  ]
+    selector: 'uilibrary-date-range-input',
+    templateUrl: './date-range-input.component.html',
+    styleUrl: './date-range-input.component.css',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => DateRangeInputComponent)
+        }
+    ],
+    standalone: false
 })
 export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, AfterViewInit, OnDestroy  {
   private elRef = inject(ElementRef<DateRangeInputComponent>);

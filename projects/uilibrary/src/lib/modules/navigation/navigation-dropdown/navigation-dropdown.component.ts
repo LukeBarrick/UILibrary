@@ -4,8 +4,9 @@ import { NavigationLinkType } from '../../../core/enums/navigation-link-type.enu
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'uilibrary-navigation-dropdown',
-  templateUrl: './navigation-dropdown.component.html'
+    selector: 'uilibrary-navigation-dropdown',
+    templateUrl: './navigation-dropdown.component.html',
+    standalone: false
 })
 export class NavigationDropdownComponent implements OnInit {
   @Input() links: NavigationLink[] | null = [];

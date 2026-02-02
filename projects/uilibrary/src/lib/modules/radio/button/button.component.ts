@@ -6,8 +6,9 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'uilibrary-radio-button',
-  templateUrl: './button.component.html',
+    selector: 'uilibrary-radio-button',
+    templateUrl: './button.component.html',
+    standalone: false
 })
 export class RadioButtonComponent {
   public id = crypto.randomUUID();

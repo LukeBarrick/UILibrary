@@ -2,7 +2,7 @@ uilibrary-form-field {
     //Refactor this in form field component, when focussed, set z-index to something astronomical, when unfocussed, set it back
     .form-field:has(uilibrary-select:focus-within) {
         label {
-            z-index: 2000;
+            z-index: 2001;
         }
     }
 
@@ -32,6 +32,7 @@ uilibrary-form-field {
             .ng-select.custom .ng-clear-wrapper {
                 height: 17px !important;
                 width: 17px !important;
+                z-index: 2000;
             }
 
             .ng-select-container {
@@ -75,6 +76,18 @@ uilibrary-form-field {
                 top: 3px !important;
             }
 
+             .ng-select.custom .ng-arrow-wrapper {
+                z-index: 2000;
+             }
+
+            .ng-select .ng-select-container .ng-value-container .ng-input {
+                padding-left: 20px !important;
+            }
+
+            .ng-select .ng-select-container .ng-value-container .ng-input > input {
+                margin-left: 0px !important;
+            }
+
 
             .ng-select.ng-select-opened.ng-select-bottom>.ng-select-container {
                 // border-bottom-left-radius: 0px !important;
@@ -83,7 +96,7 @@ uilibrary-form-field {
             }
 
 
-            .ng-select.ng-select-opened {
+            .ng-select.ng-select-focused {
                 .ng-arrow-wrapper .ng-arrow {
                     transform: rotateX(180deg);
                 }
@@ -144,6 +157,10 @@ uilibrary-form-field {
 
             .ng-select.ng-select-disabled>.ng-select-container {
                 background-color: #EEEEEE;
+            }
+
+            .ng-dropdown-panel {
+                z-index: 2001;
             }
 
             .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {

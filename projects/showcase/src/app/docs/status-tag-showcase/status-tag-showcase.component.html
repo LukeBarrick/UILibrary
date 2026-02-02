@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>Status Tag Component</h1>
       <p class="lead">
-        The <code>uilibrary-status-tag</code> component provides visual status indicators 
+        The <code>uilibrary-status-tag</code> component provides visual status indicators
         with different styles and colors to communicate state, priority, or category information.
       </p>
     </div>
@@ -13,7 +13,7 @@
     <div class="col-12">
       <h2>Status Types</h2>
       <p>Status tags are available in multiple predefined types to represent different states and meanings.</p>
-      
+
       <div class="border p-3 mb-3">
         <div class="status-demo-section">
           <div class="status-row">
@@ -21,39 +21,39 @@
               <uilibrary-status-tag statusType="success">Success</uilibrary-status-tag>
               <span class="status-label">Success Status</span>
             </div>
-            
+
             <div class="status-item">
               <uilibrary-status-tag statusType="warning">Warning</uilibrary-status-tag>
               <span class="status-label">Warning Status</span>
             </div>
-            
+
             <div class="status-item">
               <uilibrary-status-tag statusType="error">Error</uilibrary-status-tag>
               <span class="status-label">Error Status</span>
             </div>
-            
+
             <div class="status-item">
               <uilibrary-status-tag statusType="info">Info</uilibrary-status-tag>
               <span class="status-label">Info Status</span>
             </div>
           </div>
-          
+
           <div class="status-row">
             <div class="status-item">
               <uilibrary-status-tag statusType="primary">Primary</uilibrary-status-tag>
               <span class="status-label">Primary Status</span>
             </div>
-            
+
             <div class="status-item">
               <uilibrary-status-tag statusType="secondary">Secondary</uilibrary-status-tag>
               <span class="status-label">Secondary Status</span>
             </div>
-            
+
             <div class="status-item">
               <uilibrary-status-tag statusType="inactive">Inactive</uilibrary-status-tag>
               <span class="status-label">Inactive Status</span>
             </div>
-            
+
             <div class="status-item">
               <uilibrary-status-tag statusType="pending">Pending</uilibrary-status-tag>
               <span class="status-label">Pending Status</span>
@@ -63,75 +63,78 @@
       </div>
 
       <!-- <pre><code>&lt;uilibrary-status-tag status="success"&gt;Success&lt;/uilibrary-status-tag&gt;
-&lt;uilibrary-status-tag status="warning"&gt;Warning&lt;/uilibrary-status-tag&gt;
-&lt;uilibrary-status-tag status="error"&gt;Error&lt;/uilibrary-status-tag&gt;
-&lt;uilibrary-status-tag status="info"&gt;Info&lt;/uilibrary-status-tag&gt;
-&lt;uilibrary-status-tag status="primary"&gt;Primary&lt;/uilibrary-status-tag&gt;
-&lt;uilibrary-status-tag status="secondary"&gt;Secondary&lt;/uilibrary-status-tag&gt;
-&lt;uilibrary-status-tag status="inactive"&gt;Inactive&lt;/uilibrary-status-tag&gt;
-&lt;uilibrary-status-tag status="pending"&gt;Pending&lt;/uilibrary-status-tag&gt;</code></pre> -->
-    </div>
+      &lt;uilibrary-status-tag status="warning"&gt;Warning&lt;/uilibrary-status-tag&gt;
+      &lt;uilibrary-status-tag status="error"&gt;Error&lt;/uilibrary-status-tag&gt;
+      &lt;uilibrary-status-tag status="info"&gt;Info&lt;/uilibrary-status-tag&gt;
+      &lt;uilibrary-status-tag status="primary"&gt;Primary&lt;/uilibrary-status-tag&gt;
+      &lt;uilibrary-status-tag status="secondary"&gt;Secondary&lt;/uilibrary-status-tag&gt;
+      &lt;uilibrary-status-tag status="inactive"&gt;Inactive&lt;/uilibrary-status-tag&gt;
+    &lt;uilibrary-status-tag status="pending"&gt;Pending&lt;/uilibrary-status-tag&gt;</code></pre> -->
   </div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Interactive Status Selector</h2>
-      <p>Select different status types to see live examples and code generation.</p>
-      
-      <div class="border p-3 mb-3">
-        <div class="status-selector mb-4">
-          <div class="row">
-            <div class="col-md-6">
-              <label for="statusSelect" class="form-label">Status Type:</label>
-              <select id="statusSelect" class="form-select" [(ngModel)]="selectedStatus">
-                <option *ngFor="let status of availableStatuses" [value]="status.value">
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Interactive Status Selector</h2>
+    <p>Select different status types to see live examples and code generation.</p>
+
+    <div class="border p-3 mb-3">
+      <div class="status-selector mb-4">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="statusSelect" class="form-label">Status Type:</label>
+            <select id="statusSelect" class="form-select" [(ngModel)]="selectedStatus">
+              @for (status of availableStatuses; track status) {
+                <option [value]="status.value">
                   {{status.display}} ({{status.value}})
                 </option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="statusText" class="form-label">Status Text:</label>
-              <input type="text" id="statusText" class="form-control" [(ngModel)]="statusText" placeholder="Enter status text">
-            </div>
+              }
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="statusText" class="form-label">Status Text:</label>
+            <input type="text" id="statusText" class="form-control" [(ngModel)]="statusText" placeholder="Enter status text">
           </div>
         </div>
-        
-        <div class="status-preview">
-          <h4>Preview</h4>
-          <div class="preview-container">
-            <uilibrary-status-tag [statusType]="selectedStatus">{{statusText}}</uilibrary-status-tag>
-          </div>
-          
-          <div class="code-preview mt-3">
-            <strong>Generated Code:</strong>
-            <pre><code>&lt;uilibrary-status-tag status="{{selectedStatus}}"&gt;{{statusText}}&lt;/uilibrary-status-tag&gt;</code></pre>
-          </div>
+      </div>
+
+      <div class="status-preview">
+        <h4>Preview</h4>
+        <div class="preview-container">
+          <uilibrary-status-tag [statusType]="selectedStatus">{{statusText}}</uilibrary-status-tag>
+        </div>
+
+        <div class="code-preview mt-3">
+          <strong>Generated Code:</strong>
+          <pre><code>&lt;uilibrary-status-tag status="{{selectedStatus}}"&gt;{{statusText}}&lt;/uilibrary-status-tag&gt;</code></pre>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Status Tags in Real-World Contexts</h2>
-      <p>Examples of how status tags are used in typical application scenarios.</p>
-      
-      <div class="border p-3 mb-3">
-        <div class="context-examples">
-          <h4>User Management Table</h4>
-          <div class="table-responsive mb-4">
-            <table class="table table-striped">
-              <thead>
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Status Tags in Real-World Contexts</h2>
+    <p>Examples of how status tags are used in typical application scenarios.</p>
+
+    <div class="border p-3 mb-3">
+      <div class="context-examples">
+        <h4>User Management Table</h4>
+        <div class="table-responsive mb-4">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Last Login</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (user of sampleUsers; track user) {
                 <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th>Last Login</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let user of sampleUsers">
                   <td>{{user.name}}</td>
                   <td>{{user.email}}</td>
                   <td>{{user.role}}</td>
@@ -140,13 +143,15 @@
                   </td>
                   <td>{{user.lastLogin}}</td>
                 </tr>
-              </tbody>
-            </table>
-          </div>
-          
-          <h4>Order Processing Pipeline</h4>
-          <div class="pipeline-demo mb-4">
-            <div class="pipeline-step" *ngFor="let order of sampleOrders">
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Order Processing Pipeline</h4>
+        <div class="pipeline-demo mb-4">
+          @for (order of sampleOrders; track order) {
+            <div class="pipeline-step">
               <div class="order-card">
                 <div class="order-header">
                   <strong>Order #{{order.id}}</strong>
@@ -159,11 +164,13 @@
                 </div>
               </div>
             </div>
-          </div>
-          
-          <h4>Project Task Status</h4>
-          <div class="task-list mb-4">
-            <div class="task-item" *ngFor="let task of sampleTasks">
+          }
+        </div>
+
+        <h4>Project Task Status</h4>
+        <div class="task-list mb-4">
+          @for (task of sampleTasks; track task) {
+            <div class="task-item">
               <div class="task-content">
                 <div class="task-title">{{task.title}}</div>
                 <div class="task-meta">
@@ -175,12 +182,14 @@
                 <uilibrary-status-tag [statusType]="task.status">{{getTaskStatusDisplay(task.status)}}</uilibrary-status-tag>
               </div>
             </div>
-          </div>
-          
-          <h4>System Health Dashboard</h4>
-          <div class="health-dashboard">
-            <div class="service-grid">
-              <div class="service-item" *ngFor="let service of systemServices">
+          }
+        </div>
+
+        <h4>System Health Dashboard</h4>
+        <div class="health-dashboard">
+          <div class="service-grid">
+            @for (service of systemServices; track service) {
+              <div class="service-item">
                 <div class="service-icon">
                   <uilibrary-icon [name]="service.icon" size="medium" appearance="secondary"></uilibrary-icon>
                 </div>
@@ -192,66 +201,70 @@
                   <uilibrary-status-tag [statusType]="service.status">{{getServiceStatusDisplay(service.status)}}</uilibrary-status-tag>
                 </div>
               </div>
-            </div>
+            }
           </div>
         </div>
       </div>
-
-      <!-- <pre><code>&lt;!-- In a table --&gt;
-&lt;td&gt;
-  &lt;uilibrary-status-tag [status]="user.status"&gt;
-    {{getStatusDisplay(user.status)}}
-  &lt;/uilibrary-status-tag&gt;
-&lt;/td&gt;
-
-&lt;!-- In a card --&gt;
-&lt;div class="card-header"&gt;
-  &lt;h5&gt;Order #{{order.id}}&lt;/h5&gt;
-  &lt;uilibrary-status-tag [status]="order.status"&gt;
-    {{order.statusText}}
-  &lt;/uilibrary-status-tag&gt;
-&lt;/div&gt;
-
-&lt;!-- With dynamic status --&gt;
-&lt;uilibrary-status-tag [status]="getStatusType(item.value)"&gt;
-  {{getStatusText(item.value)}}
-&lt;/uilibrary-status-tag&gt;</code></pre> -->
     </div>
-  </div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Status Management Demo</h2>
-      <p>Interactive demonstration of status changes and bulk operations.</p>
-      
-      <div class="border p-3 mb-3">
-        <div class="management-demo">
-          <div class="demo-controls mb-4">
-            <div class="row">
-              <div class="col-md-4">
-                <button class="btn btn-primary" (click)="addRandomItem()">Add Random Item</button>
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-warning" (click)="updateAllStatuses()">Update All Statuses</button>
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-secondary" (click)="resetDemo()">Reset Demo</button>
-              </div>
+    <!-- <pre><code>&lt;!-- In a table --&gt;
+    &lt;td&gt;
+    &lt;uilibrary-status-tag [status]="user.status"&gt;
+    {{getStatusDisplay(user.status)}}
+    &lt;/uilibrary-status-tag&gt;
+    &lt;/td&gt;
+
+    &lt;!-- In a card --&gt;
+    &lt;div class="card-header"&gt;
+    &lt;h5&gt;Order #{{order.id}}&lt;/h5&gt;
+    &lt;uilibrary-status-tag [status]="order.status"&gt;
+    {{order.statusText}}
+    &lt;/uilibrary-status-tag&gt;
+    &lt;/div&gt;
+
+    &lt;!-- With dynamic status --&gt;
+    &lt;uilibrary-status-tag [status]="getStatusType(item.value)"&gt;
+    {{getStatusText(item.value)}}
+  &lt;/uilibrary-status-tag&gt;</code></pre> -->
+</div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Status Management Demo</h2>
+    <p>Interactive demonstration of status changes and bulk operations.</p>
+
+    <div class="border p-3 mb-3">
+      <div class="management-demo">
+        <div class="demo-controls mb-4">
+          <div class="row">
+            <div class="col-md-4">
+              <button class="btn btn-primary" (click)="addRandomItem()">Add Random Item</button>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-warning" (click)="updateAllStatuses()">Update All Statuses</button>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-secondary" (click)="resetDemo()">Reset Demo</button>
             </div>
           </div>
-          
-          <div class="status-stats mb-4">
-            <div class="stat-grid">
-              <div class="stat-item" *ngFor="let stat of getStatusStats()">
+        </div>
+
+        <div class="status-stats mb-4">
+          <div class="stat-grid">
+            @for (stat of getStatusStats(); track stat) {
+              <div class="stat-item">
                 <div class="stat-label">{{stat.label}}</div>
                 <div class="stat-value">{{stat.count}}</div>
                 <uilibrary-status-tag [statusType]="stat.status">{{stat.label}}</uilibrary-status-tag>
               </div>
-            </div>
+            }
           </div>
-          
-          <div class="demo-items">
-            <div class="demo-item" *ngFor="let item of demoItems; let i = index">
+        </div>
+
+        <div class="demo-items">
+          @for (item of demoItems; track item; let i = $index) {
+            <div class="demo-item">
               <div class="item-content">
                 <strong>{{item.name}}</strong>
                 <p>{{item.description}}</p>
@@ -263,104 +276,107 @@
                 </button>
               </div>
             </div>
-          </div>
-          
-          <div class="demo-summary mt-4" *ngIf="demoItems.length > 0">
+          }
+        </div>
+
+        @if (demoItems.length > 0) {
+          <div class="demo-summary mt-4">
             <p><strong>Total Items:</strong> {{demoItems.length}}</p>
             <p><strong>Last Action:</strong> {{lastAction || 'None'}}</p>
           </div>
-        </div>
+        }
       </div>
     </div>
   </div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>API Reference</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Property</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>status</code></td>
-              <td><code>string</code></td>
-              <td><code>'primary'</code></td>
-              <td>Status type that determines the visual appearance</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <h3 class="mt-4">Available Status Types</h3>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Status</th>
-              <th>Use Case</th>
-              <th>Visual Style</th>
-              <th>Example</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>success</code></td>
-              <td>Completed, approved, active states</td>
-              <td>Green background with white text</td>
-              <td><uilibrary-status-tag status="success">Active</uilibrary-status-tag></td>
-            </tr>
-            <tr>
-              <td><code>warning</code></td>
-              <td>Attention required, pending review</td>
-              <td>Yellow/orange background</td>
-              <td><uilibrary-status-tag status="warning">Pending</uilibrary-status-tag></td>
-            </tr>
-            <tr>
-              <td><code>error</code></td>
-              <td>Failed, rejected, critical issues</td>
-              <td>Red background with white text</td>
-              <td><uilibrary-status-tag status="error">Failed</uilibrary-status-tag></td>
-            </tr>
-            <tr>
-              <td><code>info</code></td>
-              <td>Informational, in progress</td>
-              <td>Blue background with white text</td>
-              <td><uilibrary-status-tag status="info">Processing</uilibrary-status-tag></td>
-            </tr>
-            <tr>
-              <td><code>primary</code></td>
-              <td>Default, important items</td>
-              <td>Primary brand color</td>
-              <td><uilibrary-status-tag status="primary">Default</uilibrary-status-tag></td>
-            </tr>
-            <tr>
-              <td><code>secondary</code></td>
-              <td>Secondary information</td>
-              <td>Gray background</td>
-              <td><uilibrary-status-tag status="secondary">Draft</uilibrary-status-tag></td>
-            </tr>
-            <tr>
-              <td><code>inactive</code></td>
-              <td>Disabled, offline, archived</td>
-              <td>Muted colors</td>
-              <td><uilibrary-status-tag status="inactive">Archived</uilibrary-status-tag></td>
-            </tr>
-            <tr>
-              <td><code>pending</code></td>
-              <td>Awaiting action or approval</td>
-              <td>Light blue/gray background</td>
-              <td><uilibrary-status-tag status="pending">Waiting</uilibrary-status-tag></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>API Reference</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>status</code></td>
+            <td><code>string</code></td>
+            <td><code>'primary'</code></td>
+            <td>Status type that determines the visual appearance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt-4">Available Status Types</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Use Case</th>
+            <th>Visual Style</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>success</code></td>
+            <td>Completed, approved, active states</td>
+            <td>Green background with white text</td>
+            <td><uilibrary-status-tag status="success">Active</uilibrary-status-tag></td>
+          </tr>
+          <tr>
+            <td><code>warning</code></td>
+            <td>Attention required, pending review</td>
+            <td>Yellow/orange background</td>
+            <td><uilibrary-status-tag status="warning">Pending</uilibrary-status-tag></td>
+          </tr>
+          <tr>
+            <td><code>error</code></td>
+            <td>Failed, rejected, critical issues</td>
+            <td>Red background with white text</td>
+            <td><uilibrary-status-tag status="error">Failed</uilibrary-status-tag></td>
+          </tr>
+          <tr>
+            <td><code>info</code></td>
+            <td>Informational, in progress</td>
+            <td>Blue background with white text</td>
+            <td><uilibrary-status-tag status="info">Processing</uilibrary-status-tag></td>
+          </tr>
+          <tr>
+            <td><code>primary</code></td>
+            <td>Default, important items</td>
+            <td>Primary brand color</td>
+            <td><uilibrary-status-tag status="primary">Default</uilibrary-status-tag></td>
+          </tr>
+          <tr>
+            <td><code>secondary</code></td>
+            <td>Secondary information</td>
+            <td>Gray background</td>
+            <td><uilibrary-status-tag status="secondary">Draft</uilibrary-status-tag></td>
+          </tr>
+          <tr>
+            <td><code>inactive</code></td>
+            <td>Disabled, offline, archived</td>
+            <td>Muted colors</td>
+            <td><uilibrary-status-tag status="inactive">Archived</uilibrary-status-tag></td>
+          </tr>
+          <tr>
+            <td><code>pending</code></td>
+            <td>Awaiting action or approval</td>
+            <td>Light blue/gray background</td>
+            <td><uilibrary-status-tag status="pending">Waiting</uilibrary-status-tag></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
 </div>

@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>Toggle Component</h1>
       <p class="lead">
-        The <code>uilibrary-toggle</code> component provides an accessible toggle switch for boolean 
+        The <code>uilibrary-toggle</code> component provides an accessible toggle switch for boolean
         values with various label configurations and form integration.
       </p>
     </div>
@@ -13,33 +13,33 @@
     <div class="col-12">
       <h2>Basic Toggle States</h2>
       <p>Toggle switches in various states and configurations.</p>
-      
+
       <div class="border p-3 mb-3">
         <div class="toggle-section mb-4">
           <h4>Basic Toggles</h4>
           <uilibrary-toggle [hideLabel]="true">
             This is descriptive text about the toggle for accessibility reasons. Do not leave blank.
           </uilibrary-toggle>
-          
+
           <uilibrary-toggle>
             Normal Label Toggle
           </uilibrary-toggle>
-          
+
           <uilibrary-toggle [checked]="true">
             Pre-checked Toggle
           </uilibrary-toggle>
         </div>
-        
+
         <div class="toggle-section">
           <h4>Disabled States</h4>
           <uilibrary-toggle [disabled]="isDisabled">
             Disabled Toggle ({{isDisabled ? 'Disabled' : 'Enabled'}})
           </uilibrary-toggle>
-          
+
           <uilibrary-toggle [disabled]="isDisabled" [checked]="true">
             Disabled & Checked Toggle ({{isDisabled ? 'Disabled' : 'Enabled'}})
           </uilibrary-toggle>
-          
+
           <button class="btn btn-secondary btn-sm mt-2" (click)="toggleDisabled()">
             {{isDisabled ? 'Enable' : 'Disable'}} Toggles
           </button>
@@ -47,16 +47,16 @@
       </div>
 
       <pre><code>&lt;uilibrary-toggle&gt;
-  Normal Toggle Label
-&lt;/uilibrary-toggle&gt;
+        Normal Toggle Label
+        &lt;/uilibrary-toggle&gt;
 
-&lt;uilibrary-toggle [hideLabel]="true"&gt;
-  Accessibility text for screen readers
-&lt;/uilibrary-toggle&gt;
+        &lt;uilibrary-toggle [hideLabel]="true"&gt;
+        Accessibility text for screen readers
+        &lt;/uilibrary-toggle&gt;
 
-&lt;uilibrary-toggle [disabled]="true" [checked]="true"&gt;
-  Disabled Checked Toggle
-&lt;/uilibrary-toggle&gt;</code></pre>
+        &lt;uilibrary-toggle [disabled]="true" [checked]="true"&gt;
+        Disabled Checked Toggle
+      &lt;/uilibrary-toggle&gt;</code></pre>
     </div>
   </div>
 
@@ -64,33 +64,33 @@
     <div class="col-12">
       <h2>Label Positioning and Sizes</h2>
       <p>Customize label position and size for different UI needs.</p>
-      
+
       <div class="border p-3 mb-3">
         <div class="toggle-section mb-4">
           <h4>Label Positions</h4>
           <uilibrary-toggle>
             Default Label Position (Right)
           </uilibrary-toggle>
-          
+
           <uilibrary-toggle labelPosition="right">
             Explicit Right Label Position
           </uilibrary-toggle>
-          
+
           <uilibrary-toggle labelPosition="left">
             Left Label Position
           </uilibrary-toggle>
         </div>
-        
+
         <div class="toggle-section">
           <h4>Label Sizes</h4>
           <uilibrary-toggle>
             Normal Label Size
           </uilibrary-toggle>
-          
+
           <uilibrary-toggle labelSize="large">
             Large Label Size
           </uilibrary-toggle>
-          
+
           <uilibrary-toggle labelSize="large" labelPosition="left">
             Large Left-Positioned Label
           </uilibrary-toggle>
@@ -98,223 +98,227 @@
       </div>
 
       <!-- <pre><code>&lt;uilibrary-toggle labelPosition="right"&gt;
-  Right Label
-&lt;/uilibrary-toggle&gt;
+      Right Label
+      &lt;/uilibrary-toggle&gt;
 
-&lt;uilibrary-toggle labelPosition="left"&gt;
-  Left Label
-&lt;/uilibrary-toggle&gt;
+      &lt;uilibrary-toggle labelPosition="left"&gt;
+      Left Label
+      &lt;/uilibrary-toggle&gt;
 
-&lt;uilibrary-toggle labelSize="large"&gt;
-  Large Label
-&lt;/uilibrary-toggle&gt;</code></pre> -->
-    </div>
+      &lt;uilibrary-toggle labelSize="large"&gt;
+      Large Label
+    &lt;/uilibrary-toggle&gt;</code></pre> -->
   </div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Data Binding and Form Integration</h2>
-      <p>Toggle switches with two-way binding and form controls.</p>
-      
-      <div class="border p-3 mb-3" [formGroup]="toggles">
-        <div class="toggle-section mb-4">
-          <h4>Two-Way Data Binding</h4>
-          <uilibrary-toggle [(ngModel)]="checked" [ngModelOptions]="{ standalone: true }">
-            Two-Way Binding Toggle
-          </uilibrary-toggle>
-          
-          <p class="mt-2"><strong>Current State:</strong> {{checked ? 'ON' : 'OFF'}}</p>
-          
-          <button class="btn btn-primary btn-sm" (click)="toggleChecked()">
-            Programmatically Toggle
-          </button>
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Data Binding and Form Integration</h2>
+    <p>Toggle switches with two-way binding and form controls.</p>
+
+    <div class="border p-3 mb-3" [formGroup]="toggles">
+      <div class="toggle-section mb-4">
+        <h4>Two-Way Data Binding</h4>
+        <uilibrary-toggle [(ngModel)]="checked" [ngModelOptions]="{ standalone: true }">
+          Two-Way Binding Toggle
+        </uilibrary-toggle>
+
+        <p class="mt-2"><strong>Current State:</strong> {{checked ? 'ON' : 'OFF'}}</p>
+
+        <button class="btn btn-primary btn-sm" (click)="toggleChecked()">
+          Programmatically Toggle
+        </button>
+      </div>
+
+      <div class="toggle-section">
+        <h4>Form Control Integration</h4>
+        <uilibrary-toggle formControlName="toggle1">
+          Form Control Toggle
+        </uilibrary-toggle>
+
+        <div class="mt-2">
+          <p><strong>Form Value:</strong> {{toggles.get('toggle1')?.value ? 'ON' : 'OFF'}}</p>
+          <p><strong>Form Valid:</strong> {{toggles.valid ? 'Yes' : 'No'}}</p>
+
+          <button class="btn btn-secondary btn-sm me-2" (click)="setFormValue(true)">Set ON</button>
+          <button class="btn btn-secondary btn-sm me-2" (click)="setFormValue(false)">Set OFF</button>
+          <button class="btn btn-outline-secondary btn-sm" (click)="resetForm()">Reset Form</button>
         </div>
-        
-        <div class="toggle-section">
-          <h4>Form Control Integration</h4>
-          <uilibrary-toggle formControlName="toggle1">
-            Form Control Toggle
-          </uilibrary-toggle>
-          
-          <div class="mt-2">
-            <p><strong>Form Value:</strong> {{toggles.get('toggle1')?.value ? 'ON' : 'OFF'}}</p>
-            <p><strong>Form Valid:</strong> {{toggles.valid ? 'Yes' : 'No'}}</p>
-            
-            <button class="btn btn-secondary btn-sm me-2" (click)="setFormValue(true)">Set ON</button>
-            <button class="btn btn-secondary btn-sm me-2" (click)="setFormValue(false)">Set OFF</button>
-            <button class="btn btn-outline-secondary btn-sm" (click)="resetForm()">Reset Form</button>
-          </div>
+      </div>
+    </div>
+
+    <!-- <pre><code>&lt;!-- Two-way binding --&gt;
+    &lt;uilibrary-toggle [(ngModel)]="isEnabled" [ngModelOptions]="{ standalone: true }"&gt;
+    Enable Feature
+    &lt;/uilibrary-toggle&gt;
+
+    &lt;!-- Form control --&gt;
+    &lt;uilibrary-toggle formControlName="toggleControl"&gt;
+    Form Control Toggle
+  &lt;/uilibrary-toggle&gt;</code></pre> -->
+</div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Interactive Examples</h2>
+    <p>Complex toggle scenarios and real-world usage patterns.</p>
+
+    <div class="border p-3 mb-3">
+      <div class="toggle-section mb-4">
+        <h4>Settings Panel Simulation</h4>
+        <uilibrary-toggle [(ngModel)]="settings.notifications" [ngModelOptions]="{ standalone: true }">
+          Enable Notifications
+        </uilibrary-toggle>
+
+        <uilibrary-toggle [(ngModel)]="settings.darkMode" [ngModelOptions]="{ standalone: true }" labelPosition="left">
+          Dark Mode
+        </uilibrary-toggle>
+
+        <uilibrary-toggle [(ngModel)]="settings.autoSave" [ngModelOptions]="{ standalone: true }" labelSize="large">
+          Auto-Save Documents
+        </uilibrary-toggle>
+
+        <uilibrary-toggle [(ngModel)]="settings.analytics" [ngModelOptions]="{ standalone: true }" [disabled]="!settings.notifications">
+          Analytics Tracking (requires notifications)
+        </uilibrary-toggle>
+
+        <div class="mt-3">
+          <h5>Current Settings:</h5>
+          <pre>{{stringify(settings)}}</pre>
+        </div>
+
+        <div class="mt-2">
+          <button class="btn btn-primary btn-sm me-2" (click)="applySettings()">Apply Settings</button>
+          <button class="btn btn-secondary btn-sm me-2" (click)="resetSettings()">Reset to Defaults</button>
+          <button class="btn btn-info btn-sm" (click)="logSettings()">Log Settings</button>
         </div>
       </div>
 
-      <!-- <pre><code>&lt;!-- Two-way binding --&gt;
-&lt;uilibrary-toggle [(ngModel)]="isEnabled" [ngModelOptions]="{ standalone: true }"&gt;
-  Enable Feature
-&lt;/uilibrary-toggle&gt;
+      <div class="toggle-section">
+        <h4>Feature Toggles</h4>
+        <uilibrary-toggle [(ngModel)]="features.experimentalUI" [ngModelOptions]="{ standalone: true }">
+          Experimental UI Features
+        </uilibrary-toggle>
 
-&lt;!-- Form control --&gt;
-&lt;uilibrary-toggle formControlName="toggleControl"&gt;
-  Form Control Toggle
-&lt;/uilibrary-toggle&gt;</code></pre> -->
-    </div>
-  </div>
+        <uilibrary-toggle [(ngModel)]="features.betaFeatures" [ngModelOptions]="{ standalone: true }">
+          Beta Features Access
+        </uilibrary-toggle>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Interactive Examples</h2>
-      <p>Complex toggle scenarios and real-world usage patterns.</p>
-      
-      <div class="border p-3 mb-3">
-        <div class="toggle-section mb-4">
-          <h4>Settings Panel Simulation</h4>
-          <uilibrary-toggle [(ngModel)]="settings.notifications" [ngModelOptions]="{ standalone: true }">
-            Enable Notifications
-          </uilibrary-toggle>
-          
-          <uilibrary-toggle [(ngModel)]="settings.darkMode" [ngModelOptions]="{ standalone: true }" labelPosition="left">
-            Dark Mode
-          </uilibrary-toggle>
-          
-          <uilibrary-toggle [(ngModel)]="settings.autoSave" [ngModelOptions]="{ standalone: true }" labelSize="large">
-            Auto-Save Documents
-          </uilibrary-toggle>
-          
-          <uilibrary-toggle [(ngModel)]="settings.analytics" [ngModelOptions]="{ standalone: true }" [disabled]="!settings.notifications">
-            Analytics Tracking (requires notifications)
-          </uilibrary-toggle>
-          
+        <uilibrary-toggle [(ngModel)]="features.advancedMode" [ngModelOptions]="{ standalone: true }" [disabled]="!features.betaFeatures">
+          Advanced Mode (requires beta access)
+        </uilibrary-toggle>
+
+        @if (hasEnabledFeatures()) {
           <div class="mt-3">
-            <h5>Current Settings:</h5>
-            <pre>{{stringify(settings)}}</pre>
-          </div>
-          
-          <div class="mt-2">
-            <button class="btn btn-primary btn-sm me-2" (click)="applySettings()">Apply Settings</button>
-            <button class="btn btn-secondary btn-sm me-2" (click)="resetSettings()">Reset to Defaults</button>
-            <button class="btn btn-info btn-sm" (click)="logSettings()">Log Settings</button>
-          </div>
-        </div>
-        
-        <div class="toggle-section">
-          <h4>Feature Toggles</h4>
-          <uilibrary-toggle [(ngModel)]="features.experimentalUI" [ngModelOptions]="{ standalone: true }">
-            Experimental UI Features
-          </uilibrary-toggle>
-          
-          <uilibrary-toggle [(ngModel)]="features.betaFeatures" [ngModelOptions]="{ standalone: true }">
-            Beta Features Access
-          </uilibrary-toggle>
-          
-          <uilibrary-toggle [(ngModel)]="features.advancedMode" [ngModelOptions]="{ standalone: true }" [disabled]="!features.betaFeatures">
-            Advanced Mode (requires beta access)
-          </uilibrary-toggle>
-          
-          <div class="mt-3" *ngIf="hasEnabledFeatures()">
             <div class="alert alert-info">
               <strong>Active Features:</strong> {{getEnabledFeaturesList()}}
             </div>
           </div>
-        </div>
-        
-        <div class="actions mt-4" *ngIf="lastToggleAction">
+        }
+      </div>
+
+      @if (lastToggleAction) {
+        <div class="actions mt-4">
           <div class="alert alert-success">
             <strong>Last Action:</strong> {{lastToggleAction}}
           </div>
         </div>
-      </div>
+      }
+    </div>
 
-      <!-- <pre><code>// Component logic
-settings = {
-  notifications: true,
-  darkMode: false,
-  autoSave: true,
-  analytics: false
-};
-
-applySettings(): void {
-  // Apply settings logic
-  this.lastToggleAction = 'Settings applied successfully';
-  console.log('Applying settings:', this.settings);
-}
-
-resetSettings(): void {
-  this.settings = {
+    <!-- <pre><code>// Component logic
+    settings = {
     notifications: true,
     darkMode: false,
     autoSave: true,
     analytics: false
+    };
+
+    applySettings(): void {
+    // Apply settings logic
+    this.lastToggleAction = 'Settings applied successfully';
+    console.log('Applying settings:', this.settings);
+  }
+
+  resetSettings(): void {
+  this.settings = {
+  notifications: true,
+  darkMode: false,
+  autoSave: true,
+  analytics: false
   };
 }</code></pre> -->
-    </div>
-  </div>
+</div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>API Reference</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Property</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>checked</code></td>
-              <td><code>boolean</code></td>
-              <td><code>false</code></td>
-              <td>Whether the toggle is checked/on</td>
-            </tr>
-            <tr>
-              <td><code>disabled</code></td>
-              <td><code>boolean</code></td>
-              <td><code>false</code></td>
-              <td>Whether the toggle is disabled</td>
-            </tr>
-            <tr>
-              <td><code>hideLabel</code></td>
-              <td><code>boolean</code></td>
-              <td><code>false</code></td>
-              <td>Hide label visually (for accessibility)</td>
-            </tr>
-            <tr>
-              <td><code>labelPosition</code></td>
-              <td><code>string</code></td>
-              <td><code>'right'</code></td>
-              <td>Label position: 'left', 'right'</td>
-            </tr>
-            <tr>
-              <td><code>labelSize</code></td>
-              <td><code>string</code></td>
-              <td><code>'normal'</code></td>
-              <td>Label size: 'normal', 'large'</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <h3 class="mt-4">Events</h3>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Event</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>(change)</code></td>
-              <td><code>EventEmitter&lt;boolean&gt;</code></td>
-              <td>Emitted when toggle state changes</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>API Reference</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>checked</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Whether the toggle is checked/on</td>
+          </tr>
+          <tr>
+            <td><code>disabled</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Whether the toggle is disabled</td>
+          </tr>
+          <tr>
+            <td><code>hideLabel</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Hide label visually (for accessibility)</td>
+          </tr>
+          <tr>
+            <td><code>labelPosition</code></td>
+            <td><code>string</code></td>
+            <td><code>'right'</code></td>
+            <td>Label position: 'left', 'right'</td>
+          </tr>
+          <tr>
+            <td><code>labelSize</code></td>
+            <td><code>string</code></td>
+            <td><code>'normal'</code></td>
+            <td>Label size: 'normal', 'large'</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt-4">Events</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>(change)</code></td>
+            <td><code>EventEmitter&lt;boolean&gt;</code></td>
+            <td>Emitted when toggle state changes</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
 </div>

@@ -1,10 +1,10 @@
 import { Directive } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Directive()
 export abstract class UIFormFieldControl<T> {
-  value!: T | string | null;
+  readonly value!: T | string | null;
   readonly stateChanges!: Observable<void>;
   readonly id!: string;
   readonly placeholder!: string;

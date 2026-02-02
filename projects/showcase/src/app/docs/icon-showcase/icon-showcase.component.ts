@@ -8,9 +8,10 @@ interface IconItem {
 }
 
 @Component({
-  selector: 'app-icon-showcase',
-  templateUrl: './icon-showcase.component.html',
-  styleUrls: ['./icon-showcase.component.css']
+    selector: 'app-icon-showcase',
+    templateUrl: './icon-showcase.component.html',
+    styleUrls: ['./icon-showcase.component.css'],
+    standalone: false
 })
 export class IconShowcaseComponent implements OnInit {
   iconDemoForm: FormGroup;

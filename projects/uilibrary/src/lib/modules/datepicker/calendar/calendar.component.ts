@@ -3,9 +3,10 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 import { isAfter, isBefore } from 'date-fns';
 
 @Component({
-  selector: 'uilibrary-calendar-select',
-  templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.scss'
+    selector: 'uilibrary-calendar-select',
+    templateUrl: './calendar.component.html',
+    styleUrl: './calendar.component.scss',
+    standalone: false
 })
 export class CalendarComponent implements OnInit {
   currentDate = new Date();

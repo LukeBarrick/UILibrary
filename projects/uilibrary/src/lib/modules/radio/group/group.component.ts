@@ -4,8 +4,9 @@ import { RadioButtonComponent } from '../button/button.component';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'uilibrary-radio-group',
-  templateUrl: './group.component.html'
+    selector: 'uilibrary-radio-group',
+    templateUrl: './group.component.html',
+    standalone: false
 })
 export class RadioGroupComponent implements ControlValueAccessor, AfterContentInit, OnInit, OnDestroy {
  @ContentChildren(RadioButtonComponent) radioButtons!: QueryList<RadioButtonComponent>;

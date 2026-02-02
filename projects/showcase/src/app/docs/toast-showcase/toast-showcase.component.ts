@@ -22,9 +22,10 @@ interface Toast {
 }
 
 @Component({
-  selector: 'app-toast-showcase',
-  templateUrl: './toast-showcase.component.html',
-  styleUrls: ['./toast-showcase.component.css']
+    selector: 'app-toast-showcase',
+    templateUrl: './toast-showcase.component.html',
+    styleUrls: ['./toast-showcase.component.css'],
+    standalone: false
 })
 export class ToastShowcaseComponent implements OnInit {
   sampleForm: FormGroup;

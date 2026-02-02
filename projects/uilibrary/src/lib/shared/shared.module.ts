@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule
-  ],
-  exports: [
-    
-  ],
-  providers: [
-  ]
-})
+@NgModule({ exports: [], imports: [CommonModule], providers: [
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 
 export class SharedModule {
  

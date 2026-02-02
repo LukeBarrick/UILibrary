@@ -6,13 +6,14 @@ import { format, parse } from 'date-fns';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 
 @Directive({
-  selector: '[ui-date-input]',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => DateInputDirective)
-    }
-  ]
+    selector: '[ui-date-input]',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => DateInputDirective)
+        }
+    ],
+    standalone: false
 })
 export class DateInputDirective implements UIFormFieldControl<Date>, ControlValueAccessor {
   private dateFnsLocaleService = inject(DateFnsLocaleService);
@@ -64,8 +65,9 @@ export class DateInputDirective implements UIFormFieldControl<Date>, ControlValu
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
   
-  @HostListener('input', ['$event.target.value'])
-  onInput(value: string): void {
+  @HostListener('input', ['$event'])
+  onInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
     //Debounce or handle via regex checked completness?
     //Regex probably more UI friendly option
     const date = parse(value.trim(), 'P', new Date(), { locale: this.dateFnsLocaleService.locale });

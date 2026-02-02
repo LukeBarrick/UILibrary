@@ -4,19 +4,20 @@
   </div>
 
   <section class="normal-nav-links d-flex flex-row flex-nowrap justify-content-flex-start w-100 h-100" #navLinks>
-    <ul class="nav-links"> 
-      <li class="nav-item d-flex" *ngFor="let link of links; index as i; trackBy: trackByFn">
-
-        @if (link.children) {
-          <section class="w-100">
-            <uilibrary-navigation-dropdown [label]="link.label" [links]="link.children"></uilibrary-navigation-dropdown>
-          </section>
-        } @else {
-          <section class="w-100">
-            <uilibrary-navigation-option [link]="link"></uilibrary-navigation-option>
-          </section>
-        }
-      </li>
+    <ul class="nav-links">
+      @for (link of links; track trackByFn(i, link); let i = $index) {
+        <li class="nav-item d-flex">
+          @if (link.children) {
+            <section class="w-100">
+              <uilibrary-navigation-dropdown [label]="link.label" [links]="link.children"></uilibrary-navigation-dropdown>
+            </section>
+          } @else {
+            <section class="w-100">
+              <uilibrary-navigation-option [link]="link"></uilibrary-navigation-option>
+            </section>
+          }
+        </li>
+      }
     </ul>
 
     @if (overflowLinks.length) {
@@ -25,7 +26,7 @@
       </div>
     }
   </section>
-  
+
   <section class="small-nav-links d-flex flex-row flex-nowrap justify-content-space-between w-100 h-100" #navLinks>
     <ul class="nav-links">
       <div class="menu">

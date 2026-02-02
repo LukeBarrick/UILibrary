@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-tooltip-showcase',
-  templateUrl: './tooltip-showcase.component.html',
-  styleUrls: ['./tooltip-showcase.component.css']
+    selector: 'app-tooltip-showcase',
+    templateUrl: './tooltip-showcase.component.html',
+    styleUrls: ['./tooltip-showcase.component.css'],
+    standalone: false
 })
 export class TooltipShowcaseComponent implements OnInit {
   demoForm: FormGroup;

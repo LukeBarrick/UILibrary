@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>Toast Notification System</h1>
       <p class="lead">
-        Toast notifications provide temporary, non-intrusive messages to users about 
+        Toast notifications provide temporary, non-intrusive messages to users about
         system events, user actions, or important information that requires attention.
       </p>
     </div>
@@ -13,7 +13,7 @@
     <div class="col-12">
       <h2>Toast Types</h2>
       <p>Different types of toast notifications for various messaging scenarios.</p>
-      
+
       <div class="border p-3 mb-3">
         <div class="toast-demo-controls mb-4">
           <div class="row">
@@ -39,7 +39,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="toast-examples">
           <h4>Static Toast Examples</h4>
           <div class="toast-container-demo">
@@ -55,7 +55,7 @@
                 Your changes have been saved successfully!
               </div>
             </div>
-            
+
             <!-- Warning Toast -->
             <div class="toast show toast-warning" role="alert">
               <div class="toast-header">
@@ -68,7 +68,7 @@
                 Please review your input before submitting the form.
               </div>
             </div>
-            
+
             <!-- Error Toast -->
             <div class="toast show toast-error" role="alert">
               <div class="toast-header">
@@ -81,7 +81,7 @@
                 Failed to connect to the server. Please try again.
               </div>
             </div>
-            
+
             <!-- Info Toast -->
             <div class="toast show toast-info" role="alert">
               <div class="toast-header">
@@ -97,19 +97,19 @@
           </div>
         </div>
       </div>
-<!-- 
+      <!--
       <pre><code>&lt;!-- Basic toast structure --&gt;
-&lt;div class="toast" role="alert"&gt;
-  &lt;div class="toast-header"&gt;
-    &lt;uilibrary-icon name="icon-check" size="small"&gt;&lt;/uilibrary-icon&gt;
-    &lt;strong class="me-auto"&gt;Success&lt;/strong&gt;
-    &lt;small class="text-muted"&gt;just now&lt;/small&gt;
-    &lt;button type="button" class="btn-close"&gt;&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class="toast-body"&gt;
-    Your message content here
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre> -->
+        &lt;div class="toast" role="alert"&gt;
+        &lt;div class="toast-header"&gt;
+        &lt;uilibrary-icon name="icon-check" size="small"&gt;&lt;/uilibrary-icon&gt;
+        &lt;strong class="me-auto"&gt;Success&lt;/strong&gt;
+        &lt;small class="text-muted"&gt;just now&lt;/small&gt;
+        &lt;button type="button" class="btn-close"&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="toast-body"&gt;
+        Your message content here
+        &lt;/div&gt;
+      &lt;/div&gt;</code></pre> -->
     </div>
   </div>
 
@@ -117,7 +117,7 @@
     <div class="col-12">
       <h2>Interactive Toast Generator</h2>
       <p>Create custom toast notifications with different configurations.</p>
-      
+
       <div class="border p-3 mb-3">
         <div class="toast-generator">
           <div class="row mb-4">
@@ -131,24 +131,24 @@
                   <option value="info">Information</option>
                 </select>
               </div>
-              
+
               <div class="form-group mb-3">
                 <label class="form-label">Title:</label>
                 <input type="text" class="form-control" [(ngModel)]="toastConfig.title" placeholder="Toast title">
               </div>
-              
+
               <div class="form-group mb-3">
                 <label class="form-label">Message:</label>
                 <textarea class="form-control" [(ngModel)]="toastConfig.message" rows="3" placeholder="Toast message content"></textarea>
               </div>
             </div>
-            
+
             <div class="col-md-6">
               <div class="form-group mb-3">
                 <label class="form-label">Duration (milliseconds):</label>
                 <input type="number" class="form-control" [(ngModel)]="toastConfig.duration" min="1000" max="10000" step="1000">
               </div>
-              
+
               <div class="form-group mb-3">
                 <label class="form-label">Position:</label>
                 <select class="form-select" [(ngModel)]="toastConfig.position">
@@ -160,14 +160,14 @@
                   <option value="bottom-center">Bottom Center</option>
                 </select>
               </div>
-              
+
               <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" [(ngModel)]="toastConfig.showIcon" id="showIcon">
                 <label class="form-check-label" for="showIcon">
                   Show Icon
                 </label>
               </div>
-              
+
               <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" [(ngModel)]="toastConfig.closable" id="closable">
                 <label class="form-check-label" for="closable">
@@ -176,40 +176,47 @@
               </div>
             </div>
           </div>
-          
+
           <div class="generator-actions mb-4">
             <button class="btn btn-primary me-2" (click)="generateToast()">Generate Toast</button>
             <button class="btn btn-secondary me-2" (click)="previewToast()">Preview</button>
             <button class="btn btn-outline-secondary" (click)="resetToastConfig()">Reset Configuration</button>
           </div>
-          
-          <div class="toast-preview" *ngIf="showPreview">
-            <h5>Preview:</h5>
-            <div class="preview-container">
-              <div class="toast show" [ngClass]="'toast-' + toastConfig.type">
-                <div class="toast-header">
-                  <uilibrary-icon 
-                    *ngIf="toastConfig.showIcon" 
-                    [name]="getToastIcon(toastConfig.type)" 
-                    size="small" 
-                    appearance="custom" 
-                    [class]="'toast-icon text-' + toastConfig.type">
-                  </uilibrary-icon>
-                  <strong class="me-auto">{{toastConfig.title}}</strong>
-                  <small class="text-muted">now</small>
-                  <button type="button" class="btn-close" *ngIf="toastConfig.closable"></button>
-                </div>
-                <div class="toast-body">
-                  {{toastConfig.message}}
+
+          @if (showPreview) {
+            <div class="toast-preview">
+              <h5>Preview:</h5>
+              <div class="preview-container">
+                <div class="toast show" [ngClass]="'toast-' + toastConfig.type">
+                  <div class="toast-header">
+                    @if (toastConfig.showIcon) {
+                      <uilibrary-icon
+                        [name]="getToastIcon(toastConfig.type)"
+                        size="small"
+                        appearance="custom"
+                        [class]="'toast-icon text-' + toastConfig.type">
+                      </uilibrary-icon>
+                    }
+                    <strong class="me-auto">{{toastConfig.title}}</strong>
+                    <small class="text-muted">now</small>
+                    @if (toastConfig.closable) {
+                      <button type="button" class="btn-close"></button>
+                    }
+                  </div>
+                  <div class="toast-body">
+                    {{toastConfig.message}}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div class="generated-code" *ngIf="generatedCode">
-            <h5>Generated Code:</h5>
-            <pre><code>{{generatedCode}}</code></pre>
-          </div>
+          }
+
+          @if (generatedCode) {
+            <div class="generated-code">
+              <h5>Generated Code:</h5>
+              <pre><code>{{generatedCode}}</code></pre>
+            </div>
+          }
         </div>
       </div>
     </div>
@@ -219,7 +226,7 @@
     <div class="col-12">
       <h2>Toast Queue Management</h2>
       <p>Demonstration of managing multiple toast notifications and queue behavior.</p>
-      
+
       <div class="border p-3 mb-3">
         <div class="queue-demo">
           <div class="queue-controls mb-4">
@@ -238,7 +245,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="queue-status mb-4">
             <div class="status-grid">
               <div class="status-item">
@@ -259,245 +266,257 @@
               </div>
             </div>
           </div>
-          
-          <div class="active-toasts" *ngIf="activeToasts.length > 0">
-            <h5>Currently Active Toasts:</h5>
-            <div class="active-toast-list">
-              <div class="active-toast-item" *ngFor="let toast of activeToasts; let i = index">
-                <div class="toast-info">
-                  <strong>{{toast.title}}</strong>
-                  <p>{{toast.message}}</p>
-                  <small class="text-muted">{{getToastAge(toast.timestamp)}} ago • {{toast.type}}</small>
-                </div>
-                <button class="btn btn-sm btn-outline-danger" (click)="dismissToast(i)">Dismiss</button>
+
+          @if (activeToasts.length > 0) {
+            <div class="active-toasts">
+              <h5>Currently Active Toasts:</h5>
+              <div class="active-toast-list">
+                @for (toast of activeToasts; track toast; let i = $index) {
+                  <div class="active-toast-item">
+                    <div class="toast-info">
+                      <strong>{{toast.title}}</strong>
+                      <p>{{toast.message}}</p>
+                      <small class="text-muted">{{getToastAge(toast.timestamp)}} ago • {{toast.type}}</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger" (click)="dismissToast(i)">Dismiss</button>
+                  </div>
+                }
               </div>
             </div>
-          </div>
-          
-          <div class="queue-visualization" *ngIf="toastQueue.length > 0">
-            <h5>Queued Toasts:</h5>
-            <div class="queue-list">
-              <div class="queue-item" *ngFor="let toast of toastQueue; let i = index">
-                <div class="queue-position">{{i + 1}}</div>
-                <div class="queue-toast-info">
-                  <strong>{{toast.title}}</strong>
-                  <span class="queue-type">{{toast.type}}</span>
-                </div>
+          }
+
+          @if (toastQueue.length > 0) {
+            <div class="queue-visualization">
+              <h5>Queued Toasts:</h5>
+              <div class="queue-list">
+                @for (toast of toastQueue; track toast; let i = $index) {
+                  <div class="queue-item">
+                    <div class="queue-position">{{i + 1}}</div>
+                    <div class="queue-toast-info">
+                      <strong>{{toast.title}}</strong>
+                      <span class="queue-type">{{toast.type}}</span>
+                    </div>
+                  </div>
+                }
               </div>
             </div>
-          </div>
+          }
         </div>
       </div>
-<!-- 
+      <!--
       <pre><code>// Toast queue management service example
-class ToastService {
-  private toastQueue: Toast[] = [];
-  private activeToasts: Toast[] = [];
-  private maxConcurrent = 3;
+        class ToastService {
+        private toastQueue: Toast[] = [];
+        private activeToasts: Toast[] = [];
+        private maxConcurrent = 3;
 
-  showToast(toast: Toast): void {
-    if (this.activeToasts.length &lt; this.maxConcurrent) {
-      this.displayToast(toast);
-    } else {
-      this.toastQueue.push(toast);
+        showToast(toast: Toast): void {
+        if (this.activeToasts.length &lt; this.maxConcurrent) {
+        this.displayToast(toast);
+        } else {
+        this.toastQueue.push(toast);
+      }
     }
-  }
 
-  dismissToast(id: string): void {
+    dismissToast(id: string): void {
     this.activeToasts = this.activeToasts.filter(t => t.id !== id);
     this.processQueue();
   }
 
   private processQueue(): void {
-    while (this.toastQueue.length > 0 && this.activeToasts.length < this.maxConcurrent) {
-      const nextToast = this.toastQueue.shift();
-      if (nextToast) {
-        this.displayToast(nextToast);
-      }
-    }
-  }
+  while (this.toastQueue.length > 0 && this.activeToasts.length < this.maxConcurrent) {
+  const nextToast = this.toastQueue.shift();
+  if (nextToast) {
+  this.displayToast(nextToast);
+}
+}
+}
 }</code></pre> -->
-    </div>
-  </div>
+</div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Toast Integration Examples</h2>
-      <p>Common integration patterns with forms, buttons, and user actions.</p>
-      
-      <div class="border p-3 mb-3">
-        <div class="integration-examples">
-          <h4>Form Submission with Toast Feedback</h4>
-          <div class="form-demo mb-4" [formGroup]="sampleForm">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label class="form-label">Name:</label>
-                  <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
-                  <div class="invalid-feedback" *ngIf="sampleForm.get('name')?.errors?.['required'] && sampleForm.get('name')?.touched">
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>Toast Integration Examples</h2>
+    <p>Common integration patterns with forms, buttons, and user actions.</p>
+
+    <div class="border p-3 mb-3">
+      <div class="integration-examples">
+        <h4>Form Submission with Toast Feedback</h4>
+        <div class="form-demo mb-4" [formGroup]="sampleForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label class="form-label">Name:</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
+                @if (sampleForm.get('name')?.errors?.['required'] && sampleForm.get('name')?.touched) {
+                  <div class="invalid-feedback">
                     Name is required
                   </div>
-                </div>
-                
-                <div class="form-group mb-3">
-                  <label class="form-label">Email:</label>
-                  <input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
-                  <div class="invalid-feedback" *ngIf="sampleForm.get('email')?.errors && sampleForm.get('email')?.touched">
+                }
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label">Email:</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+                @if (sampleForm.get('email')?.errors && sampleForm.get('email')?.touched) {
+                  <div class="invalid-feedback">
                     Please enter a valid email
                   </div>
-                </div>
-                
-                <button class="btn btn-primary" (click)="submitForm()" [disabled]="sampleForm.invalid">
-                  Submit Form
-                </button>
-                <button class="btn btn-outline-secondary ms-2" (click)="simulateError()">
-                  Simulate Error
-                </button>
+                }
               </div>
-              
-              <div class="col-md-6">
-                <h5>Integration Benefits:</h5>
-                <ul>
-                  <li>Immediate feedback on user actions</li>
-                  <li>Non-blocking notifications</li>
-                  <li>Progressive enhancement of user experience</li>
-                  <li>Clear success/error communication</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <h4>Action Buttons with Toast Responses</h4>
-          <div class="action-demo mb-4">
-            <div class="button-grid">
-              <button class="btn btn-success" (click)="performAction('save')">
-                <uilibrary-icon name="icon-check" size="small"></uilibrary-icon>
-                Save Document
+
+              <button class="btn btn-primary" (click)="submitForm()" [disabled]="sampleForm.invalid">
+                Submit Form
               </button>
-              
-              <button class="btn btn-primary" (click)="performAction('export')">
-                <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
-                Export Data
-              </button>
-              
-              <button class="btn btn-warning" (click)="performAction('backup')">
-                <uilibrary-icon name="icon-accommodation" size="small"></uilibrary-icon>
-                Create Backup
-              </button>
-              
-              <button class="btn btn-info" (click)="performAction('sync')">
-                <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
-                Sync Data
+              <button class="btn btn-outline-secondary ms-2" (click)="simulateError()">
+                Simulate Error
               </button>
             </div>
-          </div>
-          
-          <h4>System Events and Notifications</h4>
-          <div class="system-events mb-4">
-            <div class="event-triggers">
-              <button class="btn btn-outline-primary" (click)="simulateSystemEvent('connection')">
-                Connection Lost
-              </button>
-              <button class="btn btn-outline-success" (click)="simulateSystemEvent('update')">
-                Update Available
-              </button>
-              <button class="btn btn-outline-warning" (click)="simulateSystemEvent('storage')">
-                Low Storage
-              </button>
-              <button class="btn btn-outline-info" (click)="simulateSystemEvent('maintenance')">
-                Maintenance Mode
-              </button>
+
+            <div class="col-md-6">
+              <h5>Integration Benefits:</h5>
+              <ul>
+                <li>Immediate feedback on user actions</li>
+                <li>Non-blocking notifications</li>
+                <li>Progressive enhancement of user experience</li>
+                <li>Clear success/error communication</li>
+              </ul>
             </div>
           </div>
         </div>
+
+        <h4>Action Buttons with Toast Responses</h4>
+        <div class="action-demo mb-4">
+          <div class="button-grid">
+            <button class="btn btn-success" (click)="performAction('save')">
+              <uilibrary-icon name="icon-check" size="small"></uilibrary-icon>
+              Save Document
+            </button>
+
+            <button class="btn btn-primary" (click)="performAction('export')">
+              <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
+              Export Data
+            </button>
+
+            <button class="btn btn-warning" (click)="performAction('backup')">
+              <uilibrary-icon name="icon-accommodation" size="small"></uilibrary-icon>
+              Create Backup
+            </button>
+
+            <button class="btn btn-info" (click)="performAction('sync')">
+              <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
+              Sync Data
+            </button>
+          </div>
+        </div>
+
+        <h4>System Events and Notifications</h4>
+        <div class="system-events mb-4">
+          <div class="event-triggers">
+            <button class="btn btn-outline-primary" (click)="simulateSystemEvent('connection')">
+              Connection Lost
+            </button>
+            <button class="btn btn-outline-success" (click)="simulateSystemEvent('update')">
+              Update Available
+            </button>
+            <button class="btn btn-outline-warning" (click)="simulateSystemEvent('storage')">
+              Low Storage
+            </button>
+            <button class="btn btn-outline-info" (click)="simulateSystemEvent('maintenance')">
+              Maintenance Mode
+            </button>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <!-- <pre><code>// Component integration example
-export class MyComponent {
-  constructor(private toastService: ToastService) {}
+    <!-- <pre><code>// Component integration example
+    export class MyComponent {
+    constructor(private toastService: ToastService) {}
 
-  onSave(): void {
+    onSave(): void {
     this.dataService.saveData().subscribe({
-      next: () => {
-        this.toastService.showSuccess('Data saved successfully!');
-      },
-      error: () => {
-        this.toastService.showError('Failed to save data. Please try again.');
-      }
-    });
+    next: () => {
+    this.toastService.showSuccess('Data saved successfully!');
+    },
+    error: () => {
+    this.toastService.showError('Failed to save data. Please try again.');
   }
+  });
+}
 
-  onFormSubmit(): void {
-    if (this.form.valid) {
-      // Process form
-      this.toastService.showSuccess('Form submitted successfully!');
-    } else {
-      this.toastService.showWarning('Please fill in all required fields.');
-    }
-  }
+onFormSubmit(): void {
+if (this.form.valid) {
+// Process form
+this.toastService.showSuccess('Form submitted successfully!');
+} else {
+this.toastService.showWarning('Please fill in all required fields.');
+}
+}
 }</code></pre> -->
-    </div>
-  </div>
+</div>
+</div>
 
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>API Reference</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Property</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>type</code></td>
-              <td><code>string</code></td>
-              <td><code>'info'</code></td>
-              <td>Toast type: 'success', 'warning', 'error', 'info'</td>
-            </tr>
-            <tr>
-              <td><code>title</code></td>
-              <td><code>string</code></td>
-              <td><code>''</code></td>
-              <td>Toast title displayed in header</td>
-            </tr>
-            <tr>
-              <td><code>message</code></td>
-              <td><code>string</code></td>
-              <td><code>''</code></td>
-              <td>Main toast message content</td>
-            </tr>
-            <tr>
-              <td><code>duration</code></td>
-              <td><code>number</code></td>
-              <td><code>5000</code></td>
-              <td>Auto-dismiss duration in milliseconds</td>
-            </tr>
-            <tr>
-              <td><code>position</code></td>
-              <td><code>string</code></td>
-              <td><code>'top-right'</code></td>
-              <td>Toast position on screen</td>
-            </tr>
-            <tr>
-              <td><code>closable</code></td>
-              <td><code>boolean</code></td>
-              <td><code>true</code></td>
-              <td>Show close button</td>
-            </tr>
-            <tr>
-              <td><code>persistent</code></td>
-              <td><code>boolean</code></td>
-              <td><code>false</code></td>
-              <td>Prevent auto-dismiss</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="row mt-5">
+  <div class="col-12">
+    <h2>API Reference</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>type</code></td>
+            <td><code>string</code></td>
+            <td><code>'info'</code></td>
+            <td>Toast type: 'success', 'warning', 'error', 'info'</td>
+          </tr>
+          <tr>
+            <td><code>title</code></td>
+            <td><code>string</code></td>
+            <td><code>''</code></td>
+            <td>Toast title displayed in header</td>
+          </tr>
+          <tr>
+            <td><code>message</code></td>
+            <td><code>string</code></td>
+            <td><code>''</code></td>
+            <td>Main toast message content</td>
+          </tr>
+          <tr>
+            <td><code>duration</code></td>
+            <td><code>number</code></td>
+            <td><code>5000</code></td>
+            <td>Auto-dismiss duration in milliseconds</td>
+          </tr>
+          <tr>
+            <td><code>position</code></td>
+            <td><code>string</code></td>
+            <td><code>'top-right'</code></td>
+            <td>Toast position on screen</td>
+          </tr>
+          <tr>
+            <td><code>closable</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Show close button</td>
+          </tr>
+          <tr>
+            <td><code>persistent</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Prevent auto-dismiss</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
 </div>

@@ -132,7 +132,7 @@
       <div class="border p-3 mb-3">
         <uilibrary-form-field>
           <label ui-label>Two Way Binding Select</label>
-          <uilibrary-select ui-select [(ngModel)]="selectModel" [ngModelOptions]="{ standalone: true }" [items]="items"
+          <uilibrary-select ui-select [(ngModel)]="selectModel" [ngModelOptions]="{ standalone: true }" [items]="items" bindLabel="name"
             placeholder="Please select an item from the dropdown list." [clearable]="true">
             <ng-template #labelTemplate let-item>
               <div><b>{{item.name}}</b></div>

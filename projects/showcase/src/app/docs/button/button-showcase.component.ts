@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-button-showcase',
-  templateUrl: './button-showcase.component.html',
-  styleUrls: ['./button-showcase.component.css']
+    selector: 'app-button-showcase',
+    templateUrl: './button-showcase.component.html',
+    styleUrls: ['./button-showcase.component.css'],
+    standalone: false
 })
 export class ButtonShowcaseComponent implements OnInit {
   isDisabled: boolean = false;

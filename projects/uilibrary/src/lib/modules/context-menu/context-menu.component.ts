@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, HostListener, inject, ViewChild, ViewEnca
 import { MenuTrigger } from './menu-trigger.directive';
 
 @Component({
-  selector: 'uilibrary-context-menu',
-  templateUrl: './context-menu.component.html',
-  styleUrls: ['./context-menu.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'uilibrary-context-menu',
+    templateUrl: './context-menu.component.html',
+    styleUrls: ['./context-menu.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ContextMenuComponent {
   @ViewChild(MenuTrigger, { static: true }) menuTrigger!: MenuTrigger;

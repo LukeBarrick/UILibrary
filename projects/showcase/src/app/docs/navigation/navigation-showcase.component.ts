@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationLink, NavigationLinkType } from 'uilibrary';
 
 @Component({
-  selector: 'app-navigation-showcase',
-  templateUrl: './navigation-showcase.component.html',
-  styleUrls: ['./navigation-showcase.component.css']
+    selector: 'app-navigation-showcase',
+    templateUrl: './navigation-showcase.component.html',
+    styleUrls: ['./navigation-showcase.component.css'],
+    standalone: false
 })
 export class NavigationShowcaseComponent implements OnInit {
 

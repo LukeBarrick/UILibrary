@@ -16,13 +16,14 @@ import { UIFormFieldControl } from '../form-field/form-field-control';
 import { Observable } from 'rxjs';
 
 @Directive({
-  selector: '[ui-input]',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => InputComponent),
-    }
-  ],
+    selector: '[ui-input]',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => InputComponent),
+        }
+    ],
+    standalone: false
 })
 export class InputComponent
   implements UIFormFieldControl<string>, ControlValueAccessor, AfterViewInit {
@@ -42,19 +43,22 @@ export class InputComponent
   private _focussed: boolean = false;
   empty: boolean = false;
 
-  @HostListener('input', ['$event.target.value'])
-  _onInput(value: any): void {
-    this.onChange(value);
+  @HostListener('input', ['$event'])
+  onInput(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target) {
+      this.onChange(target.value);
+    }
   }
 
   @HostListener('blur')
-  _onBlur(): void {
+  onBlur(): void {
     this._focussed = false;
     this.onTouched();
   }
 
   @HostListener('focus')
-  _onFocus(): void {
+  onFocus(): void {
     this._focussed = true;
   }
 
@@ -66,15 +70,10 @@ export class InputComponent
     this.handleInput(value); 
   }
 
-  //Randomly generated ID auto-assigned to input on instantiation.
   id = this.UUID.generate();
 
-  //State changes
-  //Used to hand data to parent consumers via subscription.
   stateChanges: Observable<void> = new Observable<void>
 
-  //Placeholder
-  //Not required as an input as we *should*  directly expose the input here.
   placeholder: string = '';
 
   @Input() set disabled(disabled: boolean) {

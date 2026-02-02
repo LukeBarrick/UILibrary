@@ -7,7 +7,8 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[libCollapse]',
+    selector: '[libCollapse]',
+    standalone: false
 })
 /* 
   Going to keep this around although unused in select component as it will be useful in the future for CDK. 

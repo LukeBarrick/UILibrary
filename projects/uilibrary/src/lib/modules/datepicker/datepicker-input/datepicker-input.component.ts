@@ -7,15 +7,16 @@ import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.ser
 import { format, parse } from 'date-fns';
 
 @Component({
-  selector: 'uilibrary-datepicker-input',
-  templateUrl: './datepicker-input.component.html',
-  styleUrl: './datepicker-input.component.css',
-  providers: [
-    {
-      provide: UIFormFieldControl,
-      useExisting: forwardRef(() => DatePickerInputComponent)
-    }
-  ]
+    selector: 'uilibrary-datepicker-input',
+    templateUrl: './datepicker-input.component.html',
+    styleUrl: './datepicker-input.component.css',
+    providers: [
+        {
+            provide: UIFormFieldControl,
+            useExisting: forwardRef(() => DatePickerInputComponent)
+        }
+    ],
+    standalone: false
 })
 export class DatePickerInputComponent implements UIFormFieldControl<Date>, ControlValueAccessor {
   private elRef = inject(ElementRef<DatePickerInputComponent>);

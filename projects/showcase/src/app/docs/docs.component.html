@@ -7,7 +7,7 @@
         UI Library Documentation
       </h1>
       <p class="docs-subtitle">
-        Explore our comprehensive component library with interactive examples, 
+        Explore our comprehensive component library with interactive examples,
         code snippets, and implementation guides.
       </p>
     </div>
@@ -19,144 +19,156 @@
       <uilibrary-form-field>
         <uilibrary-icon ui-prefix name="icon-search" size="small" appearance="secondary"></uilibrary-icon>
         <label ui-label>Search Components</label>
-        <input 
+        <input
           ui-input
-          type="text" 
+          type="text"
           placeholder="Search components..."
           [(ngModel)]="searchTerm"
-        >
-        <uilibrary-button 
-          *ngIf="searchTerm" 
-          ui-suffix
-          appearance="ghost"
-          size="small"
-          (click)="clearSearch()"
-          title="Clear search"
-        >
-          <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
-        </uilibrary-button>
-      </uilibrary-form-field>
+          >
+          @if (searchTerm) {
+            <uilibrary-button
+              ui-suffix
+              appearance="ghost"
+              size="small"
+              (click)="clearSearch()"
+              title="Clear search"
+              >
+              <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
+            </uilibrary-button>
+          }
+        </uilibrary-form-field>
+      </div>
+
+      <div class="category-filters">
+        @for (category of categories; track category) {
+          <uilibrary-button
+            [appearance]="selectedCategory === category ? 'primary' : 'secondary'"
+            size="medium"
+            (click)="selectedCategory = category"
+            >
+            {{category}}
+            <span class="category-count">({{getCategoryCount(category)}})</span>
+          </uilibrary-button>
+        }
+      </div>
     </div>
 
-    <div class="category-filters">
-      <uilibrary-button 
-        *ngFor="let category of categories"
-        [appearance]="selectedCategory === category ? 'primary' : 'secondary'"
-        size="medium"
-        (click)="selectedCategory = category"
-      >
-        {{category}}
-        <span class="category-count">({{getCategoryCount(category)}})</span>
-      </uilibrary-button>
+    <!-- Results Summary -->
+    @if (searchTerm || selectedCategory !== 'All') {
+      <div class="results-summary">
+        <p>
+          <strong>{{getFilteredTiles().length}}</strong>
+          component{{getFilteredTiles().length !== 1 ? 's' : ''}} found
+          @if (selectedCategory !== 'All') {
+            <span>
+              in <strong>{{selectedCategory}}</strong>
+            </span>
+          }
+          @if (searchTerm) {
+            <span>
+              matching <strong>"{{searchTerm}}"</strong>
+            </span>
+          }
+        </p>
+      </div>
+    }
+
+    <!-- Component Tiles Grid -->
+    <div class="tiles-grid">
+      @for (tile of getFilteredTiles(); track trackByPath($index, tile)) {
+        <div
+          class="component-tile"
+          [class.hovered]="hoveredTile === tile.path"
+          (mouseenter)="onTileHover(tile.path)"
+          (mouseleave)="onTileLeave()"
+          (click)="navigateToComponent(tile)"
+          >
+          <!-- Tile Header -->
+          <div class="tile-header">
+            <div class="tile-icon">
+              <uilibrary-icon
+                [name]="tile.icon"
+                size="large"
+                appearance="primary"
+              ></uilibrary-icon>
+            </div>
+            <div class="tile-category">{{tile.category}}</div>
+          </div>
+          <!-- Tile Content -->
+          <div class="tile-content">
+            <h3 class="tile-title">{{tile.title}}</h3>
+            <p class="tile-description">{{tile.description}}</p>
+          </div>
+          <!-- Tile Footer -->
+          <div class="tile-footer">
+            <div class="component-info">
+              <span class="component-name">{{tile.component}}</span>
+              <span class="route-path">/docs/{{tile.path}}</span>
+            </div>
+            <div class="tile-action">
+              <uilibrary-icon name="icon-arrow-right" size="small" appearance="primary"></uilibrary-icon>
+            </div>
+          </div>
+          <!-- Hover Overlay -->
+          <div class="tile-overlay" [class.visible]="hoveredTile === tile.path">
+            <div class="overlay-content">
+              <h4>{{tile.title}}</h4>
+              <p>Click to explore interactive examples, code snippets, and API documentation.</p>
+              <div class="overlay-actions">
+                <uilibrary-button class="view-docs-btn" appearance="primary" icon="icon-air">View Documentation</uilibrary-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
     </div>
-  </div>
 
-  <!-- Results Summary -->
-  <div class="results-summary" *ngIf="searchTerm || selectedCategory !== 'All'">
-    <p>
-      <strong>{{getFilteredTiles().length}}</strong> 
-      component{{getFilteredTiles().length !== 1 ? 's' : ''}} found
-      <span *ngIf="selectedCategory !== 'All'">
-        in <strong>{{selectedCategory}}</strong>
-      </span>
-      <span *ngIf="searchTerm">
-        matching <strong>"{{searchTerm}}"</strong>
-      </span>
-    </p>
-  </div>
-
-  <!-- Component Tiles Grid -->
-  <div class="tiles-grid">
-    <div 
-      *ngFor="let tile of getFilteredTiles(); trackBy: trackByPath"
-      class="component-tile"
-      [class.hovered]="hoveredTile === tile.path"
-      (mouseenter)="onTileHover(tile.path)"
-      (mouseleave)="onTileLeave()"
-      (click)="navigateToComponent(tile)"
-    >
-      <!-- Tile Header -->
-      <div class="tile-header">
-        <div class="tile-icon">
-          <uilibrary-icon 
-            [name]="tile.icon" 
-            size="large" 
-            appearance="primary"
-          ></uilibrary-icon>
+    <!-- Empty State -->
+    @if (getFilteredTiles().length === 0) {
+      <div class="empty-state">
+        <div class="empty-content">
+          <uilibrary-icon name="icon-search" size="large" appearance="secondary"></uilibrary-icon>
+          <h3>No components found</h3>
+          <p>
+            No components match your current filters.
+            @if (searchTerm) {
+              <span>Try a different search term</span>
+            }
+            @if (!searchTerm && selectedCategory !== 'All') {
+              <span>or select a different category</span>
+              }.
+            </p>
+            <uilibrary-button
+              appearance="primary"
+              size="medium"
+              (click)="selectedCategory = 'All'; searchTerm = ''"
+              >
+              <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
+              Clear Filters
+            </uilibrary-button>
+          </div>
         </div>
-        <div class="tile-category">{{tile.category}}</div>
-      </div>
+      }
 
-      <!-- Tile Content -->
-      <div class="tile-content">
-        <h3 class="tile-title">{{tile.title}}</h3>
-        <p class="tile-description">{{tile.description}}</p>
-      </div>
-
-      <!-- Tile Footer -->
-      <div class="tile-footer">
-        <div class="component-info">
-          <span class="component-name">{{tile.component}}</span>
-          <span class="route-path">/docs/{{tile.path}}</span>
-        </div>
-        <div class="tile-action">
-          <uilibrary-icon name="icon-arrow-right" size="small" appearance="primary"></uilibrary-icon>
-        </div>
-      </div>
-
-      <!-- Hover Overlay -->
-      <div class="tile-overlay" [class.visible]="hoveredTile === tile.path">
-        <div class="overlay-content">
-          <h4>{{tile.title}}</h4>
-          <p>Click to explore interactive examples, code snippets, and API documentation.</p>
-          <div class="overlay-actions">
-             <uilibrary-button class="view-docs-btn" appearance="primary" icon="icon-air">View Documentation</uilibrary-button>
+      <!-- Statistics Section -->
+      <div class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">{{docsTiles.length}}</div>
+            <div class="stat-label">Total Components</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">{{categories.length - 1}}</div>
+            <div class="stat-label">Categories</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Interactive Examples</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Possibilities</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Empty State -->
-  <div class="empty-state" *ngIf="getFilteredTiles().length === 0">
-    <div class="empty-content">
-      <uilibrary-icon name="icon-search" size="large" appearance="secondary"></uilibrary-icon>
-      <h3>No components found</h3>
-      <p>
-        No components match your current filters.
-        <span *ngIf="searchTerm">Try a different search term</span>
-        <span *ngIf="!searchTerm && selectedCategory !== 'All'">or select a different category</span>.
-      </p>
-      <uilibrary-button 
-        appearance="primary" 
-        size="medium"
-        (click)="selectedCategory = 'All'; searchTerm = ''"
-      >
-        <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
-        Clear Filters
-      </uilibrary-button>
-    </div>
-  </div>
-
-  <!-- Statistics Section -->
-  <div class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">{{docsTiles.length}}</div>
-        <div class="stat-label">Total Components</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">{{categories.length - 1}}</div>
-        <div class="stat-label">Categories</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Interactive Examples</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">∞</div>
-        <div class="stat-label">Possibilities</div>
-      </div>
-    </div>
-  </div>
-</div>
