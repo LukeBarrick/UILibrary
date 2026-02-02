@@ -2,7 +2,6 @@ import {
   AfterContentChecked,
   Component,
   ContentChild,
-  HostListener,
   OnDestroy,
 } from '@angular/core';
 import { UIFormFieldControl } from './form-field-control';
