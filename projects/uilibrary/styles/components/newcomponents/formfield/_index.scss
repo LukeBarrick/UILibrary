@@ -14,6 +14,7 @@ uilibrary-form-field {
         border-radius: 7px;
         position: relative;
         align-content: center;
+        margin-bottom: 20px;
 
         
         label {
@@ -43,7 +44,6 @@ uilibrary-form-field {
 
     //TODO - Move out parts into own relevant files & remove use of HAS for browser compatibility
     .form-field:has(.form-field-prefix) {
-       
         label {
             left: 25px;
         }

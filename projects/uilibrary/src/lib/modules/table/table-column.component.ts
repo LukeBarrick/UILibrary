@@ -1,5 +1,6 @@
 import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
 import { TableCellDirective } from './cell.directive';
+import { TableHeaderDirective } from './header.directive';
 
 @Component({
     selector: 'uilibrary-table-column',
@@ -12,6 +13,6 @@ export class TableColumnComponent<T> implements OnInit {
 
     ngOnInit() { }
 
-    @ContentChild('header', {static: false}) headerTemplate?: TemplateRef<unknown>;
+    @ContentChild(TableHeaderDirective, {static: false}) headerTemplate?: TableHeaderDirective<T>;
     @ContentChild(TableCellDirective, {static:false}) cellTemplate?: TableCellDirective<T>;
 }

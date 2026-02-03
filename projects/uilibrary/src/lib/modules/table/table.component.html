@@ -2,7 +2,7 @@
     <thead>
         @for(column of columns; track column.headerTemplate) {
         <th>
-            <ng-container *ngTemplateOutlet="column.headerTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="column.headerTemplate?.template"></ng-container>
         </th>
         }
     </thead>

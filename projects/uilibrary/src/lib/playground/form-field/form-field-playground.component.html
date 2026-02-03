@@ -1,0 +1,105 @@
+<div class="d-flex flex-row">
+    <section class="small">
+        <h3>Label Float</h3>
+        <div [formGroup]="labelShouldNotFloatForm">
+            <uilibrary-form-field>
+                <label ui-label>Label Should Not Float</label>
+                <input ui-input type="text" formControlName="emptyString" />
+            </uilibrary-form-field>
+
+            <uilibrary-form-field>
+                <label ui-label>Label Should Not Float</label>
+                <input ui-input type="text" formControlName="undefined" />
+            </uilibrary-form-field>
+        </div>
+
+        <div [formGroup]="labelShouldFloatForm">
+            <uilibrary-form-field>
+                <label ui-label>Label Should Float</label>
+                <input ui-input tpe="text" formControlName="holdsValue" />
+            </uilibrary-form-field>
+        </div>
+
+    </section>
+    <section class="small" [formGroup]="inputTypesForm">
+        <h3>Input Types</h3>
+        <uilibrary-form-field>
+            <label ui-label>Text</label>
+            <input ui-input type="text" formControlName="text" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Password</label>
+            <input ui-input type="password" formControlName="password" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Email</label>
+            <input ui-input type="email" formControlName="email" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Url</label>
+            <input ui-input type="url" formControlName="url" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Search</label>
+            <input ui-input type="search" formControlName="search" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Tel</label>
+            <input ui-input type="tel" formControlName="tel" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Number</label>
+            <input ui-input type="number" formControlName="number" />
+        </uilibrary-form-field>
+
+
+    </section>
+
+    <section class="small">
+        <div class="d-flex flex-row justify-content-between">
+            <h3>Additional Support</h3>
+            <uilibrary-tooltip ui-suffix placement="right" margin="left">
+                <span title>Additional Support</span>
+                <span content>Label should float on the following controls due to them not emitting a value until
+                    completed.</span>
+            </uilibrary-tooltip>
+        </div>
+
+        <uilibrary-form-field [labelFloatOverride]="true">
+            <label ui-label>Date</label>
+            <input ui-input type="date" formControlName="date" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field [labelFloatOverride]="true">
+            <label ui-label>DateTime-Local</label>
+            <input ui-input type="datetime-local" formControlName="datetimelocal" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field [labelFloatOverride]="true">
+            <label ui-label>Time</label>
+            <input ui-input type="time" formControlName="time" placeholder="hello">
+        </uilibrary-form-field>
+
+
+        <uilibrary-form-field [labelFloatOverride]="true">
+            <label ui-label>Month</label>
+            <input ui-input type="month" formControlName="month" />
+        </uilibrary-form-field>
+
+        <uilibrary-form-field [labelFloatOverride]="true">
+            <label ui-label>Week</label>
+            <input ui-input type="week" formControlName="week" />
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small">
+        <h3>Form Output</h3>
+        <div>{{stringify(inputTypesForm.value)}}</div>
+    </section>
+</div>

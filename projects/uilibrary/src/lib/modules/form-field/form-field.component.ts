@@ -2,6 +2,7 @@ import {
   AfterContentChecked,
   Component,
   ContentChild,
+  Input,
   OnDestroy,
 } from '@angular/core';
 import { UIFormFieldControl } from './form-field-control';
@@ -15,7 +16,7 @@ import { UISuffix } from './directives/UISuffix';
     styleUrls: ['./form-field.component.css'],
     host: {
         '[class.form-field-disabled]': '_control?.disabled',
-        '[class.form-field-label-float]': '_control?.shouldLabelFloat',
+        '[class.form-field-label-float]': 'labelFloatOverride || _control?.shouldLabelFloat',
         '[class.form-field-errors]': '_control?.hasErrors',
         '[class.form-field-touched]': '_control?.touched',
         '[class.form-field-dirty]': '_control?.dirty',
@@ -28,6 +29,8 @@ export class FormFieldComponent implements AfterContentChecked, OnDestroy {
     | undefined;
   @ContentChild(UIPrefix) prefix: UIPrefix | undefined;
   @ContentChild(UISuffix) suffix: UISuffix | undefined;
+
+  @Input() labelFloatOverride: boolean | undefined;
 
   value: any = 1;
   stateChanges: Subscription | undefined;

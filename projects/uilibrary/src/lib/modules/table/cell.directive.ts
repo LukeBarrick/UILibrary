@@ -1,5 +1,4 @@
-import { Directive, inject, Input, TemplateRef } from '@angular/core';
-import { TableComponent } from './table.component';
+import { Directive, Input, TemplateRef } from '@angular/core';
 
 export type TableCellContext<T> = {
     $implicit: T;      // row item
@@ -7,9 +6,10 @@ export type TableCellContext<T> = {
     colIndex: number;
 };
 
+
 @Directive({ selector: '[uilibrary-table-cell]', standalone: false })
 export class TableCellDirective<T> {
-   @Input({ required: true }) appTableCellDefOf!: readonly T[];
+   @Input() appTableCellDefOf: readonly T[] = [];
 
   constructor(public readonly template: TemplateRef<TableCellContext<T>>) {}
 
