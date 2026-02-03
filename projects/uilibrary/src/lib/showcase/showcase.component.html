@@ -312,19 +312,6 @@
       <section class="small d-flex flex-column">
       <p>{{stringify(selectedPeople)}}</p>
     </section>
-
-    <uilibrary-form-field>
-      <label ui-label>Multi Select w/ Prefill</label>
-      <uilibrary-select ui-select [items]="items" [(ngModel)]="selectMultiModelPrefill" [ngModelOptions]="{ standalone: true }"
-      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" bindValue="id" [prefillFirstOption]="true"
-        placeholder="Please select an item from the dropdown list." [clearable]="true">
-      </uilibrary-select>
-      
-    </uilibrary-form-field>
-
-      <section class="small d-flex flex-column">
-      <p>{{stringify(selectMultiModelPrefill)}}</p>
-    </section>
   </section>
 
 

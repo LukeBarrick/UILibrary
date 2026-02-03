@@ -178,19 +178,6 @@
           <p><strong>Selected Values:</strong></p>
           <pre>{{stringify(selectMultiModel)}}</pre>
         </div>
-
-        <uilibrary-form-field>
-          <label ui-label>Multi Select with Prefill</label>
-          <uilibrary-select ui-select [items]="items" [(ngModel)]="selectMultiModelPrefill" [ngModelOptions]="{ standalone: true }"
-          [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" [prefillFirstOption]="true"
-            placeholder="This select prefills the first option." [clearable]="true">
-          </uilibrary-select>
-        </uilibrary-form-field>
-
-        <div class="mt-3">
-          <p><strong>Prefilled Values:</strong></p>
-          <pre>{{stringify(selectMultiModelPrefill)}}</pre>
-        </div>
       </div>
 
       <!-- <pre><code>&lt;uilibrary-select 

@@ -26,7 +26,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   standalone: false
 })
 export class SelectComponent
-  implements UIFormFieldControl<any>, ControlValueAccessor, OnInit {
+  implements UIFormFieldControl<any>, ControlValueAccessor {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
@@ -35,7 +35,6 @@ export class SelectComponent
 
   @Input() items: any;
 
-  @Input() prefillFirstOption: boolean = false;
   @Input() ariaLabel: string = '';
   @Input() isDisabled: boolean = false;
   @Input() loading: boolean = false;
@@ -184,18 +183,6 @@ export class SelectComponent
     this.writeValue(this.value);
     this.onChange(event);
     this.onTouched();
-  }
-
-  ngOnInit() {
-    setTimeout(() => {
-      if (this.prefillFirstOption && this.value == undefined) {
-        if (!this.multiple) {
-          this.handleInput(this.items[0]);
-        } else {
-          this.handleInput([this.items[0]]);
-        }
-      }
-    }, 0);
   }
 
   compareFn(item: any, selected: any) {
