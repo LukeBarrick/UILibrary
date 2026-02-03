@@ -1,0 +1,89 @@
+<h1>Text Input</h1>
+<div class="d-flex flex-row">
+    <section class="small">
+        <h3>Attributes</h3>
+        <uilibrary-form-field [labelFloatOverride]="true">
+            <label ui-label>Placeholder</label>
+            <input ui-input [(ngModel)]="basicInputPlaceholder" placeholder="Placeholder should show" type="text">
+        </uilibrary-form-field>
+    </section>
+    <section class="small">
+        <h3>Two Way Binding</h3>
+        <div>
+            <uilibrary-form-field>
+                <label ui-label>Basic Input (No Binding)</label>
+                <input ui-input type="text">
+            </uilibrary-form-field>
+
+            <uilibrary-form-field>
+                <label ui-label>Basic Input (Binding)</label>
+                <input ui-input [(ngModel)]="basicInputBinding" type="text">
+                <span ui-note>Current value: {{basicInputBinding}}</span>
+            </uilibrary-form-field>
+
+            <div class="d-flex flex-row">
+                <uilibrary-form-field>
+                    <label ui-label>Basic Input (Disabled)</label>
+                    <input ui-input [(ngModel)]="basicInputDisabled" type="text" [disabled]="isDisabled">
+                </uilibrary-form-field>
+                <uilibrary-button (click)="toggleDisabled()">Toggle</uilibrary-button>
+            </div>
+
+            <div class="d-flex flex-row">
+                <uilibrary-form-field [class.error]="!basicInputError">
+                    <label ui-label>Basic Input (Error)</label>
+                    <input ui-input [(ngModel)]="basicInputError" type="text" />
+                    @if(!basicInputError) {
+                        <span ui-error>Required form field</span>
+                    }
+                </uilibrary-form-field>
+            </div>
+        </div>
+    </section>
+    <section class="small">
+        <h3>Form Controls</h3>
+        <div [formGroup]="formControlInputForm">
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input</label>
+                <input ui-input formControlName="formControlInput" type="text">
+            </uilibrary-form-field>
+
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input (Preset Value)</label>
+                <input ui-input formControlName="formControlInputWithValue" type="text">
+                <span ui-note>Current Value: {{stringify(formControlInputForm.controls['formControlInputWithValue'].value)}}</span>
+            </uilibrary-form-field>
+
+            <div class="d-flex flex-row">
+                <uilibrary-form-field>
+                    <label ui-label>Form Control Input (Disabled)</label>
+                    <input ui-input formControlName="formControlInputDisabled" type="text">
+                </uilibrary-form-field>
+                <uilibrary-button (click)="toggleDisabledFormControl()">Toggle</uilibrary-button>
+            </div>
+
+            <div class="d-flex flex-row">
+                <uilibrary-form-field>
+                    <label ui-label>Form Control Input (Error)</label>
+                    <input ui-input formControlName="formControlInputError" type="text" />
+                    @if(formControlInputForm.get('formControlInputError')?.hasError('required')) {
+                        <span ui-error>Required form field</span>
+                    }
+                </uilibrary-form-field>
+            </div>
+
+             <div class="d-flex flex-row">
+                <uilibrary-form-field>
+                    <label ui-label>Form Control Input (Untouched with Validator)</label>
+                    <input ui-input formControlName="formControlInputUntouched" type="text" />
+                </uilibrary-form-field>
+            </div>
+        </div>
+    </section>
+    @if(showOutput) {
+    <section class="small">
+        <h3>Output</h3>
+      {{stringify(formControlInputForm.value)}}
+    </section>
+    }
+</div>

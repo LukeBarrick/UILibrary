@@ -76,6 +76,7 @@ export class InputComponent
 
   placeholder: string = '';
 
+  _disabled: boolean | undefined = undefined;
   @Input() set disabled(disabled: boolean) {
     this.setDisabledState(disabled);
   }

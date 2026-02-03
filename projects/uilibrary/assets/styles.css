@@ -13909,6 +13909,9 @@ uilibrary-toggle .switch-container input:hover + .slider:before {
   box-shadow: 0 0 0 0.75rem rgba(64, 132, 103, 0.2);
 }
 
+uilibrary-form-field {
+  width: 100%;
+}
 uilibrary-form-field .form-field {
   display: flex;
   align-items: center;
@@ -13924,7 +13927,6 @@ uilibrary-form-field .form-field {
   border-radius: 7px;
   position: relative;
   align-content: center;
-  margin-bottom: 20px;
 }
 uilibrary-form-field .form-field label {
   position: absolute;
@@ -13936,6 +13938,14 @@ uilibrary-form-field .form-field label {
   pointer-events: none;
   font-weight: 500;
   z-index: 2000;
+}
+uilibrary-form-field .form-field-footer {
+  height: 25px;
+  width: 100%;
+  padding-top: 2px;
+  margin-left: 15px;
+  font-size: 12px;
+  margin-bottom: 10px;
 }
 uilibrary-form-field .form-field-prefix {
   margin-left: 10px;

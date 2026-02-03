@@ -28,3 +28,10 @@
 .example-right-align {
     text-align: right;
 }
+
+.playground {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 10px;
+}

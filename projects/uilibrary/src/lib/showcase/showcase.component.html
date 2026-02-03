@@ -35,621 +35,631 @@
   </uilibrary-table-column>
 </uilibrary-table>
 
-
+<div class="playground">
   <uilibrary-navigation-playground></uilibrary-navigation-playground>
   <uilibrary-typography-playground></uilibrary-typography-playground>
   <uilibrary-button-playground></uilibrary-button-playground>
   <uilibrary-form-field-playground [showOutput]="true"></uilibrary-form-field-playground>
-
-  <section class="small d-flex flex-column" [formGroup]="textInputs2">
-    <uilibrary-form-field>
-      <label ui-label>Basic Text Input</label>
-      <input ui-input type="text">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Basic Text Input Binding</label>
-      <input ui-input type="text" [(ngModel)]="textInput" [ngModelOptions]="{ standalone: true }">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Text Input Form Control</label>
-      <input ui-input type="text" formControlName="textInput21">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Text Input Form Control</label>
-      <input ui-input type="text" formControlName="textInput22">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Placeholder Form Control</label>
-      <input ui-input type="text" formControlName="placeholderFormControl" placeholder="This is a placeholder">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Disabled Text Input Form Control</label>
-      <input ui-input type="text" formControlName="textInput23">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Disabled Text Input Form Control v/ Value</label>
-      <input ui-input type="text" formControlName="textInput24">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field [class.error]="!textInputError">
-      <label ui-label>Error Text Input Binding</label>
-      <input ui-input type="text" [(ngModel)]="textInputError" [ngModelOptions]="{ standalone: true }">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Error Text Input Form Control</label>
-      <input ui-input type="text" [disabled]="true">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <uilibrary-icon ui-prefix name="icon-air" size="small"></uilibrary-icon>
-      <label ui-label>Prefix Form Control</label>
-      <input ui-input type="text" formControlName="prefixFormControl" placeholder="This is a placeholder">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Suffix Form Control</label>
-      <input ui-input type="text" formControlName="suffixFormControl" placeholder="This is a placeholder">
-      <uilibrary-icon ui-suffix name="icon-air" size="small"></uilibrary-icon>
-    </uilibrary-form-field>
-
-     <uilibrary-form-field>
-      <div ui-text-prefix>https://</div>
-      <label ui-label>Text Prefix Form Control</label>
-      <input ui-input type="text" formControlName="prefixFormControl" placeholder="www.google.com">
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <label ui-label>Text Suffix Form Control</label>
-      <input ui-input type="text" formControlName="suffixFormControl" class="example-right-align" placeholder="100">
-       <div ui-text-suffix>.00</div>
-    </uilibrary-form-field>
-
-    <uilibrary-form-field>
-      <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
-      <label ui-label>Prefix & Suffix Form Control</label>
-      <input ui-input type="text" formControlName="prefixSuffixFormControl" placeholder="This is a placeholder">
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
-    </uilibrary-form-field>
-
-    <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="debugme()">
-      debug me
-    </uilibrary-button>
-
-   
+  <uilibrary-input-playground [showOutput]="true"></uilibrary-input-playground>
+</div>
 
 
-    <uilibrary-form-field>
-      <label ui-label>Prefix & Suffix Form Control</label>
-      <input ui-input type="text" formControlName="prefixSuffixFormControl" placeholder="This is a placeholder">
+<section class="small d-flex flex-column" [formGroup]="textInputs2">
+  <uilibrary-form-field>
+    <label ui-label>Basic Text Input</label>
+    <input ui-input type="text">
+  </uilibrary-form-field>
 
-      <uilibrary-tooltip ui-suffix placement="right" margin="left">
-        <span title>Title</span>
-        <span content>This is some tooltip content.</span>
-      </uilibrary-tooltip>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Basic Text Input Binding</label>
+    <input ui-input type="text" [(ngModel)]="textInput" [ngModelOptions]="{ standalone: true }">
+  </uilibrary-form-field>
 
-  </section>
+  <uilibrary-form-field>
+    <label ui-label>Text Input Form Control</label>
+    <input ui-input type="text" formControlName="textInput21">
+  </uilibrary-form-field>
 
-  <section class="small d-flex" [formGroup]="textAreas2">
-    <uilibrary-form-field>
-      <label ui-label>Text Area Form Control</label>
-      <textarea ui-input formControlName="textArea1"></textarea>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Text Input Form Control</label>
+    <input ui-input type="text" formControlName="textInput22">
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
-      <label ui-label>Text Area Form Control</label>
-      <textarea ui-input formControlName="placeholderFormControl" placeholder="This is a text area"></textarea>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Placeholder Form Control</label>
+    <input ui-input type="text" formControlName="placeholderFormControl" placeholder="This is a placeholder">
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
-      <label ui-label>Text Area Form Control</label>
-      <textarea ui-input formControlName="prefixFormControl"></textarea>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Disabled Text Input Form Control</label>
+    <input ui-input type="text" formControlName="textInput23">
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Text Area Form Control</label>
-      <textarea ui-input formControlName="suffixFormControl"></textarea>
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Disabled Text Input Form Control v/ Value</label>
+    <input ui-input type="text" formControlName="textInput24">
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
-      <label ui-label>Text Area Form Control</label>
-      <textarea ui-input formControlName="prefixSuffixFormControl"></textarea>
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
-    </uilibrary-form-field>
-  </section>
+  <uilibrary-form-field [class.error]="!textInputError">
+    <label ui-label>Error Text Input Binding</label>
+    <input ui-input type="text" [(ngModel)]="textInputError" [ngModelOptions]="{ standalone: true }">
+  </uilibrary-form-field>
 
-  <section class="small d-flex" [formGroup]="selectControls2">
-    <uilibrary-form-field>
-      <label ui-label>Basic Select</label>
-      <uilibrary-select ui-select [items]="items" formControlName="selectControl" [clearable]="true">
-        <ng-template #labelTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-        <ng-template #optionTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-      </uilibrary-select>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Error Text Input Form Control</label>
+    <input ui-input type="text" [disabled]="true">
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Select Form Control</label>
-      <uilibrary-select ui-select [items]="items"
-        placeholder="Please select an item from the dropdown list."
-        formControlName="placeholderFormControl" [clearable]="true">
-        <ng-template #labelTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-        <ng-template #optionTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-      </uilibrary-select>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <uilibrary-icon ui-prefix name="icon-air" size="small"></uilibrary-icon>
+    <label ui-label>Prefix Form Control</label>
+    <input ui-input type="text" formControlName="prefixFormControl" placeholder="This is a placeholder">
+  </uilibrary-form-field>
 
-     <uilibrary-form-field>
-      <label ui-label>Disabled Select Form Control</label>
-      <uilibrary-select ui-select [items]="items"
-        placeholder="Please select an item from the dropdown list."
-        formControlName="placeholderFormControl2" [clearable]="true">
-        <ng-template #labelTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-        <ng-template #optionTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-      </uilibrary-select>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Suffix Form Control</label>
+    <input ui-input type="text" formControlName="suffixFormControl" placeholder="This is a placeholder">
+    <uilibrary-icon ui-suffix name="icon-air" size="small"></uilibrary-icon>
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Select w/ Prefix</label>
-      <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
-      <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
-        formControlName="prefixFormControl" [clearable]="true">
-        <ng-template #labelTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-        <ng-template #optionTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-      </uilibrary-select>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <div ui-text-prefix>https://</div>
+    <label ui-label>Text Prefix Form Control</label>
+    <input ui-input type="text" formControlName="prefixFormControl" placeholder="www.google.com">
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Select w/ Suffix</label>
-      <uilibrary-select ui-select #select [items]="items" placeholder="Please select an item from the dropdown list."
-        formControlName="suffixFormControl" [clearable]="true">
-        <ng-template #labelTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-        <ng-template #optionTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-      </uilibrary-select>
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red;" (click)="select._open = true"></div>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Text Suffix Form Control</label>
+    <input ui-input type="text" formControlName="suffixFormControl" class="example-right-align" placeholder="100">
+    <div ui-text-suffix>.00</div>
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Select w/ Prefix & Suffix</label>
-      <div ui-text-prefix>00.</div>
-      <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
-        formControlName="prefixSuffixFormControl" [clearable]="true">
-        <ng-template #labelTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-        <ng-template #optionTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-      </uilibrary-select>
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
-    </uilibrary-form-field>
-
-
-    <uilibrary-form-field>
-      <label ui-label>Two Way Binding Select</label>
-      <uilibrary-select ui-select [(ngModel)]="selectedPerson" [ngModelOptions]="{ standalone: true }" [items]="$people | async"
-        placeholder="Please select an item from the dropdown list." bindLabel="name" [clearable]="true">
-        <ng-template #labelTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-        <ng-template #optionTemplate let-item>
-          <div>
-            <b>{{item.name}}</b>
-          </div>
-        </ng-template>
-      </uilibrary-select>
-    </uilibrary-form-field>
-    
-    <section class="small d-flex flex-column">
-      <p>{{stringify(selectModel)}}</p>
-    </section>
-    
-    
-    <uilibrary-form-field>
-      <label ui-label>Multi Select</label>
-      <uilibrary-select ui-select [items]="$people | async" [(ngModel)]="selectedPeople" [ngModelOptions]="{ standalone: true }"  
-      [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="name" 
-        placeholder="Please select an item from the dropdown list." [clearable]="true">
-      </uilibrary-select>
-      
-    </uilibrary-form-field>
-
-      <section class="small d-flex flex-column">
-      <p>{{stringify(selectedPeople)}}</p>
-    </section>
-  </section>
-
-
-
-  <section class="small d-flex flex-column" [formGroup]="datePickers2">
-    <uilibrary-form-field>
-      <label ui-label>Basic Date Picker</label>
-      <uilibrary-datepicker-input [(ngModel)]="modelDatePicker1" [ngModelOptions]="{ standalone: true }"></uilibrary-datepicker-input>
-    </uilibrary-form-field>
-    Value of control is: {{modelDatePicker1}}
-   
+  <uilibrary-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Prefix & Suffix Form Control</label>
+    <input ui-input type="text" formControlName="prefixSuffixFormControl" placeholder="This is a placeholder">
     <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
-    <uilibrary-form-field>
-      <label ui-label>Form Control Date Picker</label>
-      <uilibrary-datepicker-input formControlName="datePicker1"></uilibrary-datepicker-input>
-    </uilibrary-form-field>
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Button Toggle Date Picker</label>
-      <uilibrary-datepicker-input #picker1 formControlName="datePicker2"></uilibrary-datepicker-input>
-    </uilibrary-form-field>
+  <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="debugme()">
+    debug me
+  </uilibrary-button>
 
-    <uilibrary-button appearance="primary" (click)="picker1.open()">Toggle Open</uilibrary-button>
 
-    <uilibrary-form-field>
-      <label ui-label>Suffix Date Picker</label>
-      <uilibrary-datepicker-input #picker2 formControlName="datePicker3"></uilibrary-datepicker-input>
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="picker2.open()"></div>
-    </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <div ui-prefix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="picker3.open()"></div>
-      <label ui-label>Prefix Date Picker</label>
-      <uilibrary-datepicker-input #picker3 formControlName="datePicker4"></uilibrary-datepicker-input>
-    </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Disabled Date Picker</label>
-      <uilibrary-datepicker-input formControlName="datePicker5"></uilibrary-datepicker-input>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Prefix & Suffix Form Control</label>
+    <input ui-input type="text" formControlName="prefixSuffixFormControl" placeholder="This is a placeholder">
 
-    <!-- <uilibrary-form-field>
+    <uilibrary-tooltip ui-suffix placement="right" margin="left">
+      <span title>Title</span>
+      <span content>This is some tooltip content.</span>
+    </uilibrary-tooltip>
+  </uilibrary-form-field>
+
+</section>
+
+<section class="small d-flex" [formGroup]="textAreas2">
+  <uilibrary-form-field>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="textArea1"></textarea>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="placeholderFormControl" placeholder="This is a text area"></textarea>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="prefixFormControl"></textarea>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="suffixFormControl"></textarea>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <label ui-label>Text Area Form Control</label>
+    <textarea ui-input formControlName="prefixSuffixFormControl"></textarea>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  </uilibrary-form-field>
+</section>
+
+<section class="small d-flex" [formGroup]="selectControls2">
+  <uilibrary-form-field>
+    <label ui-label>Basic Select</label>
+    <uilibrary-select ui-select [items]="items" formControlName="selectControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Select Form Control</label>
+    <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="placeholderFormControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Disabled Select Form Control</label>
+    <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="placeholderFormControl2" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Select w/ Prefix</label>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red;"></div>
+    <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="prefixFormControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Select w/ Suffix</label>
+    <uilibrary-select ui-select #select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="suffixFormControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;" (click)="select._open = true"></div>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Select w/ Prefix & Suffix</label>
+    <div ui-text-prefix>00.</div>
+    <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="prefixSuffixFormControl" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  </uilibrary-form-field>
+
+
+  <uilibrary-form-field>
+    <label ui-label>Two Way Binding Select</label>
+    <uilibrary-select ui-select [(ngModel)]="selectedPerson" [ngModelOptions]="{ standalone: true }"
+      [items]="$people | async" placeholder="Please select an item from the dropdown list." bindLabel="name"
+      [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-field>
+
+  <section class="small d-flex flex-column">
+    <p>{{stringify(selectModel)}}</p>
+  </section>
+
+
+  <uilibrary-form-field>
+    <label ui-label>Multi Select</label>
+    <uilibrary-select ui-select [items]="$people | async" [(ngModel)]="selectedPeople"
+      [ngModelOptions]="{ standalone: true }" [multiple]="true" [maxSelectedItems]="3" [closeOnSelect]="false"
+      [useCustomTemplate]="false" bindLabel="name" placeholder="Please select an item from the dropdown list."
+      [clearable]="true">
+    </uilibrary-select>
+
+  </uilibrary-form-field>
+
+  <section class="small d-flex flex-column">
+    <p>{{stringify(selectedPeople)}}</p>
+  </section>
+</section>
+
+
+
+<section class="small d-flex flex-column" [formGroup]="datePickers2">
+  <uilibrary-form-field>
+    <label ui-label>Basic Date Picker</label>
+    <uilibrary-datepicker-input [(ngModel)]="modelDatePicker1"
+      [ngModelOptions]="{ standalone: true }"></uilibrary-datepicker-input>
+  </uilibrary-form-field>
+  Value of control is: {{modelDatePicker1}}
+
+  <div ui-suffix style="height: 30px; width: 30px; background-color: red;"></div>
+  <uilibrary-form-field>
+    <label ui-label>Form Control Date Picker</label>
+    <uilibrary-datepicker-input formControlName="datePicker1"></uilibrary-datepicker-input>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Button Toggle Date Picker</label>
+    <uilibrary-datepicker-input #picker1 formControlName="datePicker2"></uilibrary-datepicker-input>
+  </uilibrary-form-field>
+
+  <uilibrary-button appearance="primary" (click)="picker1.open()">Toggle Open</uilibrary-button>
+
+  <uilibrary-form-field>
+    <label ui-label>Suffix Date Picker</label>
+    <uilibrary-datepicker-input #picker2 formControlName="datePicker3"></uilibrary-datepicker-input>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="picker2.open()">
+    </div>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="picker3.open()">
+    </div>
+    <label ui-label>Prefix Date Picker</label>
+    <uilibrary-datepicker-input #picker3 formControlName="datePicker4"></uilibrary-datepicker-input>
+  </uilibrary-form-field>
+
+  <uilibrary-form-field>
+    <label ui-label>Disabled Date Picker</label>
+    <uilibrary-datepicker-input formControlName="datePicker5"></uilibrary-datepicker-input>
+  </uilibrary-form-field>
+
+  <!-- <uilibrary-form-field>
       <label ui-label>Don't Close On Select Date Picker</label>
       <uilibrary-datepicker-input formControlName="datePicker4" [closeOnSelection]="false"></uilibrary-datepicker-input>
     </uilibrary-form-field>
  -->
 
 
-    <uilibrary-form-field>
-      <label ui-label>Basic Date Range Picker</label>
-      <uilibrary-date-range-input>
-        <input startDate [(ngModel)]="startDateModel" [ngModelOptions]="{ standalone: true }"/>
-        <input endDate [(ngModel)]="endDateModel" [ngModelOptions]="{ standalone: true }"/>
-      </uilibrary-date-range-input>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Basic Date Range Picker</label>
+    <uilibrary-date-range-input>
+      <input startDate [(ngModel)]="startDateModel" [ngModelOptions]="{ standalone: true }" />
+      <input endDate [(ngModel)]="endDateModel" [ngModelOptions]="{ standalone: true }" />
+    </uilibrary-date-range-input>
+  </uilibrary-form-field>
 
-    Value of Start Date: {{startDateModel}}
-    <br/>
-    Value of End Date: {{endDateModel}}
+  Value of Start Date: {{startDateModel}}
+  <br />
+  Value of End Date: {{endDateModel}}
 
-    <uilibrary-form-field>
-      <label ui-label>Form Control Date Range Picker</label>
-      <uilibrary-date-range-input>
-        <input startDate formControlName="startDate1"/>
-        <input endDate formControlName="endDate1"/>
-      </uilibrary-date-range-input>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Form Control Date Range Picker</label>
+    <uilibrary-date-range-input>
+      <input startDate formControlName="startDate1" />
+      <input endDate formControlName="endDate1" />
+    </uilibrary-date-range-input>
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Toggle Open Form Control Date Range Picker</label>
-      <uilibrary-date-range-input #pickerRange>
-        <input startDate formControlName="startDate2"/>
-        <input endDate formControlName="endDate2"/>
-      </uilibrary-date-range-input>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Toggle Open Form Control Date Range Picker</label>
+    <uilibrary-date-range-input #pickerRange>
+      <input startDate formControlName="startDate2" />
+      <input endDate formControlName="endDate2" />
+    </uilibrary-date-range-input>
+  </uilibrary-form-field>
 
-    <uilibrary-button appearance="primary" (click)="pickerRange.open()">Toggle Open</uilibrary-button>
+  <uilibrary-button appearance="primary" (click)="pickerRange.open()">Toggle Open</uilibrary-button>
 
-    <uilibrary-form-field>
-      <label ui-label>Suffix Date Range Picker</label>
-      <uilibrary-date-range-input #pickerRange1>
-        <input startDate formControlName="startDate3"/>
-        <input endDate formControlName="endDate3"/>
-      </uilibrary-date-range-input>
-      <div ui-suffix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="pickerRange1.open()"></div>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Suffix Date Range Picker</label>
+    <uilibrary-date-range-input #pickerRange1>
+      <input startDate formControlName="startDate3" />
+      <input endDate formControlName="endDate3" />
+    </uilibrary-date-range-input>
+    <div ui-suffix style="height: 30px; width: 30px; background-color: red; cursor: pointer;"
+      (click)="pickerRange1.open()"></div>
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <div ui-prefix style="height: 30px; width: 30px; background-color: red; cursor: pointer;" (click)="pickerRange2.open()"></div>
-      <label ui-label>Prefix Date Range Picker</label>
-      <uilibrary-date-range-input #pickerRange2>
-        <input startDate formControlName="startDate4"/>
-        <input endDate formControlName="endDate4"/>
-      </uilibrary-date-range-input>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <div ui-prefix style="height: 30px; width: 30px; background-color: red; cursor: pointer;"
+      (click)="pickerRange2.open()"></div>
+    <label ui-label>Prefix Date Range Picker</label>
+    <uilibrary-date-range-input #pickerRange2>
+      <input startDate formControlName="startDate4" />
+      <input endDate formControlName="endDate4" />
+    </uilibrary-date-range-input>
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Don't Close On Select Date Range</label>
-      <uilibrary-date-range-input [closeOnSelection]="false">
-        <input startDate formControlName="startDate5"/>
-        <input endDate formControlName="endDate5"/>
-      </uilibrary-date-range-input>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Don't Close On Select Date Range</label>
+    <uilibrary-date-range-input [closeOnSelection]="false">
+      <input startDate formControlName="startDate5" />
+      <input endDate formControlName="endDate5" />
+    </uilibrary-date-range-input>
+  </uilibrary-form-field>
 
-    <uilibrary-form-field>
-      <label ui-label>Disabled Form Control Date Range</label>
-      <uilibrary-date-range-input [closeOnSelection]="false">
-        <input startDate formControlName="startDate6"/>
-        <input endDate formControlName="endDate6"/>
-      </uilibrary-date-range-input>
-    </uilibrary-form-field>
+  <uilibrary-form-field>
+    <label ui-label>Disabled Form Control Date Range</label>
+    <uilibrary-date-range-input [closeOnSelection]="false">
+      <input startDate formControlName="startDate6" />
+      <input endDate formControlName="endDate6" />
+    </uilibrary-date-range-input>
+  </uilibrary-form-field>
 
-    stuff I want to do:
-    on tab focus leave, close calendar 
-    keyboard nav within calendar
-    improve date selection strategy for selecting same start date as end date to switch dates?
-    when date is selected move active month when calendar is open to this date range
-    Make single date picker input removal deactivate the date in the calendar
-
-
-    <button (click)="damnson()">debug</button>
-  </section>
-
-  <section class="small d-flex flex-column" [formGroup]="radioButtons2">
-    <h3>Two Way Binding Radio Group</h3>
-
-    <uilibrary-radio-button [value]="1" [checked]="false">This is an basic radio button</uilibrary-radio-button>
-
-    <uilibrary-radio-button [value]="1" [(checked)]="notChecked">This is a two way binding radio button</uilibrary-radio-button>
-
-    <uilibrary-radio-button [value]="1" [disabled]="true">This is a disabled radio button</uilibrary-radio-button>
-
-    <uilibrary-radio-button [value]="1" [checked]="true" [disabled]="true">This is a disabled radio button</uilibrary-radio-button>
-
-    <uilibrary-radio-group formControlName="radioButton1">
-      <uilibrary-radio-button [value]="1">This is a radio button</uilibrary-radio-button>
-      <uilibrary-radio-button [value]="2">This is a radio button</uilibrary-radio-button>
-      <uilibrary-radio-button [value]="6" [disabled]="radioButtonDisabled">This is a radio button</uilibrary-radio-button>
-    </uilibrary-radio-group>
-
-    <uilibrary-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }">
-      <uilibrary-radio-button [value]="'aaa'">This is a radio button</uilibrary-radio-button>
-      <uilibrary-radio-button [value]="2">This is a radio button</uilibrary-radio-button>
-      <uilibrary-radio-button [value]="6">This is a radio button</uilibrary-radio-button>
-    </uilibrary-radio-group>
-
-    <uilibrary-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }" [disabled]="true">
-      <uilibrary-radio-button [value]="'aaa'">This is a radio button</uilibrary-radio-button>
-      <uilibrary-radio-button [value]="2">This is a radio button</uilibrary-radio-button>
-      <uilibrary-radio-button [value]="6">This is a radio button</uilibrary-radio-button>
-    </uilibrary-radio-group>
-
-    Radio Model Value is: {{radioButtonModel}}
-
-    
-    <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="radioButtonChecked()">
-      Change Value
-    </uilibrary-button>
+  stuff I want to do:
+  on tab focus leave, close calendar
+  keyboard nav within calendar
+  improve date selection strategy for selecting same start date as end date to switch dates?
+  when date is selected move active month when calendar is open to this date range
+  Make single date picker input removal deactivate the date in the calendar
 
 
-  </section>
+  <button (click)="damnson()">debug</button>
+</section>
+
+<section class="small d-flex flex-column" [formGroup]="radioButtons2">
+  <h3>Two Way Binding Radio Group</h3>
+
+  <uilibrary-radio-button [value]="1" [checked]="false">This is an basic radio button</uilibrary-radio-button>
+
+  <uilibrary-radio-button [value]="1" [(checked)]="notChecked">This is a two way binding radio
+    button</uilibrary-radio-button>
+
+  <uilibrary-radio-button [value]="1" [disabled]="true">This is a disabled radio button</uilibrary-radio-button>
+
+  <uilibrary-radio-button [value]="1" [checked]="true" [disabled]="true">This is a disabled radio
+    button</uilibrary-radio-button>
+
+  <uilibrary-radio-group formControlName="radioButton1">
+    <uilibrary-radio-button [value]="1">This is a radio button</uilibrary-radio-button>
+    <uilibrary-radio-button [value]="2">This is a radio button</uilibrary-radio-button>
+    <uilibrary-radio-button [value]="6" [disabled]="radioButtonDisabled">This is a radio button</uilibrary-radio-button>
+  </uilibrary-radio-group>
+
+  <uilibrary-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }">
+    <uilibrary-radio-button [value]="'aaa'">This is a radio button</uilibrary-radio-button>
+    <uilibrary-radio-button [value]="2">This is a radio button</uilibrary-radio-button>
+    <uilibrary-radio-button [value]="6">This is a radio button</uilibrary-radio-button>
+  </uilibrary-radio-group>
+
+  <uilibrary-radio-group [(ngModel)]="radioButtonModel" [ngModelOptions]="{ standalone: true }" [disabled]="true">
+    <uilibrary-radio-button [value]="'aaa'">This is a radio button</uilibrary-radio-button>
+    <uilibrary-radio-button [value]="2">This is a radio button</uilibrary-radio-button>
+    <uilibrary-radio-button [value]="6">This is a radio button</uilibrary-radio-button>
+  </uilibrary-radio-group>
+
+  Radio Model Value is: {{radioButtonModel}}
 
 
-  <section [formGroup]="checkBoxes" class="large d-flex flex-column">
-    <h1>Checkboxes</h1>
-    <h3>Large Checkboxes</h3>
-    <uilibrary-checkbox [hideLabel]="true" variant="branded" size="large">
-      This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
-    </uilibrary-checkbox>
-    <uilibrary-checkbox [hideLabel]="true" variant="pass" size="large">
-      This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
-    </uilibrary-checkbox>
-    <uilibrary-checkbox [hideLabel]="true" variant="fail" size="large">
-      This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2">
-      Large Form Control Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="pass" size="large">
-      Large Pass Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="fail" size="large">
-      Large Fail Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled">
-      Large Disabled Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled" [checked]="true">
-      Large Checked Disabled Checkbox
-    </uilibrary-checkbox>
-    <h3>Large Left Aligned Checkboxes</h3>
-    <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2" labelPosition="left">
-      Large Form Control Checkbox
-    </uilibrary-checkbox>
-  </section>
+  <uilibrary-button appearance="secondary-success" size="small" icon="icon-air" (click)="radioButtonChecked()">
+    Change Value
+  </uilibrary-button>
 
-  <section [formGroup]="checkBoxes" class="large d-flex flex-column">
-    <h3>Small Checkboxes (Normal Usage)</h3>
-    <uilibrary-checkbox [hideLabel]="true" variant='branded'>
-      This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
-    </uilibrary-checkbox>
-    <uilibrary-checkbox [hideLabel]="true" variant="fail">
-      This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
-    </uilibrary-checkbox>
-    <uilibrary-checkbox [hideLabel]="true" variant="pass">
-      This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant='branded' formControlName="checkbox1">
-      Small Form Control Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="fail">
-      Small Fail Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="pass" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
-      Small Pass Two way Binding Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" [disabled]="isDisabled">
-      Small Disabled Checkbox
-    </uilibrary-checkbox>
-    <uilibrary-checkbox variant="branded" [disabled]="isDisabled" [checked]="true">
-      Small Checked Disabled Checkbox
-    </uilibrary-checkbox>
 
-    <h3>Normal Left Aligned Checkbox</h3>
-    <uilibrary-checkbox variant='branded' formControlName="checkbox1" labelPosition="left">
-      Small Form Control Checkbox
-    </uilibrary-checkbox>
-  </section>
+</section>
 
-  <uilibrary-button (click)="damnson()">hi</uilibrary-button>
 
-  <section [formGroup]="toggles" class="medium">
-    <h1>Toggles</h1>
+<section [formGroup]="checkBoxes" class="large d-flex flex-column">
+  <h1>Checkboxes</h1>
+  <h3>Large Checkboxes</h3>
+  <uilibrary-checkbox [hideLabel]="true" variant="branded" size="large">
+    This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+  </uilibrary-checkbox>
+  <uilibrary-checkbox [hideLabel]="true" variant="pass" size="large">
+    This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+  </uilibrary-checkbox>
+  <uilibrary-checkbox [hideLabel]="true" variant="fail" size="large">
+    This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2">
+    Large Form Control Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="pass" size="large">
+    Large Pass Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="fail" size="large">
+    Large Fail Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled">
+    Large Disabled Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="branded" size="large" [disabled]="isDisabled" [checked]="true">
+    Large Checked Disabled Checkbox
+  </uilibrary-checkbox>
+  <h3>Large Left Aligned Checkboxes</h3>
+  <uilibrary-checkbox variant="branded" size="large" formControlName="checkbox2" labelPosition="left">
+    Large Form Control Checkbox
+  </uilibrary-checkbox>
+</section>
 
-    <uilibrary-toggle [hideLabel]="true">
-      This is descriptive text about the toggle for accessibility reasons. Do not leave blank.
-    </uilibrary-toggle>
+<section [formGroup]="checkBoxes" class="large d-flex flex-column">
+  <h3>Small Checkboxes (Normal Usage)</h3>
+  <uilibrary-checkbox [hideLabel]="true" variant='branded'>
+    This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+  </uilibrary-checkbox>
+  <uilibrary-checkbox [hideLabel]="true" variant="fail">
+    This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+  </uilibrary-checkbox>
+  <uilibrary-checkbox [hideLabel]="true" variant="pass">
+    This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant='branded' formControlName="checkbox1">
+    Small Form Control Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="fail">
+    Small Fail Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="pass" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
+    Small Pass Two way Binding Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="branded" [disabled]="isDisabled">
+    Small Disabled Checkbox
+  </uilibrary-checkbox>
+  <uilibrary-checkbox variant="branded" [disabled]="isDisabled" [checked]="true">
+    Small Checked Disabled Checkbox
+  </uilibrary-checkbox>
 
-    <uilibrary-toggle>
-      Normal Label
-    </uilibrary-toggle>
+  <h3>Normal Left Aligned Checkbox</h3>
+  <uilibrary-checkbox variant='branded' formControlName="checkbox1" labelPosition="left">
+    Small Form Control Checkbox
+  </uilibrary-checkbox>
+</section>
 
-    <uilibrary-toggle labelPosition="right">
-      Right Aligned Label
-    </uilibrary-toggle>
+<uilibrary-button (click)="damnson()">hi</uilibrary-button>
 
-    hi
+<section [formGroup]="toggles" class="medium">
+  <h1>Toggles</h1>
 
-    <uilibrary-toggle labelSize="large">
-      Large Label
-    </uilibrary-toggle>
+  <uilibrary-toggle [hideLabel]="true">
+    This is descriptive text about the toggle for accessibility reasons. Do not leave blank.
+  </uilibrary-toggle>
 
-    <uilibrary-toggle [disabled]="isDisabled">
-      Disabled Toggle
-    </uilibrary-toggle>
+  <uilibrary-toggle>
+    Normal Label
+  </uilibrary-toggle>
 
-    <uilibrary-toggle [disabled]="isDisabled" [checked]="true">
-      Disabled & Checked Toggle
-    </uilibrary-toggle>
+  <uilibrary-toggle labelPosition="right">
+    Right Aligned Label
+  </uilibrary-toggle>
 
-    <uilibrary-toggle [(ngModel)]="checked" [ngModelOptions]="{ standalone: true }">
-      Two way binding Toggle
-    </uilibrary-toggle>
+  hi
 
-    Toggle is currently: {{checked}}
+  <uilibrary-toggle labelSize="large">
+    Large Label
+  </uilibrary-toggle>
 
-    <uilibrary-toggle formControlName="toggle1">
-      Form Control Toggle
-    </uilibrary-toggle>
-  </section>
+  <uilibrary-toggle [disabled]="isDisabled">
+    Disabled Toggle
+  </uilibrary-toggle>
 
-  <section class="medium d-flex flex-row">
-    <uilibrary-tooltip placement="top">
-      <span title>Title</span>
-      <span content>This is some tooltip content.</span>
-    </uilibrary-tooltip>
-    <uilibrary-tooltip placement="bottom">
-      <span title>Title</span>
-      <span content>This is some tooltip content.</span>
-    </uilibrary-tooltip>
-    <uilibrary-tooltip placement="left">
-      <span title>Title</span>
-      <span content>This is some tooltip content.</span>
-    </uilibrary-tooltip>
-    <uilibrary-tooltip placement="right">
-      <span title>Title</span>
-      <span content>This is some tooltip content.</span>
-    </uilibrary-tooltip>
-  </section>
+  <uilibrary-toggle [disabled]="isDisabled" [checked]="true">
+    Disabled & Checked Toggle
+  </uilibrary-toggle>
 
-  <section class="medium d-flex flex-row">
-    <uilibrary-icon name="icon-accommodation"></uilibrary-icon>
-  </section>
+  <uilibrary-toggle [(ngModel)]="checked" [ngModelOptions]="{ standalone: true }">
+    Two way binding Toggle
+  </uilibrary-toggle>
 
-  <section class="medium d-flex flex-row">
-    <uilibrary-icon name="icon-accommodation" size="small"></uilibrary-icon>
-    <uilibrary-icon name="icon-accommodation" size="medium"></uilibrary-icon>
-    <uilibrary-icon name="icon-accommodation" size="large"> </uilibrary-icon>
-  </section>
+  Toggle is currently: {{checked}}
 
-  <section class="medium d-flex flex-row">
-    <uilibrary-icon name="icon-accommodation" size="large" appearance="primary"></uilibrary-icon>
-    <uilibrary-icon name="icon-accommodation" size="large" appearance="secondary"></uilibrary-icon>
-    <uilibrary-icon name="icon-accommodation" size="large" appearance="tertiary"> </uilibrary-icon>
-    <uilibrary-icon name="icon-accommodation" size="large" appearance="light-gray"> </uilibrary-icon>
-    <uilibrary-icon name="icon-accommodation" size="large" appearance="dark-gray"> </uilibrary-icon>
-    <div style="color: pink;">
-      <uilibrary-icon name="icon-accommodation" size="large" appearance="custom"> </uilibrary-icon>
-    </div>
-  </section>
+  <uilibrary-toggle formControlName="toggle1">
+    Form Control Toggle
+  </uilibrary-toggle>
+</section>
 
-  <section class="medium d-flex flex-column">
-    <uilibrary-status-tag statusType="info">Information</uilibrary-status-tag>
-    <uilibrary-status-tag statusType="warning">Warning</uilibrary-status-tag>
-    <uilibrary-status-tag statusType="error">Error</uilibrary-status-tag>
-    <uilibrary-status-tag statusType="success">Success</uilibrary-status-tag>
-  </section>
+<section class="medium d-flex flex-row">
+  <uilibrary-tooltip placement="top">
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
+  </uilibrary-tooltip>
+  <uilibrary-tooltip placement="bottom">
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
+  </uilibrary-tooltip>
+  <uilibrary-tooltip placement="left">
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
+  </uilibrary-tooltip>
+  <uilibrary-tooltip placement="right">
+    <span title>Title</span>
+    <span content>This is some tooltip content.</span>
+  </uilibrary-tooltip>
+</section>
 
-  <section class="medium d-flex flex-column">
+<section class="medium d-flex flex-row">
+  <uilibrary-icon name="icon-accommodation"></uilibrary-icon>
+</section>
 
-    <div class="ui-toast information">
-      <b>Information</b>
-      <span>No activity in the last 7 days.</span>
-    </div>
+<section class="medium d-flex flex-row">
+  <uilibrary-icon name="icon-accommodation" size="small"></uilibrary-icon>
+  <uilibrary-icon name="icon-accommodation" size="medium"></uilibrary-icon>
+  <uilibrary-icon name="icon-accommodation" size="large"> </uilibrary-icon>
+</section>
 
-    <div class="ui-toast warning">
-      <b>Warning</b>
-      <span>Altering rule configuration will immediately impact deployment activity.</span>
-    </div>
+<section class="medium d-flex flex-row">
+  <uilibrary-icon name="icon-accommodation" size="large" appearance="primary"></uilibrary-icon>
+  <uilibrary-icon name="icon-accommodation" size="large" appearance="secondary"></uilibrary-icon>
+  <uilibrary-icon name="icon-accommodation" size="large" appearance="tertiary"> </uilibrary-icon>
+  <uilibrary-icon name="icon-accommodation" size="large" appearance="light-gray"> </uilibrary-icon>
+  <uilibrary-icon name="icon-accommodation" size="large" appearance="dark-gray"> </uilibrary-icon>
+  <div style="color: pink;">
+    <uilibrary-icon name="icon-accommodation" size="large" appearance="custom"> </uilibrary-icon>
+  </div>
+</section>
 
-    <div class="ui-toast error">
-      <b>Error</b>
-      <span>This routing rule cannot be deleted.</span>
-    </div>
+<section class="medium d-flex flex-column">
+  <uilibrary-status-tag statusType="info">Information</uilibrary-status-tag>
+  <uilibrary-status-tag statusType="warning">Warning</uilibrary-status-tag>
+  <uilibrary-status-tag statusType="error">Error</uilibrary-status-tag>
+  <uilibrary-status-tag statusType="success">Success</uilibrary-status-tag>
+</section>
 
-    <div class="ui-toast success">
-      <b>Success</b>
-      <span>Verification completed successfully.</span>
-    </div>
+<section class="medium d-flex flex-column">
 
-  </section>
+  <div class="ui-toast information">
+    <b>Information</b>
+    <span>No activity in the last 7 days.</span>
+  </div>
+
+  <div class="ui-toast warning">
+    <b>Warning</b>
+    <span>Altering rule configuration will immediately impact deployment activity.</span>
+  </div>
+
+  <div class="ui-toast error">
+    <b>Error</b>
+    <span>This routing rule cannot be deleted.</span>
+  </div>
+
+  <div class="ui-toast success">
+    <b>Success</b>
+    <span>Verification completed successfully.</span>
+  </div>
+
+</section>
