@@ -1,5 +1,5 @@
 <div class="d-flex flex-row">
-    <section class="small">
+    <section class="small d-flex flex-column">
         <h3>Label Float</h3>
         <div [formGroup]="labelShouldNotFloatForm">
             <uilibrary-form-field>
@@ -21,44 +21,44 @@
         </div>
 
     </section>
-    <section class="small" [formGroup]="inputTypesForm">
+    <section class="small d-flex flex-column justify-content-between">
         <h3>Input Types</h3>
-        <uilibrary-form-field>
-            <label ui-label>Text</label>
-            <input ui-input type="text" formControlName="text" />
-        </uilibrary-form-field>
+        <div [formGroup]="inputTypesForm">
+            <uilibrary-form-field>
+                <label ui-label>Text</label>
+                <input ui-input type="text" formControlName="text" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field>
-            <label ui-label>Password</label>
-            <input ui-input type="password" formControlName="password" />
-        </uilibrary-form-field>
+            <uilibrary-form-field>
+                <label ui-label>Password</label>
+                <input ui-input type="password" formControlName="password" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field>
-            <label ui-label>Email</label>
-            <input ui-input type="email" formControlName="email" />
-        </uilibrary-form-field>
+            <uilibrary-form-field>
+                <label ui-label>Email</label>
+                <input ui-input type="email" formControlName="email" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field>
-            <label ui-label>Url</label>
-            <input ui-input type="url" formControlName="url" />
-        </uilibrary-form-field>
+            <uilibrary-form-field>
+                <label ui-label>Url</label>
+                <input ui-input type="url" formControlName="url" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field>
-            <label ui-label>Search</label>
-            <input ui-input type="search" formControlName="search" />
-        </uilibrary-form-field>
+            <uilibrary-form-field>
+                <label ui-label>Search</label>
+                <input ui-input type="search" formControlName="search" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field>
-            <label ui-label>Tel</label>
-            <input ui-input type="tel" formControlName="tel" />
-        </uilibrary-form-field>
+            <uilibrary-form-field>
+                <label ui-label>Tel</label>
+                <input ui-input type="tel" formControlName="tel" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field>
-            <label ui-label>Number</label>
-            <input ui-input type="number" formControlName="number" />
-        </uilibrary-form-field>
-
-
+            <uilibrary-form-field>
+                <label ui-label>Number</label>
+                <input ui-input type="number" formControlName="number" />
+            </uilibrary-form-field>
+        </div>
     </section>
 
     <section class="small">
@@ -71,35 +71,40 @@
             </uilibrary-tooltip>
         </div>
 
-        <uilibrary-form-field [labelFloatOverride]="true">
-            <label ui-label>Date</label>
-            <input ui-input type="date" formControlName="date" />
-        </uilibrary-form-field>
+        <div [formGroup]="additonalInputTypesForm">
+            <uilibrary-form-field [labelFloatOverride]="true">
+                <label ui-label>Date</label>
+                <input ui-input type="date" formControlName="date" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field [labelFloatOverride]="true">
-            <label ui-label>DateTime-Local</label>
-            <input ui-input type="datetime-local" formControlName="datetimelocal" />
-        </uilibrary-form-field>
+            <uilibrary-form-field [labelFloatOverride]="true">
+                <label ui-label>DateTime-Local</label>
+                <input ui-input type="datetime-local" formControlName="datetimelocal" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field [labelFloatOverride]="true">
-            <label ui-label>Time</label>
-            <input ui-input type="time" formControlName="time" placeholder="hello">
-        </uilibrary-form-field>
+            <uilibrary-form-field [labelFloatOverride]="true">
+                <label ui-label>Time</label>
+                <input ui-input type="time" formControlName="time" placeholder="hello">
+            </uilibrary-form-field>
 
 
-        <uilibrary-form-field [labelFloatOverride]="true">
-            <label ui-label>Month</label>
-            <input ui-input type="month" formControlName="month" />
-        </uilibrary-form-field>
+            <uilibrary-form-field [labelFloatOverride]="true">
+                <label ui-label>Month</label>
+                <input ui-input type="month" formControlName="month" />
+            </uilibrary-form-field>
 
-        <uilibrary-form-field [labelFloatOverride]="true">
-            <label ui-label>Week</label>
-            <input ui-input type="week" formControlName="week" />
-        </uilibrary-form-field>
+            <uilibrary-form-field [labelFloatOverride]="true">
+                <label ui-label>Week</label>
+                <input ui-input type="week" formControlName="week" />
+            </uilibrary-form-field>
+        </div>
     </section>
 
+    @if(showOutput) {
     <section class="small">
-        <h3>Form Output</h3>
+        <h3>Output</h3>
         <div>{{stringify(inputTypesForm.value)}}</div>
+        <div>{{stringify(additonalInputTypesForm.value)}}</div>
     </section>
+    }
 </div>

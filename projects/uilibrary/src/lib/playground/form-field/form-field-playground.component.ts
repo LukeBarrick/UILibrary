@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class FormFieldPlaygroundComponent implements OnInit {
     formBuilder = inject(FormBuilder);
+
+    @Input() showOutput: boolean | undefined = undefined;
 
     labelShouldNotFloatForm: FormGroup = this.formBuilder.group({
         emptyString: [''],
@@ -28,6 +30,9 @@ export class FormFieldPlaygroundComponent implements OnInit {
         search: [],
         tel: [],
         number: [],
+    });
+
+     additonalInputTypesForm: FormGroup = this.formBuilder.group({
         date: [],
         datetimelocal: [],
         time: [],
