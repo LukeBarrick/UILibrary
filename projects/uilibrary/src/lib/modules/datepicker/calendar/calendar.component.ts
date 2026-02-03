@@ -112,7 +112,7 @@ export class CalendarComponent implements OnInit {
 
     if(Array.isArray(this.selecteDates)) {
       for(let i = 0; i < this.selecteDates.length; i++) {
-        let selected = this.selecteDates[i].getDate() == selecteDate.getDate() &&
+        let selected = this.selecteDates[i].getDate() === selecteDate.getDate() &&
         this.selecteDates[i].getMonth() === selecteDate.getMonth() &&
         this.selecteDates[i].getFullYear() === selecteDate.getFullYear()
 
@@ -152,7 +152,7 @@ export class CalendarComponent implements OnInit {
     );
 
     if(Array.isArray(this.selecteDates) && this.selecteDates.length >= 2) {
-      const dates = this.selecteDates.sort((a, b) => a.getTime() - b.getTime());
+      const dates = this.selecteDates.slice().sort((a, b) => a.getTime() - b.getTime());
 
       const firstDate = dates[0];
       const lastDate = dates[dates.length - 1]; 
