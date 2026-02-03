@@ -1,13 +1,9 @@
 import {
-  AfterViewInit,
   Component,
   ContentChild,
-  ElementRef,
-  HostListener,
   Input,
   OnInit,
   Optional,
-  Renderer2,
   Self,
   TemplateRef,
   ViewChild,
@@ -64,6 +60,19 @@ export class SelectComponent
   @Input() trackByFn: ((item: any) => any) | undefined;
   @Input() virtualScroll: boolean = false;
   @Input() inputAttrs: { [key: string]: string } = { ['']: '' };
+
+  @Input() onScroll?: (end: any) => void;
+  @Input() scrollToEnd?: () => void;
+
+  _onScroll(end: any) {
+    if(this.onScroll) 
+      this.onScroll(end);
+  }
+
+  _scrollToEnd() {
+    if(this.scrollToEnd)
+      this.scrollToEnd();
+  }
 
   value: any;
 
@@ -149,7 +158,6 @@ export class SelectComponent
 
   focus() {
     this.ngSelect.focus();
-    // this.ngSelect.open();
   }
 
   setValue(value: any): void {
@@ -182,14 +190,11 @@ export class SelectComponent
     setTimeout(() => {
       if (this.prefillFirstOption && this.value == undefined) {
         if (!this.multiple) {
-          this.writeValue(this.items[0]);
-          this.value = this.items[0];
+          this.handleInput(this.items[0]);
         } else {
-          this.writeValue([this.items[0]]);
+          this.handleInput([this.items[0]]);
         }
       }
-      this.writeValue(this.value);
-      this.onChange(this.value);
     }, 0);
   }
 
