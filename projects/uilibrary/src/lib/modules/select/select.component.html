@@ -6,7 +6,7 @@
   [clearOnBackspace]="clearOnBackspace" [clearable]="clearable" [closeOnSelect]="closeOnSelect"
   [searchable]="searchable" [searchFn]="searchFn" [trackByFn]="trackByFn" [virtualScroll]="virtualScroll"
   (blur)="_onBlur()" (input)="handleInput($event)" (focus)="_onFocus()" [dropdownPosition]="'auto'"
-  (scroll)="_onScroll($event)" (scrollToEnd)="_scrollToEnd()">
+  (scroll)="_onScroll($event)" (scrollToEnd)="_scrollToEnd()" [compareWith]="compareFn">
   @if(useCustomTemplate) {
   <ng-template ng-label-tmp let-item="item">
     <ng-container *ngTemplateOutlet="labelTemplate; context: { $implicit: item }"></ng-container>
@@ -16,7 +16,3 @@
   </ng-template>
   }
 </ng-select>
-
-<!-- [compareWith]="compareFn"  -->
-<!-- Causes issues when displaying setting field value initially on load, the value does not show as a 'selected value' -->
-<!-- Rather than it being an actual issue, its probably not and im missing something, we should provide the compareFn only if one is provided... but its late and i've been working for 12 hours -->

@@ -184,8 +184,8 @@ export class SelectComponent
     this.onChange(event);
     this.onTouched();
   }
-
+ 
   compareFn(item: any, selected: any) {
-    return item === selected;
+    return item.id === selected.id;
   }
 }
