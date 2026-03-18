@@ -4,7 +4,7 @@
     width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    overflow-wrap: break-word;
 }
 
 .medium {
@@ -13,7 +13,6 @@
     width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 .large {
@@ -22,5 +21,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+}
+
+.example-right-align {
+    text-align: right;
+}
+
+.cube {
+    height: 30px;
+    width: 30px;
+    background-color: var(--secondary);
+    border-radius: 3px;
 }

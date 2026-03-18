@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'uilibrary-select-playground',
@@ -8,7 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SelectPlaygroundComponent implements OnInit {
+    fb = inject(FormBuilder);
+
+    @Input() showOutput: boolean = false;
+
+    items: Item[] = [
+        { id: 1, value: "Item 1" },
+        { id: 2, value: "Item 2" },
+        { id: 3, value: "Item 3" }
+    ]
+
+    selectModel = { id: 1, value: 'Item 1' };
+
+    clearable = { id: 1, value: "Item 1" };
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        // this.clearable = { id: 1, value: "Item 1"}
+    }
+
+    stringify(value: string) {
+        return JSON.stringify(value);
+    }
+}
+
+export interface Item {
+    id: number,
+    value: string
 }

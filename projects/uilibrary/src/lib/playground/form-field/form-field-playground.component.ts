@@ -40,6 +40,12 @@ export class FormFieldPlaygroundComponent implements OnInit {
         week: []
     })
 
+    prefixValue: string | undefined = undefined;
+    suffixValue: string | undefined = undefined;
+    textPrefixValue: string | undefined = " ";
+    textSuffixValue: string | undefined = " ";
+    textSuffixRightAlValue: string | undefined = " ";
+
     constructor() { }
 
     ngOnInit() { }

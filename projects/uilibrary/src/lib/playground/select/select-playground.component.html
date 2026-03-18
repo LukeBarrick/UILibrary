@@ -1,0 +1,48 @@
+<h1>Select</h1>
+<div class="d-flex flex-row">
+    <section class="small">
+        <h3>Attributes</h3>
+        <uilibrary-form-field>
+            <label ui-label>Placeholder</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Placeholder" [useCustomTemplate]="false"
+                bindLabel="value" bindValue="id"></uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Clearable</label>
+            <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [useCustomTemplate]="false"
+                bindLabel="value" bindValue="id" [clearable]="true">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+
+        <uilibrary-form-field>
+            <label ui-label>Two Way Binding Select</label>
+            <uilibrary-select ui-select [items]="items" [(ngModel)]="selectModel"  placeholder="Please select an item from the dropdown list." 
+                [clearable]="true">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+
+
+    </section>
+    <section class="small">
+        <h3>Two Way Binding</h3>
+    </section>
+    <section class="small">
+        <h3>Form Controls</h3>
+    </section>
+    <section class="small">
+        <h3>Output</h3>
+    </section>
+</div>

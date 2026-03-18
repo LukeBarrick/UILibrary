@@ -41,6 +41,16 @@
   <uilibrary-button-playground></uilibrary-button-playground>
   <uilibrary-form-field-playground [showOutput]="true"></uilibrary-form-field-playground>
   <uilibrary-input-playground [showOutput]="true"></uilibrary-input-playground>
+  <uilibrary-input-annotations-playground></uilibrary-input-annotations-playground>
+  <uilibrary-select-playground [showOutput]="true"></uilibrary-select-playground>
+  <uilibrary-datepicker-playground></uilibrary-datepicker-playground>
+  <uilibrary-checkbox-playground></uilibrary-checkbox-playground>
+  <uilibrary-toggle-playground></uilibrary-toggle-playground>
+  <uilibrary-radio-playground></uilibrary-radio-playground>
+  <uilibrary-icon-playground></uilibrary-icon-playground>
+  <uilibrary-table-playground></uilibrary-table-playground>
+  <uilibrary-context-menu-playground></uilibrary-context-menu-playground>
+  <uilibrary-keyboard-navigation-playground></uilibrary-keyboard-navigation-playground>
 </div>
 
 
@@ -282,7 +292,7 @@
   <uilibrary-form-field>
     <label ui-label>Two Way Binding Select</label>
     <uilibrary-select ui-select [(ngModel)]="selectedPerson" [ngModelOptions]="{ standalone: true }"
-      [items]="$people | async" placeholder="Please select an item from the dropdown list." bindLabel="name"
+      [items]="$people | async" placeholder="Please select an item from the dropdown list." 
       [clearable]="true">
       <ng-template #labelTemplate let-item>
         <div>
@@ -297,6 +307,26 @@
     </uilibrary-select>
   </uilibrary-form-field>
 
+  <uilibrary-form-field>
+    <label ui-label>Two Way Binding Select</label>
+    <uilibrary-select ui-select [(ngModel)]="selectedPerson" [ngModelOptions]="{ standalone: true }"
+      [items]="$people | async" placeholder="Please select an item from the dropdown list." 
+      [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-field>
+
+
+  
   <section class="small d-flex flex-column">
     <p>{{stringify(selectModel)}}</p>
   </section>
@@ -309,7 +339,6 @@
       [useCustomTemplate]="false" bindLabel="name" placeholder="Please select an item from the dropdown list."
       [clearable]="true">
     </uilibrary-select>
-
   </uilibrary-form-field>
 
   <section class="small d-flex flex-column">

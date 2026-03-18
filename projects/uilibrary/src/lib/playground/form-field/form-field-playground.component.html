@@ -24,30 +24,30 @@
         <uilibrary-form-field>
             <div ui-prefix class="cube"></div>
             <label ui-label>Prefix</label>
-            <input ui-input type="text" />
+            <input ui-input [(ngModel)]="prefixValue" type="text"/>
         </uilibrary-form-field>
 
         <uilibrary-form-field>
             <label ui-label>Suffix</label>
-            <input ui-input type="text" />
+            <input ui-input [(ngModel)]="suffixValue" type="text" />
             <div ui-suffix class="cube"></div>
         </uilibrary-form-field>
 
         <uilibrary-form-field>
             <div ui-text-prefix>Prefix</div>
             <label ui-label>Text Prefix</label>
-            <input ui-input type="text" />
+            <input ui-input [(ngModel)]="textPrefixValue" type="text" />
         </uilibrary-form-field>
 
         <uilibrary-form-field>
             <label ui-label>Text Suffix</label>
-            <input ui-input type="text" />
+            <input ui-input [(ngModel)]="textSuffixValue" type="text" />
             <div ui-text-suffix>Suffix</div>
         </uilibrary-form-field>
 
         <uilibrary-form-field>
             <label ui-label>Text Suffix (Right Alignment)</label>
-            <input ui-input type="text" class="example-right-align" />
+            <input ui-input [(ngModel)]="textSuffixRightAlValue" type="text" class="example-right-align" />
             <div ui-text-suffix>Suffix</div>
         </uilibrary-form-field>
 
