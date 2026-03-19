@@ -325,7 +325,19 @@ export class ShowcaseComponent implements OnInit {
 	}
 
   setSelectedPerson() {
-    this.selectedPerson = { id: '5a15b13c2340978ec3d2c0ea', name: 'Rochelle Estes' };
+    this.selectedPerson = {
+      id: '5a15b13c2340978ec3d2c0ea',
+      index: 3,
+      isActive: false,
+      picture: 'http://placehold.it/32x32',
+      age: 35,
+      name: 'Rochelle Estes',
+      disabled: true,
+      gender: 'female',
+      company: 'EXTRAWEAR',
+      email: 'rochelleestes@extrawear.com',
+      phone: '+1 (849) 408-2029',
+    }
   }
 }
 
