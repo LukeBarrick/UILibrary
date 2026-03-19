@@ -186,6 +186,8 @@ export class SelectComponent
   }
 
   compareFn(item: any, selected: any) {
+    //Order keys before compare.
+    //Currently sensitive to key ordering differences.
     return JSON.stringify(item) === JSON.stringify(selected);
   }
 }
