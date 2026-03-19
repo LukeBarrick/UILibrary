@@ -20,8 +20,8 @@ export class SelectPlaygroundComponent implements OnInit {
     ]
 
     selectModel = { id: 1, value: 'Item 1' };
+    clearable = this.items[0];
 
-    clearable = { id: 1, value: "Item 1" };
     constructor() { }
 
     ngOnInit() {
@@ -30,6 +30,10 @@ export class SelectPlaygroundComponent implements OnInit {
 
     stringify(value: string) {
         return JSON.stringify(value);
+    }
+
+    exampleCompareFn(item: any, selected: any) {
+        return item.id === selected.id;
     }
 }
 

@@ -216,6 +216,23 @@
     </uilibrary-select>
   </uilibrary-form-field>
 
+    <uilibrary-form-field>
+    <label ui-label>Select Form Control w/ Valuie</label>
+    <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+      formControlName="selectControlValue" [clearable]="true">
+      <ng-template #labelTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+      <ng-template #optionTemplate let-item>
+        <div>
+          <b>{{item.name}}</b>
+        </div>
+      </ng-template>
+    </uilibrary-select>
+  </uilibrary-form-field>
+
   <uilibrary-form-field>
     <label ui-label>Disabled Select Form Control</label>
     <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."

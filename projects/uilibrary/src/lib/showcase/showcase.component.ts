@@ -106,7 +106,7 @@ export class ShowcaseComponent implements OnInit {
     selectControl3: new FormControl(undefined, [Validators.required]),
     selectControl4: new FormControl(undefined, [Validators.required]),
     selectControl5: new FormControl(undefined, [Validators.required]),
-    selectControl6: new FormControl(undefined, [Validators.required])
+    selectControl6: new FormControl(undefined, [Validators.required]),
   });
 
   textInputs = new FormGroup({
@@ -152,7 +152,8 @@ export class ShowcaseComponent implements OnInit {
     placeholderFormControl2: new FormControl({ value: undefined, disabled: true }, [Validators.required]),
     prefixFormControl: new FormControl({ value: undefined, disabled: true }, [Validators.required]),
     suffixFormControl: new FormControl(undefined, [Validators.required]),
-    prefixSuffixFormControl: new FormControl(undefined, [Validators.required])
+    prefixSuffixFormControl: new FormControl(undefined, [Validators.required]),
+    selectControlValue: new FormControl(this.items[0], [Validators.required])
   });
 
   selectModel = { id: 1, name: 'Option 1' };

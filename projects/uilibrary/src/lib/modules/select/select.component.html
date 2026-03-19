@@ -26,7 +26,7 @@
   [clearOnBackspace]="clearOnBackspace" [clearable]="clearable" [closeOnSelect]="closeOnSelect"
   [searchable]="searchable" [searchFn]="searchFn" [trackByFn]="trackByFn" [virtualScroll]="virtualScroll"
   (blur)="_onBlur()" (input)="handleInput($event)" (focus)="_onFocus()" [dropdownPosition]="'auto'"
-  (scroll)="_onScroll($event)" (scrollToEnd)="_scrollToEnd()" [compareWith]="compareFn">
+  (scroll)="_onScroll($event)" (scrollToEnd)="_scrollToEnd()" [compareWith]="compareWith ?? defaultCompareFn">
   @if(useCustomTemplate) {
   <ng-template ng-label-tmp let-item="item">
     <ng-container *ngTemplateOutlet="labelTemplate; context: { $implicit: item }"></ng-container>
