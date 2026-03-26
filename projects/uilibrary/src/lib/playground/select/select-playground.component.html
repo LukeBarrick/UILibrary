@@ -1,4 +1,5 @@
 <h1>Select</h1>
+<h3>Default Template</h3>
 <div class="d-flex flex-row">
     <section class="small">
         <h3>Attributes</h3>
@@ -18,37 +19,217 @@
         <uilibrary-form-field>
             <label ui-label>Custom Compare Function (Two Way Binding)</label>
             <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [useCustomTemplate]="false"
-                bindLabel="value" bindValue="id" [clearable]="true" [compareWith]="exampleCompareFn">
+                bindLabel="value" bindValue="id" [compareWith]="exampleCompareFn">
             </uilibrary-select>
         </uilibrary-form-field>
 
         <uilibrary-form-field>
             <label ui-label>Custom Compare Function (Form Control)</label>
             <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [useCustomTemplate]="false"
-                bindLabel="value" bindValue="id" [clearable]="true" [compareWith]="exampleCompareFn">
+                bindLabel="value" bindValue="id" [compareWith]="exampleCompareFn">
             </uilibrary-select>
         </uilibrary-form-field>
 
         <uilibrary-form-field>
             <label ui-label>Custom Compare Function (Multiple Two Way)</label>
             <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [useCustomTemplate]="false"
-                bindLabel="value" bindValue="id" [clearable]="true" [compareWith]="exampleCompareFn">
+                bindLabel="value" bindValue="id" [compareWith]="exampleCompareFn">
             </uilibrary-select>
         </uilibrary-form-field>
 
         <uilibrary-form-field>
             <label ui-label>Custom Compare Function (Multiple Form Control)</label>
             <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [useCustomTemplate]="false"
-                bindLabel="value" bindValue="id" [clearable]="true" [compareWith]="exampleCompareFn">
+                bindLabel="value" bindValue="id" [compareWith]="exampleCompareFn">
             </uilibrary-select>
         </uilibrary-form-field>
     </section>
+
     <section class="small">
-        <h3>Two Way Binding</h3>
+        <h3>Basic Input (No Binding)</h3>
         <uilibrary-form-field>
-            <label ui-label>Two Way Binding Select</label>
-            <uilibrary-select ui-select [items]="items" [(ngModel)]="selectModel"
-                placeholder="Please select an item from the dropdown list." [clearable]="true">
+            <label ui-label>Basic Select (No Binding)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list."
+                bindLabel="value" bindValue="id" [useCustomTemplate]="false">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Basic Select (Binding)</label>
+            <uilibrary-select ui-select placeholder="Please select an item from the dropdown list." [items]="items"
+                [(ngModel)]="basicSelectBinding" bindLabel="value" bindValue="id" [useCustomTemplate]="false">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Basic Select (Disabled)</label>
+                <uilibrary-select ui-select placeholder="Please select an item from the dropdown list." [items]="items"
+                    [(ngModel)]="basicSelectDisabled" [disabled]="basicSelectIsDisabled" bindLabel="value"
+                    bindValue="id" [useCustomTemplate]="false">
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleBindingDisabled()">Toggle</uilibrary-button>
+        </div>
+
+        <uilibrary-form-field [class.error]="!basicSelectError">
+            <label ui-label>Basic Select (Error)</label>
+            <uilibrary-select ui-select placeholder="Please select an item from the dropdown list." [items]="items"
+                [(ngModel)]="basicSelectError" bindLabel="value" bindValue="id" [useCustomTemplate]="false"
+                [clearable]="true">
+            </uilibrary-select>
+            @if(!basicSelectError) {
+            <span ui-error>Required form field</span>
+            }
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small" [formGroup]="formControlSelectForm">
+        <h3>Form Controls</h3>
+        <uilibrary-form-field>
+            <label ui-label>Form Control Input</label>
+            <uilibrary-select ui-select formControlName="formControlSelect"
+                placeholder="Please select an item from the dropdown list." [items]="items" bindLabel="value"
+                bindValue="id" [useCustomTemplate]="false" [clearable]="true">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Form Control Input (Preset Value)</label>
+            <uilibrary-select ui-select formControlName="formControlSelectWithValue"
+                placeholder="Please select an item from the dropdown list." [items]="items" bindLabel="value"
+                bindValue="id" [useCustomTemplate]="false" [clearable]="true">
+            </uilibrary-select>
+            <span ui-note>Current Value:
+                {{stringify(formControlSelectForm.controls['formControlSelectWithValue'].value)}}</span>
+        </uilibrary-form-field>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input (Disabled)</label>
+                <uilibrary-select ui-select formControlName="formControlSelectDisabled"
+                    placeholder="Please select an item from the dropdown list." [items]="items" bindLabel="value"
+                    bindValue="id" [useCustomTemplate]="false" [clearable]="true">
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleDisabledFormControl()">Toggle</uilibrary-button>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input (Error)</label>
+                <uilibrary-select ui-select formControlName="formControlSelectError"
+                    placeholder="Please select an item from the dropdown list." [items]="items" bindLabel="value"
+                    bindValue="id" [useCustomTemplate]="false" [clearable]="true">
+                </uilibrary-select>
+                @if(formControlSelectForm.get('formControlSelectError')?.hasError('required')) {
+                <span ui-error>Required form field</span>
+                }
+            </uilibrary-form-field>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input (Untouched with Validator)</label>
+                <uilibrary-select ui-select formControlName="formControlSelectUntouched"
+                    placeholder="Please select an item from the dropdown list." [items]="items" bindLabel="value"
+                    bindValue="id" [useCustomTemplate]="false" [clearable]="true">
+                </uilibrary-select>
+            </uilibrary-form-field>
+        </div>
+    </section>
+    <section class="small">
+        <h3>Output</h3>
+    </section>
+
+</div>
+<h3>Custom Template</h3>
+<div class="d-flex flex-row">
+    <section class="small">
+        <h3>Attributes</h3>
+        <uilibrary-form-field>
+            <label ui-label>Placeholder</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Placeholder">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Clearable</label>
+            <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [clearable]="true">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Custom Compare Function (Two Way Binding)</label>
+            <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [compareWith]="exampleCompareFn">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Custom Compare Function (Form Control)</label>
+            <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [compareWith]="exampleCompareFn">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Custom Compare Function (Multiple Two Way)</label>
+            <uilibrary-select ui-select [(ngModel)]="clearable" [items]="items" [compareWith]="exampleCompareFn">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Custom Compare Function (Multiple Form Control)</label>
+            <uilibrary-select ui-select [(ngModel)]="clearable" [compareWith]="exampleCompareFn">
                 <ng-template #labelTemplate let-item>
                     <div>
                         <b>{{item.value}}</b>
@@ -62,8 +243,183 @@
             </uilibrary-select>
         </uilibrary-form-field>
     </section>
+
     <section class="small">
+        <h3>Basic Input (No Binding)</h3>
+        <uilibrary-form-field>
+            <label ui-label>Basic Select (No Binding)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select an item from the dropdown list.">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Basic Select (Binding)</label>
+            <uilibrary-select ui-select placeholder="Please select an item from the dropdown list." [items]="items"
+                [(ngModel)]="basicSelectBinding">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Basic Select (Disabled)</label>
+                <uilibrary-select ui-select placeholder="Please select an item from the dropdown list." [items]="items"
+                    [(ngModel)]="customTemplateBindingDisabled" [disabled]="customTemplateBindingIsDisabled">
+                    <ng-template #labelTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                    <ng-template #optionTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleCustomTemplateBindingDisabled()">Toggle</uilibrary-button>
+        </div>
+
+        <uilibrary-form-field [class.error]="!basicSelectError">
+            <label ui-label>Basic Select (Error)</label>
+            <uilibrary-select ui-select placeholder="Please select an item from the dropdown list." [items]="items"
+                [(ngModel)]="basicSelectError">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+            @if(!basicSelectError) {
+            <span ui-error>Required form field</span>
+            }
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small" [formGroup]="customTemplateFormControlSelectForm">
         <h3>Form Controls</h3>
+        <uilibrary-form-field>
+            <label ui-label>Form Control Input</label>
+            <uilibrary-select ui-select formControlName="customFormControlSelect"
+                placeholder="Please select an item from the dropdown list." [items]="items" [clearable]="true">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Form Control Input (Preset Value)</label>
+            <uilibrary-select ui-select formControlName="customFormControlSelectWithValue"
+                placeholder="Please select an item from the dropdown list." [items]="items" [clearable]="true">
+                <ng-template #labelTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+                <ng-template #optionTemplate let-item>
+                    <div>
+                        <b>{{item.value}}</b>
+                    </div>
+                </ng-template>
+            </uilibrary-select>
+            <span ui-note>Current Value:
+                {{stringify(customTemplateFormControlSelectForm.controls['customFormControlSelectWithValue'].value)}}</span>
+        </uilibrary-form-field>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input (Disabled)</label>
+                <uilibrary-select ui-select formControlName="customFormControlSelectDisabled"
+                    placeholder="Please select an item from the dropdown list." [items]="items" [clearable]="true">
+                    <ng-template #labelTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                    <ng-template #optionTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleCustomDisabledFormControl()">Toggle</uilibrary-button>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input (Error)</label>
+                <uilibrary-select ui-select formControlName="customFormControlSelectError"
+                    placeholder="Please select an item from the dropdown list." [items]="items" bindLabel="value"
+                    bindValue="id" [clearable]="true">
+                    <ng-template #labelTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                    <ng-template #optionTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                </uilibrary-select>
+                @if(customTemplateFormControlSelectForm.get('customFormControlSelectError')?.hasError('required')) {
+                <span ui-error>Required form field</span>
+                }
+            </uilibrary-form-field>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control Input (Untouched with Validator)</label>
+                <uilibrary-select ui-select formControlName="customFormControlSelectUntouched"
+                    placeholder="Please select an item from the dropdown list." [items]="items" bindLabel="value"
+                    bindValue="id" [clearable]="true">
+                    <ng-template #labelTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                    <ng-template #optionTemplate let-item>
+                        <div>
+                            <b>{{item.value}}</b>
+                        </div>
+                    </ng-template>
+                </uilibrary-select>
+            </uilibrary-form-field>
+        </div>
     </section>
     <section class="small">
         <h3>Output</h3>
