@@ -9,6 +9,7 @@ import { UIFormFieldControl } from './form-field-control';
 import { Subscription } from 'rxjs';
 import { UIPrefix } from './directives/UIPrefix';
 import { UISuffix } from './directives/UISuffix';
+import { id } from 'date-fns/locale';
 
 @Component({
     selector: 'uilibrary-form-field',
@@ -24,6 +25,8 @@ import { UISuffix } from './directives/UISuffix';
     standalone: false
 })
 export class FormFieldComponent implements AfterContentChecked, OnDestroy {
+  uuid = self.crypto.randomUUID();
+
   @ContentChild(UIFormFieldControl) formFieldControl:
     | UIFormFieldControl<any>
     | undefined;
@@ -61,6 +64,7 @@ export class FormFieldComponent implements AfterContentChecked, OnDestroy {
   private initialiseControl(): void {
     if (this._control != undefined) {
       this.stateChanges = this._control.stateChanges.subscribe({});
+      this._control.setID(this.uuid);
     }
   }
 

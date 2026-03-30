@@ -223,4 +223,9 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
   close(): void {
     this._open = false;
   }
+
+  setID(id: string): void {
+    this.startDate?.setID(id);
+    this.endDate?.setID(id);
+  }
 }

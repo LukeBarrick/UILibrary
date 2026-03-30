@@ -23,7 +23,7 @@ export * from './lib/core/enums/navigation-link-type.enum';
 export * from './lib/core/models/navigation-link';
 
 export * from './lib/modules/status-tags/status-tags.module';
-export * from './lib/modules/status-tags/status-tag/status-tag.component';1
+export * from './lib/modules/status-tags/status-tag/status-tag.component';
 
 export * from './lib/modules/button/button.module';
 export * from './lib/modules/button/button/button.component';

@@ -191,4 +191,9 @@ export class DatePickerInputComponent implements UIFormFieldControl<Date>, Contr
   close(): void {
     this._open = false;
   }
+
+  setID(id: string): void {
+    this.id = id;
+    this.elRef.nativeElement.id = this.id;
+  }
 }

@@ -130,4 +130,9 @@ export class DateInputDirective implements UIFormFieldControl<Date>, ControlValu
     this.onChange(this.value);
     this.onTouched();
   }
+
+  setID(id: string): void {
+    this.id = id;
+    this.el.nativeElement.id = this.id;
+  }
 }

@@ -13,6 +13,7 @@ export abstract class UIFormFieldControl<T> {
 
   focus(): void { return; };
   setValue(value: T | null): void { return; }
+  setID(id: string): void { return; }
 
   readonly disabled: boolean = false;
   readonly shouldLabelFloat: boolean = false;

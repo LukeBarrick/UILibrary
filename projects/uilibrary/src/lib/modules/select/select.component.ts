@@ -36,7 +36,6 @@ export class SelectComponent
   @Input() items: any;
 
   @Input() ariaLabel: string = '';
-  @Input() isDisabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() loadingText: string = 'Loading...';
   @Input() multiple: boolean = false;
@@ -91,8 +90,6 @@ export class SelectComponent
 
   stateChanges: Observable<void> = new Observable<void>();
   id: string = '';
-
-
 
   get empty(): boolean {
     if (!this.ngControl) {
@@ -191,5 +188,9 @@ export class SelectComponent
     //Order keys before compare.
     //Currently sensitive to key ordering differences.
     return JSON.stringify(item) === JSON.stringify(selected);
+  }
+
+  setID(id: string): void {
+    this.id = id;
   }
 }
