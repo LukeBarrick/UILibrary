@@ -1,1 +1,22 @@
 <h1>Context Menu</h1>
+<div class="d-flex flex-row">
+    <section class="medium">
+        <h3>Right Click Menu</h3>
+        <div [menuTriggerFor]="contextMenu"
+             (contextmenu)="rightClick($event)"
+             style="padding: 24px; border: 2px dashed #ccc; cursor: context-menu; text-align: center;">
+            Right click anywhere in this area to open the context menu
+        </div>
+        <uilibrary-context-menu #contextMenu>
+            <button>Option 1</button>
+            <button>Option 2</button>
+            <button [disabled]="true">Option 3 (Disabled)</button>
+            <uilibrary-context-side-menu>
+                <span context-menu-label>Sub Menu</span>
+                <div>Sub Option 1</div>
+                <div>Sub Option 2</div>
+                <div>Sub Option 3</div>
+            </uilibrary-context-side-menu>
+        </uilibrary-context-menu>
+    </section>
+</div>

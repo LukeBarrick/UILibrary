@@ -425,3 +425,330 @@
         <h3>Output</h3>
     </section>
 </div>
+
+<!-- Doesn't use [bindValue] as it returns a collection of deep objects -->
+<h3>Multi Select - Default Template</h3>
+<div class="d-flex flex-row">
+    <section class="small">
+        <h3>Attributes</h3>
+        <uilibrary-form-field>
+            <label ui-label>Basic Multi Select</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Clearable</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [clearable]="true" [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Max Selected Items (2)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [maxSelectedItems]="2" [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Hide Selected</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [hideSelected]="true" [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Clear Search On Add</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [clearSearchOnAdd]="true" [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small">
+        <h3>Two Way Binding</h3>
+        <uilibrary-form-field>
+            <label ui-label>Multi Select (No Binding)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Multi Select (Binding)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [(ngModel)]="multiSelectBinding" [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+        <span ui-note>Current value: {{stringify(multiSelectBinding)}}</span>
+
+        <uilibrary-form-field>
+            <label ui-label>Multi Select (Preset Value)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [(ngModel)]="multiSelectBindingPreset" [useCustomTemplate]="false"
+                bindLabel="value">
+            </uilibrary-select>
+        </uilibrary-form-field>
+        <span ui-note>Current value: {{stringify(multiSelectBindingPreset)}}</span>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Multi Select (Disabled)</label>
+                <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                    [closeOnSelect]="false" [(ngModel)]="multiSelectBindingDisabled"
+                    [disabled]="multiSelectBindingIsDisabled" [useCustomTemplate]="false" bindLabel="value">
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleMultiSelectBindingDisabled()">Toggle</uilibrary-button>
+        </div>
+
+        <uilibrary-form-field [class.error]="!multiSelectBindingError?.length">
+            <label ui-label>Multi Select (Error)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [(ngModel)]="multiSelectBindingError" [clearable]="true"
+                [useCustomTemplate]="false" bindLabel="value">
+            </uilibrary-select>
+            @if(!multiSelectBindingError?.length) {
+            <span ui-error>Required form field</span>
+            }
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small" [formGroup]="multiSelectDefaultForm">
+        <h3>Form Controls</h3>
+        <uilibrary-form-field>
+            <label ui-label>Form Control (No Value)</label>
+            <uilibrary-select ui-select formControlName="multiSelectControl"
+                placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                [useCustomTemplate]="false" bindLabel="value" [clearable]="true">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Form Control (Preset Value)</label>
+            <uilibrary-select ui-select formControlName="multiSelectWithValue"
+                placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                [useCustomTemplate]="false" bindLabel="value" [clearable]="true">
+            </uilibrary-select>
+            <span ui-note>Current value: {{stringify(multiSelectDefaultForm.controls['multiSelectWithValue'].value)}}</span>
+        </uilibrary-form-field>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control (Disabled)</label>
+                <uilibrary-select ui-select formControlName="multiSelectDisabled"
+                    placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                    [useCustomTemplate]="false" bindLabel="value" [clearable]="true">
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleMultiSelectDisabledFormControl()">Toggle</uilibrary-button>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control (Error)</label>
+                <uilibrary-select ui-select formControlName="multiSelectError"
+                    placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                    [useCustomTemplate]="false" bindLabel="value" [clearable]="true">
+                </uilibrary-select>
+                @if(multiSelectDefaultForm.get('multiSelectError')?.hasError('required')) {
+                <span ui-error>Required form field</span>
+                }
+            </uilibrary-form-field>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control (Untouched with Validator)</label>
+                <uilibrary-select ui-select formControlName="multiSelectUntouched"
+                    placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                    [useCustomTemplate]="false" bindLabel="value" [clearable]="true">
+                </uilibrary-select>
+            </uilibrary-form-field>
+        </div>
+    </section>
+
+    <section class="small">
+        <h3>Output</h3>
+        {{stringify(multiSelectDefaultForm.value)}}
+    </section>
+</div>
+
+<h3>Multi Select - Custom Template</h3>
+<div class="d-flex flex-row">
+    <section class="small">
+        <h3>Attributes</h3>
+        <uilibrary-form-field>
+            <label ui-label>Basic Multi Select</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Clearable</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [clearable]="true">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Max Selected Items (2)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [maxSelectedItems]="2">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Hide Selected</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [hideSelected]="true">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Clear Search On Add</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [clearSearchOnAdd]="true">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small">
+        <h3>Two Way Binding</h3>
+        <uilibrary-form-field>
+            <label ui-label>Multi Select (No Binding)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Multi Select (Binding)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [(ngModel)]="customMultiSelectBinding">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+        <span ui-note>Current value: {{stringify(customMultiSelectBinding)}}</span>
+
+        <uilibrary-form-field>
+            <label ui-label>Multi Select (Preset Value)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [(ngModel)]="customMultiSelectBindingPreset">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+        <span ui-note>Current value: {{stringify(customMultiSelectBindingPreset)}}</span>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Multi Select (Disabled)</label>
+                <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                    [closeOnSelect]="false" [(ngModel)]="customMultiSelectBindingDisabled"
+                    [disabled]="customMultiSelectBindingIsDisabled">
+                    <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                    <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleCustomMultiSelectBindingDisabled()">Toggle</uilibrary-button>
+        </div>
+
+        <uilibrary-form-field [class.error]="!customMultiSelectBindingError?.length">
+            <label ui-label>Multi Select (Error)</label>
+            <uilibrary-select ui-select [items]="items" placeholder="Please select items..." [multiple]="true" [maxSelectedItems]="3"
+                [closeOnSelect]="false" [(ngModel)]="customMultiSelectBindingError" [clearable]="true">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+            @if(!customMultiSelectBindingError?.length) {
+            <span ui-error>Required form field</span>
+            }
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small" [formGroup]="multiSelectCustomForm">
+        <h3>Form Controls</h3>
+        <uilibrary-form-field>
+            <label ui-label>Form Control (No Value)</label>
+            <uilibrary-select ui-select formControlName="customMultiSelectControl"
+                placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                [clearable]="true">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Form Control (Preset Value)</label>
+            <uilibrary-select ui-select formControlName="customMultiSelectWithValue"
+                placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                [clearable]="true">
+                <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+            </uilibrary-select>
+            <span ui-note>Current value: {{stringify(multiSelectCustomForm.controls['customMultiSelectWithValue'].value)}}</span>
+        </uilibrary-form-field>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control (Disabled)</label>
+                <uilibrary-select ui-select formControlName="customMultiSelectDisabled"
+                    placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                    [clearable]="true">
+                    <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                    <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                </uilibrary-select>
+            </uilibrary-form-field>
+            <uilibrary-button (click)="toggleCustomMultiSelectDisabledFormControl()">Toggle</uilibrary-button>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control (Error)</label>
+                <uilibrary-select ui-select formControlName="customMultiSelectError"
+                    placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                    [clearable]="true">
+                    <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                    <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                </uilibrary-select>
+                @if(multiSelectCustomForm.get('customMultiSelectError')?.hasError('required')) {
+                <span ui-error>Required form field</span>
+                }
+            </uilibrary-form-field>
+        </div>
+
+        <div class="d-flex flex-row">
+            <uilibrary-form-field>
+                <label ui-label>Form Control (Untouched with Validator)</label>
+                <uilibrary-select ui-select formControlName="customMultiSelectUntouched"
+                    placeholder="Please select items..." [items]="items" [multiple]="true" [closeOnSelect]="false" [maxSelectedItems]="3"
+                    [clearable]="true">
+                    <ng-template #labelTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                    <ng-template #optionTemplate let-item><div><b>{{item.value}}</b></div></ng-template>
+                </uilibrary-select>
+            </uilibrary-form-field>
+        </div>
+    </section>
+
+    <section class="small">
+        <h3>Output</h3>
+        {{stringify(multiSelectCustomForm.value)}}
+    </section>
+</div>

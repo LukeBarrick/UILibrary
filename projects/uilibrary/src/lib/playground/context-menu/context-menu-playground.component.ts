@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MenuTrigger } from '../../modules/context-menu/menu-trigger.directive';
 
 @Component({
     selector: 'uilibrary-context-menu-playground',
@@ -8,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ContextMenuPlaygroundComponent implements OnInit {
+    @ViewChild(MenuTrigger, { static: true }) menuTrigger!: MenuTrigger;
+
     constructor() { }
 
     ngOnInit() { }
+
+    rightClick(event: MouseEvent): void {
+        event.preventDefault();
+        this.menuTrigger.openMenu(event);
+    }
 }

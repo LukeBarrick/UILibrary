@@ -28,6 +28,18 @@ export class SelectPlaygroundComponent implements OnInit {
     basicSelectError: Item | undefined = undefined;
     clearable = this.items[0];
 
+    multiSelectBinding: Item[] = [];
+    multiSelectBindingPreset: Item[] = [this.items[0], this.items[1]];
+    multiSelectBindingIsDisabled: boolean = true;
+    multiSelectBindingDisabled: Item[] = [];
+    multiSelectBindingError: Item[] | undefined = undefined;
+
+    customMultiSelectBinding: Item[] = [];
+    customMultiSelectBindingPreset: Item[] = [this.items[0], this.items[1]];
+    customMultiSelectBindingIsDisabled: boolean = true;
+    customMultiSelectBindingDisabled: Item[] = [];
+    customMultiSelectBindingError: Item[] | undefined = undefined;
+
     formControlSelectForm: FormGroup = this.fb.group({
         formControlSelect: [],
         formControlSelectWithValue: [this.items[0]],
@@ -48,6 +60,22 @@ export class SelectPlaygroundComponent implements OnInit {
         formControlSelectError: [undefined, Validators.required]
     });
 
+    multiSelectDefaultForm: FormGroup = this.fb.group({
+        multiSelectControl: [[]],
+        multiSelectWithValue: [[this.items[0], this.items[1]]],
+        multiSelectDisabled: [{ value: [this.items[0]], disabled: true }],
+        multiSelectError: [undefined, Validators.required],
+        multiSelectUntouched: [undefined, Validators.required]
+    });
+
+    multiSelectCustomForm: FormGroup = this.fb.group({
+        customMultiSelectControl: [[]],
+        customMultiSelectWithValue: [[this.items[0], this.items[1]]],
+        customMultiSelectDisabled: [{ value: [this.items[0]], disabled: true }],
+        customMultiSelectError: [undefined, Validators.required],
+        customMultiSelectUntouched: [undefined, Validators.required]
+    });
+
     constructor() { }
 
     ngOnInit() {
@@ -56,9 +84,12 @@ export class SelectPlaygroundComponent implements OnInit {
 
         customFormControl?.markAsTouched();
         errorFormControl?.markAsTouched();
+
+        this.multiSelectDefaultForm.get('multiSelectError')?.markAsTouched();
+        this.multiSelectCustomForm.get('customMultiSelectError')?.markAsTouched();
     }
 
-    stringify(value: string) {
+    stringify(value: any) {
         return JSON.stringify(value);
     }
 
@@ -96,6 +127,34 @@ export class SelectPlaygroundComponent implements OnInit {
        } else {
         formControl.disable();
        }
+    }
+
+    toggleMultiSelectBindingDisabled() {
+        this.multiSelectBindingIsDisabled = !this.multiSelectBindingIsDisabled;
+    }
+
+    toggleCustomMultiSelectBindingDisabled() {
+        this.customMultiSelectBindingIsDisabled = !this.customMultiSelectBindingIsDisabled;
+    }
+
+    toggleMultiSelectDisabledFormControl() {
+        const formControl = this.multiSelectDefaultForm.get('multiSelectDisabled');
+        if (!formControl) return;
+        if (formControl.disabled) {
+            formControl.enable();
+        } else {
+            formControl.disable();
+        }
+    }
+
+    toggleCustomMultiSelectDisabledFormControl() {
+        const formControl = this.multiSelectCustomForm.get('customMultiSelectDisabled');
+        if (!formControl) return;
+        if (formControl.disabled) {
+            formControl.enable();
+        } else {
+            formControl.disable();
+        }
     }
 }
 

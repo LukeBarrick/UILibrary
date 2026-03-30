@@ -2,14 +2,82 @@
 <div class="d-flex flex-row">
     <section class="small">
         <h3>Attributes</h3>
+        <h4>Label Position</h4>
+        <uilibrary-radio-button [value]="1" labelPosition="left">Label Left (default)</uilibrary-radio-button>
+        <uilibrary-radio-button [value]="2" labelPosition="right">Label Right</uilibrary-radio-button>
+        <h4>Disabled</h4>
+        <uilibrary-radio-button [value]="1" [disabled]="true">Disabled (Unchecked)</uilibrary-radio-button>
+        <uilibrary-radio-button [value]="1" [checked]="true" [disabled]="true">Disabled (Checked)</uilibrary-radio-button>
     </section>
-     <section class="small">
+    <section class="small">
         <h3>Two Way Binding</h3>
+        <uilibrary-radio-group [(ngModel)]="radioGroupModel">
+            <uilibrary-radio-button [value]="1">Option 1</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="2">Option 2</uilibrary-radio-button>
+            <uilibrary-radio-button [value]="3">Option 3</uilibrary-radio-button>
+        </uilibrary-radio-group>
+        <span>Current value: {{ stringify(radioGroupModel) }}</span>
+        <div class="d-flex flex-row">
+            <uilibrary-radio-group [(ngModel)]="radioGroupModel" [disabled]="isGroupDisabled">
+                <uilibrary-radio-button [value]="1">Option 1 (Disabled)</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="2">Option 2 (Disabled)</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="3">Option 3 (Disabled)</uilibrary-radio-button>
+            </uilibrary-radio-group>
+            <uilibrary-button (click)="toggleGroupDisabled()">Toggle</uilibrary-button>
+        </div>
     </section>
-     <section class="small">
+    <section class="small">
         <h3>Form Controls</h3>
+        <div [formGroup]="radioForm">
+            <p>Form Control (No Value)</p>
+            <uilibrary-radio-group formControlName="radioControl">
+                <uilibrary-radio-button [value]="1">Option 1</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="2">Option 2</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="3">Option 3</uilibrary-radio-button>
+            </uilibrary-radio-group>
+
+            <p>Form Control (Preset Value)</p>
+            <uilibrary-radio-group formControlName="radioWithValue">
+                <uilibrary-radio-button [value]="1">Option 1</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="2">Option 2</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="3">Option 3</uilibrary-radio-button>
+            </uilibrary-radio-group>
+            <span>Current value: {{ stringify(radioForm.controls['radioWithValue'].value) }}</span>
+
+            <div class="d-flex flex-row">
+                <div>
+                    <p>Form Control (Disabled)</p>
+                    <uilibrary-radio-group formControlName="radioDisabled">
+                        <uilibrary-radio-button [value]="1">Option 1</uilibrary-radio-button>
+                        <uilibrary-radio-button [value]="2">Option 2</uilibrary-radio-button>
+                        <uilibrary-radio-button [value]="3">Option 3</uilibrary-radio-button>
+                    </uilibrary-radio-group>
+                </div>
+                <uilibrary-button (click)="toggleDisabledFormControl()">Toggle</uilibrary-button>
+            </div>
+
+            <p>Form Control (Error - Touched)</p>
+            <uilibrary-radio-group formControlName="radioError">
+                <uilibrary-radio-button [value]="1">Option 1</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="2">Option 2</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="3">Option 3</uilibrary-radio-button>
+            </uilibrary-radio-group>
+            @if(radioForm.get('radioError')?.hasError('required')) {
+                <span>Required</span>
+            }
+
+            <p>Form Control (Untouched with Validator)</p>
+            <uilibrary-radio-group formControlName="radioUntouched">
+                <uilibrary-radio-button [value]="1">Option 1</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="2">Option 2</uilibrary-radio-button>
+                <uilibrary-radio-button [value]="3">Option 3</uilibrary-radio-button>
+            </uilibrary-radio-group>
+        </div>
     </section>
-     <section class="small">
+    @if(showOutput) {
+    <section class="small">
         <h3>Output</h3>
+        {{ stringify(radioForm.value) }}
     </section>
+    }
 </div>

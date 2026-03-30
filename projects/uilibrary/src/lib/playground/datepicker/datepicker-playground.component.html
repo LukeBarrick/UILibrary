@@ -1,15 +1,73 @@
 <h1>Date Picker</h1>
 <div class="d-flex flex-row">
     <section class="small">
-        <h3>Attributes</h3>
+        <h3>Single Date Picker</h3>
+        <h4>Two Way Binding</h4>
+        <uilibrary-form-field>
+            <label ui-label>Date Picker (No Binding)</label>
+            <uilibrary-datepicker-input></uilibrary-datepicker-input>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Date Picker (Binding)</label>
+            <uilibrary-datepicker-input [(ngModel)]="datePickerModel"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
+        <span>Current value: {{ stringify(datePickerModel) }}</span>
+
+        <h4>Form Controls</h4>
+        <div [formGroup]="datepickerForm">
+            <uilibrary-form-field>
+                <label ui-label>Date Picker (Form Control)</label>
+                <uilibrary-datepicker-input formControlName="datePickerControl"></uilibrary-datepicker-input>
+            </uilibrary-form-field>
+
+            <uilibrary-form-field>
+                <label ui-label>Date Picker (Preset Value)</label>
+                <uilibrary-datepicker-input formControlName="datePickerWithValue"></uilibrary-datepicker-input>
+            </uilibrary-form-field>
+
+            <uilibrary-form-field>
+                <label ui-label>Date Picker (Disabled)</label>
+                <uilibrary-datepicker-input formControlName="datePickerDisabled"></uilibrary-datepicker-input>
+            </uilibrary-form-field>
+        </div>
     </section>
-     <section class="small">
-        <h3>Two Way Binding</h3>
+    <section class="small">
+        <h3>Date Range Picker</h3>
+        <h4>Two Way Binding</h4>
+        <uilibrary-form-field>
+            <label ui-label>Date Range (Binding)</label>
+            <uilibrary-date-range-input>
+                <input startDate [(ngModel)]="startDateModel" />
+                <input endDate [(ngModel)]="endDateModel" />
+            </uilibrary-date-range-input>
+        </uilibrary-form-field>
+        <span>Start: {{ stringify(startDateModel) }}</span>
+        <span>End: {{ stringify(endDateModel) }}</span>
+
+        <h4>Form Controls</h4>
+        <div [formGroup]="datepickerForm">
+            <uilibrary-form-field>
+                <label ui-label>Date Range (Form Control)</label>
+                <uilibrary-date-range-input>
+                    <input startDate formControlName="startDate" />
+                    <input endDate formControlName="endDate" />
+                </uilibrary-date-range-input>
+            </uilibrary-form-field>
+
+            <uilibrary-form-field>
+                <label ui-label>Date Range (Disabled)</label>
+                <uilibrary-date-range-input>
+                    <input startDate formControlName="startDateDisabled" />
+                    <input endDate formControlName="endDateDisabled" />
+                </uilibrary-date-range-input>
+            </uilibrary-form-field>
+        </div>
     </section>
-     <section class="small">
-        <h3>Form Controls</h3>
-    </section>
-     <section class="small">
+    @if(showOutput) {
+    <section class="small">
         <h3>Output</h3>
+        {{ stringify(datepickerForm.value) }}
     </section>
+    }
 </div>

@@ -2,14 +2,55 @@
 <div class="d-flex flex-row">
     <section class="small">
         <h3>Attributes</h3>
+        <h4>Label Position</h4>
+        <uilibrary-toggle labelPosition="left">Label Left (default)</uilibrary-toggle>
+        <uilibrary-toggle labelPosition="right">Label Right</uilibrary-toggle>
+        <h4>Label Size</h4>
+        <uilibrary-toggle>Normal Label</uilibrary-toggle>
+        <uilibrary-toggle labelSize="large">Large Label</uilibrary-toggle>
+        <h4>Hide Label</h4>
+        <uilibrary-toggle [hideLabel]="true">
+            This is descriptive text about the toggle for accessibility reasons. Do not leave blank.
+        </uilibrary-toggle>
+        <h4>Disabled</h4>
+        <uilibrary-toggle [disabled]="true">Disabled (Unchecked)</uilibrary-toggle>
+        <uilibrary-toggle [disabled]="true" [checked]="true">Disabled (Checked)</uilibrary-toggle>
     </section>
-     <section class="small">
+    <section class="small">
         <h3>Two Way Binding</h3>
+        <uilibrary-toggle>No Binding</uilibrary-toggle>
+        <uilibrary-toggle [(ngModel)]="basicToggleBinding">Binding</uilibrary-toggle>
+        <span>Current value: {{ basicToggleBinding }}</span>
+        <div class="d-flex flex-row">
+            <uilibrary-toggle [(ngModel)]="basicToggleDisabled" [disabled]="isDisabled">Disabled</uilibrary-toggle>
+            <uilibrary-button (click)="toggleDisabled()">Toggle</uilibrary-button>
+        </div>
     </section>
-     <section class="small">
+    <section class="small">
         <h3>Form Controls</h3>
+        <div [formGroup]="toggleForm">
+            <uilibrary-toggle formControlName="toggleControl">Form Control Toggle</uilibrary-toggle>
+
+            <uilibrary-toggle formControlName="toggleWithValue">Form Control Toggle (Preset Value)</uilibrary-toggle>
+            <span>Current value: {{ stringify(toggleForm.controls['toggleWithValue'].value) }}</span>
+
+            <div class="d-flex flex-row">
+                <uilibrary-toggle formControlName="toggleDisabled">Form Control Toggle (Disabled)</uilibrary-toggle>
+                <uilibrary-button (click)="toggleDisabledFormControl()">Toggle</uilibrary-button>
+            </div>
+
+            <uilibrary-toggle formControlName="toggleError">Form Control Toggle (Error)</uilibrary-toggle>
+            @if(toggleForm.get('toggleError')?.hasError('required') && toggleForm.get('toggleError')?.touched) {
+                <span>Required</span>
+            }
+
+            <uilibrary-toggle formControlName="toggleUntouched">Form Control Toggle (Untouched with Validator)</uilibrary-toggle>
+        </div>
     </section>
-     <section class="small">
+    @if(showOutput) {
+    <section class="small">
         <h3>Output</h3>
+        {{ stringify(toggleForm.value) }}
     </section>
+    }
 </div>

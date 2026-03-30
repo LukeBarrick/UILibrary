@@ -2,14 +2,73 @@
 <div class="d-flex flex-row">
     <section class="small">
         <h3>Attributes</h3>
+        <h4>Variants</h4>
+        <uilibrary-checkbox variant="branded">Branded</uilibrary-checkbox>
+        <uilibrary-checkbox variant="pass">Pass</uilibrary-checkbox>
+        <uilibrary-checkbox variant="fail">Fail</uilibrary-checkbox>
+        <h4>Sizes</h4>
+        <uilibrary-checkbox variant="branded" size="small">Small (default)</uilibrary-checkbox>
+        <uilibrary-checkbox variant="branded" size="large">Large</uilibrary-checkbox>
+        <h4>Label Position</h4>
+        <uilibrary-checkbox variant="branded" labelPosition="right">Label Right (default)</uilibrary-checkbox>
+        <uilibrary-checkbox variant="branded" labelPosition="left">Label Left</uilibrary-checkbox>
+        <h4>Hide Label</h4>
+        <uilibrary-checkbox variant="branded" [hideLabel]="true">
+            This is descriptive text about the checkbox for accessibility reasons. Do not leave blank.
+        </uilibrary-checkbox>
+        <h4>Disabled</h4>
+        <uilibrary-checkbox variant="branded" [disabled]="true">Disabled (Unchecked)</uilibrary-checkbox>
+        <uilibrary-checkbox variant="branded" [disabled]="true" [checked]="true">Disabled (Checked)</uilibrary-checkbox>
     </section>
-     <section class="small">
+    <section class="small">
         <h3>Two Way Binding</h3>
+        <uilibrary-checkbox variant="branded">No Binding</uilibrary-checkbox>
+        <uilibrary-checkbox variant="branded" [(ngModel)]="basicCheckboxBinding">
+            Binding
+        </uilibrary-checkbox>
+        <span>Current value: {{ basicCheckboxBinding }}</span>
+        <div class="d-flex flex-row">
+            <uilibrary-checkbox variant="branded" [(ngModel)]="basicCheckboxDisabled" [disabled]="isDisabled">
+                Disabled
+            </uilibrary-checkbox>
+            <uilibrary-button (click)="toggleDisabled()">Toggle</uilibrary-button>
+        </div>
     </section>
-     <section class="small">
+    <section class="small">
         <h3>Form Controls</h3>
+        <div [formGroup]="checkboxForm">
+            <uilibrary-checkbox variant="branded" formControlName="checkboxControl">
+                Form Control Checkbox
+            </uilibrary-checkbox>
+
+            <uilibrary-checkbox variant="branded" formControlName="checkboxWithValue">
+                Form Control Checkbox (Preset Value)
+            </uilibrary-checkbox>
+            <span>Current value: {{ stringify(checkboxForm.controls['checkboxWithValue'].value) }}</span>
+
+            <div class="d-flex flex-row">
+                <uilibrary-checkbox variant="branded" formControlName="checkboxDisabled">
+                    Form Control Checkbox (Disabled)
+                </uilibrary-checkbox>
+                <uilibrary-button (click)="toggleDisabledFormControl()">Toggle</uilibrary-button>
+            </div>
+
+            <uilibrary-checkbox variant="branded" formControlName="checkboxError">
+                Form Control Checkbox (Error)
+            </uilibrary-checkbox>
+            @if(checkboxForm.get('checkboxError')?.hasError('required') && checkboxForm.get('checkboxError')?.touched) {
+                <span>Required</span>
+            }
+
+            <uilibrary-checkbox variant="branded" formControlName="checkboxUntouched">
+                Form Control Checkbox (Untouched with Validator)
+            </uilibrary-checkbox>
+        </div>
     </section>
-     <section class="small">
+    @if(showOutput) {
+    <section class="small">
         <h3>Output</h3>
+        {{ stringify(checkboxForm.value) }}
     </section>
+    }
 </div>
