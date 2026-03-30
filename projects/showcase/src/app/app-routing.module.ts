@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: 'docs', loadChildren: () => import('./docs/docs.module').then(m => m.DocumentationModule) }, 
       { path: 'guides', loadChildren: () => import('./guides/guides.module').then(m => m.GuidesModule) }, 
       { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) }, 
+      { path: 'playground', loadChildren: () => import('./playground/playground.module').then(m => m.PlaygroundModule) }, 
     ] 
   },
   { path: 'showcase', component: ShowcaseComponent },

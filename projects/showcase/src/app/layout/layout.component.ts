@@ -20,6 +20,7 @@ export class LayoutComponent implements OnInit {
       { label:'Documentation', path:'/docs', type: NavigationLinkType.Route },
       { label:'Guides', path:'/guides', type: NavigationLinkType.Route },
       { label:'Blog', path:'/blog', type: NavigationLinkType.Route },
+      { label:'Playground', path:'/playground', type: NavigationLinkType.Route },
       { label:'Old Docs', path:'/showcase', type: NavigationLinkType.Route },
     ];
 

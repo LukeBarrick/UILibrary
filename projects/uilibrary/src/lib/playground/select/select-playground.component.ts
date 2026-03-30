@@ -1,5 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Item } from '../../core/models/item';
 
 @Component({
     selector: 'uilibrary-select-playground',
@@ -158,7 +159,3 @@ export class SelectPlaygroundComponent implements OnInit {
     }
 }
 
-export interface Item {
-    id: number,
-    value: string
-}
