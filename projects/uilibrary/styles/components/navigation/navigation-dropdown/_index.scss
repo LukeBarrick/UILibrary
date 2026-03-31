@@ -26,8 +26,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            padding-right:20px;
-            padding-left: 20px;
+            padding-inline: 20px;
 
             &:after {
                 content: "";
@@ -36,8 +35,7 @@
                 background: var(--secondary);
                 height: 0px;
                 top: 60px;
-                left: 0;
-                right: 0;
+                inset-inline: 0;
                 z-index: 0;
                 transition: all $transitions;
             }
@@ -49,8 +47,7 @@
                 background: var(--secondary);
                 height: 4px;
                 top: 56px;
-                left: 0;
-                right: 0;
+                inset-inline: 0;
                 z-index: 0;
                 width: 100%;
                 transition: all $transitions;
@@ -64,8 +61,7 @@
                     background: var(--secondary);
                     height: 6px;
                     top: 54px;
-                    left: 0;
-                    right: 0;
+                    inset-inline: 0;
                     z-index: 0;
                     transition: all $transitions;
                 }

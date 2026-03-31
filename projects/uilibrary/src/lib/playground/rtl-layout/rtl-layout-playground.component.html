@@ -1,5 +1,158 @@
 <h1>RTL Layout</h1>
 
+<!-- ── Compatibility Table ───────────────────────────────────────────────── -->
+<section class="demo-section compat-legend">
+  <h3>RTL Compatibility</h3>
+  <p class="compat-table-intro">
+    Status of each UILibrary component when used inside a
+    <code>[uiRtlLayout]</code> host element.
+  </p>
+
+  <!-- Legend key -->
+  <div class="legend-key d-flex flex-row">
+    <span class="badge badge-ok">✅ Compatible</span>
+    <span class="mis-3">Fully adapts via <code>dir</code> attribute</span>
+    <span class="badge badge-partial mis-5">⚠️ Partial</span>
+    <span class="mis-3">Works with known limitations</span>
+    <span class="badge badge-na mis-5">➖ Not Audited</span>
+    <span class="mis-3">Needs assessment</span>
+  </div>
+
+  <!-- Compatibility table -->
+  <table class="compat-table">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Selector</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th>Demo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Button</td>
+        <td><code>uilibrary-button</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Pure text/flex — no directional CSS</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Icon</td>
+        <td><code>uilibrary-icon</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Single glyph — no directional properties</td>
+        <td><a href="#section-icon">§6</a></td>
+      </tr>
+      <tr>
+        <td>Status Tag</td>
+        <td><code>uilibrary-status-tag</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Uses <code>padding-inline</code> — text and flex order flip automatically</td>
+        <td><a href="#section-status-tags">§10</a></td>
+      </tr>
+      <tr>
+        <td>Form Field</td>
+        <td><code>uilibrary-form-field</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Label uses <code>inset-inline-start</code>; footer uses <code>margin-inline-start</code></td>
+        <td><a href="#section-input">§8</a></td>
+      </tr>
+      <tr>
+        <td>Input</td>
+        <td><code>ui-input</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Uses <code>padding-inline-start</code>; inherits <code>dir</code> for cursor &amp; text</td>
+        <td><a href="#section-input">§8</a></td>
+      </tr>
+      <tr>
+        <td>Textarea</td>
+        <td><code>ui-input</code> (textarea)</td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Uses <code>padding-inline-start</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Checkbox</td>
+        <td><code>uilibrary-checkbox</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Template uses <code>mis-4</code>/<code>mie-4</code>; indicator uses <code>inset-inline-start</code></td>
+        <td><a href="#section-checkbox">§11</a></td>
+      </tr>
+      <tr>
+        <td>Toggle</td>
+        <td><code>uilibrary-toggle</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Knob uses <code>inset-inline-start</code>; <code>[dir="rtl"]</code> flips <code>translateX</code></td>
+        <td><a href="#section-toggle">§12</a></td>
+      </tr>
+      <tr>
+        <td>Radio Button</td>
+        <td><code>uilibrary-radio-button</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Label spacing uses <code>margin-inline-end</code> / <code>margin-inline-start</code></td>
+        <td><a href="#section-radio">§13</a></td>
+      </tr>
+      <tr>
+        <td>Navigation</td>
+        <td><code>uilibrary-navigation</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>All padding, logo margin, and underline pseudo-elements use logical properties</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Tooltip</td>
+        <td><code>uilibrary-tooltip</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Margin utilities use <code>margin-inline-*</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Required</td>
+        <td><code>uilibrary-required</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td>Uses <code>margin-inline-start</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Context Menu</td>
+        <td><code>uilibrary-context-menu</code></td>
+        <td><span class="badge badge-ok">✅</span></td>
+        <td><code>text-align: start</code>; sub-menu uses <code>inset-inline-start</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Select</td>
+        <td><code>uilibrary-select</code></td>
+        <td><span class="badge badge-partial">⚠️</span></td>
+        <td>Value position &amp; input padding are logical; dropdown panel position is JS-driven (ng-select)</td>
+        <td><a href="#section-select">§9</a></td>
+      </tr>
+      <tr>
+        <td>Date Picker</td>
+        <td><code>uilibrary-datepicker-input</code></td>
+        <td><span class="badge badge-partial">⚠️</span></td>
+        <td>Input fields &amp; panel position ✅; calendar grid layout is Angular CDK-driven</td>
+        <td><a href="#section-datepicker">§14</a></td>
+      </tr>
+      <tr class="compat-table-na">
+        <td>Table</td>
+        <td><code>uilibrary-table</code></td>
+        <td><span class="badge badge-na">➖</span></td>
+        <td>Not yet audited</td>
+        <td>—</td>
+      </tr>
+      <tr class="compat-table-na">
+        <td>Keyboard Navigation</td>
+        <td><code>uilibrary-keyboard-navigation</code></td>
+        <td><span class="badge badge-na">➖</span></td>
+        <td>Not yet audited</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
 <!-- ── Direction Control ─────────────────────────────────────────────────── -->
 <section class="demo-section">
   <h3>Active Direction</h3>
@@ -125,7 +278,7 @@
 </section>
 
 <!-- ── Use Case 6 – Icon + Label with logical spacing ───────────────────── -->
-<section class="demo-section" [uiRtlLayout]="direction">
+<section id="section-icon" class="demo-section" [uiRtlLayout]="direction">
   <h3>6 · Icon + Label with <code>margin-inline-start</code></h3>
   <p>
     Using <code>mis-3</code> between an icon and its label keeps the spacing
@@ -161,5 +314,293 @@
       Container with <code>position: relative</code>.<br>
       The badges pin to the logical start / end corners.
     </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<!--  UILibrary Component Demos                                              -->
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+
+<!-- ── §8 — Text Input + Form Field ✅ ──────────────────────────────────── -->
+<section id="section-input" class="demo-section" [uiRtlLayout]="direction">
+  <div class="section-header d-flex flex-row">
+    <h3>8 · Text Input &amp; Form Field</h3>
+    <span class="badge badge-ok mis-3">✅ Compatible</span>
+  </div>
+  <p>
+    The native <code>&lt;input&gt;</code> element inherits the <code>dir</code>
+    attribute — text entry, cursor position, and placeholder alignment all adapt
+    automatically. The floating label now uses <code>inset-inline-start</code>
+    so it snaps to the correct edge in both directions.
+  </p>
+  <div class="component-demo d-flex flex-row" [formGroup]="inputForm">
+    <div class="demo-col">
+      <uilibrary-form-field>
+        <label ui-label>Full Name</label>
+        <input ui-input formControlName="name" placeholder="Enter your name" />
+      </uilibrary-form-field>
+    </div>
+    <div class="demo-col mis-4">
+      <uilibrary-form-field>
+        <label ui-label>Message</label>
+        <input ui-input formControlName="message" placeholder="Type a message" />
+      </uilibrary-form-field>
+    </div>
+  </div>
+  <div class="compat-note">
+    <strong>Known limitation (resolved):</strong> The floating label previously used
+    <code>left: 9px</code>. It now uses <code>inset-inline-start: 9px</code> and
+    adapts correctly to RTL.
+  </div>
+</section>
+
+<!-- ── §9 — Select Dropdown ❌ ──────────────────────────────────────────── -->
+<section id="section-select" class="demo-section" [uiRtlLayout]="direction">
+  <div class="section-header d-flex flex-row">
+    <h3>9 · Select Dropdown</h3>
+    <span class="badge badge-partial mis-3">⚠️ Partial</span>
+  </div>
+  <p>
+    Internal ng-select CSS has been migrated to logical properties (value position,
+    input padding). The <strong>dropdown panel</strong> position is set by the
+    ng-select library via JavaScript (<code>getBoundingClientRect</code>) and cannot
+    be overridden with pure CSS — it may not align perfectly at the viewport edges
+    in RTL.
+  </p>
+  <div class="component-demo" [formGroup]="selectForm" style="max-width: 320px;">
+    <uilibrary-form-field>
+      <label ui-label>Country</label>
+      <uilibrary-select ui-select
+        formControlName="country"
+        [items]="countryItems"
+        bindValue="id"
+        bindLabel="name"
+        placeholder="Select a country"
+        [useCustomTemplate]="false">
+      </uilibrary-select>
+    </uilibrary-form-field>
+  </div>
+  <div class="compat-note">
+    <strong>Mostly resolved.</strong> Value position and input padding now use
+    logical properties. The dropdown panel alignment is controlled by the
+    <code>ng-select</code> library via JS and remains LTR-anchored. All other
+    visual elements mirror correctly in RTL.
+  </div>
+</section>
+
+<!-- ── §10 — Status Tags ✅ ─────────────────────────────────────────────── -->
+<section id="section-status-tags" class="demo-section" [uiRtlLayout]="direction">
+  <div class="section-header d-flex flex-row">
+    <h3>10 · Status Tags</h3>
+    <span class="badge badge-ok mis-3">✅ Compatible</span>
+  </div>
+  <p>
+    Status tags are plain wrappers with colour-only styling. Text content flows
+    naturally with the <code>dir</code> attribute and the flex row reverses in RTL.
+  </p>
+  <div class="d-flex flex-row status-tag-row">
+    <uilibrary-status-tag statusType="success">Approved</uilibrary-status-tag>
+    <uilibrary-status-tag statusType="error">Rejected</uilibrary-status-tag>
+    <uilibrary-status-tag statusType="warning">Pending Review</uilibrary-status-tag>
+    <uilibrary-status-tag statusType="info">In Progress</uilibrary-status-tag>
+    <uilibrary-status-tag statusType="secondary">Draft</uilibrary-status-tag>
+  </div>
+  <p class="hint mbs-3">
+    In RTL, the tag order reverses in the flex row and text alignment shifts
+    to the right — no overrides needed.
+  </p>
+  <div class="d-flex flex-column status-list">
+    <div class="status-list-row d-flex flex-row">
+      <uilibrary-status-tag statusType="success">Submitted</uilibrary-status-tag>
+      <span class="mis-3 text-align-start">Application submitted successfully</span>
+    </div>
+    <div class="status-list-row d-flex flex-row mbs-2">
+      <uilibrary-status-tag statusType="warning">Review</uilibrary-status-tag>
+      <span class="mis-3 text-align-start">Awaiting manual verification</span>
+    </div>
+    <div class="status-list-row d-flex flex-row mbs-2">
+      <uilibrary-status-tag statusType="error">Failed</uilibrary-status-tag>
+      <span class="mis-3 text-align-start">Document could not be processed</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── §11 — Checkbox ❌ ─────────────────────────────────────────────────── -->
+<section id="section-checkbox" class="demo-section" [uiRtlLayout]="direction">
+  <div class="section-header d-flex flex-row">
+    <h3>11 · Checkbox</h3>
+    <span class="badge badge-ok mis-3">✅ Compatible</span>
+  </div>
+  <p>
+    Checkboxes now use logical utility classes (<code>mis-4</code> / <code>mie-4</code>)
+    for label spacing and <code>inset-inline-start</code> for the check indicator
+    position. Both LTR and RTL render correctly.
+  </p>
+  <div class="component-demo d-flex flex-row">
+    <div class="demo-col d-flex flex-column">
+      <uilibrary-checkbox labelPosition="right">Label right (default)</uilibrary-checkbox>
+      <uilibrary-checkbox labelPosition="right" [checked]="true">Label right (checked)</uilibrary-checkbox>
+      <uilibrary-checkbox labelPosition="left">Label left</uilibrary-checkbox>
+    </div>
+  </div>
+  <div class="compat-note">
+    <strong>Resolved.</strong> Label spacing uses <code>mis-4</code> / <code>mie-4</code>
+    (logical margin-inline utilities) and the check indicator uses
+    <code>inset-inline-start</code>. Both adapt correctly in RTL.
+  </div>
+</section>
+
+<!-- ── §12 — Toggle ❌ ──────────────────────────────────────────────────── -->
+<section id="section-toggle" class="demo-section" [uiRtlLayout]="direction">
+  <div class="section-header d-flex flex-row">
+    <h3>12 · Toggle</h3>
+    <span class="badge badge-ok mis-3">✅ Compatible</span>
+  </div>
+  <p>
+    The toggle slider knob now uses <code>inset-inline-start: 0</code> for
+    initial position. In RTL mode a scoped <code>[dir="rtl"]</code> rule applies
+    <code>translateX(-15px)</code> so the knob animates toward the start edge.
+    Label spacing uses the same logical utilities as the checkbox.
+  </p>
+  <div class="component-demo d-flex flex-column">
+    <uilibrary-toggle>Default toggle</uilibrary-toggle>
+    <uilibrary-toggle [checked]="true">Checked toggle</uilibrary-toggle>
+    <uilibrary-toggle labelPosition="right">Label right</uilibrary-toggle>
+  </div>
+  <div class="compat-note">
+    <strong>Resolved.</strong> Knob uses <code>inset-inline-start</code> and a
+    <code>[dir="rtl"]</code> scoped rule flips the <code>translateX</code> to
+    <code>-15px</code>. Label spacing uses logical utilities.
+  </div>
+</section>
+
+<!-- ── §13 — Radio Buttons ⚠️ ──────────────────────────────────────────── -->
+<section id="section-radio" class="demo-section" [uiRtlLayout]="direction">
+  <div class="section-header d-flex flex-row">
+    <h3>13 · Radio Buttons</h3>
+    <span class="badge badge-ok mis-3">✅ Compatible</span>
+  </div>
+  <p>
+    Label spacing now uses <code>margin-inline-end</code> / <code>margin-inline-start</code>
+    so the gap automatically flips with the writing direction. The flex row reverses
+    in RTL and <code>order</code>-based label placement stays semantically correct.
+  </p>
+  <div class="component-demo d-flex flex-row">
+    <div class="demo-col d-flex flex-column">
+      <h4>Label left (default)</h4>
+      <uilibrary-radio-group [(ngModel)]="radioValue">
+        <uilibrary-radio-button value="a" [checked]="radioValue === 'a'" labelPosition="left">Option A</uilibrary-radio-button>
+        <uilibrary-radio-button value="b" [checked]="radioValue === 'b'" labelPosition="left">Option B</uilibrary-radio-button>
+        <uilibrary-radio-button value="c" [checked]="radioValue === 'c'" labelPosition="left">Option C</uilibrary-radio-button>
+      </uilibrary-radio-group>
+    </div>
+    <div class="demo-col mis-5 d-flex flex-column">
+      <h4>Label right</h4>
+      <uilibrary-radio-group>
+        <uilibrary-radio-button value="x" labelPosition="right">Option X</uilibrary-radio-button>
+        <uilibrary-radio-button value="y" labelPosition="right">Option Y</uilibrary-radio-button>
+      </uilibrary-radio-group>
+    </div>
+  </div>
+  <div class="compat-note">
+    <strong>Resolved.</strong> Label spacing uses <code>margin-inline-end</code>
+    and <code>margin-inline-start</code>, which auto-flip in RTL. No further
+    overrides needed.
+  </div>
+</section>
+<!-- ── §14 — Date Picker ⚠️ ───────────────────────────────────────────────── -->
+<section id="section-datepicker" class="demo-section" [uiRtlLayout]="direction">
+  <div class="section-header d-flex flex-row">
+    <h3>14 · Date Picker</h3>
+    <span class="badge badge-partial mis-3">⚠️ Partial</span>
+  </div>
+  <p>
+    The date input fields inherit the <code>dir</code> attribute so text entry
+    and cursor behaviour flip correctly. The calendar popup panel itself uses
+    absolute positioning anchored to <code>inset-inline-start&nbsp;0</code>
+    after the fix to <code>date-picker/_index.scss</code>. Month/day label
+    order within the calendar header depends on the Angular CDK date locale
+    and is not affected by <code>dir</code> alone.
+  </p>
+
+  <div class="datepicker-row d-flex flex-row" [formGroup]="datepickerForm">
+
+    <!-- Single date — empty -->
+    <div class="demo-col">
+      <uilibrary-form-field>
+        <label ui-label>Single Date (empty)</label>
+        <uilibrary-datepicker-input formControlName="singleDate"></uilibrary-datepicker-input>
+      </uilibrary-form-field>
+    </div>
+
+    <!-- Single date — pre-filled -->
+    <div class="demo-col mis-4">
+      <uilibrary-form-field>
+        <label ui-label>Single Date (preset value)</label>
+        <uilibrary-datepicker-input formControlName="presetDate"></uilibrary-datepicker-input>
+      </uilibrary-form-field>
+    </div>
+
+  </div>
+
+  <!-- Two-way binding -->
+  <div class="datepicker-row d-flex flex-row mbs-4">
+    <div class="demo-col">
+      <uilibrary-form-field>
+        <label ui-label>Two-way Binding</label>
+        <uilibrary-datepicker-input [(ngModel)]="datePickerModel"></uilibrary-datepicker-input>
+      </uilibrary-form-field>
+      <p class="hint mbs-2">Selected: <code>{{ datePickerModel | date:'mediumDate' }}</code></p>
+    </div>
+  </div>
+
+  <!-- Date range -->
+  <h4 class="mbs-3">Date Range Picker</h4>
+  <div class="datepicker-row d-flex flex-row">
+    <div class="demo-col">
+      <uilibrary-form-field>
+        <label ui-label>Date Range (two-way binding)</label>
+        <uilibrary-date-range-input>
+          <input startDate [(ngModel)]="startDateModel" />
+          <input endDate [(ngModel)]="endDateModel" />
+        </uilibrary-date-range-input>
+      </uilibrary-form-field>
+      <p class="hint mbs-2">
+        Start: <code>{{ startDateModel | date:'mediumDate' }}</code>
+        &nbsp;—&nbsp;
+        End: <code>{{ endDateModel | date:'mediumDate' }}</code>
+      </p>
+    </div>
+    <div class="demo-col mis-4" [formGroup]="datepickerForm">
+      <uilibrary-form-field>
+        <label ui-label>Date Range (form controls)</label>
+        <uilibrary-date-range-input>
+          <input startDate formControlName="rangeStart" />
+          <input endDate formControlName="rangeEnd" />
+        </uilibrary-date-range-input>
+      </uilibrary-form-field>
+    </div>
+  </div>
+
+  <div class="compat-note compat-note--warn">
+    <strong>Partially compatible.</strong>
+    <ul>
+      <li>
+        <strong>Input fields</strong> — text, cursor, and placeholder flip correctly
+        with the <code>dir</code> attribute. ✅
+      </li>
+      <li>
+        <strong>Calendar panel position</strong> — anchored via
+        <code>inset-inline-start: 0</code> after the
+        <code>date-picker/_index.scss</code> fix, so it opens at the start edge
+        in both directions. ✅
+      </li>
+      <li>
+        <strong>Calendar grid layout</strong> — day headers and the selected-range
+        highlight use physical left/right flex ordering inside the Angular CDK
+        calendar. Full RTL requires locale-aware date formatting and is outside
+        the scope of a CSS-only fix. ⚠️
+      </li>
+    </ul>
   </div>
 </section>

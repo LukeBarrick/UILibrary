@@ -17,7 +17,7 @@
   cursor: pointer;
   width: 100%;
   border: none;
-  text-align: left;
+  text-align: start;
   background-color: white;
 }
 
@@ -37,7 +37,7 @@
     display: none;
     position: absolute;
     top: 0px;
-    left: calc(100%);
+    inset-inline-start: calc(100%);
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 4px;

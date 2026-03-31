@@ -38,8 +38,7 @@
         padding-bottom: 5px;
         border-radius: 7px;
         height: 40px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-inline: 20px;
         color: var(--primary);
         text-decoration: none;
         border-color: var(--secondary) !important;
@@ -75,8 +74,7 @@
         color: var(--dark-gray);
         font-family: var(--bs-header-font-family);
         font-weight: 600;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-inline: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -101,8 +99,8 @@
             height: -webkit-fill-available;
             border: 0;
             transition: border 0.1s ease-in-out;
-            padding-left: 20px;
-            padding-right: 30px;
+            padding-inline-start: 20px;
+            padding-inline-end: 30px;
 
             &::placeholder {
                 color: var(--tertiary);
@@ -119,8 +117,7 @@
                 background: var(--secondary);
                 height: 0px;
                 top: 60px;
-                left: 0;
-                right: 0;
+                inset-inline: 0;
                 z-index: 0;
                 transition: all $transitions;
             }
@@ -130,7 +127,7 @@
                 display: block;
                 position: absolute;
                 background: var(--secondary);
-                left: 0px;
+                inset-inline-start: 0;
                 height: 4px;
                 top: 54px;
                 transition: all $transitions;
@@ -147,8 +144,7 @@
                     background: var(--secondary);
                     height: 6px;
                     top: 54px;
-                    left: 0;
-                    right: 0;
+                    inset-inline: 0;
                     z-index: 0;
                     transition: all $transitions;
                 }
@@ -166,7 +162,7 @@
                 height: 20px;
                 position: absolute;
                 display: inline;
-                right: 10px;
+                inset-inline-end: 10px;
                 top: 20px;
                 transition: transform 0.2s ease-in-out;
             }

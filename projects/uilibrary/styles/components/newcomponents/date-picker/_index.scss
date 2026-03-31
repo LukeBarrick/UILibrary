@@ -14,7 +14,7 @@ uilibrary-date-range-input {
 
 .date-picker-calendar-container {
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     top: 49px;
     width: 100%;
     z-index: 2001;

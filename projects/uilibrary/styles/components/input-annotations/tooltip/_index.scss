@@ -25,15 +25,14 @@ uilibrary-tooltip {
   }
   
   .tooltip-margin-left {
-    margin-left: 15px;
+    margin-inline-start: 15px;
   }
   
   .tooltip-margin-right {
-    margin-right: 15px;
+    margin-inline-end: 15px;
   }
   
   .tooltip-margin-both {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-inline: 15px;
   }
 }

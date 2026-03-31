@@ -201,15 +201,6 @@ body {
         opacity: 0.65 !important;
       }
     }
-    
-    mat-icon {
-      height: 20px;
-      margin-right: 5px;
-  
-      svg {
-        fill: var(--bs-btn-color);
-      }
-    }
 
     &:hover {
       filter: grayscale(20%);
@@ -289,15 +280,6 @@ body {
       background-color: white;
       border-color: #636363;
       color: #636363;
-    }
-  
-    mat-icon {
-      height: 20px;
-      margin-right: 5px;
-  
-      svg {
-        fill: var(--bs-btn-color);
-      }
     }
   }
   

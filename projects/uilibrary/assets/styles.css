@@ -12418,13 +12418,6 @@ body {
   color: var(--tertiaryFont) !important;
   opacity: 0.65 !important;
 }
-.btn-primary mat-icon {
-  height: 20px;
-  margin-right: 5px;
-}
-.btn-primary mat-icon svg {
-  fill: var(--bs-btn-color);
-}
 .btn-primary:hover {
   filter: grayscale(20%);
 }
@@ -12494,13 +12487,6 @@ body {
   background-color: white;
   border-color: #636363;
   color: #636363;
-}
-.btn-secondary mat-icon {
-  height: 20px;
-  margin-right: 5px;
-}
-.btn-secondary mat-icon svg {
-  fill: var(--bs-btn-color);
 }
 
 .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
@@ -12931,7 +12917,7 @@ button.toast-close-button {
 }
 h1, .h1 {
   color: var(--primary);
-  text-align: left;
+  text-align: start;
   font-family: var(--bs-header-font-family);
   font-size: 25pt;
   letter-spacing: 0px;
@@ -12944,7 +12930,7 @@ h1.large, .large.h1 {
 
 h2, .h2 {
   color: var(--secondary);
-  text-align: left;
+  text-align: start;
   font-family: var(--bs-header-font-family);
   font-size: 20pt;
   letter-spacing: 0px;
@@ -12957,7 +12943,7 @@ h2.large, .large.h2 {
 
 h3, .h3 {
   color: var(--primary);
-  text-align: left;
+  text-align: start;
   font-family: var(--bs-header-font-family);
   font-size: 15pt;
   letter-spacing: 0px;
@@ -12970,7 +12956,7 @@ h3.large, .large.h3 {
 
 p {
   color: var(--tertiary);
-  text-align: left;
+  text-align: start;
   letter-spacing: 0px;
   opacity: 1;
   font-size: 14px;
@@ -12981,7 +12967,7 @@ p.large {
 
 label {
   color: var(--tertiary);
-  text-align: left;
+  text-align: start;
   letter-spacing: 0px;
   opacity: 1;
 }
@@ -13409,7 +13395,7 @@ uilibrary-checkbox .checkbox {
 }
 uilibrary-checkbox .checkbox .circle {
   position: relative;
-  left: 2px;
+  inset-inline-start: 2px;
   top: -2px;
   border-radius: 50%;
   height: 40px;
@@ -13420,7 +13406,7 @@ uilibrary-checkbox .checkbox .circle {
 }
 uilibrary-checkbox .checkbox .circle2 {
   position: absolute;
-  left: 5px;
+  inset-inline-start: 5px;
   height: 15px;
   width: 15px;
   border-radius: 50%;
@@ -13429,8 +13415,8 @@ uilibrary-checkbox .checkbox .circle2 {
   opacity: 0.2;
 }
 uilibrary-checkbox .checkbox:has(label > .order-n1) .circle2 {
-  left: unset;
-  right: 5px;
+  inset-inline-start: unset;
+  inset-inline-end: 5px;
 }
 uilibrary-checkbox .checkbox label {
   cursor: pointer;
@@ -13464,8 +13450,8 @@ uilibrary-checkbox .checkbox input[type=checkbox]:checked + .check-input:before 
   color: #fff;
   text-align: center;
   line-height: 18px;
-  padding-right: 2px;
-  padding-left: 1px;
+  padding-inline-end: 2px;
+  padding-inline-start: 1px;
   padding-top: 2px;
 }
 uilibrary-checkbox .checkbox:has(input[type=checkbox]:disabled) .check-input:before, uilibrary-checkbox .checkbox:has(input[type=checkbox]:checked:disabled) .check-input:before {
@@ -13484,7 +13470,7 @@ uilibrary-checkbox .checkbox-small {
 }
 uilibrary-checkbox .checkbox-small .circle {
   position: relative;
-  left: 3px;
+  inset-inline-start: 3px;
   border-radius: 50%;
   height: 40px;
   min-width: 40px;
@@ -13494,7 +13480,7 @@ uilibrary-checkbox .checkbox-small .circle {
 }
 uilibrary-checkbox .checkbox-small .circle2 {
   position: absolute;
-  left: 3px;
+  inset-inline-start: 3px;
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -13503,8 +13489,8 @@ uilibrary-checkbox .checkbox-small .circle2 {
   opacity: 0.2;
 }
 uilibrary-checkbox .checkbox-small:has(label > .order-n1) .circle2 {
-  left: unset;
-  right: -3px;
+  inset-inline-start: unset;
+  inset-inline-end: -3px;
 }
 uilibrary-checkbox .checkbox-small label {
   cursor: pointer;
@@ -13524,11 +13510,11 @@ uilibrary-checkbox .checkbox-small .check-input:before {
   width: 20px;
   height: 20px;
   position: relative;
-  left: 3px;
+  inset-inline-start: 3px;
 }
 uilibrary-checkbox .checkbox-small .label-left {
   order: 1;
-  margin-left: 20px;
+  margin-inline-start: 20px;
 }
 uilibrary-checkbox .checkbox-small input[type=checkbox] {
   display: none;
@@ -13801,7 +13787,7 @@ uilibrary-required .required {
   font-size: 25px;
   position: relative;
   top: -7px;
-  margin-left: 10px;
+  margin-inline-start: 10px;
 }
 
 uilibrary-tooltip .tooltip-custom button {
@@ -13825,14 +13811,13 @@ uilibrary-tooltip .tooltip-custom button:before {
   left: 0px;
 }
 uilibrary-tooltip .tooltip-margin-left {
-  margin-left: 15px;
+  margin-inline-start: 15px;
 }
 uilibrary-tooltip .tooltip-margin-right {
-  margin-right: 15px;
+  margin-inline-end: 15px;
 }
 uilibrary-tooltip .tooltip-margin-both {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-inline: 15px;
 }
 
 .navigation-option {
@@ -13863,8 +13848,7 @@ uilibrary-tooltip .tooltip-margin-both {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-inline: 20px;
 }
 .navigation-option .navigation-option-button a:after {
   content: "";
@@ -13873,8 +13857,7 @@ uilibrary-tooltip .tooltip-margin-both {
   background: var(--secondary);
   height: 0px;
   top: 60px;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   z-index: 0;
   transition: all 100ms ease-in-out;
 }
@@ -13885,8 +13868,7 @@ uilibrary-tooltip .tooltip-margin-both {
   background: var(--secondary);
   height: 4px;
   top: 56px;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   z-index: 0;
   width: 100%;
   transition: all 100ms ease-in-out;
@@ -13898,8 +13880,7 @@ uilibrary-tooltip .tooltip-margin-both {
   background: var(--secondary);
   height: 6px;
   top: 54px;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   z-index: 0;
   transition: all 100ms ease-in-out;
 }
@@ -13936,8 +13917,7 @@ uilibrary-tooltip .tooltip-margin-both {
   padding-bottom: 5px;
   border-radius: 7px;
   height: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-inline: 20px;
   color: var(--primary);
   text-decoration: none;
   border-color: var(--secondary) !important;
@@ -13964,8 +13944,7 @@ uilibrary-tooltip .tooltip-margin-both {
   color: var(--dark-gray);
   font-family: var(--bs-header-font-family);
   font-weight: 600;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-inline: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13988,8 +13967,8 @@ uilibrary-tooltip .tooltip-margin-both {
   height: -webkit-fill-available;
   border: 0;
   transition: border 0.1s ease-in-out;
-  padding-left: 20px;
-  padding-right: 30px;
+  padding-inline-start: 20px;
+  padding-inline-end: 30px;
 }
 .navigation-dropdown-parent-custom .navigation-dropdown-input-custom button::placeholder {
   color: var(--tertiary);
@@ -14004,8 +13983,7 @@ uilibrary-tooltip .tooltip-margin-both {
   background: var(--secondary);
   height: 0px;
   top: 60px;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   z-index: 0;
   transition: all 100ms ease-in-out;
 }
@@ -14014,7 +13992,7 @@ uilibrary-tooltip .tooltip-margin-both {
   display: block;
   position: absolute;
   background: var(--secondary);
-  left: 0px;
+  inset-inline-start: 0;
   height: 4px;
   top: 54px;
   transition: all 100ms ease-in-out;
@@ -14027,8 +14005,7 @@ uilibrary-tooltip .tooltip-margin-both {
   background: var(--secondary);
   height: 6px;
   top: 54px;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   z-index: 0;
   transition: all 100ms ease-in-out;
 }
@@ -14042,7 +14019,7 @@ uilibrary-tooltip .tooltip-margin-both {
   height: 20px;
   position: absolute;
   display: inline;
-  right: 10px;
+  inset-inline-end: 10px;
   top: 20px;
   transition: transform 0.2s ease-in-out;
 }
@@ -14065,8 +14042,7 @@ uilibrary-navigation .navbar .logo {
   display: flex;
   justify-content: center;
   min-width: 220px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-inline: 10px;
 }
 uilibrary-navigation .navbar .logo img {
   flex: 1;
@@ -14078,7 +14054,7 @@ uilibrary-navigation .navbar .nav-links {
   margin: 0;
   padding: 0;
   justify-content: flex-start;
-  padding-left: 40px;
+  padding-inline-start: 40px;
 }
 uilibrary-navigation .navbar .nav-links .nav-item {
   border: 0;
@@ -14091,8 +14067,7 @@ uilibrary-navigation .navbar .nav-links .menu {
   min-width: 160px;
 }
 uilibrary-navigation .navbar .more {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-inline: 20px;
 }
 uilibrary-navigation .navbar .navigation-right-aligned-content {
   flex: 1;
@@ -14130,8 +14105,7 @@ uilibrary-status-tag .status-tag {
   max-width: 240px;
   border-radius: 7px;
   text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-inline: 10px;
 }
 uilibrary-status-tag .status-tag b,
 uilibrary-status-tag .status-tag strong {
@@ -14208,7 +14182,7 @@ uilibrary-toggle .switch-container {
 uilibrary-toggle .switch-container .switch {
   position: relative;
   display: inline-block;
-  margin-right: 10px;
+  margin-inline-end: 10px;
   cursor: pointer;
   font-size: 14px;
 }
@@ -14230,8 +14204,7 @@ uilibrary-toggle .switch-container .switch input {
 uilibrary-toggle .switch-container .slider {
   position: relative;
   cursor: pointer;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   background-color: #9D9D9D;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -14243,7 +14216,7 @@ uilibrary-toggle .switch-container .slider:before {
   content: "";
   height: 25px;
   width: 25px;
-  left: 0px;
+  inset-inline-start: 0;
   bottom: -5px;
   background-color: white;
   transition: transform 0.4s, background-color 0.4s;
@@ -14263,6 +14236,9 @@ uilibrary-toggle .switch-container input:checked:disabled + .slider:before {
   transform: translateX(15px);
   background-color: #696969;
 }
+uilibrary-toggle .switch-container [dir=rtl] input:checked:disabled + .slider:before {
+  transform: translateX(-15px);
+}
 uilibrary-toggle .switch-container input:hover:disabled + .slider:before {
   box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.2);
 }
@@ -14272,6 +14248,9 @@ uilibrary-toggle .switch-container input:focus + .slider {
 uilibrary-toggle .switch-container input:checked + .slider:before {
   transform: translateX(15px);
   background-color: #000000;
+}
+uilibrary-toggle .switch-container [dir=rtl] input:checked + .slider:before {
+  transform: translateX(-15px);
 }
 uilibrary-toggle .switch-container input:hover + .slider:before {
   box-shadow: 0 0 0 0.75rem rgba(64, 132, 103, 0.2);
@@ -14300,7 +14279,7 @@ uilibrary-form-field .form-field label {
   position: absolute;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
   top: 7px;
-  left: 9px;
+  inset-inline-start: 9px;
   font-size: 14px;
   width: max-content;
   pointer-events: none;
@@ -14311,39 +14290,39 @@ uilibrary-form-field .form-field-footer {
   min-height: 25px;
   width: 100%;
   padding-top: 2px;
-  margin-left: 15px;
+  margin-inline-start: 15px;
   font-size: 12px;
   margin-bottom: 10px;
 }
 uilibrary-form-field .form-field-prefix {
-  margin-left: 10px;
+  margin-inline-start: 10px;
 }
 uilibrary-form-field .form-field-text-prefix {
-  margin-left: 10px;
+  margin-inline-start: 10px;
 }
 uilibrary-form-field .form-field-text-suffix {
-  margin-right: 10px;
+  margin-inline-end: 10px;
 }
 uilibrary-form-field .form-field:has(.form-field-prefix) label {
-  left: 25px;
+  inset-inline-start: 25px;
 }
 uilibrary-form-field .form-field:has(.form-field-prefix) uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
-  left: 15px !important;
+  inset-inline-start: 15px !important;
 }
 uilibrary-form-field .form-field:has(.form-field-prefix) uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-value {
-  left: 15px !important;
+  inset-inline-start: 15px !important;
 }
 uilibrary-form-field .form-field-suffix {
-  margin-right: 10px;
+  margin-inline-end: 10px;
 }
 uilibrary-form-field .form-field:has(.form-field-text-prefix) input {
-  padding-left: 0px;
+  padding-inline-start: 0;
 }
 uilibrary-form-field .form-field:has(.form-field-text-prefix) uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
-  left: 0px !important;
+  inset-inline-start: 0 !important;
 }
 uilibrary-form-field .form-field:has(.form-field-text-prefix) uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-value {
-  left: 0px !important;
+  inset-inline-start: 0 !important;
 }
 uilibrary-form-field.form-field-label-float .form-field label {
   font-size: 12px;
@@ -14357,8 +14336,7 @@ uilibrary-form-field.form-field-label-float .form-field label:after {
   background: white;
   height: 2px;
   top: 8px;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   z-index: -1;
 }
 uilibrary-form-field.form-field-disabled .form-field {
@@ -14394,7 +14372,7 @@ uilibrary-form-field .form-field uilibrary-select .ng-select {
   position: unset !important;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-arrow-wrapper {
-  padding-right: 0px !important;
+  padding-inline-end: 0 !important;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select.custom {
   border: 0px;
@@ -14444,10 +14422,10 @@ uilibrary-form-field .form-field uilibrary-select .ng-select.custom .ng-arrow-wr
   z-index: 2000;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input {
-  padding-left: 20px !important;
+  padding-inline-start: 20px !important;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input > input {
-  margin-left: 0px !important;
+  margin-inline-start: 0 !important;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
   border-color: var(--secondary);
@@ -14485,13 +14463,13 @@ uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-containe
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-value {
   position: relative;
-  left: 15px;
+  inset-inline-start: 15px;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input > input {
-  margin-left: 10px;
+  margin-inline-start: 10px;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container {
-  padding-left: 0px;
+  padding-inline-start: 0;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
   background-color: #DEDEDE;
@@ -14536,7 +14514,7 @@ uilibrary-form-field.form-field-label-float .form-field:has(uilibrary-select) :-
 uilibrary-form-field.form-field-label-float .form-field:has(uilibrary-select) uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-placeholder {
   color: black;
   font-size: 14px;
-  left: 15px;
+  inset-inline-start: 15px;
 }
 uilibrary-form-field.form-field-label-float .form-field:has(uilibrary-select) uilibrary-select .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
   z-index: 0;
@@ -14549,8 +14527,8 @@ uilibrary-form-field.form-field-touched.form-field-errors .form-field uilibrary-
 }
 
 uilibrary-form-field .form-field input {
-  padding-left: 15px;
-  padding-right: 0px;
+  padding-inline-start: 15px;
+  padding-inline-end: 0;
   appearance: none;
   outline: none;
   width: 100%;
@@ -14593,7 +14571,7 @@ uilibrary-form-field.form-field-label-float .form-field input::placeholder {
 }
 
 uilibrary-form-field .form-field textarea {
-  padding-left: 15px;
+  padding-inline-start: 15px;
   margin-top: 15px;
   appearance: none;
   outline: none;
@@ -14647,7 +14625,7 @@ uilibrary-form-field.form-field-label-float .form-field textarea::placeholder {
 uilibrary-radio-button .input-radio .form-check {
   display: flex;
   align-items: center;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 uilibrary-radio-button .input-radio .check-input {
   order: 1;
@@ -14657,11 +14635,11 @@ uilibrary-radio-button .input-radio label {
 }
 uilibrary-radio-button .input-radio .left {
   order: 0;
-  margin-right: 10px;
+  margin-inline-end: 10px;
 }
 uilibrary-radio-button .input-radio .right {
   order: 3;
-  margin-left: 10px;
+  margin-inline-start: 10px;
 }
 uilibrary-radio-button .input-radio .check-input > input[type=radio] {
   width: 1em;
@@ -14717,7 +14695,7 @@ uilibrary-date-range-input {
 
 .date-picker-calendar-container {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 49px;
   width: 100%;
   z-index: 2001;
@@ -14853,7 +14831,7 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   cursor: pointer;
   width: 100%;
   border: none;
-  text-align: left;
+  text-align: start;
   background-color: white;
 }
 
@@ -14871,7 +14849,7 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   display: none;
   position: absolute;
   top: 0px;
-  left: 100%;
+  inset-inline-start: 100%;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;

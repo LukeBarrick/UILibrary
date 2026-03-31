@@ -21,8 +21,7 @@ uilibrary-navigation {
       display: flex;
       justify-content: center;
       min-width: 220px;
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-inline: 10px;
 
       img {
         flex: 1;
@@ -36,7 +35,7 @@ uilibrary-navigation {
       margin: 0;
       padding: 0;
       justify-content: flex-start;
-      padding-left: 40px;
+      padding-inline-start: 40px;
 
       .nav-item {
         border: 0;
@@ -52,8 +51,7 @@ uilibrary-navigation {
     }
 
     .more {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-inline: 20px;
     }
 
     .navigation-right-aligned-content {

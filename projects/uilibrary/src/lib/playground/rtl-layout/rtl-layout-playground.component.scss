@@ -23,6 +23,307 @@
     }
 }
 
+// ── Compatibility legend ─────────────────────────────────────────────────────
+.compat-legend {
+    background: #fafafa;
+}
+
+.legend-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-block-start: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+// ── Compatibility badges ─────────────────────────────────────────────────────
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    &.badge-ok      { background: #d6e7c3; color: #2d5a1b; }
+    &.badge-partial { background: #f2e5c0; color: #7a4a00; }
+    &.badge-no      { background: #f7bdc9; color: #7b0f1d; }
+    &.badge-na      { background: #e8e8e8; color: #555; }
+}
+
+// ── Section header (title + badge inline) ───────────────────────────────────
+.section-header {
+    align-items: center;
+    margin-block-end: 12px;
+
+    h3 { margin: 0; }
+}
+
+// ── Compatibility note ───────────────────────────────────────────────────────
+.compat-note {
+    margin-block-start: 16px;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    background: #f0f4ff;
+    border-inline-start: 3px solid #007EAB;
+
+    ul {
+        margin: 6px 0 0 0;
+        padding-inline-start: 20px;
+
+        li { margin-block-end: 4px; }
+    }
+
+    &.compat-note--error {
+        background: #fff4f5;
+        border-inline-start-color: #D63D52;
+    }
+
+    &.compat-note--warn {
+        background: #fffbf0;
+        border-inline-start-color: #E8C557;
+    }
+}
+
+// ── Direction controls ───────────────────────────────────────────────────────
+.direction-controls {
+    gap: 12px;
+    margin-block-end: 12px;
+}
+
+.direction-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #e8f0fb;
+    color: var(--primary, #000);
+    font-size: 13px;
+
+    &.rtl-active { background: #fde8e8; }
+}
+
+// ── Use Case 1 – FlexBox boxes ───────────────────────────────────────────────
+.flex-demo { gap: 8px; }
+
+.flex-box {
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 80px;
+    text-align: center;
+}
+
+// ── Use Case 2 – spacer rows ─────────────────────────────────────────────────
+.spacer-row {
+    align-items: center;
+    margin-block-end: 6px;
+}
+
+.spacer-label {
+    min-inline-size: 56px;
+    font-size: 12px;
+    font-family: monospace;
+    color: var(--gray-700, #495057);
+}
+
+.spacer-box {
+    padding: 6px 14px;
+    background: var(--secondary, #408467);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+// ── Use Case 3 – block-end padding ───────────────────────────────────────────
+.block-end-box {
+    background: var(--info-light, #d9eef5);
+    border: 1px solid var(--info, #007eab);
+    border-radius: 4px;
+    padding-inline: 16px;
+    margin-inline-end: 8px;
+    display: flex;
+    align-items: flex-end;
+
+    span {
+        font-size: 12px;
+        font-family: monospace;
+        white-space: nowrap;
+    }
+}
+
+// ── Use Case 4 – callout card ────────────────────────────────────────────────
+.callout-card {
+    background: var(--gray-100, #f8f9fa);
+    border-radius: 4px;
+
+    p { margin: 0; color: var(--gray-700, #495057); font-size: 13px; }
+}
+
+// ── Use Case 5 – text alignment grid ────────────────────────────────────────
+.text-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.text-demo-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .demo-label {
+        font-size: 11px;
+        font-family: monospace;
+        color: var(--gray-600, #6c757d);
+    }
+
+    .text-box {
+        padding: 10px 12px;
+        background: var(--gray-100, #f8f9fa);
+        border: 1px solid var(--gray-300, #dee2e6);
+        border-radius: 4px;
+        font-size: 13px;
+        margin: 0;
+    }
+}
+
+// ── Use Case 6 – icon + label ────────────────────────────────────────────────
+.icon-label-row {
+    align-items: center;
+    padding: 8px 0;
+    border-block-end: 1px solid var(--gray-200, #dee2e6);
+
+    &:last-of-type { border-block-end: none; }
+}
+
+// ── Use Case 7 – inset demo ──────────────────────────────────────────────────
+.inset-demo {
+    position: relative;
+    min-block-size: 100px;
+    background: var(--gray-100, #f8f9fa);
+    border: 1px dashed var(--gray-400, #ced4da);
+    border-radius: 6px;
+    padding: 40px 16px 16px;
+}
+
+.inset-badge {
+    position: absolute;
+    padding: 3px 10px;
+    background: var(--secondary, #408467);
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.inset-content {
+    margin: 0;
+    font-size: 13px;
+    color: var(--gray-700, #495057);
+}
+
+// ── Component demo layout ────────────────────────────────────────────────────
+.component-demo {
+    padding: 16px;
+    background: var(--gray-100, #f8f9fa);
+    border: 1px solid var(--gray-300, #dee2e6);
+    border-radius: 6px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.demo-col {
+    min-inline-size: 220px;
+    flex: 1;
+}
+
+// ── §10 – Status tags ────────────────────────────────────────────────────────
+.status-tag-row {
+    gap: 8px;
+    flex-wrap: wrap;
+
+    uilibrary-status-tag { margin: 0; }
+}
+
+.status-list { margin-block-start: 12px; }
+
+// ── §14 – Date Picker ────────────────────────────────────────────────────────
+.datepicker-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.status-list-row {
+    align-items: center;
+    padding-block: 6px;
+    border-block-end: 1px solid var(--gray-200, #dee2e6);
+
+    &:last-of-type { border-block-end: none; }
+
+    span { font-size: 13px; }
+}
+
+// ── Compatibility table ──────────────────────────────────────────────────────
+.compat-table-intro {
+    font-size: 13px;
+    color: var(--gray-600, #6c757d);
+    margin-block-end: 16px;
+}
+
+.legend-key {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-block-end: 20px;
+    font-size: 13px;
+}
+
+.compat-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+
+    th {
+        text-align: start;
+        padding: 8px 12px;
+        border-block-end: 2px solid var(--gray-300, #dee2e6);
+        font-weight: 600;
+        color: var(--gray-700, #495057);
+    }
+
+    td {
+        padding: 8px 12px;
+        border-block-end: 1px solid var(--gray-200, #dee2e6);
+        vertical-align: middle;
+
+        code { font-size: 12px; }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+
+            &:hover { text-decoration: underline; }
+        }
+    }
+
+    tr:hover td { background: var(--gray-100, #f8f9fa); }
+
+    &-na td { color: var(--gray-500, #adb5bd); }
+}
+
 // ── Direction controls ───────────────────────────────────────────────────────
 .direction-controls {
     gap: 12px;

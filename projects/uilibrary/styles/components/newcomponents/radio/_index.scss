@@ -3,7 +3,7 @@ uilibrary-radio-button {
         .form-check {
             display: flex;
             align-items: center;
-            padding-left: 0;
+            padding-inline-start: 0;
         }
     
         .check-input {
@@ -16,12 +16,12 @@ uilibrary-radio-button {
     
         .left {
             order: 0;
-            margin-right: 10px;
+            margin-inline-end: 10px;
         }
     
         .right {
             order: 3;
-            margin-left: 10px;
+            margin-inline-start: 10px;
         }
     
         .check-input>input[type=radio] {

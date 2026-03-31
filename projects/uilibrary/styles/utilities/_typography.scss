@@ -1,6 +1,6 @@
 h1 {
   color: var(--primary);
-  text-align: left;
+  text-align: start;
   font-family: var(--bs-header-font-family);
   font-size: 25pt;
   letter-spacing: 0px;
@@ -14,7 +14,7 @@ h1 {
 
 h2 {
   color: var(--secondary);
-  text-align: left;
+  text-align: start;
   font-family: var(--bs-header-font-family);
   font-size: 20pt;
   letter-spacing: 0px;
@@ -28,7 +28,7 @@ h2 {
 
 h3 {
   color: var(--primary);
-  text-align: left;
+  text-align: start;
   font-family: var(--bs-header-font-family);
   font-size: 15pt;
   letter-spacing: 0px;
@@ -42,7 +42,7 @@ h3 {
 
 p {
   color: var(--tertiary);
-  text-align: left;
+  text-align: start;
   letter-spacing: 0px;
   opacity: 1;
   font-size: 14px;
@@ -54,7 +54,7 @@ p {
 
 label {
   color: var(--tertiary);
-  text-align: left;
+  text-align: start;
   letter-spacing: 0px;
   opacity: 1;
 
