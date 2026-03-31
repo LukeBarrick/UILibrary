@@ -4,9 +4,12 @@ import { TableComponent } from './table.component';
 import { TableHeaderDirective } from './header.directive';
 import { TableCellDirective } from './cell.directive';
 import { TableColumnComponent } from './table-column.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    imports: [],
+    imports: [
+        CommonModule
+    ],
     exports: [
         TableComponent,
         TableHeaderDirective,

@@ -18,6 +18,7 @@ import {
   TablePlaygroundComponent,
   TogglePlaygroundComponent,
   TypographyPlaygroundComponent,
+  RtlLayoutPlaygroundComponent,
 } from 'uilibrary';
 import { PlaygroundLayoutComponent } from './playground-layout/playground-layout.component';
 import { PlaygroundSideNavComponent } from './playground-side-nav/playground-side-nav.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
       { path: 'table', component: TablePlaygroundComponent },
       { path: 'toggle', component: TogglePlaygroundComponent },
       { path: 'typography', component: TypographyPlaygroundComponent },
+      { path: 'rtl-layout', component: RtlLayoutPlaygroundComponent },
     ],
   },
 ];

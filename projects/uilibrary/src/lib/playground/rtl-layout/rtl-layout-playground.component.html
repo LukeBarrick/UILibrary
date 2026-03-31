@@ -1,0 +1,165 @@
+<h1>RTL Layout</h1>
+
+<!-- ── Direction Control ─────────────────────────────────────────────────── -->
+<section class="demo-section">
+  <h3>Active Direction</h3>
+  <p>
+    The <code>[uiRtlLayout]</code> directive sets a <code>dir</code> attribute on the host
+    element. All CSS logical properties and FlexBox inside that element respond
+    automatically — no direction-specific overrides needed.
+  </p>
+  <div class="direction-controls d-flex flex-row">
+    <uilibrary-button
+      [appearance]="!isRtl ? 'primary' : 'secondary'"
+      (click)="setDirection('ltr')">
+      LTR (Left-to-Right)
+    </uilibrary-button>
+    <uilibrary-button
+      [appearance]="isRtl ? 'primary' : 'secondary'"
+      (click)="setDirection('rtl')">
+      RTL (Right-to-Left)
+    </uilibrary-button>
+  </div>
+  <div class="direction-badge" [class.rtl-active]="isRtl">
+    Current: <strong>{{ direction.toUpperCase() }}</strong>
+  </div>
+</section>
+
+<!-- ── Use Case 1 – FlexBox Row (automatic reversal) ─────────────────────── -->
+<section class="demo-section" [uiRtlLayout]="direction">
+  <h3>1 · FlexBox Row Reversal</h3>
+  <p>
+    A <code>flex-direction: row</code> container reverses item order in RTL
+    without any extra CSS — the browser uses the <code>dir</code> attribute.
+  </p>
+  <div class="flex-demo d-flex flex-row">
+    @for (item of flexItems; track item.label) {
+      <div class="flex-box" [style.background]="item.color">
+        {{ item.label }}
+      </div>
+    }
+  </div>
+  <p class="hint">Switch to RTL — the boxes reverse without touching <code>flex-direction</code>.</p>
+</section>
+
+<!-- ── Use Case 2 – margin-inline-start ─────────────────────────────────── -->
+<section class="demo-section" [uiRtlLayout]="direction">
+  <h3>2 · <code>margin-inline-start</code></h3>
+  <p>
+    <code>margin-inline-start</code> maps to <em>margin-left</em> in LTR and
+    <em>margin-right</em> in RTL.
+  </p>
+  <div class="logical-demo d-flex flex-column">
+    @for (key of spacerKeys; track key) {
+      <div class="spacer-row d-flex flex-row">
+        <span class="spacer-label">mis-{{ key }}</span>
+        <div class="spacer-box mis-{{ key }}">Content block</div>
+      </div>
+    }
+  </div>
+  <p class="hint">Watch the indent shift sides when you switch to RTL.</p>
+</section>
+
+<!-- ── Use Case 3 – padding-block-end ───────────────────────────────────── -->
+<section class="demo-section" [uiRtlLayout]="direction">
+  <h3>3 · <code>padding-block-end</code></h3>
+  <p>
+    <code>padding-block-end</code> maps to <em>padding-bottom</em> in horizontal
+    writing modes. It is not affected by LTR/RTL but demonstrates the block axis.
+  </p>
+  <div class="d-flex flex-row">
+    @for (key of [1, 2, 3, 4, 5]; track key) {
+      <div class="block-end-box pbe-{{ key }}">
+        <span>pbe-{{ key }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ── Use Case 4 – border-inline-start ─────────────────────────────────── -->
+<section class="demo-section" [uiRtlLayout]="direction">
+  <h3>4 · <code>border-inline-start</code></h3>
+  <p>
+    An accent border on the <em>start</em> side of an element — left in LTR,
+    right in RTL. Useful for callout cards, active menu items, and quotes.
+  </p>
+  <div class="d-flex flex-column">
+    <div class="callout-card border-inline-start-secondary pis-4 pbs-3 pbe-3">
+      <strong>Callout card</strong>
+      <p>The accent border moves to the right in RTL.</p>
+    </div>
+    <div class="callout-card border-inline-start-primary pis-4 pbs-3 pbe-3 mis-0 mbs-3">
+      <strong>Primary accent</strong>
+      <p>Uses <code>.border-inline-start-primary</code> utility class.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use Case 5 – text-align: start / end ─────────────────────────────── -->
+<section class="demo-section" [uiRtlLayout]="direction">
+  <h3>5 · Logical Text Alignment</h3>
+  <p>
+    <code>.text-align-start</code> aligns to the <em>start</em> side —
+    left in LTR, right in RTL. Contrast with physical <code>text-align: left</code>.
+  </p>
+  <div class="text-demo-grid">
+    <div class="text-demo-box">
+      <span class="demo-label">text-align: left (physical)</span>
+      <p class="text-box" style="text-align: left;">
+        This text is always left-aligned, regardless of direction.
+      </p>
+    </div>
+    <div class="text-demo-box">
+      <span class="demo-label">text-align-start (logical)</span>
+      <p class="text-box text-align-start">
+        This text aligns to the start edge — left in LTR, right in RTL.
+      </p>
+    </div>
+    <div class="text-demo-box">
+      <span class="demo-label">text-align-end (logical)</span>
+      <p class="text-box text-align-end">
+        This text aligns to the end edge — right in LTR, left in RTL.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use Case 6 – Icon + Label with logical spacing ───────────────────── -->
+<section class="demo-section" [uiRtlLayout]="direction">
+  <h3>6 · Icon + Label with <code>margin-inline-start</code></h3>
+  <p>
+    Using <code>mis-3</code> between an icon and its label keeps the spacing
+    on the correct side in both directions without conditional classes.
+  </p>
+  <div class="d-flex flex-column">
+    <div class="icon-label-row d-flex flex-row">
+      <uilibrary-icon icon="check_circle" size="24"></uilibrary-icon>
+      <span class="mis-3">Saved successfully</span>
+    </div>
+    <div class="icon-label-row d-flex flex-row mbs-3">
+      <uilibrary-icon icon="warning" size="24"></uilibrary-icon>
+      <span class="mis-3">Action required</span>
+    </div>
+    <div class="icon-label-row d-flex flex-row mbs-3">
+      <uilibrary-icon icon="info" size="24"></uilibrary-icon>
+      <span class="mis-3">More information available</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use Case 7 – Inset / Absolute positioning ─────────────────────────── -->
+<section class="demo-section" [uiRtlLayout]="direction">
+  <h3>7 · Logical Inset (Absolute Positioning)</h3>
+  <p>
+    <code>inset-inline-start</code> pins an overlay to the <em>start</em> edge —
+    top-left in LTR, top-right in RTL. No JS or overrides needed.
+  </p>
+  <div class="inset-demo">
+    <div class="inset-badge inset-inline-start-0 inset-block-start-0">Start</div>
+    <div class="inset-badge inset-inline-end-0 inset-block-start-0">End</div>
+    <p class="inset-content text-align-start">
+      Container with <code>position: relative</code>.<br>
+      The badges pin to the logical start / end corners.
+    </p>
+  </div>
+</section>

@@ -13033,6 +13033,374 @@ a.large {
   margin-right: 20px;
 }
 
+.mis-0 {
+  margin-inline-start: 0;
+}
+
+.mie-0 {
+  margin-inline-end: 0;
+}
+
+.mis-1 {
+  margin-inline-start: 4px;
+}
+
+.mie-1 {
+  margin-inline-end: 4px;
+}
+
+.mis-2 {
+  margin-inline-start: 8px;
+}
+
+.mie-2 {
+  margin-inline-end: 8px;
+}
+
+.mis-3 {
+  margin-inline-start: 12px;
+}
+
+.mie-3 {
+  margin-inline-end: 12px;
+}
+
+.mis-4 {
+  margin-inline-start: 16px;
+}
+
+.mie-4 {
+  margin-inline-end: 16px;
+}
+
+.mis-5 {
+  margin-inline-start: 24px;
+}
+
+.mie-5 {
+  margin-inline-end: 24px;
+}
+
+.mis-6 {
+  margin-inline-start: 32px;
+}
+
+.mie-6 {
+  margin-inline-end: 32px;
+}
+
+.mis-7 {
+  margin-inline-start: 48px;
+}
+
+.mie-7 {
+  margin-inline-end: 48px;
+}
+
+.mis-8 {
+  margin-inline-start: 64px;
+}
+
+.mie-8 {
+  margin-inline-end: 64px;
+}
+
+.mis-auto {
+  margin-inline-start: auto;
+}
+
+.mie-auto {
+  margin-inline-end: auto;
+}
+
+.mi-auto {
+  margin-inline: auto;
+}
+
+.mbs-0 {
+  margin-block-start: 0;
+}
+
+.mbe-0 {
+  margin-block-end: 0;
+}
+
+.mbs-1 {
+  margin-block-start: 4px;
+}
+
+.mbe-1 {
+  margin-block-end: 4px;
+}
+
+.mbs-2 {
+  margin-block-start: 8px;
+}
+
+.mbe-2 {
+  margin-block-end: 8px;
+}
+
+.mbs-3 {
+  margin-block-start: 12px;
+}
+
+.mbe-3 {
+  margin-block-end: 12px;
+}
+
+.mbs-4 {
+  margin-block-start: 16px;
+}
+
+.mbe-4 {
+  margin-block-end: 16px;
+}
+
+.mbs-5 {
+  margin-block-start: 24px;
+}
+
+.mbe-5 {
+  margin-block-end: 24px;
+}
+
+.mbs-6 {
+  margin-block-start: 32px;
+}
+
+.mbe-6 {
+  margin-block-end: 32px;
+}
+
+.mbs-7 {
+  margin-block-start: 48px;
+}
+
+.mbe-7 {
+  margin-block-end: 48px;
+}
+
+.mbs-8 {
+  margin-block-start: 64px;
+}
+
+.mbe-8 {
+  margin-block-end: 64px;
+}
+
+.pis-0 {
+  padding-inline-start: 0;
+}
+
+.pie-0 {
+  padding-inline-end: 0;
+}
+
+.pis-1 {
+  padding-inline-start: 4px;
+}
+
+.pie-1 {
+  padding-inline-end: 4px;
+}
+
+.pis-2 {
+  padding-inline-start: 8px;
+}
+
+.pie-2 {
+  padding-inline-end: 8px;
+}
+
+.pis-3 {
+  padding-inline-start: 12px;
+}
+
+.pie-3 {
+  padding-inline-end: 12px;
+}
+
+.pis-4 {
+  padding-inline-start: 16px;
+}
+
+.pie-4 {
+  padding-inline-end: 16px;
+}
+
+.pis-5 {
+  padding-inline-start: 24px;
+}
+
+.pie-5 {
+  padding-inline-end: 24px;
+}
+
+.pis-6 {
+  padding-inline-start: 32px;
+}
+
+.pie-6 {
+  padding-inline-end: 32px;
+}
+
+.pis-7 {
+  padding-inline-start: 48px;
+}
+
+.pie-7 {
+  padding-inline-end: 48px;
+}
+
+.pis-8 {
+  padding-inline-start: 64px;
+}
+
+.pie-8 {
+  padding-inline-end: 64px;
+}
+
+.pbs-0 {
+  padding-block-start: 0;
+}
+
+.pbe-0 {
+  padding-block-end: 0;
+}
+
+.pbs-1 {
+  padding-block-start: 4px;
+}
+
+.pbe-1 {
+  padding-block-end: 4px;
+}
+
+.pbs-2 {
+  padding-block-start: 8px;
+}
+
+.pbe-2 {
+  padding-block-end: 8px;
+}
+
+.pbs-3 {
+  padding-block-start: 12px;
+}
+
+.pbe-3 {
+  padding-block-end: 12px;
+}
+
+.pbs-4 {
+  padding-block-start: 16px;
+}
+
+.pbe-4 {
+  padding-block-end: 16px;
+}
+
+.pbs-5 {
+  padding-block-start: 24px;
+}
+
+.pbe-5 {
+  padding-block-end: 24px;
+}
+
+.pbs-6 {
+  padding-block-start: 32px;
+}
+
+.pbe-6 {
+  padding-block-end: 32px;
+}
+
+.pbs-7 {
+  padding-block-start: 48px;
+}
+
+.pbe-7 {
+  padding-block-end: 48px;
+}
+
+.pbs-8 {
+  padding-block-start: 64px;
+}
+
+.pbe-8 {
+  padding-block-end: 64px;
+}
+
+.border-inline-start {
+  border-inline-start: 1px solid currentColor;
+}
+
+.border-inline-end {
+  border-inline-end: 1px solid currentColor;
+}
+
+.border-block-start {
+  border-block-start: 1px solid currentColor;
+}
+
+.border-block-end {
+  border-block-end: 1px solid currentColor;
+}
+
+.border-inline-start-primary {
+  border-inline-start: 3px solid var(--primary);
+}
+
+.border-inline-start-secondary {
+  border-inline-start: 3px solid var(--secondary);
+}
+
+.text-align-start {
+  text-align: start;
+}
+
+.text-align-end {
+  text-align: end;
+}
+
+.inline-size-100 {
+  inline-size: 100%;
+}
+
+.block-size-100 {
+  block-size: 100%;
+}
+
+.min-inline-size-0 {
+  min-inline-size: 0;
+}
+
+.inset-inline-start-0 {
+  inset-inline-start: 0;
+}
+
+.inset-inline-end-0 {
+  inset-inline-end: 0;
+}
+
+.inset-block-start-0 {
+  inset-block-start: 0;
+}
+
+.inset-block-end-0 {
+  inset-block-end: 0;
+}
+
+.float-inline-start {
+  float: inline-start;
+}
+
+.float-inline-end {
+  float: inline-end;
+}
+
 uilibrary-checkbox .checkbox {
   display: flex;
   width: 100%;

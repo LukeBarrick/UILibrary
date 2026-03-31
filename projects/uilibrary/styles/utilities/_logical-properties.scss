@@ -1,0 +1,87 @@
+// =============================================================================
+// CSS Logical Property Utilities
+// =============================================================================
+// These classes use CSS logical properties that automatically adapt to the
+// text direction set by the [uiRtlLayout] directive (or any `dir` attribute).
+// They are the directional-agnostic counterparts to physical properties like
+// margin-left / padding-bottom / border-left.
+//
+// Naming convention:
+//   m  = margin   p  = padding
+//   i  = inline   b  = block
+//   s  = start    e  = end
+//
+// e.g.  .mis-3 = margin-inline-start: 12px
+//       .pbe-4 = padding-block-end:   16px
+// =============================================================================
+
+$logical-spacers: (
+    0: 0,
+    1: 4px,
+    2: 8px,
+    3: 12px,
+    4: 16px,
+    5: 24px,
+    6: 32px,
+    7: 48px,
+    8: 64px,
+) !default;
+
+// --- Margin – inline axis (horizontal in horizontal writing modes) -----------
+@each $key, $value in $logical-spacers {
+    .mis-#{$key} { margin-inline-start: $value; }
+    .mie-#{$key} { margin-inline-end:   $value; }
+}
+
+.mis-auto { margin-inline-start: auto; }
+.mie-auto { margin-inline-end:   auto; }
+.mi-auto  { margin-inline: auto; }
+
+// --- Margin – block axis (vertical in horizontal writing modes) --------------
+@each $key, $value in $logical-spacers {
+    .mbs-#{$key} { margin-block-start: $value; }
+    .mbe-#{$key} { margin-block-end:   $value; }
+}
+
+// --- Padding – inline axis ---------------------------------------------------
+@each $key, $value in $logical-spacers {
+    .pis-#{$key} { padding-inline-start: $value; }
+    .pie-#{$key} { padding-inline-end:   $value; }
+}
+
+// --- Padding – block axis ----------------------------------------------------
+@each $key, $value in $logical-spacers {
+    .pbs-#{$key} { padding-block-start: $value; }
+    .pbe-#{$key} { padding-block-end:   $value; }
+}
+
+// --- Border – logical sides --------------------------------------------------
+.border-inline-start { border-inline-start: 1px solid currentColor; }
+.border-inline-end   { border-inline-end:   1px solid currentColor; }
+.border-block-start  { border-block-start:  1px solid currentColor; }
+.border-block-end    { border-block-end:    1px solid currentColor; }
+
+// Coloured accent variants (combine with border-inline-start etc.)
+.border-inline-start-primary  { border-inline-start: 3px solid var(--primary); }
+.border-inline-start-secondary { border-inline-start: 3px solid var(--secondary); }
+
+// --- Text alignment – logical ------------------------------------------------
+// `start` resolves to `left` in LTR and `right` in RTL.
+// `end`   resolves to `right` in LTR and `left` in RTL.
+.text-align-start { text-align: start; }
+.text-align-end   { text-align: end; }
+
+// --- Inline-size / Block-size (logical width / height) ----------------------
+.inline-size-100  { inline-size:  100%; }
+.block-size-100   { block-size:   100%; }
+.min-inline-size-0 { min-inline-size: 0; }
+
+// --- Inset logical (position: absolute/relative offsets) --------------------
+.inset-inline-start-0 { inset-inline-start: 0; }
+.inset-inline-end-0   { inset-inline-end:   0; }
+.inset-block-start-0  { inset-block-start:  0; }
+.inset-block-end-0    { inset-block-end:    0; }
+
+// --- Float – logical ---------------------------------------------------------
+.float-inline-start { float: inline-start; }
+.float-inline-end   { float: inline-end; }

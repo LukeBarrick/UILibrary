@@ -15,6 +15,7 @@ import { SelectPlaygroundComponent } from './select/select-playground.component'
 import { TablePlaygroundComponent } from './table/table-playground.component';
 import { TogglePlaygroundComponent } from './toggle/toggle-playground.component';
 import { TypographyPlaygroundComponent } from './typography/typography-playground.component';
+import { RtlLayoutPlaygroundComponent } from './rtl-layout/rtl-layout-playground.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxesModule } from '../modules/checkboxes/checkboxes.module';
@@ -32,6 +33,7 @@ import { DatepickerModule } from '../modules/datepicker/datepicker.module';
 import { KeyboardNavigationModule } from '../modules/keyboard-navigation/keyboard-navigation.module';
 import { ContextMenuModule } from '../modules/context-menu/context-menu.module';
 import { TableModule } from '../modules/table/table.module';
+import { RtlLayoutModule } from '../modules/rtl-layout/rtl-layout.module';
 
 @NgModule({
     imports: [
@@ -53,6 +55,7 @@ import { TableModule } from '../modules/table/table.module';
         KeyboardNavigationModule,
         ContextMenuModule,
         TableModule,
+        RtlLayoutModule,
     ],
     exports: [
         ButtonPlaygroundComponent,
@@ -70,6 +73,7 @@ import { TableModule } from '../modules/table/table.module';
         TablePlaygroundComponent,
         TogglePlaygroundComponent,
         TypographyPlaygroundComponent,
+        RtlLayoutPlaygroundComponent,
 
         //Temporary exports for Showcase whilst these modules are still in use there 
         CheckboxesModule,
@@ -87,6 +91,7 @@ import { TableModule } from '../modules/table/table.module';
         KeyboardNavigationModule,
         ContextMenuModule,
         TableModule,
+        RtlLayoutModule,
     ],
     declarations: [
         ButtonPlaygroundComponent,
@@ -103,7 +108,8 @@ import { TableModule } from '../modules/table/table.module';
         SelectPlaygroundComponent,
         TablePlaygroundComponent,
         TogglePlaygroundComponent,
-        TypographyPlaygroundComponent
+        TypographyPlaygroundComponent,
+        RtlLayoutPlaygroundComponent,
     ],
     providers: [],
 })

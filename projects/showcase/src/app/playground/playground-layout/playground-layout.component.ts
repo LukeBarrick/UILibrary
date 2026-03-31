@@ -24,5 +24,6 @@ export class PlaygroundLayoutComponent {
     { label: 'Table',               path: '/playground/table',               type: NavigationLinkType.Route },
     { label: 'Toggle',              path: '/playground/toggle',              type: NavigationLinkType.Route },
     { label: 'Typography',          path: '/playground/typography',          type: NavigationLinkType.Route },
+    { label: 'RTL Layout',          path: '/playground/rtl-layout',          type: NavigationLinkType.Route },
   ];
 }

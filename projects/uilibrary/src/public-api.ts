@@ -75,6 +75,9 @@ export * from './lib/modules/table/header.directive';
 export * from './lib/modules/table/cell.directive';
 export * from './lib/modules/table/table-column.component';
 
+export * from './lib/modules/rtl-layout/rtl-layout.module';
+export * from './lib/modules/rtl-layout/rtl-layout.directive';
+
 export * from './lib/playground/playground.module';
 export * from './lib/playground/button/button-playground.component';
 export * from './lib/playground/checkbox/checkbox-playground.component';
@@ -91,3 +94,4 @@ export * from './lib/playground/select/select-playground.component';
 export * from './lib/playground/table/table-playground.component';
 export * from './lib/playground/toggle/toggle-playground.component';
 export * from './lib/playground/typography/typography-playground.component';
+export * from './lib/playground/rtl-layout/rtl-layout-playground.component';
