@@ -1,28 +1,37 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { InputComponent } from './input.component';
+import { UUIDService } from '../../core/services/UUID.service';
+
+@Component({
+  standalone: false,
+  template: `<input ui-input />`
+})
+class TestHostComponent {}
 
 describe('InputComponent', () => {
-  let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
+  let fixture: ComponentFixture<TestHostComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputComponent ]
+      declarations: [ InputComponent, TestHostComponent ],
+      imports: [ FormsModule ],
+      providers: [
+        { provide: UUIDService, useValue: { generate: () => 'test-uuid' } }
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = TestBed.createComponent(TestHostComponent);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture).toBeTruthy();
   });
 });

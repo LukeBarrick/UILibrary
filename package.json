@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test uilibrary --include=\"**/modules/**/*.spec.ts\" && ng test uilibrary --include=\"**/playground/**/*.spec.ts\"",
+    "playground-test": "",
     "serve:ssr:showcase": "node dist/showcase/server/server.mjs",
     "build-lib:dev": "ng build uilibrary --watch",
     "build-lib": "ng build uilibrary --configuration production",
@@ -51,6 +52,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-mocks": "^14.15.2",
     "ng-packagr": "^21.1.0",
     "typescript": "~5.9.3"
   }
