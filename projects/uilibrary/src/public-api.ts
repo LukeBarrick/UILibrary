@@ -95,3 +95,4 @@ export * from './lib/playground/table/table-playground.component';
 export * from './lib/playground/toggle/toggle-playground.component';
 export * from './lib/playground/typography/typography-playground.component';
 export * from './lib/playground/rtl-layout/rtl-layout-playground.component';
+export * from './lib/playground/status-tag/status-tag-playground.component';
