@@ -64,6 +64,56 @@
             </uilibrary-form-field>
         </div>
     </section>
+    <section class="small">
+        <h3>Advanced Options</h3>
+        <h4>Editable Input</h4>
+        <uilibrary-form-field>
+            <label ui-label>Editable Datepicker (type a date)</label>
+            <uilibrary-datepicker-input [editable]="true"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
+
+        <h4>Keep Open After Selection</h4>
+        <uilibrary-form-field>
+            <label ui-label>Datepicker (Stay Open)</label>
+            <uilibrary-datepicker-input [closeOnSelection]="false"></uilibrary-datepicker-input>
+        </uilibrary-form-field>
+
+        <h4>Date Range — Editable</h4>
+        <uilibrary-form-field>
+            <label ui-label>Date Range (Not Editable)</label>
+            <uilibrary-date-range-input [editable]="false">
+                <input startDate />
+                <input endDate />
+            </uilibrary-date-range-input>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Date Range (Editable)</label>
+            <uilibrary-date-range-input [editable]="true">
+                <input startDate />
+                <input endDate />
+            </uilibrary-date-range-input>
+        </uilibrary-form-field>
+
+        <h4>Date Range — Stay Open</h4>
+        <uilibrary-form-field>
+            <label ui-label>Date Range (closeOnSelection false)</label>
+            <uilibrary-date-range-input [closeOnSelection]="false">
+                <input startDate />
+                <input endDate />
+            </uilibrary-date-range-input>
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small">
+        <h3>Standalone Calendar</h3>
+        <uilibrary-calendar-select
+            [selecteDates]="calendarSelectedDates"
+            (dateSelected)="onDateSelected($event)">
+        </uilibrary-calendar-select>
+        <span>Selected dates: {{ stringify(calendarSelectedDates) }}</span>
+    </section>
+
     @if(showOutput) {
     <section class="small">
         <h3>Output</h3>

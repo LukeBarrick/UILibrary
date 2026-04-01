@@ -65,6 +65,15 @@
       </div>
     </uilibrary-navigation>
 
+    <h2>Nav Bar with hidenLabelOnNestedChildren</h2>
+    <p>
+      When a dropdown link has <em>hidenLabelOnNestedChildren: true</em>, the parent label is hidden
+      inside the mobile nested menu — only the children are shown.
+    </p>
+    <uilibrary-navigation [links]="links">
+      <img logo src="" style="height: 50px" alt="Logo">
+    </uilibrary-navigation>
+
     <h2 id="limitations-on-content-projection">Limitations on Content Projection</h2>
 
     <p>Angular's content projection runs at compile time. This is the mechanism used that allows us to project the extra

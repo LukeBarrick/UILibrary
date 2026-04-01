@@ -74,6 +74,19 @@
             </uilibrary-radio-group>
         </div>
     </section>
+    <section class="small">
+        <h3>checkedChange Output</h3>
+        <p>The <code>(checkedChange)</code> output fires with <code>true</code> when a radio button is selected.</p>
+        <uilibrary-radio-button [value]="'A'" (checkedChange)="onCheckedChange($event)">
+            Radio A
+        </uilibrary-radio-button>
+        <uilibrary-radio-button [value]="'B'" (checkedChange)="onCheckedChange($event)">
+            Radio B
+        </uilibrary-radio-button>
+        @if(lastCheckedChangeValue !== undefined) {
+            <span>Last checkedChange value: {{ stringify(lastCheckedChangeValue) }}</span>
+        }
+    </section>
     @if(showOutput) {
     <section class="small">
         <h3>Output</h3>

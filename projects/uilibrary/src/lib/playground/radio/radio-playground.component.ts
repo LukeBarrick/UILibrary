@@ -15,6 +15,11 @@ export class RadioPlaygroundComponent implements OnInit {
 
     radioGroupModel: any = 1;
     isGroupDisabled: boolean = true;
+    lastCheckedChangeValue: boolean | undefined = undefined;
+
+    onCheckedChange(value: boolean): void {
+        this.lastCheckedChangeValue = value;
+    }
 
     radioForm: FormGroup = this.fb.group({
         radioControl: [],

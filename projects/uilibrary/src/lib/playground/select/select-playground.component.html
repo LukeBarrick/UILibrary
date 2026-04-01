@@ -752,3 +752,115 @@
         {{stringify(multiSelectCustomForm.value)}}
     </section>
 </div>
+
+<h3>Advanced Options</h3>
+<div class="d-flex flex-row">
+    <section class="small">
+        <h3>Loading State</h3>
+        <uilibrary-form-field>
+            <label ui-label>Loading (Default Text)</label>
+            <uilibrary-select ui-select [items]="[]" [loading]="true" [useCustomTemplate]="false">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Loading (Custom Text)</label>
+            <uilibrary-select ui-select [items]="[]" [loading]="true" loadingText="Fetching data..."
+                [useCustomTemplate]="false">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Aria Label</h3>
+        <uilibrary-form-field>
+            <label ui-label>With Aria Label</label>
+            <uilibrary-select ui-select [items]="items" ariaLabel="Select an item" [useCustomTemplate]="false"
+                bindLabel="value" bindValue="id">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Read Only</h3>
+        <uilibrary-form-field>
+            <label ui-label>Read Only (value locked)</label>
+            <uilibrary-select ui-select [items]="items" [(ngModel)]="basicSelectBinding" [readonly]="true"
+                [useCustomTemplate]="false" bindLabel="value" bindValue="id">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Not Found Text</h3>
+        <uilibrary-form-field>
+            <label ui-label>Custom Not Found Text (searchable)</label>
+            <uilibrary-select ui-select [items]="[]" notFoundText="No matches found" [searchable]="true"
+                [useCustomTemplate]="false">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Mark First</h3>
+        <uilibrary-form-field>
+            <label ui-label>Mark First Item Highlighted</label>
+            <uilibrary-select ui-select [items]="items" [markFirst]="true" [useCustomTemplate]="false"
+                bindLabel="value" bindValue="id">
+            </uilibrary-select>
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small">
+        <h3>Search</h3>
+        <uilibrary-form-field>
+            <label ui-label>Searchable</label>
+            <uilibrary-select ui-select [items]="objectItems" [searchable]="true" [useCustomTemplate]="false"
+                bindLabel="name">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <uilibrary-form-field>
+            <label ui-label>Custom Search Function</label>
+            <uilibrary-select ui-select [items]="objectItems" [searchable]="true" [searchFn]="customSearchFn"
+                [useCustomTemplate]="false" bindLabel="name">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Track By</h3>
+        <uilibrary-form-field>
+            <label ui-label>Custom trackByFn</label>
+            <uilibrary-select ui-select [items]="objectItems" [trackByFn]="customTrackByFn"
+                [useCustomTemplate]="false" bindLabel="name">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Clear On Backspace</h3>
+        <uilibrary-form-field>
+            <label ui-label>Clear On Backspace Disabled</label>
+            <uilibrary-select ui-select [items]="items" [clearable]="true" [clearOnBackspace]="false"
+                [useCustomTemplate]="false" bindLabel="value" bindValue="id">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Bind Label / Bind Value</h3>
+        <uilibrary-form-field>
+            <label ui-label>Object Items (bindLabel="name" bindValue="id")</label>
+            <uilibrary-select ui-select [items]="objectItems" bindLabel="name" bindValue="id"
+                [useCustomTemplate]="false">
+            </uilibrary-select>
+        </uilibrary-form-field>
+    </section>
+
+    <section class="small">
+        <h3>Input Attributes</h3>
+        <uilibrary-form-field>
+            <label ui-label>Custom inputAttrs</label>
+            <uilibrary-select ui-select [items]="items"
+                [inputAttrs]="{'data-testid': 'my-select', 'aria-label': 'custom attr'}"
+                [useCustomTemplate]="false" bindLabel="value" bindValue="id">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
+        <h3>Virtual Scroll</h3>
+        <uilibrary-form-field>
+            <label ui-label>Virtual Scroll (200 items)</label>
+            <uilibrary-select ui-select [items]="virtualScrollItems" [virtualScroll]="true"
+                [searchable]="true" [useCustomTemplate]="false" bindLabel="name"
+                [scrollToEnd]="onScrollToEndHandler" [onScroll]="onScrollHandler">
+            </uilibrary-select>
+        </uilibrary-form-field>
+    </section>
+</div>

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MockBuilder, MockRender } from 'ng-mocks';
+import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { DatePickerPlaygroundComponent } from './datepicker-playground.component';
 import { PlaygroundModule } from '../playground.module';
 import {
@@ -8,6 +8,10 @@ import {
     expectControlInvalid,
     expectControlValid,
 } from '../testing/form-control.helpers';
+import { DatePickerInputComponent } from '../../modules/datepicker/datepicker-input/datepicker-input.component';
+import { DateRangeInputComponent } from '../../modules/datepicker/date-range-input/date-range-input.component';
+import { CalendarComponent } from '../../modules/datepicker/calendar/calendar.component';
+import { DatepickerModule } from '../../modules/datepicker/datepicker.module';
 
 describe('DatePickerPlaygroundComponent', () => {
     beforeEach(() => MockBuilder(DatePickerPlaygroundComponent, PlaygroundModule).keep(ReactiveFormsModule));
@@ -103,6 +107,155 @@ describe('DatePickerPlaygroundComponent', () => {
         it('should return JSON string of null', () => {
             const { componentInstance: comp } = MockRender(DatePickerPlaygroundComponent).point;
             expect(comp.stringify(null)).toBe('null');
+        });
+    });
+
+    describe('calendarSelectedDates', () => {
+        it('should default to an empty array', () => {
+            const { componentInstance: comp } = MockRender(DatePickerPlaygroundComponent).point;
+            expect(comp.calendarSelectedDates).toEqual([]);
+        });
+    });
+
+    describe('onDateSelected()', () => {
+        it('should append a date to calendarSelectedDates', () => {
+            const { componentInstance: comp } = MockRender(DatePickerPlaygroundComponent).point;
+            const date = new Date('2025-06-15');
+            comp.onDateSelected(date);
+            expect(comp.calendarSelectedDates.length).toBe(1);
+            expect(comp.calendarSelectedDates[0]).toBe(date);
+        });
+
+        it('should accumulate dates on repeated calls', () => {
+            const { componentInstance: comp } = MockRender(DatePickerPlaygroundComponent).point;
+            const d1 = new Date('2025-06-15');
+            const d2 = new Date('2025-06-16');
+            comp.onDateSelected(d1);
+            comp.onDateSelected(d2);
+            expect(comp.calendarSelectedDates.length).toBe(2);
+            expect(comp.calendarSelectedDates[1]).toBe(d2);
+        });
+
+        it('should not mutate the original array (creates a new array reference)', () => {
+            const { componentInstance: comp } = MockRender(DatePickerPlaygroundComponent).point;
+            const original = comp.calendarSelectedDates;
+            comp.onDateSelected(new Date());
+            expect(comp.calendarSelectedDates).not.toBe(original);
+        });
+    });
+
+    describe('Template', () => {
+        it('should render at least one uilibrary-datepicker-input with [editable]="true"', () => {
+            MockRender(DatePickerPlaygroundComponent);
+            const pickers = ngMocks.findAll('uilibrary-datepicker-input');
+            const editablePickers = pickers.filter(p => ngMocks.input(p, 'editable') === true);
+            expect(editablePickers.length).toBeGreaterThan(0);
+        });
+
+        it('should render at least one uilibrary-datepicker-input with [closeOnSelection]="false"', () => {
+            MockRender(DatePickerPlaygroundComponent);
+            const pickers = ngMocks.findAll('uilibrary-datepicker-input');
+            const stayOpenPickers = pickers.filter(p => ngMocks.input(p, 'closeOnSelection') === false);
+            expect(stayOpenPickers.length).toBeGreaterThan(0);
+        });
+
+        it('should render a standalone uilibrary-calendar-select', () => {
+            MockRender(DatePickerPlaygroundComponent);
+            const calendars = ngMocks.findAll('uilibrary-calendar-select');
+            expect(calendars.length).toBeGreaterThan(0);
+        });
+
+        it('should bind calendarSelectedDates to the calendar selecteDates input', () => {
+            const fixture = MockRender(DatePickerPlaygroundComponent);
+            const comp = fixture.point.componentInstance;
+            const calendar = ngMocks.findAll('uilibrary-calendar-select')[0];
+            expect(ngMocks.input(calendar, 'selecteDates')).toBe(comp.calendarSelectedDates);
+        });
+    });
+});
+
+// ─── DatePickerInputComponent direct API tests ───────────────────────────────
+describe('DatePickerInputComponent', () => {
+    beforeEach(() => MockBuilder(DatePickerInputComponent, DatepickerModule));
+
+    it('should create', () => {
+        const comp = TestBed.createComponent(DatePickerInputComponent).componentInstance;
+        expect(comp).toBeTruthy();
+    });
+
+    describe('editable input', () => {
+        it('should default to false', () => {
+            const comp = TestBed.createComponent(DatePickerInputComponent).componentInstance;
+            expect(comp.editable).toBeFalse();
+        });
+
+        it('should accept true', () => {
+            const { componentInstance: comp } = MockRender(DatePickerInputComponent, { editable: true }).point;
+            expect(comp.editable).toBeTrue();
+        });
+    });
+
+    describe('closeOnSelection input', () => {
+        it('should default to true', () => {
+            const comp = TestBed.createComponent(DatePickerInputComponent).componentInstance;
+            expect(comp.closeOnSelection).toBeTrue();
+        });
+
+        it('should accept false', () => {
+            const { componentInstance: comp } = MockRender(DatePickerInputComponent, { closeOnSelection: false }).point;
+            expect(comp.closeOnSelection).toBeFalse();
+        });
+    });
+});
+
+// ─── CalendarComponent direct API tests ──────────────────────────────────────
+describe('CalendarComponent', () => {
+    beforeEach(() => MockBuilder(CalendarComponent, DatepickerModule));
+
+    it('should create', () => {
+        const comp = TestBed.createComponent(CalendarComponent).componentInstance;
+        expect(comp).toBeTruthy();
+    });
+
+    describe('dateSelected output', () => {
+        it('should be an EventEmitter', () => {
+            const comp = TestBed.createComponent(CalendarComponent).componentInstance;
+            expect(comp.dateSelected).toBeDefined();
+            expect(typeof comp.dateSelected.emit).toBe('function');
+        });
+    });
+});
+
+// ─── DateRangeInputComponent direct API tests ─────────────────────────────────
+describe('DateRangeInputComponent', () => {
+    beforeEach(() => MockBuilder(DateRangeInputComponent, DatepickerModule));
+
+    it('should create', () => {
+        const comp = TestBed.createComponent(DateRangeInputComponent).componentInstance;
+        expect(comp).toBeTruthy();
+    });
+
+    describe('editable input', () => {
+        it('should default to true', () => {
+            const comp = TestBed.createComponent(DateRangeInputComponent).componentInstance;
+            expect(comp.editable).toBeTrue();
+        });
+
+        it('should accept false', () => {
+            const { componentInstance: comp } = MockRender(DateRangeInputComponent, { editable: false }).point;
+            expect(comp.editable).toBeFalse();
+        });
+    });
+
+    describe('closeOnSelection input', () => {
+        it('should default to true', () => {
+            const comp = TestBed.createComponent(DateRangeInputComponent).componentInstance;
+            expect(comp.closeOnSelection).toBeTrue();
+        });
+
+        it('should accept false', () => {
+            const { componentInstance: comp } = MockRender(DateRangeInputComponent, { closeOnSelection: false }).point;
+            expect(comp.closeOnSelection).toBeFalse();
         });
     });
 });

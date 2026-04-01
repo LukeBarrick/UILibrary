@@ -132,6 +132,34 @@ describe('RadioPlaygroundComponent', () => {
             expect(comp.stringify(null)).toBe('null');
         });
     });
+
+    describe('lastCheckedChangeValue', () => {
+        it('should be undefined initially', () => {
+            const { componentInstance: comp } = MockRender(RadioPlaygroundComponent).point;
+            expect(comp.lastCheckedChangeValue).toBeUndefined();
+        });
+    });
+
+    describe('onCheckedChange()', () => {
+        it('should set lastCheckedChangeValue to true when called with true', () => {
+            const { componentInstance: comp } = MockRender(RadioPlaygroundComponent).point;
+            comp.onCheckedChange(true);
+            expect(comp.lastCheckedChangeValue).toBeTrue();
+        });
+
+        it('should set lastCheckedChangeValue to false when called with false', () => {
+            const { componentInstance: comp } = MockRender(RadioPlaygroundComponent).point;
+            comp.onCheckedChange(false);
+            expect(comp.lastCheckedChangeValue).toBeFalse();
+        });
+
+        it('should overwrite a previous value on subsequent calls', () => {
+            const { componentInstance: comp } = MockRender(RadioPlaygroundComponent).point;
+            comp.onCheckedChange(true);
+            comp.onCheckedChange(false);
+            expect(comp.lastCheckedChangeValue).toBeFalse();
+        });
+    });
 });
 
 // ─── RadioButtonComponent direct API tests ───────────────────────────────────

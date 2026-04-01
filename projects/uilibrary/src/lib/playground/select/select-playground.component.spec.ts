@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MockBuilder, MockRender } from 'ng-mocks';
+import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { SelectPlaygroundComponent } from './select-playground.component';
 import { PlaygroundModule } from '../playground.module';
 import {
@@ -10,6 +10,8 @@ import {
     expectControlTouched,
     expectControlUntouched,
 } from '../testing/form-control.helpers';
+import { SelectComponent } from '../../modules/select/select.component';
+import { SelectModule } from '../../modules/select/select.module';
 
 describe('SelectPlaygroundComponent', () => {
     beforeEach(() => MockBuilder(SelectPlaygroundComponent, PlaygroundModule).keep(ReactiveFormsModule));
@@ -338,6 +340,313 @@ describe('SelectPlaygroundComponent', () => {
         it('should return JSON string of an array', () => {
             const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
             expect(comp.stringify([1, 2])).toBe('[1,2]');
+        });
+    });
+
+    describe('Advanced options state', () => {
+        it('objectItems should contain 3 entries with id and name', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(comp.objectItems.length).toBe(3);
+            comp.objectItems.forEach(item => {
+                expect(item.id).toBeDefined();
+                expect(item.name).toBeDefined();
+            });
+        });
+
+        it('virtualScrollItems should contain 200 entries', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(comp.virtualScrollItems.length).toBe(200);
+        });
+
+        it('virtualScrollItems ids should be sequential starting from 1', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(comp.virtualScrollItems[0].id).toBe(1);
+            expect(comp.virtualScrollItems[199].id).toBe(200);
+        });
+
+        it('customSearchFn should return true when term matches item name', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(comp.customSearchFn('apple', { name: 'Apple' })).toBeTrue();
+        });
+
+        it('customSearchFn should return false when term does not match item name', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(comp.customSearchFn('xyz', { name: 'Apple' })).toBeFalse();
+        });
+
+        it('customSearchFn should be case-insensitive', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(comp.customSearchFn('APPLE', { name: 'apple' })).toBeTrue();
+        });
+
+        it('customTrackByFn should return the item id', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(comp.customTrackByFn({ id: 42, name: 'Test' })).toBe(42);
+        });
+
+        it('onScrollHandler should be a function', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(typeof comp.onScrollHandler).toBe('function');
+        });
+
+        it('onScrollToEndHandler should be a function', () => {
+            const { componentInstance: comp } = MockRender(SelectPlaygroundComponent).point;
+            expect(typeof comp.onScrollToEndHandler).toBe('function');
+        });
+    });
+
+    describe('Advanced options — Template', () => {
+        it('should render a uilibrary-select with [loading]="true"', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const loadingSelects = selects.filter(s => ngMocks.input(s, 'loading') === true);
+            expect(loadingSelects.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with loadingText set', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withLoadingText = selects.filter(s => !!ngMocks.input(s, 'loadingText'));
+            expect(withLoadingText.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with ariaLabel set', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withAriaLabel = selects.filter(s => !!ngMocks.input(s, 'ariaLabel'));
+            expect(withAriaLabel.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [readonly]="true"', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const readonlySelects = selects.filter(s => ngMocks.input(s, 'readonly') === true);
+            expect(readonlySelects.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with notFoundText set', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withNotFound = selects.filter(s => !!ngMocks.input(s, 'notFoundText'));
+            expect(withNotFound.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [markFirst]="true"', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withMarkFirst = selects.filter(s => ngMocks.input(s, 'markFirst') === true);
+            expect(withMarkFirst.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [searchable]="true"', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const searchableSelects = selects.filter(s => ngMocks.input(s, 'searchable') === true);
+            expect(searchableSelects.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [searchFn] bound', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withSearchFn = selects.filter(s => !!ngMocks.input(s, 'searchFn'));
+            expect(withSearchFn.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [trackByFn] bound', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withTrackBy = selects.filter(s => !!ngMocks.input(s, 'trackByFn'));
+            expect(withTrackBy.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [clearOnBackspace]="false"', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withClearOnBackspace = selects.filter(s => ngMocks.input(s, 'clearOnBackspace') === false);
+            expect(withClearOnBackspace.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [virtualScroll]="true"', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withVirtualScroll = selects.filter(s => ngMocks.input(s, 'virtualScroll') === true);
+            expect(withVirtualScroll.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [inputAttrs] bound', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withInputAttrs = selects.filter(s => !!ngMocks.input(s, 'inputAttrs'));
+            expect(withInputAttrs.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [scrollToEnd] bound', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withScrollToEnd = selects.filter(s => !!ngMocks.input(s, 'scrollToEnd'));
+            expect(withScrollToEnd.length).toBeGreaterThan(0);
+        });
+
+        it('should render a uilibrary-select with [onScroll] bound', () => {
+            MockRender(SelectPlaygroundComponent);
+            const selects = ngMocks.findAll('uilibrary-select');
+            const withOnScroll = selects.filter(s => !!ngMocks.input(s, 'onScroll'));
+            expect(withOnScroll.length).toBeGreaterThan(0);
+        });
+    });
+});
+
+// ─── SelectComponent direct API tests ────────────────────────────────────────
+describe('SelectComponent', () => {
+    beforeEach(() => MockBuilder(SelectComponent, SelectModule));
+
+    it('should create', () => {
+        const comp = TestBed.createComponent(SelectComponent).componentInstance;
+        expect(comp).toBeTruthy();
+    });
+
+    describe('loading / loadingText inputs', () => {
+        it('loading should default to false', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.loading).toBeFalse();
+        });
+
+        it('loading should accept true', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { loading: true }).point;
+            expect(comp.loading).toBeTrue();
+        });
+
+        it('loadingText should default to "Loading..."', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.loadingText).toBe('Loading...');
+        });
+
+        it('loadingText should accept a custom string', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { loadingText: 'Fetching...' }).point;
+            expect(comp.loadingText).toBe('Fetching...');
+        });
+    });
+
+    describe('ariaLabel input', () => {
+        it('should default to empty string', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.ariaLabel).toBe('');
+        });
+
+        it('should accept a custom label', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { ariaLabel: 'Select an item' }).point;
+            expect(comp.ariaLabel).toBe('Select an item');
+        });
+    });
+
+    describe('readonly input', () => {
+        it('should default to false', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.readonly).toBeFalse();
+        });
+
+        it('should accept true', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { readonly: true }).point;
+            expect(comp.readonly).toBeTrue();
+        });
+    });
+
+    describe('notFoundText input', () => {
+        it('should default to "No options found."', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.notFoundText).toBe('No options found.');
+        });
+
+        it('should accept a custom string', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { notFoundText: 'Nothing here' }).point;
+            expect(comp.notFoundText).toBe('Nothing here');
+        });
+    });
+
+    describe('markFirst input', () => {
+        it('should default to false', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.markFirst).toBeFalse();
+        });
+
+        it('should accept true', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { markFirst: true }).point;
+            expect(comp.markFirst).toBeTrue();
+        });
+    });
+
+    describe('clearOnBackspace input', () => {
+        it('should default to true', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.clearOnBackspace).toBeTrue();
+        });
+
+        it('should accept false', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { clearOnBackspace: false }).point;
+            expect(comp.clearOnBackspace).toBeFalse();
+        });
+    });
+
+    describe('searchable input', () => {
+        it('should default to false', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.searchable).toBeFalse();
+        });
+
+        it('should accept true', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { searchable: true }).point;
+            expect(comp.searchable).toBeTrue();
+        });
+    });
+
+    describe('virtualScroll input', () => {
+        it('should default to false', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.virtualScroll).toBeFalse();
+        });
+
+        it('should accept true', () => {
+            const { componentInstance: comp } = MockRender(SelectComponent, { virtualScroll: true }).point;
+            expect(comp.virtualScroll).toBeTrue();
+        });
+    });
+
+    describe('searchFn input', () => {
+        it('should default to undefined', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.searchFn).toBeUndefined();
+        });
+
+        it('should accept a function', () => {
+            const fn = (term: string, item: any) => true;
+            const { componentInstance: comp } = MockRender(SelectComponent, { searchFn: fn }).point;
+            expect(comp.searchFn).toEqual(jasmine.any(Function));
+        });
+    });
+
+    describe('trackByFn input', () => {
+        it('should default to undefined', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.trackByFn).toBeUndefined();
+        });
+
+        it('should accept a function', () => {
+            const fn = (item: any) => item.id;
+            const { componentInstance: comp } = MockRender(SelectComponent, { trackByFn: fn }).point;
+            expect(comp.trackByFn).toEqual(jasmine.any(Function));
+        });
+    });
+
+    describe('inputAttrs input', () => {
+        it('should default to an object with an empty key', () => {
+            const comp = TestBed.createComponent(SelectComponent).componentInstance;
+            expect(comp.inputAttrs).toEqual({ '': '' });
+        });
+
+        it('should accept a custom attrs object', () => {
+            const attrs = { 'data-testid': 'my-select' };
+            const { componentInstance: comp } = MockRender(SelectComponent, { inputAttrs: attrs }).point;
+            expect(comp.inputAttrs).toBe(attrs);
         });
     });
 });

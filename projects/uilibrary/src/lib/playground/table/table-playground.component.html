@@ -1,1 +1,23 @@
 <h1>Table</h1>
+<div class="d-flex flex-column">
+    <section class="medium">
+        <h3>Basic Table</h3>
+        <p>Bind <code>[data]</code> to an array and define columns using <code>uilibrary-table-column</code>.
+        Use the <code>[uilibrary-table-header]</code> and <code>[uilibrary-table-cell]</code> directives
+        to provide header and cell templates.</p>
+        <uilibrary-table [data]="tableData">
+            <uilibrary-table-column>
+                <ng-template uilibrary-table-header>ID</ng-template>
+                <ng-template uilibrary-table-cell let-row>{{ row.id }}</ng-template>
+            </uilibrary-table-column>
+            <uilibrary-table-column>
+                <ng-template uilibrary-table-header>Name</ng-template>
+                <ng-template uilibrary-table-cell let-row>{{ row.name }}</ng-template>
+            </uilibrary-table-column>
+            <uilibrary-table-column>
+                <ng-template uilibrary-table-header>Email</ng-template>
+                <ng-template uilibrary-table-cell let-row>{{ row.email }}</ng-template>
+            </uilibrary-table-column>
+        </uilibrary-table>
+    </section>
+</div>

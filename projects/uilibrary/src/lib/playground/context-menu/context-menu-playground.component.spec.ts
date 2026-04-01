@@ -1,7 +1,10 @@
-import { MockBuilder, MockInstance, MockRender } from 'ng-mocks';
+import { MockBuilder, MockInstance, MockRender, ngMocks } from 'ng-mocks';
 import { ContextMenuPlaygroundComponent } from './context-menu-playground.component';
 import { PlaygroundModule } from '../playground.module';
 import { MenuTrigger } from '../../modules/context-menu/menu-trigger.directive';
+import { TestBed } from '@angular/core/testing';
+import { ContextSideMenuComponent } from '../../modules/context-menu/context-side-menu/context-side-menu.component';
+import { ContextMenuModule } from '../../modules/context-menu/context-menu.module';
 
 describe('ContextMenuPlaygroundComponent', () => {
     beforeEach(() => MockBuilder(ContextMenuPlaygroundComponent, PlaygroundModule));
@@ -49,6 +52,48 @@ describe('ContextMenuPlaygroundComponent', () => {
             const passedEvent = openMenuSpy.calls.first().args[0] as MouseEvent;
             expect(passedEvent.clientX).toBe(100);
             expect(passedEvent.clientY).toBe(200);
+        });
+    });
+
+    describe('Template', () => {
+        it('should render at least one uilibrary-context-side-menu', () => {
+            MockRender(ContextMenuPlaygroundComponent);
+            const sidemenus = ngMocks.findAll('uilibrary-context-side-menu');
+            expect(sidemenus.length).toBeGreaterThan(0);
+        });
+
+        it('should demonstrate a disabled uilibrary-context-side-menu', () => {
+            MockRender(ContextMenuPlaygroundComponent);
+            const sidemenus = ngMocks.findAll('uilibrary-context-side-menu');
+            const disabledMenus = sidemenus.filter(m => ngMocks.input(m, 'disabled') === true);
+            expect(disabledMenus.length).toBeGreaterThan(0);
+        });
+    });
+});
+
+// ─── ContextSideMenuComponent direct API tests ───────────────────────────────
+describe('ContextSideMenuComponent', () => {
+    beforeEach(() => MockBuilder(ContextSideMenuComponent, ContextMenuModule));
+
+    it('should create', () => {
+        const comp = TestBed.createComponent(ContextSideMenuComponent).componentInstance;
+        expect(comp).toBeTruthy();
+    });
+
+    describe('disabled input', () => {
+        it('should default to false', () => {
+            const comp = TestBed.createComponent(ContextSideMenuComponent).componentInstance;
+            expect(comp.disabled).toBeFalse();
+        });
+
+        it('should accept true', () => {
+            const { componentInstance: comp } = MockRender(ContextSideMenuComponent, { disabled: true }).point;
+            expect(comp.disabled).toBeTrue();
+        });
+
+        it('should accept false', () => {
+            const { componentInstance: comp } = MockRender(ContextSideMenuComponent, { disabled: false }).point;
+            expect(comp.disabled).toBeFalse();
         });
     });
 });

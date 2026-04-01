@@ -53,6 +53,11 @@ describe('NavigationPlaygroundComponent', () => {
             expect(comp.links[3].children?.length).toBe(3);
         });
 
+        it('dropdown link should have hidenLabelOnNestedChildren set to true', () => {
+            const { componentInstance: comp } = MockRender(NavigationPlaygroundComponent).point;
+            expect(comp.links[3].hidenLabelOnNestedChildren).toBeTrue();
+        });
+
         it('dropdown children should cover all 3 NavigationLinkType variants', () => {
             const { componentInstance: comp } = MockRender(NavigationPlaygroundComponent).point;
             const childTypes = comp.links[3].children!.map(c => c.type);
@@ -63,10 +68,10 @@ describe('NavigationPlaygroundComponent', () => {
     });
 
     describe('Template', () => {
-        it('should render 5 uilibrary-navigation elements (one per demo variant)', () => {
+        it('should render 6 uilibrary-navigation elements (one per demo variant)', () => {
             MockRender(NavigationPlaygroundComponent);
             const navElements = ngMocks.findAll('uilibrary-navigation');
-            expect(navElements.length).toBe(5);
+            expect(navElements.length).toBe(6);
         });
 
         it('every uilibrary-navigation should have the same [links] array bound to it', () => {

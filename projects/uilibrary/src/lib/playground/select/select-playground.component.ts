@@ -20,6 +20,26 @@ export class SelectPlaygroundComponent implements OnInit {
         { id: 3, value: "Item 3" }
     ]
 
+    objectItems: Array<{ id: number; name: string }> = [
+        { id: 1, name: 'Apple' },
+        { id: 2, name: 'Banana' },
+        { id: 3, name: 'Cherry' }
+    ];
+
+    virtualScrollItems: Array<{ id: number; name: string }> = Array.from(
+        { length: 200 },
+        (_, i) => ({ id: i + 1, name: `Virtual Item ${i + 1}` })
+    );
+
+    customSearchFn = (term: string, item: any): boolean =>
+        item.name?.toLowerCase().includes(term.toLowerCase()) ?? false;
+
+    customTrackByFn = (item: any): any => item.id;
+
+    onScrollHandler = (_end: any): void => { /* load more items on scroll */ };
+
+    onScrollToEndHandler = (): void => { /* load more items when reaching the end */ };
+
     selectModel = { id: 1, value: 'Item 1' };
     basicSelectBinding = this.items[0];
     basicSelectDisabled: Item | undefined;

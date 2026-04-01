@@ -1,1 +1,28 @@
 <h1>Keyboard Navigation</h1>
+<div class="d-flex flex-column">
+    <section class="medium">
+        <h3>Interactive Grid</h3>
+        <p>
+            Use the <strong>arrow keys</strong> (↑ ↓ ← →) to move focus between cells.
+            The <code>[uiCellNav]</code> directive registers each cell with the
+            <code>NavRegistryService</code> so keyboard navigation is handled automatically.
+        </p>
+        <div role="grid" style="display: inline-grid; grid-template-columns: repeat(3, 120px); gap: 8px;">
+            @for(row of gridRows; track row; let rowIndex = $index) {
+                @for(cell of row; track cell; let colIndex = $index) {
+                    <div uiCellNav
+                         [rowIndex]="rowIndex"
+                         [colIndex]="colIndex"
+                         style="padding: 16px; border: 1px solid #ccc; cursor: pointer; text-align: center;">
+                        {{ cell }}
+                    </div>
+                }
+            }
+        </div>
+        <div class="alert alert-info" style="margin-top: 16px;">
+            <strong>Note:</strong> Apply <code>[uiCellNav]</code> to any focusable container element.
+            Provide <code>[rowIndex]</code> and <code>[colIndex]</code> to define its position in the grid.
+            The directive automatically sets <code>tabIndex="0"</code> and <code>role="gridcell"</code>.
+        </div>
+    </section>
+</div>

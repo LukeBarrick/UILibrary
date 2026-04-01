@@ -16,6 +16,11 @@ export class DatePickerPlaygroundComponent implements OnInit {
     datePickerModel: Date | undefined = undefined;
     startDateModel: Date | undefined = undefined;
     endDateModel: Date | undefined = undefined;
+    calendarSelectedDates: Date[] = [];
+
+    onDateSelected(date: Date): void {
+        this.calendarSelectedDates = [...this.calendarSelectedDates, date];
+    }
 
     datepickerForm: FormGroup = this.fb.group({
         datePickerControl: [],
