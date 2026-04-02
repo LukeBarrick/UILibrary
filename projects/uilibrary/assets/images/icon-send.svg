@@ -3,15 +3,9 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 66.42 66.7" style="enable-background:new 0 0 66.42 66.7;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;}
-	.st1{fill:#2088C9;}
-	.st2{fill:#2086C8;}
-	.st3{fill:#5188C7;}
-	.st4{fill:#FFFFFF;}
-	.st5{fill:#008AD0;}
-	.st6{fill:#2685C7;}
+	
 </style>
 <g>
-	<polygon class="st2" points="48.6,17.79 34.94,36.84 49.61,66.7 66.42,0 0,17.09 29.4,31.53 	"/>
+	<polygon points="48.6,17.79 34.94,36.84 49.61,66.7 66.42,0 0,17.09 29.4,31.53 	"/>
 </g>
 </svg>

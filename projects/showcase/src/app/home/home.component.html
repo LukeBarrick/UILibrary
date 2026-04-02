@@ -1,2 +1,139 @@
-<p>
-</p>
+<!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <h1 class="hero-title">UI Library</h1>
+  <p class="hero-tagline">Come up with something catchy around being 100% css</p>
+  <div class="hero-actions">
+    <uilibrary-button appearance="primary" size="large">Get Started</uilibrary-button>
+    <uilibrary-button appearance="outline" size="large">View on GitHub</uilibrary-button>
+  </div>
+</section>
+
+<!-- ─── Viewport container ────────────────────────────────────────────────── -->
+<div class="viewport-wrapper">
+  <div class="viewport-chrome">
+    <span class="chrome-dot chrome-red"></span>
+    <span class="chrome-dot chrome-amber"></span>
+    <span class="chrome-dot chrome-green"></span>
+    <span class="chrome-address">app.lukebarrick-ui.io / dashboard</span>
+  </div>
+
+  <div class="viewport-body">
+
+    <!-- Mock top nav -->
+    <uilibrary-navigation [links]="demoLinks">
+      <uilibrary-icon logo name="icon-home" size="medium" appearance="primary"></uilibrary-icon>
+    </uilibrary-navigation>
+
+    <!-- Two-column layout -->
+    <div class="viewport-content">
+
+      <!-- ── Sidebar ──────────────────────────────────────────────────────── -->
+      <aside class="sidebar">
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">System status</p>
+          <uilibrary-status-tag [statusType]="'success'">Live</uilibrary-status-tag>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">Preferences</p>
+          <uilibrary-toggle [(ngModel)]="darkMode">
+            Dark mode
+          </uilibrary-toggle>
+          <uilibrary-toggle [(ngModel)]="emailAlerts">
+            Email alerts
+          </uilibrary-toggle>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">Filter data</p>
+          <uilibrary-checkbox [(ngModel)]="filter_analytics">
+            Analytics
+          </uilibrary-checkbox>
+          <uilibrary-checkbox [(ngModel)]="filter_reports">
+            Reports
+          </uilibrary-checkbox>
+          <uilibrary-checkbox [(ngModel)]="filter_exports">
+            Exports
+          </uilibrary-checkbox>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">Report frequency</p>
+          <uilibrary-radio-group [(ngModel)]="reportFrequency">
+            <uilibrary-radio-button value="daily">Daily</uilibrary-radio-button>
+            <uilibrary-radio-button value="weekly">Weekly</uilibrary-radio-button>
+            <uilibrary-radio-button value="monthly">Monthly</uilibrary-radio-button>
+          </uilibrary-radio-group>
+        </div>
+
+      </aside>
+
+      <!-- ── Main content ─────────────────────────────────────────────────── -->
+      <main class="main-content">
+
+        <!-- Form card -->
+        <div class="card">
+          <h3 class="card-title">Run a report</h3>
+
+          <div class="form-row">
+            <uilibrary-form-field>
+              <label ui-label>Search</label>
+              <uilibrary-icon ui-prefix name="icon-search" size="small" appearance="secondary"></uilibrary-icon>
+              <input ui-input type="text" placeholder="Search tasks…" [(ngModel)]="searchTerm">
+              <uilibrary-hint>Enter a keyword to filter results</uilibrary-hint>
+            </uilibrary-form-field>
+          </div>
+
+          <div class="form-row">
+            <uilibrary-form-field>
+              <label ui-label>Category</label>
+              <uilibrary-select
+                [items]="categories"
+                placeholder="Select a category…"
+                [(ngModel)]="selectedCategory">
+              </uilibrary-select>
+            </uilibrary-form-field>
+          </div>
+
+          <div class="form-row">
+            <uilibrary-form-field>
+              <label ui-label>Date</label>
+              <uilibrary-datepicker-input></uilibrary-datepicker-input>
+            </uilibrary-form-field>
+          </div>
+
+          <div class="form-actions">
+            <uilibrary-button appearance="primary" icon="icon-send">Submit</uilibrary-button>
+            <uilibrary-button appearance="outline">Reset</uilibrary-button>
+          </div>
+        </div>
+
+        <!-- Results table -->
+        <div class="card">
+          <h3 class="card-title">Recent tasks</h3>
+          <uilibrary-table [data]="tableRows">
+            <uilibrary-table-column>
+              <ng-template uilibrary-table-header>#</ng-template>
+              <ng-template uilibrary-table-cell let-row>{{ row.id }}</ng-template>
+            </uilibrary-table-column>
+
+            <uilibrary-table-column>
+              <ng-template uilibrary-table-header>Task</ng-template>
+              <ng-template uilibrary-table-cell let-row>{{ row.name }}</ng-template>
+            </uilibrary-table-column>
+
+            <uilibrary-table-column>
+              <ng-template uilibrary-table-header>Status</ng-template>
+              <ng-template uilibrary-table-cell let-row>
+                <uilibrary-status-tag [statusType]="row.status">{{ row.status }}</uilibrary-status-tag>
+              </ng-template>
+            </uilibrary-table-column>
+          </uilibrary-table>
+        </div>
+
+      </main>
+    </div><!-- /viewport-content -->
+  </div><!-- /viewport-body -->
+</div><!-- /viewport-wrapper -->
+

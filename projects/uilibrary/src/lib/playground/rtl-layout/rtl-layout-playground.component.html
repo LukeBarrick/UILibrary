@@ -347,11 +347,6 @@
       </uilibrary-form-field>
     </div>
   </div>
-  <div class="compat-note">
-    <strong>Known limitation (resolved):</strong> The floating label previously used
-    <code>left: 9px</code>. It now uses <code>inset-inline-start: 9px</code> and
-    adapts correctly to RTL.
-  </div>
 </section>
 
 <!-- ── §9 — Select Dropdown ❌ ──────────────────────────────────────────── -->
@@ -379,12 +374,6 @@
         [useCustomTemplate]="false">
       </uilibrary-select>
     </uilibrary-form-field>
-  </div>
-  <div class="compat-note">
-    <strong>Mostly resolved.</strong> Value position and input padding now use
-    logical properties. The dropdown panel alignment is controlled by the
-    <code>ng-select</code> library via JS and remains LTR-anchored. All other
-    visual elements mirror correctly in RTL.
   </div>
 </section>
 
@@ -443,11 +432,6 @@
       <uilibrary-checkbox labelPosition="left">Label left</uilibrary-checkbox>
     </div>
   </div>
-  <div class="compat-note">
-    <strong>Resolved.</strong> Label spacing uses <code>mis-4</code> / <code>mie-4</code>
-    (logical margin-inline utilities) and the check indicator uses
-    <code>inset-inline-start</code>. Both adapt correctly in RTL.
-  </div>
 </section>
 
 <!-- ── §12 — Toggle ❌ ──────────────────────────────────────────────────── -->
@@ -466,11 +450,6 @@
     <uilibrary-toggle>Default toggle</uilibrary-toggle>
     <uilibrary-toggle [checked]="true">Checked toggle</uilibrary-toggle>
     <uilibrary-toggle labelPosition="right">Label right</uilibrary-toggle>
-  </div>
-  <div class="compat-note">
-    <strong>Resolved.</strong> Knob uses <code>inset-inline-start</code> and a
-    <code>[dir="rtl"]</code> scoped rule flips the <code>translateX</code> to
-    <code>-15px</code>. Label spacing uses logical utilities.
   </div>
 </section>
 
@@ -501,11 +480,6 @@
         <uilibrary-radio-button value="y" labelPosition="right">Option Y</uilibrary-radio-button>
       </uilibrary-radio-group>
     </div>
-  </div>
-  <div class="compat-note">
-    <strong>Resolved.</strong> Label spacing uses <code>margin-inline-end</code>
-    and <code>margin-inline-start</code>, which auto-flip in RTL. No further
-    overrides needed.
   </div>
 </section>
 <!-- ── §14 — Date Picker ⚠️ ───────────────────────────────────────────────── -->

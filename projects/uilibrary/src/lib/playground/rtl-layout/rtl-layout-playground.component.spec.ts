@@ -5,9 +5,7 @@ import { PlaygroundModule } from '../playground.module';
 import { RtlLayoutDirective } from '../../modules/rtl-layout/rtl-layout.directive';
 import { RtlLayoutModule } from '../../modules/rtl-layout/rtl-layout.module';
 import {
-    expectControlInvalid,
     expectControlValid,
-    expectControlDisabled,
 } from '../testing/form-control.helpers';
 
 describe('RtlLayoutPlaygroundComponent', () => {
