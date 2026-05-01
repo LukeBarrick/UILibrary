@@ -145,6 +145,56 @@ describe('IconComponent', () => {
     });
   });
 
+  describe('Custom Dimensions', () => {
+    it('should have a default customDimensions of [0, 0]', () => {
+      expect(component.customDimensions).toEqual([0, 0]);
+    });
+
+    it('should override height and width when both values are non-zero', () => {
+      component.customDimensions = [24, 36];
+      component.ngOnInit();
+
+      expect(component.height).toBe(24);
+      expect(component.width).toBe(36);
+    });
+
+    it('should not override dimensions when customDimensions is [0, 0]', () => {
+      component.size = 'small';
+      component.customDimensions = [0, 0];
+      component.ngOnInit();
+
+      expect(component.height).toBe(30);
+      expect(component.width).toBe(30);
+    });
+
+    it('should not override dimensions when only height is non-zero', () => {
+      component.size = 'small';
+      component.customDimensions = [24, 0];
+      component.ngOnInit();
+
+      expect(component.height).toBe(30);
+      expect(component.width).toBe(30);
+    });
+
+    it('should not override dimensions when only width is non-zero', () => {
+      component.size = 'small';
+      component.customDimensions = [0, 36];
+      component.ngOnInit();
+
+      expect(component.height).toBe(30);
+      expect(component.width).toBe(30);
+    });
+
+    it('should override size-based dimensions when customDimensions are both non-zero', () => {
+      component.size = 'large';
+      component.customDimensions = [24, 36];
+      component.ngOnInit();
+
+      expect(component.height).toBe(24);
+      expect(component.width).toBe(36);
+    });
+  });
+
   describe('ngOnInit', () => {
     it('should initialize both size and appearance', () => {
       component.size = 'large';

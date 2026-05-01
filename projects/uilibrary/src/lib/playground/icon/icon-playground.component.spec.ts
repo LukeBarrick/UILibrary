@@ -117,4 +117,24 @@ describe('IconComponent', () => {
             expect(comp.name).toBe('icon-accommodation');
         });
     });
+
+    describe('customDimensions input', () => {
+        it('should override height and width when both values are non-zero', () => {
+            const { componentInstance: comp } = MockRender(IconComponent, { customDimensions: [24, 36] as [number, number], name: 'icon-air' }).point;
+            expect(comp.height).toBe(24);
+            expect(comp.width).toBe(36);
+        });
+
+        it('should not override size-based dimensions when customDimensions is [0, 0]', () => {
+            const { componentInstance: comp } = MockRender(IconComponent, { size: 'small', customDimensions: [0, 0] as [number, number], name: 'icon-air' }).point;
+            expect(comp.height).toBe(30);
+            expect(comp.width).toBe(30);
+        });
+
+        it('should not override dimensions when only one value is non-zero', () => {
+            const { componentInstance: comp } = MockRender(IconComponent, { size: 'small', customDimensions: [24, 0] as [number, number], name: 'icon-air' }).point;
+            expect(comp.height).toBe(30);
+            expect(comp.width).toBe(30);
+        });
+    });
 });
