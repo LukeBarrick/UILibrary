@@ -2,13 +2,13 @@
     <div class="calendar-container">
         <div class="d-flex justify-content-between align-items-center datepicker-title-row">
             <button class="nav-button left" (click)="previous()">
-                <uilibrary-icon size="small" name="chevron_left"></uilibrary-icon>
+                <uilibrary-icon [customDimensions]="[15,15]" name="chevron_left"></uilibrary-icon>
             </button>
 
             {{selectedMonthLiteral}} {{selectedYear}}
 
             <button class="nav-button right" (click)="next()">
-                <uilibrary-icon size="small" name="chevron_right"></uilibrary-icon>
+                <uilibrary-icon [customDimensions]="[15,15]" name="chevron_right"></uilibrary-icon>
             </button>
         </div>
 

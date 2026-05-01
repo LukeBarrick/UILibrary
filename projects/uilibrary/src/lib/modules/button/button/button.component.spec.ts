@@ -74,13 +74,6 @@ describe('ButtonComponent', () => {
       
       expect(component.sizeClass).toBe('btn');
     });
-
-    it('should not set iconSizeClass for non-small sizes', () => {
-      component.size = 'large';
-      component.ngOnInit();
-      
-      expect(component.iconSizeClass).toBeUndefined();
-    });
   });
 
   describe('Appearance Configuration', () => {
@@ -182,12 +175,12 @@ describe('ButtonComponent', () => {
       expect(component.iconSizeClass).toBe('small');
     });
 
-    it('should not set icon size class for large buttons', () => {
+    it('should set medium icon size class for large buttons', () => {
       component.size = 'large';
       component.icon = 'home';
       component.ngOnInit();
       
-      expect(component.iconSizeClass).toBeUndefined();
+      expect(component.iconSizeClass).toBe('medium');
     });
   });
 });

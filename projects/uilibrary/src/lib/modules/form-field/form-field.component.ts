@@ -9,7 +9,6 @@ import { UIFormFieldControl } from './form-field-control';
 import { Subscription } from 'rxjs';
 import { UIPrefix } from './directives/UIPrefix';
 import { UISuffix } from './directives/UISuffix';
-import { id } from 'date-fns/locale';
 
 @Component({
     selector: 'uilibrary-form-field',

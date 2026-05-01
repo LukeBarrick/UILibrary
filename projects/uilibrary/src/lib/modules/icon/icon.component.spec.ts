@@ -70,20 +70,20 @@ describe('IconComponent', () => {
       expect(component.height).toBe(80);
     });
 
-    it('should default to undefined size when size is undefined', () => {
+    it('should default to medium size when size is undefined', () => {
       component.size = undefined;
       component.ngOnInit();
       
-      expect(component.width).toBe(undefined);
-      expect(component.height).toBe(undefined);
+      expect(component.width).toBe(40);
+      expect(component.height).toBe(40);
     });
 
-    it('should default to undefined size when size is invalid', () => {
+    it('should default to medium size when size is invalid', () => {
       component.size = 'invalid-size';
       component.ngOnInit();
       
-      expect(component.width).toBe(undefined);
-      expect(component.height).toBe(undefined);
+      expect(component.width).toBe(40);
+      expect(component.height).toBe(40);
     });
   });
 
@@ -156,11 +156,11 @@ describe('IconComponent', () => {
       expect(component.fillColor).toBe('var(--primary)');
     });
 
-    it('should initialize with no default values when no inputs provided', () => {
+    it('should initialize with default values of 40 when no inputs provided', () => {
       component.ngOnInit();
       
-      expect(component.width).toBe(undefined);
-      expect(component.height).toBe(undefined);
+      expect(component.width).toBe(40);
+      expect(component.height).toBe(40);
       expect(component.fillColor).toBe('var(--secondary)');
     });
   });

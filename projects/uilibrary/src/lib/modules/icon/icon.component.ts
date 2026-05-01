@@ -10,6 +10,10 @@ export class IconComponent implements OnInit {
   @Input() size: string | undefined;
   @Input() appearance: string | undefined;
 
+  //Provide a custom set of dimensions
+  //Used within internal components which icons dimensions do not match any of the constrained options. 
+  @Input() customDimensions: [height: number, width: number] = [0,0];
+
   width: number | undefined;
   height: number | undefined;
   fillColor: string = '';
@@ -21,20 +25,29 @@ export class IconComponent implements OnInit {
   ngOnInit() {
     switch(this.size) {
       case 'small': 
-        this.width = 30;
         this.height = 30;
+        this.width = 30;
         break;
       case 'medium': 
-        this.width = 40;
         this.height = 40;
+        this.width = 40;
         break;
       case 'large':
-        this.width = 80;
         this.height = 80;
+        this.width = 80;
         break;
       default: 
+        this.height = 40;
+        this.width = 40;
         break;
     }
+
+    const [height, width] = this.customDimensions;
+    if(height && width) {
+        this.height = height;
+        this.width = width;
+    }
+
 
     switch(this.appearance) {
       case "primary":

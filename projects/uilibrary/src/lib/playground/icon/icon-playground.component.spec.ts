@@ -67,10 +67,10 @@ describe('IconComponent', () => {
             expect(comp.height).toBe(80);
         });
 
-        it('should default to width=undefined and height=undefined when no size is provided', () => {
+        it('should default to width=40 and height=40 when no size is provided', () => {
             const { componentInstance: comp } = MockRender(IconComponent, { size: undefined, name: 'icon-air' }).point;
-            expect(comp.width).toBe(undefined);
-            expect(comp.height).toBe(undefined);
+            expect(comp.width).toBe(40);
+            expect(comp.height).toBe(40);
         });
     });
 
