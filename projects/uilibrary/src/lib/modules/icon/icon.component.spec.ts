@@ -70,20 +70,20 @@ describe('IconComponent', () => {
       expect(component.height).toBe(80);
     });
 
-    it('should default to medium size when size is undefined', () => {
+    it('should default to undefined size when size is undefined', () => {
       component.size = undefined;
       component.ngOnInit();
       
-      expect(component.width).toBe(40);
-      expect(component.height).toBe(40);
+      expect(component.width).toBe(undefined);
+      expect(component.height).toBe(undefined);
     });
 
-    it('should default to medium size when size is invalid', () => {
+    it('should default to undefined size when size is invalid', () => {
       component.size = 'invalid-size';
       component.ngOnInit();
       
-      expect(component.width).toBe(40);
-      expect(component.height).toBe(40);
+      expect(component.width).toBe(undefined);
+      expect(component.height).toBe(undefined);
     });
   });
 
@@ -156,23 +156,23 @@ describe('IconComponent', () => {
       expect(component.fillColor).toBe('var(--primary)');
     });
 
-    it('should initialize with default values when no inputs provided', () => {
+    it('should initialize with no default values when no inputs provided', () => {
       component.ngOnInit();
       
-      expect(component.width).toBe(40);
-      expect(component.height).toBe(40);
+      expect(component.width).toBe(undefined);
+      expect(component.height).toBe(undefined);
       expect(component.fillColor).toBe('var(--secondary)');
     });
   });
 
   describe('Default Values', () => {
-    it('should have default width of 0 before initialization', () => {
-      expect(component.width).toBe(0);
+    it('should have default width of undefined before initialization', () => {
+      expect(component.width).toBe(undefined);
     });
 
-    it('should have default height of 0 before initialization', () => {
-      expect(component.height).toBe(0);
-    });
+    it('should have default height of undefined before initialization', () => {
+      expect(component.height).toBe(undefined);
+    });``
 
     it('should have default fillColor of empty string before initialization', () => {
       expect(component.fillColor).toBe('');

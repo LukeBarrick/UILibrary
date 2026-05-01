@@ -10,8 +10,8 @@ export class IconComponent implements OnInit {
   @Input() size: string | undefined;
   @Input() appearance: string | undefined;
 
-  width: Number = 0;
-  height: Number = 0;
+  width: number | undefined;
+  height: number | undefined;
   fillColor: string = '';
 
   constructor() { 
@@ -33,8 +33,6 @@ export class IconComponent implements OnInit {
         this.height = 80;
         break;
       default: 
-        this.width = 40;
-        this.height = 40;
         break;
     }
 
