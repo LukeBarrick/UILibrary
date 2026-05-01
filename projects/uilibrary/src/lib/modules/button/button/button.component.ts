@@ -25,6 +25,7 @@ export class ButtonComponent implements OnInit {
       this.iconSizeClass = 'small'
     } else {
       this.sizeClass = 'btn';
+      this.iconSizeClass = "medium";
     }
 
     switch(this.appearance) {
