@@ -1,7 +1,6 @@
-import { MockBuilder, MockInstance, MockRender, ngMocks } from 'ng-mocks';
+import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { ContextMenuPlaygroundComponent } from './context-menu-playground.component';
 import { PlaygroundModule } from '../playground.module';
-import { MenuTrigger } from '../../modules/context-menu/menu-trigger.directive';
 import { TestBed } from '@angular/core/testing';
 import { ContextSideMenuComponent } from '../../modules/context-menu/context-side-menu/context-side-menu.component';
 import { ContextMenuModule } from '../../modules/context-menu/context-menu.module';

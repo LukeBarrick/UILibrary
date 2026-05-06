@@ -142,6 +142,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
+            "main": "projects/uilibrary/src/test.ts",
             "tsConfig": "projects/uilibrary/tsconfig.spec.json",
             "polyfills": [
               "zone.js",

@@ -50,8 +50,8 @@ describe('RadioGroupComponent', () => {
 
     it('should implement setDisabledState', () => {
       // Create mock radio buttons
-      const mockButton1 = { disabled: false } as RadioButtonComponent;
-      const mockButton2 = { disabled: false } as RadioButtonComponent;
+      const mockButton1 = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
+      const mockButton2 = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
       component.radioButtons = new QueryList<RadioButtonComponent>();
       (component.radioButtons as any)._results = [mockButton1, mockButton2];
 
@@ -108,6 +108,62 @@ describe('RadioGroupComponent', () => {
       component.$valueChanges = undefined;
       
       expect(() => component.ngOnDestroy()).not.toThrow();
+    });
+
+    it('should also unsubscribe radioButtonChanges on destroy', () => {
+      const mockSub = jasmine.createSpyObj('Subscription', ['unsubscribe']);
+      component.$radioButtonChanges = mockSub;
+
+      component.ngOnDestroy();
+
+      expect(mockSub.unsubscribe).toHaveBeenCalled();
+    });
+  });
+
+  describe('Subscription leak prevention', () => {
+    it('should call onChange only once after updateRadioButtons is called multiple times', () => {
+      const onChangeSpy = jasmine.createSpy('onChange');
+      component.registerOnChange(onChangeSpy);
+
+      const mockButton = {
+        value: 'a',
+        checked: false,
+        checkedChange: new EventEmitter<boolean>()
+      } as unknown as RadioButtonComponent;
+
+      component.radioButtons = new QueryList<RadioButtonComponent>();
+      (component.radioButtons as any)._results = [mockButton];
+      (component.radioButtons as any).dirty = true;
+
+      // Simulate updateRadioButtons being called twice (e.g. QueryList change fires)
+      (component as any).updateRadioButtons();
+      (component as any).updateRadioButtons();
+
+      mockButton.checkedChange.emit(true);
+
+      expect(onChangeSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onChange after the component is destroyed', () => {
+      const onChangeSpy = jasmine.createSpy('onChange');
+      component.registerOnChange(onChangeSpy);
+
+      const mockButton = {
+        value: 'b',
+        checked: false,
+        checkedChange: new EventEmitter<boolean>()
+      } as unknown as RadioButtonComponent;
+
+      component.radioButtons = new QueryList<RadioButtonComponent>();
+      (component.radioButtons as any)._results = [mockButton];
+      (component.radioButtons as any).dirty = true;
+
+      (component as any).updateRadioButtons();
+      component.ngOnDestroy();
+
+      mockButton.checkedChange.emit(true);
+
+      expect(onChangeSpy).not.toHaveBeenCalled();
     });
   });
 

@@ -1,7 +1,8 @@
 import { AfterContentInit, Component, ContentChildren, forwardRef, Input, OnDestroy, OnInit, Optional, QueryList, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl, RadioControlValueAccessor } from '@angular/forms';
 import { RadioButtonComponent } from '../button/button.component';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'uilibrary-radio-group',
@@ -33,6 +34,7 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
 
   $valueChanges: Subscription | undefined;
   $radioButtonChanges: Subscription | undefined;
+  private $cancelButtonSubs = new Subject<void>();
 
   ngOnInit(): void {
     if(this.ngControl?.control) {
@@ -46,6 +48,9 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
 
   ngOnDestroy(): void {
     this.$valueChanges?.unsubscribe();
+    this.$radioButtonChanges?.unsubscribe();
+    this.$cancelButtonSubs.next();
+    this.$cancelButtonSubs.complete();
   }
 
   ngAfterContentInit() {
@@ -81,11 +86,13 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
 
   private updateRadioButtons(): void {
     if (this.radioButtons) {
+      this.$cancelButtonSubs.next();
+
       this.radioButtons.forEach(button => {
         const isChecked = button.value === this.value;
-        button.checked = isChecked
+        button.checked = isChecked;
 
-        button.checkedChange.subscribe(() => {
+        button.checkedChange.pipe(takeUntil(this.$cancelButtonSubs)).subscribe(() => {
           this.value = button.value;
 
           this.radioButtons.forEach(radio => radio.checked = false);
@@ -99,3 +106,7 @@ export class RadioGroupComponent implements ControlValueAccessor, AfterContentIn
     }
   }
 }
+function takeUntilDestroyed($cancelButtonSubs: Subject<void>): import("rxjs").OperatorFunction<boolean, unknown> {
+  throw new Error('Function not implemented.');
+}
+
