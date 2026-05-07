@@ -222,7 +222,7 @@ describe('IconComponent', () => {
 
     it('should have default height of undefined before initialization', () => {
       expect(component.height).toBe(undefined);
-    });``
+    });
 
     it('should have default fillColor of empty string before initialization', () => {
       expect(component.fillColor).toBe('');
