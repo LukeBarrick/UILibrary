@@ -6,8 +6,6 @@ import { ToastOptions } from '../models/toast-options';
   providedIn: 'root',
 })
 export class ToastService {
-  // private readonly toastr = inject(ToastrService);
-
   constructor(private toastr: ToastrService) {}
 
   public error(message: string, title?: string, timeoutOverride?: number) {

@@ -14,7 +14,6 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UiActiveModal } from './active-modal';
 import { UiModalDismissReason } from './modal-dismiss-reasons';
 import { UiModalOptions } from './modal-options';
 import { UiModalRef } from './modal-ref';

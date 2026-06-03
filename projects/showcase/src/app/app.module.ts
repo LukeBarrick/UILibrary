@@ -11,6 +11,7 @@ import { HomeModule } from './home/home.module';
 import { DocumentationModule } from './docs/docs.module';
 import { GuidesModule } from './guides/guides.module';
 import { BlogModule } from './blog/blog.module';
+import { UiModalService } from 'uilibrary';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { BlogModule } from './blog/blog.module';
     BlogModule
   ],
   providers: [
-    
+    UiModalService
   ],
   bootstrap: [AppComponent]
 })

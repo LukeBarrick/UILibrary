@@ -12,10 +12,12 @@ import { DemoModalContentComponent } from './demo-modal-content.component';
 })
 export class ModalPlaygroundComponent {
   lastResult = '';
+  promiseResult = '';
   stackCount = 0;
 
   constructor(private modalService: UiModalService) {}
 
+  //Subscription based modal results.
   openBasic(): void {
     const ref = this.modalService.open(DemoModalContentComponent);
     this._trackResult(ref);
@@ -95,15 +97,88 @@ export class ModalPlaygroundComponent {
     this.stackCount = 0;
   }
 
+  // ── Promise based ────────────────────────────────────────────────────────────
+
+  // .then() / .catch() style
+  openPromiseBasic(): void {
+    const ref = this.modalService.open(DemoModalContentComponent);
+    ref.result
+      .then(result => { this.promiseResult = `Closed with: "${result}"`; })
+      .catch(reason => { this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`; });
+  }
+
+  openPromiseSm(): void {
+    const ref = this.modalService.open(DemoModalContentComponent, { size: 'sm' });
+    ref.result
+      .then(result => { this.promiseResult = `Closed with: "${result}"`; })
+      .catch(reason => { this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`; });
+  }
+
+  openPromiseLg(): void {
+    const ref = this.modalService.open(DemoModalContentComponent, { size: 'lg' });
+    ref.result
+      .then(result => { this.promiseResult = `Closed with: "${result}"`; })
+      .catch(reason => { this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`; });
+  }
+
+  // async / await style
+  async openPromiseCentered(): Promise<void> {
+    const ref = this.modalService.open(DemoModalContentComponent, { centered: true });
+    try {
+      const result = await ref.result;
+      this.promiseResult = `Closed with: "${result}"`;
+    } catch (reason) {
+      this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`;
+    }
+  }
+
+  async openPromiseStaticBackdrop(): Promise<void> {
+    const ref = this.modalService.open(DemoModalContentComponent, {
+      backdrop: 'static',
+      keyboard: false,
+      centered: true,
+    });
+    try {
+      const result = await ref.result;
+      this.promiseResult = `Closed with: "${result}"`;
+    } catch (reason) {
+      this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`;
+    }
+  }
+
+  async openPromiseScrollable(): Promise<void> {
+    const ref = this.modalService.open(DemoModalContentComponent, { scrollable: true, centered: true });
+    ref.componentInstance.body = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(20);
+    try {
+      const result = await ref.result;
+      this.promiseResult = `Closed with: "${result}"`;
+    } catch (reason) {
+      this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`;
+    }
+  }
+
+  async openPromiseTemplate(templateRef: TemplateRef<any>): Promise<void> {
+    const ref = this.modalService.open(templateRef, { centered: true });
+    try {
+      const result = await ref.result;
+      this.promiseResult = `Closed with: "${result}"`;
+    } catch (reason) {
+      this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`;
+    }
+  }
+
   private _trackResult(ref: UiModalRef): void {
     ref.closed.subscribe(result => {
       this.lastResult = `Closed with: "${result}"`;
     });
     ref.dismissed.subscribe(reason => {
-      const label = reason === UiModalDismissReason.Esc ? 'ESC key'
-        : reason === UiModalDismissReason.BackdropClick ? 'Backdrop click'
-        : reason;
-      this.lastResult = `Dismissed (${label})`;
+      this.lastResult = `Dismissed (${this._reasonLabel(reason)})`;
     });
+  }
+
+  private _reasonLabel(reason: any): string {
+    return reason === UiModalDismissReason.Esc ? 'ESC key'
+      : reason === UiModalDismissReason.BackdropClick ? 'Backdrop click'
+      : String(reason);
   }
 }

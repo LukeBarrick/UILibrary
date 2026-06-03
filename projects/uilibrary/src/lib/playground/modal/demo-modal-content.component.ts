@@ -25,5 +25,5 @@ export class DemoModalContentComponent {
   title = 'Modal title';
   body = 'This is the modal body. It uses a component as content and injects UiActiveModal.';
 
-  constructor(public activeModal: UiActiveModal) {}
+  constructor(public activeModal: UiActiveModal) { }
 }

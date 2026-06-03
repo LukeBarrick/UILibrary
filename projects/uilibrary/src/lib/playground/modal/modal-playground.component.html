@@ -1,6 +1,7 @@
 <div class="modal-playground">
-  <h2>Modal Playground</h2>
+  <h1>Modal Playground</h1>
 
+  <h2>Subscription based Modal</h2>
   @if (lastResult) {
     <div class="result-banner">
       <strong>Last result:</strong> {{ lastResult }}
@@ -20,17 +21,17 @@
   <section>
     <h3>Position &amp; Layout</h3>
     <div class="button-row">
-      <button type="button" (click)="openCentered()">Vertically Centered</button>
-      <button type="button" (click)="openScrollable()">Scrollable Body</button>
-      <button type="button" (click)="openFullscreen()">Fullscreen</button>
-      <button type="button" (click)="openFullscreenMd()">Fullscreen below md</button>
+        <button type="button" (click)="openScrollable()">Scrollable Body</button>
+        <button type="button" (click)="openFullscreen()">Fullscreen</button>
+        <button type="button" (click)="openFullscreenMd()">Fullscreen below md</button>
+        <button type="button" (click)="openCentered()">Vertically Centered</button>
     </div>
-  </section>
+</section>
 
-  <section>
+<section>
     <h3>Backdrop &amp; Keyboard</h3>
     <div class="button-row">
-      <button type="button" (click)="openStaticBackdrop()">Static Backdrop (no ESC)</button>
+        <button type="button" (click)="openStaticBackdrop()">Static Backdrop (no ESC)</button>
       <button type="button" (click)="openNoBackdrop()">No Backdrop</button>
     </div>
   </section>
@@ -69,4 +70,68 @@
     </div>
     <p class="hint">Open multiple times to stack modals. ESC closes the topmost only.</p>
   </section>
+
+  <section>
+    <h3>Experiments</h3>
+    <button>Click me :]</button>
+  </section>
+
+  <h2>Promise based Modal</h2>
+
+  <p class="approach-note">
+    Uses <code>ref.result</code> — a Promise that resolves on <code>.close()</code> and rejects on
+    <code>.dismiss()</code>. Examples below show both the <code>.then()&nbsp;/&nbsp;.catch()</code>
+    style and the <code>async&nbsp;/&nbsp;await</code> style.
+  </p>
+
+  @if (promiseResult) {
+    <div class="result-banner result-banner--promise">
+      <strong>Last promise result:</strong> {{ promiseResult }}
+    </div>
+  }
+
+  <section>
+    <h3>Sizes <span class="approach-tag">.then() / .catch()</span></h3>
+    <div class="button-row">
+      <button type="button" (click)="openPromiseBasic()">Default (500px)</button>
+      <button type="button" (click)="openPromiseSm()">Small (sm)</button>
+      <button type="button" (click)="openPromiseLg()">Large (lg)</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>Position &amp; Layout <span class="approach-tag">async / await</span></h3>
+    <div class="button-row">
+      <button type="button" (click)="openPromiseCentered()">Vertically Centered</button>
+      <button type="button" (click)="openPromiseScrollable()">Scrollable Body</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>Backdrop <span class="approach-tag">async / await</span></h3>
+    <div class="button-row">
+      <button type="button" (click)="openPromiseStaticBackdrop()">Static Backdrop (no ESC)</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>TemplateRef Content <span class="approach-tag">async / await</span></h3>
+    <div class="button-row">
+      <button type="button" (click)="openPromiseTemplate(promiseTpl)">Open Template Modal</button>
+    </div>
+
+    <ng-template #promiseTpl>
+      <div class="ui-modal-header">
+        <h5 class="ui-modal-title">Template Modal (Promise)</h5>
+      </div>
+      <div class="ui-modal-body">
+        <p>Opened via <code>TemplateRef</code>. Dismiss via ESC or backdrop click — the awaited
+        <code>ref.result</code> will reject and the catch block will update the result banner.</p>
+      </div>
+      <div class="ui-modal-footer">
+        <em>Close via ESC or backdrop click.</em>
+      </div>
+    </ng-template>
+  </section>
+
 </div>
