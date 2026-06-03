@@ -39,7 +39,7 @@ import { SidebarModalService } from '../../../modules/modal/sidebar-modal.servic
     </div>
 
     <div class="ui-modal-footer">
-      <uilibrary-button appearance="primary">Save</uilibrary-button>
+      <uilibrary-button appearance="primary" (click)="saveProcedure()">Save</uilibrary-button>
       <uilibrary-button appearance="secondary" (click)="sidebarModal.close()">Cancel</uilibrary-button>
     </div>
   `,
@@ -72,4 +72,12 @@ export class SidebarDemoSettingsComponent {
   tzOptions = ['UTC', 'US / Eastern', 'Europe / London', 'Asia / Tokyo'];
 
   readonly sidebarModal: SidebarModalService = inject(SidebarModalService);
+
+  saveProcedure() {
+    //Make some api calls 
+
+    //Call success toaster
+
+    this.sidebarModal.close();
+  }
 }
