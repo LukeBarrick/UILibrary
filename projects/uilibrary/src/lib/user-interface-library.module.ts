@@ -27,6 +27,7 @@ import { DatepickerModule } from './modules/datepicker/datepicker.module';
 import { KeyboardNavigationModule } from './modules/keyboard-navigation/keyboard-navigation.module';
 import { ContextMenuModule } from './modules/context-menu/context-menu.module';
 import { TableModule } from './modules/table/table.module';
+import { UiModalModule } from './modules/modal/modal.module';
 import { ShowcaseModule } from './showcase/showcase.module';
 import { PlaygroundModule } from './playground/playground.module';
 
@@ -60,7 +61,8 @@ import { PlaygroundModule } from './playground/playground.module';
     DatepickerModule,
     KeyboardNavigationModule,
     ContextMenuModule,
-    TableModule
+    TableModule,
+    UiModalModule,
   ],
   exports: [
     UserInterfaceLibraryComponent,

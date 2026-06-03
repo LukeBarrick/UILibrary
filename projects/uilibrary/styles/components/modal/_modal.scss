@@ -1,0 +1,205 @@
+// ============================================================
+// UI Modal Component Styles
+// ============================================================
+
+// Breakpoints used for responsive fullscreen behaviour
+$modal-breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+);
+
+// Backdrop
+// ---------------------------------------------------------------
+.ui-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1040;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: all;
+  transition: opacity 0.15s linear;
+
+  &.show {
+    opacity: 1;
+  }
+
+  &.no-animation {
+    transition: none;
+    opacity: 1;
+  }
+}
+
+// Static-backdrop bounce keyframe
+@keyframes ui-modal-static-bounce {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.02); }
+  75%  { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+// Modal container
+// ---------------------------------------------------------------
+.ui-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  pointer-events: all;
+}
+
+// Dialog
+// ---------------------------------------------------------------
+.ui-modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 1.75rem auto;
+  max-width: 500px;
+  pointer-events: all;
+  transform: translateY(-3rem);
+  opacity: 0;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+
+  &.show {
+    transform: none;
+    opacity: 1;
+  }
+
+  &.no-animation {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  &.static-bounce {
+    animation: ui-modal-static-bounce 0.3s ease-in-out;
+  }
+
+  // ---- Size variants ----
+  &.ui-modal-dialog--sm {
+    max-width: 300px;
+  }
+
+  &.ui-modal-dialog--lg {
+    max-width: 800px;
+  }
+
+  &.ui-modal-dialog--xl {
+    max-width: 1140px;
+  }
+
+  // ---- Centered ----
+  &.ui-modal-dialog--centered {
+    min-height: calc(100% - 3.5rem);
+    display: flex;
+    align-items: center;
+  }
+
+  // ---- Scrollable ----
+  &.ui-modal-dialog--scrollable {
+    height: calc(100% - 3.5rem);
+
+    .ui-modal-content {
+      max-height: 100%;
+      overflow: hidden;
+    }
+
+    .ui-modal-body {
+      overflow-y: auto;
+    }
+  }
+
+  // ---- Fullscreen (always) ----
+  &.ui-modal-dialog--fullscreen {
+    width: 100vw;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+
+    .ui-modal-content {
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+
+  // ---- Responsive fullscreen (below given breakpoint) ----
+  @each $name, $px in $modal-breakpoints {
+    &.ui-modal-dialog--fullscreen-#{$name} {
+      @media (max-width: #{$px - 0.02px}) {
+        width: 100vw;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+
+        .ui-modal-content {
+          height: 100%;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+// Modal content box
+// ---------------------------------------------------------------
+.ui-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: all;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+// Sections — consumers style these, defaults supplied here
+// ---------------------------------------------------------------
+.ui-modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.ui-modal-title {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.ui-modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.ui-modal-footer {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  gap: 0.5rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+// CDK overlay pane — override default pointer-events so clicks reach the modal
+.ui-modal-overlay-pane {
+  pointer-events: none;
+}

@@ -1,0 +1,72 @@
+<div class="modal-playground">
+  <h2>Modal Playground</h2>
+
+  @if (lastResult) {
+    <div class="result-banner">
+      <strong>Last result:</strong> {{ lastResult }}
+    </div>
+  }
+
+  <section>
+    <h3>Sizes</h3>
+    <div class="button-row">
+      <button type="button" (click)="openBasic()">Default (500px)</button>
+      <button type="button" (click)="openSm()">Small (sm)</button>
+      <button type="button" (click)="openLg()">Large (lg)</button>
+      <button type="button" (click)="openXl()">Extra Large (xl)</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>Position &amp; Layout</h3>
+    <div class="button-row">
+      <button type="button" (click)="openCentered()">Vertically Centered</button>
+      <button type="button" (click)="openScrollable()">Scrollable Body</button>
+      <button type="button" (click)="openFullscreen()">Fullscreen</button>
+      <button type="button" (click)="openFullscreenMd()">Fullscreen below md</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>Backdrop &amp; Keyboard</h3>
+    <div class="button-row">
+      <button type="button" (click)="openStaticBackdrop()">Static Backdrop (no ESC)</button>
+      <button type="button" (click)="openNoBackdrop()">No Backdrop</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>Animation</h3>
+    <div class="button-row">
+      <button type="button" (click)="openNoAnimation()">No Animation</button>
+    </div>
+  </section>
+
+  <section>
+    <h3>TemplateRef Content</h3>
+    <div class="button-row">
+      <button type="button" (click)="openTemplate(tplContent)">Open Template Modal</button>
+    </div>
+
+    <ng-template #tplContent>
+      <div class="ui-modal-header">
+        <h5 class="ui-modal-title">Template Modal</h5>
+      </div>
+      <div class="ui-modal-body">
+        <p>This modal was opened using a <code>TemplateRef</code> as content.</p>
+      </div>
+      <div class="ui-modal-footer">
+        <em>Close the modal via ESC or backdrop click.</em>
+      </div>
+    </ng-template>
+  </section>
+
+  <section>
+    <h3>Stacking</h3>
+    <div class="button-row">
+      <button type="button" (click)="openStacked()">Open Stacked Modal</button>
+      <button type="button" (click)="dismissAll()">Dismiss All</button>
+    </div>
+    <p class="hint">Open multiple times to stack modals. ESC closes the topmost only.</p>
+  </section>
+</div>

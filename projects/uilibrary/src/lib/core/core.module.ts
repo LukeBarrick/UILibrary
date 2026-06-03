@@ -5,6 +5,7 @@ import { ThrowIfAlreadyLoaded } from './module-import-guard';
 import { UUIDService } from './services/UUID.service';
 import { ToastService } from './services/toast.service';
 import { DateFnsLocaleService } from './services/date-fns-locale.service';
+import { UiModalConfig } from '../modules/modal/modal-config';
 
 import { DATE_NOW } from './tokens/DATE_NOW';
 
@@ -36,6 +37,7 @@ registerLocaleData(localeJa);
     UUIDService,
     ToastService,
     DateFnsLocaleService,
+    UiModalConfig,
     { provide: DATE_NOW, useFactory: () => new Date()}
   ],
   exports: [

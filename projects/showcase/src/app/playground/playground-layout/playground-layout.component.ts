@@ -18,6 +18,7 @@ export class PlaygroundLayoutComponent {
     { label: 'Input',               path: '/playground/input',               type: NavigationLinkType.Route },
     { label: 'Input Annotations',   path: '/playground/input-annotations',   type: NavigationLinkType.Route },
     { label: 'Keyboard Navigation', path: '/playground/keyboard-navigation', type: NavigationLinkType.Route },
+    { label: 'Modal',               path: '/playground/modal',               type: NavigationLinkType.Route },
     { label: 'Navigation',          path: '/playground/navigation',          type: NavigationLinkType.Route },
     { label: 'Radio',               path: '/playground/radio',               type: NavigationLinkType.Route },
     { label: 'Select',              path: '/playground/select',              type: NavigationLinkType.Route },

@@ -17,6 +17,8 @@ import { TogglePlaygroundComponent } from './toggle/toggle-playground.component'
 import { TypographyPlaygroundComponent } from './typography/typography-playground.component';
 import { RtlLayoutPlaygroundComponent } from './rtl-layout/rtl-layout-playground.component';
 import { StatusTagPlaygroundComponent } from './status-tag/status-tag-playground.component';
+import { ModalPlaygroundComponent } from './modal/modal-playground.component';
+import { DemoModalContentComponent } from './modal/demo-modal-content.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxesModule } from '../modules/checkboxes/checkboxes.module';
@@ -35,6 +37,7 @@ import { KeyboardNavigationModule } from '../modules/keyboard-navigation/keyboar
 import { ContextMenuModule } from '../modules/context-menu/context-menu.module';
 import { TableModule } from '../modules/table/table.module';
 import { RtlLayoutModule } from '../modules/rtl-layout/rtl-layout.module';
+import { UiModalModule } from '../modules/modal/modal.module';
 
 @NgModule({
     imports: [
@@ -57,6 +60,7 @@ import { RtlLayoutModule } from '../modules/rtl-layout/rtl-layout.module';
         ContextMenuModule,
         TableModule,
         RtlLayoutModule,
+        UiModalModule,
     ],
     exports: [
         ButtonPlaygroundComponent,
@@ -76,6 +80,8 @@ import { RtlLayoutModule } from '../modules/rtl-layout/rtl-layout.module';
         TypographyPlaygroundComponent,
         RtlLayoutPlaygroundComponent,
         StatusTagPlaygroundComponent,
+        ModalPlaygroundComponent,
+        DemoModalContentComponent,
 
         //Temporary exports for Showcase whilst these modules are still in use there 
         CheckboxesModule,
@@ -113,6 +119,8 @@ import { RtlLayoutModule } from '../modules/rtl-layout/rtl-layout.module';
         TypographyPlaygroundComponent,
         RtlLayoutPlaygroundComponent,
         StatusTagPlaygroundComponent,
+        ModalPlaygroundComponent,
+        DemoModalContentComponent,
     ],
     providers: [],
 })

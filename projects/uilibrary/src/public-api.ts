@@ -78,6 +78,14 @@ export * from './lib/modules/table/table-column.component';
 export * from './lib/modules/rtl-layout/rtl-layout.module';
 export * from './lib/modules/rtl-layout/rtl-layout.directive';
 
+export * from './lib/modules/modal/modal.module';
+export * from './lib/modules/modal/modal.service';
+export * from './lib/modules/modal/modal-ref';
+export * from './lib/modules/modal/active-modal';
+export * from './lib/modules/modal/modal-config';
+export * from './lib/modules/modal/modal-options';
+export * from './lib/modules/modal/modal-dismiss-reasons';
+
 export * from './lib/playground/playground.module';
 export * from './lib/playground/button/button-playground.component';
 export * from './lib/playground/checkbox/checkbox-playground.component';
@@ -96,3 +104,5 @@ export * from './lib/playground/toggle/toggle-playground.component';
 export * from './lib/playground/typography/typography-playground.component';
 export * from './lib/playground/rtl-layout/rtl-layout-playground.component';
 export * from './lib/playground/status-tag/status-tag-playground.component';
+export * from './lib/playground/modal/modal-playground.component';
+export * from './lib/playground/modal/demo-modal-content.component';

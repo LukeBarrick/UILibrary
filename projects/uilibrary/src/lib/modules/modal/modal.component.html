@@ -1,0 +1,30 @@
+@if (options.backdrop !== false) {
+  <div
+    class="ui-modal-backdrop"
+    [class.show]="isOpen && options.animation !== false"
+    [class.no-animation]="options.animation === false"
+    [ngClass]="options.backdropClass ?? ''"
+    (click)="onBackdropClick()"
+    aria-hidden="true"
+  ></div>
+}
+
+<div
+  class="ui-modal"
+  [attr.role]="options.role ?? 'dialog'"
+  [attr.aria-modal]="true"
+  [attr.aria-labelledby]="options.ariaLabelledBy ?? null"
+  [attr.aria-describedby]="options.ariaDescribedBy ?? null"
+>
+  <div
+    #dialogEl
+    class="ui-modal-dialog"
+    [ngClass]="dialogClasses"
+    cdkTrapFocus
+    [cdkTrapFocusAutoCapture]="true"
+  >
+    <div class="ui-modal-content">
+      <ng-container #contentHost></ng-container>
+    </div>
+  </div>
+</div>
