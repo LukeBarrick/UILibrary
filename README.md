@@ -1,118 +1,108 @@
-# UI Library — Angular Monorepo
+# uilibrary
 
-An Angular 21 monorepo containing a reusable UI component library (`uilibrary`) and a companion developer showcase app (`showcase`). The library is built with [ng-packagr](https://github.com/ng-packagr/ng-packagr) and published as an npm package. The showcase app serves as live documentation, a component reference, and an interactive playground.
+> Angular 21 monorepo — reusable UI component library (`uilibrary`) and companion developer showcase app.
+
+<!-- badges: add CI badge once workflows exist -->
+<!-- ![Build](https://github.com/<org>/uilibrary/actions/workflows/build.yml/badge.svg) -->
+
+---
+
+## Overview
+
+`uilibrary` is an Angular 21 component library providing 17 feature modules of reusable, consistently-styled UI components — from buttons and inputs to a datepicker, context menus, and keyboard-navigation helpers. It is built with [ng-packagr](https://github.com/ng-packagr/ng-packagr) and consumed via `UserInterfaceLibraryModule`. The companion `showcase` app serves as live documentation and an interactive playground for contributors.
+
+---
+
+## Prerequisites
+
+| Tool | Version |
+|---|---|
+| Node.js | ≥ 18 |
+| Angular CLI | ^21.1.0 (`npm install -g @angular/cli`) |
+
+---
+
+## Getting Started
+
+```bash
+# Clone
+git clone https://github.com/<org>/uilibrary.git
+cd uilibrary
+
+# Install dependencies
+npm install
+
+# Dev workflow — run all three concurrently (or use the "Start All" VS Code task)
+npm run build-sass:dev    # Watches SCSS → assets/styles.css
+npm run build-lib:dev     # Watches library → dist/uilibrary
+npm start                 # Serves showcase at http://localhost:4200
+```
 
 ---
 
 ## Project Structure
 
 ```
-uilibrary/                        ← Workspace root
-├── angular.json                  ← Angular CLI config (build, serve, test targets for each project)
-├── tsconfig.json                 ← Base TypeScript config; all projects extend this
-├── package.json                  ← Root dependencies and npm scripts
+uilibrary/
+├── angular.json                  ← CLI config for both projects
+├── tsconfig.json                 ← Base TS config; extended by both projects
+├── package.json                  ← Root deps and scripts
 │
 ├── projects/
-│   ├── uilibrary/                ← UI component library (ng-packagr)
+│   ├── uilibrary/                ← Library (ng-packagr)
 │   │   ├── src/
-│   │   │   ├── public-api.ts     ← Library public entry point; only what is exported here is usable by consumers
+│   │   │   ├── public-api.ts     ← Single public entry point
 │   │   │   └── lib/
-│   │   │       ├── core/         ← Services, models, enums, tokens — shared library internals
-│   │   │       ├── modules/      ← 16 feature modules, one per UI component family
-│   │   │       ├── shared/       ← Shared utilities used across feature modules
-│   │   │       └── playground/   ← In-library visual test components (not published to consumers)
-│   │   ├── styles/               ← SCSS design system (variables, components, utilities)
-│   │   ├── assets/               ← Fonts, images, compiled styles.css
-│   │   └── ng-package.json       ← ng-packagr config; defines entry file and output destination
+│   │   │       ├── core/         ← Services, models, enums, tokens
+│   │   │       ├── modules/      ← 17 feature modules
+│   │   │       ├── shared/       ← Shared declarations
+│   │   │       └── playground/   ← Visual test components
+│   │   ├── styles/               ← SCSS design system
+│   │   └── assets/               ← Fonts, images, compiled styles.css
 │   │
 │   └── showcase/                 ← Developer reference app (not published)
 │       └── src/app/
-│           ├── docs/             ← One showcase component per uilibrary module
-│           ├── guides/           ← Getting-started and usage guides
-│           ├── playground/       ← Interactive component playground
-│           ├── blog/             ← Updates and changelog
-│           └── layout/           ← Shell layout component wrapping all routes
+│           ├── docs/             ← One showcase page per module
+│           ├── guides/           ← Usage guides
+│           ├── playground/       ← Interactive playground
+│           └── layout/           ← App shell
 │
-└── dist/
-    └── uilibrary/                ← Build output; this is what gets published to npm
+└── dist/uilibrary/               ← Build output (published to npm)
 ```
 
 ---
 
-## Tech Stack
+## Available Scripts
 
-| Technology | Version | Purpose |
-|---|---|---|
-| Angular | ^21.1.0 | Framework |
-| TypeScript | ~5.9 | Language |
-| ng-packagr | ^21.1.0 | Builds the library into a publishable package |
-| Bootstrap | ^5.3.3 | Base CSS framework |
-| ng-bootstrap | ^20.0.0 | Angular Bootstrap components |
-| ng-select | ^21.5.2 | Select/dropdown component |
-| ngx-toastr | ^19.0.0 | Toast notifications |
-| date-fns | ^4.1.0 | Date utility functions |
-| angular-svg-icon | ^17.0.0 | SVG icon rendering |
-| SCSS / Sass | — | Styling; compiled separately from the Angular build |
-| zone.js | ~0.15.1 | Change detection |
-| Jasmine / Karma | ~5.1 / ~6.4 | Unit testing |
-| ng-mocks | ^14.15.2 | Angular-specific test mocking utilities |
+| Script | Description |
+|---|---|
+| `npm start` | Serve showcase at `http://localhost:4200` |
+| `npm run build-lib:dev` | Watch-build library → `dist/uilibrary` |
+| `npm run build-lib` | Production library build |
+| `npm run build-sass:dev` | Watch-compile SCSS → `assets/styles.css` |
+| `npm run build-sass` | One-shot SCSS compile |
+| `npm test` | Unit tests (Karma/Jasmine) |
+| `npm run build` | Production build of showcase |
 
 ---
 
-## Architecture Patterns
+## Running Tests
 
-### NgModule-based Architecture
-This project uses the traditional **NgModule** pattern throughout — not standalone components. Every component belongs to a feature module which controls its declarations and exports.
-
-### Core / Shared / Feature Split
-A common Angular pattern for scalable libraries:
-- **`CoreModule`** — singleton services, models, enums, injection tokens. Imported once at the library root.
-- **`SharedModule`** — reusable declarations (pipes, directives) with no business logic. Can be imported by any feature module.
-- **Feature modules** — self-contained per UI component family (e.g. `ButtonModule`, `DatepickerModule`). Consumers import only what they need.
-
-### Lazy-Loaded Routing (Showcase)
-The showcase app uses Angular's `loadChildren` lazy loading for all main routes. Modules are only downloaded by the browser when that route is first navigated to, keeping initial bundle size small.
-
-### Separate SCSS Compilation
-The library's SCSS is compiled independently of the Angular build using the `sass` CLI. This produces `assets/styles.css`, which consumers import into their own project alongside the Angular modules.
-
----
-
-## Getting Started
-
-### Prerequisites
-- Node.js ≥ 18
-- Angular CLI: `npm install -g @angular/cli`
-
-### Install dependencies
 ```bash
-npm install
+npm test   # Karma/Jasmine unit tests for the uilibrary project
 ```
-
-### Available Scripts
-
-| Script | Command | Description |
-|---|---|---|
-| Start showcase | `npm start` | Serves the showcase app at `http://localhost:4200` |
-| Build library (dev, watch) | `npm run build-lib:dev` | Builds uilibrary in watch mode to `dist/uilibrary` |
-| Build library (production) | `npm run build-lib` | Production build of the library |
-| Compile SCSS (dev, watch) | `npm run build-sass:dev` | Watches and compiles `styles/styles.scss` → `assets/styles.css` |
-| Compile SCSS (production) | `npm run build-sass` | One-shot SCSS compilation |
-| Run tests | `npm test` | Runs unit tests for the `uilibrary` project via Karma |
-| Build showcase | `npm run build` | Production build of the showcase app |
-
-> **Dev workflow:** Run `build-sass:dev`, `build-lib:dev`, and `start` concurrently. The `Start All` VS Code task handles this automatically.
 
 ---
 
-## Projects
+## Contributing
 
-### uilibrary
-The Angular UI component library. Built with ng-packagr and intended to be consumed by other Angular applications. Contains 16 feature modules, a design-token-driven SCSS system, and a playground module for visual development.
+1. Follow the conventions in [AGENTS.md](AGENTS.md)
+2. Run the test gate before opening a PR: `npm test`
+3. Add new component families by creating a feature module under `projects/uilibrary/src/lib/modules/` and a corresponding showcase page
 
-→ See [projects/uilibrary/README.md](projects/uilibrary/README.md) for full details.
+---
 
-### showcase
-The developer reference Angular application. Not published — used locally to browse component documentation, run interactive examples, and verify library output.
+## Licence
 
-→ See [projects/showcase/README.md](projects/showcase/README.md) for full details.
+<!-- MANUAL -->
+_Add licence information here._
