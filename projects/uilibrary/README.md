@@ -1,6 +1,34 @@
 # uilibrary
 
-An Angular UI component library built with [ng-packagr](https://github.com/ng-packagr/ng-packagr). Provides 16 feature modules of reusable, styled components — from buttons and inputs to a datepicker, context menus, and keyboard navigation. Distributed as an npm package and consumed via `UserInterfaceLibraryModule`.
+An Angular UI component library built with [ng-packagr](https://github.com/ng-packagr/ng-packagr). Provides **17 feature modules** of reusable, styled components — from buttons and inputs to a datepicker, context menus, keyboard navigation, and a programmatic modal system. Distributed as an npm package and consumed via `UserInterfaceLibraryModule`.
+
+---
+
+## Installation
+
+```bash
+npm install uilibrary
+```
+
+Then import the stylesheet in your `angular.json`:
+
+```json
+"styles": [
+  "node_modules/uilibrary/assets/styles.css"
+]
+```
+
+Import the root module (provides all modules at once) or cherry-pick individual feature modules:
+
+```typescript
+// Everything — easiest for getting started
+import { UserInterfaceLibraryModule } from 'uilibrary';
+
+// Cherry-pick — better for bundle size
+import { ButtonModule } from 'uilibrary';
+import { DatepickerModule } from 'uilibrary';
+import { UiModalModule } from 'uilibrary';
+```
 
 ---
 
@@ -32,7 +60,7 @@ The library internals are split into four layers:
 ```
 src/lib/
 ├── core/          ← Singleton services, models, enums, tokens — no UI
-├── modules/       ← 16 feature modules, each containing one component family
+├── modules/       ← 17 feature modules, each containing one component family
 ├── shared/        ← Shared declarations reused across feature modules
 └── playground/    ← Visual test components used during development (also exported)
 ```
@@ -66,7 +94,41 @@ Import only the modules you need. Each module is self-contained and can be added
 ```typescript
 import { ButtonModule } from 'uilibrary';
 import { DatepickerModule } from 'uilibrary';
+import { UiModalModule } from 'uilibrary';
 ```
+
+### ButtonComponent inputs
+
+| Input | Type | Default | Description |
+|---|---|---|---|
+| `appearance` | `'primary'` \| `'secondary'` \| `'primary-success'` \| `'primary-delete'` \| `'secondary-success'` \| `'secondary-delete'` | `'primary'` | Visual variant |
+| `size` | `'small'` \| `undefined` | `undefined` (regular) | Button size |
+| `disabled` | `boolean` | `undefined` | Disables the button |
+| `icon` | `string` | `undefined` | Registered icon name to render inside the button |
+| `aria_label` | `string` | `undefined` | Accessible label when the button has no visible text |
+
+```html
+<uilibrary-button appearance="primary" size="small" icon="plus">Add item</uilibrary-button>
+```
+
+### DatepickerModule usage
+
+The `DateSelectionStrategy` token controls how dates are selected. The default strategy (`DefaultDateSelectionStrategy`) is provided by `DatepickerModule`. Override it to implement custom range-selection logic:
+
+```typescript
+import { DatepickerModule, DateSelectionStrategy } from 'uilibrary';
+import { MyRangeStrategy } from './my-range-strategy';
+
+@NgModule({
+  imports: [DatepickerModule],
+  providers: [
+    { provide: DateSelectionStrategy, useClass: MyRangeStrategy }
+  ]
+})
+export class MyModule {}
+```
+
+For the modal API, see [src/lib/modules/modal/MODAL.md](src/lib/modules/modal/MODAL.md) and [src/lib/modules/modal/SIDEBAR.md](src/lib/modules/modal/SIDEBAR.md).
 
 | Module | Key Exports | Notes |
 |---|---|---|
@@ -86,6 +148,8 @@ import { DatepickerModule } from 'uilibrary';
 | `StatusTagsModule` | `StatusTagComponent` | Coloured status/badge tags |
 | `TableModule` | `TableComponent`, `TableColumnComponent`, `HeaderDirective`, `CellDirective` | Data table with column configuration via directives |
 | `ToggleModule` | `ToggleComponent` | Accessible on/off toggle switch |
+| `ModalModule` | `UiModalService`, `UiModalRef`, `ActiveModal`, `UiModalConfig`, `UiModalOptions`, `UiModalDismissReasons` | Programmatic modal service built on Angular CDK Overlay; mirrors the ng-bootstrap modal API without requiring ng-bootstrap |
+| `SidebarModalModule` | `SidebarModalService`, `SidebarModalOutletComponent` | Router-driven drawer (side panel) system; URL-addressable and deep-linkable via Angular named outlets |
 
 ---
 
@@ -224,11 +288,25 @@ Consumers of the library must have the following installed:
 
 ---
 
-## Generating New Components
+## Adding a New Feature Module
 
-```bash
-ng generate component component-name --project uilibrary
+Follow this checklist when adding a new component family:
+
+```
+1. Create folder:      projects/uilibrary/src/lib/modules/<name>/
+2. Create NgModule:    <Name>Module — declarations + exports for all public components
+3. Create component:   <name>.component.ts / .html / .css
+4. Export via API:     add `export * from './lib/modules/<name>/...'` to public-api.ts
+5. Add SCSS:           projects/uilibrary/styles/components/<name>/ and import in _index.scss
+6. Add showcase page:  projects/showcase/src/app/docs/<name>-showcase/
+7. Register route:     lazy-loaded route in showcase docs routing
 ```
 
-Place the new component inside `src/lib/modules/` in its own folder. Create a corresponding `*.module.ts`, add it to `UserInterfaceLibraryModule` imports, and export it from `public-api.ts`.
+For one-off component generation (skips module setup):
+
+```bash
+ng generate component modules/<name>/<name> --project uilibrary --no-standalone
+```
+
+Always export new public symbols from `public-api.ts` — ng-packagr will not expose anything that is not re-exported there.
 
