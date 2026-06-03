@@ -20,6 +20,8 @@ import {
   TypographyPlaygroundComponent,
   RtlLayoutPlaygroundComponent,
   ModalPlaygroundComponent,
+  SidebarDemoProfileComponent,
+  SidebarDemoSettingsComponent,
 } from 'uilibrary';
 import { PlaygroundLayoutComponent } from './playground-layout/playground-layout.component';
 import { PlaygroundSideNavComponent } from './playground-side-nav/playground-side-nav.component';
@@ -47,6 +49,10 @@ const routes: Routes = [
       { path: 'typography', component: TypographyPlaygroundComponent },
       { path: 'rtl-layout', component: RtlLayoutPlaygroundComponent },
       { path: 'modal', component: ModalPlaygroundComponent },
+      // Sidebar auxiliary routes — activated by SidebarModalService.open()
+      // URL form: /playground(sidebar:sidebar-profile)
+      { path: 'sidebar-profile', outlet: 'sidebar', component: SidebarDemoProfileComponent },
+      { path: 'sidebar-settings', outlet: 'sidebar', component: SidebarDemoSettingsComponent },
     ],
   },
 ];

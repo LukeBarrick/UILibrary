@@ -85,6 +85,9 @@ export * from './lib/modules/modal/active-modal';
 export * from './lib/modules/modal/modal-config';
 export * from './lib/modules/modal/modal-options';
 export * from './lib/modules/modal/modal-dismiss-reasons';
+export * from './lib/modules/modal/sidebar-modal.module';
+export * from './lib/modules/modal/sidebar-modal.service';
+export * from './lib/modules/modal/sidebar-modal-outlet.component';
 
 export * from './lib/playground/playground.module';
 export * from './lib/playground/button/button-playground.component';
@@ -106,3 +109,5 @@ export * from './lib/playground/rtl-layout/rtl-layout-playground.component';
 export * from './lib/playground/status-tag/status-tag-playground.component';
 export * from './lib/playground/modal/modal-playground.component';
 export * from './lib/playground/modal/demo-modal-content.component';
+export * from './lib/playground/modal/sidebar-demo/sidebar-demo-profile.component';
+export * from './lib/playground/modal/sidebar-demo/sidebar-demo-settings.component';

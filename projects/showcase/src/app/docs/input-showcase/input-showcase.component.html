@@ -163,7 +163,7 @@ this.form = this.formBuilder.group({
           <input ui-input type="text" placeholder="This field always shows error styling">
         </uilibrary-form-field>
 
-        <button class="btn btn-primary mt-2" (click)="markAllAsTouched()">Trigger Validation</button>
+        <uilibrary-button appearance="primary" (click)="markAllAsTouched()">Trigger Validation</uilibrary-button>
         
         <p class="mt-2"><small>Error state is toggled by: "{{textInputError}}" (empty string shows error)</small></p>
       </div>

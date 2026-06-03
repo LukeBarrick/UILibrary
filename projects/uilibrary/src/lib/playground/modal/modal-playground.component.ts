@@ -1,8 +1,10 @@
 import { Component, TemplateRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UiModalService } from '../../modules/modal/modal.service';
 import { UiModalRef } from '../../modules/modal/modal-ref';
 import { UiModalDismissReason } from '../../modules/modal/modal-dismiss-reasons';
 import { DemoModalContentComponent } from './demo-modal-content.component';
+import { SidebarModalService } from '../../modules/modal/sidebar-modal.service';
 
 @Component({
   selector: 'uilibrary-modal-playground',
@@ -15,7 +17,11 @@ export class ModalPlaygroundComponent {
   promiseResult = '';
   stackCount = 0;
 
-  constructor(private modalService: UiModalService) {}
+  constructor(
+    private modalService: UiModalService,
+    public sidebarModal: SidebarModalService,
+    private readonly _route: ActivatedRoute,
+  ) {}
 
   //Subscription based modal results.
   openBasic(): void {
@@ -165,6 +171,31 @@ export class ModalPlaygroundComponent {
     } catch (reason) {
       this.promiseResult = `Dismissed (${this._reasonLabel(reason)})`;
     }
+  }
+
+  // ── Sidebar modal routing ──────────────────────────────────────────────────
+
+  /**
+   * Activates the 'sidebar-profile' route in the named 'sidebar' outlet.
+   * SidebarModalOutletComponent handles opening the CDK overlay drawer.
+   */
+  openSidebarProfile(): void {
+    // this.route.parent = PlaygroundLayoutComponent's route, which owns the sidebar outlet
+    this.sidebarModal.open('sidebar-profile', this._route.parent!);
+  }
+
+  /**
+   * Activates the 'sidebar-settings' route in the named 'sidebar' outlet.
+   */
+  openSidebarSettings(): void {
+    this.sidebarModal.open('sidebar-settings', this._route.parent!);
+  }
+
+  /**
+   * Programmatically closes the active sidebar drawer and clears the outlet URL.
+   */
+  closeSidebar(): void {
+    this.sidebarModal.close();
   }
 
   private _trackResult(ref: UiModalRef): void {

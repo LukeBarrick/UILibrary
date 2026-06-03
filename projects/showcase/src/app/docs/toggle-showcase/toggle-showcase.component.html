@@ -40,9 +40,9 @@
             Disabled & Checked Toggle ({{isDisabled ? 'Disabled' : 'Enabled'}})
           </uilibrary-toggle>
 
-          <button class="btn btn-secondary btn-sm mt-2" (click)="toggleDisabled()">
+          <uilibrary-button appearance="secondary" size="small" (click)="toggleDisabled()">
             {{isDisabled ? 'Enable' : 'Disable'}} Toggles
-          </button>
+          </uilibrary-button>
         </div>
       </div>
 
@@ -125,9 +125,9 @@
 
         <p class="mt-2"><strong>Current State:</strong> {{checked ? 'ON' : 'OFF'}}</p>
 
-        <button class="btn btn-primary btn-sm" (click)="toggleChecked()">
+        <uilibrary-button appearance="primary" size="small" (click)="toggleChecked()">
           Programmatically Toggle
-        </button>
+        </uilibrary-button>
       </div>
 
       <div class="toggle-section">
@@ -140,9 +140,9 @@
           <p><strong>Form Value:</strong> {{toggles.get('toggle1')?.value ? 'ON' : 'OFF'}}</p>
           <p><strong>Form Valid:</strong> {{toggles.valid ? 'Yes' : 'No'}}</p>
 
-          <button class="btn btn-secondary btn-sm me-2" (click)="setFormValue(true)">Set ON</button>
-          <button class="btn btn-secondary btn-sm me-2" (click)="setFormValue(false)">Set OFF</button>
-          <button class="btn btn-outline-secondary btn-sm" (click)="resetForm()">Reset Form</button>
+          <uilibrary-button appearance="secondary" size="small" (click)="setFormValue(true)">Set ON</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" (click)="setFormValue(false)">Set OFF</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" (click)="resetForm()">Reset Form</uilibrary-button>
         </div>
       </div>
     </div>
@@ -189,9 +189,9 @@
         </div>
 
         <div class="mt-2">
-          <button class="btn btn-primary btn-sm me-2" (click)="applySettings()">Apply Settings</button>
-          <button class="btn btn-secondary btn-sm me-2" (click)="resetSettings()">Reset to Defaults</button>
-          <button class="btn btn-info btn-sm" (click)="logSettings()">Log Settings</button>
+          <uilibrary-button appearance="primary" size="small" (click)="applySettings()">Apply Settings</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" (click)="resetSettings()">Reset to Defaults</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" (click)="logSettings()">Log Settings</uilibrary-button>
         </div>
       </div>
 

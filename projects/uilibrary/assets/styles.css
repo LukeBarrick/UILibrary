@@ -15060,14 +15060,19 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
 }
 
 .ui-modal-header {
-  display: flex;
-  flex-shrink: 0;
-  align-items: flex-start;
-  justify-content: space-between;
+  display: inline-block; /* Requires block/inline-block to respect width */
+  white-space: nowrap; /* Forces text to stay on a single line */
+  overflow: hidden; /* Hides the text that spills out */
+  text-overflow: ellipsis; /* Appends the '...' styling automatically */
+  width: 100%;
   padding: 1rem 1rem;
   border-bottom: 1px solid #dee2e6;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+}
+
+.ui-modal-header h5, .ui-modal-header .h5 {
+  display: inline;
 }
 
 .ui-modal-title {
@@ -15098,6 +15103,67 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
 
 .ui-modal-overlay-pane {
   pointer-events: none;
+}
+
+.ui-modal:has(.ui-modal-dialog.ui-sidebar) {
+  overflow: hidden;
+}
+
+.ui-modal-dialog.ui-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  margin: 0;
+  width: 420px;
+  max-width: 90vw;
+  max-height: none;
+  height: 100%;
+  border-radius: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 1;
+}
+
+.ui-modal-dialog.ui-sidebar.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.ui-modal-dialog.ui-sidebar.no-animation {
+  transition: none;
+  transform: translateX(0);
+}
+
+.ui-modal-dialog.ui-sidebar .ui-modal-content {
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  border-left: 1px solid #dee2e6;
+  box-shadow: -0.25rem 0 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.ui-modal-dialog.ui-sidebar .ui-modal-content > :first-child {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ui-modal-dialog.ui-sidebar .ui-modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.ui-modal-dialog.ui-sidebar .ui-modal-header {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ui-modal-dialog.ui-sidebar .ui-modal-footer {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

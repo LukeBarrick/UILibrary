@@ -27,7 +27,7 @@
           <h4>Two-Way Data Binding</h4>
           <uilibrary-radio-button [value]="1" [(checked)]="singleRadioChecked">Two-way binding radio button</uilibrary-radio-button>
           <p class="mt-2"><strong>Current state:</strong> {{singleRadioChecked ? 'Checked' : 'Unchecked'}}</p>
-          <button class="btn btn-secondary btn-sm" (click)="toggleSingleRadio()">Toggle State</button>
+          <uilibrary-button appearance="secondary" size="small" (click)="toggleSingleRadio()">Toggle State</uilibrary-button>
         </div>
       </div>
 
@@ -111,7 +111,7 @@
         <div class="mt-3">
           <p><strong>Group Status:</strong> {{groupDisabled ? 'Disabled' : 'Enabled'}}</p>
           <p><strong>Selected Value:</strong> "{{disabledGroupModel}}"</p>
-          <button class="btn btn-primary" (click)="toggleGroupDisabled()">{{groupDisabled ? 'Enable' : 'Disable'}} Group</button>
+          <uilibrary-button appearance="primary" (click)="toggleGroupDisabled()">{{groupDisabled ? 'Enable' : 'Disable'}} Group</uilibrary-button>
         </div>
       </div>
     </div>
@@ -141,9 +141,9 @@
 
         <div class="mt-3">
           <p><strong>Selected:</strong> {{getSelectedOptionLabel()}}</p>
-          <button class="btn btn-secondary btn-sm me-2" (click)="addOption()">Add Option</button>
-          <button class="btn btn-outline-secondary btn-sm me-2" (click)="removeLastOption()">Remove Last</button>
-          <button class="btn btn-info btn-sm" (click)="shuffleOptions()">Shuffle Options</button>
+          <uilibrary-button appearance="secondary" size="small" (click)="addOption()">Add Option</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" (click)="removeLastOption()">Remove Last</uilibrary-button>
+          <uilibrary-button appearance="secondary" size="small" (click)="shuffleOptions()">Shuffle Options</uilibrary-button>
         </div>
       </div>
 

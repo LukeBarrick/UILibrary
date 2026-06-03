@@ -2,5 +2,15 @@
   <app-playground-side-nav [links]="sideNavLinks"></app-playground-side-nav>
   <main class="playground-content">
     <router-outlet></router-outlet>
+    <!--
+      Wrapping div hides both the outlet marker AND the component Angular inserts
+      adjacent to it in the DOM. The outlet exists solely for router URL/guard/
+      lazy-load lifecycle; the visible drawer is rendered by ui-sidebar-modal-outlet
+      via UiModalService's CDK overlay.
+    -->
+    <div style="display: none" aria-hidden="true">
+      <router-outlet name="sidebar"></router-outlet>
+    </div>
+    <ui-sidebar-modal-outlet></ui-sidebar-modal-outlet>
   </main>
 </div>

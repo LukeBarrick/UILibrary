@@ -145,9 +145,9 @@
             <h4>Interactive Tooltips</h4>
 
             <div class="mb-3">
-              <button class="btn btn-primary" (click)="showDynamicTooltip()">
+              <uilibrary-button appearance="primary" (click)="showDynamicTooltip()">
                 Dynamic Content
-              </button>
+              </uilibrary-button>
               @if (showDynamic) {
                 <uilibrary-tooltip placement="right">
                   <span title>Dynamic Tooltip</span>
@@ -174,7 +174,7 @@
                 <span title>Progress</span>
                 <span content>Current progress: {{progressValue}}%. Estimated completion time: {{getEstimatedTime()}} minutes.</span>
               </uilibrary-tooltip>
-              <button class="btn btn-sm btn-secondary mt-2" (click)="updateProgress()">Update Progress</button>
+              <uilibrary-button appearance="secondary" size="small" (click)="updateProgress()">Update Progress</uilibrary-button>
             </div>
           </div>
         </div>

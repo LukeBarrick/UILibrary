@@ -11,42 +11,42 @@
   <section>
     <h3>Sizes</h3>
     <div class="button-row">
-      <button type="button" (click)="openBasic()">Default (500px)</button>
-      <button type="button" (click)="openSm()">Small (sm)</button>
-      <button type="button" (click)="openLg()">Large (lg)</button>
-      <button type="button" (click)="openXl()">Extra Large (xl)</button>
+      <uilibrary-button appearance="secondary" (click)="openBasic()">Default (500px)</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openSm()">Small (sm)</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openLg()">Large (lg)</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openXl()">Extra Large (xl)</uilibrary-button>
     </div>
   </section>
 
   <section>
     <h3>Position &amp; Layout</h3>
     <div class="button-row">
-        <button type="button" (click)="openScrollable()">Scrollable Body</button>
-        <button type="button" (click)="openFullscreen()">Fullscreen</button>
-        <button type="button" (click)="openFullscreenMd()">Fullscreen below md</button>
-        <button type="button" (click)="openCentered()">Vertically Centered</button>
+        <uilibrary-button appearance="secondary" (click)="openScrollable()">Scrollable Body</uilibrary-button>
+        <uilibrary-button appearance="secondary" (click)="openFullscreen()">Fullscreen</uilibrary-button>
+        <uilibrary-button appearance="secondary" (click)="openFullscreenMd()">Fullscreen below md</uilibrary-button>
+        <uilibrary-button appearance="secondary" (click)="openCentered()">Vertically Centered</uilibrary-button>
     </div>
 </section>
 
 <section>
     <h3>Backdrop &amp; Keyboard</h3>
     <div class="button-row">
-        <button type="button" (click)="openStaticBackdrop()">Static Backdrop (no ESC)</button>
-      <button type="button" (click)="openNoBackdrop()">No Backdrop</button>
+        <uilibrary-button appearance="secondary" (click)="openStaticBackdrop()">Static Backdrop (no ESC)</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openNoBackdrop()">No Backdrop</uilibrary-button>
     </div>
   </section>
 
   <section>
     <h3>Animation</h3>
     <div class="button-row">
-      <button type="button" (click)="openNoAnimation()">No Animation</button>
+      <uilibrary-button appearance="secondary" (click)="openNoAnimation()">No Animation</uilibrary-button>
     </div>
   </section>
 
   <section>
     <h3>TemplateRef Content</h3>
     <div class="button-row">
-      <button type="button" (click)="openTemplate(tplContent)">Open Template Modal</button>
+      <uilibrary-button appearance="secondary" (click)="openTemplate(tplContent)">Open Template Modal</uilibrary-button>
     </div>
 
     <ng-template #tplContent>
@@ -65,15 +65,15 @@
   <section>
     <h3>Stacking</h3>
     <div class="button-row">
-      <button type="button" (click)="openStacked()">Open Stacked Modal</button>
-      <button type="button" (click)="dismissAll()">Dismiss All</button>
+      <uilibrary-button appearance="secondary" (click)="openStacked()">Open Stacked Modal</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="dismissAll()">Dismiss All</uilibrary-button>
     </div>
     <p class="hint">Open multiple times to stack modals. ESC closes the topmost only.</p>
   </section>
 
   <section>
     <h3>Experiments</h3>
-    <button>Click me :]</button>
+    <uilibrary-button appearance="secondary">Click me :]</uilibrary-button>
   </section>
 
   <h2>Promise based Modal</h2>
@@ -93,31 +93,31 @@
   <section>
     <h3>Sizes <span class="approach-tag">.then() / .catch()</span></h3>
     <div class="button-row">
-      <button type="button" (click)="openPromiseBasic()">Default (500px)</button>
-      <button type="button" (click)="openPromiseSm()">Small (sm)</button>
-      <button type="button" (click)="openPromiseLg()">Large (lg)</button>
+      <uilibrary-button appearance="secondary" (click)="openPromiseBasic()">Default (500px)</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openPromiseSm()">Small (sm)</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openPromiseLg()">Large (lg)</uilibrary-button>
     </div>
   </section>
 
   <section>
     <h3>Position &amp; Layout <span class="approach-tag">async / await</span></h3>
     <div class="button-row">
-      <button type="button" (click)="openPromiseCentered()">Vertically Centered</button>
-      <button type="button" (click)="openPromiseScrollable()">Scrollable Body</button>
+      <uilibrary-button appearance="secondary" (click)="openPromiseCentered()">Vertically Centered</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openPromiseScrollable()">Scrollable Body</uilibrary-button>
     </div>
   </section>
 
   <section>
     <h3>Backdrop <span class="approach-tag">async / await</span></h3>
     <div class="button-row">
-      <button type="button" (click)="openPromiseStaticBackdrop()">Static Backdrop (no ESC)</button>
+      <uilibrary-button appearance="secondary" (click)="openPromiseStaticBackdrop()">Static Backdrop (no ESC)</uilibrary-button>
     </div>
   </section>
 
   <section>
     <h3>TemplateRef Content <span class="approach-tag">async / await</span></h3>
     <div class="button-row">
-      <button type="button" (click)="openPromiseTemplate(promiseTpl)">Open Template Modal</button>
+      <uilibrary-button appearance="secondary" (click)="openPromiseTemplate(promiseTpl)">Open Template Modal</uilibrary-button>
     </div>
 
     <ng-template #promiseTpl>
@@ -132,6 +132,33 @@
         <em>Close via ESC or backdrop click.</em>
       </div>
     </ng-template>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────────────────── -->
+  <h2>Sidebar Modal Routing</h2>
+
+  <p class="approach-note">
+    Routes flagged with <code>outlet: 'sidebar'</code> render into a hidden
+    <code>&lt;router-outlet name="sidebar"&gt;</code>. A headless
+    <code>&lt;ui-sidebar-modal-outlet&gt;</code> in the shell template watches
+    <code>NavigationEnd</code> events and bridges them to
+    <code>UiModalService</code> — opening a slide-in CDK overlay drawer.
+    Dismissing the drawer (backdrop, Escape, or the Close button) clears the
+    outlet from the URL, keeping router state and modal state in sync.
+  </p>
+
+  <section>
+    <h3>Drawer demos</h3>
+    <p class="hint">
+      Watch the browser URL bar — it changes to
+      <code>/playground/(modal//sidebar:sidebar-profile)</code> when the drawer opens
+      and returns to <code>/playground/modal</code> when it closes.
+    </p>
+    <div class="button-row">
+      <uilibrary-button appearance="secondary" (click)="openSidebarProfile()">Open Profile Sidebar</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="openSidebarSettings()">Open Settings Sidebar</uilibrary-button>
+      <uilibrary-button appearance="secondary" (click)="closeSidebar()">Close Sidebar (programmatic)</uilibrary-button>
+    </div>
   </section>
 
 </div>

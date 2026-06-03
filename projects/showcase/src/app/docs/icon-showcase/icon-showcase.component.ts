@@ -20,6 +20,21 @@ export class IconShowcaseComponent implements OnInit {
   galleryAppearance: string = 'primary';
   iconFilter: string = '';
 
+  gallerySizeItems = [
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' }
+  ];
+
+  galleryAppearanceItems = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Tertiary', value: 'tertiary' },
+    { label: 'Light Gray', value: 'light-gray' },
+    { label: 'Dark Gray', value: 'dark-gray' },
+    { label: 'Custom', value: 'custom' }
+  ];
+
   availableIcons: IconItem[] = [
     { name: 'icon-accommodation', display: 'Accommodation', category: 'travel' },
     { name: 'icon-air', display: 'Air Travel', category: 'travel' },

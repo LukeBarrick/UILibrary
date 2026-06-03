@@ -42,6 +42,22 @@ export class ToastShowcaseComponent implements OnInit {
     closable: true
   };
 
+  toastTypeItems = [
+    { label: 'Success', value: 'success' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Error', value: 'error' },
+    { label: 'Information', value: 'info' }
+  ];
+
+  toastPositionItems = [
+    { label: 'Top Right', value: 'top-right' },
+    { label: 'Top Left', value: 'top-left' },
+    { label: 'Bottom Right', value: 'bottom-right' },
+    { label: 'Bottom Left', value: 'bottom-left' },
+    { label: 'Top Center', value: 'top-center' },
+    { label: 'Bottom Center', value: 'bottom-center' }
+  ];
+
   activeToasts: Toast[] = [];
   toastQueue: Toast[] = [];
   totalToastsShown: number = 0;

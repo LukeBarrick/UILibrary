@@ -15,8 +15,12 @@ import { UiActiveModal } from '../../modules/modal/active-modal';
       <p>{{ body }}</p>
     </div>
     <div class="ui-modal-footer">
-      <button type="button" (click)="activeModal.dismiss('cancel')">Cancel</button>
-      <button type="button" (click)="activeModal.close('saved')">Save</button>
+      <uilibrary-button appearance="secondary" (click)="activeModal.dismiss('cancel')">
+        Cancel
+      </uilibrary-button>
+      <uilibrary-button appearance="primary" (click)="activeModal.close('saved')">
+        Ok
+      </uilibrary-button>
     </div>
   `,
   standalone: false,

@@ -82,18 +82,20 @@
       <div class="status-selector mb-4">
         <div class="row">
           <div class="col-md-6">
-            <label for="statusSelect" class="form-label">Status Type:</label>
-            <select id="statusSelect" class="form-select" [(ngModel)]="selectedStatus">
-              @for (status of availableStatuses; track status) {
-                <option [value]="status.value">
-                  {{status.display}} ({{status.value}})
-                </option>
-              }
-            </select>
+            <label class="form-label">Status Type:</label>
+            <uilibrary-select
+              [items]="availableStatuses"
+              [(ngModel)]="selectedStatus"
+              bindLabel="display"
+              bindValue="value"
+              [searchable]="false">
+            </uilibrary-select>
           </div>
           <div class="col-md-6">
-            <label for="statusText" class="form-label">Status Text:</label>
-            <input type="text" id="statusText" class="form-control" [(ngModel)]="statusText" placeholder="Enter status text">
+            <uilibrary-form-field>
+              <label ui-label>Status Text:</label>
+              <input ui-input type="text" [(ngModel)]="statusText" placeholder="Enter status text">
+            </uilibrary-form-field>
           </div>
         </div>
       </div>
@@ -239,13 +241,13 @@
         <div class="demo-controls mb-4">
           <div class="row">
             <div class="col-md-4">
-              <button class="btn btn-primary" (click)="addRandomItem()">Add Random Item</button>
+              <uilibrary-button appearance="primary" (click)="addRandomItem()">Add Random Item</uilibrary-button>
             </div>
             <div class="col-md-4">
-              <button class="btn btn-warning" (click)="updateAllStatuses()">Update All Statuses</button>
+              <uilibrary-button appearance="secondary" (click)="updateAllStatuses()">Update All Statuses</uilibrary-button>
             </div>
             <div class="col-md-4">
-              <button class="btn btn-secondary" (click)="resetDemo()">Reset Demo</button>
+              <uilibrary-button appearance="secondary" (click)="resetDemo()">Reset Demo</uilibrary-button>
             </div>
           </div>
         </div>
@@ -271,9 +273,9 @@
               </div>
               <div class="item-actions">
                 <uilibrary-status-tag [statusType]="item.status" (click)="cycleItemStatus(i)">{{getStatusDisplay(item.status)}}</uilibrary-status-tag>
-                <button class="btn btn-sm btn-outline-danger" (click)="removeItem(i)" title="Remove item">
+                <uilibrary-button appearance="primary-delete" size="small" (click)="removeItem(i)" [aria_label]="'Remove item'">
                   <uilibrary-icon name="icon-close" size="small"></uilibrary-icon>
-                </button>
+                </uilibrary-button>
               </div>
             </div>
           }

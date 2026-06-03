@@ -18,24 +18,24 @@
         <div class="toast-demo-controls mb-4">
           <div class="row">
             <div class="col-md-3">
-              <button class="btn btn-success w-100" (click)="showToast('success')">
+              <uilibrary-button appearance="primary-success" (click)="showToast('success')">
                 Show Success Toast
-              </button>
+              </uilibrary-button>
             </div>
             <div class="col-md-3">
-              <button class="btn btn-warning w-100" (click)="showToast('warning')">
+              <uilibrary-button appearance="secondary" (click)="showToast('warning')">
                 Show Warning Toast
-              </button>
+              </uilibrary-button>
             </div>
             <div class="col-md-3">
-              <button class="btn btn-danger w-100" (click)="showToast('error')">
+              <uilibrary-button appearance="primary-delete" (click)="showToast('error')">
                 Show Error Toast
-              </button>
+              </uilibrary-button>
             </div>
             <div class="col-md-3">
-              <button class="btn btn-info w-100" (click)="showToast('info')">
+              <uilibrary-button appearance="secondary" (click)="showToast('info')">
                 Show Info Toast
-              </button>
+              </uilibrary-button>
             </div>
           </div>
         </div>
@@ -124,63 +124,63 @@
             <div class="col-md-6">
               <div class="form-group mb-3">
                 <label class="form-label">Toast Type:</label>
-                <select class="form-select" [(ngModel)]="toastConfig.type">
-                  <option value="success">Success</option>
-                  <option value="warning">Warning</option>
-                  <option value="error">Error</option>
-                  <option value="info">Information</option>
-                </select>
+                <uilibrary-select
+                  [items]="toastTypeItems"
+                  [(ngModel)]="toastConfig.type"
+                  bindLabel="label"
+                  bindValue="value"
+                  [searchable]="false">
+                </uilibrary-select>
               </div>
 
               <div class="form-group mb-3">
-                <label class="form-label">Title:</label>
-                <input type="text" class="form-control" [(ngModel)]="toastConfig.title" placeholder="Toast title">
+                <uilibrary-form-field>
+                  <label ui-label>Title:</label>
+                  <input ui-input type="text" [(ngModel)]="toastConfig.title" placeholder="Toast title">
+                </uilibrary-form-field>
               </div>
 
               <div class="form-group mb-3">
-                <label class="form-label">Message:</label>
-                <textarea class="form-control" [(ngModel)]="toastConfig.message" rows="3" placeholder="Toast message content"></textarea>
+                <uilibrary-form-field>
+                  <label ui-label>Message:</label>
+                  <textarea ui-input [(ngModel)]="toastConfig.message" rows="3" placeholder="Toast message content"></textarea>
+                </uilibrary-form-field>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group mb-3">
-                <label class="form-label">Duration (milliseconds):</label>
-                <input type="number" class="form-control" [(ngModel)]="toastConfig.duration" min="1000" max="10000" step="1000">
+                <uilibrary-form-field>
+                  <label ui-label>Duration (milliseconds):</label>
+                  <input ui-input type="number" [(ngModel)]="toastConfig.duration" min="1000" max="10000" step="1000">
+                </uilibrary-form-field>
               </div>
 
               <div class="form-group mb-3">
                 <label class="form-label">Position:</label>
-                <select class="form-select" [(ngModel)]="toastConfig.position">
-                  <option value="top-right">Top Right</option>
-                  <option value="top-left">Top Left</option>
-                  <option value="bottom-right">Bottom Right</option>
-                  <option value="bottom-left">Bottom Left</option>
-                  <option value="top-center">Top Center</option>
-                  <option value="bottom-center">Bottom Center</option>
-                </select>
+                <uilibrary-select
+                  [items]="toastPositionItems"
+                  [(ngModel)]="toastConfig.position"
+                  bindLabel="label"
+                  bindValue="value"
+                  [searchable]="false">
+                </uilibrary-select>
               </div>
 
-              <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="toastConfig.showIcon" id="showIcon">
-                <label class="form-check-label" for="showIcon">
-                  Show Icon
-                </label>
+              <div class="mb-3">
+                <uilibrary-checkbox [(ngModel)]="toastConfig.showIcon">Show Icon</uilibrary-checkbox>
               </div>
 
-              <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="toastConfig.closable" id="closable">
-                <label class="form-check-label" for="closable">
-                  Show Close Button
-                </label>
+              <div class="mb-3">
+                <uilibrary-checkbox [(ngModel)]="toastConfig.closable">Show Close Button</uilibrary-checkbox>
               </div>
             </div>
           </div>
 
           <div class="generator-actions mb-4">
-            <button class="btn btn-primary me-2" (click)="generateToast()">Generate Toast</button>
-            <button class="btn btn-secondary me-2" (click)="previewToast()">Preview</button>
-            <button class="btn btn-outline-secondary" (click)="resetToastConfig()">Reset Configuration</button>
+            <uilibrary-button appearance="primary" (click)="generateToast()">Generate Toast</uilibrary-button>
+            <uilibrary-button appearance="secondary" (click)="previewToast()">Preview</uilibrary-button>
+            <uilibrary-button appearance="secondary" (click)="resetToastConfig()">Reset Configuration</uilibrary-button>
           </div>
 
           @if (showPreview) {
@@ -232,16 +232,16 @@
           <div class="queue-controls mb-4">
             <div class="row">
               <div class="col-md-3">
-                <button class="btn btn-primary w-100" (click)="addMultipleToasts()">Add 3 Toasts</button>
+                <uilibrary-button appearance="primary" (click)="addMultipleToasts()">Add 3 Toasts</uilibrary-button>
               </div>
               <div class="col-md-3">
-                <button class="btn btn-warning w-100" (click)="showPriorityToast()">Priority Toast</button>
+                <uilibrary-button appearance="secondary" (click)="showPriorityToast()">Priority Toast</uilibrary-button>
               </div>
               <div class="col-md-3">
-                <button class="btn btn-success w-100" (click)="showPersistentToast()">Persistent Toast</button>
+                <uilibrary-button appearance="primary-success" (click)="showPersistentToast()">Persistent Toast</uilibrary-button>
               </div>
               <div class="col-md-3">
-                <button class="btn btn-danger w-100" (click)="clearAllToasts()">Clear All</button>
+                <uilibrary-button appearance="primary-delete" (click)="clearAllToasts()">Clear All</uilibrary-button>
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@
                       <p>{{toast.message}}</p>
                       <small class="text-muted">{{getToastAge(toast.timestamp)}} ago • {{toast.type}}</small>
                     </div>
-                    <button class="btn btn-sm btn-outline-danger" (click)="dismissToast(i)">Dismiss</button>
+                    <uilibrary-button appearance="primary-delete" size="small" (click)="dismissToast(i)">Dismiss</uilibrary-button>
                   </div>
                 }
               </div>
@@ -347,8 +347,10 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group mb-3">
-                <label class="form-label">Name:</label>
-                <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
+                <uilibrary-form-field>
+                  <label ui-label>Name:</label>
+                  <input ui-input type="text" formControlName="name" placeholder="Enter your name">
+                </uilibrary-form-field>
                 @if (sampleForm.get('name')?.errors?.['required'] && sampleForm.get('name')?.touched) {
                   <div class="invalid-feedback">
                     Name is required
@@ -357,8 +359,10 @@
               </div>
 
               <div class="form-group mb-3">
-                <label class="form-label">Email:</label>
-                <input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+                <uilibrary-form-field>
+                  <label ui-label>Email:</label>
+                  <input ui-input type="email" formControlName="email" placeholder="Enter your email">
+                </uilibrary-form-field>
                 @if (sampleForm.get('email')?.errors && sampleForm.get('email')?.touched) {
                   <div class="invalid-feedback">
                     Please enter a valid email
@@ -366,12 +370,12 @@
                 }
               </div>
 
-              <button class="btn btn-primary" (click)="submitForm()" [disabled]="sampleForm.invalid">
+              <uilibrary-button appearance="primary" (click)="submitForm()" [disabled]="sampleForm.invalid">
                 Submit Form
-              </button>
-              <button class="btn btn-outline-secondary ms-2" (click)="simulateError()">
+              </uilibrary-button>
+              <uilibrary-button appearance="secondary" (click)="simulateError()">
                 Simulate Error
-              </button>
+              </uilibrary-button>
             </div>
 
             <div class="col-md-6">
@@ -389,43 +393,39 @@
         <h4>Action Buttons with Toast Responses</h4>
         <div class="action-demo mb-4">
           <div class="button-grid">
-            <button class="btn btn-success" (click)="performAction('save')">
-              <uilibrary-icon name="icon-check" size="small"></uilibrary-icon>
+            <uilibrary-button appearance="primary-success" icon="icon-check" (click)="performAction('save')">
               Save Document
-            </button>
+            </uilibrary-button>
 
-            <button class="btn btn-primary" (click)="performAction('export')">
-              <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
+            <uilibrary-button appearance="primary" icon="icon-air" (click)="performAction('export')">
               Export Data
-            </button>
+            </uilibrary-button>
 
-            <button class="btn btn-warning" (click)="performAction('backup')">
-              <uilibrary-icon name="icon-accommodation" size="small"></uilibrary-icon>
+            <uilibrary-button appearance="secondary" icon="icon-accommodation" (click)="performAction('backup')">
               Create Backup
-            </button>
+            </uilibrary-button>
 
-            <button class="btn btn-info" (click)="performAction('sync')">
-              <uilibrary-icon name="icon-air" size="small"></uilibrary-icon>
+            <uilibrary-button appearance="secondary" icon="icon-air" (click)="performAction('sync')">
               Sync Data
-            </button>
+            </uilibrary-button>
           </div>
         </div>
 
         <h4>System Events and Notifications</h4>
         <div class="system-events mb-4">
           <div class="event-triggers">
-            <button class="btn btn-outline-primary" (click)="simulateSystemEvent('connection')">
+            <uilibrary-button appearance="secondary" (click)="simulateSystemEvent('connection')">
               Connection Lost
-            </button>
-            <button class="btn btn-outline-success" (click)="simulateSystemEvent('update')">
+            </uilibrary-button>
+            <uilibrary-button appearance="primary-success" (click)="simulateSystemEvent('update')">
               Update Available
-            </button>
-            <button class="btn btn-outline-warning" (click)="simulateSystemEvent('storage')">
+            </uilibrary-button>
+            <uilibrary-button appearance="secondary" (click)="simulateSystemEvent('storage')">
               Low Storage
-            </button>
-            <button class="btn btn-outline-info" (click)="simulateSystemEvent('maintenance')">
+            </uilibrary-button>
+            <uilibrary-button appearance="secondary" (click)="simulateSystemEvent('maintenance')">
               Maintenance Mode
-            </button>
+            </uilibrary-button>
           </div>
         </div>
       </div>

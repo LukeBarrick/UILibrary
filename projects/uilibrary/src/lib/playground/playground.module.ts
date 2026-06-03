@@ -19,8 +19,11 @@ import { RtlLayoutPlaygroundComponent } from './rtl-layout/rtl-layout-playground
 import { StatusTagPlaygroundComponent } from './status-tag/status-tag-playground.component';
 import { ModalPlaygroundComponent } from './modal/modal-playground.component';
 import { DemoModalContentComponent } from './modal/demo-modal-content.component';
+import { SidebarDemoProfileComponent } from './modal/sidebar-demo/sidebar-demo-profile.component';
+import { SidebarDemoSettingsComponent } from './modal/sidebar-demo/sidebar-demo-settings.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { CheckboxesModule } from '../modules/checkboxes/checkboxes.module';
 import { InputAnnotationsModule } from '../modules/input-annotations/input-annotations.module';
 import { NavigationModule } from '../modules/navigation/navigation.module';
@@ -38,12 +41,14 @@ import { ContextMenuModule } from '../modules/context-menu/context-menu.module';
 import { TableModule } from '../modules/table/table.module';
 import { RtlLayoutModule } from '../modules/rtl-layout/rtl-layout.module';
 import { UiModalModule } from '../modules/modal/modal.module';
+import { SidebarModalModule } from '../modules/modal/sidebar-modal.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
         CheckboxesModule,
         InputAnnotationsModule,
         NavigationModule,
@@ -61,6 +66,7 @@ import { UiModalModule } from '../modules/modal/modal.module';
         TableModule,
         RtlLayoutModule,
         UiModalModule,
+        SidebarModalModule,
     ],
     exports: [
         ButtonPlaygroundComponent,
@@ -82,6 +88,8 @@ import { UiModalModule } from '../modules/modal/modal.module';
         StatusTagPlaygroundComponent,
         ModalPlaygroundComponent,
         DemoModalContentComponent,
+        SidebarDemoProfileComponent,
+        SidebarDemoSettingsComponent,
 
         //Temporary exports for Showcase whilst these modules are still in use there 
         CheckboxesModule,
@@ -100,6 +108,7 @@ import { UiModalModule } from '../modules/modal/modal.module';
         ContextMenuModule,
         TableModule,
         RtlLayoutModule,
+        SidebarModalModule,
     ],
     declarations: [
         ButtonPlaygroundComponent,
@@ -121,6 +130,8 @@ import { UiModalModule } from '../modules/modal/modal.module';
         StatusTagPlaygroundComponent,
         ModalPlaygroundComponent,
         DemoModalContentComponent,
+        SidebarDemoProfileComponent,
+        SidebarDemoSettingsComponent,
     ],
     providers: [],
 })
