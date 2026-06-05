@@ -146,6 +146,13 @@
     Dismissing the drawer (backdrop, Escape, or the Close button) clears the
     outlet from the URL, keeping router state and modal state in sync.
   </p>
+  <p class="approach-note">
+    Declare sidebar routes with <code>SidebarRouteBridgeComponent</code> as the
+    route <code>component</code> and set the real drawer content type in
+    <code>data.sidebarComponent</code>. This guarantees the drawer component is
+    instantiated only once — inside the CDK overlay — rather than also in the
+    hidden outlet.
+  </p>
 
   <section>
     <h3>Drawer demos</h3>

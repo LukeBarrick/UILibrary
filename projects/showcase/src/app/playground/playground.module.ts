@@ -22,6 +22,7 @@ import {
   ModalPlaygroundComponent,
   SidebarDemoProfileComponent,
   SidebarDemoSettingsComponent,
+   SidebarRouteBridgeComponent,
 } from 'uilibrary';
 import { PlaygroundLayoutComponent } from './playground-layout/playground-layout.component';
 import { PlaygroundSideNavComponent } from './playground-side-nav/playground-side-nav.component';
@@ -51,8 +52,10 @@ const routes: Routes = [
       { path: 'modal', component: ModalPlaygroundComponent },
       // Sidebar auxiliary routes — activated by SidebarModalService.open()
       // URL form: /playground(sidebar:sidebar-profile)
-      { path: 'sidebar-profile', outlet: 'sidebar', component: SidebarDemoProfileComponent },
-      { path: 'sidebar-settings', outlet: 'sidebar', component: SidebarDemoSettingsComponent },
+      // Use SidebarRouteBridgeComponent so the drawer content component is only
+      // instantiated once (in the CDK overlay), not also in the hidden outlet.
+      { path: 'sidebar-profile', outlet: 'sidebar', component: SidebarRouteBridgeComponent, data: { sidebarComponent: SidebarDemoProfileComponent } },
+      { path: 'sidebar-settings', outlet: 'sidebar', component: SidebarRouteBridgeComponent, data: { sidebarComponent: SidebarDemoSettingsComponent } },
     ],
   },
 ];

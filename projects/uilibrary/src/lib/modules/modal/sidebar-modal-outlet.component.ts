@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  isDevMode,
   OnDestroy,
   OnInit,
   Type,
@@ -130,10 +131,33 @@ export class SidebarModalOutletComponent implements OnInit, OnDestroy {
    * forChild modules where path: '' holds the real component), then opens it
    * in a CDK overlay styled as a right-side drawer.
    */
-  private _openSidebar(snap: ActivatedRouteSnapshot): void {
-    // For lazy-loaded forChild modules the real component sits on firstChild.
-    // For direct component routes it is on the snapshot itself.
-    const comp = (snap.firstChild?.component ?? snap.component) as Type<any> | null;
+  private  _openSidebar(snap: ActivatedRouteSnapshot): void {
+    // Prefer the explicit content type declared in route data so that the real
+    // drawer component is instantiated only once — inside the CDK overlay.
+    // Consumers should declare sidebar routes as:
+    //   { path: '...', outlet: 'sidebar',
+    //     component: SidebarRouteBridgeComponent,
+    //     data: { sidebarComponent: MyDrawerComponent } }
+    //
+    // The legacy fallback (snapshot.component) still works but instantiates
+    // the component twice — once in the hidden outlet, once in the overlay.
+    const fromData: Type<any> | null =
+      snap.data['sidebarComponent'] ??
+      snap.firstChild?.data?.['sidebarComponent'] ??
+      null;
+
+    if (!fromData && isDevMode()) {
+      console.warn(
+        `[SidebarModalOutlet] Sidebar route '${
+          snap.routeConfig?.path ?? '(unknown)'
+        }' does not declare data.sidebarComponent. ` +
+          'The drawer content component will be instantiated twice (once in the hidden ' +
+          'outlet, once in the CDK overlay). Migrate to: ' +
+          '{ component: SidebarRouteBridgeComponent, data: { sidebarComponent: MyDrawerComponent } }.',
+      );
+    }
+
+    const comp = (fromData ?? snap.firstChild?.component ?? snap.component) as Type<any> | null;
     if (!comp) {
       return;
     }

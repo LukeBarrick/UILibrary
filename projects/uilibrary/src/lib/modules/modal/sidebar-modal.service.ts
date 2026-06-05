@@ -43,6 +43,9 @@ export class SidebarModalService {
    *   Pass the ActivatedRoute of the component that owns the outlet's parent
    *   (e.g. `this.route.parent` from a child of PlaygroundLayoutComponent).
    *   Without this the router resolves the outlet at root level and throws NG04002.
+   * @note Sidebar routes must use `SidebarRouteBridgeComponent` as the route
+   *   `component` and declare the real drawer type in `data.sidebarComponent`.
+   *   See `SidebarRouteBridgeComponent` for the route definition pattern.
    */
   open(path: string | string[], relativeTo?: ActivatedRoute): void {
     const segments = Array.isArray(path) ? path : [path];

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { UiModalModule } from './modal.module';
 import { SidebarModalOutletComponent } from './sidebar-modal-outlet.component';
 import { SidebarModalService } from './sidebar-modal.service';
+import { SidebarRouteBridgeComponent } from './sidebar-route-bridge.component';
 
 /**
  * Feature module for the sidebar drawer routing system.
@@ -24,9 +25,9 @@ import { SidebarModalService } from './sidebar-modal.service';
  * export class MyShellModule {}
  */
 @NgModule({
-  declarations: [SidebarModalOutletComponent],
+  declarations: [SidebarModalOutletComponent, SidebarRouteBridgeComponent],
   imports: [CommonModule, RouterModule, UiModalModule],
-  exports: [SidebarModalOutletComponent],
+  exports: [SidebarModalOutletComponent, SidebarRouteBridgeComponent],
   providers: [SidebarModalService],
 })
 export class SidebarModalModule {}

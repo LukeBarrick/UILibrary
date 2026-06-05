@@ -88,6 +88,7 @@ export * from './lib/modules/modal/modal-dismiss-reasons';
 export * from './lib/modules/modal/sidebar-modal.module';
 export * from './lib/modules/modal/sidebar-modal.service';
 export * from './lib/modules/modal/sidebar-modal-outlet.component';
+export * from './lib/modules/modal/sidebar-route-bridge.component';
 
 export * from './lib/playground/playground.module';
 export * from './lib/playground/button/button-playground.component';
