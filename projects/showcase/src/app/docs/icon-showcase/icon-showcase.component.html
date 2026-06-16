@@ -6,6 +6,44 @@
         The <code>uilibrary-icon</code> component provides a flexible way to display icons with
         multiple sizes, appearances, and styling options throughout your application.
       </p>
+
+      </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Standalone use</h2>
+      <p>
+        The Icon Component is dependant on <code>AngularSvgIconModule</code> which requires different setup for <em>NgModules</em> use vs <em>Standalone</em> use.
+      </p>
+      <p>For <em>NgModules</em> use simply import the <code>IconModule</code> as normal. For <em>Standalone</em> use register the <code>IconModule.forStandalone()</code> and import the <code>IconComponent</code> in your Standalone components.</p>
+      <pre>
+        <code>
+          import &#123; IconModule &#125; from '@conferma/uilibrary'
+
+          export const appConfig: ApplicationConfig = &#123;
+            providers: [
+              IconModule.forStandalone(),
+              // more providers
+            ]
+          &#125;
+        </code>
+      </pre>
+
+      <pre>
+        <code>
+          import &#123; IconComponent &#125; from '@conferma/uilibrary';
+
+          @Component(&#123;
+            selector: 'app-my-component',
+            imports: [IconComponent],
+            templateUrl: './my-component.html',
+            styleUrl: './my-component.scss',
+            standalone: true // enabled is the default in most recent versions of Angular.
+          &#125;)
+          export class MyComponent &#123; &#125;
+        </code>
+      </pre>
     </div>
   </div>
 
@@ -130,7 +168,7 @@
             [(ngModel)]="selectedIcon"
             bindLabel="display"
             bindValue="name"
-            [searchable]="false">
+            [useCustomTemplate]="false">
           </uilibrary-select>
         </div>
 
@@ -138,22 +176,22 @@
           <h4>{{getSelectedIconDisplay()}} Preview</h4>
           <div class="icon-preview-grid">
             <div class="preview-item">
-              <uilibrary-icon [name]="selectedIcon" size="small" appearance="primary"></uilibrary-icon>
+              <uilibrary-icon [name]="selectedIcon.name" size="small" appearance="primary"></uilibrary-icon>
               <span>Small Primary</span>
             </div>
             <div class="preview-item">
-              <uilibrary-icon [name]="selectedIcon" size="medium" appearance="secondary"></uilibrary-icon>
+              <uilibrary-icon [name]="selectedIcon.name" size="medium" appearance="secondary"></uilibrary-icon>
               <span>Medium Secondary</span>
             </div>
             <div class="preview-item">
-              <uilibrary-icon [name]="selectedIcon" size="large" appearance="tertiary"></uilibrary-icon>
+              <uilibrary-icon [name]="selectedIcon.name" size="large" appearance="tertiary"></uilibrary-icon>
               <span>Large Tertiary</span>
             </div>
           </div>
 
           <div class="code-preview mt-3">
             <strong>Code for selected icon:</strong>
-            <pre><code>&lt;uilibrary-icon name="{{selectedIcon}}" size="medium" appearance="primary"&gt;&lt;/uilibrary-icon&gt;</code></pre>
+            <pre><code>&lt;uilibrary-icon name="{{selectedIcon.name}}" size="medium" appearance="primary"&gt;&lt;/uilibrary-icon&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -247,12 +285,11 @@
           <div class="row">
             <div class="col-md-4">
               <label class="form-label">Size:</label>
+              {{gallerySize | json}}
               <uilibrary-select
                 [items]="gallerySizeItems"
                 [(ngModel)]="gallerySize"
-                bindLabel="label"
-                bindValue="value"
-                [searchable]="false">
+                [useCustomTemplate]="false">
               </uilibrary-select>
             </div>
             <div class="col-md-4">
@@ -260,9 +297,7 @@
               <uilibrary-select
                 [items]="galleryAppearanceItems"
                 [(ngModel)]="galleryAppearance"
-                bindLabel="label"
-                bindValue="value"
-                [searchable]="false">
+                [useCustomTemplate]="false">
               </uilibrary-select>
             </div>
             <div class="col-md-4">
@@ -276,7 +311,7 @@
 
         <div class="icon-gallery">
           @for (icon of getFilteredIcons(); track icon) {
-            <div class="gallery-icon-item" (click)="selectIconFromGallery(icon.name)">
+            <div class="gallery-icon-item" (click)="selectedGalleryIcon = icon">
               <uilibrary-icon [name]="icon.name" [size]="gallerySize" [appearance]="galleryAppearance"></uilibrary-icon>
               <span class="icon-name">{{icon.display}}</span>
             </div>
@@ -288,6 +323,11 @@
             <p class="text-muted text-center">No icons match your filter criteria.</p>
           </div>
         }
+
+        <div class="code-preview mt-3">
+          <strong>Code for selected icon:</strong>
+          <pre><code>&lt;uilibrary-icon name="{{selectedGalleryIcon.name}}" size="{{gallerySize}}" appearance="{{galleryAppearance}}"&gt;&lt;/uilibrary-icon&gt;</code></pre>
+        </div>
       </div>
     </div>
   </div>
