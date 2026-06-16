@@ -1,34 +1,50 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { SvgIconComponent } from 'angular-svg-icon';
 
 @Component({
     selector: 'uilibrary-icon',
     templateUrl: './icon.component.html',
-    standalone: false
+    standalone: true,
+    imports: [SvgIconComponent]
 })
-export class IconComponent implements OnInit {
+export class IconComponent implements OnInit, OnChanges {
   @Input() name: string | undefined;
   @Input() size: string | undefined;
   @Input() appearance: string | undefined;
 
   //Provide a custom set of dimensions
-  //Used within internal components which icons dimensions do not match any of the constrained options. 
+  //Used within internal components which icons dimensions do not match any of the constrained options.
   @Input() customDimensions: [height: number, width: number] = [0,0];
 
   width: number | undefined;
   height: number | undefined;
   fillColor: string = '';
 
-  constructor() { 
-   
+  ngOnInit() {
+    this.buildSize();
+    this.buildColour();
   }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
+    const size = changes['size'],
+      appearance = changes['appearance'];
+
+    if (size && size.currentValue !== size.previousValue) {
+      this.buildSize();
+    }
+
+    if (appearance && appearance.currentValue !== appearance.previousValue) {
+      this.buildColour();
+    }
+  }
+
+  private buildSize() {
     switch(this.size) {
-      case 'small': 
+      case 'small':
         this.height = 30;
         this.width = 30;
         break;
-      case 'medium': 
+      case 'medium':
         this.height = 40;
         this.width = 40;
         break;
@@ -36,7 +52,7 @@ export class IconComponent implements OnInit {
         this.height = 80;
         this.width = 80;
         break;
-      default: 
+      default:
         this.height = 40;
         this.width = 40;
         break;
@@ -47,8 +63,9 @@ export class IconComponent implements OnInit {
         this.height = height;
         this.width = width;
     }
+  }
 
-
+  private buildColour() {
     switch(this.appearance) {
       case "primary":
         this.fillColor = 'var(--primary)' //TODO refactor the var lol
@@ -62,7 +79,7 @@ export class IconComponent implements OnInit {
       case 'light-gray':
         this.fillColor = 'var(--light-gray)'
         break;
-      case 'dark-gray': 
+      case 'dark-gray':
         this.fillColor = 'var(--dark-gray)'
         break;
       case 'custom':
