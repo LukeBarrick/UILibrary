@@ -90,6 +90,9 @@ export * from './lib/modules/modal/sidebar-modal.service';
 export * from './lib/modules/modal/sidebar-modal-outlet.component';
 export * from './lib/modules/modal/sidebar-route-bridge.component';
 
+export * from './lib/modules/side-navigation/side-navigation.component';
+export * from './lib/modules/side-navigation/side-navigation.module';
+
 export * from './lib/playground/playground.module';
 export * from './lib/playground/button/button-playground.component';
 export * from './lib/playground/checkbox/checkbox-playground.component';
