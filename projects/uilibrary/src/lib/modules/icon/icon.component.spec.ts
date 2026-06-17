@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { IconComponent } from './icon.component';
+import { IconModule } from './icon.module';
 
 describe('IconComponent', () => {
   let component: IconComponent;
@@ -12,7 +13,8 @@ describe('IconComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconComponent ],
+      imports: [ IconComponent ],
+      providers: [ IconModule.forStandalone() ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
@@ -49,7 +51,7 @@ describe('IconComponent', () => {
     it('should set small size dimensions', () => {
       component.size = 'small';
       component.ngOnInit();
-      
+
       expect(component.width).toBe(30);
       expect(component.height).toBe(30);
     });
@@ -57,7 +59,7 @@ describe('IconComponent', () => {
     it('should set medium size dimensions', () => {
       component.size = 'medium';
       component.ngOnInit();
-      
+
       expect(component.width).toBe(40);
       expect(component.height).toBe(40);
     });
@@ -65,7 +67,7 @@ describe('IconComponent', () => {
     it('should set large size dimensions', () => {
       component.size = 'large';
       component.ngOnInit();
-      
+
       expect(component.width).toBe(80);
       expect(component.height).toBe(80);
     });
@@ -73,7 +75,7 @@ describe('IconComponent', () => {
     it('should default to medium size when size is undefined', () => {
       component.size = undefined;
       component.ngOnInit();
-      
+
       expect(component.width).toBe(40);
       expect(component.height).toBe(40);
     });
@@ -81,7 +83,7 @@ describe('IconComponent', () => {
     it('should default to medium size when size is invalid', () => {
       component.size = 'invalid-size';
       component.ngOnInit();
-      
+
       expect(component.width).toBe(40);
       expect(component.height).toBe(40);
     });
@@ -91,56 +93,56 @@ describe('IconComponent', () => {
     it('should set primary appearance color', () => {
       component.appearance = 'primary';
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('var(--primary)');
     });
 
     it('should set secondary appearance color', () => {
       component.appearance = 'secondary';
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('var(--secondary)');
     });
 
     it('should set tertiary appearance color', () => {
       component.appearance = 'tertiary';
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('var(--tertiary)');
     });
 
     it('should set light-gray appearance color', () => {
       component.appearance = 'light-gray';
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('var(--light-gray)');
     });
 
     it('should set dark-gray appearance color', () => {
       component.appearance = 'dark-gray';
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('var(--dark-gray)');
     });
 
     it('should set custom appearance color to currentColor', () => {
       component.appearance = 'custom';
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('currentColor');
     });
 
     it('should default to secondary appearance when appearance is undefined', () => {
       component.appearance = undefined;
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('var(--secondary)');
     });
 
     it('should default to secondary appearance when appearance is invalid', () => {
       component.appearance = 'invalid-appearance';
       component.ngOnInit();
-      
+
       expect(component.fillColor).toBe('var(--secondary)');
     });
   });
@@ -200,7 +202,7 @@ describe('IconComponent', () => {
       component.size = 'large';
       component.appearance = 'primary';
       component.ngOnInit();
-      
+
       expect(component.width).toBe(80);
       expect(component.height).toBe(80);
       expect(component.fillColor).toBe('var(--primary)');
@@ -208,7 +210,7 @@ describe('IconComponent', () => {
 
     it('should initialize with default values of 40 when no inputs provided', () => {
       component.ngOnInit();
-      
+
       expect(component.width).toBe(40);
       expect(component.height).toBe(40);
       expect(component.fillColor).toBe('var(--secondary)');
