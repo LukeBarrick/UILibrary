@@ -95,7 +95,7 @@ export class CalendarComponent implements OnInit {
   }
 
   selectDay(day: number, month: number, year: number) {
-    const selected = new Date(year, month, day);
+    const selected = new Date(year, month, day, 12, 0, 0, 0);
     this.dateSelected.emit(selected);
   }
 
