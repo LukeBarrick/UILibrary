@@ -20,7 +20,7 @@ import { DateRange } from '../date-range';
     ],
     standalone: false
 })
-export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, AfterContentInit, AfterViewInit, OnDestroy  {
+export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, AfterContentInit, OnDestroy  {
   private elRef = inject(ElementRef<DateRangeInputComponent>);
   private destroyRef = inject(DestroyRef);
   private cdr = inject(ChangeDetectorRef);
