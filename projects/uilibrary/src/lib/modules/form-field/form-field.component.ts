@@ -1,5 +1,5 @@
 import {
-  AfterContentChecked,
+  AfterContentInit,
   Component,
   ContentChild,
   Input,
@@ -23,7 +23,7 @@ import { UISuffix } from './directives/UISuffix';
     },
     standalone: false
 })
-export class FormFieldComponent implements AfterContentChecked, OnDestroy {
+export class FormFieldComponent implements AfterContentInit, OnDestroy {
   uuid = self.crypto.randomUUID();
 
   @ContentChild(UIFormFieldControl) formFieldControl:
@@ -44,7 +44,7 @@ export class FormFieldComponent implements AfterContentChecked, OnDestroy {
     this.stateChanges?.unsubscribe();
   }
 
-  ngAfterContentChecked(): void {
+  ngAfterContentInit(): void {
     this.initialiseControl();
   }
 
@@ -61,6 +61,8 @@ export class FormFieldComponent implements AfterContentChecked, OnDestroy {
   }
 
   private initialiseControl(): void {
+    this.stateChanges?.unsubscribe();
+
     if (this._control != undefined) {
       this.stateChanges = this._control.stateChanges.subscribe({});
       this._control.setID(this.uuid);

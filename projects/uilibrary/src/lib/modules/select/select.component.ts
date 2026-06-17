@@ -8,6 +8,7 @@ import {
   TemplateRef,
   ViewChild,
   forwardRef,
+  isDevMode
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { UIFormFieldControl } from '../form-field/form-field-control';
@@ -26,7 +27,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   standalone: false
 })
 export class SelectComponent
-  implements UIFormFieldControl<any>, ControlValueAccessor {
+  implements UIFormFieldControl<any>, ControlValueAccessor, OnInit {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
@@ -76,6 +77,12 @@ export class SelectComponent
 
   onChange: any = () => { };
   onTouched: any = () => { };
+
+  ngOnInit(): void {
+    if(isDevMode() && this.useCustomTemplate && !this.labelTemplate || !this.optionTemplate) {
+      console.warn('Warning: You are currently using a select field with a custom template but providing no templateRef for either LabelTemplate or OptionTemplate. To use without custom templates and use the predefined one, set [useCustomTemplate]="false."')
+    }
+  }
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
