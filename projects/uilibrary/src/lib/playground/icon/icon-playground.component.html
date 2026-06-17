@@ -24,54 +24,9 @@
     <section class="medium">
         <h3>Icon Gallery</h3>
         <div class="d-flex flex-row" style="flex-wrap: wrap; gap: 8px;">
-            <uilibrary-icon size="medium" name="icon-accommodation"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-air"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-user"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-search"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-cog"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-email"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-document"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-folder"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-people"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-tick"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-plus"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-pay"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-tag"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-cards"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-send"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-shopping-cart"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-android"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-apple"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-api"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-arrows"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-audience"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-block"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-card-add"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-card-exchange"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-cards"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-cloud-notepad"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-communication"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-document-add"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-document-download"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-document-unavailable"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-double-tick"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-exclamation"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-fax"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-four-dots"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-loadbalance"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-next"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-pending"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-people"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-plus"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-previous"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-rail"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-receipt"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-redirect"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-secure-email"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-send"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-transport"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-user-add"></uilibrary-icon>
-            <uilibrary-icon size="medium" name="icon-user"></uilibrary-icon>
+          @for(icon of availableIcons; track icon) {
+            <uilibrary-icon size="medium" [name]="icon"></uilibrary-icon>
+          }
         </div>
     </section>
 </div>
