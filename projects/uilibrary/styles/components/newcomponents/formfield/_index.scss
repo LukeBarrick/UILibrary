@@ -38,6 +38,8 @@ uilibrary-form-field {
         margin-inline-start: 15px;
         font-size: 12px;
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
     }
 
     .form-field-prefix {
