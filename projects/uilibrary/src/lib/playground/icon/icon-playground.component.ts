@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { IconConstants } from '../../core/constants/icon.constants';
 
 @Component({
     selector: 'uilibrary-icon-playground',
@@ -7,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
     standalone: false
 })
 
-export class IconPlaygroundComponent implements OnInit {
-    constructor() { }
+export class IconPlaygroundComponent {
 
-    ngOnInit() { }
+  availableIcons = Object.values(IconConstants);
 }
