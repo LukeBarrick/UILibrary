@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ContentChildren, DestroyRef, ElementRef, EventEmitter, forwardRef, HostListener, inject, Input, OnDestroy, OnInit, Optional, Output, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ContentChildren, DestroyRef, ElementRef, EventEmitter, forwardRef, HostListener, inject, Input, OnDestroy, OnInit, Optional, Output, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { NgControl } from '@angular/forms';
 import { filter, map, Subject, Subscription, takeUntil, tap } from 'rxjs';
@@ -20,7 +20,7 @@ import { DateRange } from '../date-range';
     ],
     standalone: false
 })
-export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, AfterViewInit, OnDestroy  {
+export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, AfterContentInit, AfterViewInit, OnDestroy  {
   private elRef = inject(ElementRef<DateRangeInputComponent>);
   private destroyRef = inject(DestroyRef);
   private cdr = inject(ChangeDetectorRef);
@@ -58,25 +58,25 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
    */
   constructor(private readonly strategy: DateSelectionStrategy,
               @Optional() @Self() public ngControl: NgControl) {
-   
   }
 
-  ngAfterViewInit(): void {
+  ngAfterContentInit(): void {
     if(this.startDate?.ngControl) {
       this.$startDateValueChanges = this.startDate.ngControl.valueChanges?.pipe(
         tap(() => this.removeStartDateFromCalendar()),
-        filter(value => value instanceof Date), 
+        filter(value => value instanceof Date),
         tap(value => this.addStartDateToCalendar(value))
       ).subscribe();
-    } 
+    }
 
     if(this.endDate?.ngControl) {
-        this.$endDateValueChanges = this.endDate.ngControl.valueChanges?.pipe(
-          tap(() => this.removeEndDateFromCalendar()),
-          filter(value => value instanceof Date), 
-          tap(value => this.addEndDateToCalendar(value))
-        ).subscribe();
-    } 
+       console.log('end date registered');
+      this.$endDateValueChanges = this.endDate.ngControl.valueChanges?.pipe(
+        tap(() => this.removeEndDateFromCalendar()),
+        filter(value => value instanceof Date),
+        tap(value => this.addEndDateToCalendar(value))
+      ).subscribe();
+    }
   }
 
   ngOnDestroy(): void {
@@ -197,9 +197,13 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
   }
 
   private removeStartDateFromCalendar() {
+    console.log('remove triggered')
     if(this.selecteDates.length) {
       this.selecteDates.splice(0, 1);
     }
+
+     this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   private removeEndDateFromCalendar() {

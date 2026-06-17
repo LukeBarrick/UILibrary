@@ -51,6 +51,7 @@ export class DateInputDirective implements UIFormFieldControl<Date>, ControlValu
     }
 
     this.value = value;
+    this.stateChanges.next();
   }
 
   registerOnChange(fn: any): void {

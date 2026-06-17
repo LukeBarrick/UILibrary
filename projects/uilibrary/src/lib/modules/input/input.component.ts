@@ -27,9 +27,7 @@ import { Subject } from 'rxjs';
     standalone: false
 })
 export class InputComponent
-  implements UIFormFieldControl<string>, ControlValueAccessor, AfterViewInit, OnDestroy {
-  ngAfterViewInit(): void { }
-
+  implements UIFormFieldControl<string>, ControlValueAccessor, OnDestroy {
   constructor(
     @Optional() @Self() public ngControl: NgControl,
     private readonly UUID: UUIDService,
@@ -48,6 +46,7 @@ export class InputComponent
   onInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     if (target) {
+      this.handleInput(target.value);
       this.onChange(target.value);
       this.stateChanges.next();
     }
@@ -94,6 +93,7 @@ export class InputComponent
   }
 
   get shouldLabelFloat(): boolean {
+    this.stateChanges.next();
     return !this._empty || this._focussed;
   }
 
@@ -126,6 +126,7 @@ export class InputComponent
 
   writeValue(value: any): void {
     this.el.nativeElement.value = value ?? '';
+    this.stateChanges.next();
   }
 
   registerOnChange(fn: any): void {

@@ -1,13 +1,13 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnChanges, ViewChild } from '@angular/core';
 import { NavigationLink } from '../../core/models/navigation-link';
 import { NavigationLinkType } from '../../core/enums/navigation-link-type.enum';
 
 @Component({
-    selector: 'uilibrary-navigation',
-    templateUrl: './navigation.component.html',
-    standalone: false
+  selector: 'uilibrary-navigation',
+  templateUrl: './navigation.component.html',
+  standalone: false
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnChanges, AfterViewInit {
   @Input() showRightAlignedContent: boolean = true;
   @Input() links: NavigationLink[] = [];
   @Input() showExtraMobileMenuContent: boolean = true;
@@ -19,12 +19,16 @@ export class NavigationComponent implements OnInit {
   NavigationLinkType = NavigationLinkType;
 
   @HostListener('window:resize')
-    onResize() {
-        this.adjustNav();
-    }
+  onResize() {
+    this.adjustNav();
+  }
 
-  ngOnInit() {
-      this.adjustNav();
+  ngOnChanges(): void {
+    this.adjustNav();
+  }
+
+  ngAfterViewInit(): void {
+    this.adjustNav();
   }
 
   get allNavigationLinks() {
@@ -34,10 +38,10 @@ export class NavigationComponent implements OnInit {
   private adjustNav() {
     if (!this.navLinks?.nativeElement)
       return;
-      
+
     const navLinks = this.navLinks.nativeElement;
-    const navLinkWidth: number = 160; 
-    const rightAlignedContentWidth: number =  this.showRightAlignedContent ? 300 : 0
+    const navLinkWidth: number = 160;
+    const rightAlignedContentWidth: number = this.showRightAlignedContent ? 300 : 0
     const navbarWidth: number = navLinks.parentElement.offsetWidth;
     const logoWidth: number = navLinks.previousElementSibling.offsetWidth;
 
@@ -48,7 +52,7 @@ export class NavigationComponent implements OnInit {
     this.links = [];
     this.overflowLinks = [];
     allLinks.forEach(navLink => {
-      if(totalSpaceRemaining >= navLinkWidth) {
+      if (totalSpaceRemaining >= navLinkWidth) {
         this.links.push(navLink);
         totalSpaceRemaining = totalSpaceRemaining - navLinkWidth;
       } else {
@@ -57,7 +61,7 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-  public goToUrl(url: string, target: string){
+  public goToUrl(url: string, target: string) {
     window.open(url, target);
   }
 

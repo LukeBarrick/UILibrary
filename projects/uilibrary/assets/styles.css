@@ -12268,6 +12268,10 @@ body {
   --bs-body-font-size: 12pt;
 }
 
+a-btn {
+  --bs-btn-line-height: 2.5;
+}
+
 .btn {
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
@@ -13936,6 +13940,7 @@ uilibrary-tooltip .tooltip-margin-both {
   animation: growDown 100ms ease-in-out forwards;
   transform-origin: top center;
   min-width: 100%;
+  z-index: 20000;
 }
 .navigation-dropdown-parent-custom:has(.dropdown-menu.show) span:after {
   transform: rotateX(180deg);
@@ -14294,6 +14299,8 @@ uilibrary-form-field .form-field-footer {
   margin-inline-start: 15px;
   font-size: 12px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 uilibrary-form-field .form-field-prefix {
   margin-inline-start: 10px;
