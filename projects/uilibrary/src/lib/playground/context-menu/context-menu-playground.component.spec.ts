@@ -26,7 +26,7 @@ describe('ContextMenuPlaygroundComponent', () => {
             const comp = fixture.point.componentInstance;
             const mockEvent = new MouseEvent('contextmenu');
             spyOn(mockEvent, 'preventDefault');
-            spyOn(comp.menuTrigger, 'openMenu');
+            comp.menuTrigger.openMenu = jasmine.createSpy('openMenu');
             comp.rightClick(mockEvent);
             expect(mockEvent.preventDefault).toHaveBeenCalled();
         });
@@ -36,7 +36,7 @@ describe('ContextMenuPlaygroundComponent', () => {
             const comp = fixture.point.componentInstance;
             const mockEvent = new MouseEvent('contextmenu');
             spyOn(mockEvent, 'preventDefault');
-            spyOn(comp.menuTrigger, 'openMenu');
+            comp.menuTrigger.openMenu = jasmine.createSpy('openMenu');
             comp.rightClick(mockEvent);
             expect(comp.menuTrigger.openMenu).toHaveBeenCalledWith(mockEvent);
         });
@@ -45,10 +45,10 @@ describe('ContextMenuPlaygroundComponent', () => {
             const fixture = MockRender(ContextMenuPlaygroundComponent);
             const comp = fixture.point.componentInstance;
             const mockEvent = new MouseEvent('contextmenu', { clientX: 100, clientY: 200 });
-            const openMenuSpy = spyOn(comp.menuTrigger, 'openMenu');
+            comp.menuTrigger.openMenu = jasmine.createSpy('openMenu');
             spyOn(mockEvent, 'preventDefault');
             comp.rightClick(mockEvent);
-            const passedEvent = openMenuSpy.calls.first().args[0] as MouseEvent;
+            const passedEvent = (comp.menuTrigger.openMenu as jasmine.Spy).calls.first().args[0] as MouseEvent;
             expect(passedEvent.clientX).toBe(100);
             expect(passedEvent.clientY).toBe(200);
         });
