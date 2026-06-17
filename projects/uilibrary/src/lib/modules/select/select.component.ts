@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -31,7 +32,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   standalone: false
 })
 export class SelectComponent
-  implements UIFormFieldControl<any>, ControlValueAccessor, OnInit, OnDestroy {
+  implements UIFormFieldControl<any>, ControlValueAccessor, AfterContentInit, OnDestroy {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
@@ -82,9 +83,11 @@ export class SelectComponent
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  ngOnInit(): void {
-    if(isDevMode() && this.useCustomTemplate && !this.labelTemplate || !this.optionTemplate) {
+  ngAfterContentInit(): void {
+    if (isDevMode() && this.useCustomTemplate && (!this.labelTemplate || !this.optionTemplate)) {
       console.warn('Warning: You are currently using a select field with a custom template but providing no templateRef for either LabelTemplate or OptionTemplate. To use without custom templates and use the predefined one, set [useCustomTemplate]="false."')
+    } else if (isDevMode() && !this.useCustomTemplate && (this.labelTemplate || this.optionTemplate)) {
+      console.warn('Warning: You are currently using a select field without a custom template but are providing a templateRef for either LabelTemplate or OptionTemplate. To use with custom templates, set [useCustomTemplate]="true" and define an templateRef for LabelTemplate & OptionTemplate.')
     }
   }
 
