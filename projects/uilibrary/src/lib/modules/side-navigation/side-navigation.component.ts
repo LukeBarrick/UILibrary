@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavigationLink } from 'uilibrary';
+import { NavigationLink } from '../../core/models/navigation-link';
 
 @Component({
   selector: 'ui-side-navigation',
