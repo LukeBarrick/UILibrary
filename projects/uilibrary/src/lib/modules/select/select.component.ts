@@ -1,7 +1,10 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChild,
   Input,
+  OnDestroy,
   OnInit,
   Optional,
   Self,
@@ -12,12 +15,13 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { UIFormFieldControl } from '../form-field/form-field-control';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
   selector: 'uilibrary-select',
   templateUrl: './select.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: UIFormFieldControl,
@@ -27,7 +31,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   standalone: false
 })
 export class SelectComponent
-  implements UIFormFieldControl<any>, ControlValueAccessor, OnInit {
+  implements UIFormFieldControl<any>, ControlValueAccessor, OnInit, OnDestroy {
   @ContentChild('labelTemplate', { static: false })
   labelTemplate: TemplateRef<any> | null = null;
   @ContentChild('optionTemplate', { static: false })
@@ -86,6 +90,7 @@ export class SelectComponent
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
+    private readonly cdr: ChangeDetectorRef,
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -95,7 +100,7 @@ export class SelectComponent
   _disabled: boolean = false;
   _open: boolean = false;
 
-  stateChanges: Observable<void> = new Observable<void>();
+  readonly stateChanges = new Subject<void>();
   id: string = '';
 
   get empty(): boolean {
@@ -153,10 +158,14 @@ export class SelectComponent
   _onBlur(): void {
     this._focussed = false;
     this.onTouched();
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   _onFocus(): void {
     this._focussed = true;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   focus() {
@@ -169,6 +178,8 @@ export class SelectComponent
 
   writeValue(value: any): void {
     this.value = value;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: any): void {
@@ -181,6 +192,8 @@ export class SelectComponent
 
   setDisabledState(disabled: boolean): void {
     this._disabled = disabled;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   handleInput(event: any): void {
@@ -199,5 +212,9 @@ export class SelectComponent
 
   setID(id: string): void {
     this.id = id;
+  }
+
+  ngOnDestroy(): void {
+    this.stateChanges.complete();
   }
 }

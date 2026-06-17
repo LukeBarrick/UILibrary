@@ -1,7 +1,7 @@
-import { Directive, ElementRef, forwardRef, HostListener, inject, Input, OnDestroy, Optional, Renderer2, Self, ViewChild } from '@angular/core';
+import { Directive, ElementRef, forwardRef, HostListener, inject, Input, OnDestroy, Optional, Renderer2, Self } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { BehaviorSubject, debounceTime, Observable, tap } from 'rxjs';
+import { Subject } from 'rxjs';
 import { format, parse } from 'date-fns';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 
@@ -15,11 +15,11 @@ import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.ser
     ],
     standalone: false
 })
-export class DateInputDirective implements UIFormFieldControl<Date>, ControlValueAccessor {
+export class DateInputDirective implements UIFormFieldControl<Date>, ControlValueAccessor, OnDestroy {
   private dateFnsLocaleService = inject(DateFnsLocaleService);
   value: Date | string | null = null;
 
-  stateChanges: Observable<void> = new Observable<void>;
+  readonly stateChanges = new Subject<void>();
   id: string = crypto.randomUUID();
   placeholder: string = '';
   private _focussed: boolean = false;
@@ -63,6 +63,7 @@ export class DateInputDirective implements UIFormFieldControl<Date>, ControlValu
 
   setDisabledState(isDisabled: boolean): void {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
+    this.stateChanges.next();
   }
   
   @HostListener('input', ['$event'])
@@ -76,17 +77,20 @@ export class DateInputDirective implements UIFormFieldControl<Date>, ControlValu
     } else {
       this.handleInput(date);
     }
+    this.stateChanges.next();
   }
 
   @HostListener('blur')
   onBlur(): void {
     this._focussed = false;
     this.onTouched();
+    this.stateChanges.next();
   }
 
   @HostListener('focus')
   onFocus(): void {
     this._focussed = true;
+    this.stateChanges.next();
   }
 
   get empty(): boolean {
@@ -134,5 +138,9 @@ export class DateInputDirective implements UIFormFieldControl<Date>, ControlValu
   setID(id: string): void {
     this.id = id;
     this.el.nativeElement.id = this.id;
+  }
+
+  ngOnDestroy(): void {
+    this.stateChanges.complete();
   }
 }

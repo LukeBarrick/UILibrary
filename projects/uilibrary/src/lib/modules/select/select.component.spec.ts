@@ -248,6 +248,45 @@ describe('SelectComponent', () => {
     });
   });
 
+  describe('stateChanges', () => {
+    it('should emit stateChanges on writeValue', () => {
+      let count = 0;
+      component.stateChanges.subscribe(() => count++);
+      component.writeValue('test');
+      expect(count).toBe(1);
+    });
+
+    it('should emit stateChanges on setDisabledState', () => {
+      let count = 0;
+      component.stateChanges.subscribe(() => count++);
+      component.setDisabledState(true);
+      expect(count).toBe(1);
+    });
+
+    it('should emit stateChanges on _onFocus', () => {
+      let count = 0;
+      component.stateChanges.subscribe(() => count++);
+      component._onFocus();
+      expect(count).toBe(1);
+    });
+
+    it('should emit stateChanges on _onBlur', () => {
+      let count = 0;
+      component.stateChanges.subscribe(() => count++);
+      component._onBlur();
+      expect(count).toBe(1);
+    });
+  });
+
+  describe('ngOnDestroy', () => {
+    it('should complete stateChanges on destroy', () => {
+      let completed = false;
+      component.stateChanges.subscribe({ complete: () => completed = true });
+      component.ngOnDestroy();
+      expect(completed).toBe(true);
+    });
+  });
+
   describe('Integration with Angular Forms', () => {
     it('should work with FormControl', () => {
       const formControl = new FormControl('option1');

@@ -6,6 +6,7 @@ import {
   forwardRef,
   HostListener,
   Input,
+  OnDestroy,
   Optional,
   Renderer2,
   Self,
@@ -13,7 +14,7 @@ import {
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { UUIDService } from '../../core/services/UUID.service';
 import { UIFormFieldControl } from '../form-field/form-field-control';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Directive({
     selector: '[ui-input]',
@@ -26,7 +27,7 @@ import { Observable } from 'rxjs';
     standalone: false
 })
 export class InputComponent
-  implements UIFormFieldControl<string>, ControlValueAccessor, AfterViewInit {
+  implements UIFormFieldControl<string>, ControlValueAccessor, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void { }
 
   constructor(
@@ -48,6 +49,7 @@ export class InputComponent
     const target = event.target as HTMLInputElement;
     if (target) {
       this.onChange(target.value);
+      this.stateChanges.next();
     }
   }
 
@@ -55,11 +57,13 @@ export class InputComponent
   onBlur(): void {
     this._focussed = false;
     this.onTouched();
+    this.stateChanges.next();
   }
 
   @HostListener('focus')
   onFocus(): void {
     this._focussed = true;
+    this.stateChanges.next();
   }
 
   focus() {
@@ -72,7 +76,7 @@ export class InputComponent
 
   id = this.UUID.generate();
 
-  stateChanges: Observable<void> = new Observable<void>
+  stateChanges = new Subject<void>();
 
   placeholder: string = '';
 
@@ -116,7 +120,8 @@ export class InputComponent
   onTouched: any = () => { };
 
   setDisabledState(isDisabled: boolean): void {
-    this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled)
+    this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
+    this.stateChanges.next();
   }
 
   writeValue(value: any): void {
@@ -140,5 +145,9 @@ export class InputComponent
   setID(id: string): void {
     this.id = id;
     this.el.nativeElement.id = this.id;
+  }
+
+  ngOnDestroy(): void {
+    this.stateChanges.complete();
   }
 }

@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ContentChild, ContentChildren, DestroyRef, ElementRef, EventEmitter, forwardRef, HostListener, inject, Input, OnDestroy, OnInit, Optional, Output, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ContentChildren, DestroyRef, ElementRef, EventEmitter, forwardRef, HostListener, inject, Input, OnDestroy, OnInit, Optional, Output, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { NgControl } from '@angular/forms';
-import { filter, map, Observable, Subscription, takeUntil, tap } from 'rxjs';
+import { filter, map, Subject, Subscription, takeUntil, tap } from 'rxjs';
 import { StartDateDirective } from './start-date.directive';
 import { EndDateDirective } from './end-date.directive';
 import { DateSelectionStrategy } from '../date-selection-strategy';
@@ -11,6 +11,7 @@ import { DateRange } from '../date-range';
     selector: 'uilibrary-date-range-input',
     templateUrl: './date-range-input.component.html',
     styleUrl: './date-range-input.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: UIFormFieldControl,
@@ -21,11 +22,12 @@ import { DateRange } from '../date-range';
 })
 export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, AfterViewInit, OnDestroy  {
   private elRef = inject(ElementRef<DateRangeInputComponent>);
-  private destroyRef = inject(DestroyRef)
+  private destroyRef = inject(DestroyRef);
+  private cdr = inject(ChangeDetectorRef);
   
   value: DateRange | null = null;
 
-  stateChanges: Observable<void> = new Observable<void>;
+  readonly stateChanges = new Subject<void>();
 
   $startDateValueChanges: Subscription | undefined = undefined;
   $endDateValueChanges: Subscription | undefined = undefined;
@@ -80,6 +82,7 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
   ngOnDestroy(): void {
     this.$startDateValueChanges?.unsubscribe();
     this.$endDateValueChanges?.unsubscribe();
+    this.stateChanges.complete();
   }
 
   get empty(): boolean {
@@ -118,16 +121,22 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
     if(!this.disabled) {
       this._focussed = true;
       this._open = true;
+      this.stateChanges.next();
+      this.cdr.markForCheck();
     }
   }
 
   onBlur() {
     this._focussed = false;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   focus(): void {
     if(!this.disabled) {
        this._open = true;
+       this.stateChanges.next();
+       this.cdr.markForCheck();
     }
   }
 
@@ -209,10 +218,14 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
       dates.push(range.end);
 
     this.selecteDates = dates;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   open(): void {
     this._open = true;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
 
     if(!this.startDate?.value) 
       this.startDate?.focus();
@@ -222,6 +235,8 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
 
   close(): void {
     this._open = false;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   setID(id: string): void {

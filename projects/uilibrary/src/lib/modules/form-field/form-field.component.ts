@@ -1,5 +1,7 @@
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChild,
   Input,
@@ -14,6 +16,7 @@ import { UISuffix } from './directives/UISuffix';
     selector: 'uilibrary-form-field',
     templateUrl: './form-field.component.html',
     styleUrls: ['./form-field.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.form-field-disabled]': '_control?.disabled',
         '[class.form-field-label-float]': 'labelFloatOverride || _control?.shouldLabelFloat',
@@ -38,7 +41,7 @@ export class FormFieldComponent implements AfterContentInit, OnDestroy {
   stateChanges: Subscription | undefined;
   empty: boolean = true;
 
-  constructor() {}
+  constructor(private readonly cdr: ChangeDetectorRef) {}
 
   ngOnDestroy(): void {
     this.stateChanges?.unsubscribe();
@@ -64,7 +67,9 @@ export class FormFieldComponent implements AfterContentInit, OnDestroy {
     this.stateChanges?.unsubscribe();
 
     if (this._control != undefined) {
-      this.stateChanges = this._control.stateChanges.subscribe({});
+      this.stateChanges = this._control.stateChanges.subscribe(() => {
+        this.cdr.markForCheck();
+      });
       this._control.setID(this.uuid);
     }
   }

@@ -1,7 +1,7 @@
-import { Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, Inject, inject, Input, LOCALE_ID, Optional, Self, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Host, HostListener, Inject, inject, Input, LOCALE_ID, OnDestroy, Optional, Self, ViewChild } from '@angular/core';
 import { UIFormFieldControl } from '../../form-field/form-field-control';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
-import { filter, Observable, Subscription, tap } from 'rxjs';
+import { filter, Subject, Subscription, tap } from 'rxjs';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 import { DateFnsLocaleService } from '../../../core/services/date-fns-locale.service';
 import { format, parse } from 'date-fns';
@@ -10,6 +10,7 @@ import { format, parse } from 'date-fns';
     selector: 'uilibrary-datepicker-input',
     templateUrl: './datepicker-input.component.html',
     styleUrl: './datepicker-input.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: UIFormFieldControl,
@@ -18,13 +19,14 @@ import { format, parse } from 'date-fns';
     ],
     standalone: false
 })
-export class DatePickerInputComponent implements UIFormFieldControl<Date>, ControlValueAccessor {
+export class DatePickerInputComponent implements UIFormFieldControl<Date>, ControlValueAccessor, OnDestroy {
   private elRef = inject(ElementRef<DatePickerInputComponent>);
   private dateFnsLocaleService = inject(DateFnsLocaleService);
+  private cdr = inject(ChangeDetectorRef);
   value: Date | string | null = null;
   displayValue: string = '';
 
-  stateChanges: Observable<void> = new Observable<void>;
+  readonly stateChanges = new Subject<void>();
   id: string = crypto.randomUUID();
   placeholder: string = '';
   private _disabled: boolean = false;
@@ -82,6 +84,8 @@ export class DatePickerInputComponent implements UIFormFieldControl<Date>, Contr
     }
 
     this.value = value;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: any): void {
@@ -94,6 +98,8 @@ export class DatePickerInputComponent implements UIFormFieldControl<Date>, Contr
 
   setDisabledState?(isDisabled: boolean): void {
     this._disabled = isDisabled;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   get empty(): boolean {
@@ -127,6 +133,8 @@ export class DatePickerInputComponent implements UIFormFieldControl<Date>, Contr
   onFocus() {
     this._focussed = true;
     this._open = true;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   onBlur(event: FocusEvent) {
@@ -135,12 +143,16 @@ export class DatePickerInputComponent implements UIFormFieldControl<Date>, Contr
     if (!this.elRef.nativeElement.contains(nextFocused)) {
       this.onTouched();
       this._focussed = false;
+      this.stateChanges.next();
+      this.cdr.markForCheck();
     }
   }
 
   focus(): void {
     this.input.nativeElement.focus();
     this._open = true;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   setValue(): void { return; }
@@ -185,15 +197,24 @@ export class DatePickerInputComponent implements UIFormFieldControl<Date>, Contr
 
   open(): void {
     this._open = true;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
     this.focus();
   }
 
   close(): void {
     this._open = false;
+    this.stateChanges.next();
+    this.cdr.markForCheck();
   }
 
   setID(id: string): void {
     this.id = id;
     this.elRef.nativeElement.id = this.id;
+  }
+
+  ngOnDestroy(): void {
+    this.$dateValueChanges?.unsubscribe();
+    this.stateChanges.complete();
   }
 }

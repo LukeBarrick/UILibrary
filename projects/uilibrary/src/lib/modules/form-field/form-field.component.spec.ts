@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { FormFieldComponent } from './form-field.component';
 import { UIFormFieldControl } from './form-field-control';
@@ -11,7 +11,7 @@ import { UISuffix } from './directives/UISuffix';
 // Mock form field control for testing
 class MockFormFieldControl extends UIFormFieldControl<any> {
   override value: any = '';
-  override stateChanges: Observable<void> = of();
+  override stateChanges = new Subject<void>();
   override id: string = 'mock-id';
   override placeholder: string = 'mock-placeholder';
   override empty: boolean = false;
@@ -108,7 +108,7 @@ describe('FormFieldComponent', () => {
       spyOn(mockControl, 'setID');
       component.formFieldControl = mockControl;
       
-      component.ngAfterContentChecked();
+      component.ngAfterContentInit();
       
       expect(mockControl.setID).toHaveBeenCalledWith(component.uuid);
     });
@@ -117,15 +117,27 @@ describe('FormFieldComponent', () => {
       const mockControl = new MockFormFieldControl();
       component.formFieldControl = mockControl;
       
-      component.ngAfterContentChecked();
+      component.ngAfterContentInit();
       
       expect(component.stateChanges).toBeDefined();
+    });
+
+    it('should call markForCheck when stateChanges emits', () => {
+      const mockControl = new MockFormFieldControl();
+      component.formFieldControl = mockControl;
+      component.ngAfterContentInit();
+      const cdr = (component as any).cdr;
+      spyOn(cdr, 'markForCheck');
+
+      mockControl.stateChanges.next();
+
+      expect(cdr.markForCheck).toHaveBeenCalled();
     });
 
     it('should handle undefined control gracefully', () => {
       component.formFieldControl = undefined;
       
-      expect(() => component.ngAfterContentChecked()).not.toThrow();
+      expect(() => component.ngAfterContentInit()).not.toThrow();
     });
   });
 
@@ -151,7 +163,7 @@ describe('FormFieldComponent', () => {
     it('should unsubscribe from stateChanges', () => {
       const mockControl = new MockFormFieldControl();
       component.formFieldControl = mockControl;
-      component.ngAfterContentChecked();
+      component.ngAfterContentInit();
       
       spyOn(component.stateChanges!, 'unsubscribe');
       
