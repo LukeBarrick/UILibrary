@@ -58,6 +58,7 @@ export * from './lib/modules/datepicker/date-range-input/date-input.directive';
 export * from './lib/modules/datepicker/datepicker-input/datepicker-input.component';
 export * from './lib/modules/datepicker/calendar/calendar.component';
 export * from './lib/modules/datepicker/date-range';
+export * from './lib/core/tokens/DATE_NOW';
 export * from './lib/modules/datepicker/date-selection-strategy';
 
 export * from './lib/modules/context-menu/context-menu.module';

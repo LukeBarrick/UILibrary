@@ -9,14 +9,12 @@ import { isAfter, isBefore } from 'date-fns';
     standalone: false
 })
 export class CalendarComponent implements OnInit {
-  currentDate = new Date();
-  dateTracker = new Date();
+  currentDate!: Date;
+  dateTracker!: Date;
 
-  selectedMonth: number = this.currentDate.getMonth();
-  selectedMonthLiteral = this.currentDate.toLocaleString(this.localeId, {
-    month: 'long',
-  });
-  selectedYear: number = this.currentDate.getFullYear();
+  selectedMonth!: number;
+  selectedMonthLiteral!: string;
+  selectedYear!: number;
 
   @Output() dateSelected = new EventEmitter<Date>();
 
@@ -30,12 +28,13 @@ export class CalendarComponent implements OnInit {
 
   weeksInMonth: (number | null)[][] = [];
 
-  /**
-   *
-   */
   constructor(@Inject(LOCALE_ID) protected localeId: string,
               @Inject(DATE_NOW) protected today: Date) {
-
+    this.currentDate = today;
+    this.dateTracker = new Date(today);
+    this.selectedMonth = this.currentDate.getMonth();
+    this.selectedMonthLiteral = this.currentDate.toLocaleString(this.localeId, { month: 'long' });
+    this.selectedYear = this.currentDate.getFullYear();
   }
 
   @Input() selecteDates: Date[] | Date | undefined;
