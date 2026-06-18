@@ -71,7 +71,7 @@ describe('NavigationPlaygroundComponent', () => {
         it('should render 6 uilibrary-navigation elements (one per demo variant)', () => {
             MockRender(NavigationPlaygroundComponent);
             const navElements = ngMocks.findAll('uilibrary-navigation');
-            expect(navElements.length).toBe(6);
+            expect(navElements.length).toBe(7);
         });
 
         it('every uilibrary-navigation should have the same [links] array bound to it', () => {

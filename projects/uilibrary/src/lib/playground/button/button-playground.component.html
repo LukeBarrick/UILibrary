@@ -170,3 +170,24 @@
     </uilibrary-button>
   </section>
 </div>
+
+<div class="d-flex flex-row">
+  <section class="small d-flex flex-column">
+    <h4>Button Links</h4>
+    <p>Buttons rendered as <code>&lt;a&gt;</code> element. Do <strong>not</strong> use <code>[routerLink]</code> directly. Use the <code>[link]</code> input instead.</p>
+
+    <uilibrary-button-link [href]="'https://google.com'" appearance="primary" aria_label="Goto Google">
+      Google using HREF
+    </uilibrary-button-link>
+
+    <p>Opens in a new tab.</p>
+    <uilibrary-button-link [target]="'_blank'" [href]="'https://stackoverflow.com'" appearance="secondary" aria_label="Goto SO" icon="icon-air">
+      Stack Overflow using HREF
+    </uilibrary-button-link>
+
+    <p>Button with active appearance set based on router link.</p>
+    <uilibrary-button-link [link]="'/playground/button'" linkActiveAppearance="primary" appearance="secondary" aria_label="Goto Home" icon="icon-air">
+      Goto Home using router link
+    </uilibrary-button-link>
+  </section>
+</div>

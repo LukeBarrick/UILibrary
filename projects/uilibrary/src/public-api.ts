@@ -27,6 +27,7 @@ export * from './lib/modules/status-tags/status-tag/status-tag.component';
 
 export * from './lib/modules/button/button.module';
 export * from './lib/modules/button/button/button.component';
+export * from './lib/modules/button/button-link-component/button-link.component';
 
 export * from './lib/modules/form-field/form-field.component';
 export * from './lib/modules/form-field/form-field.module';
@@ -41,7 +42,7 @@ export * from './lib/modules/select/select.component';
 
 export * from './lib/modules/icon/icon.module';
 export * from './lib/modules/icon/icon.component';
-export * from './lib/core/services/icon.service'; 
+export * from './lib/core/services/icon.service';
 
 export * from './lib/modules/toggle/toggle.module';
 export * from './lib/modules/toggle/toggle.component';
@@ -116,3 +117,5 @@ export * from './lib/playground/modal/modal-playground.component';
 export * from './lib/playground/modal/demo-modal-content.component';
 export * from './lib/playground/modal/sidebar-demo/sidebar-demo-profile.component';
 export * from './lib/playground/modal/sidebar-demo/sidebar-demo-settings.component';
+
+export * from './lib/core/core.module';

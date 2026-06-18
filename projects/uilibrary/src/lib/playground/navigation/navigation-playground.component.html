@@ -65,6 +65,16 @@
       </div>
     </uilibrary-navigation>
 
+    <h2>Nav Bar with right aligned content containing a dropdown</h2>
+    <p>
+      Manually adding a Dropdown to the right aligned content, and using a icon as its trigger.
+    </p>
+    <uilibrary-navigation [links]="links" [showRightAlignedContent]="true">
+      <div rightAlignedContent class="h-100">
+        <uilibrary-navigation-dropdown class="h-100" icon="icon-air" [links]="rightContentDropdownLinks"></uilibrary-navigation-dropdown>
+      </div>
+    </uilibrary-navigation>
+
     <h2>Nav Bar with hidenLabelOnNestedChildren</h2>
     <p>
       When a dropdown link has <em>hidenLabelOnNestedChildren: true</em>, the parent label is hidden
@@ -92,3 +102,4 @@
         href="https://brandonclapp.com/how-to-use-ng-content-for-content-projection-in-angular-a-basic-overview">https://brandonclapp.com/how-to-use-ng-content-for-content-projection-in-angular-a-basic-overview</a>
       for a good write up on how <em>ng-content</em> works and its limitations.</p>
   </section>
+</div>
