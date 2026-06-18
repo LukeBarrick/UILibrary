@@ -44,7 +44,7 @@ Follow this checklist when adding a new UI component family to the library:
 5. Add SCSS (if needed):    projects/uilibrary/styles/components/<name>/ and import in _index.scss
 6. Add showcase page:       projects/showcase/src/app/docs/<name>-showcase/
 7. Register route:          add lazy-loaded route in showcase docs routing
-8. Add README.md:           copy projects/uilibrary/src/lib/modules/README-TEMPLATE.md → modules/<name>/README.md and fill in all mandatory sections
+8. Add README.md:           run /create-lib-documentation component:<name>  (or copy README-TEMPLATE.md manually and fill in all mandatory sections)
 9. Run /update-docs
 ```
 
