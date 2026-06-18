@@ -1,0 +1,31 @@
+<ng-template #contentTpl>
+  <ng-content />
+</ng-template>
+
+@if(href) {
+  <a
+    class="{{sizeClass}} {{appearanceClass}}"
+    [attr.aria-label]="aria_label"
+    [attr.target]="target"
+    [attr.href]="href">
+    @if(icon) {
+      <uilibrary-icon appearance="custom" size="{{iconSizeClass}}" name="{{icon}}"></uilibrary-icon>
+    }
+    <ng-container *ngTemplateOutlet="contentTpl" />
+  </a>
+} @else {
+  <a
+    [routerLink]="link"
+    [routerLinkActive]="linkActiveAppearanceClass"
+    #x="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [attr.aria-label]="aria_label"
+    [ngClass]="[sizeClass, !x.isActive ? appearanceClass : '']"
+    [attr.target]="target">
+    @if(icon) {
+      <uilibrary-icon appearance="custom" size="{{iconSizeClass}}" name="{{icon}}"></uilibrary-icon>
+    }
+    <ng-container *ngTemplateOutlet="contentTpl" />
+  </a>
+}
+

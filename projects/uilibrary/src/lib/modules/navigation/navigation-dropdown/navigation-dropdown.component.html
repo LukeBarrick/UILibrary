@@ -1,6 +1,12 @@
 <div ngbDropdown class="navigation-dropdown-parent-custom">
   <div class="navigation-dropdown-input-custom" ngbDropdownToggle [class.active]="isRoutesActive()">
-    <span><button type="button">{{label}}</button></span>
+    <span><button type="button">
+      @if(icon) {
+        <uilibrary-icon [ngClass]="{ 'me-2': !!label }" appearance="secondary" size="small" [name]="icon"></uilibrary-icon>
+      }
+
+      {{label}}
+    </button></span>
   </div>
 
   <div ngbDropdownMenu>
@@ -9,25 +15,25 @@
         @if(!link.hidenLabelOnNestedChildren) {
           <div class="navigation-dropdown-nested-title-custom">{{link.label}}</div>
         }
-          
+
         @for (child of link.children; track child.path) {
           @if(child.type === NavigationLinkType.Route) {
-            <a option ngbDropdownItem [routerLink]="child.path" routerLinkActive="active">
+            <a (click)="onClick(link, $event)" option ngbDropdownItem [routerLink]="child.path" routerLinkActive="active">
               {{child.label}}
             </a>
           } @else {
-            <a option ngbDropdownItem [attr.href]="child.path" target="" rel="noopener"
+            <a (click)="onClick(link, $event)" option ngbDropdownItem [attr.href]="child.path" target="" rel="noopener"
               [attr.target]="child.type === NavigationLinkType.TargetBlankURL ? '_blank' : ''">
               {{child.label}}
             </a>
           }
         }
       } @else if(link.type === NavigationLinkType.Route) {
-      <a option ngbDropdownItem [routerLink]="link.path" routerLinkActive="child-active">
+      <a (click)="onClick(link, $event)" option ngbDropdownItem [routerLink]="link.path" routerLinkActive="child-active">
         {{link.label}}
       </a>
       } @else {
-      <a option ngbDropdownItem [attr.href]="link.path" target="" rel="noopener"
+      <a (click)="onClick(link, $event)" option ngbDropdownItem [attr.href]="link.path" target="" rel="noopener"
         [attr.target]="link.type === NavigationLinkType.TargetBlankURL ? '_blank' : ''">
         {{link.label}}
       </a>

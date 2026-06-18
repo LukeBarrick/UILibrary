@@ -1,12 +1,28 @@
-import { MockBuilder, MockRender } from 'ng-mocks';
+/* tslint:disable:no-unused-variable */
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 import { NavigationOptionComponent } from './navigation-option.component';
-import { NavigationModule } from '../navigation.module';
 
 describe('NavigationOptionComponent', () => {
-  beforeEach(() => MockBuilder(NavigationOptionComponent, NavigationModule));
+  let component: NavigationOptionComponent;
+  let fixture: ComponentFixture<NavigationOptionComponent>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ NavigationOptionComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NavigationOptionComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(MockRender(NavigationOptionComponent).point.componentInstance).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 });

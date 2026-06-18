@@ -1,16 +1,17 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-import { NavigationLink } from '../../../core/models/navigation-link';
+import { Component, Input } from '@angular/core';
 import { NavigationLinkType } from '../../../core/enums/navigation-link-type.enum';
 import { Router } from '@angular/router';
+import { NavigationDropdownLink } from '../../../core/models/dropdown-navigation-link';
 
 @Component({
     selector: 'uilibrary-navigation-dropdown',
     templateUrl: './navigation-dropdown.component.html',
     standalone: false
 })
-export class NavigationDropdownComponent implements OnInit {
-  @Input() links: NavigationLink[] | null = [];
+export class NavigationDropdownComponent {
+  @Input() links: NavigationDropdownLink[] | null = [];
   @Input() label: string = '';
+  @Input() icon: string | undefined = undefined;
 
   constructor(private router: Router) {}
 
@@ -20,7 +21,9 @@ export class NavigationDropdownComponent implements OnInit {
 
   NavigationLinkType = NavigationLinkType;
 
-  ngOnInit() {
+  onClick(item: NavigationDropdownLink, event: MouseEvent) {
+    if (item.onClick) {
+      item.onClick(event);
+    }
   }
-
 }

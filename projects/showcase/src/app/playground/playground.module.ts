@@ -22,7 +22,7 @@ import {
   ModalPlaygroundComponent,
   SidebarDemoProfileComponent,
   SidebarDemoSettingsComponent,
-   SidebarRouteBridgeComponent,
+  SidebarRouteBridgeComponent,
 } from 'uilibrary';
 import { PlaygroundLayoutComponent } from './playground-layout/playground-layout.component';
 import { PlaygroundSideNavComponent } from './playground-side-nav/playground-side-nav.component';

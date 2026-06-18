@@ -5,12 +5,14 @@ import { NavigationDropdownComponent } from './navigation-dropdown/navigation-dr
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavigationOptionComponent } from './navigation-option/navigation-option.component';
 import { RouterModule } from '@angular/router';
+import { IconModule } from '../icon/icon.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    IconModule
   ],
   declarations: [
     NavigationComponent,

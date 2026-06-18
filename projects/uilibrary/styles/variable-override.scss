@@ -32,17 +32,19 @@ body {
 //=======================================================
 // Buttons
 // ======================================================
- a-btn {
-  --bs-btn-line-height: 2.5; 
- }
-
+// Anchor tags have the text top aligned with the default
+// line height of 1.5. We adjust to center text without touching
+// styles applied to button elements.
+a.btn {
+  --bs-btn-line-height: 2.5;
+}
 .btn {
     --bs-btn-padding-x: 0.75rem;
     --bs-btn-padding-y: 0.375rem;
     --bs-btn-font-family: var(--bs-body-font-family);
     --bs-btn-font-size: 1rem;
     --bs-btn-font-weight: 400;
-    --bs-btn-line-height: 1.5; 
+    --bs-btn-line-height: 1.5;
     --bs-btn-color: #939393;
     --bs-btn-bg: transparent;
     --bs-btn-border-width: 1px;
@@ -73,15 +75,15 @@ body {
     background-color: var(--bs-btn-bg);
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     font-weight: 600;
-  
+
     &:hover {
       opacity: 0.9;
     }
-  
+
     &:active {
-  
+
     }
-  
+
     &:disabled {
       svg {
         filter: grayscale(100%);
@@ -130,15 +132,15 @@ body {
     background-color: var(--bs-btn-bg);
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     font-weight: 600;
-  
+
     &:hover {
       opacity: 0.9;
     }
-  
+
     &:active {
-  
+
     }
-  
+
     &:disabled {
       pointer-events: none;
       svg {
@@ -150,7 +152,7 @@ body {
       margin-right: 15px;
     }
   }
-  
+
   .btn-primary {
     --bs-btn-color: var(--tertiaryFont);
     --bs-btn-bg: var(--secondary);
@@ -209,12 +211,12 @@ body {
     &:hover {
       filter: grayscale(20%);
     }
-  
+
     &:disabled {
       opacity: 0.65;
     }
   }
-  
+
   .btn-secondary {
     --bs-btn-color: var(--primary);
     --bs-btn-bg: white;
@@ -233,7 +235,7 @@ body {
     padding-left: 15px;
     padding-right: 15px;
     transition: box-shadow 0.2s ease-in-out;
-  
+
     &:hover {
       box-shadow: 0px 0px 0px 5px rgba($secondary, 0.25);
     }
@@ -286,9 +288,9 @@ body {
       color: #636363;
     }
   }
-  
-  
-  
+
+
+
   // ======================================================
   // Containers
   // ======================================================
@@ -301,7 +303,7 @@ body {
     margin-right: auto;
     margin-left: auto;
   }
-  
+
   // ======================================================
   // Dropdown
   // ======================================================
@@ -348,7 +350,7 @@ body {
     border-radius: var(--bs-dropdown-border-radius);
   }
 
-//Invalid Form Control styles 
+//Invalid Form Control styles
 
 uilibrary-textarea.ng-invalid.ng-touched,
 uilibrary-textarea.error {
