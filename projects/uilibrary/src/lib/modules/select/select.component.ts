@@ -207,10 +207,19 @@ export class SelectComponent
 
   @Input() compareWith: ((a: any, b: any) => boolean) | undefined = undefined;
 
-  defaultCompareFn(item: any, selected: any) {
-    //Order keys before compare.
-    //Currently sensitive to key ordering differences.
-    return JSON.stringify(item) === JSON.stringify(selected);
+  defaultCompareFn(item: any, selected: any): boolean {
+    if (item === selected) return true;
+    if (item === null || selected === null) return false;
+    if (typeof item !== 'object' || typeof selected !== 'object') return item === selected;
+    if (Array.isArray(item) !== Array.isArray(selected)) return false;
+    if (Array.isArray(item)) {
+      if (item.length !== selected.length) return false;
+      return item.every((el, i) => this.defaultCompareFn(el, selected[i]));
+    }
+    const keysA = Object.keys(item);
+    const keysB = Object.keys(selected);
+    if (keysA.length !== keysB.length) return false;
+    return keysA.every(key => Object.prototype.hasOwnProperty.call(selected, key) && this.defaultCompareFn(item[key], selected[key]));
   }
 
   setID(id: string): void {

@@ -212,6 +212,13 @@ describe('SelectComponent', () => {
       const comp = MockRender(SelectComponent).point.componentInstance;
       expect(comp.defaultCompareFn('test', 'test')).toBe(true);
     });
+
+    it('should return true for objects with the same properties in different key order', () => {
+      const comp = MockRender(SelectComponent).point.componentInstance;
+      const obj1 = { b: 2, a: 1 };
+      const obj2 = { a: 1, b: 2 };
+      expect(comp.defaultCompareFn(obj1, obj2)).toBe(true);
+    });
   });
 
   describe('Scroll Callbacks', () => {
