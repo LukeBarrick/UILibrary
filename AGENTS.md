@@ -44,8 +44,22 @@ Follow this checklist when adding a new UI component family to the library:
 5. Add SCSS (if needed):    projects/uilibrary/styles/components/<name>/ and import in _index.scss
 6. Add showcase page:       projects/showcase/src/app/docs/<name>-showcase/
 7. Register route:          add lazy-loaded route in showcase docs routing
-8. Run /update-docs
+8. Add README.md:           copy projects/uilibrary/src/lib/modules/README-TEMPLATE.md → modules/<name>/README.md and fill in all mandatory sections
+9. Run /update-docs
 ```
+
+---
+
+## Documentation
+
+Every feature module must have a `README.md` co-located in its module folder (`projects/uilibrary/src/lib/modules/<name>/README.md`).
+
+Use `projects/uilibrary/src/lib/modules/README-TEMPLATE.md` as the starting point. The template contains:
+
+- An HTML-comment authoring checklist (invisible in preview) that lists mandatory vs conditional sections.
+- Placeholder sections for: title/tagline, Table of Contents, How it works (conditional), Setup, Basic usage (one H2 per scenario), Options reference table, API reference, SCSS utility classes (conditional), Interaction/behaviour table (conditional), Technical decisions, and Troubleshooting (conditional).
+
+Reference docs for structure and tone: `projects/uilibrary/src/lib/modules/modal/MODAL.md` and `SIDEBAR.md`.
 
 ---
 
