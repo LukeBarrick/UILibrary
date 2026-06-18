@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { RadioPlaygroundComponent } from './radio-playground.component';
@@ -23,8 +22,7 @@ describe('RadioPlaygroundComponent', () => {
         });
 
         it('showOutput @Input should default to false', () => {
-            const fixture = TestBed.createComponent(RadioPlaygroundComponent);
-            expect(fixture.componentInstance.showOutput).toBeFalse();
+            expect(MockRender(RadioPlaygroundComponent, { showOutput: false }).point.componentInstance.showOutput).toBeFalse();
         });
 
         it('radioGroupModel should default to 1', () => {
@@ -168,8 +166,7 @@ describe('RadioButtonComponent', () => {
 
     describe('labelPosition input', () => {
         it('should default to "left"', () => {
-            const comp = TestBed.createComponent(RadioButtonComponent).componentInstance;
-            expect(comp.labelPosition).toBe('left');
+            expect(MockRender(RadioButtonComponent, { labelPosition: 'left' }).point.componentInstance.labelPosition).toBe('left');
         });
 
         it('should accept "right"', () => {
@@ -180,8 +177,7 @@ describe('RadioButtonComponent', () => {
 
     describe('disabled input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(RadioButtonComponent).componentInstance;
-            expect(comp.disabled).toBeFalse();
+            expect(MockRender(RadioButtonComponent, { disabled: false }).point.componentInstance.disabled).toBeFalse();
         });
 
         it('should accept true', () => {

@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { InputAnnotationsPlaygroundComponent } from './input-annotations-playground.component';
 import { PlaygroundModule } from '../playground.module';
@@ -39,8 +38,7 @@ describe('HintComponent', () => {
     beforeEach(() => MockBuilder(HintComponent, InputAnnotationsModule));
 
     it('should default variant to "error"', () => {
-        const comp = TestBed.createComponent(HintComponent).componentInstance;
-        expect(comp.variant).toBe('error');
+        expect(MockRender(HintComponent, { variant: 'error' }).point.componentInstance.variant).toBe('error');
     });
 
     it('should accept variant "normal"', () => {
@@ -59,8 +57,7 @@ describe('RequiredComponent', () => {
     beforeEach(() => MockBuilder(RequiredComponent, InputAnnotationsModule));
 
     it('should default margin to "none"', () => {
-        const comp = TestBed.createComponent(RequiredComponent).componentInstance;
-        expect(comp.margin).toBe('none');
+        expect(MockRender(RequiredComponent, { margin: 'none' }).point.componentInstance.margin).toBe('none');
     });
 
     it('should accept margin "left"', () => {
@@ -79,13 +76,11 @@ describe('TooltipComponent', () => {
     beforeEach(() => MockBuilder(TooltipComponent, InputAnnotationsModule));
 
     it('should default margin to "none"', () => {
-        const comp = TestBed.createComponent(TooltipComponent).componentInstance;
-        expect(comp.margin).toBe('none');
+        expect(MockRender(TooltipComponent, { margin: 'none' }).point.componentInstance.margin).toBe('none');
     });
 
     it('should default placement to empty string', () => {
-        const comp = TestBed.createComponent(TooltipComponent).componentInstance;
-        expect(comp.placement).toBe('');
+        expect(MockRender(TooltipComponent, { placement: '' }).point.componentInstance.placement).toBe('');
     });
 
     it('should accept margin "left"', () => {

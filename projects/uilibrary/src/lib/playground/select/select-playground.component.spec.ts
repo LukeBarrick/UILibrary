@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { SelectPlaygroundComponent } from './select-playground.component';
@@ -23,8 +22,7 @@ describe('SelectPlaygroundComponent', () => {
         });
 
         it('showOutput @Input should default to false', () => {
-            const fixture = TestBed.createComponent(SelectPlaygroundComponent);
-            expect(fixture.componentInstance.showOutput).toBeFalse();
+            expect(MockRender(SelectPlaygroundComponent, { showOutput: false }).point.componentInstance.showOutput).toBeFalse();
         });
 
         it('items array should contain exactly 3 items', () => {
@@ -501,14 +499,12 @@ describe('SelectComponent', () => {
     beforeEach(() => MockBuilder(SelectComponent, SelectModule));
 
     it('should create', () => {
-        const comp = TestBed.createComponent(SelectComponent).componentInstance;
-        expect(comp).toBeTruthy();
+        expect(MockRender(SelectComponent).point.componentInstance).toBeTruthy();
     });
 
     describe('loading / loadingText inputs', () => {
         it('loading should default to false', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.loading).toBeFalse();
+            expect(MockRender(SelectComponent, { loading: false }).point.componentInstance.loading).toBeFalse();
         });
 
         it('loading should accept true', () => {
@@ -517,8 +513,7 @@ describe('SelectComponent', () => {
         });
 
         it('loadingText should default to "Loading..."', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.loadingText).toBe('Loading...');
+            expect(MockRender(SelectComponent, { loadingText: 'Loading...' }).point.componentInstance.loadingText).toBe('Loading...');
         });
 
         it('loadingText should accept a custom string', () => {
@@ -529,8 +524,7 @@ describe('SelectComponent', () => {
 
     describe('ariaLabel input', () => {
         it('should default to empty string', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.ariaLabel).toBe('');
+            expect(MockRender(SelectComponent, { ariaLabel: '' }).point.componentInstance.ariaLabel).toBe('');
         });
 
         it('should accept a custom label', () => {
@@ -541,8 +535,7 @@ describe('SelectComponent', () => {
 
     describe('readonly input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.readonly).toBeFalse();
+            expect(MockRender(SelectComponent, { readonly: false }).point.componentInstance.readonly).toBeFalse();
         });
 
         it('should accept true', () => {
@@ -553,8 +546,7 @@ describe('SelectComponent', () => {
 
     describe('notFoundText input', () => {
         it('should default to "No options found."', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.notFoundText).toBe('No options found.');
+            expect(MockRender(SelectComponent, { notFoundText: 'No options found.' }).point.componentInstance.notFoundText).toBe('No options found.');
         });
 
         it('should accept a custom string', () => {
@@ -565,8 +557,7 @@ describe('SelectComponent', () => {
 
     describe('markFirst input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.markFirst).toBeFalse();
+            expect(MockRender(SelectComponent, { markFirst: false }).point.componentInstance.markFirst).toBeFalse();
         });
 
         it('should accept true', () => {
@@ -577,8 +568,7 @@ describe('SelectComponent', () => {
 
     describe('clearOnBackspace input', () => {
         it('should default to true', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.clearOnBackspace).toBeTrue();
+            expect(MockRender(SelectComponent, { clearOnBackspace: true }).point.componentInstance.clearOnBackspace).toBeTrue();
         });
 
         it('should accept false', () => {
@@ -589,8 +579,7 @@ describe('SelectComponent', () => {
 
     describe('searchable input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.searchable).toBeFalse();
+            expect(MockRender(SelectComponent, { searchable: false }).point.componentInstance.searchable).toBeFalse();
         });
 
         it('should accept true', () => {
@@ -601,8 +590,7 @@ describe('SelectComponent', () => {
 
     describe('virtualScroll input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.virtualScroll).toBeFalse();
+            expect(MockRender(SelectComponent, { virtualScroll: false }).point.componentInstance.virtualScroll).toBeFalse();
         });
 
         it('should accept true', () => {
@@ -613,8 +601,7 @@ describe('SelectComponent', () => {
 
     describe('searchFn input', () => {
         it('should default to undefined', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.searchFn).toBeUndefined();
+            expect(MockRender(SelectComponent, { searchFn: undefined }).point.componentInstance.searchFn).toBeUndefined();
         });
 
         it('should accept a function', () => {
@@ -626,8 +613,7 @@ describe('SelectComponent', () => {
 
     describe('trackByFn input', () => {
         it('should default to undefined', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.trackByFn).toBeUndefined();
+            expect(MockRender(SelectComponent, { trackByFn: undefined }).point.componentInstance.trackByFn).toBeUndefined();
         });
 
         it('should accept a function', () => {
@@ -639,8 +625,7 @@ describe('SelectComponent', () => {
 
     describe('inputAttrs input', () => {
         it('should default to an object with an empty key', () => {
-            const comp = TestBed.createComponent(SelectComponent).componentInstance;
-            expect(comp.inputAttrs).toEqual({ '': '' });
+            expect(MockRender(SelectComponent, { inputAttrs: { '': '' } }).point.componentInstance.inputAttrs).toEqual({ '': '' });
         });
 
         it('should accept a custom attrs object', () => {

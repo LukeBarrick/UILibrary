@@ -1,62 +1,46 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { EventEmitter, NO_ERRORS_SCHEMA, QueryList } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { EventEmitter, QueryList } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { RadioGroupComponent } from './group.component';
+import { RadioModule } from '../radio.module';
 import { RadioButtonComponent } from '../button/button.component';
 
 describe('RadioGroupComponent', () => {
-  let component: RadioGroupComponent;
-  let fixture: ComponentFixture<RadioGroupComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RadioGroupComponent, RadioButtonComponent ],
-      imports: [ ReactiveFormsModule ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RadioGroupComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => MockBuilder(RadioGroupComponent, RadioModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(RadioGroupComponent).point.componentInstance).toBeTruthy();
   });
 
   describe('ControlValueAccessor', () => {
     it('should implement writeValue', () => {
-      const testValue = 'test';
-      component.writeValue(testValue);
-      expect(component.value).toBe(testValue);
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
+      comp.writeValue('test');
+      expect(comp.value).toBe('test');
     });
 
     it('should implement registerOnChange', () => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const fn = jasmine.createSpy('onChange');
-      component.registerOnChange(fn);
-      expect(component.onChange).toBe(fn);
+      comp.registerOnChange(fn);
+      expect(comp.onChange).toBe(fn);
     });
 
     it('should implement registerOnTouched', () => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const fn = jasmine.createSpy('onTouched');
-      component.registerOnTouched(fn);
-      expect(component.onTouched).toBe(fn);
+      comp.registerOnTouched(fn);
+      expect(comp.onTouched).toBe(fn);
     });
 
     it('should implement setDisabledState', () => {
-      // Create mock radio buttons
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const mockButton1 = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
       const mockButton2 = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
-      component.radioButtons = new QueryList<RadioButtonComponent>();
-      (component.radioButtons as any)._results = [mockButton1, mockButton2];
-
-      component.setDisabledState!(true);
-      
+      comp.radioButtons = new QueryList<RadioButtonComponent>();
+      (comp.radioButtons as any)._results = [mockButton1, mockButton2];
+      comp.setDisabledState!(true);
       expect(mockButton1.disabled).toBe(true);
       expect(mockButton2.disabled).toBe(true);
     });
@@ -64,12 +48,11 @@ describe('RadioGroupComponent', () => {
 
   describe('Input Properties', () => {
     it('should accept disabled input', (done) => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const mockButton = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
-      component.radioButtons = new QueryList<RadioButtonComponent>();
-      (component.radioButtons as any)._results = [mockButton];
-      
-      component.disabled = true;
-      
+      comp.radioButtons = new QueryList<RadioButtonComponent>();
+      (comp.radioButtons as any)._results = [mockButton];
+      comp.disabled = true;
       setTimeout(() => {
         expect(mockButton.disabled).toBe(true);
         done();
@@ -77,14 +60,13 @@ describe('RadioGroupComponent', () => {
     });
 
     it('should propagate disabled state to all radio buttons', (done) => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const mockButton1 = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
       const mockButton2 = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
       const mockButton3 = { disabled: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
-      component.radioButtons = new QueryList<RadioButtonComponent>();
-      (component.radioButtons as any)._results = [mockButton1, mockButton2, mockButton3];
-      
-      component.disabled = true;
-      
+      comp.radioButtons = new QueryList<RadioButtonComponent>();
+      (comp.radioButtons as any)._results = [mockButton1, mockButton2, mockButton3];
+      comp.disabled = true;
       setTimeout(() => {
         expect(mockButton1.disabled).toBe(true);
         expect(mockButton2.disabled).toBe(true);
@@ -96,103 +78,83 @@ describe('RadioGroupComponent', () => {
 
   describe('Lifecycle Hooks', () => {
     it('should unsubscribe on destroy', () => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const mockSubscription = jasmine.createSpyObj('Subscription', ['unsubscribe']);
-      component.$valueChanges = mockSubscription;
-      
-      component.ngOnDestroy();
-      
+      comp.$valueChanges = mockSubscription;
+      comp.ngOnDestroy();
       expect(mockSubscription.unsubscribe).toHaveBeenCalled();
     });
 
     it('should not error if no subscription exists on destroy', () => {
-      component.$valueChanges = undefined;
-      
-      expect(() => component.ngOnDestroy()).not.toThrow();
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
+      comp.$valueChanges = undefined;
+      expect(() => comp.ngOnDestroy()).not.toThrow();
     });
 
     it('should also unsubscribe radioButtonChanges on destroy', () => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const mockSub = jasmine.createSpyObj('Subscription', ['unsubscribe']);
-      component.$radioButtonChanges = mockSub;
-
-      component.ngOnDestroy();
-
+      comp.$radioButtonChanges = mockSub;
+      comp.ngOnDestroy();
       expect(mockSub.unsubscribe).toHaveBeenCalled();
     });
   });
 
   describe('Subscription leak prevention', () => {
     it('should call onChange only once after updateRadioButtons is called multiple times', () => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const onChangeSpy = jasmine.createSpy('onChange');
-      component.registerOnChange(onChangeSpy);
-
-      const mockButton = {
-        value: 'a',
-        checked: false,
-        checkedChange: new EventEmitter<boolean>()
-      } as unknown as RadioButtonComponent;
-
-      component.radioButtons = new QueryList<RadioButtonComponent>();
-      (component.radioButtons as any)._results = [mockButton];
-      (component.radioButtons as any).dirty = true;
-
-      // Simulate updateRadioButtons being called twice (e.g. QueryList change fires)
-      (component as any).updateRadioButtons();
-      (component as any).updateRadioButtons();
-
+      comp.registerOnChange(onChangeSpy);
+      const mockButton = { value: 'a', checked: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
+      comp.radioButtons = new QueryList<RadioButtonComponent>();
+      (comp.radioButtons as any)._results = [mockButton];
+      (comp.radioButtons as any).dirty = true;
+      (comp as any).updateRadioButtons();
+      (comp as any).updateRadioButtons();
       mockButton.checkedChange.emit(true);
-
       expect(onChangeSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should not call onChange after the component is destroyed', () => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const onChangeSpy = jasmine.createSpy('onChange');
-      component.registerOnChange(onChangeSpy);
-
-      const mockButton = {
-        value: 'b',
-        checked: false,
-        checkedChange: new EventEmitter<boolean>()
-      } as unknown as RadioButtonComponent;
-
-      component.radioButtons = new QueryList<RadioButtonComponent>();
-      (component.radioButtons as any)._results = [mockButton];
-      (component.radioButtons as any).dirty = true;
-
-      (component as any).updateRadioButtons();
-      component.ngOnDestroy();
-
+      comp.registerOnChange(onChangeSpy);
+      const mockButton = { value: 'b', checked: false, checkedChange: new EventEmitter<boolean>() } as unknown as RadioButtonComponent;
+      comp.radioButtons = new QueryList<RadioButtonComponent>();
+      (comp.radioButtons as any)._results = [mockButton];
+      (comp.radioButtons as any).dirty = true;
+      (comp as any).updateRadioButtons();
+      comp.ngOnDestroy();
       mockButton.checkedChange.emit(true);
-
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
   });
 
   describe('ContentChildren Integration', () => {
     it('should query RadioButtonComponents', () => {
-      expect(component.radioButtons).toBeDefined();
+      expect(MockRender(RadioGroupComponent).point.componentInstance.radioButtons).toBeDefined();
     });
   });
 
   describe('Value Management', () => {
     it('should store value when writeValue is called', () => {
-      const testValue = 'option2';
-      component.writeValue(testValue);
-      expect(component.value).toBe(testValue);
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
+      comp.writeValue('option2');
+      expect(comp.value).toBe('option2');
     });
 
     it('should initialize with undefined value', () => {
-      expect(component.value).toBeUndefined();
+      expect(MockRender(RadioGroupComponent).point.componentInstance.value).toBeUndefined();
     });
   });
 
   describe('Integration with Angular Forms', () => {
     it('should work with FormControl', () => {
+      const comp = MockRender(RadioGroupComponent).point.componentInstance;
       const formControl = new FormControl('option1');
-      component.registerOnChange((value: any) => formControl.setValue(value));
-      
-      component.value = 'option2';
-      component.onChange('option2');
-      
+      comp.registerOnChange((value: any) => formControl.setValue(value));
+      comp.value = 'option2';
+      comp.onChange('option2');
       expect(formControl.value).toBe('option2');
     });
   });

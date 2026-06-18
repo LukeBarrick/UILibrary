@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { DateRangeInputComponent } from './date-range-input.component';
+import { DatepickerModule } from '../datepicker.module';
 import { DateSelectionStrategy } from '../date-selection-strategy';
 import { DateRange } from '../date-range';
 
@@ -12,57 +12,45 @@ class MockDateSelectionStrategy extends DateSelectionStrategy {
 }
 
 describe('DateRangeInputComponent', () => {
-  let component: DateRangeInputComponent;
-  let fixture: ComponentFixture<DateRangeInputComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [DateRangeInputComponent],
-      providers: [
-        { provide: DateSelectionStrategy, useClass: MockDateSelectionStrategy }
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DateRangeInputComponent);
-    component = fixture.componentInstance;
-  });
+  beforeEach(() => MockBuilder(DateRangeInputComponent, DatepickerModule)
+    .provide({ provide: DateSelectionStrategy, useClass: MockDateSelectionStrategy }));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(DateRangeInputComponent).point.componentInstance).toBeTruthy();
   });
 
   describe('stateChanges', () => {
     it('should emit stateChanges on onFocus', () => {
+      const comp = MockRender(DateRangeInputComponent).point.componentInstance;
       let count = 0;
-      component.stateChanges.subscribe(() => count++);
-      component.onFocus();
+      comp.stateChanges.subscribe(() => count++);
+      comp.onFocus();
       expect(count).toBe(1);
     });
 
     it('should emit stateChanges on onBlur', () => {
+      const comp = MockRender(DateRangeInputComponent).point.componentInstance;
       let count = 0;
-      component.stateChanges.subscribe(() => count++);
-      component.onBlur();
+      comp.stateChanges.subscribe(() => count++);
+      comp.onBlur();
       expect(count).toBe(1);
     });
 
     it('should emit stateChanges on close', () => {
+      const comp = MockRender(DateRangeInputComponent).point.componentInstance;
       let count = 0;
-      component.stateChanges.subscribe(() => count++);
-      component.close();
+      comp.stateChanges.subscribe(() => count++);
+      comp.close();
       expect(count).toBe(1);
     });
   });
 
   describe('ngOnDestroy', () => {
     it('should complete stateChanges on destroy', () => {
+      const comp = MockRender(DateRangeInputComponent).point.componentInstance;
       let completed = false;
-      component.stateChanges.subscribe({ complete: () => completed = true });
-      component.ngOnDestroy();
+      comp.stateChanges.subscribe({ complete: () => completed = true });
+      comp.ngOnDestroy();
       expect(completed).toBe(true);
     });
   });

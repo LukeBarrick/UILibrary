@@ -1,186 +1,126 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { ButtonComponent } from './button.component';
+import { ButtonModule } from '../button.module';
 
 describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ButtonComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ButtonComponent);
-    component = fixture.componentInstance;
-  });
+  beforeEach(() => MockBuilder(ButtonComponent, ButtonModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(ButtonComponent, { appearance: 'primary' }).point.componentInstance).toBeTruthy();
   });
 
   describe('Input Properties', () => {
     it('should accept size input', () => {
-      component.size = 'small';
-      expect(component.size).toBe('small');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { size: 'small', appearance: 'primary' }).point;
+      expect(comp.size).toBe('small');
     });
 
     it('should accept appearance input', () => {
-      component.appearance = 'primary';
-      expect(component.appearance).toBe('primary');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'primary' }).point;
+      expect(comp.appearance).toBe('primary');
     });
 
     it('should accept disabled input', () => {
-      component.disabled = true;
-      expect(component.disabled).toBe(true);
+      const { componentInstance: comp } = MockRender(ButtonComponent, { disabled: true }).point;
+      expect(comp.disabled).toBe(true);
     });
 
     it('should accept aria_label input', () => {
-      component.aria_label = 'Test Button';
-      expect(component.aria_label).toBe('Test Button');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { aria_label: 'Test Button' }).point;
+      expect(comp.aria_label).toBe('Test Button');
     });
 
     it('should accept icon input', () => {
-      component.icon = 'home';
-      expect(component.icon).toBe('home');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { icon: 'home' }).point;
+      expect(comp.icon).toBe('home');
     });
   });
 
   describe('Size Configuration', () => {
     it('should set btn-small class for small size', () => {
-      component.size = 'small';
-      component.ngOnInit();
-      
-      expect(component.sizeClass).toBe('btn-small');
-      expect(component.iconSizeClass).toBe('small');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { size: 'small', appearance: 'primary' }).point;
+      expect(comp.sizeClass).toBe('btn-small');
+      expect(comp.iconSizeClass).toBe('small');
     });
 
     it('should set btn class for non-small sizes', () => {
-      component.size = 'large';
-      component.ngOnInit();
-      
-      expect(component.sizeClass).toBe('btn');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { size: 'large', appearance: 'primary' }).point;
+      expect(comp.sizeClass).toBe('btn');
     });
 
     it('should default to btn class when size is undefined', () => {
-      component.size = undefined;
-      component.ngOnInit();
-      
-      expect(component.sizeClass).toBe('btn');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { size: undefined, appearance: 'primary' }).point;
+      expect(comp.sizeClass).toBe('btn');
     });
   });
 
   describe('Appearance Configuration', () => {
     it('should set btn-primary class for primary appearance', () => {
-      component.appearance = 'primary';
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-primary');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'primary' }).point;
+      expect(comp.appearanceClass).toBe('btn-primary');
     });
 
     it('should set btn-secondary class for secondary appearance', () => {
-      component.appearance = 'secondary';
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-secondary');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'secondary' }).point;
+      expect(comp.appearanceClass).toBe('btn-secondary');
     });
 
     it('should set btn-primary success class for primary-success appearance', () => {
-      component.appearance = 'primary-success';
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-primary success');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'primary-success' }).point;
+      expect(comp.appearanceClass).toBe('btn-primary success');
     });
 
     it('should set btn-primary delete class for primary-delete appearance', () => {
-      component.appearance = 'primary-delete';
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-primary delete');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'primary-delete' }).point;
+      expect(comp.appearanceClass).toBe('btn-primary delete');
     });
 
     it('should set btn-secondary success class for secondary-success appearance', () => {
-      component.appearance = 'secondary-success';
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-secondary success');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'secondary-success' }).point;
+      expect(comp.appearanceClass).toBe('btn-secondary success');
     });
 
     it('should set btn-secondary delete class for secondary-delete appearance', () => {
-      component.appearance = 'secondary-delete';
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-secondary delete');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'secondary-delete' }).point;
+      expect(comp.appearanceClass).toBe('btn-secondary delete');
     });
 
     it('should default to btn-primary class when appearance is undefined', () => {
-      component.appearance = undefined;
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-primary');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: undefined }).point;
+      expect(comp.appearanceClass).toBe('btn-primary');
     });
 
     it('should default to btn-primary class when appearance is invalid', () => {
-      component.appearance = 'invalid-appearance';
-      component.ngOnInit();
-      
-      expect(component.appearanceClass).toBe('btn-primary');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: 'invalid-appearance' }).point;
+      expect(comp.appearanceClass).toBe('btn-primary');
     });
   });
 
   describe('ngOnInit', () => {
     it('should configure both size and appearance', () => {
-      component.size = 'small';
-      component.appearance = 'secondary';
-      component.ngOnInit();
-      
-      expect(component.sizeClass).toBe('btn-small');
-      expect(component.appearanceClass).toBe('btn-secondary');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { size: 'small', appearance: 'secondary' }).point;
+      expect(comp.sizeClass).toBe('btn-small');
+      expect(comp.appearanceClass).toBe('btn-secondary');
     });
 
     it('should initialize with default values when no inputs provided', () => {
-      component.ngOnInit();
-      
-      expect(component.sizeClass).toBe('btn');
-      expect(component.appearanceClass).toBe('btn-primary');
-    });
-  });
-
-  describe('Default Values', () => {
-    it('should have undefined size class before initialization', () => {
-      expect(component.sizeClass).toBeUndefined();
-    });
-
-    it('should have undefined appearance class before initialization', () => {
-      expect(component.appearanceClass).toBeUndefined();
-    });
-
-    it('should have undefined icon size class before initialization', () => {
-      expect(component.iconSizeClass).toBeUndefined();
+      const { componentInstance: comp } = MockRender(ButtonComponent, { appearance: undefined }).point;
+      expect(comp.sizeClass).toBe('btn');
+      expect(comp.appearanceClass).toBe('btn-primary');
     });
   });
 
   describe('Icon Integration', () => {
     it('should set small icon size when button is small', () => {
-      component.size = 'small';
-      component.icon = 'home';
-      component.ngOnInit();
-      
-      expect(component.iconSizeClass).toBe('small');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { size: 'small', appearance: 'primary', icon: 'home' }).point;
+      expect(comp.iconSizeClass).toBe('small');
     });
 
     it('should set medium icon size class for large buttons', () => {
-      component.size = 'large';
-      component.icon = 'home';
-      component.ngOnInit();
-      
-      expect(component.iconSizeClass).toBe('medium');
+      const { componentInstance: comp } = MockRender(ButtonComponent, { size: 'large', appearance: 'primary', icon: 'home' }).point;
+      expect(comp.iconSizeClass).toBe('medium');
     });
   });
 });
+

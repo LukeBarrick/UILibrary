@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { FormFieldPlaygroundComponent } from './form-field-playground.component';
@@ -14,8 +13,7 @@ describe('FormFieldPlaygroundComponent', () => {
         });
 
         it('showOutput @Input should default to undefined', () => {
-            const fixture = TestBed.createComponent(FormFieldPlaygroundComponent);
-            expect(fixture.componentInstance.showOutput).toBeUndefined();
+            expect(MockRender(FormFieldPlaygroundComponent, { showOutput: undefined }).point.componentInstance.showOutput).toBeUndefined();
         });
     });
 

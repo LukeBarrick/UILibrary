@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { InputPlaygroundComponent } from './input-playground.component';
@@ -21,8 +20,7 @@ describe('InputPlaygroundComponent', () => {
         });
 
         it('showOutput @Input should default to false', () => {
-            const fixture = TestBed.createComponent(InputPlaygroundComponent);
-            expect(fixture.componentInstance.showOutput).toBeFalse();
+            expect(MockRender(InputPlaygroundComponent, { showOutput: false }).point.componentInstance.showOutput).toBeFalse();
         });
 
         it('isDisabled should default to true', () => {

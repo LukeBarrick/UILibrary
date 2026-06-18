@@ -1,30 +1,14 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { CalendarComponent } from './calendar.component';
+import { DatepickerModule } from '../datepicker.module';
 import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 
 describe('CalendarComponent', () => {
-  let component: CalendarComponent;
-  let fixture: ComponentFixture<CalendarComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [CalendarComponent],
-      providers: [
-        { provide: DATE_NOW, useValue: new Date() }
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CalendarComponent);
-    component = fixture.componentInstance;
-  });
+  beforeEach(() => MockBuilder(CalendarComponent, DatepickerModule)
+    .provide({ provide: DATE_NOW, useValue: new Date() }));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(CalendarComponent).point.componentInstance).toBeTruthy();
   });
 });

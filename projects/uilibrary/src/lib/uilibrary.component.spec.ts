@@ -1,23 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { UilibraryComponent } from './uilibrary.component';
+import { UilibraryModule } from './uilibrary.module';
 
 describe('UilibraryComponent', () => {
-  let component: UilibraryComponent;
-  let fixture: ComponentFixture<UilibraryComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [UilibraryComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(UilibraryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => MockBuilder(UilibraryComponent, UilibraryModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(UilibraryComponent).point.componentInstance).toBeTruthy();
   });
 });

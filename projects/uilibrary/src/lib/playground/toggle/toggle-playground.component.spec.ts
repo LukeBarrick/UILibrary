@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { TogglePlaygroundComponent } from './toggle-playground.component';
@@ -23,8 +22,7 @@ describe('TogglePlaygroundComponent', () => {
         });
 
         it('showOutput @Input should default to false', () => {
-            const fixture = TestBed.createComponent(TogglePlaygroundComponent);
-            expect(fixture.componentInstance.showOutput).toBeFalse();
+            expect(MockRender(TogglePlaygroundComponent, { showOutput: false }).point.componentInstance.showOutput).toBeFalse();
         });
 
         it('isDisabled should default to true', () => {
@@ -141,8 +139,7 @@ describe('ToggleComponent', () => {
 
     describe('labelPosition input', () => {
         it('should default to "left"', () => {
-            const comp = TestBed.createComponent(ToggleComponent).componentInstance;
-            expect(comp.labelPosition).toBe('left');
+            expect(MockRender(ToggleComponent, { labelPosition: 'left' }).point.componentInstance.labelPosition).toBe('left');
         });
 
         it('should accept "right"', () => {
@@ -153,8 +150,7 @@ describe('ToggleComponent', () => {
 
     describe('labelSize input', () => {
         it('should default to empty string', () => {
-            const comp = TestBed.createComponent(ToggleComponent).componentInstance;
-            expect(comp.labelSize).toBe('');
+            expect(MockRender(ToggleComponent, { labelSize: '' }).point.componentInstance.labelSize).toBe('');
         });
 
         it('should accept "large"', () => {
@@ -165,8 +161,7 @@ describe('ToggleComponent', () => {
 
     describe('hideLabel input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(ToggleComponent).componentInstance;
-            expect(comp.hideLabel).toBeFalse();
+            expect(MockRender(ToggleComponent, { hideLabel: false }).point.componentInstance.hideLabel).toBeFalse();
         });
 
         it('should accept true', () => {
@@ -189,8 +184,7 @@ describe('ToggleComponent', () => {
 
     describe('disabled input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(ToggleComponent).componentInstance;
-            expect(comp.disabled).toBeFalse();
+            expect(MockRender(ToggleComponent, { disabled: false }).point.componentInstance.disabled).toBeFalse();
         });
 
         it('should accept true via setDisabledState', () => {

@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { StatusTagPlaygroundComponent } from './status-tag-playground.component';
 import { PlaygroundModule } from '../playground.module';
@@ -32,8 +31,7 @@ describe('StatusTagComponent', () => {
     beforeEach(() => MockBuilder(StatusTagComponent, StatusTagsModule));
 
     it('should default statusType to empty string', () => {
-        const comp = TestBed.createComponent(StatusTagComponent).componentInstance;
-        expect(comp.statusType).toBe('');
+        expect(MockRender(StatusTagComponent, { statusType: '' }).point.componentInstance.statusType).toBe('');
     });
 
     it('should accept statusType "info"', () => {

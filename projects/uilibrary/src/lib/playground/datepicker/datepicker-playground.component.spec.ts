@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { DatePickerPlaygroundComponent } from './datepicker-playground.component';
@@ -12,6 +11,7 @@ import { DatePickerInputComponent } from '../../modules/datepicker/datepicker-in
 import { DateRangeInputComponent } from '../../modules/datepicker/date-range-input/date-range-input.component';
 import { CalendarComponent } from '../../modules/datepicker/calendar/calendar.component';
 import { DatepickerModule } from '../../modules/datepicker/datepicker.module';
+import { DATE_NOW } from '../../core/tokens/DATE_NOW';
 
 describe('DatePickerPlaygroundComponent', () => {
     beforeEach(() => MockBuilder(DatePickerPlaygroundComponent, PlaygroundModule).keep(ReactiveFormsModule));
@@ -23,8 +23,7 @@ describe('DatePickerPlaygroundComponent', () => {
         });
 
         it('showOutput @Input should default to false', () => {
-            const fixture = TestBed.createComponent(DatePickerPlaygroundComponent);
-            expect(fixture.componentInstance.showOutput).toBeFalse();
+            expect(MockRender(DatePickerPlaygroundComponent, { showOutput: false }).point.componentInstance.showOutput).toBeFalse();
         });
 
         it('datePickerModel should be undefined initially', () => {
@@ -176,17 +175,16 @@ describe('DatePickerPlaygroundComponent', () => {
 
 // ─── DatePickerInputComponent direct API tests ───────────────────────────────
 describe('DatePickerInputComponent', () => {
-    beforeEach(() => MockBuilder(DatePickerInputComponent, DatepickerModule));
+    beforeEach(() => MockBuilder(DatePickerInputComponent, DatepickerModule)
+        .provide({ provide: DATE_NOW, useValue: new Date() }));
 
     it('should create', () => {
-        const comp = TestBed.createComponent(DatePickerInputComponent).componentInstance;
-        expect(comp).toBeTruthy();
+        expect(MockRender(DatePickerInputComponent).point.componentInstance).toBeTruthy();
     });
 
     describe('editable input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(DatePickerInputComponent).componentInstance;
-            expect(comp.editable).toBeFalse();
+            expect(MockRender(DatePickerInputComponent, { editable: false }).point.componentInstance.editable).toBeFalse();
         });
 
         it('should accept true', () => {
@@ -197,8 +195,7 @@ describe('DatePickerInputComponent', () => {
 
     describe('closeOnSelection input', () => {
         it('should default to true', () => {
-            const comp = TestBed.createComponent(DatePickerInputComponent).componentInstance;
-            expect(comp.closeOnSelection).toBeTrue();
+            expect(MockRender(DatePickerInputComponent, { closeOnSelection: true }).point.componentInstance.closeOnSelection).toBeTrue();
         });
 
         it('should accept false', () => {
@@ -210,16 +207,16 @@ describe('DatePickerInputComponent', () => {
 
 // ─── CalendarComponent direct API tests ──────────────────────────────────────
 describe('CalendarComponent', () => {
-    beforeEach(() => MockBuilder(CalendarComponent, DatepickerModule));
+    beforeEach(() => MockBuilder(CalendarComponent, DatepickerModule)
+        .provide({ provide: DATE_NOW, useValue: new Date() }));
 
     it('should create', () => {
-        const comp = TestBed.createComponent(CalendarComponent).componentInstance;
-        expect(comp).toBeTruthy();
+        expect(MockRender(CalendarComponent).point.componentInstance).toBeTruthy();
     });
 
     describe('dateSelected output', () => {
         it('should be an EventEmitter', () => {
-            const comp = TestBed.createComponent(CalendarComponent).componentInstance;
+            const comp = MockRender(CalendarComponent).point.componentInstance;
             expect(comp.dateSelected).toBeDefined();
             expect(typeof comp.dateSelected.emit).toBe('function');
         });
@@ -231,14 +228,12 @@ describe('DateRangeInputComponent', () => {
     beforeEach(() => MockBuilder(DateRangeInputComponent, DatepickerModule));
 
     it('should create', () => {
-        const comp = TestBed.createComponent(DateRangeInputComponent).componentInstance;
-        expect(comp).toBeTruthy();
+        expect(MockRender(DateRangeInputComponent).point.componentInstance).toBeTruthy();
     });
 
     describe('editable input', () => {
         it('should default to true', () => {
-            const comp = TestBed.createComponent(DateRangeInputComponent).componentInstance;
-            expect(comp.editable).toBeTrue();
+            expect(MockRender(DateRangeInputComponent, { editable: true }).point.componentInstance.editable).toBeTrue();
         });
 
         it('should accept false', () => {
@@ -249,8 +244,7 @@ describe('DateRangeInputComponent', () => {
 
     describe('closeOnSelection input', () => {
         it('should default to true', () => {
-            const comp = TestBed.createComponent(DateRangeInputComponent).componentInstance;
-            expect(comp.closeOnSelection).toBeTrue();
+            expect(MockRender(DateRangeInputComponent, { closeOnSelection: true }).point.componentInstance.closeOnSelection).toBeTrue();
         });
 
         it('should accept false', () => {

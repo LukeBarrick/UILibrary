@@ -1,28 +1,12 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { HintComponent } from './hint.component';
+import { InputAnnotationsModule } from '../input-annotations.module';
 
 describe('HintComponent', () => {
-  let component: HintComponent;
-  let fixture: ComponentFixture<HintComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HintComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HintComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => MockBuilder(HintComponent, InputAnnotationsModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(HintComponent).point.componentInstance).toBeTruthy();
   });
 });

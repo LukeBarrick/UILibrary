@@ -1,28 +1,12 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { StatusTagComponent } from './status-tag.component';
+import { StatusTagsModule } from '../status-tags.module';
 
 describe('StatusTagComponent', () => {
-  let component: StatusTagComponent;
-  let fixture: ComponentFixture<StatusTagComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ StatusTagComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(StatusTagComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => MockBuilder(StatusTagComponent, StatusTagsModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(StatusTagComponent).point.componentInstance).toBeTruthy();
   });
 });

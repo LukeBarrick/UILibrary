@@ -1,28 +1,12 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { TooltipComponent } from './tooltip.component';
+import { InputAnnotationsModule } from '../input-annotations.module';
 
 describe('TooltipComponent', () => {
-  let component: TooltipComponent;
-  let fixture: ComponentFixture<TooltipComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TooltipComponent ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TooltipComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => MockBuilder(TooltipComponent, InputAnnotationsModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(TooltipComponent).point.componentInstance).toBeTruthy();
   });
 });

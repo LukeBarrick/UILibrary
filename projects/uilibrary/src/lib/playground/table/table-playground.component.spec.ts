@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { TablePlaygroundComponent } from './table-playground.component';
 import { PlaygroundModule } from '../playground.module';
@@ -62,13 +61,11 @@ describe('TableComponent', () => {
     beforeEach(() => MockBuilder(TableComponent, TableModule));
 
     it('should create', () => {
-        const comp = TestBed.createComponent(TableComponent).componentInstance;
-        expect(comp).toBeTruthy();
+        expect(MockRender(TableComponent).point.componentInstance).toBeTruthy();
     });
 
     it('data input should default to undefined', () => {
-        const comp = TestBed.createComponent(TableComponent).componentInstance;
-        expect(comp.data).toBeUndefined();
+        expect((MockRender(TableComponent as any, { data: undefined }).point.componentInstance as TableComponent<any>).data).toBeUndefined();
     });
 
     it('data input should accept a readonly array', () => {

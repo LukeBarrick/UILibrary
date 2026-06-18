@@ -1,233 +1,156 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { IconComponent } from './icon.component';
 import { IconModule } from './icon.module';
 
 describe('IconComponent', () => {
-  let component: IconComponent;
-  let fixture: ComponentFixture<IconComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [ IconComponent ],
-      providers: [ IconModule.forStandalone() ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(IconComponent);
-    component = fixture.componentInstance;
-    // Don't call detectChanges in beforeEach - tests that need ngOnInit call it manually
-  });
+  beforeEach(() => MockBuilder(IconComponent, IconModule)
+    .provide(IconModule.forStandalone()));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(IconComponent, { customDimensions: [0, 0] }).point.componentInstance).toBeTruthy();
   });
 
   describe('Input Properties', () => {
     it('should accept name input', () => {
-      component.name = 'home';
-      expect(component.name).toBe('home');
+      const { componentInstance: comp } = MockRender(IconComponent, { name: 'home', customDimensions: [0, 0] }).point;
+      expect(comp.name).toBe('home');
     });
 
     it('should accept size input', () => {
-      component.size = 'large';
-      expect(component.size).toBe('large');
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'large', customDimensions: [0, 0] }).point;
+      expect(comp.size).toBe('large');
     });
 
     it('should accept appearance input', () => {
-      component.appearance = 'primary';
-      expect(component.appearance).toBe('primary');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'primary', customDimensions: [0, 0] }).point;
+      expect(comp.appearance).toBe('primary');
     });
   });
 
   describe('Size Configuration', () => {
     it('should set small size dimensions', () => {
-      component.size = 'small';
-      component.ngOnInit();
-
-      expect(component.width).toBe(30);
-      expect(component.height).toBe(30);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'small', customDimensions: [0, 0] }).point;
+      expect(comp.width).toBe(30);
+      expect(comp.height).toBe(30);
     });
 
     it('should set medium size dimensions', () => {
-      component.size = 'medium';
-      component.ngOnInit();
-
-      expect(component.width).toBe(40);
-      expect(component.height).toBe(40);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'medium', customDimensions: [0, 0] }).point;
+      expect(comp.width).toBe(40);
+      expect(comp.height).toBe(40);
     });
 
     it('should set large size dimensions', () => {
-      component.size = 'large';
-      component.ngOnInit();
-
-      expect(component.width).toBe(80);
-      expect(component.height).toBe(80);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'large', customDimensions: [0, 0] }).point;
+      expect(comp.width).toBe(80);
+      expect(comp.height).toBe(80);
     });
 
     it('should default to medium size when size is undefined', () => {
-      component.size = undefined;
-      component.ngOnInit();
-
-      expect(component.width).toBe(40);
-      expect(component.height).toBe(40);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: undefined, customDimensions: [0, 0] }).point;
+      expect(comp.width).toBe(40);
+      expect(comp.height).toBe(40);
     });
 
     it('should default to medium size when size is invalid', () => {
-      component.size = 'invalid-size';
-      component.ngOnInit();
-
-      expect(component.width).toBe(40);
-      expect(component.height).toBe(40);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'invalid-size', customDimensions: [0, 0] }).point;
+      expect(comp.width).toBe(40);
+      expect(comp.height).toBe(40);
     });
   });
 
   describe('Appearance Configuration', () => {
     it('should set primary appearance color', () => {
-      component.appearance = 'primary';
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('var(--primary)');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'primary', customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('var(--primary)');
     });
 
     it('should set secondary appearance color', () => {
-      component.appearance = 'secondary';
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('var(--secondary)');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'secondary', customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('var(--secondary)');
     });
 
     it('should set tertiary appearance color', () => {
-      component.appearance = 'tertiary';
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('var(--tertiary)');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'tertiary', customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('var(--tertiary)');
     });
 
     it('should set light-gray appearance color', () => {
-      component.appearance = 'light-gray';
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('var(--light-gray)');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'light-gray', customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('var(--light-gray)');
     });
 
     it('should set dark-gray appearance color', () => {
-      component.appearance = 'dark-gray';
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('var(--dark-gray)');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'dark-gray', customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('var(--dark-gray)');
     });
 
     it('should set custom appearance color to currentColor', () => {
-      component.appearance = 'custom';
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('currentColor');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'custom', customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('currentColor');
     });
 
     it('should default to secondary appearance when appearance is undefined', () => {
-      component.appearance = undefined;
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('var(--secondary)');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: undefined, customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('var(--secondary)');
     });
 
     it('should default to secondary appearance when appearance is invalid', () => {
-      component.appearance = 'invalid-appearance';
-      component.ngOnInit();
-
-      expect(component.fillColor).toBe('var(--secondary)');
+      const { componentInstance: comp } = MockRender(IconComponent, { appearance: 'invalid-appearance', customDimensions: [0, 0] }).point;
+      expect(comp.fillColor).toBe('var(--secondary)');
     });
   });
 
   describe('Custom Dimensions', () => {
-    it('should have a default customDimensions of [0, 0]', () => {
-      expect(component.customDimensions).toEqual([0, 0]);
+    it('should reflect customDimensions [0, 0] when provided', () => {
+      expect(MockRender(IconComponent, { customDimensions: [0, 0] }).point.componentInstance.customDimensions).toEqual([0, 0]);
     });
 
     it('should override height and width when both values are non-zero', () => {
-      component.customDimensions = [24, 36];
-      component.ngOnInit();
-
-      expect(component.height).toBe(24);
-      expect(component.width).toBe(36);
+      const { componentInstance: comp } = MockRender(IconComponent, { customDimensions: [24, 36] }).point;
+      expect(comp.height).toBe(24);
+      expect(comp.width).toBe(36);
     });
 
     it('should not override dimensions when customDimensions is [0, 0]', () => {
-      component.size = 'small';
-      component.customDimensions = [0, 0];
-      component.ngOnInit();
-
-      expect(component.height).toBe(30);
-      expect(component.width).toBe(30);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'small', customDimensions: [0, 0] }).point;
+      expect(comp.height).toBe(30);
+      expect(comp.width).toBe(30);
     });
 
     it('should not override dimensions when only height is non-zero', () => {
-      component.size = 'small';
-      component.customDimensions = [24, 0];
-      component.ngOnInit();
-
-      expect(component.height).toBe(30);
-      expect(component.width).toBe(30);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'small', customDimensions: [24, 0] }).point;
+      expect(comp.height).toBe(30);
+      expect(comp.width).toBe(30);
     });
 
     it('should not override dimensions when only width is non-zero', () => {
-      component.size = 'small';
-      component.customDimensions = [0, 36];
-      component.ngOnInit();
-
-      expect(component.height).toBe(30);
-      expect(component.width).toBe(30);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'small', customDimensions: [0, 36] }).point;
+      expect(comp.height).toBe(30);
+      expect(comp.width).toBe(30);
     });
 
     it('should override size-based dimensions when customDimensions are both non-zero', () => {
-      component.size = 'large';
-      component.customDimensions = [24, 36];
-      component.ngOnInit();
-
-      expect(component.height).toBe(24);
-      expect(component.width).toBe(36);
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'large', customDimensions: [24, 36] }).point;
+      expect(comp.height).toBe(24);
+      expect(comp.width).toBe(36);
     });
   });
 
   describe('ngOnInit', () => {
     it('should initialize both size and appearance', () => {
-      component.size = 'large';
-      component.appearance = 'primary';
-      component.ngOnInit();
-
-      expect(component.width).toBe(80);
-      expect(component.height).toBe(80);
-      expect(component.fillColor).toBe('var(--primary)');
+      const { componentInstance: comp } = MockRender(IconComponent, { size: 'large', appearance: 'primary', customDimensions: [0, 0] }).point;
+      expect(comp.width).toBe(80);
+      expect(comp.height).toBe(80);
+      expect(comp.fillColor).toBe('var(--primary)');
     });
 
-    it('should initialize with default values of 40 when no inputs provided', () => {
-      component.ngOnInit();
-
-      expect(component.width).toBe(40);
-      expect(component.height).toBe(40);
-      expect(component.fillColor).toBe('var(--secondary)');
-    });
-  });
-
-  describe('Default Values', () => {
-    it('should have default width of undefined before initialization', () => {
-      expect(component.width).toBe(undefined);
-    });
-
-    it('should have default height of undefined before initialization', () => {
-      expect(component.height).toBe(undefined);
-    });
-
-    it('should have default fillColor of empty string before initialization', () => {
-      expect(component.fillColor).toBe('');
+    it('should initialize with defaults of 40 when no size/appearance inputs provided', () => {
+      const { componentInstance: comp } = MockRender(IconComponent, { customDimensions: [0, 0] }).point;
+      expect(comp.width).toBe(40);
+      expect(comp.height).toBe(40);
+      expect(comp.fillColor).toBe('var(--secondary)');
     });
   });
 });

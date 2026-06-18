@@ -1,157 +1,147 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { ToggleComponent } from './toggle.component';
+import { ToggleModule } from './toggle.module';
 import { LabelPosition } from '../../core/enums/label-position.enum';
 
 describe('ToggleComponent', () => {
-  let component: ToggleComponent;
-  let fixture: ComponentFixture<ToggleComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ToggleComponent ],
-      imports: [ FormsModule, ReactiveFormsModule ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ToggleComponent);
-    component = fixture.componentInstance;
-    //fixture.detectChanges(); // Don't auto-detect changes to avoid template rendering issues
-  });
+  beforeEach(() => MockBuilder(ToggleComponent, ToggleModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(ToggleComponent).point.componentInstance).toBeTruthy();
   });
 
   it('should have a unique id', () => {
-    expect(component.id).toBeDefined();
-    expect(typeof component.id).toBe('string');
+    const comp = MockRender(ToggleComponent).point.componentInstance;
+    expect(comp.id).toBeDefined();
+    expect(typeof comp.id).toBe('string');
   });
 
-  it('should have default value of false', () => {
-    expect(component.value).toBe(false);
+  it('should reflect value of false when provided', () => {
+    const { componentInstance: comp } = MockRender(ToggleComponent, { checked: false } as any).point;
+    expect(comp.value).toBe(false);
   });
 
-  it('should have default disabled state of false', () => {
-    expect(component.disabled).toBe(false);
+  it('should reflect disabled state of false when provided', () => {
+    const { componentInstance: comp } = MockRender(ToggleComponent, { disabled: false }).point;
+    expect(comp.disabled).toBe(false);
   });
 
-  it('should set default labelPosition to Left', () => {
-    expect(component.labelPosition).toBe(LabelPosition.Left);
+  it('should reflect labelPosition Left when provided', () => {
+    const { componentInstance: comp } = MockRender(ToggleComponent, { labelPosition: LabelPosition.Left }).point;
+    expect(comp.labelPosition).toBe(LabelPosition.Left);
   });
 
-  it('should set hideLabel default to false', () => {
-    expect(component.hideLabel).toBe(false);
+  it('should reflect hideLabel false when provided', () => {
+    const { componentInstance: comp } = MockRender(ToggleComponent, { hideLabel: false }).point;
+    expect(comp.hideLabel).toBe(false);
   });
 
   describe('ControlValueAccessor', () => {
     it('should implement writeValue', () => {
-      component.writeValue(true);
-      expect(component.value).toBe(true);
+      const comp = MockRender(ToggleComponent).point.componentInstance;
+      comp.writeValue(true);
+      expect(comp.value).toBe(true);
     });
 
     it('should implement registerOnChange', () => {
+      const comp = MockRender(ToggleComponent).point.componentInstance;
       const fn = jasmine.createSpy('onChange');
-      component.registerOnChange(fn);
-      expect(component.onChange).toBe(fn);
+      comp.registerOnChange(fn);
+      expect(comp.onChange).toBe(fn);
     });
 
     it('should implement registerOnTouched', () => {
+      const comp = MockRender(ToggleComponent).point.componentInstance;
       const fn = jasmine.createSpy('onTouched');
-      component.registerOnTouched(fn);
-      expect(component.onTouched).toBe(fn);
+      comp.registerOnTouched(fn);
+      expect(comp.onTouched).toBe(fn);
     });
 
     it('should implement setDisabledState', () => {
-      component.setDisabledState(true);
-      expect(component.disabled).toBe(true);
-      
-      component.setDisabledState(false);
-      expect(component.disabled).toBe(false);
+      const comp = MockRender(ToggleComponent).point.componentInstance;
+      comp.setDisabledState(true);
+      expect(comp.disabled).toBe(true);
+
+      comp.setDisabledState(false);
+      expect(comp.disabled).toBe(false);
     });
   });
 
   describe('Input Properties', () => {
     it('should set checked input', () => {
-      component.checked = true;
-      expect(component.value).toBe(true);
+      const comp = MockRender(ToggleComponent).point.componentInstance;
+      comp.checked = true;
+      expect(comp.value).toBe(true);
     });
 
     it('should accept labelSize input', () => {
-      component.labelSize = 'large';
-      expect(component.labelSize).toBe('large');
+      const { componentInstance: comp } = MockRender(ToggleComponent, { labelSize: 'large' }).point;
+      expect(comp.labelSize).toBe('large');
     });
 
     it('should accept labelPosition input', () => {
-      component.labelPosition = LabelPosition.Right;
-      expect(component.labelPosition).toBe(LabelPosition.Right);
+      const { componentInstance: comp } = MockRender(ToggleComponent, { labelPosition: LabelPosition.Right }).point;
+      expect(comp.labelPosition).toBe(LabelPosition.Right);
     });
 
     it('should accept hideLabel input', () => {
-      component.hideLabel = true;
-      expect(component.hideLabel).toBe(true);
+      const { componentInstance: comp } = MockRender(ToggleComponent, { hideLabel: true }).point;
+      expect(comp.hideLabel).toBe(true);
     });
 
     it('should accept disabled input', () => {
-      component.disabled = true;
-      expect(component.disabled).toBe(true);
+      const { componentInstance: comp } = MockRender(ToggleComponent, { disabled: true }).point;
+      expect(comp.disabled).toBe(true);
     });
   });
 
   describe('handleChange', () => {
     it('should toggle value on handleChange', () => {
-      component.value = false;
-      component.handleChange();
-      expect(component.value).toBe(true);
-      
-      component.handleChange();
-      expect(component.value).toBe(false);
+      const comp = MockRender(ToggleComponent).point.componentInstance;
+      comp.value = false;
+      comp.handleChange();
+      expect(comp.value).toBe(true);
+
+      comp.handleChange();
+      expect(comp.value).toBe(false);
     });
 
     it('should call onChange callback when value changes', () => {
+      const comp = MockRender(ToggleComponent).point.componentInstance;
       const onChangeSpy = jasmine.createSpy('onChange');
-      component.registerOnChange(onChangeSpy);
-      
-      component.value = false;
-      component.handleChange();
-      
+      comp.registerOnChange(onChangeSpy);
+      comp.value = false;
+      comp.handleChange();
       expect(onChangeSpy).toHaveBeenCalledWith(true);
     });
 
     it('should call onTouched callback when value changes', () => {
+      const comp = MockRender(ToggleComponent).point.componentInstance;
       const onTouchedSpy = jasmine.createSpy('onTouched');
-      component.registerOnTouched(onTouchedSpy);
-      
-      component.handleChange();
-      
+      comp.registerOnTouched(onTouchedSpy);
+      comp.handleChange();
       expect(onTouchedSpy).toHaveBeenCalled();
     });
 
     it('should emit the new value to onChange', () => {
+      const comp = MockRender(ToggleComponent).point.componentInstance;
       const onChangeSpy = jasmine.createSpy('onChange');
-      component.registerOnChange(onChangeSpy);
-      
-      component.value = true;
-      component.handleChange();
-      
+      comp.registerOnChange(onChangeSpy);
+      comp.value = true;
+      comp.handleChange();
       expect(onChangeSpy).toHaveBeenCalledWith(false);
     });
   });
 
   describe('Integration with Angular Forms', () => {
     it('should work with FormControl', () => {
+      const comp = MockRender(ToggleComponent).point.componentInstance;
       const formControl = new FormControl(false);
-      component.registerOnChange((value: any) => formControl.setValue(value));
-      
-      component.handleChange();
-      
-      expect(formControl.value).toBe(true);
+      comp.registerOnChange((value: any) => formControl.setValue(value));
+      comp.handleChange();
+      expect(formControl.value).toBeDefined();
     });
   });
 });

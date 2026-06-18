@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { CheckboxPlaygroundComponent } from './checkbox-playground.component';
@@ -23,8 +22,7 @@ describe('CheckboxPlaygroundComponent', () => {
         });
 
         it('showOutput @Input should default to false', () => {
-            const fixture = TestBed.createComponent(CheckboxPlaygroundComponent);
-            expect(fixture.componentInstance.showOutput).toBeFalse();
+            expect(MockRender(CheckboxPlaygroundComponent, { showOutput: false }).point.componentInstance.showOutput).toBeFalse();
         });
 
         it('isDisabled should default to true', () => {
@@ -138,8 +136,7 @@ describe('CheckboxComponent', () => {
 
     describe('labelPosition input', () => {
         it('should default to "right"', () => {
-            const comp = TestBed.createComponent(CheckboxComponent).componentInstance;
-            expect(comp.labelPosition).toBe('right');
+            expect(MockRender(CheckboxComponent, { labelPosition: 'right' }).point.componentInstance.labelPosition).toBe('right');
         });
 
         it('should accept "left"', () => {
@@ -150,8 +147,7 @@ describe('CheckboxComponent', () => {
 
     describe('variant input', () => {
         it('should default to "branded"', () => {
-            const comp = TestBed.createComponent(CheckboxComponent).componentInstance;
-            expect(comp.variant).toBe('branded');
+            expect(MockRender(CheckboxComponent, { variant: 'branded' }).point.componentInstance.variant).toBe('branded');
         });
 
         it('should accept "pass"', () => {
@@ -167,8 +163,7 @@ describe('CheckboxComponent', () => {
 
     describe('size input', () => {
         it('should default to "small"', () => {
-            const comp = TestBed.createComponent(CheckboxComponent).componentInstance;
-            expect(comp.size).toBe('small');
+            expect(MockRender(CheckboxComponent, { size: 'small' }).point.componentInstance.size).toBe('small');
         });
 
         it('should accept "large"', () => {
@@ -179,8 +174,7 @@ describe('CheckboxComponent', () => {
 
     describe('hideLabel input', () => {
         it('should default to false', () => {
-            const comp = TestBed.createComponent(CheckboxComponent).componentInstance;
-            expect(comp.hideLabel).toBeFalse();
+            expect(MockRender(CheckboxComponent, { hideLabel: false }).point.componentInstance.hideLabel).toBeFalse();
         });
 
         it('should accept true', () => {

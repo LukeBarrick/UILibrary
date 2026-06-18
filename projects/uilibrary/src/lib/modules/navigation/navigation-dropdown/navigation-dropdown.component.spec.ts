@@ -1,28 +1,12 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { NavigationDropdownComponent } from './navigation-dropdown.component';
+import { NavigationModule } from '../navigation.module';
 
 describe('NavigationDropdownComponent', () => {
-  let component: NavigationDropdownComponent;
-  let fixture: ComponentFixture<NavigationDropdownComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NavigationDropdownComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationDropdownComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => MockBuilder(NavigationDropdownComponent, NavigationModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(NavigationDropdownComponent).point.componentInstance).toBeTruthy();
   });
 });
