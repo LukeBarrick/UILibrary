@@ -286,7 +286,7 @@ customSearchFn(term: string, item: { name: string; description: string }): boole
 | `onScroll` | `(end: any) => void` | `undefined` | Callback fired when the dropdown panel is scrolled. Useful for lazy-loading more items. |
 | `scrollToEnd` | `() => void` | `undefined` | Callback fired when the user scrolls to the bottom of the dropdown. Useful for pagination. |
 | `disabled` | `boolean` | `false` | Disable the control. Also controlled by the parent reactive form control's disabled state. |
-| `compareWith` | `(a: any, b: any) => boolean` | `defaultCompareFn` | Equality function used in single-select mode to match the bound value against the `items` array. Default uses `JSON.stringify` — see [Technical decisions](#technical-decisions). |
+| `compareWith` | `(a: any, b: any) => boolean` | `defaultCompareFn` | Equality function used in single-select mode to match the bound value against the `items` array. Default performs recursive deep equality regardless of property key order — see [Technical decisions](#technical-decisions). |
 
 ---
 
@@ -374,11 +374,11 @@ Declares and exports `SelectComponent`. Also declares `SelectWcagHelperDirective
 
 Consumers are expected to define their own label and option templates to match their domain objects and visual design. The built-in template (a plain text string from `bindLabel`) is provided for simple or prototyping scenarios only; it is not the primary usage pattern. Defaulting to `true` means the recommended, design-controlled approach is zero-configuration, while the simpler fallback is an explicit opt-out.
 
-### Why does the default `compareWith` use JSON.stringify?
+### How does the default `compareWith` work?
 
-The default `defaultCompareFn` compares items by serialising both to JSON strings. This is a conservative fallback for cases where items are recreated on each data fetch, causing reference equality to always fail. It is a **known gap**: the comparison is sensitive to property key ordering, so two semantically identical objects whose keys appear in different insertion orders will compare as unequal.
+The default `defaultCompareFn` performs recursive deep equality. It returns `true` when two values are structurally identical, regardless of how the object's properties are ordered in memory. It handles primitives (`===`), `null`/`undefined`, arrays (element-by-element), and plain objects (all keys checked in both directions). No external library is used.
 
-**When binding complex objects, always provide an explicit `compareWith` function** based on a stable primary key:
+For large item arrays or items with many nested properties, providing a `compareWith` based on a stable primary key is more efficient:
 
 ```typescript
 compareById = (a: Item, b: Item): boolean => a.id === b.id;
@@ -414,17 +414,6 @@ The component provides itself as `UIFormFieldControl` via `forwardRef(() => Sele
 **Cause:** `useCustomTemplate` is `true` (the default) but neither `#labelTemplate` nor `#optionTemplate` was supplied as a content child.  
 **Fix:** Add both templates inside `uilibrary-select`, or set `[useCustomTemplate]="false"` and provide `bindLabel`.
 
----
-
-### Selected value is not pre-selected in the dropdown
-
-**Symptom:** A value is set (via `ngModel` or a form control preset) but the dropdown does not show it as selected.  
-**Cause:** The default `compareWith` uses `JSON.stringify`, which is sensitive to property key ordering. If the bound object's keys are in a different order than the matching item in the `items` array, they will not compare as equal.  
-**Fix:** Provide a `compareWith` function based on a stable identifier:
-
-```typescript
-compareById = (a: Item, b: Item): boolean => a.id === b.id;
-```
 
 ---
 
