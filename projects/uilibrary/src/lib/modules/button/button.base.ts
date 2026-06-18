@@ -5,6 +5,7 @@ export abstract class ButtonBase {
 
   abstract sizeClass: string | undefined;
   abstract iconSizeClass: string | undefined;
+  abstract type: string | undefined;
 
   buildSizeClass() {
     if(this.size === 'small') {
