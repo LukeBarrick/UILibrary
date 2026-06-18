@@ -29,6 +29,7 @@ export * from './lib/modules/button/button.module';
 export * from './lib/modules/button/button/button.component';
 export * from './lib/modules/button/button-link-component/button-link.component';
 
+export * from './lib/modules/form-field/form-field-control';
 export * from './lib/modules/form-field/form-field.component';
 export * from './lib/modules/form-field/form-field.module';
 export * from './lib/modules/form-field/directives/UIPrefix';
