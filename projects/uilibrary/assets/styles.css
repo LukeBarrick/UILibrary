@@ -13426,14 +13426,19 @@ uilibrary-checkbox .checkbox:has(label > .order-n1) .circle2 {
 uilibrary-checkbox .checkbox label {
   cursor: pointer;
 }
+uilibrary-checkbox .checkbox label.disabled {
+  cursor: default;
+}
 uilibrary-checkbox .checkbox .checkbox-label {
   position: relative;
 }
 uilibrary-checkbox .checkbox .check-input {
   display: flex;
   align-items: center;
-  cursor: pointer;
   position: relative;
+}
+uilibrary-checkbox .checkbox .check-input:not(.disabled) {
+  cursor: pointer;
 }
 uilibrary-checkbox .checkbox .check-input:before {
   content: "";
@@ -13501,12 +13506,17 @@ uilibrary-checkbox .checkbox-small label {
   cursor: pointer;
   font-size: 14px;
 }
+uilibrary-checkbox .checkbox-small label.disabled {
+  cursor: default;
+}
 uilibrary-checkbox .checkbox-small .check-input {
   display: flex;
   align-items: center;
-  cursor: pointer;
   position: relative;
   font-size: 14px !important;
+}
+uilibrary-checkbox .checkbox-small .check-input:not(.disabled) {
+  cursor: pointer;
 }
 uilibrary-checkbox .checkbox-small .check-input:before {
   content: "";

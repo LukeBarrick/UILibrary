@@ -4,10 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChild,
+  EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
   Optional,
+  Output,
   Self,
   TemplateRef,
   ViewChild,
@@ -67,6 +68,8 @@ export class SelectComponent
 
   @Input() onScroll?: (end: any) => void;
   @Input() scrollToEnd?: () => void;
+
+  @Output() searchOnChange = new EventEmitter<string>();
 
   _onScroll(end: any) {
     if(this.onScroll) 
@@ -153,6 +156,10 @@ export class SelectComponent
   }
 
   private _focussed: boolean = false;
+
+  _onSearch(event: { term: string, items: any[] }): void {
+    this.searchOnChange.next(event.term);
+  }
 
   _onInput(value: any): void {
     this.onChange(value);

@@ -1,7 +1,7 @@
 <div class="d-flex flex-row checkbox-container">
-  <div [ngClass]="{'branded': variant === 'branded', 'pass': variant === 'pass', 'fail': variant === 'fail'}">
-    <div [ngClass]="{'checkbox-small': size === 'small', 'checkbox': size === 'large'}">
-      <label class="check-input align-items-center" [ngClass]="{'large': size === 'large'}">
+  <div [ngClass]="{branded: variant === 'branded', pass: variant === 'pass', fail: variant === 'fail'}">
+    <div [ngClass]="{'checkbox-small': size === 'small', checkbox: size === 'large'}">
+      <label class="check-input align-items-center" [ngClass]="{large: size === 'large', disabled: _disabled}">
         <div [ngClass]="{'visually-hidden': hideLabel === true, 'order-1 mis-4': labelPosition == LabelPosition.Right, 'order-n1 mie-4': labelPosition == LabelPosition.Left}">
           <ng-content></ng-content>
         </div>

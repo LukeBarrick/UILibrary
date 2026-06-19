@@ -177,5 +177,9 @@ export class SelectPlaygroundComponent implements OnInit {
             formControl.disable();
         }
     }
+
+    onSearchChange(searchTerm: string) {
+        console.log(searchTerm);
+    }
 }
 
