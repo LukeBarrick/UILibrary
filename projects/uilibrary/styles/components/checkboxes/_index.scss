@@ -38,6 +38,10 @@ uilibrary-checkbox {
 
         label {
             cursor: pointer;
+
+            &.disabled {
+                cursor: default;
+            }
         }
 
         .checkbox-label {
@@ -47,8 +51,11 @@ uilibrary-checkbox {
         .check-input {
             display: flex;
             align-items: center;
-            cursor: pointer;
             position: relative;
+
+            &:not(.disabled) {
+                cursor: pointer;
+            }
         }
 
         .check-input:before {
@@ -131,14 +138,21 @@ uilibrary-checkbox {
         label {
             cursor: pointer;
             font-size: 14px;
+
+            &.disabled {
+                cursor: default;
+            }
         }
 
         .check-input {
             display: flex;
             align-items: center;
-            cursor: pointer;
             position: relative;
             font-size: 14px !important;
+
+            &:not(.disabled) {
+                cursor: pointer;
+            }
         }
 
         .check-input:before {

@@ -819,6 +819,13 @@
             </uilibrary-select>
         </uilibrary-form-field>
 
+        <uilibrary-form-field>
+            <label ui-label>On search handler (see console)</label>
+            <uilibrary-select ui-select [items]="objectItems" (searchOnChange)="onSearchChange($event)" [searchable]="true" [searchFn]="customSearchFn"
+                [useCustomTemplate]="false" bindLabel="name">
+            </uilibrary-select>
+        </uilibrary-form-field>
+
         <h3>Track By</h3>
         <uilibrary-form-field>
             <label ui-label>Custom trackByFn</label>
