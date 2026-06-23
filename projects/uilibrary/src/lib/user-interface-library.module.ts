@@ -31,6 +31,7 @@ import { UiModalModule } from './modules/modal/modal.module';
 import { SidebarModalModule } from './modules/modal/sidebar-modal.module';
 import { ShowcaseModule } from './showcase/showcase.module';
 import { PlaygroundModule } from './playground/playground.module';
+import { RtlLayoutModule } from '../public-api';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { PlaygroundModule } from './playground/playground.module';
     TableModule,
     UiModalModule,
     SidebarModalModule,
+    RtlLayoutModule
   ],
   exports: [
     UserInterfaceLibraryComponent,
