@@ -1,23 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 import { ButtonLinkComponent } from './button-link.component';
+import { ButtonModule } from '../button.module';
 
 describe('ButtonLinkComponent', () => {
-  let component: ButtonLinkComponent;
-  let fixture: ComponentFixture<ButtonLinkComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ButtonLinkComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ButtonLinkComponent);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
+  beforeEach(() => MockBuilder(ButtonLinkComponent, ButtonModule));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(ButtonLinkComponent).point.componentInstance).toBeTruthy();
   });
 });
