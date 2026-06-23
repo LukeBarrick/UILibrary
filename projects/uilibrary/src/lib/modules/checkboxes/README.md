@@ -113,14 +113,21 @@ Use `[checked]` and `[disabled]` when you control state externally and do not ne
 
 ### Label positioning
 
-Labels render to the right of the checkbox by default. Pass `labelPosition="left"` to move the label to the left side.
+Labels render to the right of the checkbox by default (`LabelPosition.Right`). Import the `LabelPosition` enum from `'uilibrary'` and expose it on your component class to use it in templates.
+
+```typescript
+import { LabelPosition } from 'uilibrary';
+
+// In your component class
+LabelPosition = LabelPosition;
+```
 
 ```html
-<!-- Default — label right -->
+<!-- Default — label right (LabelPosition.Right) -->
 <uilibrary-checkbox variant="branded">Label on the right</uilibrary-checkbox>
 
 <!-- Label left -->
-<uilibrary-checkbox variant="branded" labelPosition="left">Label on the left</uilibrary-checkbox>
+<uilibrary-checkbox variant="branded" [labelPosition]="LabelPosition.Left">Label on the left</uilibrary-checkbox>
 ```
 
 ### Hidden label (accessibility)
@@ -151,7 +158,7 @@ Because the label is projected via `<ng-content>`, any HTML can be slotted betwe
 |---|---|---|---|
 | `variant` | `string` | `'branded'` | Visual style: `'branded'`, `'pass'` (green, tick icon), or `'fail'` (red, cross icon) |
 | `size` | `string` | `'small'` | Checkbox size: `'small'` or `'large'` |
-| `labelPosition` | `string` | `'right'` | Label side relative to the checkbox: `'right'` or `'left'` |
+| `labelPosition` | `LabelPosition` | `LabelPosition.Right` | Label side relative to the checkbox. Import `LabelPosition` from `'uilibrary'`. |
 | `hideLabel` | `boolean` | `false` | Visually hides the label while keeping it accessible to screen readers |
 | `checked` | `boolean` | `false` | Sets the checked state programmatically; delegates to the CVA `writeValue` |
 | `disabled` | `boolean` | `false` | Disables the checkbox, preventing user interaction |
@@ -181,7 +188,7 @@ Implements `ControlValueAccessor` — compatible with `formControlName`, `ngMode
 |---|---|---|
 | `variant` | `@Input() string` | Visual variant: `'branded'` · `'pass'` · `'fail'`. Default `'branded'`. |
 | `size` | `@Input() string` | Checkbox size: `'small'` · `'large'`. Default `'small'`. |
-| `labelPosition` | `@Input() string` | Label side: `'right'` · `'left'`. Default `'right'`. |
+| `labelPosition` | `@Input() string` | Label side: `LabelPosition.Right` · `LabelPosition.Left`. Default `LabelPosition.Right`. Import `LabelPosition` from `'uilibrary'`. |
 | `hideLabel` | `@Input() boolean` | When `true`, the label is hidden visually but remains in the DOM. Default `false`. |
 | `checked` | `@Input() boolean` | Setter that delegates to `writeValue()`. Sets the checked state on the control. |
 | `disabled` | `@Input() boolean` | Setter/getter. Disables the checkbox via `setDisabledState()`. |
