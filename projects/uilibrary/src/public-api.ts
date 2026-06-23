@@ -47,6 +47,7 @@ export * from './lib/core/services/icon.service';
 
 export * from './lib/modules/toggle/toggle.module';
 export * from './lib/modules/toggle/toggle.component';
+export * from './lib/core/enums/label-position.enum';
 
 export * from './lib/modules/radio/radio.module';
 export * from './lib/modules/radio/button/button.component';
