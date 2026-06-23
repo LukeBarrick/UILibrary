@@ -3,10 +3,10 @@ import { DATE_NOW } from '../../../core/tokens/DATE_NOW';
 import { isAfter, isBefore } from 'date-fns';
 
 @Component({
-    selector: 'uilibrary-calendar-select',
-    templateUrl: './calendar.component.html',
-    styleUrl: './calendar.component.scss',
-    standalone: false
+  selector: 'uilibrary-calendar-select',
+  templateUrl: './calendar.component.html',
+  styleUrl: './calendar.component.scss',
+  standalone: false
 })
 export class CalendarComponent implements OnInit {
   currentDate!: Date;
@@ -29,18 +29,23 @@ export class CalendarComponent implements OnInit {
   weeksInMonth: (number | null)[][] = [];
 
   constructor(@Inject(LOCALE_ID) protected localeId: string,
-              @Inject(DATE_NOW) protected today: Date) {
+    @Inject(DATE_NOW) protected today: Date) {
     this.currentDate = today;
-    this.dateTracker = new Date(today);
-    this.selectedMonth = this.currentDate.getMonth();
-    this.selectedMonthLiteral = this.currentDate.toLocaleString(this.localeId, { month: 'long' });
-    this.selectedYear = this.currentDate.getFullYear();
   }
 
   @Input() selecteDates: Date[] | Date | undefined;
-  
+
   ngOnInit(): void {
-    this.generateCalendar(this.selectedMonth, this.selectedYear);
+    let selectedDate: Date = this.currentDate;
+    if (Array.isArray(this.selecteDates) && this.selecteDates.length > 0) {
+      selectedDate = this.selecteDates[0];
+      this.setDate(selectedDate);
+    } else if (this.selecteDates instanceof Date && !isNaN(this.selecteDates.getTime())) {
+      selectedDate = this.selecteDates;
+      this.setDate(selectedDate);
+    } else {
+      this.setDate(selectedDate);
+    }
   }
 
   generateCalendar(month: number, year: number) {
@@ -98,8 +103,16 @@ export class CalendarComponent implements OnInit {
     this.dateSelected.emit(selected);
   }
 
+  setDate(date: Date): void {
+    this.dateTracker = new Date(date);
+    this.selectedMonth = date.getMonth();
+    this.selectedMonthLiteral = date.toLocaleString(this.localeId, { month: 'long' });
+    this.selectedYear = date.getFullYear();
+    this.generateCalendar(this.selectedMonth, this.selectedYear);
+  }
+
   isSelected(day: number): boolean {
-    if(!this.selecteDates) return false; 
+    if (!this.selecteDates) return false;
 
     const selecteDate = new Date(
       this.selectedYear,
@@ -109,21 +122,21 @@ export class CalendarComponent implements OnInit {
 
     let isSelected: boolean = false;
 
-    if(Array.isArray(this.selecteDates)) {
-      for(let i = 0; i < this.selecteDates.length; i++) {
+    if (Array.isArray(this.selecteDates)) {
+      for (let i = 0; i < this.selecteDates.length; i++) {
         let selected = this.selecteDates[i].getDate() === selecteDate.getDate() &&
-        this.selecteDates[i].getMonth() === selecteDate.getMonth() &&
-        this.selecteDates[i].getFullYear() === selecteDate.getFullYear()
+          this.selecteDates[i].getMonth() === selecteDate.getMonth() &&
+          this.selecteDates[i].getFullYear() === selecteDate.getFullYear()
 
-        if(selected) {
+        if (selected) {
           isSelected = true;
           break;
         }
       }
     } else {
       isSelected = this.selecteDates.getDate() === selecteDate.getDate() &&
-      this.selecteDates.getMonth() === selecteDate.getMonth() &&
-      this.selecteDates.getFullYear() === selecteDate.getFullYear()
+        this.selecteDates.getMonth() === selecteDate.getMonth() &&
+        this.selecteDates.getFullYear() === selecteDate.getFullYear()
     }
 
     return isSelected;
@@ -150,15 +163,15 @@ export class CalendarComponent implements OnInit {
       day
     );
 
-    if(Array.isArray(this.selecteDates) && this.selecteDates.length >= 2) {
+    if (Array.isArray(this.selecteDates) && this.selecteDates.length >= 2) {
       const dates = this.selecteDates.slice().sort((a, b) => a.getTime() - b.getTime());
 
       const firstDate = dates[0];
-      const lastDate = dates[dates.length - 1]; 
+      const lastDate = dates[dates.length - 1];
 
       return isAfter(date, firstDate) && isBefore(date, lastDate);
     }
 
-    return false; 
+    return false;
   }
 }

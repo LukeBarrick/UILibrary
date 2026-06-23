@@ -330,6 +330,7 @@ A standalone calendar grid. Used internally by both pickers but also exported so
 |---|---|---|
 | `selecteDates` | `@Input() Date[] \| Date \| undefined` | Highlighted date(s). |
 | `dateSelected` | `@Output() EventEmitter<Date>` | Emits the `Date` the user clicked. |
+| `setDate()` | `(date: Date) => void` | Navigates the calendar view to the month and year of `date` and rebuilds the grid. Useful when embedding `CalendarComponent` directly and needing to programmatically jump to a specific month. |
 
 ---
 

@@ -70,7 +70,6 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
     }
 
     if(this.endDate?.ngControl) {
-       console.log('end date registered');
       this.$endDateValueChanges = this.endDate.ngControl.valueChanges?.pipe(
         tap(() => this.removeEndDateFromCalendar()),
         filter(value => value instanceof Date),
@@ -197,7 +196,6 @@ export class DateRangeInputComponent implements UIFormFieldControl<DateRange>, A
   }
 
   private removeStartDateFromCalendar() {
-    console.log('remove triggered')
     if(this.selecteDates.length) {
       this.selecteDates.splice(0, 1);
     }
