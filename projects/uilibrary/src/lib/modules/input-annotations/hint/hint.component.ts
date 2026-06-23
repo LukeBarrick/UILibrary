@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
     standalone: false
 })
 export class HintComponent {
-  @Input() variant = 'error';
+  @Input() variant = 'normal';
   constructor() {}
 }
