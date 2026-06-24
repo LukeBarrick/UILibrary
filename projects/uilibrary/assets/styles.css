@@ -15200,6 +15200,7 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .ui-panel .ui-panel-header h3, .ui-panel .ui-panel-header .h3 {
   margin-bottom: 0px;
@@ -15217,6 +15218,27 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   flex-direction: row;
   justify-content: flex-end;
   gap: 10px;
+}
+
+uilibrary-responsive-layout {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+uilibrary-responsive-layout .responsive-container.small-margin {
+  width: 90%;
+}
+uilibrary-responsive-layout .responsive-container.medium-margin {
+  width: 70%;
+}
+uilibrary-responsive-layout .responsive-container.large-margin {
+  width: 50%;
+}
+
+@media screen and (max-width: 1280px) {
+  .responsive-container {
+    width: 80%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

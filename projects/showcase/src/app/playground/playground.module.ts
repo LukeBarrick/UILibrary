@@ -67,7 +67,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     UIPlaygroundModule,
-  ],
+],
   declarations: [
     PlaygroundLayoutComponent,
     PlaygroundSideNavComponent,

@@ -47,17 +47,52 @@
         </uilibrary-tooltip>
         <span title>Panel w/ Actions Example <uilibrary-icon name="icon-air"></uilibrary-icon></span>
 
-        <p content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.</p>
+        <div content [formGroup]="panelForm">
+            <div class="form-row">
+                <uilibrary-form-field>
+                    <label ui-label>First Name</label>
+                    <input ui-input formControlName="firstName" type="text" placeholder="Enter first name">
+                    @if(panelForm.controls['firstName'].invalid && panelForm.controls['firstName'].touched) {
+                        <span ui-error>First name is required</span>
+                    }
+                </uilibrary-form-field>
 
-        <uilibrary-button action appearance="secondary">Cancel</uilibrary-button>
-        <uilibrary-button action appearance="primary">Submit</uilibrary-button>
+                <uilibrary-form-field>
+                    <label ui-label>Last Name</label>
+                    <input ui-input formControlName="lastName" type="text" placeholder="Enter last name">
+                    @if(panelForm.controls['lastName'].invalid && panelForm.controls['lastName'].touched) {
+                        <uilibrary-hint ui-error>Last name is required</uilibrary-hint>
+                    }
+                </uilibrary-form-field>
+            </div>
+
+            <uilibrary-form-field>
+                <label ui-label>Country</label>
+                <uilibrary-select ui-select
+                    formControlName="country"
+                    [items]="countries"
+                    bindLabel="label"
+                    bindValue="value"
+                    placeholder="Select a country"
+                    [useCustomTemplate]="false">
+                </uilibrary-select>
+            </uilibrary-form-field>
+
+            <uilibrary-checkbox formControlName="agreeToTerms">Agree to terms and conditions</uilibrary-checkbox>
+
+            <uilibrary-toggle formControlName="receiveUpdates" [labelPosition]="LabelPosition.Right">Receive email updates</uilibrary-toggle>
+        </div>
+
+        <uilibrary-button action appearance="secondary" (click)="onCancel()">Cancel</uilibrary-button>
+        <uilibrary-button action appearance="primary" (click)="onSubmit()">Submit</uilibrary-button>
     </uilibrary-panel>
 
-
+    @if(submitted) {
+        <div class="form-output">
+            <h4>Submitted values</h4>
+            <pre>{{ formValue | json }}</pre>
+        </div>
+    }
 
 </section>
 

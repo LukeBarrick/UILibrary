@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationLink, NavigationLinkType } from 'uilibrary';
+import { NavigationLink, NavigationLinkType, MarginSize } from 'uilibrary';
 
 @Component({
   selector: 'app-playground-layout',
@@ -8,6 +8,7 @@ import { NavigationLink, NavigationLinkType } from 'uilibrary';
   standalone: false,
 })
 export class PlaygroundLayoutComponent {
+  MarginSize = MarginSize
   sideNavLinks: NavigationLink[] = [
     { label: 'Button', path: '/playground/button', type: NavigationLinkType.Route },
     { label: 'Checkbox', path: '/playground/checkbox', type: NavigationLinkType.Route },

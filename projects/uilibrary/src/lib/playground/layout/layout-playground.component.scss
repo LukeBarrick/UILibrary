@@ -1,3 +1,28 @@
 .container {
     width: 60%;
 }
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+
+    uilibrary-form-field {
+        flex: 1;
+    }
+}
+
+.form-output {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--bs-light, #f8f9fa);
+    border-radius: 4px;
+
+    h4 {
+        margin-bottom: 0.5rem;
+    }
+
+    pre {
+        margin: 0;
+        font-size: 0.85rem;
+    }
+}

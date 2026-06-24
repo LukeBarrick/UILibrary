@@ -100,6 +100,8 @@ export * from './lib/modules/side-navigation/side-navigation.module';
 export * from './lib/modules/layout/layout.module';
 export * from './lib/modules/layout/card/card.component';
 export * from './lib/modules/layout/panel/panel.component';
+export * from './lib/modules/layout/responsive-layout/responsive-layout.component'
+export * from './lib/core/enums/margin-size.enum';
 
 export * from './lib/playground/playground.module';
 export * from './lib/playground/button/button-playground.component';
