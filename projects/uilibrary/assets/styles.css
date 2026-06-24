@@ -14478,7 +14478,7 @@ uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-containe
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-value {
   position: relative;
-  inset-inline-start: 15px;
+  inset-inline-start: 20px;
 }
 uilibrary-form-field .form-field uilibrary-select .ng-select .ng-select-container .ng-value-container .ng-input > input {
   margin-inline-start: 10px;
@@ -15192,7 +15192,7 @@ uilibrary-calendar-select .calendar-wrapper .calendar-container .day .day-button
   flex-direction: column;
   background-color: #F2F2F2;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 20px;
   margin-bottom: 40px;
 }
 .ui-panel .ui-panel-header {
