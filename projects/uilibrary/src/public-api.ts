@@ -97,6 +97,10 @@ export * from './lib/modules/modal/sidebar-route-bridge.component';
 export * from './lib/modules/side-navigation/side-navigation.component';
 export * from './lib/modules/side-navigation/side-navigation.module';
 
+export * from './lib/modules/layout/layout.module';
+export * from './lib/modules/layout/card/card.component';
+export * from './lib/modules/layout/panel/panel.component';
+
 export * from './lib/playground/playground.module';
 export * from './lib/playground/button/button-playground.component';
 export * from './lib/playground/checkbox/checkbox-playground.component';
@@ -119,5 +123,6 @@ export * from './lib/playground/modal/modal-playground.component';
 export * from './lib/playground/modal/demo-modal-content.component';
 export * from './lib/playground/modal/sidebar-demo/sidebar-demo-profile.component';
 export * from './lib/playground/modal/sidebar-demo/sidebar-demo-settings.component';
+export * from './lib/playground/layout/layout-playground.component';
 
 export * from './lib/core/core.module';

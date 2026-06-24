@@ -19,6 +19,7 @@ import {
   TogglePlaygroundComponent,
   TypographyPlaygroundComponent,
   RtlLayoutPlaygroundComponent,
+  LayoutPlaygroundComponent,
   ModalPlaygroundComponent,
   SidebarDemoProfileComponent,
   SidebarDemoSettingsComponent,
@@ -50,6 +51,7 @@ const routes: Routes = [
       { path: 'typography', component: TypographyPlaygroundComponent },
       { path: 'rtl-layout', component: RtlLayoutPlaygroundComponent },
       { path: 'modal', component: ModalPlaygroundComponent },
+      { path: 'layout', component: LayoutPlaygroundComponent },
       // Sidebar auxiliary routes — activated by SidebarModalService.open()
       // URL form: /playground(sidebar:sidebar-profile)
       // Use SidebarRouteBridgeComponent so the drawer content component is only

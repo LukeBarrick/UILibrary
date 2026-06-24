@@ -1,0 +1,14 @@
+<section class="ui-panel">
+    <div class="ui-panel-header">
+        <h3><ng-content select="[title]"></ng-content></h3>
+        <ng-content select="[ui-tooltip]"></ng-content>
+    </div>
+
+    <div class="ui-panel-content">
+        <ng-content select="[content]"></ng-content>
+    </div>
+
+    <div class="ui-panel-footer">
+        <ng-content select="[action]"></ng-content>
+    </div>
+</section>

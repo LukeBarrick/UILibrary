@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
     standalone: false
 })
 export class TooltipComponent{
-  @Input() margin: string = 'none';
-  @Input() placement: string = '';
+  @Input() margin: string = 'left';
+  @Input() placement: string = 'right';
   constructor() { }
 }

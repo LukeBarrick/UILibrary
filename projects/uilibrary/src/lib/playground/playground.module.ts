@@ -42,6 +42,8 @@ import { TableModule } from '../modules/table/table.module';
 import { RtlLayoutModule } from '../modules/rtl-layout/rtl-layout.module';
 import { UiModalModule } from '../modules/modal/modal.module';
 import { SidebarModalModule } from '../modules/modal/sidebar-modal.module';
+import { LayoutModule } from '../modules/layout/layout.module';
+import { LayoutPlaygroundComponent } from './layout/layout-playground.component';
 
 @NgModule({
     imports: [
@@ -67,6 +69,7 @@ import { SidebarModalModule } from '../modules/modal/sidebar-modal.module';
         RtlLayoutModule,
         UiModalModule,
         SidebarModalModule,
+        LayoutModule
     ],
     exports: [
         ButtonPlaygroundComponent,
@@ -90,6 +93,7 @@ import { SidebarModalModule } from '../modules/modal/sidebar-modal.module';
         DemoModalContentComponent,
         SidebarDemoProfileComponent,
         SidebarDemoSettingsComponent,
+        LayoutPlaygroundComponent,
 
         //Temporary exports for Showcase whilst these modules are still in use there 
         CheckboxesModule,
@@ -109,6 +113,7 @@ import { SidebarModalModule } from '../modules/modal/sidebar-modal.module';
         TableModule,
         RtlLayoutModule,
         SidebarModalModule,
+        LayoutModule
     ],
     declarations: [
         ButtonPlaygroundComponent,
@@ -132,7 +137,8 @@ import { SidebarModalModule } from '../modules/modal/sidebar-modal.module';
         DemoModalContentComponent,
         SidebarDemoProfileComponent,
         SidebarDemoSettingsComponent,
-    ],
+        LayoutPlaygroundComponent
+    ], 
     providers: [],
 })
 export class PlaygroundModule { }
